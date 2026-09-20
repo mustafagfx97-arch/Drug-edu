@@ -150,7 +150,7 @@ class Medication {
     this.hasCalculator = false,
     this.hasVisualGuide = false,
     this.sourceLabel = '',
-    this.reviewStatus = 'Reviewed',
+    this.reviewStatus = 'Clinical draft · verify exact product when formulation-specific',
     this.lastReviewed = '2026-09',
     this.isDemo = true,
   });

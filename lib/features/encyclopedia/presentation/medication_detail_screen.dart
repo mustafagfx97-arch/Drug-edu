@@ -344,6 +344,7 @@ class _PatientTab extends StatelessWidget {
       timingFallbackAr:
           medicationPatientTimingInstruction(medication.id),
     );
+    final visualGuides = visualGuidesForMedication(medication.id);
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -372,6 +373,54 @@ class _PatientTab extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
+          if (visualGuides.isNotEmpty) ...[
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'دليل الاستخدام العملي',
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Wrap(
+                      alignment: WrapAlignment.end,
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final guide in visualGuides)
+                          ActionChip(
+                            avatar: Icon(guide.icon, size: 18),
+                            label: Text(guide.title),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => VisualGuideDetailScreen(
+                                    title: guide.title,
+                                    subtitle: guide.subtitle,
+                                    steps: guide.steps,
+                                    mistakes: guide.mistakes,
+                                    patientSummaryAr: guide.patientSummaryAr,
+                                    icon: guide.icon,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
           if (durationAr.isNotEmpty) ...[
             Card(
               child: Padding(

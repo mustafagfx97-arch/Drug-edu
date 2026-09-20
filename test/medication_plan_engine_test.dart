@@ -702,4 +702,99 @@ void main() {
     );
   });
 
+
+  test('Slynd plus spironolactone prompts potassium review', () {
+    final plan = engine.generate(
+      items: [
+        item('drospirenone-pop', 'Slynd'),
+        item('spironolactone', 'Spironolactone'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Drospirenone POP + potassium-raising therapy' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('ibandronate plus calcium prompts 60-minute separation alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'ibandronate-monthly',
+          'Ibandronate',
+          frequency: RegimenFrequency.weekly,
+          preference: TimingPreference.breakfast,
+        ),
+        item(
+          'calcium-carbonate',
+          'Calcium Carbonate',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Ibandronate 60-minute separation' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('ibandronate and levothyroxine flag morning conflict', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'ibandronate-monthly',
+          'Ibandronate',
+          frequency: RegimenFrequency.weekly,
+          preference: TimingPreference.breakfast,
+        ),
+        item(
+          'levothyroxine',
+          'Levothyroxine',
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Ibandronate + levothyroxine morning conflict' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('carbamazepine flags drospirenone contraceptive interaction', () {
+    final plan = engine.generate(
+      items: [
+        item('carbamazepine', 'Carbamazepine'),
+        item('drospirenone-pop', 'Slynd'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Carbamazepine + hormonal contraception' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
 }

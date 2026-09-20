@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/module_card.dart';
-import '../../../shared/widgets/section_card.dart';
 import '../../feeding_tubes/presentation/feeding_tubes_screen.dart';
 import '../../patient_cards/presentation/patient_cards_screen.dart';
 import '../../supplements/presentation/supplements_screen.dart';
@@ -38,62 +37,48 @@ class HomeScreen extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     final columns = width >= 900 ? 3 : width >= 620 ? 2 : 1;
 
-    final modules = [
-      (
-        'Patient Counseling',
-        'Clinical notes in English with a focused Arabic patient explanation.',
-        Icons.record_voice_over_outlined,
-        '1',
-        'Core'
-      ),
-      (
-        'Patient Cards',
-        'Clone, customize and generate focused Arabic counseling cards with QR.',
-        Icons.badge_outlined,
-        'patient_cards',
-        'QR'
-      ),
+    final clinicalTools = [
       (
         'IV Preparation',
-        'Reconstitution, dilution, compatible fluids, standard concentrations and safety locks.',
+        'General, NICU and PICU preparation profiles with formulation-specific safety.',
         Icons.vaccines_outlined,
         '2',
         'High safety'
       ),
       (
         'Calculators',
-        'Preparation math only. Prescribed doses are entered by the clinician.',
+        'Preparation and infusion calculations from prescribed orders only.',
         Icons.calculate_outlined,
         '3',
-        'No dose selection'
-      ),
-      (
-        'NICU / PICU',
-        'Population-specific preparation profiles kept separate from adult/general profiles.',
-        Icons.child_care_outlined,
-        '2',
-        'Separate profiles'
+        'Dose not selected'
       ),
       (
         'Visual Guides',
-        'Technique illustrations for inhalers, sprays, pens, drops and other medication devices.',
+        'Technique guides for inhalers, sprays, pens, drops and medication devices.',
         Icons.auto_awesome_mosaic_outlined,
         'visual_guides',
         'Technique'
       ),
       (
         'Feeding Tubes',
-        'Tube administration, formulation handling, crushing, liquids and oral-use workflows.',
+        'Formulation handling, crushing, liquids and tube-administration workflows.',
         Icons.route_outlined,
         'feeding_tubes',
-        'Formulation-specific'
+        null
       ),
       (
         'Supplements',
-        'Vitamins, minerals, pediatric products, combinations and safety-focused counseling.',
+        'Vitamins, minerals, pediatric products and practical supplement counseling.',
         Icons.spa_outlined,
         'supplements',
-        'Counseling'
+        null
+      ),
+      (
+        'Patient Cards',
+        'Saved reusable take-home cards with focused Arabic instructions and QR.',
+        Icons.badge_outlined,
+        'patient_cards',
+        'Print'
       ),
     ];
 
@@ -117,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Clinical Pharmacist Encyclopedia · V1 Preview',
+                        'Patient Education for Clinical Pharmacists',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -138,39 +123,101 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 14),
           sliver: SliverToBoxAdapter(
-            child: TextField(
-              readOnly: true,
-              onTap: () => onSelectDestination(1),
-              decoration: const InputDecoration(
-                hintText: 'Search drug, formulation, device or topic',
-                prefixIcon: Icon(Icons.search_rounded),
-                suffixIcon: Icon(Icons.tune_rounded),
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: InkWell(
+                onTap: () => onSelectDestination(1),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 56,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.primaryContainer,
+                              borderRadius: BorderRadius.circular(17),
+                            ),
+                            child: Icon(
+                              Icons.menu_book_outlined,
+                              color: theme.colorScheme.onPrimaryContainer,
+                              size: 30,
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Patient Education Encyclopedia',
+                                  style:
+                                      theme.textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Browse by drug family or search a medicine.',
+                                  style:
+                                      theme.textTheme.bodyMedium?.copyWith(
+                                    color:
+                                        theme.colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right_rounded),
+                        ],
+                      ),
+                      const SizedBox(height: 18),
+                      Row(
+                        children: const [
+                          Expanded(
+                            child: _ThreeStep(
+                              number: '1',
+                              title: 'Pharmacist',
+                              detail: 'Clinical notes',
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: _ThreeStep(
+                              number: '2',
+                              title: 'Patient',
+                              detail: 'Simple Arabic',
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: _ThreeStep(
+                              number: '3',
+                              title: 'Print Card',
+                              detail: 'QR + PDF',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 6, 20, 16),
-          sliver: SliverToBoxAdapter(
-            child: SectionCard(
-              title: 'Clinical safety first',
-              icon: Icons.verified_user_outlined,
-              child: Text(
-                'Preparation profiles remain formulation-specific. NICU and PICU standards are never silently reused across populations, and calculators convert prescribed orders without selecting treatment doses.',
-                style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
-              ),
-            ),
-          ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 2, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 10),
           sliver: SliverToBoxAdapter(
             child: Text(
-              'Modules',
+              'Clinical tools',
               style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
@@ -180,7 +227,7 @@ class HomeScreen extends StatelessWidget {
           sliver: SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final item = modules[index];
+                final item = clinicalTools[index];
                 return ModuleCard(
                   title: item.$1,
                   subtitle: item.$2,
@@ -189,7 +236,7 @@ class HomeScreen extends StatelessWidget {
                   onTap: () => _openModule(context, item.$4),
                 );
               },
-              childCount: modules.length,
+              childCount: clinicalTools.length,
             ),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: columns,
@@ -200,6 +247,65 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ThreeStep extends StatelessWidget {
+  const _ThreeStep({
+    required this.number,
+    required this.title,
+    required this.detail,
+  });
+
+  final String number;
+  final String title;
+  final String detail;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(11),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 13,
+            backgroundColor: theme.colorScheme.primary,
+            child: Text(
+              number,
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: theme.colorScheme.onPrimary,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.labelLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            detail,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

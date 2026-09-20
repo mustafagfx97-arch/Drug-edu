@@ -80,12 +80,12 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
     final results = _searchResults;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Supplement Encyclopedia')),
+      appBar: AppBar(title: const Text('Supplements')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
           Text(
-            'Supplements are a separate branch',
+            'Supplements inside the main encyclopedia',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

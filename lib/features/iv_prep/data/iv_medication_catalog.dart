@@ -1,0 +1,169 @@
+class IvCatalogEntry {
+  const IvCatalogEntry({
+    required this.name,
+    required this.population,
+    required this.category,
+    this.structured = false,
+  });
+
+  final String name;
+  final String population;
+  final String category;
+  final bool structured;
+}
+
+const ivMedicationCatalog = <IvCatalogEntry>[
+  // General antimicrobials
+  IvCatalogEntry(name: 'Ceftriaxone', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Cefotaxime', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Cefepime', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ceftazidime', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Meropenem', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Vancomycin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ampicillin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ampicillin / Sulbactam', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Cefazolin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ertapenem', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Imipenem / Cilastatin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Aztreonam', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Gentamicin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Amikacin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Metronidazole', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ciprofloxacin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Levofloxacin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Amoxicillin / Clavulanate IV', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Clindamycin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Linezolid', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Teicoplanin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Colistimethate / Colistin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Tigecycline', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Daptomycin', population: 'General', category: 'Antibiotics'),
+
+  // General antifungals / antivirals
+  IvCatalogEntry(name: 'Fluconazole', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Acyclovir', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Amphotericin B liposomal', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Amphotericin B conventional', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Voriconazole', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Caspofungin', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Micafungin', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Anidulafungin', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Ganciclovir', population: 'General', category: 'Antifungals & antivirals'),
+
+  // Cardiovascular
+  IvCatalogEntry(name: 'Amiodarone', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Adenosine', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'General', category: 'Cardiovascular', structured: true),
+  IvCatalogEntry(name: 'Epinephrine', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Dopamine', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Dobutamine', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Nitroglycerin', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Labetalol', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Esmolol', population: 'General', category: 'Cardiovascular'),
+
+  // Electrolytes / metabolic
+  IvCatalogEntry(name: 'Potassium chloride', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Magnesium sulfate', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Calcium gluconate', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Calcium chloride', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Sodium bicarbonate 8.4%', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Sodium bicarbonate 4.2%', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Hypertonic sodium chloride 3%', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
+  IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
+
+  // Neurology / GI / steroids
+  IvCatalogEntry(name: 'IV Paracetamol', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Pantoprazole', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Omeprazole', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Ondansetron', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Metoclopramide', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Phenytoin', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Fosphenytoin', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Levetiracetam', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Valproate', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Phenobarbital', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Dexamethasone', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Hydrocortisone', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Methylprednisolone', population: 'General', category: 'Other IV medicines'),
+
+  // ICU / sedation
+  IvCatalogEntry(name: 'Midazolam', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Lorazepam', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Diazepam', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Ketamine', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Propofol', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Dexmedetomidine', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Fentanyl', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Morphine', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Regular insulin infusion', population: 'General', category: 'Critical care'),
+  IvCatalogEntry(name: 'Heparin', population: 'General', category: 'Critical care'),
+  IvCatalogEntry(name: 'Alteplase', population: 'General', category: 'Critical care'),
+  IvCatalogEntry(name: 'Tenecteplase', population: 'General', category: 'Critical care'),
+
+  // Emergency / antidotes
+  IvCatalogEntry(name: 'Naloxone', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Flumazenil', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Atropine', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Digoxin immune Fab', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes'),
+
+  // NICU continuous infusions
+  IvCatalogEntry(name: 'Dopamine', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Dobutamine', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Fentanyl', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Morphine', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Midazolam', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Insulin', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Heparin', population: 'NICU', category: 'Continuous infusions'),
+
+  // NICU antimicrobials
+  IvCatalogEntry(name: 'Ampicillin', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Benzylpenicillin', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Gentamicin', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Amikacin', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Cefotaxime', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Ceftazidime', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Cefepime', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Meropenem', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Vancomycin intermittent', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'NICU', category: 'Antimicrobials'),
+
+  // NICU cardiac / respiratory / neuro / electrolytes
+  IvCatalogEntry(name: 'Caffeine citrate', population: 'NICU', category: 'Cardiac & respiratory', structured: true),
+  IvCatalogEntry(name: 'Digoxin', population: 'NICU', category: 'Cardiac & respiratory'),
+  IvCatalogEntry(name: 'Adenosine', population: 'NICU', category: 'Cardiac & respiratory'),
+  IvCatalogEntry(name: 'Sildenafil IV', population: 'NICU', category: 'Cardiac & respiratory'),
+  IvCatalogEntry(name: 'Hydrocortisone', population: 'NICU', category: 'Neurology / endocrine'),
+  IvCatalogEntry(name: 'Dexamethasone', population: 'NICU', category: 'Neurology / endocrine'),
+  IvCatalogEntry(name: 'Phenobarbital', population: 'NICU', category: 'Neurology / endocrine'),
+  IvCatalogEntry(name: 'Levetiracetam', population: 'NICU', category: 'Neurology / endocrine'),
+  IvCatalogEntry(name: 'Calcium gluconate', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Calcium chloride', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Magnesium sulfate', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Dextrose D10', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Dextrose D12.5', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Dextrose D20', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Dextrose D25', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Hypertonic sodium chloride', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose'),
+
+  // PICU representative profiles built from the same project library
+  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Epinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
+  IvCatalogEntry(name: 'Dopamine', population: 'PICU', category: 'Vasoactive & cardiac'),
+  IvCatalogEntry(name: 'Dobutamine', population: 'PICU', category: 'Vasoactive & cardiac'),
+  IvCatalogEntry(name: 'Fentanyl', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Morphine', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Midazolam', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Dexmedetomidine', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Ketamine', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Regular insulin infusion', population: 'PICU', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Heparin', population: 'PICU', category: 'Anticoagulation & hemostasis'),
+];

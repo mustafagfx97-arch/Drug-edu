@@ -1,74 +1,47 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/data/sample_families.dart';
-import '../../../core/data/sample_medications.dart';
-import '../../../core/models/medication.dart';
-import '../../../core/models/medication_family.dart';
-import 'family_medications_screen.dart';
-import 'medication_detail_screen.dart';
+import '../../feeding_tubes/presentation/feeding_tubes_screen.dart';
+import '../../supplements/presentation/supplements_screen.dart';
+import '../../visual_guides/presentation/visual_guides_screen.dart';
+import 'medicines_encyclopedia_screen.dart';
 
-class EncyclopediaScreen extends StatefulWidget {
+class EncyclopediaScreen extends StatelessWidget {
   const EncyclopediaScreen({super.key});
-
-  @override
-  State<EncyclopediaScreen> createState() => _EncyclopediaScreenState();
-}
-
-class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
-  final _controller = TextEditingController();
-  String _query = '';
-  bool _showFamilies = true;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  List<MedicationFamily> get _families {
-    final query = _query.trim().toLowerCase();
-    if (query.isEmpty) return medicationFamilies;
-
-    return medicationFamilies.where((family) {
-      final familyMatch =
-          family.name.toLowerCase().contains(query) ||
-          family.subtitle.toLowerCase().contains(query) ||
-          family.searchTerms.any((term) => term.toLowerCase().contains(query));
-
-      final medicineMatch = sampleMedications.any(
-        (medicine) =>
-            medicine.familyId == family.id &&
-            _matchesMedicine(medicine, query),
-      );
-
-      return familyMatch || medicineMatch;
-    }).toList();
-  }
-
-  List<Medication> get _medicines {
-    final query = _query.trim().toLowerCase();
-    if (query.isEmpty) return sampleMedications;
-
-    return sampleMedications
-        .where((medicine) => _matchesMedicine(medicine, query))
-        .toList();
-  }
-
-  bool _matchesMedicine(Medication medicine, String query) {
-    return medicine.name.toLowerCase().contains(query) ||
-        medicine.subtitle.toLowerCase().contains(query) ||
-        medicine.tags.any((tag) => tag.toLowerCase().contains(query));
-  }
-
-  int _medicineCount(String familyId) {
-    return sampleMedications.where((m) => m.familyId == familyId).length;
-  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final families = _families;
-    final medicines = _medicines;
+
+    final branches = <_EncyclopediaBranch>[
+      const _EncyclopediaBranch(
+        title: 'Medicines',
+        subtitle:
+            'Drug families, chronic medicines, OTC, pediatric therapy and patient counseling.',
+        icon: Icons.medication_outlined,
+        builder: _medicines,
+      ),
+      const _EncyclopediaBranch(
+        title: 'Supplements',
+        subtitle:
+            'Vitamins, minerals, pediatric supplements and exact how-to-take instructions.',
+        icon: Icons.eco_outlined,
+        builder: _supplements,
+      ),
+      const _EncyclopediaBranch(
+        title: 'Devices & Technique',
+        subtitle:
+            'Inhalers, spacers, sprays, pens, drops and step-by-step visual technique.',
+        icon: Icons.medical_services_outlined,
+        builder: _devices,
+      ),
+      const _EncyclopediaBranch(
+        title: 'Feeding Tubes',
+        subtitle:
+            'Formulation suitability, crushing/opening, liquids, flushing and tube administration.',
+        icon: Icons.route_outlined,
+        builder: _feedingTubes,
+      ),
+    ];
 
     return CustomScrollView(
       slivers: [
@@ -77,10 +50,10 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
           automaticallyImplyLeading: false,
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
           sliver: SliverToBoxAdapter(
             child: Text(
-              'Start with a drug family, then open one medicine. Every medicine uses the same three-part structure: Pharmacist, Patient, and Print Card.',
+              'Everything patient-education related lives here. Choose a branch, then open a medicine, supplement, device or tube topic.',
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
                 height: 1.45,
@@ -89,185 +62,196 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 18),
           sliver: SliverToBoxAdapter(
-            child: TextField(
-              controller: _controller,
-              onChanged: (value) => setState(() => _query = value),
-              decoration: InputDecoration(
-                hintText: 'Search drug or family',
-                prefixIcon: const Icon(Icons.search_rounded),
-                suffixIcon: _query.isEmpty
-                    ? null
-                    : IconButton(
-                        tooltip: 'Clear',
-                        onPressed: () {
-                          _controller.clear();
-                          setState(() => _query = '');
-                        },
-                        icon: const Icon(Icons.close_rounded),
-                      ),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primaryContainer.withValues(alpha: 0.45),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: _FlowStep(
+                      number: '1',
+                      title: 'Pharmacist',
+                      subtitle: 'Professional notes',
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: _FlowStep(
+                      number: '2',
+                      title: 'Patient',
+                      subtitle: 'Simple Arabic',
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: _FlowStep(
+                      number: '3',
+                      title: 'Print Card',
+                      subtitle: 'QR + PDF',
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           sliver: SliverToBoxAdapter(
-            child: SegmentedButton<bool>(
-              segments: const [
-                ButtonSegment(
-                  value: true,
-                  icon: Icon(Icons.category_outlined),
-                  label: Text('Drug families'),
-                ),
-                ButtonSegment(
-                  value: false,
-                  icon: Icon(Icons.medication_outlined),
-                  label: Text('All medicines'),
-                ),
-              ],
-              selected: {_showFamilies},
-              onSelectionChanged: (value) {
-                setState(() => _showFamilies = value.first);
-              },
+            child: Text(
+              'Encyclopedia branches',
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
         ),
-        if (_showFamilies)
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
-            sliver: SliverList.separated(
-              itemCount: families.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 10),
-              itemBuilder: (context, index) {
-                final family = families[index];
-                final count = _medicineCount(family.id);
-                final countLabel = count == 0
-                    ? 'Ready for content migration'
-                    : count.toString() +
-                        ' medicine' +
-                        (count == 1 ? '' : 's') +
-                        ' in preview';
-
-                return Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              FamilyMedicationsScreen(family: family),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
+          sliver: SliverList.separated(
+            itemCount: branches.length,
+            separatorBuilder: (_, __) => const SizedBox(height: 10),
+            itemBuilder: (context, index) {
+              final branch = branches[index];
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: branch.builder),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 56,
+                          height: 56,
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.primaryContainer,
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          child: Icon(
+                            branch.icon,
+                            size: 30,
+                            color: theme.colorScheme.onPrimaryContainer,
+                          ),
                         ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(17),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 54,
-                            height: 54,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.primaryContainer,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Icon(
-                              family.icon,
-                              color: theme.colorScheme.onPrimaryContainer,
-                            ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                branch.title,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                branch.subtitle,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                  height: 1.4,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  family.name,
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  family.subtitle,
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color:
-                                        theme.colorScheme.onSurfaceVariant,
-                                    height: 1.35,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  countLabel,
-                                  style: theme.textTheme.labelMedium?.copyWith(
-                                    color: theme.colorScheme.primary,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right_rounded),
-                        ],
-                      ),
+                        ),
+                        const Icon(Icons.chevron_right_rounded),
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
-          )
-        else
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
-            sliver: SliverList.separated(
-              itemCount: medicines.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 10),
-              itemBuilder: (context, index) {
-                final medicine = medicines[index];
-                final family = medicationFamilies.firstWhere(
-                  (item) => item.id == medicine.familyId,
-                );
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
 
-                return Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              MedicationDetailScreen(medication: medicine),
-                        ),
-                      );
-                    },
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(16),
-                      leading: Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.primaryContainer,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: const Icon(Icons.medication_outlined),
-                      ),
-                      title: Text(
-                        medicine.name,
-                        style: const TextStyle(fontWeight: FontWeight.w900),
-                      ),
-                      subtitle: Padding(
-                        padding: const EdgeInsets.only(top: 4),
-                        child: Text(
-                          family.name + ' · ' + medicine.subtitle,
-                        ),
-                      ),
-                      trailing: const Icon(Icons.chevron_right_rounded),
-                    ),
-                  ),
-                );
-              },
+  static Widget _medicines(BuildContext context) =>
+      const MedicinesEncyclopediaScreen();
+
+  static Widget _supplements(BuildContext context) =>
+      const SupplementsScreen();
+
+  static Widget _devices(BuildContext context) =>
+      const VisualGuidesScreen();
+
+  static Widget _feedingTubes(BuildContext context) =>
+      const FeedingTubesScreen();
+}
+
+class _EncyclopediaBranch {
+  const _EncyclopediaBranch({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.builder,
+  });
+
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final WidgetBuilder builder;
+}
+
+class _FlowStep extends StatelessWidget {
+  const _FlowStep({
+    required this.number,
+    required this.title,
+    required this.subtitle,
+  });
+
+  final String number;
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CircleAvatar(
+          radius: 14,
+          backgroundColor: theme.colorScheme.primary,
+          child: Text(
+            number,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.onPrimary,
+              fontWeight: FontWeight.w900,
             ),
           ),
+        ),
+        const SizedBox(height: 7),
+        Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: theme.textTheme.labelLarge?.copyWith(
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          subtitle,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
       ],
     );
   }

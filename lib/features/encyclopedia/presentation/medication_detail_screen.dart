@@ -14,19 +14,30 @@ class MedicationDetailScreen extends StatelessWidget {
 
   final Medication medication;
 
-  PatientCardData get _patientCard => PatientCardData(
-        id: 'card-' + medication.id,
-        templateName: 'Medication Counseling Card',
-        medicationName: medication.name,
-        subtitleAr: 'تعليمات مختصرة للمريض',
-        category: 'Medication',
-        purposeAr: medication.patient.purposeAr,
-        howToUseAr: medication.patient.howToUseAr,
-        timingAr: medication.patient.timingAr,
-        importantAr: medication.patient.importantAr,
-        missedDoseAr: medication.patient.missedDoseAr,
-        seekHelpAr: medication.patient.seekHelpAr,
-      );
+  PatientCardData get _patientCard {
+    final important = <String>[
+      if (medication.patient.importantAr.trim().isNotEmpty)
+        medication.patient.importantAr.trim(),
+      if (medication.patient.commonActionableAr.trim().isNotEmpty)
+        medication.patient.commonActionableAr.trim(),
+      if (medication.patient.storageAr.trim().isNotEmpty)
+        'الحفظ: ' + medication.patient.storageAr.trim(),
+    ].join(' ');
+
+    return PatientCardData(
+      id: 'card-' + medication.id,
+      templateName: 'Medication Counseling Card',
+      medicationName: medication.name,
+      subtitleAr: 'تعليمات مختصرة للمريض',
+      category: 'Medication',
+      purposeAr: medication.patient.purposeAr,
+      howToUseAr: medication.patient.howToUseAr,
+      timingAr: medication.patient.timingAr,
+      importantAr: important,
+      missedDoseAr: medication.patient.missedDoseAr,
+      seekHelpAr: medication.patient.seekHelpAr,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +184,30 @@ class _PharmacistTab extends StatelessWidget {
             child: Text(
               section.body,
               style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
+        if (medication.sourceLabel.isNotEmpty) ...[
+          SectionCard(
+            title: 'Source & review',
+            icon: Icons.verified_outlined,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  medication.sourceLabel,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  medication.reviewStatus + ' · ' + medication.lastReviewed,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 12),

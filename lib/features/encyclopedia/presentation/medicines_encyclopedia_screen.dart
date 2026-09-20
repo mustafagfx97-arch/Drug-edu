@@ -55,9 +55,24 @@ class _MedicinesEncyclopediaScreenState extends State<MedicinesEncyclopediaScree
   }
 
   bool _matchesMedicine(Medication medicine, String query) {
+    final patientText = <String>[
+      medicine.patient.purposeAr,
+      medicine.patient.howToUseAr,
+      medicine.patient.timingAr,
+      medicine.patient.importantAr,
+      medicine.patient.commonActionableAr,
+    ].join(' ').toLowerCase();
+
     return medicine.name.toLowerCase().contains(query) ||
         medicine.subtitle.toLowerCase().contains(query) ||
-        medicine.tags.any((tag) => tag.toLowerCase().contains(query));
+        medicine.tags.any((tag) => tag.toLowerCase().contains(query)) ||
+        medicine.aliases.any((alias) => alias.toLowerCase().contains(query)) ||
+        medicine.sections.any(
+          (section) =>
+              section.title.toLowerCase().contains(query) ||
+              section.body.toLowerCase().contains(query),
+        ) ||
+        patientText.contains(query);
   }
 
   int _medicineCount(String familyId) {

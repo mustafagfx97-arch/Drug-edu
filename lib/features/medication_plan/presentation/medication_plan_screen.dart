@@ -7,11 +7,13 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
+import '../../../core/data/medication_patient_guidance.dart';
 import '../../../core/data/sample_medications.dart';
 import '../../../core/data/therapy_duration_catalog.dart';
 import '../../supplements/data/supplement_profiles.dart';
 import '../domain/medication_plan_engine.dart';
 import '../domain/medication_plan_models.dart';
+import '../domain/medication_timing_rules.dart';
 
 class MedicationPlanScreen extends StatefulWidget {
   const MedicationPlanScreen({super.key});
@@ -38,15 +40,20 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
       if (item.type == PlanItemType.medicine) {
         for (final medicine in sampleMedications) {
           if (medicine.id != item.sourceId) continue;
+          final patient = resolvedPatientCounseling(
+            medicine,
+            timingFallbackAr:
+                medicationTimingRules[medicine.id]?.instructionAr ?? '',
+          );
           result.add(
             _PatientPlanInstruction(
               name: medicine.name,
               doseText: item.doseText,
-              howToUseAr: medicine.patient.howToUseAr,
-              timingAr: medicine.patient.timingAr,
+              howToUseAr: patient.howToUseAr,
+              timingAr: patient.timingAr,
               durationAr: therapyDurationFor(medicine.id)?.patientAr ?? '',
-              importantAr: medicine.patient.importantAr,
-              missedDoseAr: medicine.patient.missedDoseAr,
+              importantAr: patient.importantAr,
+              missedDoseAr: patient.missedDoseAr,
             ),
           );
           break;

@@ -183,6 +183,62 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr:
         'علاج طويل الأمد لكنه يحتاج إعادة تقييم دورية لخطر الكسور والحاجة للاستمرار؛ لا تحدد لنفسك موعد “drug holiday” من دون مراجعة الطبيب.',
   ),
+  'valsartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'bisoprolol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'nifedipine-er': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'rosuvastatin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'ezetimibe': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'pioglitazone': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'linagliptin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'tirzepatide-mounjaro': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr:
+        'عادةً علاج طويل الأمد ما دام مفيدًا ومحتملًا. لا تسرّع رفع الجرعة أو توقفه لمجرد تغير الشهية/الوزن دون مراجعة الخطة.',
+  ),
+  'amoxicillin-clavulanate':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cephalexin': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'trimethoprim-sulfamethoxazole': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يكون كورسًا محددًا لعلاج عدوى أو نظام وقاية أطول في حالات خاصة؛ اتبع السبب والمدة المكتوبة في وصفتك ولا تنقل مدة حالة إلى أخرى.',
+  ),
+  'clarithromycin-oral':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'venlafaxine-xr':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'bupropion-xl':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'mirtazapine':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'lithium': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'risperidone':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'oxybutynin-er': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'solifenacin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'tadalafil': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يكون عند الحاجة لضعف الانتصاب أو يوميًا لـED/BPH؛ مدة الاستخدام وجدوله يعتمدان على النظام الموصوف ولا يجوز خلط النظامين.',
+  ),
+  'risedronate': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr:
+        'علاج طويل الأمد لهشاشة العظام مع إعادة تقييم دورية للحاجة للاستمرار؛ لا توقفه أو تحدد فترة راحة دوائية من نفسك.',
+  ),
+  'denosumab-prolia': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr:
+        'علاج طويل الأمد يُعاد كل 6 أشهر عادةً. لا توقف Prolia أو تؤخر الجرعات دون خطة انتقالية لأن خطر كسور الفقرات قد يرتفع بعد الانقطاع.',
+  ),
+  'ulipristal-ec':
+      TherapyDurationGuidance(kind: TherapyDurationKind.singleUse),
+  'psyllium':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortSelfCare),
+  'brimonidine-ophthalmic':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'ibuprofen-pediatric-liquid':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortSelfCare),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

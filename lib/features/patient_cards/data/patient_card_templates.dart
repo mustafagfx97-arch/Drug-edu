@@ -4,28 +4,42 @@ const patientCardTemplates = <PatientCardData>[
   PatientCardData(
     id: 'inhaler-basic',
     templateName: 'Inhaler Card',
-    medicationName: 'Your inhaler',
-    subtitle: 'Technique reminder',
+    medicationName: 'Inhaler',
+    subtitleAr: 'تذكير سريع بطريقة الاستخدام',
     category: 'Device',
-    instructionsAr:
-        'استخدم البخاخ بالطريقة التي شرحها لك الصيدلي. اتبع خطوات الجهاز المحددة، ولا تغيّر عدد البخات أو مواعيدها إلا حسب الوصفة. إذا كان جهازك يحتاج مضمضة بعد الاستخدام فستظهر هذه المعلومة في بطاقة الدواء الخاصة بك.',
+    howToUseAr:
+        'استخدم البخاخ بالطريقة التي شرحها لك الصيدلي، واتبع خطوات جهازك لأن طريقة التحضير تختلف بين الأنواع.',
+    importantAr:
+        'لا تغيّر عدد البخات من نفسك. إذا كان البخاخ يحتوي على كورتيزون فتمضمض بعد الاستخدام إذا كانت تعليمات دوائك تطلب ذلك.',
+    seekHelpAr:
+        'اطلب المساعدة إذا أصبح التنفس أسوأ أو لم تتحسن الأعراض رغم استخدام بخاخ الإسعاف كما وُصف لك.',
   ),
   PatientCardData(
     id: 'antibiotic-course',
     templateName: 'Antibiotic Course Card',
-    medicationName: 'Your antibiotic',
-    subtitle: 'Course reminder',
+    medicationName: 'Antibiotic',
+    subtitleAr: 'تعليمات مختصرة للعلاج',
     category: 'Medication',
-    instructionsAr:
-        'خذ الدواء حسب الجرعة والمواعيد المكتوبة لك. لا تضاعف الجرعة إذا نسيت جرعة إلا إذا كانت تعليمات دوائك تقول غير ذلك. تواصل مع الصيدلي أو الطبيب إذا ظهرت مشكلة تمنعك من إكمال العلاج.',
+    howToUseAr:
+        'خذ الجرعة المكتوبة لك وفي المواعيد المحددة.',
+    importantAr:
+        'أكمل مدة العلاج كما وُصفت لك، ولا توقفه من نفسك لمجرد أنك شعرت بتحسن.',
+    missedDoseAr:
+        'خذ الجرعة عندما تتذكر إذا لم يقترب موعد الجرعة التالية. لا تضاعف الجرعة.',
+    seekHelpAr:
+        'اطلب مساعدة عاجلة إذا ظهر تورم في الوجه أو صعوبة في التنفس أو طفح شديد.',
   ),
   PatientCardData(
     id: 'tablet-capsule',
     templateName: 'Tablet / Capsule Card',
-    medicationName: 'Your medicine',
-    subtitle: 'Simple medicine instructions',
+    medicationName: 'Medicine',
+    subtitleAr: 'تعليمات استخدام مختصرة',
     category: 'Medication',
-    instructionsAr:
-        'استخدم الدواء حسب الجرعة والوقت المكتوبين لك. لا تسحق أو تفتح الحبة إلا إذا كانت بطاقة الدواء تسمح بذلك. احتفظ بالدواء بالطريقة الموضحة في التعليمات الخاصة به.',
+    howToUseAr:
+        'خذ الدواء بالجرعة والطريقة المكتوبة لك.',
+    timingAr:
+        'استخدمه في الوقت المحدد، ومع الطعام أو بدونه حسب تعليمات هذا الدواء.',
+    importantAr:
+        'لا تسحق الحبة ولا تفتح الكبسولة إلا إذا كانت تعليمات الدواء تسمح بذلك.',
   ),
 ];

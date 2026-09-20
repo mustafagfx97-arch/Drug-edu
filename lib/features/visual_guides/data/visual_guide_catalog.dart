@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VisualGuideData {
-  const VisualGuideData({
+  VisualGuideData({
     required this.id,
     required this.title,
     required this.subtitle,
@@ -21,7 +21,7 @@ class VisualGuideData {
 }
 
 const visualGuideCatalog = <VisualGuideData>[
-  const VisualGuideData(
+  VisualGuideData(
     id: 'mdi',
     title: 'Metered-dose inhaler',
     subtitle: 'Core MDI technique with room for spacer-specific guidance.',
@@ -41,7 +41,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'جهّز البخاخ حسب تعليمات جهازك، أخرج الهواء أولًا، ثم ضع الفوهة بين الشفتين وابدأ شهيقًا بطيئًا واضغط بخة واحدة مع استمرار الشهيق. اتبع تعليمات الصيدلي الخاصة بجهازك لأن التحضير قد يختلف بين الأنواع.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'spacer',
     title: 'Spacer with inhaler',
     subtitle: 'Visual workflow for coordinating an MDI with a spacer.',
@@ -61,7 +61,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'ركّب البخاخ على السبيسر، حضّر البخاخ حسب تعليماته، أخرج الهواء ثم أعطِ بخة واحدة داخل السبيسر واستنشق بالطريقة التي شرحها لك الصيدلي. لا تضع عدة بخات داخل الحجرة دفعة واحدة.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'nasal-spray',
     title: 'Nasal spray',
     subtitle: 'Positioning and aiming guide.',
@@ -81,7 +81,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'حضّر البخاخ حسب تعليمات المنتج، وجّه الفوهة بعيدًا عن الحاجز الأوسط للأنف، وخذ شهيقًا خفيفًا أثناء الرش. لا تسحب الهواء بقوة ولا تفترض أن كل البخاخات لها نفس طريقة التحضير.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'eye-drops',
     title: 'Eye drops',
     subtitle: 'Simple drop placement and contamination prevention.',
@@ -101,7 +101,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'اغسل يديك، اسحب الجفن السفلي بلطف وضع القطرة في الجيب أسفل العين دون أن تلمس الفوهة العين أو الرموش. بعد القطرة أغلق العين بلطف واتبع المدة المطلوبة بين القطرات إذا كنت تستخدم أكثر من نوع.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'insulin-pen',
     title: 'Insulin pen',
     subtitle: 'Device framework; exact priming and hold time remain product-specific.',
@@ -122,7 +122,7 @@ const visualGuideCatalog = <VisualGuideData>[
         'تأكد من نوع الإنسولين والقلم، استخدم إبرة جديدة، ونفّذ اختبار القلم أو التهيئة الخاصة بهذا المنتج ثم اضبط الجرعة الموصوفة. مدة بقاء الإبرة تحت الجلد قد تختلف حسب القلم لذلك اتبع تعليمات جهازك.',
   ),
 
-  const VisualGuideData(
+  VisualGuideData(
     id: 'dpi',
     title: 'Dry-powder inhaler (DPI)',
     subtitle: 'Core DPI technique; loading differs by device.',
@@ -142,7 +142,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'حضّر الجرعة حسب جهازك، أخرج الهواء بعيدًا عن الجهاز، ثم استنشق بقوة وعمق من الفوهة. لا تزفر داخل الجهاز لأن الرطوبة قد تؤثر على البودرة.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'turbuhaler',
     title: 'Turbuhaler',
     subtitle: 'Dose-loading and inhalation framework for Turbuhaler-type devices.',
@@ -162,7 +162,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'أمسك الجهاز بشكل مستقيم عند تحضير الجرعة، حمّل جرعة واحدة بالطريقة الخاصة بنوعك، ثم أخرج الهواء بعيدًا عنه واستنشق بقوة وعمق. لا تنفخ داخل الفوهة.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'diskus',
     title: 'Diskus / Accuhaler',
     subtitle: 'Lever-loaded dry-powder inhaler technique.',
@@ -182,7 +182,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'افتح الجهاز وحضّر جرعة واحدة بالرافعة عندما تكون مستعدًا، أخرج الهواء بعيدًا عن الجهاز ثم استنشق بقوة وعمق. لا تحرك الرافعة أكثر من مرة للجرعة نفسها.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'ellipta',
     title: 'Ellipta',
     subtitle: 'Open-and-inhale DPI workflow.',
@@ -202,7 +202,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'افتح الغطاء فقط عندما تكون مستعدًا للجرعة، أخرج الهواء بعيدًا عن الجهاز، ثم خذ شهيقًا طويلًا وعميقًا من الفوهة من دون سد فتحة الهواء.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'respimat',
     title: 'Respimat-type soft mist inhaler',
     subtitle: 'Slow-inhalation soft-mist technique; setup is product-specific.',
@@ -222,7 +222,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'حضّر الجهاز أول مرة حسب تعليماته، ثم أخرج الهواء وابدأ شهيقًا بطيئًا وعميقًا مع الضغط على زر الجرعة. لا تسد فتحات الهواء.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'nebulizer',
     title: 'Nebulizer',
     subtitle: 'Basic medication-nebulizer workflow.',
@@ -242,7 +242,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'ضع الدواء بالكمية الموصوفة في حجرة النيبولايزر، اجلس بشكل مستقيم وتنفس بشكل طبيعي حتى انتهاء الجلسة. نظف أجزاء الجهاز بالطريقة الخاصة به بعد الاستخدام.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'ear-drops',
     title: 'Ear drops',
     subtitle: 'Positioning and drop technique.',
@@ -262,7 +262,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'اجعل الأذن المصابة للأعلى وضع القطرات من دون أن تلمس الفوهة الأذن. ابقَ على هذا الوضع للمدة التي شرحها لك الصيدلي حتى لا تخرج القطرات مباشرة.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'prefilled-syringe',
     title: 'Prefilled syringe injection',
     subtitle: 'General subcutaneous prefilled-syringe framework.',
@@ -282,7 +282,7 @@ const visualGuideCatalog = <VisualGuideData>[
     patientSummaryAr:
         'تأكد من اسم الدواء والجرعة قبل الحقن، استخدم الطريقة الخاصة بالسرنجة التي شرحها لك الصيدلي، ثم تخلص منها مباشرة في حاوية الأدوات الحادة.',
   ),
-  const VisualGuideData(
+  VisualGuideData(
     id: 'oral-syringe',
     title: 'Oral syringe',
     subtitle: 'Accurate liquid-medicine measurement.',

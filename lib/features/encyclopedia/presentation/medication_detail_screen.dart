@@ -106,7 +106,7 @@ class MedicationDetailScreen extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: _priorityColor(context, section.priority)
-                      .withOpacity(0.12),
+                      .withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Text(

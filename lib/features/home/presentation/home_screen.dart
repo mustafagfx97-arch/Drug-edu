@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/module_card.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../feeding_tubes/presentation/feeding_tubes_screen.dart';
 import '../../patient_cards/presentation/patient_cards_screen.dart';
+import '../../supplements/presentation/supplements_screen.dart';
 import '../../visual_guides/presentation/visual_guides_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,17 +16,16 @@ class HomeScreen extends StatelessWidget {
   final ValueChanged<int> onSelectDestination;
 
   void _openModule(BuildContext context, String action) {
-    if (action == 'patient_cards') {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const PatientCardsScreen()),
-      );
-      return;
-    }
+    final routes = <String, WidgetBuilder>{
+      'patient_cards': (_) => const PatientCardsScreen(),
+      'visual_guides': (_) => const VisualGuidesScreen(),
+      'feeding_tubes': (_) => const FeedingTubesScreen(),
+      'supplements': (_) => const SupplementsScreen(),
+    };
 
-    if (action == 'visual_guides') {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const VisualGuidesScreen()),
-      );
+    final builder = routes[action];
+    if (builder != null) {
+      Navigator.of(context).push(MaterialPageRoute(builder: builder));
       return;
     }
 
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
       ),
       (
         'Patient Cards',
-        'Clone, customize and generate privacy-safe QR counseling cards.',
+        'Clone, customize and generate focused Arabic counseling cards with QR.',
         Icons.badge_outlined,
         'patient_cards',
         'QR'
@@ -81,18 +82,18 @@ class HomeScreen extends StatelessWidget {
         'Technique'
       ),
       (
-        'Devices & Technique',
-        'Product-specific administration technique linked to the visual guide library.',
-        Icons.medical_services_outlined,
-        'visual_guides',
-        null
+        'Feeding Tubes',
+        'Tube administration, formulation handling, crushing, liquids and oral-use workflows.',
+        Icons.route_outlined,
+        'feeding_tubes',
+        'Formulation-specific'
       ),
       (
-        'Feeding Tubes',
-        'Tube administration, formulation handling, crushing and compatibility workflows.',
-        Icons.route_outlined,
-        '1',
-        null
+        'Supplements',
+        'Vitamins, minerals, pediatric products, combinations and safety-focused counseling.',
+        Icons.spa_outlined,
+        'supplements',
+        'Counseling'
       ),
     ];
 
@@ -116,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Clinical Pharmacist Encyclopedia',
+                        'Clinical Pharmacist Encyclopedia · V1 Preview',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),

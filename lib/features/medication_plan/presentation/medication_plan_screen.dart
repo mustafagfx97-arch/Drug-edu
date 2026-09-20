@@ -758,7 +758,7 @@ class _MedicationConfigDialogState extends State<_MedicationConfigDialog> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<RegimenFrequency>(
-              value: _frequency,
+              initialValue: _frequency,
               decoration: const InputDecoration(labelText: 'Frequency'),
               items: RegimenFrequency.values
                   .map(
@@ -774,7 +774,7 @@ class _MedicationConfigDialogState extends State<_MedicationConfigDialog> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<TimingPreference>(
-              value: _preference,
+              initialValue: _preference,
               decoration: const InputDecoration(
                 labelText: 'Prescribed/preferred timing',
               ),
@@ -793,7 +793,7 @@ class _MedicationConfigDialogState extends State<_MedicationConfigDialog> {
             if (_frequency == RegimenFrequency.weekly) ...[
               const SizedBox(height: 12),
               DropdownButtonFormField<int>(
-                value: _weekday,
+                initialValue: _weekday,
                 decoration: const InputDecoration(labelText: 'Weekly day'),
                 items: const [
                   DropdownMenuItem(value: 1, child: Text('Monday')),

@@ -55,35 +55,23 @@ class PatientCardPreview extends StatelessWidget {
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      card.subtitle,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: scheme.onSurfaceVariant,
+                    const SizedBox(height: 3),
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Text(
+                        card.subtitleAr,
+                        textAlign: TextAlign.right,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: scheme.onSurfaceVariant,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 9,
-                  vertical: 5,
-                ),
-                decoration: BoxDecoration(
-                  color: scheme.secondaryContainer,
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  card.category,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           Directionality(
             textDirection: TextDirection.rtl,
             child: Container(
@@ -92,10 +80,31 @@ class PatientCardPreview extends StatelessWidget {
                 color: scheme.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Text(
-                card.instructionsAr,
-                textAlign: TextAlign.right,
-                style: theme.textTheme.bodyLarge?.copyWith(height: 1.75),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (var i = 0; i < card.items.length; i++) ...[
+                    Text(
+                      card.items[i].titleAr,
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: scheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      card.items[i].bodyAr,
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.65),
+                    ),
+                    if (i != card.items.length - 1) ...[
+                      const SizedBox(height: 12),
+                      Divider(color: scheme.outlineVariant),
+                      const SizedBox(height: 12),
+                    ],
+                  ],
+                ],
               ),
             ),
           ),
@@ -135,7 +144,7 @@ class PatientCardPreview extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'لا تتضمن نسخة QR اسم المريض افتراضيًا.',
+                          'الرمز يحتوي على التعليمات فقط ولا يضع اسم المريض داخله.',
                           textAlign: TextAlign.right,
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: scheme.onSurfaceVariant,
@@ -159,7 +168,7 @@ class PatientCardPreview extends StatelessWidget {
               ),
               const SizedBox(width: 7),
               Text(
-                'Prepared with Drug Edu',
+                'Drug Edu',
                 style: theme.textTheme.labelMedium?.copyWith(
                   color: scheme.onSurfaceVariant,
                 ),

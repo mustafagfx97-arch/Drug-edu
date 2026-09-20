@@ -43,7 +43,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
           final patient = resolvedPatientCounseling(
             medicine,
             timingFallbackAr:
-                medicationTimingRules[medicine.id]?.instructionAr ?? '',
+                medicationPatientTimingInstruction(medicine.id),
           );
           result.add(
             _PatientPlanInstruction(

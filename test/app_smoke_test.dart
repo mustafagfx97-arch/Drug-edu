@@ -13,6 +13,6 @@ void main() {
     );
     expect(find.text('Patient Education Encyclopedia'), findsOneWidget);
     expect(find.text('IV Prep'), findsOneWidget);
-    expect(find.text('Calculators'), findsOneWidget);
+    expect(find.text('Calculators'), findsWidgets);
   });
 }

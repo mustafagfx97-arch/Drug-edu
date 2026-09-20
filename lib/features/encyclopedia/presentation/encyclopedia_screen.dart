@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/data/sample_families.dart';
 import '../../../core/data/sample_medications.dart';
 import '../../../core/models/medication.dart';
+import '../../../core/models/medication_family.dart';
+import 'family_medications_screen.dart';
 import 'medication_detail_screen.dart';
 
 class EncyclopediaScreen extends StatefulWidget {
@@ -14,6 +17,7 @@ class EncyclopediaScreen extends StatefulWidget {
 class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
   final _controller = TextEditingController();
   String _query = '';
+  bool _showFamilies = true;
 
   @override
   void dispose() {
@@ -21,36 +25,77 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
     super.dispose();
   }
 
-  List<Medication> get _results {
+  List<MedicationFamily> get _families {
+    final query = _query.trim().toLowerCase();
+    if (query.isEmpty) return medicationFamilies;
+
+    return medicationFamilies.where((family) {
+      final familyMatch =
+          family.name.toLowerCase().contains(query) ||
+          family.subtitle.toLowerCase().contains(query) ||
+          family.searchTerms.any((term) => term.toLowerCase().contains(query));
+
+      final medicineMatch = sampleMedications.any(
+        (medicine) =>
+            medicine.familyId == family.id &&
+            _matchesMedicine(medicine, query),
+      );
+
+      return familyMatch || medicineMatch;
+    }).toList();
+  }
+
+  List<Medication> get _medicines {
     final query = _query.trim().toLowerCase();
     if (query.isEmpty) return sampleMedications;
 
-    return sampleMedications.where((drug) {
-      return drug.name.toLowerCase().contains(query) ||
-          drug.subtitle.toLowerCase().contains(query) ||
-          drug.tags.any((tag) => tag.toLowerCase().contains(query));
-    }).toList();
+    return sampleMedications
+        .where((medicine) => _matchesMedicine(medicine, query))
+        .toList();
+  }
+
+  bool _matchesMedicine(Medication medicine, String query) {
+    return medicine.name.toLowerCase().contains(query) ||
+        medicine.subtitle.toLowerCase().contains(query) ||
+        medicine.tags.any((tag) => tag.toLowerCase().contains(query));
+  }
+
+  int _medicineCount(String familyId) {
+    return sampleMedications.where((m) => m.familyId == familyId).length;
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final drugs = _results;
+    final families = _families;
+    final medicines = _medicines;
 
     return CustomScrollView(
       slivers: [
-        SliverAppBar.large(
-          title: const Text('Encyclopedia'),
+        const SliverAppBar.large(
+          title: Text('Patient Education Encyclopedia'),
           automaticallyImplyLeading: false,
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+          sliver: SliverToBoxAdapter(
+            child: Text(
+              'Start with a drug family, then open one medicine. Every medicine uses the same three-part structure: Pharmacist, Patient, and Print Card.',
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                height: 1.45,
+              ),
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
           sliver: SliverToBoxAdapter(
             child: TextField(
               controller: _controller,
               onChanged: (value) => setState(() => _query = value),
               decoration: InputDecoration(
-                hintText: 'Search medications and topics',
+                hintText: 'Search drug or family',
                 prefixIcon: const Icon(Icons.search_rounded),
                 suffixIcon: _query.isEmpty
                     ? null
@@ -67,73 +112,68 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
           sliver: SliverToBoxAdapter(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: const [
-                  _FilterChipLabel('All'),
-                  SizedBox(width: 8),
-                  _FilterChipLabel('Counseling'),
-                  SizedBox(width: 8),
-                  _FilterChipLabel('IV'),
-                  SizedBox(width: 8),
-                  _FilterChipLabel('NICU'),
-                  SizedBox(width: 8),
-                  _FilterChipLabel('PICU'),
-                  SizedBox(width: 8),
-                  _FilterChipLabel('Devices'),
-                ],
-              ),
+            child: SegmentedButton<bool>(
+              segments: const [
+                ButtonSegment(
+                  value: true,
+                  icon: Icon(Icons.category_outlined),
+                  label: Text('Drug families'),
+                ),
+                ButtonSegment(
+                  value: false,
+                  icon: Icon(Icons.medication_outlined),
+                  label: Text('All medicines'),
+                ),
+              ],
+              selected: {_showFamilies},
+              onSelectionChanged: (value) {
+                setState(() => _showFamilies = value.first);
+              },
             ),
           ),
         ),
-        if (drugs.isEmpty)
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Center(
-              child: Text(
-                'No matching records',
-                style: theme.textTheme.titleMedium,
-              ),
-            ),
-          )
-        else
+        if (_showFamilies)
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
             sliver: SliverList.separated(
-              itemCount: drugs.length,
+              itemCount: families.length,
               separatorBuilder: (_, __) => const SizedBox(height: 10),
               itemBuilder: (context, index) {
-                final drug = drugs[index];
+                final family = families[index];
+                final count = _medicineCount(family.id);
+                final countLabel = count == 0
+                    ? 'Ready for content migration'
+                    : count.toString() +
+                        ' medicine' +
+                        (count == 1 ? '' : 's') +
+                        ' in preview';
+
                 return Card(
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => MedicationDetailScreen(
-                            medication: drug,
-                          ),
+                          builder: (_) =>
+                              FamilyMedicationsScreen(family: family),
                         ),
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(17),
                       child: Row(
                         children: [
                           Container(
-                            width: 46,
-                            height: 46,
+                            width: 54,
+                            height: 54,
                             decoration: BoxDecoration(
                               color: theme.colorScheme.primaryContainer,
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                             child: Icon(
-                              drug.hasIvPreparation
-                                  ? Icons.vaccines_outlined
-                                  : Icons.medication_outlined,
+                              family.icon,
                               color: theme.colorScheme.onPrimaryContainer,
                             ),
                           ),
@@ -143,49 +183,31 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  drug.name,
+                                  family.name,
                                   style: theme.textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                 ),
-                                const SizedBox(height: 3),
+                                const SizedBox(height: 4),
                                 Text(
-                                  drug.subtitle,
+                                  family.subtitle,
                                   style: theme.textTheme.bodyMedium?.copyWith(
                                     color:
                                         theme.colorScheme.onSurfaceVariant,
+                                    height: 1.35,
                                   ),
                                 ),
-                                const SizedBox(height: 9),
-                                Wrap(
-                                  spacing: 6,
-                                  runSpacing: 6,
-                                  children: drug.tags
-                                      .take(3)
-                                      .map(
-                                        (tag) => Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8,
-                                            vertical: 4,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: theme
-                                                .colorScheme.surfaceContainerHighest,
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Text(
-                                            tag,
-                                            style: theme.textTheme.labelSmall,
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                                const SizedBox(height: 8),
+                                Text(
+                                  countLabel,
+                                  style: theme.textTheme.labelMedium?.copyWith(
+                                    color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          const SizedBox(width: 8),
                           const Icon(Icons.chevron_right_rounded),
                         ],
                       ),
@@ -194,23 +216,59 @@ class _EncyclopediaScreenState extends State<EncyclopediaScreen> {
                 );
               },
             ),
+          )
+        else
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
+            sliver: SliverList.separated(
+              itemCount: medicines.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 10),
+              itemBuilder: (context, index) {
+                final medicine = medicines[index];
+                final family = medicationFamilies.firstWhere(
+                  (item) => item.id == medicine.familyId,
+                );
+
+                return Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              MedicationDetailScreen(medication: medicine),
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(16),
+                      leading: Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: const Icon(Icons.medication_outlined),
+                      ),
+                      title: Text(
+                        medicine.name,
+                        style: const TextStyle(fontWeight: FontWeight.w900),
+                      ),
+                      subtitle: Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          family.name + ' · ' + medicine.subtitle,
+                        ),
+                      ),
+                      trailing: const Icon(Icons.chevron_right_rounded),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
       ],
-    );
-  }
-}
-
-class _FilterChipLabel extends StatelessWidget {
-  const _FilterChipLabel(this.label);
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return FilterChip(
-      label: Text(label),
-      selected: label == 'All',
-      onSelected: (_) {},
     );
   }
 }

@@ -3,12 +3,14 @@ class MedicationTimingRule {
     this.anchor = 'any',
     this.instructionAr = '',
     this.requiresMealChoice = false,
+    this.autoScheduleSafe = true,
     this.source = '',
   });
 
   final String anchor;
   final String instructionAr;
   final bool requiresMealChoice;
+  final bool autoScheduleSafe;
   final String source;
 }
 
@@ -35,6 +37,13 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'بعد نفس الوجبة كل يوم بـ30 دقيقة.',
     requiresMealChoice: true,
     source: 'MedlinePlus Tamsulosin',
+  ),
+  'rivaroxaban': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'تعليمات الطعام تختلف حسب القوة والاستطباب؛ استخدم التوقيت المكتوب في الوصفة.',
+    autoScheduleSafe: false,
+    source: 'MedlinePlus Rivaroxaban',
   ),
   'fexofenadine': MedicationTimingRule(
     anchor: 'any',

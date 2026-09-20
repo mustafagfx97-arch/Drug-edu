@@ -184,6 +184,7 @@ class MedicationPlanEngine {
       final base = preferred ??
           switch (rule.anchor) {
             'before-breakfast' => routine.breakfastMinutes - 45,
+            'before-meal' => routine.breakfastMinutes - 45,
             'breakfast' => routine.breakfastMinutes,
             'morning' => routine.wakeMinutes + 60,
             'bedtime' => routine.bedtimeMinutes,
@@ -201,6 +202,25 @@ class MedicationPlanEngine {
 
     if (rule.anchor == 'before-breakfast') {
       return [routine.breakfastMinutes - 45];
+    }
+
+    if (rule.anchor == 'before-meal') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine) - 45];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes - 45];
+          case TimingPreference.bedtime:
+            return [routine.dinnerMinutes - 45];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _beforeMealTimes(item.frequency, routine);
     }
 
     if (rule.anchor == 'with-meal') {
@@ -260,6 +280,60 @@ class MedicationPlanEngine {
         return [routine.breakfastMinutes + 60];
       default:
         return _defaultTimes(item.frequency, routine);
+    }
+  }
+
+  List<int> _beforeMealTimes(
+    RegimenFrequency frequency,
+    PatientRoutine routine,
+  ) {
+    switch (frequency) {
+      case RegimenFrequency.onceDaily:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.twiceDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.dinnerMinutes - 45,
+        ];
+      case RegimenFrequency.threeTimesDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.lunchMinutes - 45,
+          routine.dinnerMinutes - 45,
+        ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.lunchMinutes - 45,
+          routine.dinnerMinutes - 45,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 720,
+        ];
+      case RegimenFrequency.every8Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 480,
+          routine.breakfastMinutes - 45 + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 360,
+          routine.breakfastMinutes - 45 + 720,
+          routine.breakfastMinutes - 45 + 1080,
+        ];
+      case RegimenFrequency.morning:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.bedtime:
+        return [routine.bedtimeMinutes];
+      case RegimenFrequency.weekly:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.asNeeded:
+        return const [];
     }
   }
 

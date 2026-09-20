@@ -38,7 +38,8 @@ class _IvPreparationCalculatorScreenState
       );
     }
 
-    final profile = profiles[_profileIndex.clamp(0, profiles.length - 1)];
+    final safeIndex = _profileIndex < profiles.length ? _profileIndex : 0;
+    final profile = profiles[safeIndex];
     final dose = double.tryParse(_doseController.text.trim());
     final concentration = profile.withdrawalConcentration!;
     final volume = dose == null ? null : dose / concentration;

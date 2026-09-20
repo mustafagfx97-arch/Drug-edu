@@ -800,4 +800,277 @@ const sampleMedications = <Medication>[
       teachBackAr: 'أرني تركيز العبوة، ثم أرني الحجم الذي ستقيسه بالسرنجة.',
     ),
   ),
+
+  Medication(
+    id: 'atorvastatin',
+    familyId: 'cardiovascular',
+    name: 'Atorvastatin',
+    subtitle: 'Statin lipid-lowering therapy',
+    tags: ['Cholesterol', 'Cardiovascular prevention', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Atorvastatin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm indication, liver history, interacting medicines and muscle-symptom risk. The tablet can be taken once daily with or without food; the oral suspension has different fasting instructions.',
+      ),
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Do not apply tablet counseling to the suspension. MedlinePlus advises tablets with or without food, while the suspension is taken on an empty stomach.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفض الكوليسترول ويساعد على تقليل خطر الجلطات القلبية والدماغية عند من يحتاجه.',
+      howToUseAr: 'إذا كان دواؤك أقراص atorvastatin فخذه مرة يوميًا في وقت ثابت تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'إذا كان المنتج شرابًا أو معلقًا فلا تطبق نفس تعليمات الأقراص؛ اتبع تعليمات المنتج.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر ألم أو ضعف عضلي شديد وغير معتاد، خصوصًا إذا ترافق مع تعب شديد أو بول غامق.',
+    ),
+  ),
+  Medication(
+    id: 'metoprolol',
+    familyId: 'cardiovascular',
+    name: 'Metoprolol',
+    subtitle: 'Beta-blocker',
+    tags: ['Blood pressure', 'Heart rate', 'Heart failure', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Metoprolol',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Distinguish immediate-release from extended-release products. Review heart rate, blood pressure, asthma/COPD history, diabetes and abrupt-withdrawal risk.',
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Regular tablets are taken with meals or immediately after meals. Extended-release products are generally once daily; use the exact product instructions.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لخفض ضغط الدم أو إبطاء ضربات القلب أو دعم علاج القلب حسب حالتك.',
+      howToUseAr: 'خذ الدواء في نفس الوقت تقريبًا كل يوم، وإذا كان النوع العادي فخذه مع الوجبة أو بعدها مباشرة حسب الوصفة.',
+      importantAr: 'لا توقف metoprolol فجأة من نفسك.',
+      commonActionableAr: 'قد يسبب دوخة أو تعبًا أو بطء النبض عند بعض الأشخاص.',
+      seekHelpAr: 'راجع الطبيب إذا حدث إغماء أو بطء شديد في النبض أو ضيق نفس جديد.',
+    ),
+  ),
+  Medication(
+    id: 'spironolactone',
+    familyId: 'cardiovascular',
+    name: 'Spironolactone',
+    subtitle: 'Mineralocorticoid receptor antagonist',
+    tags: ['Heart failure', 'Edema', 'Blood pressure', 'Potassium'],
+    sourceLabel: 'MedlinePlus Drug Information · Spironolactone',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Monitor potassium and renal function when indicated. Review ACEI/ARB use, potassium supplements, salt substitutes and product formulation because tablet and suspension are not automatically interchangeable.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take once or twice daily as prescribed. For suspension, MedlinePlus advises being consistent: always take it with food or always without food.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد الجسم على التخلص من السوائل الزائدة ويُستخدم في بعض حالات القلب والضغط.',
+      howToUseAr: 'خذ الجرعة في نفس الأوقات تقريبًا كل يوم.',
+      importantAr: 'لا تستخدم مكملات البوتاسيوم أو بدائل الملح الغنية بالبوتاسيوم من نفسك.',
+      commonActionableAr: 'قد يزيد التبول وقد يسبب دوخة؛ انهض ببطء واشرب السوائل حسب تعليمات طبيبك.',
+    ),
+  ),
+  Medication(
+    id: 'empagliflozin',
+    familyId: 'diabetes-endocrine',
+    name: 'Empagliflozin',
+    subtitle: 'SGLT2 inhibitor',
+    tags: ['Diabetes', 'Heart failure', 'Kidney protection', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Empagliflozin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review renal function, volume status, genital/urinary infection history, ketoacidosis risk, ketogenic diet, sick-day plan and planned surgery. MedlinePlus notes withholding before surgery may be required.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually taken once daily in the morning with or without food, at around the same time every day.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على خفض السكر، وقد يفيد القلب أو الكلى في بعض الحالات.',
+      howToUseAr: 'خذه مرة يوميًا صباحًا تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'اهتم بشرب السوائل حسب تعليمات الطبيب، وأخبر الفريق الطبي أنك تستخدمه قبل أي عملية.',
+      commonActionableAr: 'قد يزيد التبول وقد تحدث التهابات فطرية أو بولية عند بعض الأشخاص.',
+      seekHelpAr: 'أوقفه واطلب المساعدة إذا ظهر غثيان أو قيء أو ألم بطن مع تعب شديد أو صعوبة تنفس حتى لو لم يكن السكر مرتفعًا جدًا.',
+    ),
+  ),
+  Medication(
+    id: 'levothyroxine',
+    familyId: 'diabetes-endocrine',
+    name: 'Levothyroxine',
+    subtitle: 'Thyroid hormone replacement',
+    tags: ['Hypothyroidism', 'Oral', 'Chronic'],
+    sourceLabel: 'MedlinePlus Drug Information · Levothyroxine',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Consistency is critical. Review formulation/brand changes, calcium/iron separation, interacting medicines, TSH monitoring and incorrect use for weight loss.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually taken once daily on an empty stomach 30–60 minutes before breakfast. Calcium carbonate and ferrous sulfate should be separated by at least 4 hours.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يعوض هرمون الغدة الدرقية عندما يكون ناقصًا.',
+      howToUseAr: 'خذه على معدة فارغة قبل الفطور بـ30 إلى 60 دقيقة، وحافظ على نفس الطريقة يوميًا.',
+      importantAr: 'افصل الكالسيوم والحديد عن levothyroxine أربع ساعات على الأقل.',
+      timingAr: 'الانتظام مهم جدًا؛ لا تغيّر وقت وطريقة أخذه باستمرار.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر خفقان شديد أو رجفة أو ألم صدر أو تعرق زائد بعد تعديل الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'sertraline',
+    familyId: 'cns',
+    name: 'Sertraline',
+    subtitle: 'SSRI antidepressant',
+    tags: ['Depression', 'Anxiety', 'OCD', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Sertraline',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Set expectations that benefit may take several weeks. Review suicidality risk in younger patients, serotonin interactions, withdrawal risk, adherence and formulation-specific liquid dilution.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Taken once daily in the morning or evening at about the same time. Do not stop abruptly; tapering is generally required.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للاكتئاب أو القلق وبعض الاضطرابات الأخرى حسب حالتك.',
+      howToUseAr: 'خذه مرة يوميًا في وقت ثابت، صباحًا أو مساءً حسب ما يناسبك ووصفة الطبيب.',
+      importantAr: 'لا توقفه فجأة من نفسك؛ قد تحتاج الجرعة إلى تقليل تدريجي.',
+      commonActionableAr: 'قد يحتاج عدة أسابيع حتى يظهر التحسن الكامل.',
+      seekHelpAr: 'اطلب مساعدة فورًا إذا ظهرت أفكار بإيذاء النفس أو تدهور شديد ومفاجئ في المزاج أو السلوك.',
+    ),
+  ),
+  Medication(
+    id: 'gabapentin',
+    familyId: 'cns',
+    name: 'Gabapentin',
+    subtitle: 'Antiseizure / neuropathic pain medicine',
+    tags: ['Neuropathic pain', 'Seizure', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Gabapentin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Distinguish immediate-release from extended-release products; they are not interchangeable. Review renal function, sedation/falls, respiratory depressant co-medications and gradual discontinuation.',
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Immediate-release capsules/tablets/solution may be taken with or without food; extended-release Horizant has different food/timing instructions and must be swallowed whole.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لبعض أنواع آلام الأعصاب أو للمساعدة في السيطرة على نوبات الصرع.',
+      howToUseAr: 'خذ النوع الذي وُصف لك بالضبط؛ الأنواع ممتدة المفعول ليست بديلًا مباشرًا عن الأقراص أو الكبسولات العادية.',
+      commonActionableAr: 'قد يسبب نعاسًا أو دوخة؛ اعرف تأثيره عليك قبل القيادة.',
+      importantAr: 'لا توقفه فجأة من نفسك، خصوصًا إذا كنت تستخدمه للصرع.',
+    ),
+  ),
+  Medication(
+    id: 'doxycycline',
+    familyId: 'antiinfective',
+    name: 'Doxycycline',
+    subtitle: 'Tetracycline antibiotic',
+    tags: ['Antibiotic', 'Oral', 'Food/mineral interaction'],
+    sourceLabel: 'MedlinePlus Drug Information · Doxycycline',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take with a full glass of water. Food or milk may be used if the stomach is upset, but mineral interactions still matter. Antacids/calcium/magnesium should be separated and iron requires a wider separation interval.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Delayed-release tablets and specialty doxycycline products have product-specific handling and are not automatically interchangeable.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض الالتهابات، وقد يُستخدم لأسباب أخرى حسب الوصفة.',
+      howToUseAr: 'خذ الجرعة مع كوب ماء كامل. إذا أزعج المعدة يمكن أخذه مع الطعام حسب تعليمات منتجك.',
+      importantAr: 'افصل مضادات الحموضة والكالسيوم والمغنيسيوم والحديد عن الجرعة حسب تعليمات الصيدلي لأنها قد تقلل امتصاصه.',
+      commonActionableAr: 'قد يجعل الجلد أكثر حساسية للشمس؛ استخدم حماية مناسبة من الشمس.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر إذا لم يقترب موعد التالية، ولا تضاعف الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'nitrofurantoin',
+    familyId: 'antiinfective',
+    name: 'Nitrofurantoin',
+    subtitle: 'Urinary antibiotic',
+    tags: ['UTI', 'Antibiotic', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Nitrofurantoin',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take with food and at the prescribed evenly spaced times. Shake liquid formulations well and measure with an appropriate dosing device.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm renal function, pregnancy timing, G6PD status/risk when relevant, duration and whether symptoms fit lower UTI rather than systemic infection.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي يُستخدم لبعض التهابات المسالك البولية.',
+      howToUseAr: 'خذ الجرعة مع الطعام وفي المواعيد المكتوبة لك، وأكمل مدة العلاج.',
+      importantAr: 'إذا كان الدواء سائلًا فرجّه جيدًا واستعمل أداة قياس دوائية.',
+      seekHelpAr: 'راجع الطبيب إذا لم تتحسن الأعراض، أو ظهرت حرارة شديدة أو ألم في الخاصرة، أو ضيق نفس أو اصفرار في الجلد أو العينين.',
+    ),
+  ),
+  Medication(
+    id: 'clindamycin-oral',
+    familyId: 'antiinfective',
+    name: 'Clindamycin Oral',
+    subtitle: 'Lincosamide antibiotic',
+    tags: ['Antibiotic', 'Oral', 'C. difficile risk'],
+    sourceLabel: 'MedlinePlus Drug Information · Clindamycin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'C. difficile-associated diarrhea is a key counseling issue and may occur during treatment or months afterward. Review allergy, indication, duration and interacting medicines.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Swallow capsules whole with a full glass of water and remain upright for at least 30 minutes to reduce throat irritation.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض الالتهابات البكتيرية.',
+      howToUseAr: 'ابتلع الكبسولة كاملة مع كوب ماء كامل، ولا تستلقِ مباشرة بعدها لمدة 30 دقيقة.',
+      importantAr: 'أكمل مدة العلاج كما وُصفت لك.',
+      seekHelpAr: 'تواصل مع الطبيب إذا ظهر إسهال مائي شديد أو دموي أو مغص مع حرارة أثناء العلاج أو حتى بعد انتهائه بفترة.',
+    ),
+  ),
 ];

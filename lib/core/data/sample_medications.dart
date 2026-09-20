@@ -715,4 +715,89 @@ const sampleMedications = <Medication>[
       seekHelpAr: 'أخبر الطبيب إذا حدث خفقان شديد أو إغماء، خاصة إذا لديك مشكلة سابقة في نظم القلب.',
     ),
   ),
+
+  Medication(
+    id: 'levonorgestrel-ec',
+    familyId: 'womens-health',
+    name: 'Levonorgestrel Emergency Contraception',
+    subtitle: 'Emergency progestin contraception',
+    tags: ['Emergency contraception', 'Oral', 'Women’s health'],
+    sourceLabel: 'MedlinePlus Drug Information · Levonorgestrel',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm timing since unprotected intercourse, vomiting after the dose, interacting enzyme-inducing medicines, body-weight/BMI considerations where relevant, ongoing contraception plan and need for STI counseling.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Role',
+        body:
+            'This is emergency/backup contraception and is not intended to replace a regular contraceptive method. It does not protect against sexually transmitted infections.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتقليل احتمال الحمل بعد جماع غير محمي أو فشل وسيلة منع الحمل.',
+      howToUseAr: 'خذي الجرعة حسب المنتج وفي أسرع وقت ممكن ضمن المدة المسموحة له.',
+      importantAr: 'هذا الدواء ليس وسيلة منع حمل يومية ولا يحمي من الأمراض المنقولة جنسيًا.',
+      seekHelpAr: 'إذا تأخرت الدورة بشكل واضح أو ظهرت أعراض حمل، اعملي فحص حمل وراجعي الطبيب أو الصيدلي.',
+    ),
+  ),
+  Medication(
+    id: 'latanoprost',
+    familyId: 'eye-ear',
+    name: 'Latanoprost Eye Drops',
+    subtitle: 'Prostaglandin-analog glaucoma therapy',
+    tags: ['Eye drops', 'Glaucoma', 'Device technique'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Latanoprost Ophthalmic',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually one drop in the affected eye(s) once daily in the evening. Separate other eye drops by at least 5 minutes. Contact lenses should be removed before dosing and can generally be reinserted after the interval specified by the product.',
+      ),
+      MedicationSection(
+        title: 'Technique',
+        body:
+            'Avoid touching the dropper tip to the eye or other surfaces. Demonstrate lower-lid pocket technique and product-specific storage after opening.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لخفض ضغط العين في الجلوكوما أو ارتفاع ضغط العين.',
+      howToUseAr: 'ضع قطرة واحدة في العين المصابة مساءً حسب الوصفة، ولا تجعل فوهة العبوة تلمس العين.',
+      timingAr: 'إذا كنت تستخدم قطرات أخرى للعين، اترك بينها وبين latanoprost خمس دقائق على الأقل.',
+      importantAr: 'قد يغيّر لون القزحية أو يزيد طول وكثافة الرموش تدريجيًا.',
+      teachBackAr: 'أرني كيف ستضع القطرة من دون أن تلمس الفوهة العين أو الرموش.',
+    ),
+  ),
+  Medication(
+    id: 'paracetamol-pediatric-liquid',
+    familyId: 'pediatrics',
+    name: 'Paracetamol Pediatric Liquid',
+    subtitle: 'Pediatric analgesic / antipyretic liquid',
+    tags: ['Pediatric', 'Liquid', 'Pain', 'Fever'],
+    sourceLabel: 'MedlinePlus Drug Information · Acetaminophen',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Dose by the child’s weight and the exact product concentration. Verify the concentration on every bottle and use the supplied oral syringe/cup; do not transfer a volume from a different formulation.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Duplicate-ingredient check',
+        body:
+            'Acetaminophen/paracetamol is present in many cough/cold combination products. Check all labels to prevent accidental duplicate dosing.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتخفيف الألم وخفض الحرارة عند الطفل.',
+      howToUseAr: 'استخدم فقط الحجم المكتوب لطفلك حسب وزنه وتركيز هذه العبوة، واستعمل السرنجة أو أداة القياس المرفقة.',
+      importantAr: 'لا تستخدم نفس عدد mL من عبوة مختلفة قبل التأكد من التركيز، ولا تجمعه مع دواء زكام يحتوي أيضًا على باراسيتامول.',
+      seekHelpAr: 'إذا أخذ الطفل كمية أكبر من الموصوفة، اطلب المساعدة الطبية حتى لو لم تظهر أعراض.',
+      teachBackAr: 'أرني تركيز العبوة، ثم أرني الحجم الذي ستقيسه بالسرنجة.',
+    ),
+  ),
 ];

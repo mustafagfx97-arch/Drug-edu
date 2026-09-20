@@ -143,12 +143,9 @@ class _MedicinesEncyclopediaScreenState extends State<MedicinesEncyclopediaScree
               itemBuilder: (context, index) {
                 final family = families[index];
                 final count = _medicineCount(family.id);
-                final countLabel = count == 0
-                    ? 'Ready for content migration'
-                    : count.toString() +
-                        ' medicine' +
-                        (count == 1 ? '' : 's') +
-                        ' in preview';
+                final countLabel = count.toString() +
+                    ' medicine' +
+                    (count == 1 ? '' : 's');
 
                 return Card(
                   clipBehavior: Clip.antiAlias,

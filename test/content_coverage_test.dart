@@ -175,6 +175,11 @@ void main() {
         reason: medicine.name + ' red-flag action missing',
       );
       expect(
+        patient.missedDoseAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' missed-dose guidance missing',
+      );
+      expect(
         patient.teachBackAr.trim(),
         isNotEmpty,
         reason: medicine.name + ' teach-back missing',
@@ -212,6 +217,11 @@ void main() {
       patient('methotrexate-rheumatology').missedDoseAr,
       contains('الأسبوعية'),
     );
+  });
+
+  test('patient guidance patches do not duplicate medication IDs', () {
+    final patchIds = medicationPatientGuidancePatches.keys.toList();
+    expect(patchIds.toSet().length, patchIds.length);
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

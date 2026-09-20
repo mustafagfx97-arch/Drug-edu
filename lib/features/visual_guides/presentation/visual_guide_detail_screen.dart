@@ -31,7 +31,7 @@ class VisualGuideDetailScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: scheme.primaryContainer.withOpacity(0.45),
+              color: scheme.primaryContainer.withValues(alpha: 0.45),
               borderRadius: BorderRadius.circular(24),
             ),
             child: Column(
@@ -90,7 +90,7 @@ class VisualGuideDetailScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: scheme.errorContainer.withOpacity(0.55),
+              color: scheme.errorContainer.withValues(alpha: 0.55),
               borderRadius: BorderRadius.circular(18),
             ),
             child: Column(

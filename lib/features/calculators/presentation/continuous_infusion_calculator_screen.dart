@@ -47,7 +47,7 @@ class _ContinuousInfusionCalculatorScreenState
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primaryContainer.withOpacity(0.55),
+              color: theme.colorScheme.primaryContainer.withValues(alpha: 0.55),
               borderRadius: BorderRadius.circular(18),
             ),
             child: const Text(

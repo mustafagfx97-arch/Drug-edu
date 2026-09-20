@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
+import 'package:drug_edu/core/data/medication_patient_guidance.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
 import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
@@ -144,6 +145,61 @@ void main() {
     expect(
       therapyDurationFor('levonorgestrel-ec')!.kind,
       TherapyDurationKind.singleUse,
+    );
+  });
+
+  test('resolved patient counseling fills the actionable safety gaps', () {
+    for (final medicine in sampleMedications) {
+      final patient = resolvedPatientCounseling(
+        medicine,
+        timingFallbackAr:
+            medicationTimingRules[medicine.id]?.instructionAr ?? '',
+      );
+
+      expect(patient.purposeAr.trim(), isNotEmpty);
+      expect(patient.howToUseAr.trim(), isNotEmpty);
+      expect(
+        patient.timingAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' patient timing missing',
+      );
+      expect(
+        patient.importantAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' important counseling missing',
+      );
+      expect(
+        patient.seekHelpAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' red-flag action missing',
+      );
+      expect(
+        patient.teachBackAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' teach-back missing',
+      );
+    }
+
+    PatientCounselingData patient(String id) {
+      final medicine = sampleMedications.firstWhere((item) => item.id == id);
+      return resolvedPatientCounseling(
+        medicine,
+        timingFallbackAr:
+            medicationTimingRules[medicine.id]?.instructionAr ?? '',
+      );
+    }
+
+    expect(patient('warfarin').missedDoseAr, contains('نفس اليوم'));
+    expect(patient('rivaroxaban').missedDoseAr, contains('15 mg'));
+    expect(patient('dabigatran').missedDoseAr, contains('6 ساعات'));
+    expect(patient('semaglutide-injection').missedDoseAr, contains('OZEMPIC'));
+    expect(patient('semaglutide-injection').missedDoseAr, contains('WEGOVY'));
+    expect(patient('latanoprost').missedDoseAr, contains('لا تستخدم جرعتين'));
+    expect(patient('norethindrone-pop').missedDoseAr, contains('3 ساعات'));
+    expect(patient('insulin-glargine').missedDoseAr, contains('لا تضاعف'));
+    expect(
+      patient('methotrexate-rheumatology').missedDoseAr,
+      contains('الأسبوعية'),
     );
   });
 

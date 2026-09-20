@@ -445,4 +445,26 @@ void main() {
     );
   });
 
+
+  test('omeprazole twice daily preserves both pre-meal doses', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'omeprazole',
+          'Omeprazole',
+          frequency: RegimenFrequency.twiceDaily,
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses.length, 2);
+    final times = plan.doses.map((dose) => dose.minutes).toList()..sort();
+    expect(
+      times,
+      [routine.breakfastMinutes - 45, routine.dinnerMinutes - 45],
+    );
+  });
+
 }

@@ -1694,4 +1694,461 @@ const medicationClinicalDetails = <String, MedicationClinicalDetail>{
         'Stopping abruptly; inadequate hydration; crushing ER formulations.',
     source: 'MedlinePlus topiramate',
   ),
+
+  'pantoprazole-oral': MedicationClinicalDetail(
+    therapyDuration:
+        'Indication-specific: many GERD/ulcer courses are time-limited, while hypersecretory or relapse-prone conditions may require long-term therapy.',
+    exactAdministration:
+        'Delayed-release tablets are swallowed whole. Granules are administered by product-specific mixing instructions; many regimens are given before meals.',
+    formulationHandling:
+        'Do not crush delayed-release tablets or granules. Tablet and granule administration are not interchangeable.',
+    monitoring:
+        'Reassess ongoing indication during long-term therapy; monitor magnesium, B12/iron or bone/infection risk only when clinically relevant.',
+    interactions:
+        'Acid-dependent drugs and selected antiretrovirals can be affected; less CYP2C19 inhibition than omeprazole but still review full medication list.',
+    specialPopulations:
+        'Long-term use should be periodically reviewed rather than continued automatically.',
+    clinicalPearls:
+        'Persistent symptoms often reflect incorrect timing or non-acid disease rather than inadequate PPI potency.',
+    commonMistakes:
+        'Crushing delayed-release tablet; extending OTC-like use indefinitely without reassessment.',
+    source: 'MedlinePlus pantoprazole / DailyMed labeling',
+  ),
+  'famotidine': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term self-care for occasional heartburn; longer therapy is indication-driven and should be reassessed.',
+    exactAdministration:
+        'With or without food. Timing may be bedtime or before trigger food depending on indication/product.',
+    formulationHandling:
+        'Tablet and suspension differ; shake/measure liquid accurately.',
+    monitoring:
+        'Symptom control and CNS adverse effects in renal impairment/older adults.',
+    interactions:
+        'Fewer CYP interactions than cimetidine; gastric pH can still alter absorption of selected drugs.',
+    specialPopulations:
+        'Renal impairment requires dose/frequency adjustment.',
+    clinicalPearls:
+        'Tolerance to H2 blockade can develop with continuous use, especially for nocturnal acid suppression.',
+    commonMistakes:
+        'Using indefinitely for alarm symptoms such as dysphagia, GI bleeding or weight loss.',
+    source: 'MedlinePlus famotidine',
+  ),
+  'sucralfate': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually a defined ulcer-treatment course; chronic use is uncommon unless a specific indication persists.',
+    exactAdministration:
+        'Typically on an empty stomach, often 1 hour before meals and at bedtime depending on regimen.',
+    formulationHandling:
+        'Tablet and suspension are not handled identically; shake suspension well.',
+    monitoring:
+        'Constipation and aluminum accumulation in significant renal impairment.',
+    interactions:
+        'Can bind many oral drugs; separate interacting medicines by drug-specific interval.',
+    specialPopulations:
+        'Avoid indiscriminate long-term use in advanced kidney disease because aluminum can accumulate.',
+    clinicalPearls:
+        'Sucralfate is primarily a local mucosal agent, so timing around other oral medicines is a major practical issue.',
+    commonMistakes:
+        'Taking all morning tablets together with sucralfate.',
+    source: 'MedlinePlus sucralfate',
+  ),
+  'mesalamine': MedicationClinicalDetail(
+    therapyDuration:
+        'Induction and long-term maintenance are both common in ulcerative colitis; regimen depends on extent/severity and formulation.',
+    exactAdministration:
+        'Food instructions and frequency differ by brand/formulation; follow exact product label.',
+    formulationHandling:
+        'Delayed- and extended-release products target different GI regions and are not automatically interchangeable. Do not crush unless exact label permits.',
+    monitoring:
+        'Renal function before and periodically during therapy; monitor worsening GI symptoms, intolerance syndrome and rare cardiac/pancreatic adverse effects.',
+    interactions:
+        'Nephrotoxic drugs may increase kidney risk; thiopurine-related myelosuppression interactions can be relevant.',
+    specialPopulations:
+        'Renal impairment requires careful benefit-risk review.',
+    clinicalPearls:
+        'Brand/formulation substitution can change where the drug is released in the GI tract.',
+    commonMistakes:
+        'Switching 5-ASA products by milligram dose alone.',
+    source: 'MedlinePlus mesalamine / product labeling',
+  ),
+  'metoclopramide-oral': MedicationClinicalDetail(
+    therapyDuration:
+        'Keep duration as short as possible; chronic use is limited by cumulative tardive-dyskinesia risk.',
+    exactAdministration:
+        'Often 30 minutes before meals and at bedtime for gastroparesis/GERD regimens, but indication-specific directions apply.',
+    formulationHandling:
+        'Tablet, ODT and solution differ. ODT handling and liquid measurement require specific instruction.',
+    monitoring:
+        'Acute dystonia, akathisia, parkinsonism, sedation and tardive movements; renal function for dose adjustment.',
+    interactions:
+        'Antipsychotics and other dopamine antagonists increase extrapyramidal risk; serotonergic/CNS depressant combinations matter.',
+    specialPopulations:
+        'Older adults, Parkinson disease and renal impairment need extra caution.',
+    clinicalPearls:
+        'A new “restlessness” complaint may be akathisia, not anxiety.',
+    commonMistakes:
+        'Continuing for months without review; treating new abnormal movements as unrelated.',
+    source: 'MedlinePlus metoclopramide / boxed warning',
+  ),
+  'diclofenac-topical': MedicationClinicalDetail(
+    therapyDuration:
+        'OTC arthritis gel is generally limited to label-directed duration unless clinician-directed; prescription topical solutions may be chronic.',
+    exactAdministration:
+        'Apply only to intact skin in the product-specific amount/frequency; allow to dry and follow hand-washing/site instructions.',
+    formulationHandling:
+        '1% OTC gel, prescription solutions and 3% dermatologic gel have different indications and dosing.',
+    monitoring:
+        'Local skin reactions and systemic NSAID risks in high-exposure/high-risk patients.',
+    interactions:
+        'Concurrent oral NSAIDs, anticoagulants/antiplatelets and renal-risk combinations still matter.',
+    specialPopulations:
+        'Avoid on broken/infected skin and use caution with GI/CV/renal disease despite topical route.',
+    clinicalPearls:
+        'Topical NSAID reduces but does not eliminate systemic NSAID exposure.',
+    commonMistakes:
+        'Using household amount instead of dosing card; combining routinely with oral ibuprofen/naproxen.',
+    source: 'MedlinePlus diclofenac topical',
+  ),
+  'celecoxib': MedicationClinicalDetail(
+    therapyDuration:
+        'Lowest effective dose for shortest appropriate duration; chronic inflammatory use requires ongoing reassessment.',
+    exactAdministration:
+        'May be taken with or without food at lower doses; larger individual doses may have food-specific instructions—follow product label.',
+    formulationHandling:
+        'Capsules may have product-specific opening/sprinkle instructions; do not generalize.',
+    monitoring:
+        'Blood pressure, renal function, edema, GI bleeding and cardiovascular symptoms.',
+    interactions:
+        'Warfarin/anticoagulants, ACEI/ARB/diuretics, lithium, fluconazole and other NSAIDs are important.',
+    specialPopulations:
+        'Sulfonamide allergy history should be clarified; CKD/CV disease/ulcer history raise risk.',
+    clinicalPearls:
+        'COX-2 selectivity lowers some GI risk but does not make the drug “stomach-safe” or cardiovascular-risk free.',
+    commonMistakes:
+        'Adding another OTC NSAID for breakthrough pain.',
+    source: 'MedlinePlus celecoxib',
+  ),
+  'dabigatran': MedicationClinicalDetail(
+    therapyDuration:
+        'Indication-specific: atrial fibrillation is usually long-term; VTE treatment may be finite or extended.',
+    exactAdministration:
+        'Usually twice daily. Take consistently; food is not required for standard capsules.',
+    formulationHandling:
+        'Capsules must be swallowed whole. Do not crush/open because bioavailability can increase markedly. Storage in original container/blister is important.',
+    monitoring:
+        'Renal function, bleeding, adherence and peri-procedure plan. Routine INR monitoring is not used.',
+    interactions:
+        'P-gp inhibitors/inducers and other anticoagulant/antiplatelet/NSAID therapy are important.',
+    specialPopulations:
+        'Renal impairment substantially affects exposure; neuraxial procedures require timing protocols.',
+    clinicalPearls:
+        'Capsule-storage and do-not-open instructions are unusually important compared with many other DOACs.',
+    commonMistakes:
+        'Putting a month of capsules in a pill organizer; opening capsules for swallowing difficulty.',
+    source: 'MedlinePlus dabigatran / FDA labeling',
+  ),
+  'enoxaparin': MedicationClinicalDetail(
+    therapyDuration:
+        'Can be short prophylaxis, finite VTE treatment/bridging, or longer therapy in selected situations.',
+    exactAdministration:
+        'Deep subcutaneous abdominal injection at prescribed interval; rotate sites and use exact prefilled-syringe technique.',
+    formulationHandling:
+        'Prefilled syringe strengths differ. Do not expel air bubble when product instructions say to retain it; avoid IM injection.',
+    monitoring:
+        'Bleeding, CBC/platelets, renal function and weight. Anti-Xa monitoring is reserved for selected patients.',
+    interactions:
+        'Other anticoagulants, antiplatelets and NSAIDs increase bleeding risk.',
+    specialPopulations:
+        'Renal impairment, extremes of body weight, pregnancy and neuraxial procedures require individualized dosing/timing.',
+    clinicalPearls:
+        'Bruising at injection sites is common; massaging increases local trauma and should be avoided.',
+    commonMistakes:
+        'Injecting IM; rubbing site; confusing prophylactic and treatment strengths.',
+    source: 'MedlinePlus enoxaparin',
+  ),
+  'loratadine': MedicationClinicalDetail(
+    therapyDuration:
+        'Intermittent, seasonal or chronic depending on allergy/urticaria pattern.',
+    exactAdministration:
+        'Usually once daily with or without food.',
+    formulationHandling:
+        'Tablet, chewable, ODT and liquid formulations have different administration/age instructions.',
+    monitoring:
+        'Symptom control; sedation is uncommon but possible.',
+    interactions:
+        'Few major interactions, but full medication review is still needed in liver/renal impairment.',
+    specialPopulations:
+        'Dose interval may need adjustment in significant hepatic/renal impairment.',
+    clinicalPearls:
+        'If chronic urticaria is uncontrolled, simply stacking sedating antihistamines is not the best next step.',
+    commonMistakes:
+        'Assuming “non-drowsy” means zero sedation in every patient.',
+    source: 'MedlinePlus loratadine',
+  ),
+  'chlorpheniramine': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term symptom relief; chronic routine use is often less desirable than second-generation antihistamines.',
+    exactAdministration:
+        'Immediate- and extended-release forms differ in frequency; measure liquids accurately.',
+    formulationHandling:
+        'Do not crush ER products. Many cough/cold combinations also contain chlorpheniramine.',
+    monitoring:
+        'Sedation, confusion, dry mouth, constipation, urinary retention and falls.',
+    interactions:
+        'Alcohol, opioids, benzodiazepines and other anticholinergic/CNS depressants increase adverse effects.',
+    specialPopulations:
+        'Older adults, glaucoma and BPH/urinary retention are higher-risk.',
+    clinicalPearls:
+        'First-generation antihistamines can impair driving the next morning even when taken at night.',
+    commonMistakes:
+        'Combining multiple cold products containing antihistamines.',
+    source: 'MedlinePlus chlorpheniramine',
+  ),
+  'isotretinoin': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually a finite acne course based on clinical response/cumulative exposure; repeat courses require reassessment.',
+    exactAdministration:
+        'Take exactly according to product food instructions because absorption differs among formulations.',
+    formulationHandling:
+        'Different isotretinoin products are not always bioequivalent; do not switch casually.',
+    monitoring:
+        'Pregnancy testing/prevention requirements, lipids, liver tests and clinically significant mood/visual/musculoskeletal symptoms.',
+    interactions:
+        'Avoid vitamin A supplements and tetracyclines because of additive toxicity/intracranial-hypertension risk.',
+    specialPopulations:
+        'Absolute pregnancy prevention requirements apply according to local regulatory program.',
+    clinicalPearls:
+        'Dry lips/skin are expected and proactive moisturization improves adherence.',
+    commonMistakes:
+        'Using tetracycline concurrently; donating blood during restricted period; taking pregnancy risk lightly.',
+    source: 'FDA / MedlinePlus isotretinoin',
+  ),
+  'hydroxychloroquine': MedicationClinicalDetail(
+    therapyDuration:
+        'Long-term DMARD/autoimmune therapy when effective; onset of benefit may take weeks to months.',
+    exactAdministration:
+        'Take with food or milk to reduce GI upset.',
+    formulationHandling:
+        'Tablet; compounded liquid may be used under validated pharmacy preparation when needed.',
+    monitoring:
+        'Baseline/follow-up retinal screening, dose by actual body weight, renal risk, CBC/LFTs when indicated and cardiac/QT context.',
+    interactions:
+        'Other QT-prolonging agents and glucose-lowering drugs may be clinically relevant.',
+    specialPopulations:
+        'Renal impairment increases retinal-toxicity risk and may influence monitoring/dose.',
+    clinicalPearls:
+        'Retinal toxicity relates strongly to daily dose and cumulative exposure, so correct mg/kg dosing matters.',
+    commonMistakes:
+        'Assuming no eye follow-up is needed because vision feels normal.',
+    source: 'MedlinePlus hydroxychloroquine / ophthalmology guidance',
+  ),
+  'sulfasalazine': MedicationClinicalDetail(
+    therapyDuration:
+        'Long-term for rheumatoid arthritis/IBD if effective; onset may take weeks.',
+    exactAdministration:
+        'Take after meals with full glass of water; keep hydration adequate.',
+    formulationHandling:
+        'Enteric-coated tablets should be swallowed whole; suspension/compounded products require exact formulation guidance.',
+    monitoring:
+        'CBC, liver function and renal function during initiation and periodically; rash/infection/GI symptoms.',
+    interactions:
+        'May reduce folate absorption and can affect digoxin; other myelosuppressive drugs increase risk.',
+    specialPopulations:
+        'Sulfonamide/salicylate allergy and G6PD deficiency require review.',
+    clinicalPearls:
+        'Reversible oligospermia can matter for male fertility counseling.',
+    commonMistakes:
+        'Crushing enteric-coated tablets; stopping early before DMARD benefit develops.',
+    source: 'MedlinePlus sulfasalazine',
+  ),
+  'leflunomide': MedicationClinicalDetail(
+    therapyDuration:
+        'Long-term DMARD when effective/tolerated.',
+    exactAdministration:
+        'Once daily, with or without food; loading regimens are not appropriate for every patient.',
+    formulationHandling:
+        'Tablet; no routine crushing recommendation without exact product/handling review.',
+    monitoring:
+        'Liver tests, CBC, blood pressure, infection and pregnancy status.',
+    interactions:
+        'Other hepatotoxic/immunosuppressive drugs increase toxicity; warfarin response can change.',
+    specialPopulations:
+        'Contraindicated in pregnancy; accelerated elimination with cholestyramine/charcoal may be needed after toxicity or before conception.',
+    clinicalPearls:
+        'Very long active-metabolite half-life means stopping tablets does not rapidly remove exposure.',
+    commonMistakes:
+        'Thinking discontinuation alone immediately removes pregnancy/toxicity risk.',
+    source: 'MedlinePlus leflunomide',
+  ),
+  'adalimumab': MedicationClinicalDetail(
+    therapyDuration:
+        'Long-term biologic therapy if effective and tolerated; induction and maintenance schedules vary by indication.',
+    exactAdministration:
+        'Subcutaneous injection at product/indication-specific interval; rotate sites.',
+    formulationHandling:
+        'Pens/syringes, citrate-free formulations and concentrations differ. Refrigeration, room-temperature allowance and warming time are product-specific.',
+    monitoring:
+        'TB/hepatitis screening, serious infection, malignancy/skin-cancer vigilance and clinical response.',
+    interactions:
+        'Avoid combining with certain biologic immunosuppressants due to infection risk; live-vaccine decisions require review.',
+    specialPopulations:
+        'Heart failure, demyelinating disease and recurrent infection history need individualized assessment.',
+    clinicalPearls:
+        'Biosimilars are clinically equivalent when approved, but device training may need repeating after switch.',
+    commonMistakes:
+        'Injecting cold from refrigerator when product allows warming; continuing through serious infection without contacting clinician.',
+    source: 'MedlinePlus adalimumab / product IFU',
+  ),
+  'solifenacin': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually chronic for overactive bladder if symptom benefit outweighs anticholinergic burden.',
+    exactAdministration:
+        'Once daily, with or without food; swallow tablet whole.',
+    formulationHandling:
+        'Tablet and suspension products have different food/handling instructions.',
+    monitoring:
+        'Dry mouth, constipation, urinary retention, cognition and QT risk in susceptible patients.',
+    interactions:
+        'Strong CYP3A4 inhibitors can increase exposure; other anticholinergics add adverse effects.',
+    specialPopulations:
+        'Avoid in urinary/gastric retention and uncontrolled narrow-angle glaucoma.',
+    clinicalPearls:
+        'Constipation can worsen urinary symptoms, so proactive bowel counseling helps.',
+    commonMistakes:
+        'Escalating dose despite worsening constipation/retention.',
+    source: 'MedlinePlus solifenacin',
+  ),
+  'mirabegron': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually chronic for overactive bladder when effective.',
+    exactAdministration:
+        'ER tablet once daily; swallow whole. Food instructions can differ between adult tablet and pediatric granule products.',
+    formulationHandling:
+        'Do not crush ER tablet. Granules are a separate suspension product.',
+    monitoring:
+        'Blood pressure, urinary retention and symptom response.',
+    interactions:
+        'Moderate CYP2D6 inhibition can raise selected drug levels; digoxin requires careful review.',
+    specialPopulations:
+        'Severe uncontrolled hypertension and bladder-outlet obstruction require caution.',
+    clinicalPearls:
+        'Useful when anticholinergic burden is problematic, but it is not “side-effect free.”',
+    commonMistakes:
+        'Crushing ER tablet; forgetting BP monitoring in hypertensive patients.',
+    source: 'MedlinePlus mirabegron',
+  ),
+  'depot-medroxyprogesterone': MedicationClinicalDetail(
+    therapyDuration:
+        'Ongoing contraception by repeated injections; long-term use should be periodically reassessed in context of bone-health and patient preference.',
+    exactAdministration:
+        'Injection at the product-specific interval; late doses require pregnancy/backup-conception plan.',
+    formulationHandling:
+        'IM and subcutaneous depot products are not interchangeable in dose/device.',
+    monitoring:
+        'Bleeding pattern, weight, bone-health risk, injection timing and pregnancy risk if delayed.',
+    interactions:
+        'Enzyme-inducing drugs are generally less problematic than with oral contraceptives, but full review remains appropriate.',
+    specialPopulations:
+        'Adolescents and patients with osteoporosis risk need individualized bone-health counseling.',
+    clinicalPearls:
+        'Delayed return to fertility after stopping is common and should be discussed before choosing method.',
+    commonMistakes:
+        'Assuming fertility returns immediately after final injection; confusing IM and SC products.',
+    source: 'MedlinePlus medroxyprogesterone injection',
+  ),
+  'olopatadine-eye': MedicationClinicalDetail(
+    therapyDuration:
+        'Seasonal/intermittent according to allergic-conjunctivitis symptoms.',
+    exactAdministration:
+        'Instill product-specific frequency without touching dropper tip; close eye gently after dose.',
+    formulationHandling:
+        'OTC strengths can have different once- versus twice-daily schedules.',
+    monitoring:
+        'Itching/redness response; pain, photophobia, discharge or visual loss require another diagnosis evaluation.',
+    interactions:
+        'Separate from other eye drops by an appropriate interval.',
+    specialPopulations:
+        'Contact-lens use must follow product instructions; lenses are not appropriate during active red/inflamed eye in many cases.',
+    clinicalPearls:
+        'Allergic eye itch should improve; persistent pain is not typical allergy.',
+    commonMistakes:
+        'Using for infectious conjunctivitis based on redness alone.',
+    source: 'MedlinePlus olopatadine ophthalmic',
+  ),
+  'ibuprofen-pediatric-liquid': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term fever/pain treatment; persistent fever or pain requires age-appropriate evaluation.',
+    exactAdministration:
+        'Weight-based dose using exact concentration, at label/prescribed intervals. Give with food/milk if GI upset.',
+    formulationHandling:
+        'Concentrated infant drops and children’s suspension can differ substantially by market; use provided syringe/cup.',
+    monitoring:
+        'Hydration, urine output, GI symptoms, fever duration and total NSAID exposure.',
+    interactions:
+        'Avoid other NSAIDs; dehydration plus ACEI/ARB/diuretics in older children increases renal risk.',
+    specialPopulations:
+        'Avoid in significant dehydration and use only within age-approved guidance.',
+    clinicalPearls:
+        'A current weight is safer than age-banded dosing when available.',
+    commonMistakes:
+        'Using mL from a previous bottle with different concentration.',
+    source: 'MedlinePlus / pediatric ibuprofen labeling',
+  ),
+  'oral-rehydration-solution': MedicationClinicalDetail(
+    therapyDuration:
+        'Use during ongoing diarrheal/vomiting fluid losses until hydration and intake recover; not a substitute for evaluation of severe dehydration.',
+    exactAdministration:
+        'Dissolve sachet in exactly the stated volume of clean water. Give frequent small sips; continue breastfeeding/appropriate feeding.',
+    formulationHandling:
+        'Do not concentrate, dilute, add juice/soda or add extra salt/sugar to commercial ORS.',
+    monitoring:
+        'Hydration status, urine output, thirst, mental status, ongoing stool/vomit losses and weight in high-risk patients.',
+    interactions:
+        'No major drug interactions; timing can be adapted around oral medicines.',
+    specialPopulations:
+        'Infants, elderly/frail patients and severe renal/cardiac disease may need closer fluid/electrolyte monitoring.',
+    clinicalPearls:
+        'ORS works because glucose and sodium are balanced—not because it is simply “salty water.”',
+    commonMistakes:
+        'Mixing one sachet in half the required water; replacing ORS with sports drinks.',
+    source: 'WHO/UNICEF oral rehydration guidance',
+  ),
+  'psyllium': MedicationClinicalDetail(
+    therapyDuration:
+        'Can be used longer-term for fiber supplementation when appropriate, but persistent constipation still needs cause review.',
+    exactAdministration:
+        'Mix with the full recommended volume of liquid and drink immediately, followed by adequate fluid.',
+    formulationHandling:
+        'Powder, wafers/capsules and flavored products differ; never swallow dry powder.',
+    monitoring:
+        'Bowel response, bloating and swallowing difficulty.',
+    interactions:
+        'Can reduce absorption of selected oral medicines; separate according to interacting-drug guidance.',
+    specialPopulations:
+        'Avoid in dysphagia or suspected obstruction; fluid restriction complicates safe use.',
+    clinicalPearls:
+        'Start gradually to reduce bloating and improve adherence.',
+    commonMistakes:
+        'Taking with too little fluid or immediately before lying down.',
+    source: 'MedlinePlus psyllium',
+  ),
+  'simethicone': MedicationClinicalDetail(
+    therapyDuration:
+        'Intermittent symptom relief; persistent/recurrent severe symptoms should prompt diagnosis review.',
+    exactAdministration:
+        'Product-specific after-meal/bedtime schedule; chew chewables thoroughly and measure liquids accurately.',
+    formulationHandling:
+        'Chewable tablets, capsules, drops and combination antacids are different products.',
+    monitoring:
+        'Symptom pattern rather than laboratory monitoring.',
+    interactions:
+        'Few systemic interactions because simethicone is minimally absorbed; combination products add their own interactions.',
+    specialPopulations:
+        'Infant drops require concentration/device verification.',
+    clinicalPearls:
+        'Gas symptoms can reflect constipation, lactose intolerance, IBS or obstruction—simethicone should not mask alarm features.',
+    commonMistakes:
+        'Using combination product without noticing added antacid or other active ingredients.',
+    source: 'MedlinePlus simethicone',
+  ),
 };

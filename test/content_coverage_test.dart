@@ -5,6 +5,7 @@ import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
+import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_preparation_profiles.dart';
 import 'package:drug_edu/features/feeding_tubes/data/feeding_tube_records.dart';
@@ -157,6 +158,34 @@ void main() {
       expect(medicine.patient.purposeAr.trim(), isNotEmpty);
       expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
     }
+  });
+
+  test('every medicine has an explicit medication-plan timing rule', () {
+    for (final medicine in sampleMedications) {
+      expect(
+        medicationTimingRules,
+        contains(medicine.id),
+        reason: medicine.name + ' missing timing rule',
+      );
+      expect(
+        medicationTimingRules[medicine.id]!.instructionAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' missing Arabic timing instruction',
+      );
+      expect(
+        medicationTimingRules[medicine.id]!.source.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' timing rule needs source',
+      );
+    }
+
+    expect(medicationTimingRules['montelukast']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['insulin-glargine']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['azithromycin']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['quetiapine']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['adalimumab']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['losartan']!.autoScheduleSafe, isTrue);
+    expect(medicationTimingRules['atorvastatin']!.autoScheduleSafe, isTrue);
   });
 
   test('supplement encyclopedia contains all major groups', () {

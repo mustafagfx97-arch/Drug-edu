@@ -73,6 +73,98 @@ const _genericMissedDoseIds = <String>{
 
 const medicationPatientGuidancePatches =
     <String, MedicationPatientGuidancePatch>{
+
+  'omeprazole': MedicationPatientGuidancePatch(
+    seekHelpAr:
+        'راجع الطبيب عند صعوبة أو ألم في البلع، قيء دموي، براز أسود، نقص وزن غير مقصود أو ألم صدر بدل الاستمرار على علاج الحموضة من نفسك.',
+    sourceLabel: 'DailyMed / MedlinePlus · omeprazole delayed-release',
+  ),
+  'fexofenadine': MedicationPatientGuidancePatch(
+    seekHelpAr:
+        'اطلب إسعافًا عند تورم الوجه أو اللسان أو الحلق أو صعوبة التنفس؛ هذه علامات تحسس شديد وليست سببًا لأخذ جرعات إضافية.',
+    sourceLabel: 'DailyMed / MedlinePlus · fexofenadine',
+  ),
+  'salbutamol-mdi': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان البخاخ عند الحاجة فلا توجد جرعة منسية. إذا كان لديك جدول ثابت خاص فاتبع الخطة ولا تضاعف عدد البخات لتعويض جرعة فاتت.',
+    sourceLabel: 'FDA / exact albuterol-salbutamol inhaler IFU',
+  ),
+  'paracetamol': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كنت تستخدمه عند الحاجة فلا توجد جرعة منسية. إذا كان مجدولًا فتجاوز الجرعة إذا اقترب موعد التالية ولا تضاعف، واحسب إجمالي paracetamol/acetaminophen من كل المنتجات.',
+    sourceLabel: 'DailyMed OTC acetaminophen labeling',
+  ),
+  'ibuprofen': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان عند الحاجة فلا توجد جرعة منسية. إذا كان بوصفة مجدولة فتجاوز الجرعة إذا اقترب موعد التالية ولا تضاعف ولا تضف NSAID آخر.',
+    sourceLabel: 'DailyMed / MedlinePlus · ibuprofen',
+  ),
+  'loperamide': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'غالبًا يُستخدم حسب نوبات الإسهال وليس كدواء ثابت، لذلك لا تعوض “جرعة منسية”. التزم بالحد الأقصى وتعليمات المنتج ولا تأخذ جرعات إضافية لتسريع توقف الإسهال.',
+    sourceLabel: 'FDA / DailyMed · loperamide',
+  ),
+  'ondansetron-oral': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان الدواء عند الحاجة فلا توجد جرعة منسية. إذا كان ضمن جدول ثابت للعلاج الكيماوي/بعد العملية، اتبع الجدول الموصوف ولا تضاعف جرعة متأخرة.',
+    sourceLabel: 'FDA / DailyMed · ondansetron',
+  ),
+  'levonorgestrel-ec': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'هذه جرعة طارئة لمرة واحدة وليست علاجًا يوميًا؛ خذها بأسرع ما يمكن ضمن نافذة المنتج. إذا تقيأت خلال ساعتين من الجرعة فاتصل بصيدلي/طبيب لمعرفة هل تحتاج إعادة الجرعة.',
+    sourceLabel: 'DailyMed OTC levonorgestrel emergency contraception · 2025-2026',
+  ),
+  'paracetamol-pediatric-liquid': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان للحمى/الألم عند الحاجة فلا توجد جرعة منسية. لا تعوض بجرعتين، ولا تعط جرعة جديدة قبل اكتمال الفاصل المكتوب لنفس التركيز.',
+    sourceLabel: 'DailyMed pediatric acetaminophen OTC labeling',
+  ),
+  'nitroglycerin-sublingual': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'هذا دواء إسعافي للذبحة وليس له جرعة يومية منسية. استخدمه عند ألم الصدر حسب خطة الطبيب، واطلب الإسعاف إذا استمر الألم وفق خطة الطوارئ.',
+    sourceLabel: 'FDA / DailyMed · nitroglycerin sublingual',
+  ),
+  'naproxen': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان عند الحاجة فلا توجد جرعة منسية. إذا كان مجدولًا فتجاوز الجرعة إذا اقترب موعد التالية ولا تضاعف ولا تجمع NSAID آخر.',
+    sourceLabel: 'DailyMed / MedlinePlus · naproxen',
+  ),
+  'bisacodyl-tablets': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا نسيت جرعة الإمساك فلا تضاعفها؛ خذ الجرعة التالية عند الحاجة حسب تعليمات المنتج. لا تستخدمه يوميًا لفترة طويلة من نفسك.',
+    sourceLabel: 'DailyMed OTC · bisacodyl delayed-release',
+  ),
+  'senna': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا نسيت جرعة فلا تضاعفها؛ استخدم الجرعة التالية عند الحاجة حسب المنتج لأن الهدف علاج الإمساك لا الحفاظ على مستوى دواء ثابت.',
+    sourceLabel: 'DailyMed OTC · senna/sennosides',
+  ),
+  'hydrocortisone-topical': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'ضع طبقة رقيقة عند التذكر إذا لم يقترب موعد الدهان التالي. لا تضع طبقة مضاعفة أو كمية أكبر لتعويض ما فات.',
+    sourceLabel: 'DailyMed topical hydrocortisone labeling',
+  ),
+  'famotidine': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كانت الجرعة مجدولة خذها عند التذكر إذا لم يقترب موعد التالية؛ وإلا تجاوزها ولا تضاعف. أما الاستخدام الوقائي قبل وجبة محفزة فاتبع توقيت نفس المنتج.',
+    sourceLabel: 'DailyMed / MedlinePlus · famotidine',
+  ),
+  'celecoxib': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كانت الجرعة مجدولة خذها عند التذكر إذا لم يقترب موعد التالية، وإلا تجاوزها. لا تضاعف ولا تستخدم NSAID إضافيًا لتعويض الألم.',
+    sourceLabel: 'FDA / DailyMed · celecoxib',
+  ),
+  'diclofenac-oral': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'إذا كان بوصفة مجدولة خذ الجرعة عند التذكر إذا لم يقترب موعد التالية، وإلا تجاوزها ولا تضاعف. انتبه أن IR وDR وER ليست نفس الجدول.',
+    sourceLabel: 'FDA / DailyMed · diclofenac oral',
+  ),
+  'sildenafil-ed': MedicationPatientGuidancePatch(
+    missedDoseAr:
+        'عند استخدامه لضعف الانتصاب هو دواء عند الحاجة، لذلك لا توجد جرعة منسية. لا تأخذ جرعة إضافية لمجرد أن فرصة سابقة فاتتك.',
+    sourceLabel: 'DailyMed · sildenafil for erectile dysfunction',
+  ),
+
   'metformin': MedicationPatientGuidancePatch(
     seekHelpAr:
         'أوقف الدواء واطلب تقييمًا إذا مرضت بشدة مع جفاف/قيء مستمر أو ظهرت صعوبة تنفس، ضعف شديد أو نعاس غير معتاد، خصوصًا مع تدهور وظائف الكلى.',

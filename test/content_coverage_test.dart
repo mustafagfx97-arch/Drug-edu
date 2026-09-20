@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
@@ -40,6 +41,79 @@ void main() {
         reason: 'Unknown family for ' + medicine.name,
       );
     }
+  });
+
+  test('every medicine resolves to structured pharmacist-use essentials', () {
+    expect(legacyMedicationClinicalOverlays.length, 62);
+
+    for (final medicine in sampleMedications) {
+      final profile = resolvedMedicationUseProfile(medicine);
+      expect(
+        profile.isEmpty,
+        isFalse,
+        reason: medicine.name + ' needs a structured use profile',
+      );
+      expect(profile.route.trim(), isNotEmpty, reason: medicine.name + ' route');
+      expect(
+        profile.foodTiming.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' food/timing',
+      );
+      expect(
+        profile.duration.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' therapy duration',
+      );
+      expect(
+        profile.formulationHandling.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' formulation handling',
+      );
+      expect(
+        profile.monitoring.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' monitoring',
+      );
+      expect(
+        profile.interactions.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' interactions',
+      );
+      expect(
+        profile.commonMistakes.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' common mistakes',
+      );
+      expect(
+        profile.specialPopulations.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' patient-specific considerations',
+      );
+      expect(
+        resolvedMedicationSourceLabel(medicine).trim(),
+        isNotEmpty,
+        reason: medicine.name + ' source label',
+      );
+    }
+  });
+
+  test('high-risk legacy counseling rules stay explicit', () {
+    String facts(String id) {
+      final medicine = sampleMedications.firstWhere((item) => item.id == id);
+      return resolvedMedicationUseProfile(medicine)
+          .facts
+          .map((fact) => fact.value)
+          .join(' ')
+          .toLowerCase();
+    }
+
+    expect(facts('methotrexate-rheumatology'), contains('once weekly'));
+    expect(facts('rivaroxaban'), contains('15 mg and 20 mg'));
+    expect(facts('levothyroxine'), contains('4 hours'));
+    expect(facts('tiotropium-capsule-inhalation'), contains('do not swallow'));
+    expect(facts('nitroglycerin-sublingual'), contains('pde-5'));
+    expect(facts('semaglutide-injection'), contains('ozempic'));
+    expect(facts('metformin'), contains('extended-release'));
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

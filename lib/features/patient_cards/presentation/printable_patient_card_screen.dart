@@ -87,9 +87,19 @@ class _PrintablePatientCardScreenState
           const SizedBox(height: 16),
           RepaintBoundary(
             key: _printKey,
-            child: Material(
-              color: theme.colorScheme.surface,
-              child: PatientCardPreview(card: widget.card),
+            child: Theme(
+              data: ThemeData(
+                useMaterial3: true,
+                brightness: Brightness.light,
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: const Color(0xFF176B87),
+                  brightness: Brightness.light,
+                ),
+              ),
+              child: Material(
+                color: Colors.white,
+                child: PatientCardPreview(card: widget.card),
+              ),
             ),
           ),
           const SizedBox(height: 16),

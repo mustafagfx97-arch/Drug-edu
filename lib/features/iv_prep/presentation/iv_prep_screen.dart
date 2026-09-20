@@ -12,6 +12,129 @@ class IvPrepScreen extends StatefulWidget {
 class _IvPrepScreenState extends State<IvPrepScreen> {
   String _population = 'General';
 
+  List<_IvCategory> get _categories {
+    if (_population == 'NICU') {
+      return const [
+        _IvCategory(
+          title: 'Antimicrobials',
+          subtitle:
+              'Neonatal antibiotic, antiviral and antifungal preparation profiles.',
+          icon: Icons.biotech_outlined,
+        ),
+        _IvCategory(
+          title: 'Cardiac & vasoactive',
+          subtitle:
+              'Continuous infusions and high-risk cardiovascular preparations.',
+          icon: Icons.monitor_heart_outlined,
+        ),
+        _IvCategory(
+          title: 'Respiratory & PDA',
+          subtitle:
+              'Caffeine, pulmonary vasodilator and PDA-related preparation profiles.',
+          icon: Icons.air_outlined,
+        ),
+        _IvCategory(
+          title: 'Neurology, sedation & paralysis',
+          subtitle:
+              'Antiseizure, analgesic, sedative and neuromuscular-blocker preparations.',
+          icon: Icons.psychology_outlined,
+        ),
+        _IvCategory(
+          title: 'Electrolytes & glucose',
+          subtitle:
+              'Calcium, magnesium, bicarbonate, potassium, phosphate, saline and dextrose profiles.',
+          icon: Icons.water_drop_outlined,
+        ),
+        _IvCategory(
+          title: 'Emergency & special products',
+          subtitle:
+              'Antidotes, albumin, IVIG, endocrine and other neonatal high-risk preparations.',
+          icon: Icons.emergency_outlined,
+        ),
+      ];
+    }
+
+    if (_population == 'PICU') {
+      return const [
+        _IvCategory(
+          title: 'Vasoactive & cardiac',
+          subtitle:
+              'Standard pediatric infusion concentrations and product-specific preparation.',
+          icon: Icons.monitor_heart_outlined,
+        ),
+        _IvCategory(
+          title: 'Sedation & analgesia',
+          subtitle:
+              'Opioid, sedative and continuous critical-care preparations.',
+          icon: Icons.bedtime_outlined,
+        ),
+        _IvCategory(
+          title: 'Neuromuscular blockade',
+          subtitle:
+              'Paralytic preparations with dedicated high-alert safety gates.',
+          icon: Icons.accessibility_new_outlined,
+        ),
+        _IvCategory(
+          title: 'Electrolytes & metabolic',
+          subtitle:
+              'Electrolyte replacement, dextrose, insulin and metabolic infusions.',
+          icon: Icons.bolt_outlined,
+        ),
+        _IvCategory(
+          title: 'Anticoagulation & hemostasis',
+          subtitle:
+              'Heparin, direct anticoagulants, fibrinolytic and antifibrinolytic preparation profiles.',
+          icon: Icons.bloodtype_outlined,
+        ),
+        _IvCategory(
+          title: 'Other continuous infusions',
+          subtitle:
+              'Additional pediatric standard concentrations and manufacturer-specific infusions.',
+          icon: Icons.speed_outlined,
+        ),
+      ];
+    }
+
+    return const [
+      _IvCategory(
+        title: 'Antibiotics',
+        subtitle:
+            'Reconstitution and further dilution for commonly used IV antibacterials.',
+        icon: Icons.biotech_outlined,
+      ),
+      _IvCategory(
+        title: 'Antifungals & antivirals',
+        subtitle:
+            'Product-specific preparation for systemic antifungal and antiviral agents.',
+        icon: Icons.coronavirus_outlined,
+      ),
+      _IvCategory(
+        title: 'Cardiovascular',
+        subtitle:
+            'Antiarrhythmics, vasopressors, vasodilators and cardiovascular infusions.',
+        icon: Icons.monitor_heart_outlined,
+      ),
+      _IvCategory(
+        title: 'Neurology & sedation',
+        subtitle:
+            'Antiseizure agents, sedatives, analgesics and anesthesia-related preparations.',
+        icon: Icons.psychology_outlined,
+      ),
+      _IvCategory(
+        title: 'Electrolytes & metabolic',
+        subtitle:
+            'Potassium, calcium, magnesium, bicarbonate, phosphate, dextrose and insulin.',
+        icon: Icons.bolt_outlined,
+      ),
+      _IvCategory(
+        title: 'Emergency & antidotes',
+        subtitle:
+            'Resuscitation, reversal agents, antidotes and other high-risk emergency preparations.',
+        icon: Icons.emergency_outlined,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -45,7 +168,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
               decoration: const InputDecoration(
                 hintText: 'Search IV medication or formulation',
                 prefixIcon: Icon(Icons.search_rounded),
-                suffixIcon: Icon(Icons.qr_code_scanner_rounded),
+                suffixIcon: Icon(Icons.tune_rounded),
               ),
             ),
           ),
@@ -88,52 +211,100 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
           ),
         ),
         SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 2, 20, 10),
+          sliver: SliverToBoxAdapter(
+            child: Text(
+              '$_population library',
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
+          sliver: SliverToBoxAdapter(
+            child: _ProfileCard(
+              name: _population == 'NICU'
+                  ? 'Caffeine Citrate'
+                  : _population == 'PICU'
+                      ? 'Norepinephrine'
+                      : 'Vancomycin',
+              subtitle: _population == 'NICU'
+                  ? 'Example neonatal profile linked to the V1 calculator.'
+                  : _population == 'PICU'
+                      ? 'Example pediatric standard-concentration profile linked to the V1 calculator.'
+                      : 'Example intermittent IV preparation record.',
+              authority: _population == 'NICU'
+                  ? 'ANMF neonatal standard'
+                  : _population == 'PICU'
+                      ? 'Pediatric standard concentration'
+                      : 'Manufacturer / institutional',
+            ),
+          ),
+        ),
+        SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           sliver: SliverToBoxAdapter(
             child: Text(
-              '$_population profiles',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w800,
+              'Browse by category',
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _ProfileCard(
-                  name: _population == 'NICU'
-                      ? 'Caffeine Citrate'
-                      : _population == 'PICU'
-                          ? 'Norepinephrine'
-                          : 'Vancomycin',
-                  subtitle: _population == 'NICU'
-                      ? 'Formulation-specific neonatal preparation'
-                      : _population == 'PICU'
-                          ? 'Pediatric standard concentration profile'
-                          : 'Intermittent IV preparation profile',
-                  authority: _population == 'NICU'
-                      ? 'ANMF neonatal standard'
-                      : _population == 'PICU'
-                          ? 'ASHP pediatric standard'
-                          : 'Manufacturer / institutional',
+          sliver: SliverList.separated(
+            itemCount: _categories.length,
+            separatorBuilder: (_, __) => const SizedBox(height: 10),
+            itemBuilder: (context, index) {
+              final category = _categories[index];
+              return Card(
+                child: ListTile(
+                  contentPadding: const EdgeInsets.all(16),
+                  leading: Container(
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Icon(
+                      category.icon,
+                      color: theme.colorScheme.onPrimaryContainer,
+                    ),
+                  ),
+                  title: Text(
+                    category.title,
+                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(category.subtitle),
+                  ),
+                  trailing: const Icon(Icons.chevron_right_rounded),
                 ),
-                const SizedBox(height: 10),
-                const _ProfileCard(
-                  name: 'High-alert profile example',
-                  subtitle:
-                      'Exact concentration and recipe appear only after product selection.',
-                  authority: 'Safety-gated',
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ],
     );
   }
+}
+
+class _IvCategory {
+  const _IvCategory({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+  });
+
+  final String title;
+  final String subtitle;
+  final IconData icon;
 }
 
 class _WorkflowRow extends StatelessWidget {

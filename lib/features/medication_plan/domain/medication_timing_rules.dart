@@ -678,6 +678,143 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'FDA Adalimumab IFU',
   ),
+  'valsartan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في وقت ثابت يوميًا؛ يمكن مع الطعام أو بدونه.',
+    source: 'DailyMed / MedlinePlus Valsartan',
+  ),
+  'bisoprolol': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا وفي وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    source: 'DailyMed / MedlinePlus Bisoprolol',
+  ),
+  'nifedipine-er': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'تعليمات الطعام تختلف بين منتجات nifedipine ER؛ استخدم وقت وتعليمات المنتج المصروف لك.',
+    autoScheduleSafe: false,
+    source: 'Product-specific DailyMed Nifedipine ER',
+  ),
+  'rosuvastatin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا في وقت ثابت؛ يمكن مع الطعام أو بدونه وفي أي وقت من اليوم.',
+    source: 'FDA / DailyMed Rosuvastatin',
+  ),
+  'ezetimibe': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا مع الطعام أو بدونه؛ إذا استخدمت bile-acid sequestrant يحتاج فصلًا زمنيًا.',
+    source: 'FDA / DailyMed Ezetimibe',
+  ),
+  'pioglitazone': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا وفي وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    source: 'FDA / DailyMed Pioglitazone',
+  ),
+  'linagliptin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا مع الطعام أو بدونه.',
+    source: 'FDA / DailyMed Linagliptin',
+  ),
+  'tirzepatide-mounjaro': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'حقنة مرة أسبوعيًا في نفس اليوم تقريبًا، في أي وقت ومع الطعام أو بدونه.',
+    source: 'DailyMed MOUNJARO · revised 2026',
+  ),
+  'amoxicillin-clavulanate': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'خذ الجرعة في بداية الوجبة وفي الفواصل المكتوبة بالوصفة.',
+    source: 'DailyMed Amoxicillin-Clavulanate / AUGMENTIN',
+  ),
+  'cephalexin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات متباعدة حسب الوصفة؛ يمكن مع الطعام أو بدونه.',
+    source: 'DailyMed / MedlinePlus Cephalexin',
+  ),
+  'trimethoprim-sulfamethoxazole': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات متباعدة حسب الوصفة، مع سوائل مناسبة إذا لم يكن لديك تقييد سوائل.',
+    source: 'FDA / DailyMed TMP-SMX',
+  ),
+  'clarithromycin-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'النوع العادي وER يختلفان: ER يؤخذ مع الطعام ويُبتلع كاملًا؛ إذا لم يتحدد المنتج فلا تستخدم توقيتًا تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Clarithromycin IR/ER',
+  ),
+  'venlafaxine-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'مرة يوميًا مع الطعام وفي نفس الوقت تقريبًا صباحًا أو مساءً.',
+    source: 'DailyMed Venlafaxine Extended-Release',
+  ),
+  'bupropion-xl': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'مرة يوميًا صباحًا غالبًا؛ يمكن مع الطعام أو بدونه ولا تسحق XL.',
+    source: 'DailyMed Bupropion XL Medication Guide',
+  ),
+  'mirtazapine': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'غالبًا مساءً/قبل النوم بسبب النعاس؛ يمكن مع الطعام أو بدونه.',
+    source: 'FDA / DailyMed Mirtazapine',
+  ),
+  'lithium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت وعدد الجرعات يختلفان حسب IR/ER والخطة؛ حافظ على نمط ثابت للملح والسوائل ولا تعتمد توقيتًا تلقائيًا دون معرفة المنتج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Lithium Carbonate',
+  ),
+  'risperidone': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات ثابتة حسب عدد الجرعات الموصوف؛ يمكن مع الطعام أو بدونه.',
+    source: 'FDA / DailyMed Risperidone',
+  ),
+  'oxybutynin-er': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا تقريبًا في نفس الوقت؛ يمكن مع الطعام أو بدونه وابتلع ER كاملة.',
+    source: 'DailyMed Oxybutynin ER',
+  ),
+  'solifenacin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا وفي وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    source: 'FDA / DailyMed Solifenacin',
+  ),
+  'tadalafil': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت يعتمد على النظام: عند الحاجة لضعف الانتصاب أو مرة يوميًا لـED/BPH؛ لا تفترض نظامًا تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Tadalafil',
+  ),
+  'risedronate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'تعليمات الطعام متعاكسة حسب المنتج: immediate-release قبل الفطور على معدة فارغة، وAtelvia delayed-release بعد الفطور مباشرة؛ يجب معرفة المنتج أولًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed ACTONEL / ATELVIA',
+  ),
+  'denosumab-prolia': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقنة عيادية كل 6 أشهر عادةً؛ ليست جرعة يومية يمكن للمخطط تحديد ساعة ثابتة لها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed PROLIA · revised 2026',
+  ),
+  'ulipristal-ec': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جرعة طارئة لمرة واحدة تؤخذ بأسرع ما يمكن خلال 120 ساعة؛ ليست دواءً يوميًا مجدولًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed ELLA · updated 2026',
+  ),
+  'psyllium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'اخلطه مع كوب كامل من السائل واشربه فورًا؛ كثير من المنتجات توصي بفصل الأدوية الفموية الموصوفة ساعتين على الأقل.',
+    source: 'DailyMed OTC Psyllium',
+  ),
+  'brimonidine-ophthalmic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدم القطرات في الأوقات المكتوبة وافصلها عن قطرات العين الأخرى 5 دقائق على الأقل.',
+    source: 'DailyMed Brimonidine Ophthalmic',
+  ),
+  'ibuprofen-pediatric-liquid': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'للحمى/الألم غالبًا حسب الحاجة والفاصل المكتوب لنفس التركيز؛ لا يحدد المخطط جرعة الطفل.',
+    source: 'DailyMed Pediatric Ibuprofen OTC',
+  ),
   'oral-iron-salts': MedicationTimingRule(
     anchor: 'empty-stomach',
     instructionAr:

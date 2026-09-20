@@ -1,5 +1,6 @@
 import '../models/medication.dart';
 import 'expanded_medications.dart';
+import 'expanded_medications_2.dart';
 
 const sampleMedications = <Medication>[
   Medication(
@@ -1644,4 +1645,5 @@ const sampleMedications = <Medication>[
     ),
   ),
   ...expandedMedications,
+  ...expandedMedications2,
 ];

@@ -467,4 +467,161 @@ void main() {
     );
   });
 
+
+  test('Mounjaro plus oral contraceptive creates contraception alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'tirzepatide-mounjaro',
+          'Mounjaro',
+          frequency: RegimenFrequency.weekly,
+        ),
+        item('combined-oral-contraceptive', 'Combined oral contraceptive'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Tirzepatide + oral hormonal contraception' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('TMP-SMX plus warfarin creates critical interaction alert', () {
+    final plan = engine.generate(
+      items: [
+        item('trimethoprim-sulfamethoxazole', 'TMP-SMX'),
+        item('warfarin', 'Warfarin'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'TMP-SMX + warfarin' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('clarithromycin plus colchicine creates critical toxicity alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'clarithromycin-oral',
+          'Clarithromycin',
+          preference: TimingPreference.breakfast,
+        ),
+        item(
+          'colchicine',
+          'Colchicine',
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Clarithromycin + colchicine' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('lithium plus NSAID creates critical lithium toxicity alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'lithium',
+          'Lithium',
+          preference: TimingPreference.breakfast,
+        ),
+        item('ibuprofen', 'Ibuprofen'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Lithium + NSAID' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('tadalafil plus nitroglycerin creates critical nitrate alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'tadalafil',
+          'Tadalafil',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+        item(
+          'nitroglycerin-sublingual',
+          'Nitroglycerin',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Tadalafil + nitrate' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('risedronate plus calcium requires product-specific review', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'risedronate',
+          'Risedronate',
+          frequency: RegimenFrequency.weekly,
+          preference: TimingPreference.breakfast,
+        ),
+        item(
+          'calcium-carbonate',
+          'Calcium Carbonate',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Risedronate + minerals' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('valsartan plus sacubitril valsartan flags duplicate ARB exposure', () {
+    final plan = engine.generate(
+      items: [
+        item('valsartan', 'Valsartan'),
+        item('sacubitril-valsartan', 'Sacubitril / Valsartan'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Duplicate valsartan exposure' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
 }

@@ -665,9 +665,14 @@ class MedicationPlanEngine {
       );
     }
 
-    if ((ids.contains('carvedilol') && ids.contains('metoprolol')) ||
+    if ((<String>{'carvedilol', 'metoprolol', 'bisoprolol'}
+            .where(ids.contains)
+            .length >
+        1) ||
         (ids.contains('diltiazem-er') &&
-            (ids.contains('metoprolol') || ids.contains('carvedilol')))) {
+            (ids.contains('metoprolol') ||
+                ids.contains('carvedilol') ||
+                ids.contains('bisoprolol')))) {
       alerts.add(
         const PlanAlert(
           title: 'Heart-rate lowering combination',
@@ -742,6 +747,7 @@ class MedicationPlanEngine {
 
     final nsaids = <String>{
       'ibuprofen',
+      'ibuprofen-pediatric-liquid',
       'naproxen',
       'celecoxib',
       'diclofenac-oral',
@@ -785,6 +791,7 @@ class MedicationPlanEngine {
     if (ids.contains('spironolactone') &&
         (ids.contains('lisinopril') ||
             ids.contains('losartan') ||
+            ids.contains('valsartan') ||
             ids.contains('sacubitril-valsartan'))) {
       alerts.add(
         const PlanAlert(
@@ -797,6 +804,7 @@ class MedicationPlanEngine {
 
     final hasRasDrug = ids.contains('lisinopril') ||
         ids.contains('losartan') ||
+        ids.contains('valsartan') ||
         ids.contains('sacubitril-valsartan');
     final hasDiuretic = ids.contains('furosemide') ||
         ids.contains('hydrochlorothiazide') ||
@@ -813,6 +821,7 @@ class MedicationPlanEngine {
     }
 
     final hasQtRiskPartner = ids.contains('azithromycin') ||
+        ids.contains('clarithromycin-oral') ||
         ids.contains('ciprofloxacin-oral') ||
         ids.contains('fluconazole-oral') ||
         ids.contains('ondansetron-oral');
@@ -830,6 +839,7 @@ class MedicationPlanEngine {
     if (ids.contains('digoxin') &&
         (ids.contains('metoprolol') ||
             ids.contains('carvedilol') ||
+            ids.contains('bisoprolol') ||
             ids.contains('diltiazem-er'))) {
       alerts.add(
         const PlanAlert(
@@ -949,6 +959,141 @@ class MedicationPlanEngine {
           title: 'Levothyroxine + magnesium',
           message:
               'المغنيسيوم قد يقلل امتصاص levothyroxine؛ افصل الجرعات وفق تعليمات المنتج/خطة الصيدلي، وغالبًا يُستخدم فاصل عدة ساعات.',
+        ),
+      );
+    }
+
+    if (ids.contains('tirzepatide-mounjaro') &&
+        (ids.contains('combined-oral-contraceptive') ||
+            ids.contains('norethindrone-pop'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Tirzepatide + oral hormonal contraception',
+          message:
+              'Mounjaro قد يقلل فعالية موانع الحمل الفموية بعد بدء العلاج وبعد كل زيادة جرعة. النشرة الحالية توصي بوسيلة غير فموية أو حاجزية لمدة 4 أسابيع بعد البدء و4 أسابيع بعد كل تصعيد للجرعة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('trimethoprim-sulfamethoxazole') &&
+        ids.contains('warfarin')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'TMP-SMX + warfarin',
+          message:
+              'TMP-SMX قد يرفع تأثير warfarin بشكل مهم ويزيد خطر النزف. يحتاج INR وخطة متابعة/جرعة أقرب؛ فصل وقت الجرعات لا يحل التداخل.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('trimethoprim-sulfamethoxazole') &&
+        (ids.contains('spironolactone') ||
+            ids.contains('lisinopril') ||
+            ids.contains('losartan') ||
+            ids.contains('valsartan') ||
+            ids.contains('sacubitril-valsartan'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'TMP-SMX + potassium-raising therapy',
+          message:
+              'TMP-SMX مع spironolactone أو ACEI/ARB/ARNI قد يرفع خطر فرط البوتاسيوم. راجع K⁺ ووظائف الكلى والبدائل حسب الحالة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('clarithromycin-oral') && ids.contains('colchicine')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Clarithromycin + colchicine',
+          message:
+              'clarithromycin قد يرفع colchicine إلى مستويات سامة وخطيرة. التداخل لا يُحل بفصل الوقت ويحتاج تجنب/مراجعة علاجية عاجلة، خصوصًا مع قصور الكلى أو الكبد.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('lithium') && nsaids.isNotEmpty) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Lithium + NSAID',
+          message:
+              'NSAIDs مثل ibuprofen/naproxen قد ترفع تركيز lithium وتزيد خطر السمية. لا تبدأ NSAID أو تكرره دون خطة لمستوى lithium ووظائف الكلى.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('lithium') &&
+        (hasRasDrug || hasDiuretic)) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Lithium concentration interaction',
+          message:
+              'ACEI/ARB/ARNI أو بعض المدرات قد ترفع تركيز lithium. هذه ليست مشكلة توقيت؛ تحتاج مراجعة مستوى lithium ووظائف الكلى وخطة المراقبة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('tadalafil') && ids.contains('nitroglycerin-sublingual')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Tadalafil + nitrate',
+          message:
+              'tadalafil مع nitroglycerin/nitrates ممنوع بسبب خطر هبوط ضغط شديد. أخبر الطوارئ بوقت آخر جرعة tadalafil إذا حدث ألم صدر.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('risedronate') &&
+        (ids.contains('oral-iron-salts') ||
+            ids.contains('calcium-carbonate') ||
+            ids.contains('calcium-citrate') ||
+            ids.contains('magnesium-gluconate') ||
+            ids.contains('multivitamin-mineral') ||
+            ids.contains('prenatal-combination'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Risedronate + minerals',
+          message:
+              'الكالسيوم/الحديد/المغنيسيوم قد يقللون امتصاص risedronate. إضافةً إلى ذلك، Actonel العادي وAtelvia لهما تعليمات طعام مختلفة؛ يجب ترتيب الجدول حسب المنتج المحدد.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('psyllium') && ids.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Psyllium medication separation',
+          message:
+              'Psyllium قد يغيّر امتصاص بعض الأدوية الفموية، وكثير من المنتجات توصي بفصل الأدوية الموصوفة ساعتين على الأقل. راجع كل دواء قبل تثبيت الجدول.',
+        ),
+      );
+    }
+
+    if (ids.contains('pioglitazone') &&
+        (ids.contains('insulin-glargine') || ids.contains('insulin-lispro'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Pioglitazone + insulin',
+          message:
+              'الجمع قد يزيد احتباس السوائل/الوذمة وخطر تدهور فشل القلب عند بعض المرضى. راقب الوزن السريع، الوذمة وضيق النفس ولا تعالجها بتغيير الوقت فقط.',
+        ),
+      );
+    }
+
+    if (ids.contains('valsartan') && ids.contains('sacubitril-valsartan')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Duplicate valsartan exposure',
+          message:
+              'sacubitril/valsartan يحتوي valsartan أصلًا. إضافة valsartan منفصل غالبًا تعني تكرار ARB وتحتاج مراجعة الوصفة، وليس فصل الجرعات.',
+          isCritical: true,
         ),
       );
     }

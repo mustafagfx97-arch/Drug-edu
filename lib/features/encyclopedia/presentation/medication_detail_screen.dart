@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../patient_cards/domain/patient_card_data.dart';
+import '../../patient_cards/presentation/patient_card_editor_screen.dart';
 
 class MedicationDetailScreen extends StatelessWidget {
   const MedicationDetailScreen({
@@ -28,6 +30,23 @@ class MedicationDetailScreen extends StatelessWidget {
       ClinicalPriority.patientSpecific => 'Patient-specific',
       ClinicalPriority.reference => 'Reference',
     };
+  }
+
+  void _createPatientCard(BuildContext context) {
+    final card = PatientCardData(
+      id: 'medication-card',
+      templateName: 'Medication Counseling Card',
+      medicationName: medication.name,
+      subtitle: medication.subtitle,
+      instructionsAr: medication.patientCounselingAr,
+      category: 'Medication',
+    );
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PatientCardEditorScreen(initialCard: card),
+      ),
+    );
   }
 
   @override
@@ -142,6 +161,12 @@ class MedicationDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          const SizedBox(height: 10),
+          FilledButton.icon(
+            onPressed: () => _createPatientCard(context),
+            icon: const Icon(Icons.qr_code_2_rounded),
+            label: const Text('Create Patient Card'),
           ),
           if (medication.hasIvPreparation || medication.hasCalculator) ...[
             const SizedBox(height: 12),

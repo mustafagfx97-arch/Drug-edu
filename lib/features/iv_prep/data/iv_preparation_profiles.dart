@@ -105,7 +105,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'Intermittent IV infusion over at least 60 minutes in the cited labeling. Infusion duration may need to be longer for larger doses/local policy.',
     stability:
-        'For the cited Sandoz label: bolus solution in Sterile Water (up to 50 mg/mL) is stable up to 3 hours at ≤25°C or 13 hours at ≤5°C. Infusion solutions 1–20 mg/mL in 0.9% NaCl are stable 1 hour at ≤25°C or 15 hours at ≤5°C; D5W infusion solutions should be used immediately. Do not freeze. Local sterile-compounding BUD may be shorter.',
+        'For the cited conventional vancomycin product: reconstituted 50 mg/mL vials and solutions diluted in D5W or 0.9% NaCl are labeled stable refrigerated for 14 days. Local sterile-compounding BUD may be shorter and should govern practice.',
     incompatibilities:
         'Vancomycin solutions are acidic; physical incompatibility with beta-lactams is reported. Flush the line between incompatible agents.',
     criticalLocks: [
@@ -132,9 +132,9 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'Bolus versus infusion instructions differ. Use the route and infusion duration ordered and supported by the exact product/local protocol.',
     stability:
-        'Meropenem stability is concentration-, diluent- and temperature-sensitive. Use the exact current product label/local sterile-preparation BUD.',
+        'For the cited Sandoz label: bolus solution in Sterile Water (up to 50 mg/mL) is stable up to 3 hours at ≤25°C or 13 hours at ≤5°C. Infusion solutions 1–20 mg/mL in 0.9% NaCl are stable 1 hour at ≤25°C or 15 hours at ≤5°C; D5W infusion solutions should be used immediately. Do not freeze. Local sterile-compounding BUD may be shorter.',
     incompatibilities:
-        'Do not mix with other drugs unless compatibility is established.',
+        'Compatibility with other drugs has not been established in the cited label; do not mix or physically add meropenem to solutions containing other drugs.',
     criticalLocks: [
       'Reconstitution shown here is specifically for 500 mg and 1 g injection vials.',
       'Do not automatically use bolus preparation instructions for an infusion bag.',

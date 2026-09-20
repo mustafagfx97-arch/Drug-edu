@@ -199,9 +199,46 @@ class MedicationPlanEngine {
       return [_selectedMeal(item.preference, routine) + 30];
     }
 
-    if (rule.anchor == 'before-breakfast' &&
-        item.preference == TimingPreference.auto) {
+    if (rule.anchor == 'before-breakfast') {
       return [routine.breakfastMinutes - 45];
+    }
+
+    if (rule.anchor == 'with-meal') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine)];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes];
+          case TimingPreference.bedtime:
+            return [routine.dinnerMinutes];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _mealTimes(item.frequency, routine);
+    }
+
+    if (rule.anchor == 'empty-stomach') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine) - 60];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes - 60];
+          case TimingPreference.bedtime:
+            return [routine.bedtimeMinutes];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _emptyStomachTimes(item.frequency, routine);
     }
 
     final preferred = _preferredBase(item.preference, routine);
@@ -210,12 +247,8 @@ class MedicationPlanEngine {
     }
 
     switch (rule.anchor) {
-      case 'before-breakfast':
-        return [routine.breakfastMinutes - 45];
       case 'breakfast':
         return [routine.breakfastMinutes];
-      case 'after-selected-meal':
-        return [_selectedMeal(item.preference, routine) + 30];
       case 'morning':
         return _expandFromBase(
           item.frequency,
@@ -223,10 +256,6 @@ class MedicationPlanEngine {
         );
       case 'bedtime':
         return [routine.bedtimeMinutes];
-      case 'with-meal':
-        return _mealTimes(item.frequency, routine);
-      case 'empty-stomach':
-        return _emptyStomachTimes(item.frequency, routine);
       case 'weekly':
         return [routine.breakfastMinutes + 60];
       default:

@@ -115,7 +115,6 @@ const sampleMedications = <Medication>[
     name: 'Levetiracetam',
     subtitle: 'Antiseizure medicine',
     tags: ['Seizure', 'Oral', 'IV'],
-    hasIvPreparation: true,
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',

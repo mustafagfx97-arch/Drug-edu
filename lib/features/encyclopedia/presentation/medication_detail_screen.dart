@@ -5,10 +5,15 @@ import '../../../core/data/medication_patient_guidance.dart';
 import '../../../core/data/therapy_duration_catalog.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../calculators/presentation/calculators_screen.dart';
+import '../../iv_prep/data/iv_preparation_profiles.dart';
+import '../../iv_prep/presentation/iv_preparation_detail_screen.dart';
 import '../../medication_plan/domain/medication_timing_rules.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
 import '../../patient_cards/presentation/patient_card_preview.dart';
 import '../../patient_cards/presentation/printable_patient_card_screen.dart';
+import '../../visual_guides/data/visual_guide_catalog.dart';
+import '../../visual_guides/presentation/visual_guide_detail_screen.dart';
 
 class MedicationDetailScreen extends StatelessWidget {
   const MedicationDetailScreen({
@@ -153,6 +158,13 @@ class _PharmacistTab extends StatelessWidget {
     final sourceLabel = resolvedMedicationSourceLabel(medication);
     final reviewStatus = resolvedMedicationReviewStatus(medication);
     final lastReviewed = resolvedMedicationLastReviewed(medication);
+    final visualGuides = visualGuidesForMedication(medication.id);
+    final ivProfiles = ivPreparationProfiles
+        .where((profile) => profile.name == medication.name)
+        .toList(growable: false);
+    final hasLinkedTools = visualGuides.isNotEmpty ||
+        ivProfiles.isNotEmpty ||
+        medication.hasCalculator;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
@@ -258,9 +270,7 @@ class _PharmacistTab extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         ],
-        if (medication.hasVisualGuide ||
-            medication.hasIvPreparation ||
-            medication.hasCalculator)
+        if (hasLinkedTools)
           SectionCard(
             title: 'Linked clinical tools',
             icon: Icons.link_rounded,
@@ -268,12 +278,50 @@ class _PharmacistTab extends StatelessWidget {
               spacing: 8,
               runSpacing: 8,
               children: [
-                if (medication.hasVisualGuide)
-                  const Chip(label: Text('Visual technique guide')),
-                if (medication.hasIvPreparation)
-                  const Chip(label: Text('IV preparation')),
+                for (final guide in visualGuides)
+                  ActionChip(
+                    avatar: Icon(guide.icon, size: 18),
+                    label: Text(guide.title),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => VisualGuideDetailScreen(
+                            title: guide.title,
+                            subtitle: guide.subtitle,
+                            steps: guide.steps,
+                            mistakes: guide.mistakes,
+                            patientSummaryAr: guide.patientSummaryAr,
+                            icon: guide.icon,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                for (final profile in ivProfiles)
+                  ActionChip(
+                    avatar: const Icon(Icons.vaccines_outlined, size: 18),
+                    label: Text('IV preparation · ' + profile.population),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              IvPreparationDetailScreen(profile: profile),
+                        ),
+                      );
+                    },
+                  ),
                 if (medication.hasCalculator)
-                  const Chip(label: Text('Calculator')),
+                  ActionChip(
+                    avatar: const Icon(Icons.calculate_outlined, size: 18),
+                    label: const Text('Calculator'),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const CalculatorsScreen(),
+                        ),
+                      );
+                    },
+                  ),
               ],
             ),
           ),
@@ -296,6 +344,7 @@ class _PatientTab extends StatelessWidget {
       timingFallbackAr:
           medicationPatientTimingInstruction(medication.id),
     );
+    final visualGuides = visualGuidesForMedication(medication.id);
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -324,6 +373,54 @@ class _PatientTab extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
+          if (visualGuides.isNotEmpty) ...[
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'دليل الاستخدام العملي',
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Wrap(
+                      alignment: WrapAlignment.end,
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final guide in visualGuides)
+                          ActionChip(
+                            avatar: Icon(guide.icon, size: 18),
+                            label: Text(guide.title),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => VisualGuideDetailScreen(
+                                    title: guide.title,
+                                    subtitle: guide.subtitle,
+                                    steps: guide.steps,
+                                    mistakes: guide.mistakes,
+                                    patientSummaryAr: guide.patientSummaryAr,
+                                    icon: guide.icon,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
           if (durationAr.isNotEmpty) ...[
             Card(
               child: Padding(

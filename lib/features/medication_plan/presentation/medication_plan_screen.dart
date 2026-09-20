@@ -6,6 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
+import '../../../core/data/medication_clinical_overlays.dart';
 import '../../../core/data/sample_medications.dart';
 import '../../supplements/data/supplement_profiles.dart';
 import '../domain/medication_plan_engine.dart';
@@ -76,7 +77,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
         name: medicine.name,
         subtitle: medicine.subtitle,
         type: PlanItemType.medicine,
-        searchTerms: [...medicine.aliases, ...medicine.tags],
+        searchTerms: [...resolvedMedicationAliases(medicine), ...medicine.tags],
       ),
     );
 

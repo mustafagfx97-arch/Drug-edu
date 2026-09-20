@@ -39,6 +39,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
           result.add(
             _PatientPlanInstruction(
               name: medicine.name,
+              doseText: item.doseText,
               howToUseAr: medicine.patient.howToUseAr,
               timingAr: medicine.patient.timingAr,
               importantAr: medicine.patient.importantAr,
@@ -53,6 +54,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
           result.add(
             _PatientPlanInstruction(
               name: supplement.name,
+              doseText: item.doseText,
               howToUseAr: supplement.patient.howToUseAr,
               timingAr: supplement.patient.timingAr,
               importantAr: supplement.patient.importantAr,
@@ -541,7 +543,7 @@ class _PrintablePlan extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        instruction.name,
+                        instruction.name + ' · ' + instruction.doseText,
                         textAlign: TextAlign.right,
                         style: theme.textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w900,
@@ -1180,6 +1182,7 @@ class _TimeRow extends StatelessWidget {
 class _PatientPlanInstruction {
   const _PatientPlanInstruction({
     required this.name,
+    required this.doseText,
     required this.howToUseAr,
     required this.timingAr,
     required this.importantAr,
@@ -1187,6 +1190,7 @@ class _PatientPlanInstruction {
   });
 
   final String name;
+  final String doseText;
   final String howToUseAr;
   final String timingAr;
   final String importantAr;

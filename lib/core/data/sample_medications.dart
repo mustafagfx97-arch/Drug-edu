@@ -1073,4 +1073,307 @@ const sampleMedications = <Medication>[
       seekHelpAr: 'تواصل مع الطبيب إذا ظهر إسهال مائي شديد أو دموي أو مغص مع حرارة أثناء العلاج أو حتى بعد انتهائه بفترة.',
     ),
   ),
+
+  Medication(
+    id: 'furosemide',
+    familyId: 'cardiovascular',
+    name: 'Furosemide',
+    subtitle: 'Loop diuretic',
+    tags: ['Diuretic', 'Edema', 'Heart failure', 'Blood pressure'],
+    sourceLabel: 'MedlinePlus Drug Information · Furosemide',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review renal function, electrolytes, volume status, blood pressure, gout risk and interacting medicines. Dosing frequency varies by indication and may be daily, twice daily or on selected days for edema.',
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take at the prescribed time(s) consistently. Because the medicine increases urination, timing should fit the patient’s daily routine while following the prescribed schedule.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد الجسم على التخلص من السوائل الزائدة، وقد يُستخدم للضغط أو فشل القلب.',
+      howToUseAr: 'خذ الجرعة في الأوقات المكتوبة لك وحافظ على نفس الجدول قدر الإمكان.',
+      commonActionableAr: 'سيزيد التبول غالبًا وقد يسبب دوخة عند الوقوف؛ انهض ببطء.',
+      importantAr: 'لا تغيّر كمية الملح أو البوتاسيوم أو السوائل بشكل كبير من نفسك إذا كانت لديك تعليمات خاصة من الطبيب.',
+      seekHelpAr: 'راجع الطبيب إذا حدث دوار شديد أو إغماء أو عطش شديد مع قلة البول أو تشنجات وضعف غير معتاد.',
+    ),
+  ),
+  Medication(
+    id: 'hydrochlorothiazide',
+    familyId: 'cardiovascular',
+    name: 'Hydrochlorothiazide',
+    subtitle: 'Thiazide diuretic',
+    tags: ['Blood pressure', 'Diuretic', 'Edema'],
+    sourceLabel: 'MedlinePlus Drug Information · Hydrochlorothiazide',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review blood pressure, sodium/potassium, renal function, uric acid/gout, glucose and interacting medicines. For edema, the prescribed schedule may be intermittent rather than daily.',
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually taken once or twice daily according to the indication. Keep the schedule consistent and counsel about increased urination and orthostatic symptoms.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لخفض ضغط الدم أو تقليل احتباس السوائل.',
+      howToUseAr: 'خذ الجرعة في الوقت المكتوب لك، ولا تضاعف الجرعة إذا نسيتها.',
+      commonActionableAr: 'قد يزيد التبول ويسبب دوخة عند الوقوف؛ انهض ببطء.',
+      importantAr: 'إذا كنت تستخدمه للضغط فاستمر عليه حتى لو كنت تشعر أنك بخير، ولا توقفه من نفسك.',
+    ),
+  ),
+  Medication(
+    id: 'clopidogrel',
+    familyId: 'anticoagulation',
+    name: 'Clopidogrel',
+    subtitle: 'Antiplatelet medicine',
+    tags: ['Antiplatelet', 'Stent', 'Stroke prevention', 'Bleeding'],
+    sourceLabel: 'MedlinePlus Drug Information · Clopidogrel',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm indication, stent history, bleeding risk, adherence and interacting medicines including omeprazole/esomeprazole and NSAIDs. Premature interruption after stenting can be dangerous.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take once daily at about the same time, with or without food.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يمنع الصفائح من تكوين الجلطات ويساعد على حماية القلب أو الدماغ حسب حالتك.',
+      howToUseAr: 'خذ حبة واحدة يوميًا في نفس الوقت تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'لا توقفه من نفسك، خصوصًا إذا لديك دعامة في القلب. أخبر الطبيب أو طبيب الأسنان أنك تستخدمه قبل أي إجراء.',
+      commonActionableAr: 'قد تنزف أو تظهر الكدمات بسهولة أكثر من المعتاد.',
+      seekHelpAr: 'اطلب المساعدة إذا كان النزف شديدًا أو لا يتوقف، أو ظهر براز أسود أو دم في البول أو القيء.',
+    ),
+  ),
+  Medication(
+    id: 'nitroglycerin-sublingual',
+    familyId: 'cardiovascular',
+    name: 'Nitroglycerin Sublingual',
+    subtitle: 'Rapid-relief nitrate for angina',
+    tags: ['Angina', 'Sublingual', 'Emergency use'],
+    sourceLabel: 'MedlinePlus Drug Information · Nitroglycerin Sublingual',
+    sections: [
+      MedicationSection(
+        title: 'Critical technique',
+        body:
+            'For an angina episode, have the patient sit down and place the tablet under the tongue or between cheek and gum; do not chew, crush or swallow. The emergency plan and repeat-dose timing must match the prescription.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm nitrate-free interval for other nitrate products and screen for phosphodiesterase-5 inhibitor use because the combination can cause profound hypotension.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف ألم الصدر الناتج عن الذبحة بسرعة.',
+      howToUseAr: 'عند بداية ألم الصدر اجلس، وضع الحبة تحت اللسان واتركها تذوب. لا تمضغها ولا تبلعها مباشرة.',
+      importantAr: 'اتبع خطة الطوارئ التي أعطاها لك الطبيب لعدد الجرعات والفاصل بينها. إذا لم يتحسن ألم الصدر أو أصبح أشد، اطلب المساعدة الطارئة.',
+      seekHelpAr: 'ألم الصدر الذي لا يتحسن حسب خطة nitroglycerin يحتاج تقييمًا طارئًا.',
+      teachBackAr: 'أرني أين ستضع الحبة، وماذا ستفعل إذا لم يتحسن ألم الصدر.',
+    ),
+  ),
+  Medication(
+    id: 'semaglutide-injection',
+    familyId: 'diabetes-endocrine',
+    name: 'Semaglutide Injection',
+    subtitle: 'Once-weekly GLP-1 receptor agonist',
+    tags: ['Diabetes', 'Weight management', 'Weekly injection', 'Pen'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Semaglutide Injection',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Inject subcutaneously once weekly on the same day each week, at any time of day. Rotate injection sites. Never share pens or needles, and follow the exact device IFU because semaglutide products have different pen systems and indications.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review product/indication, titration stage, GI tolerance, gallbladder/pancreatitis history, diabetic retinopathy context, pregnancy plans and contraindication related to medullary thyroid carcinoma/MEN2 history.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم مرة أسبوعيًا للسكري أو لإنقاص الوزن في حالات محددة حسب المنتج والوصفة.',
+      howToUseAr: 'استخدم الحقنة في نفس اليوم من كل أسبوع وبدّل موضع الحقن بين البطن أو الفخذ أو أعلى الذراع حسب تعليمات القلم.',
+      importantAr: 'لا تشارك القلم أو الإبرة مع أي شخص، وتأكد من اسم المنتج والجرعة قبل كل حقنة.',
+      commonActionableAr: 'الغثيان أو الشبع السريع شائعان خاصة عند زيادة الجرعة؛ تناول وجبات أصغر إذا ساعد ذلك.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر ألم بطن شديد ومستمر قد يمتد إلى الظهر أو قيء مستمر.',
+      teachBackAr: 'ما هو يوم الحقنة عندك؟ وأين ستغير موضع الحقن في الجرعة القادمة؟',
+    ),
+  ),
+  Medication(
+    id: 'sitagliptin',
+    familyId: 'diabetes-endocrine',
+    name: 'Sitagliptin',
+    subtitle: 'DPP-4 inhibitor',
+    tags: ['Diabetes', 'Oral', 'Once daily'],
+    sourceLabel: 'MedlinePlus Drug Information · Sitagliptin',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take once daily at around the same time, with or without food. Oral solution should be measured with an oral syringe or dosing cup rather than a household spoon.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Renal dose adjustment may be required. Review pancreatitis history, heart failure risk and concurrent glucose-lowering therapy.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على خفض سكر الدم في السكري من النوع الثاني.',
+      howToUseAr: 'خذه مرة واحدة يوميًا في نفس الوقت تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'إذا كان الدواء محلولًا فاستعمل سرنجة فموية أو كوب قياس دوائي، وليس ملعقة منزلية.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر إذا لم يقترب موعد التالية. لا تضاعف الجرعة.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر ألم شديد ومستمر أعلى البطن مع غثيان أو قيء.',
+    ),
+  ),
+  Medication(
+    id: 'tiotropium-capsule-inhalation',
+    familyId: 'respiratory',
+    name: 'Tiotropium Inhalation Capsule',
+    subtitle: 'Long-acting anticholinergic · capsule inhalation device',
+    tags: ['COPD', 'Inhaler', 'DPI capsule', 'Maintenance'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Tiotropium Oral Inhalation',
+    sections: [
+      MedicationSection(
+        title: 'Critical device distinction',
+        body:
+            'The capsule is for inhalation through the designated device and must not be swallowed. It is maintenance therapy, not a rescue treatment for sudden breathlessness.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Technique',
+        body:
+            'Use only the inhaler supplied for the capsule product. Product setup, piercing and inhalation steps must follow the exact device instructions.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على إبقاء الشعب الهوائية مفتوحة وتقليل أعراض الانسداد الرئوي المزمن.',
+      howToUseAr: 'ضع الكبسولة في جهاز الاستنشاق المخصص لها واستنشق محتواها بالطريقة التي تعلمتها.',
+      importantAr: 'لا تبلع الكبسولة، ولا تستخدم هذا الدواء لعلاج ضيق النفس المفاجئ.',
+      teachBackAr: 'أرني أين تضع الكبسولة وكيف تستنشقها، وقل لي أي بخاخ تستخدم عند ضيق النفس المفاجئ.',
+    ),
+  ),
+  Medication(
+    id: 'azithromycin',
+    familyId: 'antiinfective',
+    name: 'Azithromycin',
+    subtitle: 'Macrolide antibiotic',
+    tags: ['Antibiotic', 'Oral', 'Short course'],
+    sourceLabel: 'MedlinePlus Drug Information · Azithromycin',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Tablets and standard suspension are generally taken once daily with or without food. Shake liquid well and measure with an oral syringe, dosing spoon or measuring cup.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review QT-risk medicines/conditions, liver disease and the exact formulation. The 1-gram single-dose packet has a specific water-mixing method and should not be counseled like standard suspension.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض الالتهابات البكتيرية.',
+      howToUseAr: 'خذ الجرعة في نفس الوقت تقريبًا كل يوم وأكمل المدة المكتوبة لك. يمكن أخذه مع الطعام أو بدونه.',
+      importantAr: 'إذا كان الدواء سائلًا فرجّه جيدًا واستعمل أداة قياس دوائية. لا تعالج نزلات البرد والإنفلونزا بالمضاد الحيوي.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر إذا لم يقترب موعد التالية، ولا تضاعف الجرعة.',
+      seekHelpAr: 'إذا تقيأت خلال ساعة من الجرعة، تواصل مع الطبيب أو الصيدلي قبل إعادة الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'acyclovir-oral',
+    familyId: 'antiinfective',
+    name: 'Acyclovir Oral',
+    subtitle: 'Antiviral medicine',
+    tags: ['Antiviral', 'Herpes', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Acyclovir',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'May be taken with or without food at evenly spaced times according to the prescribed regimen. Encourage adequate fluid intake unless the patient has a fluid restriction.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review renal function, dehydration risk and indication-specific duration. Starting treatment promptly after symptom onset can matter for episodic herpes therapy.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد فيروسات يُستخدم لبعض عدوى الهربس والحزام الناري وغيرها حسب الوصفة.',
+      howToUseAr: 'خذ الجرعات في أوقات متباعدة بشكل منتظم، مع الطعام أو بدونه.',
+      importantAr: 'اشرب سوائل كافية أثناء العلاج ما لم يكن الطبيب قد طلب منك تحديد السوائل.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر ثم أكمل باقي جرعات اليوم بشكل متباعد. لا تضاعف الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'metronidazole-oral',
+    familyId: 'antiinfective',
+    name: 'Metronidazole Oral',
+    subtitle: 'Nitroimidazole antimicrobial',
+    tags: ['Antibiotic', 'Oral', 'Alcohol interaction'],
+    sourceLabel: 'MedlinePlus Drug Information · Metronidazole',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Regimen varies widely by infection and may be a one-time dose or multiple daily doses. Shake suspension well and measure with a medication device.',
+      ),
+      MedicationSection(
+        title: 'Alcohol / propylene glycol',
+        body:
+            'MedlinePlus advises avoiding alcohol and products containing propylene glycol during treatment and for at least 3 days after the final dose.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لعلاج بعض الالتهابات البكتيرية والطفيليات حسب التشخيص.',
+      howToUseAr: 'خذ الجرعات تمامًا حسب الجدول المكتوب لك وأكمل العلاج.',
+      importantAr: 'تجنب الكحول والمنتجات التي تحتوي على propylene glycol أثناء العلاج ولمدة 3 أيام على الأقل بعد آخر جرعة.',
+      commonActionableAr: 'قد تشعر بطعم معدني أو غثيان أو انزعاج في المعدة.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر إذا لم يقترب موعد التالية، ولا تضاعف الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'valproic-acid',
+    familyId: 'cns',
+    name: 'Valproic Acid / Valproate',
+    subtitle: 'Antiseizure and mood-stabilizing medicine',
+    tags: ['Seizure', 'Bipolar', 'Migraine prevention', 'High alert'],
+    sourceLabel: 'MedlinePlus Drug Information · Valproic Acid',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Syrup, capsules, delayed-release tablets, extended-release tablets and sprinkle capsules have different handling. Extended-release tablets are once daily; do not crush delayed/extended-release products.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration & monitoring',
+        body:
+            'Take with food to reduce stomach upset and at consistent times. Review pregnancy, liver disease, pancreatitis risk, platelets/CBC, liver tests and product-specific dosing.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لعلاج أنواع من الصرع، وقد يُستخدم لاضطراب ثنائي القطب أو لمنع الشقيقة.',
+      howToUseAr: 'خذه مع الطعام وفي نفس الأوقات تقريبًا كل يوم. لا تسحق الأقراص ممتدة أو متأخرة المفعول.',
+      importantAr: 'لا توقفه فجأة من نفسك. إذا كنتِ حاملًا أو تخططين للحمل يجب مناقشة العلاج مع الطبيب بسرعة.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر ألم شديد ومستمر في البطن مع قيء، اصفرار الجلد أو العينين، أو كدمات ونزف غير معتاد.',
+    ),
+  ),
 ];

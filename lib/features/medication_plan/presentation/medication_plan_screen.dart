@@ -8,6 +8,7 @@ import 'package:printing/printing.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
 import '../../../core/data/sample_medications.dart';
+import '../../../core/data/therapy_duration_catalog.dart';
 import '../../supplements/data/supplement_profiles.dart';
 import '../domain/medication_plan_engine.dart';
 import '../domain/medication_plan_models.dart';
@@ -43,6 +44,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
               doseText: item.doseText,
               howToUseAr: medicine.patient.howToUseAr,
               timingAr: medicine.patient.timingAr,
+              durationAr: therapyDurationFor(medicine.id)?.patientAr ?? '',
               importantAr: medicine.patient.importantAr,
               missedDoseAr: medicine.patient.missedDoseAr,
             ),
@@ -58,6 +60,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
               doseText: item.doseText,
               howToUseAr: supplement.patient.howToUseAr,
               timingAr: supplement.patient.timingAr,
+              durationAr: '',
               importantAr: supplement.patient.importantAr,
               missedDoseAr: supplement.patient.missedDoseAr,
             ),
@@ -567,6 +570,17 @@ class _PrintablePlan extends StatelessWidget {
                           textAlign: TextAlign.right,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             height: 1.45,
+                          ),
+                        ),
+                      ],
+                      if (instruction.durationAr.trim().isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          'مدة العلاج: ' + instruction.durationAr,
+                          textAlign: TextAlign.right,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ],
@@ -1186,6 +1200,7 @@ class _PatientPlanInstruction {
     required this.doseText,
     required this.howToUseAr,
     required this.timingAr,
+    required this.durationAr,
     required this.importantAr,
     required this.missedDoseAr,
   });
@@ -1194,6 +1209,7 @@ class _PatientPlanInstruction {
   final String doseText;
   final String howToUseAr;
   final String timingAr;
+  final String durationAr;
   final String importantAr;
   final String missedDoseAr;
 }

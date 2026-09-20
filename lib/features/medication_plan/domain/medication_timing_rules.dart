@@ -259,8 +259,8 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed Levetiracetam',
   ),
   'omeprazole': MedicationTimingRule(
-    anchor: 'before-breakfast',
-    instructionAr: 'غالبًا قبل الوجبة؛ كثير من الأنظمة تؤخذ قبل الفطور. إذا كانت الوصفة أكثر من مرة أو formulation مختلفًا اختر التوقيت يدويًا.',
+    anchor: 'before-meal',
+    instructionAr: 'غالبًا قبل الوجبة؛ كثير من الأنظمة تؤخذ 30–60 دقيقة قبل الطعام. إذا كانت الوصفة أكثر من مرة أو formulation مختلفًا اختر التوقيت المكتوب في الوصفة.',
     requiresMealChoice: false,
     autoScheduleSafe: false,
     source: 'DailyMed Omeprazole',

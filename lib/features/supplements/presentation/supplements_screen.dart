@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/supplement_profiles.dart';
+import '../domain/supplement_profile.dart';
 import 'supplement_detail_screen.dart';
 import 'supplement_group_screen.dart';
 
@@ -21,7 +22,7 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
     super.dispose();
   }
 
-  List<dynamic> get _searchResults {
+  List<SupplementProfile> get _searchResults {
     final q = _query.trim().toLowerCase();
     if (q.isEmpty) return const [];
 

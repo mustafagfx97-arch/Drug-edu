@@ -13,6 +13,8 @@ const supplementProfiles = <SupplementProfile>[
     formulationAlert:
         'Strengths vary widely. Verify whether the label uses IU or mcg and confirm drops-per-dose before counseling.',
     sourceLabel: 'NIH ODS Vitamin D Fact Sheets',
+    useBasis: 'Routine supplementation or deficiency treatment',
+    monitoringEn: '25-hydroxyvitamin D testing is useful when evaluating suspected deficiency, malabsorption or higher-risk treatment; routine supplementation does not automatically require a level.',
     pharmacistSections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -55,6 +57,8 @@ const supplementProfiles = <SupplementProfile>[
     formulationAlert:
         'Counsel by elemental iron, not total salt weight. Modified-release and specialty iron products may have different instructions.',
     sourceLabel: 'NIH ODS Iron Fact Sheet + MedlinePlus iron guidance',
+    useBasis: 'Risk-based or laboratory-guided',
+    monitoringEn: 'For treatment of suspected/confirmed deficiency, laboratory follow-up and cause assessment are usually relevant; do not treat elemental-iron dosing as a generic wellness supplement.',
     pharmacistSections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -493,6 +497,8 @@ const supplementProfiles = <SupplementProfile>[
     formulationAlert:
         'CDC 2026: breastfed and partially breastfed infants who consume less than 32 oz of formula per day need an additional vitamin D source; product concentration must be checked carefully.',
     sourceLabel: 'CDC Infant Vitamin D 2026 + NIH ODS Vitamin D',
+    useBasis: 'Routine guideline-based supplementation',
+    monitoringEn: 'Routine infant supplementation does not usually require a vitamin D level; testing becomes relevant when deficiency, malabsorption or other clinical risk is suspected.',
     isPediatric: true,
     pharmacistSections: [
       MedicationSection(
@@ -527,6 +533,8 @@ const supplementProfiles = <SupplementProfile>[
     formulationAlert:
         'Do not copy a mL dose between products. Verify mg elemental iron per mL every time.',
     sourceLabel: 'CDC Iron 2026 + AAP Clinical Report 2026',
+    useBasis: 'Feeding-pattern and risk-based; sometimes laboratory-guided',
+    monitoringEn: 'Iron need depends on feeding, gestational age and diet. Current pediatric guidance also supports screening for anemia/iron deficiency at risk-appropriate ages.',
     isPediatric: true,
     pharmacistSections: [
       MedicationSection(

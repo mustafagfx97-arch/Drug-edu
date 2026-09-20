@@ -140,4 +140,156 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'إذا استُخدم مع tetracycline/quinolone antibiotic يحتاج فصلًا زمنيًا.',
     source: 'NIH ODS Zinc',
   ),
+
+  'carvedilol': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'خذ carvedilol العادي مع الطعام وفي نفس الأوقات يوميًا لتقليل الدوخة وتذبذب الامتصاص.',
+    source: 'Current carvedilol labeling',
+  ),
+  'dapagliflozin': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr:
+        'مرة يوميًا في وقت ثابت؛ الصباح عملي لتقليل الإزعاج من زيادة التبول، مع الطعام أو بدونه.',
+    source: 'Current dapagliflozin labeling',
+  ),
+  'dulaglutide': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr:
+        'حقنة مرة أسبوعيًا في نفس اليوم من كل أسبوع، بغض النظر عن الوجبات.',
+    source: 'Current dulaglutide labeling',
+  ),
+  'tirzepatide': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr:
+        'حقنة مرة أسبوعيًا في نفس اليوم من كل أسبوع، بغض النظر عن الوجبات.',
+    source: 'Current tirzepatide labeling',
+  ),
+  'glipizide': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'توقيت glipizide يختلف بين IR وER؛ اختر توقيت الوصفة يدويًا بعد تحديد formulation.',
+    autoScheduleSafe: false,
+    source: 'Current glipizide labeling',
+  ),
+  'insulin-lispro': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنسولين سريع مرتبط بتوقيت الوجبة؛ استخدم التوقيت الموصوف حسب المنتج ولا تعتمد Auto timing.',
+    autoScheduleSafe: false,
+    source: 'Insulin lispro product IFU',
+  ),
+  'insulin-aspart': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنسولين سريع مرتبط بتوقيت الوجبة؛ النافذة تختلف حسب المنتج، لذلك اختر وقت الوصفة يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Insulin aspart product IFU',
+  ),
+  'insulin-nph': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'توقيت NPH يعتمد على خطة الإنسولين والوجبات/النوم؛ لا يستخدم Auto timing من دون الخطة الموصوفة.',
+    autoScheduleSafe: false,
+    source: 'NPH insulin product labeling',
+  ),
+  'amoxicillin-clavulanate-oral': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'مع بداية الوجبة أو مع الطعام حسب المنتج لتحسين التحمل وامتصاص clavulanate.',
+    source: 'Current amoxicillin/clavulanate labeling',
+  ),
+  'cefuroxime-axetil': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'الحبوب والشراب ليست لهما نفس تعليمات الطعام؛ اختر توقيت الوصفة بعد تحديد formulation.',
+    autoScheduleSafe: false,
+    source: 'Current cefuroxime axetil labeling',
+  ),
+  'clarithromycin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'IR وER لهما تعليمات مختلفة؛ ER يؤخذ مع الطعام عادةً. حدد formulation قبل الجدولة.',
+    autoScheduleSafe: false,
+    source: 'Current clarithromycin labeling',
+  ),
+  'levofloxacin-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'تعليمات الطعام تختلف بين tablet وoral solution، ويجب فصل المعادن/مضادات الحموضة؛ اختر التوقيت بعد تحديد formulation.',
+    autoScheduleSafe: false,
+    source: 'Current levofloxacin labeling',
+  ),
+  'ciprofloxacin-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'خذه مع الماء وافصل الحديد/الكالسيوم/المغنيسيوم/الزنك ومضادات الحموضة حسب الفاصل الموصى به.',
+    source: 'Current ciprofloxacin labeling',
+  ),
+  'venlafaxine-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'Venlafaxine XR مرة يوميًا مع الطعام وفي نفس الوقت تقريبًا.',
+    source: 'Current venlafaxine XR labeling',
+  ),
+  'isosorbide-mononitrate-er': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'توقيت ER يجب أن يحافظ على nitrate-low interval؛ استخدم وقت الوصفة يدويًا ولا تعتمد Auto timing.',
+    autoScheduleSafe: false,
+    source: 'Current isosorbide mononitrate ER labeling',
+  ),
+  'metoclopramide-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'قد يُعطى قبل الوجبات وفي أوقات مختلفة حسب الاستطباب؛ اختر جدول الوصفة يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Current metoclopramide labeling',
+  ),
+  'sucralfate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'غالبًا على معدة فارغة ويحتاج فصل أدوية أخرى؛ جدول الجرعات متعدد ومعقد لذلك اختر توقيت الوصفة يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Current sucralfate labeling',
+  ),
+  'acarbose': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'مع أول لقمة من الوجبة الموصوفة؛ اختر الوجبة/التوقيت يدويًا بدل Auto timing.',
+    autoScheduleSafe: false,
+    source: 'Current acarbose labeling',
+  ),
+  'pantoprazole-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'التوقيت يختلف حسب formulation والاستطباب؛ استخدم توقيت الوصفة بدل Auto إذا كانت العلاقة بالطعام مهمة.',
+    autoScheduleSafe: false,
+    source: 'Current pantoprazole labeling',
+  ),
+  'omeprazole': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'معظم delayed-release regimens تؤخذ قبل وجبة، لكن formulation والاستطباب يحددان التفاصيل؛ اختر وقت الوصفة يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Current omeprazole labeling',
+  ),
+  'potassium-oral': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'مع أو بعد الطعام ومع كوب كامل من الماء حسب نوع المنتج؛ لا تمضغ ER products.',
+    source: 'MedlinePlus Potassium',
+  ),
+  'magnesium-oxide': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'افصل باقي الأدوية عن Magnesium Oxide ساعتين على الأقل، وقد تحتاج بعض الأدوية فاصلًا أطول.',
+    source: 'MedlinePlus Magnesium Oxide',
+  ),
+  'omega-3-fish-oil': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'يمكن أخذه مع وجبة لتحسين التحمل وتقليل التجشؤ/انزعاج المعدة.',
+    source: 'NIH ODS Omega-3',
+  ),
 };

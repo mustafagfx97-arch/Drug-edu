@@ -328,4 +328,121 @@ void main() {
     expect(plan.alerts.any((alert) => alert.isCritical), isTrue);
   });
 
+
+  test('clopidogrel plus omeprazole creates interaction review alert', () {
+    final plan = engine.generate(
+      items: [
+        item('clopidogrel', 'Clopidogrel'),
+        item(
+          'omeprazole',
+          'Omeprazole',
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Clopidogrel + omeprazole' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('valproate plus lamotrigine creates high-risk titration alert', () {
+    final plan = engine.generate(
+      items: [
+        item('valproic-acid', 'Valproate'),
+        item('lamotrigine', 'Lamotrigine'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Valproate + lamotrigine' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('carbamazepine plus DOAC creates efficacy interaction alert', () {
+    final plan = engine.generate(
+      items: [
+        item('carbamazepine', 'Carbamazepine'),
+        item(
+          'rivaroxaban',
+          'Rivaroxaban',
+          preference: TimingPreference.dinner,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Carbamazepine + DOAC' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('two NSAIDs create duplicate-class alert', () {
+    final plan = engine.generate(
+      items: [
+        item('ibuprofen', 'Ibuprofen'),
+        item('naproxen', 'Naproxen'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'NSAID duplication' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('NSAID plus RAS blocker plus diuretic creates AKI alert', () {
+    final plan = engine.generate(
+      items: [
+        item('ibuprofen', 'Ibuprofen'),
+        item('lisinopril', 'Lisinopril'),
+        item('furosemide', 'Furosemide'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'AKI risk: NSAID + RAS blocker + diuretic' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('warfarin plus fluconazole creates INR review alert', () {
+    final plan = engine.generate(
+      items: [
+        item('warfarin', 'Warfarin'),
+        item('fluconazole-oral', 'Fluconazole'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Warfarin interaction · INR review' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
 }

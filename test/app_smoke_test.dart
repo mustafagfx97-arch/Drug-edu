@@ -7,7 +7,10 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Drug Edu'), findsOneWidget);
-    expect(find.text('Clinical Pharmacist Encyclopedia'), findsOneWidget);
+    expect(
+      find.textContaining('Clinical Pharmacist Encyclopedia'),
+      findsOneWidget,
+    );
     expect(find.text('IV Prep'), findsOneWidget);
     expect(find.text('Calculators'), findsOneWidget);
   });

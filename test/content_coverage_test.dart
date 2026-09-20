@@ -7,6 +7,7 @@ import 'package:drug_edu/core/models/medication.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications_2.dart';
+import 'package:drug_edu/core/data/expanded_medications_3.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
 import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
@@ -34,7 +35,7 @@ void main() {
 
 
   test('medicine encyclopedia has substantial practical coverage', () {
-    expect(sampleMedications.length, greaterThanOrEqualTo(129));
+    expect(sampleMedications.length, greaterThanOrEqualTo(139));
 
     final ids = sampleMedications.map((medicine) => medicine.id).toList();
     expect(ids.toSet().length, ids.length, reason: 'Medication IDs must be unique');
@@ -317,6 +318,57 @@ void main() {
       (medicine) => medicine.id == 'denosumab-prolia',
     );
     expect(prolia.patient.missedDoseAr, contains('كل 6 أشهر'));
+  });
+
+  test('respiratory and nasal formulation expansion stays complete', () {
+    expect(expandedMedications3.length, 10);
+
+    final ids = expandedMedications3.map((medicine) => medicine.id).toSet();
+    expect(ids.length, expandedMedications3.length);
+    expect(ids, contains('albuterol-nebulizer-0083'));
+    expect(ids, contains('albuterol-nebulizer-concentrate-05'));
+    expect(ids, contains('budesonide-nebulizer'));
+    expect(ids, contains('tiotropium-respimat'));
+    expect(ids, contains('oxymetazoline-nasal'));
+
+    for (final medicine in expandedMedications3) {
+      expect(medicine.useProfile.isEmpty, isFalse,
+          reason: medicine.name + ' structured profile');
+      expect(medicine.sourceLabel.trim(), isNotEmpty,
+          reason: medicine.name + ' source');
+      expect(medicine.patient.purposeAr.trim(), isNotEmpty);
+      expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
+      expect(medicine.patient.timingAr.trim(), isNotEmpty);
+      expect(medicine.patient.importantAr.trim(), isNotEmpty);
+      expect(medicine.patient.missedDoseAr.trim(), isNotEmpty);
+      expect(medicine.patient.seekHelpAr.trim(), isNotEmpty);
+      expect(medicine.patient.teachBackAr.trim(), isNotEmpty);
+      expect(visualGuidesForMedication(medicine.id), isNotEmpty);
+    }
+
+    final readyAlbuterol = expandedMedications3.firstWhere(
+      (medicine) => medicine.id == 'albuterol-nebulizer-0083',
+    );
+    expect(readyAlbuterol.patient.importantAr, contains('لا يحتاج تخفيف'));
+
+    final concentrateAlbuterol = expandedMedications3.firstWhere(
+      (medicine) => medicine.id == 'albuterol-nebulizer-concentrate-05',
+    );
+    expect(concentrateAlbuterol.patient.importantAr, contains('لا تضع'));
+    expect(
+      concentrateAlbuterol.useProfile.formulationHandling,
+      contains('total nebulizer volume of 3 mL'),
+    );
+
+    final pulmicort = expandedMedications3.firstWhere(
+      (medicine) => medicine.id == 'budesonide-nebulizer',
+    );
+    expect(pulmicort.patient.importantAr, contains('ultrasonic'));
+
+    final oxymetazoline = expandedMedications3.firstWhere(
+      (medicine) => medicine.id == 'oxymetazoline-nasal',
+    );
+    expect(oxymetazoline.patient.timingAr, contains('3 أيام'));
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

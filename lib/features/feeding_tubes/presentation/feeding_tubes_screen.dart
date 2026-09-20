@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../data/feeding_tube_profiles.dart';
+
 class FeedingTubesScreen extends StatelessWidget {
   const FeedingTubesScreen({super.key});
 
@@ -110,6 +112,67 @@ class FeedingTubesScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
+          Text(
+            'Verified medication profiles',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'Formulation-specific records recovered from the project library. These override generic crush/open assumptions.',
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 10),
+          for (final profile in feedingTubeProfiles) ...[
+            Card(
+              clipBehavior: Clip.antiAlias,
+              child: ExpansionTile(
+                leading: const Icon(Icons.medication_outlined),
+                title: Text(
+                  profile.name,
+                  style: const TextStyle(fontWeight: FontWeight.w900),
+                ),
+                subtitle: Text(profile.formulation + ' · ' + profile.route),
+                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                children: [
+                  _ProfileField(
+                    title: 'Preparation',
+                    body: profile.preparation,
+                  ),
+                  _ProfileField(
+                    title: 'Feed handling',
+                    body: profile.feedHandling,
+                  ),
+                  _ProfileField(
+                    title: 'Flush',
+                    body: profile.flushNote,
+                  ),
+                  _ProfileField(
+                    title: 'Safety',
+                    body: profile.safety,
+                    important: true,
+                  ),
+                  _ProfileField(
+                    title: 'Source',
+                    body: profile.source,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+          const SizedBox(height: 10),
+          Text(
+            'Reference modules',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 10),
           for (final section in sections) ...[
             Card(
               child: ListTile(
@@ -139,6 +202,52 @@ class FeedingTubesScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+class _ProfileField extends StatelessWidget {
+  const _ProfileField({
+    required this.title,
+    required this.body,
+    this.important = false,
+  });
+
+  final String title;
+  final String body;
+  final bool important;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: important
+            ? theme.colorScheme.errorContainer.withValues(alpha: 0.45)
+            : theme.colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: theme.textTheme.labelLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+              color: important ? theme.colorScheme.error : null,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            body,
+            style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+          ),
         ],
       ),
     );

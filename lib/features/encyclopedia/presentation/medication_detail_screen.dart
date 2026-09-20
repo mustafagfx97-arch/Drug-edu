@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/models/medication.dart';
+import '../../../core/data/medication_clinical_details.dart';
 import '../../../shared/widgets/section_card.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
 import '../../patient_cards/presentation/patient_card_preview.dart';
@@ -139,6 +140,7 @@ class _PharmacistTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final detail = medicationClinicalDetails[medication.id];
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
@@ -163,6 +165,123 @@ class _PharmacistTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
+        if (detail != null && !detail.isEmpty) ...[
+          Text(
+            'Expanded pharmacist reference',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 10),
+          if (detail.therapyDuration.isNotEmpty) ...[
+            SectionCard(
+              title: 'Therapy duration',
+              icon: Icons.timelapse_outlined,
+              child: Text(
+                detail.therapyDuration,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.exactAdministration.isNotEmpty) ...[
+            SectionCard(
+              title: 'Exact administration',
+              icon: Icons.schedule_outlined,
+              child: Text(
+                detail.exactAdministration,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.formulationHandling.isNotEmpty) ...[
+            SectionCard(
+              title: 'Formulation / crush / split / open',
+              icon: Icons.medication_outlined,
+              child: Text(
+                detail.formulationHandling,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.monitoring.isNotEmpty) ...[
+            SectionCard(
+              title: 'Monitoring',
+              icon: Icons.monitor_heart_outlined,
+              child: Text(
+                detail.monitoring,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.interactions.isNotEmpty) ...[
+            SectionCard(
+              title: 'Important interactions',
+              icon: Icons.compare_arrows_rounded,
+              child: Text(
+                detail.interactions,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.specialPopulations.isNotEmpty) ...[
+            SectionCard(
+              title: 'Patient-specific considerations',
+              icon: Icons.person_search_outlined,
+              child: Text(
+                detail.specialPopulations,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.feedingTube.isNotEmpty) ...[
+            SectionCard(
+              title: 'Feeding tube / NG',
+              icon: Icons.route_outlined,
+              child: Text(
+                detail.feedingTube,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.clinicalPearls.isNotEmpty) ...[
+            SectionCard(
+              title: 'Clinical pearl',
+              icon: Icons.lightbulb_outline_rounded,
+              child: Text(
+                detail.clinicalPearls,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.commonMistakes.isNotEmpty) ...[
+            SectionCard(
+              title: 'Common counseling mistakes',
+              icon: Icons.warning_amber_rounded,
+              child: Text(
+                detail.commonMistakes,
+                style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (detail.source.isNotEmpty) ...[
+            Text(
+              'Expanded reference: ' + detail.source,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(height: 14),
+          ],
+        ],
         for (final section in medication.sections) ...[
           SectionCard(
             title: section.title,

@@ -815,6 +815,60 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'للحمى/الألم غالبًا حسب الحاجة والفاصل المكتوب لنفس التركيز؛ لا يحدد المخطط جرعة الطفل.',
     source: 'DailyMed Pediatric Ibuprofen OTC',
   ),
+  'albuterol-nebulizer-0083': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'غالبًا عند الحاجة حسب خطة الربو/COPD؛ إذا كان مجدولًا فاتبع التكرار الموصوف ولا تستخدم Auto لتخمين جرعة الإسعاف.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Albuterol Inhalation Solution 0.083%',
+  ),
+  'albuterol-nebulizer-concentrate-05': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'غالبًا عند الحاجة/حسب الوصفة؛ التركيز 0.5% يحتاج تحضيرًا حسب الجرعة الموصوفة قبل الجلسة، لذلك لا يُجدول تلقائيًا كمنتج جاهز.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Albuterol Inhalation Solution 0.5%',
+  ),
+  'ipratropium-nebulizer': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'وزّع الجلسات حسب التكرار الموصوف وفي أوقات ثابتة إذا كان العلاج مجدولًا.',
+    source: 'DailyMed Ipratropium Bromide Inhalation Solution 0.02%',
+  ),
+  'ipratropium-albuterol-nebulizer': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدم الجلسات في الأوقات والتكرار المكتوب لخطة COPD؛ الأمبولة تحتوي الدواءين معًا.',
+    source: 'DailyMed Ipratropium/Albuterol Inhalation Solution · 2026',
+  ),
+  'budesonide-nebulizer': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'دواء controller يُستخدم يوميًا حسب التكرار الموصوف؛ ليس جرعة إسعاف عند ضيق النفس الحاد.',
+    source: 'DailyMed PULMICORT RESPULES',
+  ),
+  'tiotropium-respimat': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جرعة صيانة مرة يوميًا في نفس الوقت تقريبًا؛ ليست بخاخ إسعاف.',
+    source: 'DailyMed SPIRIVA RESPIMAT · 2026',
+  ),
+  'fluticasone-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدمه بانتظام حسب المنتج/العمر، وغالبًا مرة يوميًا خلال فترة الأعراض.',
+    source: 'DailyMed Fluticasone Propionate Nasal Spray · 2026',
+  ),
+  'mometasone-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدمه بانتظام حسب المنتج/العمر، وغالبًا مرة يوميًا.',
+    source: 'DailyMed Mometasone Furoate Nasal Spray · 2026',
+  ),
+  'azelastine-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'عدد المرات يعتمد على المنتج والعمر؛ اختر التكرار المكتوب ولا تفترض أن OTC وRx لهما نفس النظام.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Azelastine Nasal Spray · 2026',
+  ),
+  'oxymetazoline-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'عند الحاجة حسب ملصق المنتج فقط ولمدة لا تتجاوز 3 أيام متتالية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed OTC Oxymetazoline 0.05% · 2026',
+  ),
   'oral-iron-salts': MedicationTimingRule(
     anchor: 'empty-stomach',
     instructionAr:

@@ -176,6 +176,16 @@ class MedicationPlanEngine {
       return _expandFromBase(item.frequency, item.customMinutes!);
     }
 
+    if (rule.anchor == 'after-selected-meal' &&
+        item.preference != TimingPreference.custom) {
+      return [_selectedMeal(item.preference, routine) + 30];
+    }
+
+    if (rule.anchor == 'before-breakfast' &&
+        item.preference == TimingPreference.auto) {
+      return [routine.breakfastMinutes - 45];
+    }
+
     final preferred = _preferredBase(item.preference, routine);
     if (preferred != null) {
       return _expandFromBase(item.frequency, preferred);

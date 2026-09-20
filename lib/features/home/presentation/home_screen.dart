@@ -67,8 +67,8 @@ class HomeScreen extends StatelessWidget {
         null
       ),
       (
-        'Supplements',
-        'Vitamins, minerals, pediatric products and practical supplement counseling.',
+        'Supplement Encyclopedia',
+        'Vitamins, minerals and supplement products with exact how-to-take instructions.',
         Icons.spa_outlined,
         'supplements',
         null

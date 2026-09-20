@@ -108,11 +108,4 @@ const medicationFamilies = <MedicationFamily>[
     icon: Icons.shopping_bag_outlined,
     searchTerms: ['otc', 'self care', 'cold', 'diarrhea', 'constipation'],
   ),
-  MedicationFamily(
-    id: 'supplements',
-    name: 'Vitamins & Supplements',
-    subtitle: 'Vitamins, minerals, elemental amounts and practical use.',
-    icon: Icons.eco_outlined,
-    searchTerms: ['vitamin', 'mineral', 'iron', 'calcium', 'magnesium'],
-  ),
 ];

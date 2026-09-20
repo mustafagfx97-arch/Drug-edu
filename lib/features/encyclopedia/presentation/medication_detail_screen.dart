@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/data/medication_clinical_overlays.dart';
+import '../../../core/data/medication_patient_guidance.dart';
+import '../../../core/data/therapy_duration_catalog.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../medication_plan/domain/medication_timing_rules.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
 import '../../patient_cards/presentation/patient_card_preview.dart';
 import '../../patient_cards/presentation/printable_patient_card_screen.dart';
@@ -15,13 +19,19 @@ class MedicationDetailScreen extends StatelessWidget {
   final Medication medication;
 
   PatientCardData get _patientCard {
+    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
+    final patient = resolvedPatientCounseling(
+      medication,
+      timingFallbackAr:
+          medicationPatientTimingInstruction(medication.id),
+    );
     final important = <String>[
-      if (medication.patient.importantAr.trim().isNotEmpty)
-        medication.patient.importantAr.trim(),
-      if (medication.patient.commonActionableAr.trim().isNotEmpty)
-        medication.patient.commonActionableAr.trim(),
-      if (medication.patient.storageAr.trim().isNotEmpty)
-        'الحفظ: ' + medication.patient.storageAr.trim(),
+      if (durationAr.isNotEmpty) 'مدة العلاج: ' + durationAr,
+      if (patient.importantAr.trim().isNotEmpty) patient.importantAr.trim(),
+      if (patient.commonActionableAr.trim().isNotEmpty)
+        patient.commonActionableAr.trim(),
+      if (patient.storageAr.trim().isNotEmpty)
+        'الحفظ: ' + patient.storageAr.trim(),
     ].join(' ');
 
     return PatientCardData(
@@ -30,12 +40,12 @@ class MedicationDetailScreen extends StatelessWidget {
       medicationName: medication.name,
       subtitleAr: 'تعليمات مختصرة للمريض',
       category: 'Medication',
-      purposeAr: medication.patient.purposeAr,
-      howToUseAr: medication.patient.howToUseAr,
-      timingAr: medication.patient.timingAr,
+      purposeAr: patient.purposeAr,
+      howToUseAr: patient.howToUseAr,
+      timingAr: patient.timingAr,
       importantAr: important,
-      missedDoseAr: medication.patient.missedDoseAr,
-      seekHelpAr: medication.patient.seekHelpAr,
+      missedDoseAr: patient.missedDoseAr,
+      seekHelpAr: patient.seekHelpAr,
     );
   }
 
@@ -139,6 +149,10 @@ class _PharmacistTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final useProfile = resolvedMedicationUseProfile(medication);
+    final sourceLabel = resolvedMedicationSourceLabel(medication);
+    final reviewStatus = resolvedMedicationReviewStatus(medication);
+    final lastReviewed = resolvedMedicationLastReviewed(medication);
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
@@ -163,13 +177,13 @@ class _PharmacistTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        if (!medication.useProfile.isEmpty) ...[
+        if (!useProfile.isEmpty) ...[
           SectionCard(
             title: 'Medication-use essentials',
             icon: Icons.fact_check_outlined,
             child: Column(
               children: [
-                for (final fact in medication.useProfile.facts) ...[
+                for (final fact in useProfile.facts) ...[
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -220,7 +234,7 @@ class _PharmacistTab extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         ],
-        if (medication.sourceLabel.isNotEmpty) ...[
+        if (sourceLabel.isNotEmpty) ...[
           SectionCard(
             title: 'Source & review',
             icon: Icons.verified_outlined,
@@ -228,12 +242,12 @@ class _PharmacistTab extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  medication.sourceLabel,
+                  sourceLabel,
                   style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
                 ),
                 const SizedBox(height: 7),
                 Text(
-                  medication.reviewStatus + ' · ' + medication.lastReviewed,
+                  reviewStatus + ' · ' + lastReviewed,
                   style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.w800,
@@ -276,6 +290,12 @@ class _PatientTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
+    final patient = resolvedPatientCounseling(
+      medication,
+      timingFallbackAr:
+          medicationPatientTimingInstruction(medication.id),
+    );
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -304,7 +324,34 @@ class _PatientTab extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          for (final item in medication.patient.items) ...[
+          if (durationAr.isNotEmpty) ...[
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'مدة العلاج',
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 7),
+                    Text(
+                      durationAr,
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          for (final item in patient.items) ...[
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(17),
@@ -331,7 +378,7 @@ class _PatientTab extends StatelessWidget {
             ),
             const SizedBox(height: 10),
           ],
-          if (medication.patient.teachBackAr.isNotEmpty)
+          if (patient.teachBackAr.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -350,7 +397,7 @@ class _PatientTab extends StatelessWidget {
                   ),
                   const SizedBox(height: 7),
                   Text(
-                    medication.patient.teachBackAr,
+                    patient.teachBackAr,
                     textAlign: TextAlign.right,
                     style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
                   ),

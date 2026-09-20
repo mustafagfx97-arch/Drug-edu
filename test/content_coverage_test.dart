@@ -1,8 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
+import 'package:drug_edu/core/data/medication_patient_guidance.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
+import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
+import 'package:drug_edu/core/models/medication.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
+import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_preparation_profiles.dart';
 import 'package:drug_edu/features/feeding_tubes/data/feeding_tube_records.dart';
@@ -42,6 +47,183 @@ void main() {
     }
   });
 
+  test('every medicine resolves to structured pharmacist-use essentials', () {
+    expect(legacyMedicationClinicalOverlays.length, 62);
+
+    for (final medicine in sampleMedications) {
+      final profile = resolvedMedicationUseProfile(medicine);
+      expect(
+        profile.isEmpty,
+        isFalse,
+        reason: medicine.name + ' needs a structured use profile',
+      );
+      expect(profile.route.trim(), isNotEmpty, reason: medicine.name + ' route');
+      expect(
+        profile.foodTiming.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' food/timing',
+      );
+      expect(
+        profile.duration.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' therapy duration',
+      );
+      expect(
+        profile.formulationHandling.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' formulation handling',
+      );
+      expect(
+        profile.monitoring.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' monitoring',
+      );
+      expect(
+        profile.interactions.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' interactions',
+      );
+      expect(
+        profile.commonMistakes.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' common mistakes',
+      );
+      expect(
+        profile.specialPopulations.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' patient-specific considerations',
+      );
+      expect(
+        resolvedMedicationSourceLabel(medicine).trim(),
+        isNotEmpty,
+        reason: medicine.name + ' source label',
+      );
+    }
+  });
+
+  test('high-risk legacy counseling rules stay explicit', () {
+    String facts(String id) {
+      final medicine = sampleMedications.firstWhere((item) => item.id == id);
+      return resolvedMedicationUseProfile(medicine)
+          .facts
+          .map((fact) => fact.value)
+          .join(' ')
+          .toLowerCase();
+    }
+
+    expect(facts('methotrexate-rheumatology'), contains('once weekly'));
+    expect(facts('rivaroxaban'), contains('15 mg and 20 mg'));
+    expect(facts('levothyroxine'), contains('4 hours'));
+    expect(facts('tiotropium-capsule-inhalation'), contains('do not swallow'));
+    expect(facts('nitroglycerin-sublingual'), contains('pde-5'));
+    expect(facts('semaglutide-injection'), contains('ozempic'));
+    expect(facts('metformin'), contains('extended-release'));
+  });
+
+  test('every medicine has explicit patient-facing therapy duration', () {
+    final medicineIds = sampleMedications.map((medicine) => medicine.id).toSet();
+    expect(medicationTherapyDurations.length, sampleMedications.length);
+    expect(medicationTherapyDurations.keys.toSet(), medicineIds);
+
+    for (final medicine in sampleMedications) {
+      final guidance = therapyDurationFor(medicine.id);
+      expect(guidance, isNotNull, reason: medicine.name + ' duration missing');
+      expect(guidance!.patientAr.trim(), isNotEmpty);
+    }
+
+    expect(
+      therapyDurationFor('prednisone')!.patientAr,
+      contains('تقليل'),
+    );
+    expect(
+      therapyDurationFor('levothyroxine')!.patientAr,
+      contains('مدى الحياة'),
+    );
+    expect(
+      therapyDurationFor('clopidogrel')!.patientAr,
+      contains('دعامة'),
+    );
+    expect(
+      therapyDurationFor('levonorgestrel-ec')!.kind,
+      TherapyDurationKind.singleUse,
+    );
+  });
+
+  test('resolved patient counseling fills the actionable safety gaps', () {
+    for (final medicine in sampleMedications) {
+      final patient = resolvedPatientCounseling(
+        medicine,
+        timingFallbackAr:
+            medicationPatientTimingInstruction(medicine.id),
+      );
+
+      expect(patient.purposeAr.trim(), isNotEmpty);
+      expect(patient.howToUseAr.trim(), isNotEmpty);
+      expect(
+        patient.timingAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' patient timing missing',
+      );
+      expect(
+        patient.importantAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' important counseling missing',
+      );
+      expect(
+        patient.seekHelpAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' red-flag action missing',
+      );
+      expect(
+        patient.missedDoseAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' missed-dose guidance missing',
+      );
+      expect(
+        patient.teachBackAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' teach-back missing',
+      );
+      expect(
+        patient.timingAr,
+        isNot(contains('Auto')),
+        reason: medicine.name + ' leaked engine wording to patient',
+      );
+      expect(
+        patient.timingAr,
+        isNot(contains('التطبيق')),
+        reason: medicine.name + ' leaked app-engine wording to patient',
+      );
+    }
+
+    PatientCounselingData patient(String id) {
+      final medicine = sampleMedications.firstWhere((item) => item.id == id);
+      return resolvedPatientCounseling(
+        medicine,
+        timingFallbackAr:
+            medicationPatientTimingInstruction(medicine.id),
+      );
+    }
+
+    expect(patient('warfarin').missedDoseAr, contains('نفس اليوم'));
+    expect(patient('rivaroxaban').missedDoseAr, contains('15 mg'));
+    expect(patient('dabigatran').missedDoseAr, contains('6 ساعات'));
+    expect(patient('semaglutide-injection').missedDoseAr, contains('OZEMPIC'));
+    expect(patient('semaglutide-injection').missedDoseAr, contains('WEGOVY'));
+    expect(patient('latanoprost').missedDoseAr, contains('لا تستخدم جرعتين'));
+    expect(patient('norethindrone-pop').missedDoseAr, contains('3 ساعات'));
+    expect(patient('insulin-glargine').missedDoseAr, contains('لا تضاعف'));
+    expect(
+      patient('methotrexate-rheumatology').missedDoseAr,
+      contains('الأسبوعية'),
+    );
+  });
+
+  test('patient guidance patches do not duplicate medication IDs', () {
+    final patchIds = medicationPatientGuidancePatches.keys.toList();
+    expect(patchIds.toSet().length, patchIds.length);
+  });
+
   test('expanded medicines carry structured pharmacist and source content', () {
     expect(expandedMedications.length, greaterThanOrEqualTo(40));
 
@@ -53,6 +235,68 @@ void main() {
       expect(medicine.patient.purposeAr.trim(), isNotEmpty);
       expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
     }
+  });
+
+  test('every medicine has an explicit medication-plan timing rule', () {
+    for (final medicine in sampleMedications) {
+      expect(
+        medicationTimingRules,
+        contains(medicine.id),
+        reason: medicine.name + ' missing timing rule',
+      );
+      expect(
+        medicationTimingRules[medicine.id]!.instructionAr.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' missing Arabic timing instruction',
+      );
+      expect(
+        medicationTimingRules[medicine.id]!.source.trim(),
+        isNotEmpty,
+        reason: medicine.name + ' timing rule needs source',
+      );
+    }
+
+    expect(medicationTimingRules['montelukast']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['insulin-glargine']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['azithromycin']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['quetiapine']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['adalimumab']!.autoScheduleSafe, isFalse);
+    expect(medicationTimingRules['losartan']!.autoScheduleSafe, isTrue);
+    expect(medicationTimingRules['atorvastatin']!.autoScheduleSafe, isTrue);
+  });
+
+  test('every patient-plan supplement has an explicit timing rule', () {
+    final plannerSupplements = supplementProfiles.where(
+      (item) =>
+          item.id != 'growth-amino-acid-blends' &&
+          item.id != 'high-risk-weight-loss-supplements',
+    );
+
+    for (final supplement in plannerSupplements) {
+      expect(
+        medicationTimingRules,
+        contains(supplement.id),
+        reason: supplement.name + ' missing timing rule',
+      );
+      expect(
+        medicationTimingRules[supplement.id]!.instructionAr.trim(),
+        isNotEmpty,
+        reason: supplement.name + ' missing timing instruction',
+      );
+    }
+
+    expect(
+      medicationTimingRules['pediatric-iron']!.autoScheduleSafe,
+      isFalse,
+    );
+    expect(
+      medicationTimingRules['multivitamin-mineral']!.autoScheduleSafe,
+      isFalse,
+    );
+    expect(
+      medicationTimingRules['prenatal-combination']!.autoScheduleSafe,
+      isFalse,
+    );
   });
 
   test('supplement encyclopedia contains all major groups', () {

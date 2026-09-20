@@ -230,6 +230,454 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed Sildenafil ED',
   ),
+  'losartan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في وقت ثابت يوميًا؛ يمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed / MedlinePlus Losartan',
+  ),
+  'salbutamol-mdi': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'غالبًا بخاخ إسعاف عند الحاجة. إذا كانت الوصفة بجرعات ثابتة فاختر توقيتها يدويًا ولا تعتمد Auto.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / device IFU Albuterol HFA',
+  ),
+  'amoxicillin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه؛ ثبّت الفواصل حسب التكرار الموصوف وأكمل الكورس.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Amoxicillin',
+  ),
+  'levetiracetam': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات ثابتة ويمكن مع الطعام أو بدونه؛ انتبه لاختلاف IR وXR.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Levetiracetam',
+  ),
+  'omeprazole': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'غالبًا قبل الوجبة؛ كثير من الأنظمة تؤخذ 30–60 دقيقة قبل الطعام. إذا كانت الوصفة أكثر من مرة أو formulation مختلفًا اختر التوقيت المكتوب في الوصفة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Omeprazole',
+  ),
+  'paracetamol': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مع الطعام أو بدونه، حسب الحاجة/التكرار الموصوف مع مراعاة الحد اليومي من جميع المنتجات.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Acetaminophen',
+  ),
+  'apixaban': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات ثابتة ويمكن مع الطعام أو بدونه؛ لا توقفه أو تغيّر توقيته قبل إجراء دون خطة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA / DailyMed Apixaban',
+  ),
+  'cetirizine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه. إذا سبب نعاسًا يمكن مناقشة تنظيمه مساءً.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Cetirizine',
+  ),
+  'amlodipine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا وفي وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Amlodipine',
+  ),
+  'lisinopril': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في وقت ثابت يوميًا؛ يمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Lisinopril',
+  ),
+  'insulin-glargine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'إنسولين قاعدي: اربطه بالوقت الذي وصفه الطبيب لنفس المنتج. لا ينشئ التطبيق وقتًا تلقائيًا عند اختلاف الخطة/المنتج.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA product IFU Insulin Glargine',
+  ),
+  'budesonide-formoterol': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جرعات الصيانة في أوقات ثابتة حسب الوصفة. استخدامه كمسكن/MART يعتمد على المنتج والخطة ولا يُفترض تلقائيًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / product IFU Budesonide-Formoterol',
+  ),
+  'montelukast': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت يعتمد على الاستطباب؛ للربو كثيرًا ما تكون الجرعة مساءً، بينما تعليمات الحساسية/الجهد تختلف. اختر توقيت الوصفة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Montelukast',
+  ),
+  'ibuprofen': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو الحليب إذا أزعج المعدة؛ استخدم أقل مدة/جرعة مناسبة ولا تجمع NSAID آخر.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Ibuprofen',
+  ),
+  'warfarin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا في وقت ثابت. المهم الثبات والمتابعة مع INR؛ لا تغيّر الجرعات حسب الجدول من نفسك.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Warfarin',
+  ),
+  'upadacitinib': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا مع الطعام أو بدونه؛ ابتلع ER كاملة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA / DailyMed Upadacitinib',
+  ),
+  'tofacitinib': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR وXR لهما جداول مختلفة؛ إذا كان الشكل غير محدد اختر التوقيت يدويًا بدل Auto.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Tofacitinib',
+  ),
+  'dupilumab': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقنة حسب الجدول الخاص بالاستطباب/العمر؛ إذا لم تكن الجرعة أسبوعية فلا يحول التطبيق التكرار من نفسه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DUPIXENT IFU',
+  ),
+  'polyethylene-glycol-3350': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن في وقت يناسب المريض بعد إذابة الجرعة بالكامل؛ ليس مرتبطًا بوجبة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed PEG 3350',
+  ),
+  'lactulose': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات ثابتة حسب الوصفة؛ يمكن مع الطعام أو بدونه. في الاعتلال الدماغي يُعدّل حسب هدف البراز الطبي.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Lactulose',
+  ),
+  'loperamide': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'غالبًا عند الحاجة ضمن الحد المسموح وليس له وقت ثابت؛ إذا وُصف بجدول خاص فاتبع الوصفة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Loperamide',
+  ),
+  'ondansetron-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت يعتمد على سبب الاستخدام (غثيان/علاج كيماوي/عملية)؛ اختر توقيت الوصفة إذا كان محددًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Ondansetron',
+  ),
+  'levonorgestrel-ec': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'خذها بأسرع ما يمكن ضمن نافذة المنتج بعد الجماع غير المحمي؛ ليست جرعة يومية مجدولة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA emergency contraception labeling',
+  ),
+  'latanoprost': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'عادة نقطة مرة يوميًا مساءً؛ لا تستخدم أكثر من مرة يوميًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Latanoprost',
+  ),
+  'paracetamol-pediatric-liquid': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حسب الحاجة والفاصل الموصوف وبالتركيز الصحيح؛ لا ينشئ التطبيق جرعة طفل.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Pediatric Acetaminophen',
+  ),
+  'atorvastatin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا في وقت ثابت؛ يمكن مع الطعام أو بدونه وفي أي وقت من اليوم.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Atorvastatin',
+  ),
+  'spironolactone': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'خذها بطريقة ثابتة بالنسبة للطعام لأن الطعام قد يغيّر الامتصاص؛ التزم بنفس الروتين يوميًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Spironolactone',
+  ),
+  'sertraline': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا؛ مع الطعام أو بدونه وفي وقت ثابت يناسب النوم/التحمل.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Sertraline',
+  ),
+  'gabapentin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR وER/prodrug ليست نفس الجدول أو تعليمات الطعام؛ إذا لم يتحدد formulation اختر توقيت الوصفة يدويًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Gabapentin',
+  ),
+  'clindamycin-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات متباعدة حسب الوصفة، مع كوب ماء كامل؛ الطعام اختياري.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Clindamycin',
+  ),
+  'clopidogrel': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا في وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Clopidogrel',
+  ),
+  'nitroglycerin-sublingual': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'دواء إسعافي عند ألم الذبحة وليس له وقت ثابت؛ استخدم خطة الألم الموصوفة واطلب المساعدة عند استمرار الألم.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Nitroglycerin SL',
+  ),
+  'sitagliptin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Sitagliptin',
+  ),
+  'tiotropium-capsule-inhalation': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا وفي نفس الوقت؛ الكبسولة للاستنشاق فقط وليست للبلع.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA HandiHaler IFU',
+  ),
+  'azithromycin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR يمكن عادة مع الطعام أو بدونه؛ extended-release suspension لها تعليمات معدة فارغة. إذا لم يتحدد المنتج لا تستخدم Auto.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Azithromycin',
+  ),
+  'acyclovir-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'في أوقات متباعدة حسب الوصفة مع ترطيب مناسب إن لم يوجد تقييد سوائل؛ الطعام اختياري.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Acyclovir',
+  ),
+  'metronidazole-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR وER تختلف في علاقتها بالطعام؛ إذا كان الشكل غير محدد اختر توقيت الوصفة يدويًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Metronidazole',
+  ),
+  'combined-oral-contraceptive': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حبة يوميًا في وقت ثابت واتبع ترتيب العبوة بالضبط؛ قواعد الحبوب المنسية تعتمد على المنتج.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'CDC SPR + product labeling',
+  ),
+  'norethindrone-pop': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'نفس الوقت كل يوم مهم جدًا؛ norethindrone POP لها نافذة تأخر أضيق من بعض POP الأخرى.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'CDC SPR + norethindrone labeling',
+  ),
+  'finasteride': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا في وقت ثابت؛ مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Finasteride',
+  ),
+  'timolol-ophthalmic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'قطرة حسب عدد المرات الموصوف؛ ثبّت الأوقات واستخدم ضغط القناة الدمعية لتقليل الامتصاص الجهازي.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Timolol Ophthalmic',
+  ),
+  'ciprofloxacin-ophthalmic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'وزّع القطرات حسب التكرار الموصوف؛ جداول drops وointment تختلف ولا تُفترض تلقائيًا.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Ciprofloxacin Ophthalmic',
+  ),
+  'ciprofloxacin-otic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدم القطرات في أوقات ثابتة حسب المنتج؛ single-agent وcombination ليست نفس التعليمات.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Ciprofloxacin Otic',
+  ),
+  'naproxen': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حسب التكرار الموصوف؛ يمكن مع الطعام إذا أزعج المعدة ولا تجمع NSAID آخر.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Naproxen',
+  ),
+  'senna': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'غالبًا مساءً/قبل النوم لأن المفعول يحتاج عدة ساعات؛ لا تكرر جرعات إضافية بسرعة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Senna',
+  ),
+  'hydrocortisone-topical': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'ضع طبقة رقيقة حسب عدد المرات المكتوب؛ لا يحدد التطبيق أوقاتًا صارمة للدهان الموضعي.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Hydrocortisone Topical',
+  ),
+  'ipratropium-hfa': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'قد يكون مجدولًا أو حسب الحاجة وفق COPD/الخطة؛ إذا لم يكن النظام واضحًا اختر توقيت الوصفة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA Atrovent HFA IFU',
+  ),
+  'fluticasone-hfa': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'بخاخ وقائي في أوقات ثابتة حسب الوصفة؛ ليس مرتبطًا بالطعام.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA Fluticasone inhaler IFU',
+  ),
+  'fluticasone-salmeterol-dpi': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'بخاخ وقائي في أوقات ثابتة حسب الوصفة؛ لا يُستخدم كنفس طريقة بخاخ الإسعاف.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA Fluticasone/Salmeterol DPI IFU',
+  ),
+  'fluconazole-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه؛ عدد الجرعات والمدة يختلفان كثيرًا حسب نوع العدوى.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Fluconazole',
+  ),
+  'cefuroxime-axetil': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'تعليمات الطعام تختلف حسب الشكل؛ كثير من الأقراص تُعطى بعد الطعام لتحسين الامتصاص. تحقق من منتجك.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Cefuroxime Axetil',
+  ),
+  'fluoxetine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا وفي وقت ثابت؛ يمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Fluoxetine',
+  ),
+  'escitalopram': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا وفي وقت ثابت؛ مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Escitalopram',
+  ),
+  'duloxetine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا أو حسب الوصفة؛ يمكن غالبًا مع الطعام أو بدونه، وابتلع delayed-release حسب المنتج.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Duloxetine',
+  ),
+  'amitriptyline': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'إذا كانت جرعة واحدة يوميًا فغالبًا تنظم ليلًا بسبب النعاس؛ اتبع الوصفة إذا كانت الجرعات مقسمة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Amitriptyline',
+  ),
+  'quetiapine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR وXR تختلف في التوقيت والطعام؛ اختر توقيت الوصفة ولا تعتمد Auto إذا لم يتحدد المنتج.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Quetiapine',
+  ),
+  'famotidine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت يعتمد على الاستطباب ويمكن مع الطعام أو بدونه؛ جرعات الوقاية من الحموضة قد ترتبط بوجبة محفزة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Famotidine',
+  ),
+  'celecoxib': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت والطعام يعتمدان على الجرعة/المنتج؛ استخدم الجدول الموصوف ولا تجمع NSAID آخر.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Celecoxib',
+  ),
+  'diclofenac-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'IR/DR/ER ليست نفس التوقيت أو التعامل؛ اختر توقيت الوصفة ولا تعتمد Auto دون معرفة المنتج.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA / DailyMed Diclofenac',
+  ),
+  'colchicine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جدول النوبة والوقاية مختلفان؛ استخدم النظام الموصوف ولا يحول التطبيق بينهما.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'DailyMed Colchicine',
+  ),
+  'enoxaparin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقن تحت الجلد في أوقات ثابتة حسب q24h/q12h الموصوف؛ الطعام غير مهم.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA Enoxaparin IFU',
+  ),
+  'loratadine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'مرة يوميًا غالبًا ويمكن مع الطعام أو بدونه.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'DailyMed Loratadine',
+  ),
+  'tacrolimus-topical': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'ضع طبقة رقيقة حسب عدد المرات الموصوف؛ لا تربطه بوجبة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: true,
+    source: 'FDA Tacrolimus Ointment',
+  ),
+  'adalimumab': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'الجدول يختلف حسب الاستطباب والمنتج (أسبوعي/كل أسبوعين/تحميل). لا تعتمد Auto إلا إذا أدخلت تكرار الوصفة بدقة.',
+    requiresMealChoice: false,
+    autoScheduleSafe: false,
+    source: 'FDA Adalimumab IFU',
+  ),
   'oral-iron-salts': MedicationTimingRule(
     anchor: 'empty-stomach',
     instructionAr:
@@ -263,4 +711,141 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'إذا استُخدم مع tetracycline/quinolone antibiotic يحتاج فصلًا زمنيًا.',
     source: 'NIH ODS Zinc',
   ),
+  'vitamin-b12': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لا يحتاج وجبة خاصة عادةً؛ اتبع شكل المنتج وتعليماته لأن lozenge/sublingual والوصفات قد تختلف.',
+    source: 'NIH ODS Vitamin B12',
+  ),
+  'folic-acid': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن تنظيمه في وقت ثابت حسب الوصفة أو المنتج؛ لا يحتاج وجبة دهنية خاصة.',
+    source: 'NIH ODS Folate',
+  ),
+  'vitamin-c': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن في وقت يناسبك حسب المنتج؛ إذا أزعج المعدة يمكن ربطه بالطعام بدل زيادة الجرعة.',
+    source: 'NIH ODS Vitamin C / MedlinePlus Ascorbic Acid',
+  ),
+  'vitamin-a': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع المنتج والجرعة المقصودة؛ لا يضع التطبيق جرعات عالية تلقائيًا ولا يكرر vitamin A الموجود في multivitamin.',
+    source: 'NIH ODS Vitamin A',
+  ),
+  'vitamin-e': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع تعليمات المنتج أو الوصفة؛ لا يحتاج التطبيق إلى فرض وقت وجبة موحد لكل منتج.',
+    source: 'NIH ODS Vitamin E / MedlinePlus',
+  ),
+  'vitamin-k': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع المنتج. مع warfarin لا تغيّر مكمل vitamin K أو كميته من نفسك؛ المشكلة ليست توقيتًا فقط.',
+    source: 'NIH ODS Vitamin K',
+  ),
+  'iodine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'استخدم الكمية المقصودة حسب المنتج، وراجع تكراره داخل prenatal/multivitamin وأمراض الغدة الدرقية.',
+    source: 'NIH ODS Iodine',
+  ),
+  'selenium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن تنظيمه حسب المنتج؛ لا تجمع عدة منتجات تحتوي selenium دون حاجة واضحة.',
+    source: 'NIH ODS Selenium',
+  ),
+  'pediatric-vitamin-d': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'أعط الجرعة باستمرار في وقت يناسب مقدم الرعاية، لكن تحقّق من IU لكل قطرة أو mL لنفس المنتج.',
+    source: 'CDC Infant Vitamin D / NIH ODS Vitamin D',
+  ),
+  'pediatric-iron': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'توقيت حديد الرضع/الأطفال يعتمد على التركيز ونمط التغذية والخطة؛ اختر التوقيت الموصوف ولا تعتمد Auto.',
+    autoScheduleSafe: false,
+    source: 'CDC Iron / pediatric iron guidance',
+  ),
+  'multivitamin-mineral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'راجع مكونات المنتج أولًا؛ وجود iron/calcium/magnesium قد يفرض فصلًا عن أدوية أخرى، لذلك اختر التوقيت يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Ingredient-level NIH ODS guidance',
+  ),
+  'prenatal-combination': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'التوقيت يعتمد على مكونات prenatal وتحمل المعدة؛ بسبب الحديد/الكالسيوم المحتملين اختر التوقيت يدويًا وراجع الفصل عن الأدوية.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS prenatal nutrient guidance',
+  ),
 };
+
+
+const medicationPatientTimingOverrides = <String, String>{
+  'insulin-lispro':
+      'اربط الجرعة بالوجبة تمامًا حسب خطة الإنسولين الخاصة بك؛ لا تحقن ثم تؤخر أو تتجاوز الوجبة من دون خطة واضحة.',
+  'prednisone':
+      'اتبع وقت الجرعة المكتوب في الوصفة. إذا كانت جرعة واحدة يوميًا فكثيرًا ما تُنظم صباحًا، أما الجرعات المقسمة أو taper فلها جدول خاص.',
+  'metoclopramide':
+      'قد يُؤخذ قبل الوجبات حسب سبب الاستخدام؛ التزم بالوقت المكتوب في وصفتك ولا تمدد العلاج من نفسك.',
+  'sildenafil-ed':
+      'يُستخدم عند الحاجة قبل النشاط الجنسي حسب الوصفة، وليس كجرعة يومية ثابتة إلا إذا وصف الطبيب نظامًا مختلفًا.',
+  'salbutamol-mdi':
+      'يُستخدم غالبًا عند الحاجة حسب خطة الربو/COPD. إذا أصبحت تحتاجه أكثر من المعتاد فراجع السيطرة على المرض بدل زيادة الاستخدام من نفسك.',
+  'insulin-glargine':
+      'هذا إنسولين قاعدي يُعطى في الوقت المحدد لخطة منتجك، وغالبًا في وقت ثابت يوميًا. لا تربطه بالوجبات مثل الإنسولين السريع.',
+  'budesonide-formoterol':
+      'استخدم جرعات الصيانة في الأوقات المكتوبة. إذا وصفه الطبيب أيضًا كمسكن ضمن MART/SMART فاتبع نفس خطة البخاخ بدقة.',
+  'montelukast':
+      'وقت الجرعة يعتمد على سبب الاستخدام والعمر؛ التزم بالوقت المكتوب في الوصفة ولا تستخدمه كدواء إسعاف للنوبة.',
+  'tofacitinib':
+      'النوع العادي وXR لهما جداول مختلفة؛ اتبع اسم المنتج وعدد المرات المكتوب ولا تبدل بينهما بنفسك.',
+  'dupilumab':
+      'الحقن قد تكون أسبوعية أو كل أسبوعين أو كل 4 أسابيع حسب الحالة والعمر؛ التزم بيوم وجدول الحقن الموصوف.',
+  'gabapentin':
+      'النوع العادي والمنتجات ممتدة المفعول ليست نفس طريقة الاستخدام أو علاقة الطعام؛ اتبع اسم المنتج وجدوله.',
+  'azithromycin':
+      'الحبوب/المعلق العادي يمكن غالبًا أخذهما مع الطعام أو بدونه، بينما بعض المنتجات ممتدة المفعول لها تعليمات معدة فارغة؛ اتبع منتجك.',
+  'metronidazole-oral':
+      'تعليمات الطعام تختلف بين النوع العادي والممتد المفعول؛ اتبع اسم المنتج والوقت المكتوب في الوصفة.',
+  'ciprofloxacin-ophthalmic':
+      'استخدم القطرات أو المرهم في المواعيد وعدد المرات المكتوب لمنتجك، ولا تستخدم طريقة المرهم كأنها نفس طريقة القطرات.',
+  'ciprofloxacin-otic':
+      'استخدم قطرات الأذن في المواعيد وعدد القطرات المكتوب لمنتجك؛ بعض المنتجات مركبة مع steroid ولها تعليمات مختلفة.',
+  'ipratropium-hfa':
+      'قد يكون البخاخ مجدولًا أو حسب الحاجة حسب خطة COPD/الربو؛ اتبع عدد البخات والمواعيد المكتوبة لجهازك.',
+  'cefuroxime-axetil':
+      'تعليمات الطعام تختلف حسب الشكل الصيدلاني؛ اتبع منتجك، وكثير من الأقراص تؤخذ بعد الطعام لتحسين الامتصاص.',
+  'quetiapine':
+      'النوع العادي وXR يختلفان في التوقيت والطعام؛ اتبع اسم المنتج والجدول المكتوب ولا تسحق XR.',
+  'diclofenac-oral':
+      'النوع العادي والمغلف معويًا والممتد المفعول ليست نفس طريقة الاستخدام؛ اتبع المنتج والجرعات المكتوبة.',
+  'colchicine':
+      'جدول علاج نوبة النقرس مختلف عن جدول الوقاية؛ استخدم النظام المكتوب لك ولا تكرر جرعات النوبة من وصفة قديمة.',
+  'adalimumab':
+      'الحقن قد تكون أسبوعية أو كل أسبوعين وقد توجد جرعات تحميل حسب المرض؛ اتبع جدول نفس المنتج والاستطباب.',
+  'paracetamol-pediatric-liquid':
+      'يُعطى حسب الحاجة للحمى أو الألم مع الالتزام بالفاصل المكتوب على نفس التركيز وعدم إعطاء جرعتين متقاربتين.',
+  'hydrocortisone-topical':
+      'ضع طبقة رقيقة على المنطقة المصابة حسب عدد المرات المكتوب، ووزّع الدهان على اليوم بما يناسب تعليمات الوصفة.',
+  'pediatric-iron':
+      'توقيت حديد الطفل يعتمد على التركيز ونمط الرضاعة/الطعام وخطة العلاج؛ اتبع تعليمات طبيب الأطفال أو الصيدلي لنفس المنتج.',
+  'multivitamin-mineral':
+      'اختر وقتًا ثابتًا يناسبك بعد مراجعة المكونات؛ وجود الحديد أو الكالسيوم أو المغنيسيوم قد يحتاج فصله عن بعض الأدوية.',
+  'prenatal-combination':
+      'يمكن تنظيم prenatal في وقت ثابت يتحمله المعدة، لكن وجود الحديد/الكالسيوم قد يحتاج فصله عن بعض الأدوية مثل levothyroxine.',
+};
+
+String medicationPatientTimingInstruction(String sourceId) {
+  final override = medicationPatientTimingOverrides[sourceId];
+  if (override != null && override.trim().isNotEmpty) return override.trim();
+  return medicationTimingRules[sourceId]?.instructionAr.trim() ?? '';
+}

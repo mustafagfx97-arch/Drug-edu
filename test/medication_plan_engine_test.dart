@@ -282,4 +282,189 @@ void main() {
     );
   });
 
+
+  test('latanoprost auto timing follows evening bedtime anchor', () {
+    final plan = engine.generate(
+      items: [item('latanoprost', 'Latanoprost Eye Drops')],
+      routine: routine,
+    );
+
+    expect(plan.doses.single.minutes, routine.bedtimeMinutes);
+  });
+
+  test('indication-dependent montelukast blocks automatic timing', () {
+    final plan = engine.generate(
+      items: [item('montelukast', 'Montelukast')],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title.contains('Timing required') && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('simple once-daily atorvastatin can be organized automatically', () {
+    final plan = engine.generate(
+      items: [item('atorvastatin', 'Atorvastatin')],
+      routine: routine,
+    );
+
+    expect(plan.doses.length, 1);
+    expect(plan.doses.single.instructionAr, contains('مرة يوميًا'));
+  });
+
+  test('formulation-dependent azithromycin blocks Auto', () {
+    final plan = engine.generate(
+      items: [item('azithromycin', 'Azithromycin')],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(plan.alerts.any((alert) => alert.isCritical), isTrue);
+  });
+
+
+  test('clopidogrel plus omeprazole creates interaction review alert', () {
+    final plan = engine.generate(
+      items: [
+        item('clopidogrel', 'Clopidogrel'),
+        item(
+          'omeprazole',
+          'Omeprazole',
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Clopidogrel + omeprazole' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('valproate plus lamotrigine creates high-risk titration alert', () {
+    final plan = engine.generate(
+      items: [
+        item('valproic-acid', 'Valproate'),
+        item('lamotrigine', 'Lamotrigine'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Valproate + lamotrigine' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('carbamazepine plus DOAC creates efficacy interaction alert', () {
+    final plan = engine.generate(
+      items: [
+        item('carbamazepine', 'Carbamazepine'),
+        item(
+          'rivaroxaban',
+          'Rivaroxaban',
+          preference: TimingPreference.dinner,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Carbamazepine + DOAC' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('two NSAIDs create duplicate-class alert', () {
+    final plan = engine.generate(
+      items: [
+        item('ibuprofen', 'Ibuprofen'),
+        item('naproxen', 'Naproxen'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'NSAID duplication' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('NSAID plus RAS blocker plus diuretic creates AKI alert', () {
+    final plan = engine.generate(
+      items: [
+        item('ibuprofen', 'Ibuprofen'),
+        item('lisinopril', 'Lisinopril'),
+        item('furosemide', 'Furosemide'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'AKI risk: NSAID + RAS blocker + diuretic' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('warfarin plus fluconazole creates INR review alert', () {
+    final plan = engine.generate(
+      items: [
+        item('warfarin', 'Warfarin'),
+        item('fluconazole-oral', 'Fluconazole'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Warfarin interaction · INR review' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+
+  test('omeprazole twice daily preserves both pre-meal doses', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'omeprazole',
+          'Omeprazole',
+          frequency: RegimenFrequency.twiceDaily,
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses.length, 2);
+    final times = plan.doses.map((dose) => dose.minutes).toList()..sort();
+    expect(
+      times,
+      [routine.breakfastMinutes - 45, routine.dinnerMinutes - 45],
+    );
+  });
+
 }

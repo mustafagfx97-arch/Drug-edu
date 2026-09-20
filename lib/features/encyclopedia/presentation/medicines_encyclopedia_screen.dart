@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/data/medication_clinical_overlays.dart';
 import '../../../core/data/sample_families.dart';
 import '../../../core/data/sample_medications.dart';
 import '../../../core/models/medication.dart';
@@ -63,16 +64,24 @@ class _MedicinesEncyclopediaScreenState extends State<MedicinesEncyclopediaScree
       medicine.patient.commonActionableAr,
     ].join(' ').toLowerCase();
 
+    final useProfileText = resolvedMedicationUseProfile(medicine)
+        .facts
+        .map((fact) => fact.title + ' ' + fact.value)
+        .join(' ')
+        .toLowerCase();
+
     return medicine.name.toLowerCase().contains(query) ||
         medicine.subtitle.toLowerCase().contains(query) ||
         medicine.tags.any((tag) => tag.toLowerCase().contains(query)) ||
-        medicine.aliases.any((alias) => alias.toLowerCase().contains(query)) ||
+        resolvedMedicationAliases(medicine)
+            .any((alias) => alias.toLowerCase().contains(query)) ||
         medicine.sections.any(
           (section) =>
               section.title.toLowerCase().contains(query) ||
               section.body.toLowerCase().contains(query),
         ) ||
-        patientText.contains(query);
+        patientText.contains(query) ||
+        useProfileText.contains(query);
   }
 
   int _medicineCount(String familyId) {

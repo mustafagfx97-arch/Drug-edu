@@ -184,6 +184,7 @@ class MedicationPlanEngine {
       final base = preferred ??
           switch (rule.anchor) {
             'before-breakfast' => routine.breakfastMinutes - 45,
+            'before-meal' => routine.breakfastMinutes - 45,
             'breakfast' => routine.breakfastMinutes,
             'morning' => routine.wakeMinutes + 60,
             'bedtime' => routine.bedtimeMinutes,
@@ -201,6 +202,25 @@ class MedicationPlanEngine {
 
     if (rule.anchor == 'before-breakfast') {
       return [routine.breakfastMinutes - 45];
+    }
+
+    if (rule.anchor == 'before-meal') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine) - 45];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes - 45];
+          case TimingPreference.bedtime:
+            return [routine.dinnerMinutes - 45];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _beforeMealTimes(item.frequency, routine);
     }
 
     if (rule.anchor == 'with-meal') {
@@ -260,6 +280,60 @@ class MedicationPlanEngine {
         return [routine.breakfastMinutes + 60];
       default:
         return _defaultTimes(item.frequency, routine);
+    }
+  }
+
+  List<int> _beforeMealTimes(
+    RegimenFrequency frequency,
+    PatientRoutine routine,
+  ) {
+    switch (frequency) {
+      case RegimenFrequency.onceDaily:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.twiceDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.dinnerMinutes - 45,
+        ];
+      case RegimenFrequency.threeTimesDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.lunchMinutes - 45,
+          routine.dinnerMinutes - 45,
+        ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.lunchMinutes - 45,
+          routine.dinnerMinutes - 45,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 720,
+        ];
+      case RegimenFrequency.every8Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 480,
+          routine.breakfastMinutes - 45 + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.breakfastMinutes - 45,
+          routine.breakfastMinutes - 45 + 360,
+          routine.breakfastMinutes - 45 + 720,
+          routine.breakfastMinutes - 45 + 1080,
+        ];
+      case RegimenFrequency.morning:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.bedtime:
+        return [routine.bedtimeMinutes];
+      case RegimenFrequency.weekly:
+        return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.asNeeded:
+        return const [];
     }
   }
 
@@ -644,6 +718,237 @@ class MedicationPlanEngine {
           title: 'Sucralfate separation review',
           message:
               'sucralfate قد يقلل امتصاص أدوية متعددة. الفاصل الزمني ليس رقمًا واحدًا لكل الأدوية؛ راجع كل دواء في القائمة قبل اعتماد الجدول النهائي.',
+        ),
+      );
+    }
+
+    final anticoagulants = <String>{
+      'warfarin',
+      'apixaban',
+      'rivaroxaban',
+      'dabigatran',
+      'enoxaparin',
+    }.where(ids.contains).toList();
+    if (anticoagulants.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'More than one anticoagulant',
+          message:
+              'يوجد أكثر من مميع دم في القائمة. قد يكون الجمع مقصودًا لفترة انتقالية مثل bridging، لكنه يحتاج خطة واضحة؛ فصل الأوقات لا يقلل خطر النزف.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final nsaids = <String>{
+      'ibuprofen',
+      'naproxen',
+      'celecoxib',
+      'diclofenac-oral',
+    }.where(ids.contains).toList();
+    if (nsaids.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'NSAID duplication',
+          message:
+              'يوجد أكثر من NSAID. الجمع الروتيني بينها يزيد مخاطر المعدة والكلى والقلب ولا تصبح آمنة بمجرد فصل الجرعات.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final hasAntiplatelet =
+        ids.contains('clopidogrel') || ids.contains('aspirin');
+    if (hasAntiplatelet &&
+        (anticoagulants.isNotEmpty || nsaids.isNotEmpty)) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Antithrombotic / bleeding-risk stacking',
+          message:
+              'وجود clopidogrel/antiplatelet مع مميع دم أو NSAID يرفع خطر النزف. قد يكون الجمع مقصودًا في بعض حالات القلب، لكنه يحتاج مراجعة الخطة وليس تعديل الساعة فقط.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('clopidogrel') && ids.contains('omeprazole')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Clopidogrel + omeprazole',
+          message:
+              'omeprazole قد يقلل تفعيل clopidogrel عبر CYP2C19. فصل الوقت لا يحل التداخل؛ راجع الحاجة والبديل المناسب مع الصيدلي/الطبيب.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('spironolactone') &&
+        (ids.contains('lisinopril') ||
+            ids.contains('losartan') ||
+            ids.contains('sacubitril-valsartan'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Potassium / renal monitoring',
+          message:
+              'spironolactone مع ACEI/ARB/ARNI قد يكون مقصودًا خصوصًا في فشل القلب، لكنه يزيد خطر ارتفاع البوتاسيوم وتدهور وظائف الكلى. راجع K⁺/renal monitoring ولا تضف بدائل ملح أو بوتاسيوم من نفسك.',
+        ),
+      );
+    }
+
+    final hasRasDrug = ids.contains('lisinopril') ||
+        ids.contains('losartan') ||
+        ids.contains('sacubitril-valsartan');
+    final hasDiuretic = ids.contains('furosemide') ||
+        ids.contains('hydrochlorothiazide') ||
+        ids.contains('spironolactone');
+    if (nsaids.isNotEmpty && hasRasDrug && hasDiuretic) {
+      alerts.add(
+        const PlanAlert(
+          title: 'AKI risk: NSAID + RAS blocker + diuretic',
+          message:
+              'هذه التوليفة قد تزيد خطر تدهور الكلى/الجفاف، خصوصًا أثناء المرض أو نقص السوائل. لا يكفي فصل الجرعات؛ راجع ضرورة NSAID وخطة وظائف الكلى والسوائل.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final hasQtRiskPartner = ids.contains('azithromycin') ||
+        ids.contains('ciprofloxacin-oral') ||
+        ids.contains('fluconazole-oral') ||
+        ids.contains('ondansetron-oral');
+    if (ids.contains('amiodarone-oral') && hasQtRiskPartner) {
+      alerts.add(
+        const PlanAlert(
+          title: 'QT / arrhythmia interaction review',
+          message:
+              'amiodarone مع دواء آخر قد يطيل QT يحتاج مراجعة ECG والإلكتروليتات والبدائل حسب الحالة. فصل وقت الجرعات لا يلغي الخطر.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('digoxin') &&
+        (ids.contains('metoprolol') ||
+            ids.contains('carvedilol') ||
+            ids.contains('diltiazem-er'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Digoxin + rate-slowing medicine',
+          message:
+              'الجمع قد يكون مقصودًا لكنه قد يزيد بطء النبض أو اضطراب التوصيل. راجع النبض، الأعراض وخطة المراقبة؛ فصل الجرعات لا يمنع التأثير المشترك.',
+        ),
+      );
+    }
+
+    if (ids.contains('valproic-acid') && ids.contains('lamotrigine')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Valproate + lamotrigine',
+          message:
+              'valproate يرفع تعرض lamotrigine ويزيد خطر الطفح الخطير؛ جرعة وبداية/تصعيد lamotrigine يجب أن تتبع نظامًا خاصًا. لا تستخدم جدول جرعات عادي لهذه التوليفة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final hasDoac = ids.contains('apixaban') ||
+        ids.contains('rivaroxaban') ||
+        ids.contains('dabigatran');
+    if (ids.contains('carbamazepine') && hasDoac) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Carbamazepine + DOAC',
+          message:
+              'carbamazepine محفز إنزيمي قوي وقد يقلل تعرض بعض مميعات DOAC ويضعف الحماية من الجلطات. التداخل لا يُحل بفصل الوقت ويحتاج مراجعة العلاج.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('carbamazepine') &&
+        (ids.contains('combined-oral-contraceptive') ||
+            ids.contains('norethindrone-pop'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Carbamazepine + hormonal contraception',
+          message:
+              'carbamazepine قد يقلل فعالية موانع الحمل الهرمونية. تغيير وقت الحبة لا يحل التداخل؛ راجع وسيلة مناسبة/إضافية حسب الإرشادات.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('warfarin') &&
+        (ids.contains('metronidazole-oral') ||
+            ids.contains('fluconazole-oral'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Warfarin interaction · INR review',
+          message:
+              'metronidazole أو fluconazole قد يرفع تأثير warfarin بشكل مهم. يحتاج INR وخطة جرعة/متابعة أقرب؛ فصل وقت الجرعات لا يمنع التداخل.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('glimepiride') &&
+        (ids.contains('insulin-glargine') || ids.contains('insulin-lispro'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Hypoglycemia-risk combination',
+          message:
+              'glimepiride مع insulin قد يرفع خطر هبوط السكر. قد تكون التوليفة مقصودة لكن راجع جرعات السكر وخطة علاج الهبوط بدل الاعتماد على توقيت مختلف.',
+        ),
+      );
+    }
+
+    if ((ids.contains('empagliflozin') || ids.contains('dapagliflozin')) &&
+        (ids.contains('furosemide') ||
+            ids.contains('hydrochlorothiazide'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Volume-depletion review',
+          message:
+              'SGLT2 inhibitor مع مدر بول قد يزيد التبول والجفاف/هبوط الضغط عند بعض المرضى. راجع السوائل والضغط ووظائف الكلى وخطة أيام المرض.',
+        ),
+      );
+    }
+
+    if (ids.contains('gabapentin') && ids.contains('pregabalin')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Gabapentinoid duplication review',
+          message:
+              'gabapentin وpregabalin من نفس الفئة الوظيفية وقد يزيد الجمع الدوخة والنعاس. تأكد أن الجمع/التحويل مقصود وله خطة واضحة.',
+        ),
+      );
+    }
+
+    final doxyMinerals = ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('zinc') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('doxycycline') && doxyMinerals) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Doxycycline + minerals',
+          message:
+              'الحديد/الكالسيوم/المغنيسيوم/الزنك قد تقلل امتصاص doxycycline. ضع فاصلًا حسب ملصق المنتج والمعدن ولا تجمعها في نفس وقت الجرعة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('levothyroxine') &&
+        ids.contains('magnesium-gluconate')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Levothyroxine + magnesium',
+          message:
+              'المغنيسيوم قد يقلل امتصاص levothyroxine؛ افصل الجرعات وفق تعليمات المنتج/خطة الصيدلي، وغالبًا يُستخدم فاصل عدة ساعات.',
         ),
       );
     }

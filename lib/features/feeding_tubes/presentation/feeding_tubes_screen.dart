@@ -65,6 +65,50 @@ class FeedingTubesScreen extends StatelessWidget {
               height: 1.45,
             ),
           ),
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primaryContainer.withValues(alpha: 0.45),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _TubeRule(
+                  title: '1. Verify the exact formulation',
+                  body:
+                      'Do not assume a tablet can be crushed because another formulation of the same drug can be.',
+                ),
+                _TubeRule(
+                  title: '2. Give medicines separately',
+                  body:
+                      'Do not mix multiple medicines together in one cup or syringe unless a validated protocol specifically allows it.',
+                ),
+                _TubeRule(
+                  title: '3. Flush is patient- and tube-specific',
+                  body:
+                      'Use the prescribed/local flush volume. Neonates, fluid-restricted patients and small-bore tubes require individualized volumes.',
+                ),
+                _TubeRule(
+                  title: '4. Do not stop feeds routinely',
+                  body:
+                      'Hold or separate enteral nutrition only when the medicine has a documented interaction or administration requirement.',
+                ),
+                _TubeRule(
+                  title: '5. Tube tip location matters',
+                  body:
+                      'Gastric and post-pyloric administration are not automatically interchangeable for every medicine or formulation.',
+                ),
+                _TubeRule(
+                  title: '6. Injectable by mouth requires verification',
+                  body:
+                      'Never assume an IV/IM ampoule is safe to drink. Oral use must be supported for the exact formulation.',
+                  isLast: true,
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 18),
           for (final section in sections) ...[
             Card(
@@ -95,6 +139,43 @@ class FeedingTubesScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+class _TubeRule extends StatelessWidget {
+  const _TubeRule({
+    required this.title,
+    required this.body,
+    this.isLast = false,
+  });
+
+  final String title;
+  final String body;
+  final bool isLast;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: EdgeInsets.only(bottom: isLast ? 0 : 13),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: theme.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 3),
+          Text(
+            body,
+            style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
+          ),
         ],
       ),
     );

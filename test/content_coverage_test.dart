@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
+import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
@@ -114,6 +115,35 @@ void main() {
     expect(facts('nitroglycerin-sublingual'), contains('pde-5'));
     expect(facts('semaglutide-injection'), contains('ozempic'));
     expect(facts('metformin'), contains('extended-release'));
+  });
+
+  test('every medicine has explicit patient-facing therapy duration', () {
+    final medicineIds = sampleMedications.map((medicine) => medicine.id).toSet();
+    expect(medicationTherapyDurations.length, sampleMedications.length);
+    expect(medicationTherapyDurations.keys.toSet(), medicineIds);
+
+    for (final medicine in sampleMedications) {
+      final guidance = therapyDurationFor(medicine.id);
+      expect(guidance, isNotNull, reason: medicine.name + ' duration missing');
+      expect(guidance!.patientAr.trim(), isNotEmpty);
+    }
+
+    expect(
+      therapyDurationFor('prednisone')!.patientAr,
+      contains('تقليل'),
+    );
+    expect(
+      therapyDurationFor('levothyroxine')!.patientAr,
+      contains('مدى الحياة'),
+    );
+    expect(
+      therapyDurationFor('clopidogrel')!.patientAr,
+      contains('دعامة'),
+    );
+    expect(
+      therapyDurationFor('levonorgestrel-ec')!.kind,
+      TherapyDurationKind.singleUse,
+    );
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

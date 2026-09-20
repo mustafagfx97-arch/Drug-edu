@@ -390,6 +390,7 @@ class MedicationPlanEngine {
         if (ids.contains('calcium-citrate')) 'Calcium Citrate',
         if (ids.contains('multivitamin-mineral')) 'Multivitamin/Mineral',
         if (ids.contains('prenatal-combination')) 'Prenatal vitamin',
+        if (ids.contains('magnesium-oxide')) 'Magnesium Oxide',
       ];
       if (blockers.isNotEmpty) {
         alerts.add(
@@ -462,6 +463,152 @@ class MedicationPlanEngine {
               'خذ الجرعة مع الماء، وليس مع عصير التفاح أو البرتقال أو الجريب فروت.',
         ),
       );
+    }
+
+    final mineralIds = <String>{
+      'oral-iron-salts',
+      'calcium-carbonate',
+      'calcium-citrate',
+      'magnesium-gluconate',
+      'magnesium-oxide',
+      'zinc',
+      'multivitamin-mineral',
+      'prenatal-combination',
+    };
+    final presentMinerals = ids.intersection(mineralIds);
+    final chelatingAntibiotics = <String>{
+      'doxycycline',
+      'ciprofloxacin-oral',
+      'levofloxacin-oral',
+    };
+    final presentChelatingAntibiotics = ids.intersection(chelatingAntibiotics);
+    if (presentMinerals.isNotEmpty && presentChelatingAntibiotics.isNotEmpty) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Antibiotic + mineral separation',
+          message:
+              'يوجد tetracycline/fluoroquinolone مع iron/calcium/magnesium/zinc أو multivitamin. هذه المعادن قد تقلل امتصاص المضاد؛ الفاصل يختلف حسب المضاد والمنتج، لذلك راجع تعليمات كل دواء ولا تعتمد مجرد فصل عشوائي.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final raasIds = <String>{
+      'lisinopril',
+      'enalapril',
+      'ramipril',
+      'losartan',
+      'valsartan',
+      'candesartan',
+      'sacubitril-valsartan',
+      'spironolactone',
+      'eplerenone',
+    };
+    if (ids.contains('potassium-oral') &&
+        ids.intersection(raasIds).isNotEmpty) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Potassium + potassium-raising therapy',
+          message:
+              'يوجد مكمل بوتاسيوم مع ACEI/ARB/ARNI أو mineralocorticoid antagonist. هذه ليست مشكلة توقيت؛ تأكد من الحاجة والجرعة وتحليل البوتاسيوم ووظائف الكلى.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final allAnticoagulants = <String>{
+      'warfarin',
+      'apixaban',
+      'rivaroxaban',
+      'dabigatran',
+      'edoxaban',
+      'enoxaparin',
+    };
+    final antiplatelets = <String>{
+      'aspirin-low-dose',
+      'clopidogrel',
+    };
+    final broaderNsaids = <String>{
+      'ibuprofen',
+      'ibuprofen-pediatric-liquid',
+      'naproxen',
+      'celecoxib',
+      'meloxicam',
+    };
+    if (ids.intersection(allAnticoagulants).isNotEmpty &&
+        ids.intersection(antiplatelets).isNotEmpty) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Anticoagulant + antiplatelet',
+          message:
+              'وجود مميع دم مع aspirin أو clopidogrel قد يكون مقصودًا في حالات محددة لكنه يرفع خطر النزف. لا تغيّر التوقيت فقط؛ راجع سبب الجمع ومدته.',
+          isCritical: true,
+        ),
+      );
+    }
+    if ((ids.intersection(allAnticoagulants).isNotEmpty ||
+            ids.intersection(antiplatelets).isNotEmpty) &&
+        ids.intersection(broaderNsaids).isNotEmpty) {
+      alerts.add(
+        const PlanAlert(
+          title: 'NSAID + bleeding-risk therapy',
+          message:
+              'يوجد NSAID مع anticoagulant/antiplatelet. الفصل بالساعات لا يزيل خطر النزف أو أذية المعدة/الكلى؛ راجع ضرورة الجمع والبدائل.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('trimethoprim-sulfamethoxazole') &&
+        ids.contains('methotrexate-rheumatology')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Methotrexate + trimethoprim/sulfamethoxazole',
+          message:
+              'تداخل عالي الأهمية قد يزيد تثبيط نخاع العظم وسمية methotrexate. لا تعتمد على فصل الوقت؛ يحتاج مراجعة علاجية مباشرة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('linezolid-oral')) {
+      final serotonergic = <String>{
+        'sertraline',
+        'fluoxetine',
+        'escitalopram',
+        'venlafaxine-xr',
+        'duloxetine',
+        'amitriptyline',
+        'tramadol',
+      };
+      if (ids.intersection(serotonergic).isNotEmpty) {
+        alerts.add(
+          const PlanAlert(
+            title: 'Linezolid + serotonergic medicine',
+            message:
+                'يوجد linezolid مع دواء serotonergic. هذا تداخل علاجي وليس مجرد توقيت؛ راجع خطر serotonin toxicity وخطة الإيقاف/المراقبة مع الطبيب والصيدلي.',
+            isCritical: true,
+          ),
+        );
+      }
+    }
+
+    if (ids.contains('clarithromycin')) {
+      final cyp3aSensitive = <String>{
+        'atorvastatin',
+        'diltiazem-er',
+        'verapamil-er',
+      };
+      if (ids.intersection(cyp3aSensitive).isNotEmpty) {
+        alerts.add(
+          const PlanAlert(
+            title: 'Clarithromycin interaction review',
+            message:
+                'Clarithromycin يثبط CYP3A4 وقد يرفع مستويات بعض statins أو diltiazem/verapamil. يحتاج تعديل/بديل أو مراقبة حسب المجموعة.',
+            isCritical: true,
+          ),
+        );
+      }
     }
   }
 

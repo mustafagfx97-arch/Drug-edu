@@ -12,6 +12,8 @@ class SupplementProfile {
     required this.patient,
     required this.sourceLabel,
     this.formulationAlert = '',
+    this.useBasis = 'Individualized',
+    this.monitoringEn = '',
     this.isPediatric = false,
   });
 
@@ -22,6 +24,8 @@ class SupplementProfile {
   final String formulation;
   final String howToTakeEn;
   final String formulationAlert;
+  final String useBasis;
+  final String monitoringEn;
   final List<MedicationSection> pharmacistSections;
   final PatientCounselingData patient;
   final String sourceLabel;

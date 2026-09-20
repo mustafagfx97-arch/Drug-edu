@@ -188,6 +188,40 @@ void main() {
     expect(medicationTimingRules['atorvastatin']!.autoScheduleSafe, isTrue);
   });
 
+  test('every patient-plan supplement has an explicit timing rule', () {
+    final plannerSupplements = supplementProfiles.where(
+      (item) =>
+          item.id != 'growth-amino-acid-blends' &&
+          item.id != 'high-risk-weight-loss-supplements',
+    );
+
+    for (final supplement in plannerSupplements) {
+      expect(
+        medicationTimingRules,
+        contains(supplement.id),
+        reason: supplement.name + ' missing timing rule',
+      );
+      expect(
+        medicationTimingRules[supplement.id]!.instructionAr.trim(),
+        isNotEmpty,
+        reason: supplement.name + ' missing timing instruction',
+      );
+    }
+
+    expect(
+      medicationTimingRules['pediatric-iron']!.autoScheduleSafe,
+      isFalse,
+    );
+    expect(
+      medicationTimingRules['multivitamin-mineral']!.autoScheduleSafe,
+      isFalse,
+    );
+    expect(
+      medicationTimingRules['prenatal-combination']!.autoScheduleSafe,
+      isFalse,
+    );
+  });
+
   test('supplement encyclopedia contains all major groups', () {
     final groups = supplementProfiles.map((item) => item.group).toSet();
 

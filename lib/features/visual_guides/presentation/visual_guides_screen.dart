@@ -275,6 +275,199 @@ class VisualGuidesScreen extends StatelessWidget {
         patientSummaryAr:
             'تأكد من تركيز الدواء والحجم المطلوب، اسحب الجرعة بالسرنجة الفموية حتى علامة mL الصحيحة، وأعطها ببطء داخل جانب الفم. لا تستخدم ملعقة منزلية.',
       ),
+
+      const _GuideData(
+        title: 'Capsule DPI / HandiHaler-type',
+        subtitle: 'Capsule-loaded inhaler: the capsule is inhaled through the device, never swallowed.',
+        icon: Icons.medication_outlined,
+        steps: [
+          'Open the device and remove one inhalation capsule only when ready to use it.',
+          'Place the capsule in the designated chamber; do not place it directly in the mouthpiece.',
+          'Pierce or activate the capsule exactly as the device instructions specify.',
+          'Breathe out fully away from the device.',
+          'Seal lips around the mouthpiece and inhale deeply at the speed taught for that device.',
+          'Check whether a second inhalation from the same capsule is required by the exact product, then discard the empty capsule.',
+        ],
+        mistakes: [
+          'Swallowing the inhalation capsule.',
+          'Breathing out into the device or capsule chamber.',
+          'Piercing repeatedly or using the capsule from a different inhaler system.',
+        ],
+        patientSummaryAr:
+            'هذه الكبسولة للاستنشاق وليست للبلع. ضعها داخل الجهاز المخصص، حضّرها بالطريقة الخاصة بجهازك، ثم أخرج الهواء بعيدًا واستنشق من الفوهة. بعد الجرعة تخلص من الكبسولة ولا تحتفظ بها داخل الجهاز.',
+      ),
+      const _GuideData(
+        title: 'Breezhaler-type capsule DPI',
+        subtitle: 'Capsule-loaded DPI with product-specific piercing and capsule check.',
+        icon: Icons.blur_circular_outlined,
+        steps: [
+          'Remove one capsule from the blister immediately before use.',
+          'Place it in the capsule chamber, close the device, and pierce it once as directed.',
+          'Breathe out away from the mouthpiece.',
+          'Inhale quickly and deeply through the device.',
+          'Hold the breath, then open the device and check the capsule; repeat inhalation only if the product instructions require it and powder remains.',
+          'Discard the used capsule and keep the device dry.',
+        ],
+        mistakes: [
+          'Swallowing the capsule.',
+          'Piercing the capsule many times and fragmenting it.',
+          'Washing a dry-powder device with water when the IFU says to keep it dry.',
+        ],
+        patientSummaryAr:
+            'أخرج الكبسولة وقت الاستخدام فقط وضعها داخل الجهاز ولا تبلعها. اثقبها بالطريقة المحددة ثم استنشق بقوة وعمق. افحص الكبسولة بعد الجرعة حسب تعليمات جهازك وتخلص منها.',
+      ),
+      const _GuideData(
+        title: 'Easyhaler-type DPI',
+        subtitle: 'Shake-load-inhale dry-powder workflow; verify the exact product IFU.',
+        icon: Icons.swap_vert_rounded,
+        steps: [
+          'Remove the protective cap and keep the device upright.',
+          'Shake the inhaler as instructed.',
+          'Press/click once to load a single dose, then release.',
+          'Breathe out away from the inhaler.',
+          'Seal lips around the mouthpiece and inhale strongly and deeply.',
+          'Hold the breath, replace the cap and check the dose counter.',
+        ],
+        mistakes: [
+          'Clicking more than once before inhaling.',
+          'Exhaling into the mouthpiece.',
+          'Loading the dose while the device is tilted if the IFU requires upright positioning.',
+        ],
+        patientSummaryAr:
+            'أمسك الجهاز بالشكل الصحيح، رجّه إذا كان منتجك يتطلب ذلك ثم اضغط مرة واحدة لتحضير الجرعة. أخرج الهواء بعيدًا ثم استنشق بقوة وعمق ولا تنفخ داخل الجهاز.',
+      ),
+      const _GuideData(
+        title: 'Breath-actuated inhaler',
+        subtitle: 'Breath-triggered aerosol device; priming and trigger setup are brand-specific.',
+        icon: Icons.airline_seat_recline_extra_outlined,
+        steps: [
+          'Prepare, prime and set the device exactly as the manufacturer instructs.',
+          'Breathe out fully away from the mouthpiece.',
+          'Seal lips around the mouthpiece.',
+          'Breathe in steadily and deeply so the device triggers the dose.',
+          'Continue the inhalation after the dose releases, then hold the breath.',
+        ],
+        mistakes: [
+          'Stopping the breath as soon as the device clicks.',
+          'Blocking air vents.',
+          'Assuming breath-actuated devices never require priming.',
+        ],
+        patientSummaryAr:
+            'حضّر الجهاز حسب نوعه، أخرج الهواء بعيدًا ثم استنشق بشكل ثابت وعميق حتى يطلق الجهاز الجرعة تلقائيًا. استمر بالشهيق بعد خروج الجرعة ولا تتوقف عند سماع النقرة.',
+      ),
+      const _GuideData(
+        title: 'Eye ointment',
+        subtitle: 'Lower-lid pocket technique for ophthalmic ointments.',
+        icon: Icons.visibility_outlined,
+        steps: [
+          'Wash and dry hands.',
+          'Tilt the head back and gently pull down the lower eyelid.',
+          'Apply the prescribed thin ribbon of ointment into the lower-lid pocket without touching the tube tip.',
+          'Close the eye gently for 1–2 minutes and move the eye around if instructed.',
+          'Wipe excess from the skin and recap the tube without touching the tip.',
+        ],
+        mistakes: [
+          'Touching the tube tip to the eye or lashes.',
+          'Applying directly onto the cornea.',
+          'Driving immediately when temporary blurred vision occurs.',
+        ],
+        patientSummaryAr:
+            'اسحب الجفن السفلي وضع شريطًا رفيعًا من المرهم داخل الجيب من دون لمس فوهة الأنبوب للعين. أغلق العين بلطف، وتوقع تشوشًا مؤقتًا في الرؤية بعد المرهم.',
+      ),
+      const _GuideData(
+        title: 'Transdermal patch',
+        subtitle: 'Safe patch application, rotation and disposal.',
+        icon: Icons.crop_square_outlined,
+        steps: [
+          'Confirm the correct patch strength and schedule and remove the old patch first.',
+          'Choose clean, dry, intact skin at an approved site and rotate sites.',
+          'Open the pouch without cutting the patch unless the exact product explicitly permits cutting.',
+          'Apply the sticky side firmly and press for the product-specified time.',
+          'Record the date/time/site if useful and dispose of the used patch safely, usually by folding adhesive sides together.',
+        ],
+        mistakes: [
+          'Applying a new patch without removing the old one.',
+          'Cutting a patch that must remain intact.',
+          'Applying external heat over a patch when heat can increase drug delivery.',
+        ],
+        patientSummaryAr:
+            'انزع اللصقة القديمة أولًا، وضع الجديدة على جلد نظيف وجاف وفي مكان مسموح به مع تغيير الموقع كل مرة. لا تقص اللصقة ولا تضع حرارة فوقها إلا إذا كانت تعليمات المنتج تسمح بذلك.',
+      ),
+      const _GuideData(
+        title: 'Vaginal tablet / cream applicator',
+        subtitle: 'Product-specific vaginal administration without contaminating the applicator.',
+        icon: Icons.medication_liquid_outlined,
+        steps: [
+          'Wash hands and prepare the tablet, suppository or filled applicator as the product directs.',
+          'Lie or stand in the position recommended by the product.',
+          'Insert the applicator gently only as far as comfortable.',
+          'Release the dose, withdraw the applicator and dispose of or wash it according to its instructions.',
+          'Use at the recommended time, often bedtime for products that may leak.',
+        ],
+        mistakes: [
+          'Swallowing a vaginal tablet.',
+          'Reusing a disposable applicator.',
+          'Stopping the course as soon as itching improves.',
+        ],
+        patientSummaryAr:
+            'حضّري الجرعة والأداة حسب المنتج، أدخليها بلطف ثم أفرغي الجرعة. كثير من المنتجات تناسب وقت النوم لتقليل التسرب. لا تستخدمي الأداة ذات الاستعمال الواحد مرة أخرى.',
+      ),
+      const _GuideData(
+        title: 'Rectal suppository',
+        subtitle: 'Insertion and retention technique.',
+        icon: Icons.arrow_downward_rounded,
+        steps: [
+          'Wash hands and remove the wrapper; cool the suppository briefly if it has become too soft, when product instructions allow.',
+          'Lie on the side with the upper leg bent.',
+          'Insert the pointed end gently past the anal sphincter to the depth appropriate for age/product.',
+          'Remain lying for several minutes and try to avoid a bowel movement for the recommended time.',
+          'Wash hands after administration.',
+        ],
+        mistakes: [
+          'Swallowing the suppository.',
+          'Inserting only at the anal opening so it slips back out.',
+          'Using rectal products in a patient with significant rectal bleeding without assessment.',
+        ],
+        patientSummaryAr:
+            'أزل الغلاف واستلقِ على جانبك، ثم أدخل التحميلة بلطف إلى الداخل بما يكفي حتى لا تخرج مباشرة. ابقَ مستلقيًا عدة دقائق واتبع تعليمات المنتج حول وقت التبرز.',
+      ),
+      const _GuideData(
+        title: 'Orally disintegrating tablet (ODT)',
+        subtitle: 'Dry-hand handling for fragile orally disintegrating products.',
+        icon: Icons.tablet_android_outlined,
+        steps: [
+          'Confirm that the medicine is the ODT formulation.',
+          'Use dry hands and peel back the blister foil when the product directs; do not push fragile tablets through foil.',
+          'Place the tablet on the tongue and allow it to disintegrate.',
+          'Swallow as it dissolves; water is usually not required unless the product says otherwise.',
+        ],
+        mistakes: [
+          'Handling with wet hands.',
+          'Pushing a fragile ODT through foil and crushing it.',
+          'Assuming every “melt” product can be split.',
+        ],
+        patientSummaryAr:
+            'تأكد أن الحبة هي النوع الذائب بالفم، وافتح الشريط بيدين جافتين بالطريقة الصحيحة ثم ضع الحبة على اللسان لتذوب. لا تسحقها أو تدفعها بقوة عبر الألمنيوم.',
+      ),
+      const _GuideData(
+        title: 'Biologic autoinjector pen',
+        subtitle: 'General self-injection framework; warming and activation differ by brand.',
+        icon: Icons.auto_fix_high_outlined,
+        steps: [
+          'Confirm medicine, strength, dose and scheduled day.',
+          'Remove the device from the refrigerator only for the product-specified warming period; never microwave or use hot water.',
+          'Inspect the solution and choose a clean approved injection site, rotating sites each dose.',
+          'Remove the cap only when ready, position the pen and activate it exactly as the IFU shows.',
+          'Keep the device firmly in place until the dose-complete indicator confirms delivery, then discard in a sharps container.',
+        ],
+        mistakes: [
+          'Shaking or heating the biologic pen.',
+          'Removing the pen before the dose-complete indicator.',
+          'Injecting into bruised, infected, scarred or inflamed skin when the product advises against it.',
+        ],
+        patientSummaryAr:
+            'أخرج القلم من الثلاجة للمدة الخاصة بمنتجك فقط ولا تسخنه أو ترجّه. اختر مكان حقن مناسبًا، فعّل القلم بالطريقة التي تعلمتها وانتظر علامة اكتمال الجرعة قبل رفعه، ثم تخلص منه في حاوية الأدوات الحادة.',
+      ),
     ];
 
     final theme = Theme.of(context);

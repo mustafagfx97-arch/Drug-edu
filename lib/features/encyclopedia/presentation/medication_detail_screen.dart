@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
+import '../../../core/data/medication_patient_guidance.dart';
 import '../../../core/data/therapy_duration_catalog.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../medication_plan/domain/medication_timing_rules.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
 import '../../patient_cards/presentation/patient_card_preview.dart';
 import '../../patient_cards/presentation/printable_patient_card_screen.dart';
@@ -18,14 +20,18 @@ class MedicationDetailScreen extends StatelessWidget {
 
   PatientCardData get _patientCard {
     final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
+    final patient = resolvedPatientCounseling(
+      medication,
+      timingFallbackAr:
+          medicationTimingRules[medication.id]?.instructionAr ?? '',
+    );
     final important = <String>[
       if (durationAr.isNotEmpty) 'مدة العلاج: ' + durationAr,
-      if (medication.patient.importantAr.trim().isNotEmpty)
-        medication.patient.importantAr.trim(),
-      if (medication.patient.commonActionableAr.trim().isNotEmpty)
-        medication.patient.commonActionableAr.trim(),
-      if (medication.patient.storageAr.trim().isNotEmpty)
-        'الحفظ: ' + medication.patient.storageAr.trim(),
+      if (patient.importantAr.trim().isNotEmpty) patient.importantAr.trim(),
+      if (patient.commonActionableAr.trim().isNotEmpty)
+        patient.commonActionableAr.trim(),
+      if (patient.storageAr.trim().isNotEmpty)
+        'الحفظ: ' + patient.storageAr.trim(),
     ].join(' ');
 
     return PatientCardData(
@@ -34,12 +40,12 @@ class MedicationDetailScreen extends StatelessWidget {
       medicationName: medication.name,
       subtitleAr: 'تعليمات مختصرة للمريض',
       category: 'Medication',
-      purposeAr: medication.patient.purposeAr,
-      howToUseAr: medication.patient.howToUseAr,
-      timingAr: medication.patient.timingAr,
+      purposeAr: patient.purposeAr,
+      howToUseAr: patient.howToUseAr,
+      timingAr: patient.timingAr,
       importantAr: important,
-      missedDoseAr: medication.patient.missedDoseAr,
-      seekHelpAr: medication.patient.seekHelpAr,
+      missedDoseAr: patient.missedDoseAr,
+      seekHelpAr: patient.seekHelpAr,
     );
   }
 
@@ -285,6 +291,11 @@ class _PatientTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
+    final patient = resolvedPatientCounseling(
+      medication,
+      timingFallbackAr:
+          medicationTimingRules[medication.id]?.instructionAr ?? '',
+    );
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -340,7 +351,7 @@ class _PatientTab extends StatelessWidget {
             ),
             const SizedBox(height: 10),
           ],
-          for (final item in medication.patient.items) ...[
+          for (final item in patient.items) ...[
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(17),
@@ -367,7 +378,7 @@ class _PatientTab extends StatelessWidget {
             ),
             const SizedBox(height: 10),
           ],
-          if (medication.patient.teachBackAr.isNotEmpty)
+          if (patient.teachBackAr.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -386,7 +397,7 @@ class _PatientTab extends StatelessWidget {
                   ),
                   const SizedBox(height: 7),
                   Text(
-                    medication.patient.teachBackAr,
+                    patient.teachBackAr,
                     textAlign: TextAlign.right,
                     style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
                   ),

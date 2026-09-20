@@ -177,6 +177,30 @@ class _PharmacistTab extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         ],
+        if (medication.sourceLabel.isNotEmpty) ...[
+          SectionCard(
+            title: 'Source & review',
+            icon: Icons.verified_outlined,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  medication.sourceLabel,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  medication.reviewStatus + ' · ' + medication.lastReviewed,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
         if (medication.hasVisualGuide ||
             medication.hasIvPreparation ||
             medication.hasCalculator)

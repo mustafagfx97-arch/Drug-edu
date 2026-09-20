@@ -163,6 +163,38 @@ class _PharmacistTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
+        if (!medication.useProfile.isEmpty) ...[
+          SectionCard(
+            title: 'Medication-use essentials',
+            icon: Icons.fact_check_outlined,
+            child: Column(
+              children: [
+                for (final fact in medication.useProfile.facts) ...[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      fact.title,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      fact.value,
+                      style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
         for (final section in medication.sections) ...[
           SectionCard(
             title: section.title,

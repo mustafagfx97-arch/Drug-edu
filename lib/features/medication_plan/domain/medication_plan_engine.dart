@@ -134,6 +134,7 @@ class MedicationPlanEngine {
             instructionAr: rule.instructionAr,
             isSuggested:
                 item.preference == TimingPreference.auto ||
+                item.frequency == RegimenFrequency.every6Hours ||
                 item.frequency == RegimenFrequency.every8Hours ||
                 item.frequency == RegimenFrequency.every12Hours,
             dayLabel: item.frequency == RegimenFrequency.weekly
@@ -176,14 +177,68 @@ class MedicationPlanEngine {
       return _expandFromBase(item.frequency, item.customMinutes!);
     }
 
+    if (item.frequency == RegimenFrequency.every6Hours ||
+        item.frequency == RegimenFrequency.every8Hours ||
+        item.frequency == RegimenFrequency.every12Hours) {
+      final preferred = _preferredBase(item.preference, routine);
+      final base = preferred ??
+          switch (rule.anchor) {
+            'before-breakfast' => routine.breakfastMinutes - 45,
+            'breakfast' => routine.breakfastMinutes,
+            'morning' => routine.wakeMinutes + 60,
+            'bedtime' => routine.bedtimeMinutes,
+            'with-meal' => routine.breakfastMinutes,
+            'empty-stomach' => routine.breakfastMinutes - 60,
+            _ => routine.wakeMinutes,
+          };
+      return _expandFromBase(item.frequency, base);
+    }
+
     if (rule.anchor == 'after-selected-meal' &&
         item.preference != TimingPreference.custom) {
       return [_selectedMeal(item.preference, routine) + 30];
     }
 
-    if (rule.anchor == 'before-breakfast' &&
-        item.preference == TimingPreference.auto) {
+    if (rule.anchor == 'before-breakfast') {
       return [routine.breakfastMinutes - 45];
+    }
+
+    if (rule.anchor == 'with-meal') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine)];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes];
+          case TimingPreference.bedtime:
+            return [routine.dinnerMinutes];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _mealTimes(item.frequency, routine);
+    }
+
+    if (rule.anchor == 'empty-stomach') {
+      if (item.frequency == RegimenFrequency.onceDaily) {
+        switch (item.preference) {
+          case TimingPreference.breakfast:
+          case TimingPreference.lunch:
+          case TimingPreference.dinner:
+            return [_selectedMeal(item.preference, routine) - 60];
+          case TimingPreference.morning:
+            return [routine.breakfastMinutes - 60];
+          case TimingPreference.bedtime:
+            return [routine.bedtimeMinutes];
+          case TimingPreference.auto:
+          case TimingPreference.custom:
+            break;
+        }
+      }
+      return _emptyStomachTimes(item.frequency, routine);
     }
 
     final preferred = _preferredBase(item.preference, routine);
@@ -192,12 +247,8 @@ class MedicationPlanEngine {
     }
 
     switch (rule.anchor) {
-      case 'before-breakfast':
-        return [routine.breakfastMinutes - 45];
       case 'breakfast':
         return [routine.breakfastMinutes];
-      case 'after-selected-meal':
-        return [_selectedMeal(item.preference, routine) + 30];
       case 'morning':
         return _expandFromBase(
           item.frequency,
@@ -205,10 +256,6 @@ class MedicationPlanEngine {
         );
       case 'bedtime':
         return [routine.bedtimeMinutes];
-      case 'with-meal':
-        return _mealTimes(item.frequency, routine);
-      case 'empty-stomach':
-        return _emptyStomachTimes(item.frequency, routine);
       case 'weekly':
         return [routine.breakfastMinutes + 60];
       default:
@@ -221,14 +268,34 @@ class MedicationPlanEngine {
       case RegimenFrequency.onceDaily:
         return [routine.dinnerMinutes];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
         return [routine.breakfastMinutes, routine.dinnerMinutes];
       case RegimenFrequency.threeTimesDaily:
-      case RegimenFrequency.every8Hours:
         return [
           routine.breakfastMinutes,
           routine.lunchMinutes,
           routine.dinnerMinutes,
+        ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes,
+          routine.lunchMinutes,
+          routine.dinnerMinutes,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [routine.breakfastMinutes, routine.breakfastMinutes + 720];
+      case RegimenFrequency.every8Hours:
+        return [
+          routine.breakfastMinutes,
+          routine.breakfastMinutes + 480,
+          routine.breakfastMinutes + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.breakfastMinutes,
+          routine.breakfastMinutes + 360,
+          routine.breakfastMinutes + 720,
+          routine.breakfastMinutes + 1080,
         ];
       case RegimenFrequency.morning:
         return [routine.breakfastMinutes];
@@ -245,25 +312,37 @@ class MedicationPlanEngine {
     RegimenFrequency frequency,
     PatientRoutine routine,
   ) {
+    final first = routine.breakfastMinutes - 60;
     switch (frequency) {
       case RegimenFrequency.onceDaily:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
-        return [routine.breakfastMinutes - 60, routine.dinnerMinutes - 120];
+        return [first, routine.dinnerMinutes - 120];
       case RegimenFrequency.threeTimesDaily:
-      case RegimenFrequency.every8Hours:
         return [
           routine.breakfastMinutes - 60,
           routine.lunchMinutes - 60,
           routine.dinnerMinutes - 60,
         ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes - 60,
+          routine.lunchMinutes - 60,
+          routine.dinnerMinutes - 60,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [first, first + 720];
+      case RegimenFrequency.every8Hours:
+        return [first, first + 480, first + 960];
+      case RegimenFrequency.every6Hours:
+        return [first, first + 360, first + 720, first + 1080];
       case RegimenFrequency.morning:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.bedtime:
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -277,7 +356,6 @@ class MedicationPlanEngine {
       case RegimenFrequency.onceDaily:
         return [routine.breakfastMinutes + 60];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
         return [routine.breakfastMinutes, routine.dinnerMinutes];
       case RegimenFrequency.threeTimesDaily:
         return [
@@ -285,11 +363,27 @@ class MedicationPlanEngine {
           routine.lunchMinutes,
           routine.dinnerMinutes,
         ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes,
+          routine.lunchMinutes,
+          routine.dinnerMinutes,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [routine.wakeMinutes, routine.wakeMinutes + 720];
       case RegimenFrequency.every8Hours:
         return [
           routine.wakeMinutes,
           routine.wakeMinutes + 480,
           routine.wakeMinutes + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.wakeMinutes,
+          routine.wakeMinutes + 360,
+          routine.wakeMinutes + 720,
+          routine.wakeMinutes + 1080,
         ];
       case RegimenFrequency.morning:
         return [routine.wakeMinutes + 60];
@@ -315,6 +409,9 @@ class MedicationPlanEngine {
       case RegimenFrequency.threeTimesDaily:
       case RegimenFrequency.every8Hours:
         return [base, base + 480, base + 960];
+      case RegimenFrequency.fourTimesDaily:
+      case RegimenFrequency.every6Hours:
+        return [base, base + 360, base + 720, base + 1080];
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -441,15 +538,112 @@ class MedicationPlanEngine {
 
     final hasAnticoagulant = ids.contains('warfarin') ||
         ids.contains('apixaban') ||
-        ids.contains('rivaroxaban');
-    final hasNsaid = ids.contains('ibuprofen') || ids.contains('naproxen');
+        ids.contains('rivaroxaban') ||
+        ids.contains('dabigatran') ||
+        ids.contains('enoxaparin');
+    final hasNsaid = ids.contains('ibuprofen') ||
+        ids.contains('naproxen') ||
+        ids.contains('celecoxib') ||
+        ids.contains('diclofenac-oral');
     if (hasAnticoagulant && hasNsaid) {
       alerts.add(
         const PlanAlert(
           title: 'Bleeding-risk combination',
           message:
-              'وجود مميع دم مع NSAID مثل ibuprofen/naproxen قد يزيد النزف. لا يكفي فصل الوقت؛ راجع ملاءمة الجمع نفسه.',
+              'وجود مميع دم مع NSAID قد يزيد خطر النزف. فصل الوقت لا يلغي التداخل؛ راجع ضرورة الجمع والبديل الأنسب.',
           isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sacubitril-valsartan') && ids.contains('lisinopril')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sacubitril/valsartan + ACE inhibitor',
+          message:
+              'لا يُجمع sacubitril/valsartan مع ACE inhibitor مثل lisinopril. يلزم فاصل 36 ساعة عند التحويل بينهما؛ لا تحاول حل المشكلة بتغيير وقت الجرعات فقط.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sildenafil-ed') &&
+        ids.contains('nitroglycerin-sublingual')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sildenafil + nitrate',
+          message:
+              'الجمع مع nitroglycerin/nitrates ممنوع بسبب خطر هبوط ضغط شديد. إذا حدث ألم صدر بعد sildenafil يجب إبلاغ الطوارئ بوقت آخر جرعة، وليس أخذ nitroglycerin من النفس.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('amiodarone-oral') &&
+        (ids.contains('warfarin') || ids.contains('digoxin'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Amiodarone interaction review',
+          message:
+              'amiodarone قد يرفع تأثير/تركيز warfarin أو digoxin. هذه ليست مشكلة توقيت فقط وتحتاج مراجعة الجرعات والمراقبة السريرية.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if ((ids.contains('carvedilol') && ids.contains('metoprolol')) ||
+        (ids.contains('diltiazem-er') &&
+            (ids.contains('metoprolol') || ids.contains('carvedilol')))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Heart-rate lowering combination',
+          message:
+              'يوجد أكثر من دواء يخفض النبض/الضغط. قد يكون الجمع مقصودًا في حالات محددة لكنه يحتاج مراجعة للنبض والضغط والأعراض؛ لا تعتمد على فصل الوقت وحده.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final ciproMinerals = ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('zinc') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('ciprofloxacin-oral') && ciproMinerals) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Ciprofloxacin + minerals',
+          message:
+              'الحديد والكالسيوم والزنك ومضادات الحموضة/المنتجات المعدنية قد تقلل امتصاص ciprofloxacin. استخدم فاصل المنتج الموثق ولا تضعها في نفس وقت الجرعة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final alendronateMorningConflict = ids.contains('levothyroxine') ||
+        ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('alendronate') && alendronateMorningConflict) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Alendronate morning schedule conflict',
+          message:
+              'alendronate يجب أن يُؤخذ منفردًا عند الاستيقاظ مع ماء فقط ثم الانتظار قبل الطعام/الأدوية. وجود levothyroxine أو معادن صباحية يحتاج ترتيبًا يدويًا؛ لا تعتمد الجدولة التلقائية وحدها.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sucralfate') && ids.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sucralfate separation review',
+          message:
+              'sucralfate قد يقلل امتصاص أدوية متعددة. الفاصل الزمني ليس رقمًا واحدًا لكل الأدوية؛ راجع كل دواء في القائمة قبل اعتماد الجدول النهائي.',
         ),
       );
     }

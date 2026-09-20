@@ -12,6 +12,69 @@ class MedicationSection {
   final ClinicalPriority priority;
 }
 
+class MedicationUseProfile {
+  const MedicationUseProfile({
+    this.route = '',
+    this.foodTiming = '',
+    this.duration = '',
+    this.formulationHandling = '',
+    this.monitoring = '',
+    this.interactions = '',
+    this.commonMistakes = '',
+    this.specialPopulations = '',
+  });
+
+  final String route;
+  final String foodTiming;
+  final String duration;
+  final String formulationHandling;
+  final String monitoring;
+  final String interactions;
+  final String commonMistakes;
+  final String specialPopulations;
+
+  bool get isEmpty =>
+      route.trim().isEmpty &&
+      foodTiming.trim().isEmpty &&
+      duration.trim().isEmpty &&
+      formulationHandling.trim().isEmpty &&
+      monitoring.trim().isEmpty &&
+      interactions.trim().isEmpty &&
+      commonMistakes.trim().isEmpty &&
+      specialPopulations.trim().isEmpty;
+
+  List<MedicationUseFact> get facts {
+    final result = <MedicationUseFact>[];
+
+    void add(String title, String value) {
+      if (value.trim().isNotEmpty) {
+        result.add(MedicationUseFact(title: title, value: value.trim()));
+      }
+    }
+
+    add('Route / formulation', route);
+    add('Food & timing', foodTiming);
+    add('Therapy duration', duration);
+    add('Crush / split / dosage-form handling', formulationHandling);
+    add('Monitoring', monitoring);
+    add('Important interactions', interactions);
+    add('Common counseling mistakes', commonMistakes);
+    add('Patient-specific considerations', specialPopulations);
+
+    return result;
+  }
+}
+
+class MedicationUseFact {
+  const MedicationUseFact({
+    required this.title,
+    required this.value,
+  });
+
+  final String title;
+  final String value;
+}
+
 class PatientCounselingData {
   const PatientCounselingData({
     required this.purposeAr,
@@ -81,11 +144,13 @@ class Medication {
     required this.tags,
     required this.sections,
     required this.patient,
+    this.aliases = const [],
+    this.useProfile = const MedicationUseProfile(),
     this.hasIvPreparation = false,
     this.hasCalculator = false,
     this.hasVisualGuide = false,
     this.sourceLabel = '',
-    this.reviewStatus = 'Reviewed',
+    this.reviewStatus = 'Clinical draft · verify exact product when formulation-specific',
     this.lastReviewed = '2026-09',
     this.isDemo = true,
   });
@@ -95,7 +160,9 @@ class Medication {
   final String name;
   final String subtitle;
   final List<String> tags;
+  final List<String> aliases;
   final List<MedicationSection> sections;
+  final MedicationUseProfile useProfile;
   final PatientCounselingData patient;
   final bool hasIvPreparation;
   final bool hasCalculator;

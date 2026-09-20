@@ -1,4 +1,5 @@
 import '../models/medication.dart';
+import 'expanded_medications.dart';
 
 const sampleMedications = <Medication>[
   Medication(
@@ -1642,4 +1643,5 @@ const sampleMedications = <Medication>[
       seekHelpAr: 'إذا كان المنتج بدون وصفة ولم يتحسن الجلد خلال 7 أيام، توقف وراجع الطبيب أو الصيدلي.',
     ),
   ),
+  ...expandedMedications,
 ];

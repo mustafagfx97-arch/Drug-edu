@@ -154,4 +154,132 @@ void main() {
       isTrue,
     );
   });
+
+  test('every 8 hours preserves an exact 8-hour interval', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'nitrofurantoin',
+          'Nitrofurantoin',
+          frequency: RegimenFrequency.every8Hours,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses.length, 3);
+    final times = plan.doses.map((dose) => dose.minutes).toList()..sort();
+    expect(times, [0, 480, 960]);
+  });
+
+  test('every 6 hours creates four evenly spaced doses', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'amoxicillin',
+          'Amoxicillin',
+          frequency: RegimenFrequency.every6Hours,
+          preference: TimingPreference.custom,
+        ),
+      ],
+      routine: routine,
+    );
+
+    // No custom clock was supplied by the test helper, so Auto/default timing
+    // is used; the important invariant is four doses separated by 6 hours.
+    expect(plan.doses.length, 4);
+    final times = plan.doses.map((dose) => dose.minutes).toList()..sort();
+    final gaps = <int>[
+      times[1] - times[0],
+      times[2] - times[1],
+      times[3] - times[2],
+      (times[0] + 1440) - times[3],
+    ];
+    expect(gaps, everyElement(360));
+  });
+
+  test('sacubitril valsartan plus lisinopril is blocked for review', () {
+    final plan = engine.generate(
+      items: [
+        item('sacubitril-valsartan', 'Sacubitril / Valsartan'),
+        item('lisinopril', 'Lisinopril'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Sacubitril/valsartan + ACE inhibitor' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('sildenafil plus nitroglycerin creates critical nitrate alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'sildenafil-ed',
+          'Sildenafil',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+        item(
+          'nitroglycerin-sublingual',
+          'Nitroglycerin',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Sildenafil + nitrate' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('dabigatran plus diclofenac creates bleeding-risk alert', () {
+    final plan = engine.generate(
+      items: [
+        item('dabigatran', 'Dabigatran'),
+        item('diclofenac-oral', 'Diclofenac'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Bleeding-risk combination' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('alendronate plus morning absorption medicine requires review', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'alendronate',
+          'Alendronate',
+          frequency: RegimenFrequency.weekly,
+        ),
+        item('levothyroxine', 'Levothyroxine'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Alendronate morning schedule conflict' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
 }

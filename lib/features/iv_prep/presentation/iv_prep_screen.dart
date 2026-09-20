@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../data/iv_medication_catalog.dart';
+import '../data/iv_preparation_profiles.dart';
+import 'iv_preparation_detail_screen.dart';
 
 class IvPrepScreen extends StatefulWidget {
   const IvPrepScreen({super.key});
@@ -28,6 +30,8 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final entries = _entries;
+    final verifiedCount = entries.where((entry) =>
+        findIvPreparationProfile(entry.name, entry.population) != null).length;
     final categories = entries.map((entry) => entry.category).toSet().toList()
       ..sort();
 
@@ -123,7 +127,8 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                   ),
                 ),
                 Text(
-                  entries.length.toString() + ' profiles',
+                  verifiedCount.toString() + ' verified / ' +
+                      entries.length.toString() + ' catalogued',
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.w800,
@@ -157,6 +162,10 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                     .toList();
                 final entry = categoryEntries[index];
 
+                final profile =
+                    findIvPreparationProfile(entry.name, entry.population);
+                final verified = entry.structured && profile != null;
+
                 return Card(
                   child: ListTile(
                     contentPadding:
@@ -165,14 +174,14 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                       width: 44,
                       height: 44,
                       decoration: BoxDecoration(
-                        color: entry.structured
+                        color: verified
                             ? theme.colorScheme.primaryContainer
                             : theme.colorScheme.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(13),
                       ),
                       child: Icon(
                         Icons.vaccines_outlined,
-                        color: entry.structured
+                        color: verified
                             ? theme.colorScheme.onPrimaryContainer
                             : theme.colorScheme.onSurfaceVariant,
                       ),
@@ -184,17 +193,27 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                     subtitle: Padding(
                       padding: const EdgeInsets.only(top: 4),
                       child: Text(
-                        entry.structured
-                            ? 'Structured profile available'
-                            : 'Project-covered · exact structured values require migration before calculator use',
+                        verified
+                            ? 'Verified source-locked preparation profile'
+                            : 'Catalogued only · preparation values locked until exact product data are verified',
                       ),
                     ),
-                    trailing: entry.structured
+                    trailing: verified
                         ? Icon(
                             Icons.verified_outlined,
                             color: theme.colorScheme.primary,
                           )
-                        : const Icon(Icons.chevron_right_rounded),
+                        : const Icon(Icons.lock_outline_rounded),
+                    onTap: verified
+                        ? () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    IvPreparationDetailScreen(profile: profile),
+                              ),
+                            );
+                          }
+                        : null,
                   ),
                 );
               },

@@ -29,6 +29,44 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
   GeneratedMedicationPlan get _plan =>
       _engine.generate(items: _items, routine: _routine);
 
+  List<_PatientPlanInstruction> get _patientInstructions {
+    final result = <_PatientPlanInstruction>[];
+
+    for (final item in _items) {
+      if (item.type == PlanItemType.medicine) {
+        for (final medicine in sampleMedications) {
+          if (medicine.id != item.sourceId) continue;
+          result.add(
+            _PatientPlanInstruction(
+              name: medicine.name,
+              howToUseAr: medicine.patient.howToUseAr,
+              timingAr: medicine.patient.timingAr,
+              importantAr: medicine.patient.importantAr,
+              missedDoseAr: medicine.patient.missedDoseAr,
+            ),
+          );
+          break;
+        }
+      } else {
+        for (final supplement in supplementProfiles) {
+          if (supplement.id != item.sourceId) continue;
+          result.add(
+            _PatientPlanInstruction(
+              name: supplement.name,
+              howToUseAr: supplement.patient.howToUseAr,
+              timingAr: supplement.patient.timingAr,
+              importantAr: supplement.patient.importantAr,
+              missedDoseAr: supplement.patient.missedDoseAr,
+            ),
+          );
+          break;
+        }
+      }
+    }
+
+    return result;
+  }
+
   List<_PlanCatalogOption> get _catalog {
     final medicines = sampleMedications.map(
       (medicine) => _PlanCatalogOption(
@@ -36,6 +74,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
         name: medicine.name,
         subtitle: medicine.subtitle,
         type: PlanItemType.medicine,
+        searchTerms: [...medicine.aliases, ...medicine.tags],
       ),
     );
 
@@ -51,6 +90,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
             name: item.name,
             subtitle: item.subtitle,
             type: PlanItemType.supplement,
+            searchTerms: [item.group, item.formulation],
           ),
         );
 
@@ -135,6 +175,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final plan = _plan;
+    final instructions = _patientInstructions;
 
     return Scaffold(
       appBar: AppBar(
@@ -284,6 +325,7 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
                   color: Colors.white,
                   child: _PrintablePlan(
                     plan: plan,
+                    instructions: instructions,
                     formatMinutes: _formatMinutes,
                   ),
                 ),
@@ -357,10 +399,12 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
 class _PrintablePlan extends StatelessWidget {
   const _PrintablePlan({
     required this.plan,
+    required this.instructions,
     required this.formatMinutes,
   });
 
   final GeneratedMedicationPlan plan;
+  final List<_PatientPlanInstruction> instructions;
   final String Function(int) formatMinutes;
 
   @override
@@ -472,6 +516,82 @@ class _PrintablePlan extends StatelessWidget {
                   ),
                 ),
               ],
+            if (instructions.isNotEmpty) ...[
+              const SizedBox(height: 10),
+              Text(
+                'طريقة استخدام كل دواء',
+                textAlign: TextAlign.right,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const SizedBox(height: 8),
+              for (final instruction in instructions)
+                Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerLow,
+                    borderRadius: BorderRadius.circular(13),
+                    border: Border.all(
+                      color: theme.colorScheme.outlineVariant,
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        instruction.name,
+                        textAlign: TextAlign.right,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      if (instruction.howToUseAr.trim().isNotEmpty) ...[
+                        const SizedBox(height: 5),
+                        Text(
+                          instruction.howToUseAr,
+                          textAlign: TextAlign.right,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                          ),
+                        ),
+                      ],
+                      if (instruction.timingAr.trim().isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          'التوقيت: ' + instruction.timingAr,
+                          textAlign: TextAlign.right,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                          ),
+                        ),
+                      ],
+                      if (instruction.importantAr.trim().isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          'مهم: ' + instruction.importantAr,
+                          textAlign: TextAlign.right,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                      if (instruction.missedDoseAr.trim().isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          'إذا نسيت الجرعة: ' + instruction.missedDoseAr,
+                          textAlign: TextAlign.right,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            height: 1.45,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+            ],
             if (plan.alerts.isNotEmpty) ...[
               const SizedBox(height: 8),
               Text(
@@ -609,7 +729,8 @@ class _MedicationSearchSheetState extends State<_MedicationSearchSheet> {
     final filtered = widget.options.where((item) {
       return q.isEmpty ||
           item.name.toLowerCase().contains(q) ||
-          item.subtitle.toLowerCase().contains(q);
+          item.subtitle.toLowerCase().contains(q) ||
+          item.searchTerms.any((term) => term.toLowerCase().contains(q));
     }).toList();
 
     return Padding(
@@ -1056,16 +1177,34 @@ class _TimeRow extends StatelessWidget {
   }
 }
 
+class _PatientPlanInstruction {
+  const _PatientPlanInstruction({
+    required this.name,
+    required this.howToUseAr,
+    required this.timingAr,
+    required this.importantAr,
+    required this.missedDoseAr,
+  });
+
+  final String name;
+  final String howToUseAr;
+  final String timingAr;
+  final String importantAr;
+  final String missedDoseAr;
+}
+
 class _PlanCatalogOption {
   const _PlanCatalogOption({
     required this.sourceId,
     required this.name,
     required this.subtitle,
     required this.type,
+    this.searchTerms = const [],
   });
 
   final String sourceId;
   final String name;
   final String subtitle;
   final PlanItemType type;
+  final List<String> searchTerms;
 }

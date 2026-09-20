@@ -877,7 +877,9 @@ class MedicationPlanEngine {
 
     if (ids.contains('carbamazepine') &&
         (ids.contains('combined-oral-contraceptive') ||
-            ids.contains('norethindrone-pop'))) {
+            ids.contains('norethindrone-pop') ||
+            ids.contains('drospirenone-pop') ||
+            ids.contains('depo-provera-ci'))) {
       alerts.add(
         const PlanAlert(
           title: 'Carbamazepine + hormonal contraception',
@@ -1154,6 +1156,79 @@ class MedicationPlanEngine {
           title: 'Inhaled corticosteroid duplication review',
           message:
               'يوجد أكثر من منتج يحتوي inhaled corticosteroid. قد تكون هناك خطة انتقالية مقصودة، لكن الاستخدام المتزامن قد يكرر الستيرويد؛ راجع المادة الفعالة والجرعة قبل اعتماد الجدول.',
+        ),
+      );
+    }
+
+    if (ids.contains('drospirenone-pop') &&
+        (ids.contains('spironolactone') ||
+            ids.contains('lisinopril') ||
+            ids.contains('losartan') ||
+            ids.contains('valsartan') ||
+            ids.contains('sacubitril-valsartan') ||
+            ids.contains('trimethoprim-sulfamethoxazole') ||
+            ids.contains('potassium-chloride'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Drospirenone POP + potassium-raising therapy',
+          message:
+              'Drospirenone في Slynd له تأثير مضاد للـmineralocorticoid وقد يرفع potassium عند المريضات عاليـات الخطورة. وجود spironolactone أو ACEI/ARB/ARNI أو TMP-SMX/بوتاسيوم يحتاج مراجعة K⁺ والمراقبة؛ فصل الوقت لا يحل الخطر.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final ibandronateMinerals = ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('zinc') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('ibandronate-monthly') && ibandronateMinerals) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Ibandronate 60-minute separation',
+          message:
+              'Ibandronate الشهري يحتاج أن يؤخذ وحده مع ماء عادي، ثم الانتظار 60 دقيقة قبل الطعام أو أي دواء/مكمل فموي بما فيه calcium والحديد والفيتامينات.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('ibandronate-monthly') && ids.contains('levothyroxine')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Ibandronate + levothyroxine morning conflict',
+          message:
+              'كلا الدواءين له تعليمات صباحية على معدة فارغة. في يوم ibandronate الشهري يحتاج ترتيب يدوي واضح حتى لا تُكسر قاعدة الـ60 دقيقة أو امتصاص levothyroxine؛ لا تعتمد Auto فقط.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('teriparatide-forteo') && ids.contains('digoxin')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Teriparatide + digoxin review',
+          message:
+              'Teriparatide قد يرفع serum calcium مؤقتًا، وارتفاع calcium قد يزيد قابلية سمية digoxin. يحتاج تقييم الأعراض/الكالسيوم حسب الحالة؛ المشكلة ليست توقيت الجرعات.',
+        ),
+      );
+    }
+
+    final contraceptiveProducts = <String>{
+      'combined-oral-contraceptive',
+      'norethindrone-pop',
+      'drospirenone-pop',
+      'depo-provera-ci',
+    }.where(ids.contains).toList();
+    if (contraceptiveProducts.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Contraceptive regimen duplication review',
+          message:
+              'يوجد أكثر من نظام hormonal contraception في القائمة. قد يكون هناك تحويل مقصود بين الوسائل، لكن يجب تحديد تاريخ الإيقاف/البدء والـbackup المطلوب بدل اعتبارها علاجين متزامنين.',
         ),
       );
     }

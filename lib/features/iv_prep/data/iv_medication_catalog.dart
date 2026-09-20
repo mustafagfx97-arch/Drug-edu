@@ -14,13 +14,13 @@ class IvCatalogEntry {
 
 const ivMedicationCatalog = <IvCatalogEntry>[
   // General antimicrobials
-  IvCatalogEntry(name: 'Ceftriaxone', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Ceftriaxone', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Cefotaxime', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Cefepime', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Ceftazidime', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Meropenem', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Vancomycin', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Meropenem', population: 'General', category: 'Antibiotics', structured: true),
+  IvCatalogEntry(name: 'Vancomycin', population: 'General', category: 'Antibiotics', structured: true),
+  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Ampicillin', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Ampicillin / Sulbactam', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Cefazolin', population: 'General', category: 'Antibiotics'),
@@ -70,8 +70,8 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Sodium bicarbonate 8.4%', population: 'General', category: 'Electrolytes & metabolic'),
   IvCatalogEntry(name: 'Sodium bicarbonate 4.2%', population: 'General', category: 'Electrolytes & metabolic'),
   IvCatalogEntry(name: 'Hypertonic sodium chloride 3%', population: 'General', category: 'Electrolytes & metabolic'),
-  IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
-  IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
+  IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
 
   // Neurology / GI / steroids
   IvCatalogEntry(name: 'IV Paracetamol', population: 'General', category: 'Other IV medicines'),
@@ -146,7 +146,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Calcium gluconate', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Calcium chloride', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Magnesium sulfate', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D10', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D12.5', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D20', population: 'NICU', category: 'Electrolytes & glucose'),
@@ -155,7 +155,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose'),
 
   // PICU representative profiles built from the same project library
-  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Epinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Dopamine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Dobutamine', population: 'PICU', category: 'Vasoactive & cardiac'),

@@ -137,6 +137,8 @@ const medicationPatientGuidancePatches =
   'senna': MedicationPatientGuidancePatch(
     missedDoseAr:
         'إذا نسيت جرعة فلا تضاعفها؛ استخدم الجرعة التالية عند الحاجة حسب المنتج لأن الهدف علاج الإمساك لا الحفاظ على مستوى دواء ثابت.',
+    seekHelpAr:
+        'لا تستمر بالعلاج الذاتي إذا ظهر ألم بطن شديد، قيء، انتفاخ واضح/عدم خروج غازات أو دم في البراز.',
     sourceLabel: 'DailyMed OTC · senna/sennosides',
   ),
   'hydrocortisone-topical': MedicationPatientGuidancePatch(
@@ -322,11 +324,6 @@ const medicationPatientGuidancePatches =
     seekHelpAr:
         'راجع الطبيب عند طفح/تورم أو تحسس شديد، أو إذا ازداد الألم/الإفراز أو لم يبدأ التحسن حسب المدة المتوقعة.',
     sourceLabel: 'DailyMed · ciprofloxacin otic',
-  ),
-  'senna': MedicationPatientGuidancePatch(
-    seekHelpAr:
-        'لا تستمر بالعلاج الذاتي إذا ظهر ألم بطن شديد، قيء، انتفاخ واضح/عدم خروج غازات أو دم في البراز.',
-    sourceLabel: 'DailyMed OTC · senna/sennosides',
   ),
   'sucralfate': MedicationPatientGuidancePatch(
     seekHelpAr:

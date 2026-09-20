@@ -705,4 +705,439 @@ const medicationClinicalDetails = <String, MedicationClinicalDetail>{
         'Touching dropper to eye; using multiple drops; not separating from other ophthalmic products.',
     source: 'MedlinePlus latanoprost',
   ),
+
+  'cetirizine': MedicationClinicalDetail(
+    therapyDuration:
+        'Often used intermittently or seasonally; chronic daily use is reasonable when symptoms are persistent and indication remains.',
+    exactAdministration:
+        'Usually once daily with or without food. Liquid and chewable products require age/strength-specific measurement.',
+    monitoring:
+        'Sedation, dry mouth and symptom control; renal function matters for dose adjustment in impairment.',
+    interactions:
+        'Alcohol and other CNS depressants can increase drowsiness.',
+    specialPopulations:
+        'Older adults and renal impairment may need lower or less frequent dosing.',
+    clinicalPearls:
+        '“Non-sedating” is not absolute—cetirizine can still impair some patients.',
+    commonMistakes:
+        'Driving immediately after first dose without knowing individual sedation response.',
+    source: 'MedlinePlus cetirizine',
+  ),
+  'montelukast': MedicationClinicalDetail(
+    therapyDuration:
+        'Controller therapy duration is based on ongoing indication and response. For allergic rhinitis, use should be reserved for appropriate patients after considering alternatives.',
+    exactAdministration:
+        'Once daily according to indication/age; asthma timing is often evening, while exercise/allergy regimens may differ.',
+    formulationHandling:
+        'Chewable tablets and granules have age-specific instructions. Granules may be given directly or with approved soft foods according to label.',
+    monitoring:
+        'Asthma control and neuropsychiatric symptoms including sleep, mood and behavior changes.',
+    interactions:
+        'Few major routine interactions, but full medication review remains appropriate.',
+    specialPopulations:
+        'Boxed warning for serious neuropsychiatric events makes indication selection especially important for allergic rhinitis.',
+    clinicalPearls:
+        'Not a rescue drug. New mood/behavior changes should not be dismissed as unrelated automatically.',
+    commonMistakes:
+        'Using for sudden wheeze; continuing for mild allergic rhinitis despite neuropsychiatric symptoms.',
+    source: 'MedlinePlus / FDA montelukast boxed warning',
+  ),
+  'fexofenadine': MedicationClinicalDetail(
+    therapyDuration:
+        'Intermittent/seasonal or chronic according to allergy/urticaria pattern.',
+    exactAdministration:
+        'Take with water; avoid apple, orange and grapefruit juice around the dose because absorption can decrease.',
+    formulationHandling:
+        'Tablet, ODT and suspension differ. Suspension should be shaken and measured accurately.',
+    monitoring:
+        'Symptom control and renal function when clinically relevant.',
+    interactions:
+        'Aluminum/magnesium antacids should be separated from fexofenadine according to label.',
+    specialPopulations:
+        'Renal impairment can require dose adjustment.',
+    clinicalPearls:
+        'Fruit-juice interaction is easy to miss because patients often take “allergy tablets” with breakfast juice.',
+    commonMistakes:
+        'Taking with fruit juice or simultaneously with aluminum/magnesium antacid.',
+    source: 'MedlinePlus fexofenadine',
+  ),
+  'dupilumab': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually long-term biologic therapy while clinically beneficial; induction/loading and maintenance schedules depend on indication/age/weight.',
+    exactAdministration:
+        'Subcutaneous injection using product-specific syringe/pen. Rotate sites and avoid scarred/infected skin.',
+    formulationHandling:
+        'Refrigerate, protect from light and allow to reach room temperature only for the product-specified time. Do not shake or heat.',
+    monitoring:
+        'Clinical response, injection reactions, conjunctivitis/eye symptoms and eosinophilic complications in selected respiratory patients.',
+    interactions:
+        'Live-vaccine decisions should be discussed before/during therapy according to current product guidance.',
+    specialPopulations:
+        'Asthma patients should not abruptly stop systemic or inhaled corticosteroids when starting dupilumab.',
+    clinicalPearls:
+        'Eye symptoms are common enough that proactive counseling improves adherence.',
+    commonMistakes:
+        'Heating the syringe/pen; shaking; expecting immediate discontinuation of all other controller therapy.',
+    source: 'MedlinePlus / dupilumab product IFU',
+  ),
+  'polyethylene-glycol-3350': MedicationClinicalDetail(
+    therapyDuration:
+        'OTC use is generally short-term unless a clinician directs longer therapy; chronic constipation needs cause/medication review.',
+    exactAdministration:
+        'Dissolve the measured dose completely in the specified volume of liquid and drink. Effect may take 2–4 days.',
+    formulationHandling:
+        'Plain PEG 3350 and electrolyte bowel-prep products are completely different preparations and must not be confused.',
+    monitoring:
+        'Bowel response, diarrhea and hydration; investigate alarm symptoms.',
+    interactions:
+        'Few systemic interactions because absorption is minimal, but bowel-prep regimens can alter absorption of oral medications.',
+    specialPopulations:
+        'Suspected obstruction, severe unexplained abdominal pain or persistent vomiting requires evaluation before laxative use.',
+    clinicalPearls:
+        'Patients often over-repeat doses because effect is not immediate.',
+    commonMistakes:
+        'Confusing daily constipation powder with colonoscopy preparation.',
+    source: 'MedlinePlus PEG 3350',
+  ),
+  'lactulose': MedicationClinicalDetail(
+    therapyDuration:
+        'Constipation may be short/intermediate term; hepatic encephalopathy regimens are chronic and titrated to a stool-frequency target.',
+    exactAdministration:
+        'Measure liquid accurately. May be mixed with water/juice/milk if needed for taste, according to product guidance.',
+    monitoring:
+        'Bowel frequency, diarrhea, dehydration and electrolytes in high-dose/chronic use.',
+    interactions:
+        'Other laxatives can confound titration in hepatic encephalopathy.',
+    specialPopulations:
+        'Diabetes and galactose-related excipients may matter depending on product and total intake.',
+    clinicalPearls:
+        'For hepatic encephalopathy the goal is not “as much diarrhea as possible”; overtreatment causes dehydration/electrolyte problems.',
+    commonMistakes:
+        'Using a household spoon; continuing unchanged despite profuse diarrhea.',
+    source: 'MedlinePlus lactulose',
+  ),
+  'loperamide': MedicationClinicalDetail(
+    therapyDuration:
+        'OTC acute-diarrhea use is short-term. Persistent diarrhea beyond label limits requires assessment.',
+    exactAdministration:
+        'Use the exact initial and post-loose-stool schedule for age/product; do not exceed daily maximum.',
+    monitoring:
+        'Hydration, fever, blood/mucus, abdominal distension and duration of diarrhea.',
+    interactions:
+        'High doses plus P-gp/CYP inhibitors can worsen cardiac toxicity; misuse/overdose can cause fatal arrhythmias.',
+    specialPopulations:
+        'Avoid in young children below approved age and in suspected inflammatory/invasive diarrhea or toxic megacolon risk.',
+    clinicalPearls:
+        'The most important question is often whether the diarrhea is appropriate for self-treatment, not the dose itself.',
+    commonMistakes:
+        'Using with bloody diarrhea/high fever; exceeding OTC maximum because diarrhea continues.',
+    source: 'MedlinePlus / FDA loperamide safety',
+  ),
+  'ondansetron-oral': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually intermittent/short-term based on nausea-vomiting cause; chronic daily use needs indication review.',
+    exactAdministration:
+        'Tablet, ODT and oral film have different handling; follow formulation-specific instructions.',
+    formulationHandling:
+        'ODT: peel foil with dry hands; do not push fragile tablet through blister. Film must be handled as its own product.',
+    monitoring:
+        'QT-risk context, electrolytes when relevant, constipation and serotonin-syndrome risk with serotonergic combinations.',
+    interactions:
+        'Apomorphine is contraindicated. Other QT-prolonging/serotonergic medicines require review.',
+    specialPopulations:
+        'Severe hepatic impairment may limit total daily dose.',
+    clinicalPearls:
+        'An ODT dissolving in the mouth does not necessarily mean faster antiemetic onset than a standard swallowed dose.',
+    commonMistakes:
+        'Pushing ODT through foil and breaking it; stacking with other QT-risk drugs without review.',
+    source: 'MedlinePlus ondansetron',
+  ),
+  'finasteride': MedicationClinicalDetail(
+    therapyDuration:
+        'Long-term; BPH benefit may take months and hair-loss benefit persists only while treatment continues.',
+    exactAdministration:
+        'Once daily with or without food.',
+    monitoring:
+        'Symptom response and PSA interpretation in BPH; sexual adverse effects and breast changes.',
+    interactions:
+        'Few major pharmacokinetic interactions.',
+    specialPopulations:
+        'Pregnant people should not handle crushed/broken tablets because of fetal risk.',
+    clinicalPearls:
+        'Finasteride lowers PSA; clinicians must account for this when interpreting prostate screening values.',
+    commonMistakes:
+        'Stopping after a few weeks because benefit is not yet visible; handling crushed tablets during pregnancy.',
+    source: 'MedlinePlus finasteride',
+  ),
+  'timolol-ophthalmic': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually chronic glaucoma therapy.',
+    exactAdministration:
+        'Instill prescribed drop, close eye gently and use nasolacrimal occlusion for 2–3 minutes to reduce systemic absorption.',
+    formulationHandling:
+        'Gel-forming and solution products can differ in frequency. Separate other ophthalmic drugs by the labeled interval.',
+    monitoring:
+        'Intraocular pressure, pulse, bronchospasm, dizziness and systemic beta-blocker effects.',
+    interactions:
+        'Systemic beta-blockers, verapamil/diltiazem and other rate-slowing drugs can add to bradycardia/hypotension.',
+    specialPopulations:
+        'Asthma/COPD, bradycardia, heart block and decompensated heart failure are important precautions.',
+    clinicalPearls:
+        'Eye drops can cause clinically meaningful systemic beta blockade; punctal occlusion matters.',
+    commonMistakes:
+        'Skipping punctal occlusion; assuming ophthalmic route has no systemic effects.',
+    source: 'MedlinePlus timolol ophthalmic',
+  ),
+  'ciprofloxacin-ophthalmic': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-course antibacterial treatment; corneal-ulcer and conjunctivitis regimens differ substantially.',
+    exactAdministration:
+        'Solution and ointment have different schedules. Avoid touching tip and complete course unless reassessed.',
+    monitoring:
+        'Clinical improvement, worsening pain/photophobia, corneal symptoms and hypersensitivity.',
+    interactions:
+        'Few systemic interactions due to low exposure; other eye products require spacing.',
+    specialPopulations:
+        'Contact lenses should not be worn during bacterial conjunctivitis.',
+    clinicalPearls:
+        'Corneal ulcer regimens can be very frequent initially—do not substitute standard conjunctivitis directions.',
+    commonMistakes:
+        'Using ear formulation in eye; stopping once redness improves after one day.',
+    source: 'MedlinePlus ciprofloxacin ophthalmic',
+  ),
+  'ciprofloxacin-otic': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-course otic antibacterial therapy; exact regimen depends on product and indication.',
+    exactAdministration:
+        'Warm in hands when product instructs, keep affected ear upward and remain positioned for the specified time.',
+    formulationHandling:
+        'Single-use solution and clinician-administered suspension products are not interchangeable.',
+    monitoring:
+        'Pain, discharge, hearing symptoms and response after expected interval.',
+    interactions:
+        'Minimal systemic interactions; avoid contaminating applicator.',
+    specialPopulations:
+        'Perforated tympanic membrane status influences which ear drops are appropriate; fluoroquinolones are often selected when non-ototoxic therapy is needed.',
+    clinicalPearls:
+        'Cold drops can cause dizziness; warming in the hand improves tolerability.',
+    commonMistakes:
+        'Confusing eye/ear formulation instructions; immediately sitting upright so drops drain out.',
+    source: 'MedlinePlus ciprofloxacin otic',
+  ),
+  'naproxen': MedicationClinicalDetail(
+    therapyDuration:
+        'Lowest effective dose for shortest appropriate duration; chronic inflammatory use needs ongoing GI/CV/renal review.',
+    exactAdministration:
+        'Take with a full glass of water; food/milk can reduce nausea. Different IR, delayed-release and ER products are not interchangeable.',
+    monitoring:
+        'GI bleeding, blood pressure, renal function, edema and cardiovascular symptoms.',
+    interactions:
+        'Anticoagulants/antiplatelets, ACEI/ARB/diuretics, lithium and other NSAIDs are high-value interactions.',
+    specialPopulations:
+        'CKD, ulcer history, cardiovascular disease, dehydration and pregnancy require extra caution.',
+    clinicalPearls:
+        'Longer half-life than ibuprofen means patients may accidentally overlap NSAIDs when “switching.”',
+    commonMistakes:
+        'Taking naproxen plus ibuprofen/diclofenac together.',
+    source: 'MedlinePlus naproxen',
+  ),
+  'bisacodyl-tablets': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term self-treatment; persistent need beyond about a week should prompt evaluation unless clinician-directed.',
+    exactAdministration:
+        'Swallow enteric-coated tablets whole. Avoid dairy/antacids within at least 1 hour of dose.',
+    formulationHandling:
+        'Tablets and suppositories have different onset and administration; do not crush enteric-coated tablets.',
+    monitoring:
+        'Bowel response, cramps, dehydration and chronic overuse.',
+    interactions:
+        'Antacids/dairy can disrupt enteric coating when taken too close.',
+    specialPopulations:
+        'Suspected obstruction or acute severe abdominal pain requires evaluation.',
+    clinicalPearls:
+        'A bedtime tablet often works the next day; patients may redose too soon if they expect immediate action.',
+    commonMistakes:
+        'Chewing/crushing tablet; taking with milk or antacid.',
+    source: 'MedlinePlus bisacodyl',
+  ),
+  'senna': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term unless part of a clinician-directed bowel regimen.',
+    exactAdministration:
+        'Often once daily at bedtime or divided depending on product/regimen; onset commonly overnight.',
+    monitoring:
+        'Cramps, diarrhea, hydration and persistent constipation.',
+    interactions:
+        'Chronic excessive use can worsen electrolyte problems and complicate use of selected cardiac drugs.',
+    specialPopulations:
+        'Alarm GI symptoms require evaluation before stimulant laxatives.',
+    clinicalPearls:
+        'Useful in opioid bowel regimens, but often needs combination with an osmotic agent rather than escalating senna alone.',
+    commonMistakes:
+        'Using indefinitely for unexplained constipation without evaluation.',
+    source: 'MedlinePlus senna',
+  ),
+  'hydrocortisone-topical': MedicationClinicalDetail(
+    therapyDuration:
+        'Short courses are typical for mild inflammatory dermatoses. Duration and potency must match site and diagnosis.',
+    exactAdministration:
+        'Apply a thin film to affected skin only at the recommended frequency; avoid unnecessary occlusion.',
+    formulationHandling:
+        'Cream, ointment, lotion and scalp/rectal products are not interchangeable in use.',
+    monitoring:
+        'Skin thinning, infection, worsening rash and treatment response; systemic absorption risk rises with large areas/occlusion.',
+    interactions:
+        'Few systemic interactions at low-potency limited use; additive topical steroid exposure matters.',
+    specialPopulations:
+        'Face, groin, skin folds, infants and large body-surface area require extra caution.',
+    clinicalPearls:
+        'Use fingertip-unit counseling when appropriate; “more cream” does not mean faster control.',
+    commonMistakes:
+        'Applying indefinitely to face/groin; using on fungal infection without correct diagnosis.',
+    source: 'MedlinePlus hydrocortisone topical',
+  ),
+  'combined-oral-contraceptive': MedicationClinicalDetail(
+    therapyDuration:
+        'Ongoing contraception while desired and medically eligible; no fixed maximum duration based on age alone.',
+    exactAdministration:
+        'One active pill daily following the exact pack. Start method and placebo interval differ by product.',
+    formulationHandling:
+        'Ethinyl estradiol/progestin types and pack designs differ; missed-pill instructions must follow exact product.',
+    monitoring:
+        'Blood pressure, adherence, bleeding pattern, VTE/stroke risk factors and interacting medicines.',
+    interactions:
+        'Enzyme inducers can reduce contraceptive efficacy. Some products interact with lamotrigine; review all antiseizure drugs.',
+    specialPopulations:
+        'Smoking age >35, migraine with aura, VTE history, early postpartum state and uncontrolled hypertension may contraindicate estrogen-containing methods.',
+    clinicalPearls:
+        'The “missed pill” plan is a core counseling skill and should be product-specific, not memorized as one rule.',
+    commonMistakes:
+        'Stopping due to breakthrough bleeding in first cycles; forgetting backup contraception after missed pills when required.',
+    source: 'MedlinePlus / contraceptive labeling',
+  ),
+  'norethindrone-pop': MedicationClinicalDetail(
+    therapyDuration:
+        'Ongoing contraception while desired; continuous daily use without estrogen-free break unless product specifies otherwise.',
+    exactAdministration:
+        'Take at the same time every day. The allowable late window and backup rules depend on the exact progestin-only product.',
+    monitoring:
+        'Bleeding pattern, adherence and pregnancy symptoms if pills are missed/late.',
+    interactions:
+        'Enzyme-inducing medicines can reduce efficacy.',
+    specialPopulations:
+        'Useful when estrogen is inappropriate, but individual contraindications still apply.',
+    clinicalPearls:
+        'Timing precision is more important with traditional norethindrone POPs than with some newer progestin-only pills.',
+    commonMistakes:
+        'Applying combined-pill missed-dose rules to a progestin-only pill.',
+    source: 'MedlinePlus progestin-only oral contraceptives',
+  ),
+  'levonorgestrel-ec': MedicationClinicalDetail(
+    therapyDuration:
+        'Single-use emergency contraception after a specific episode; not a scheduled ongoing method.',
+    exactAdministration:
+        'Take as soon as possible within the product/recommendation window. Vomiting soon after dose may require redosing advice.',
+    monitoring:
+        'Expected next menses, pregnancy testing if delayed and ongoing contraception plan.',
+    interactions:
+        'Strong enzyme inducers can reduce effectiveness; consider alternative emergency contraception.',
+    specialPopulations:
+        'Body weight/BMI may influence effectiveness; guideline/product recommendations should be considered.',
+    clinicalPearls:
+        'Emergency contraception does not terminate an established pregnancy and does not protect against STIs.',
+    commonMistakes:
+        'Waiting unnecessarily; using repeatedly without establishing reliable ongoing contraception.',
+    source: 'MedlinePlus levonorgestrel emergency contraception',
+  ),
+  'paracetamol': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term self-treatment for pain/fever unless clinician-directed; persistent symptoms require diagnosis review.',
+    exactAdministration:
+        'Dose interval and maximum daily exposure depend on age, formulation, liver risk and all combination products.',
+    formulationHandling:
+        'Immediate-release, extended-release, liquid and combination products are not interchangeable by tablet/mL count.',
+    monitoring:
+        'Total daily dose from every source, liver risk, alcohol use and symptom duration.',
+    interactions:
+        'Chronic high-dose use can increase INR variability with warfarin in some patients.',
+    specialPopulations:
+        'Lower total daily limits may be appropriate in low body weight, liver disease, frailty or heavy alcohol use.',
+    clinicalPearls:
+        'The biggest outpatient safety issue is duplicate acetaminophen/paracetamol hidden in cold/flu products.',
+    commonMistakes:
+        'Taking two different brand products that both contain paracetamol.',
+    source: 'MedlinePlus / OTC labeling',
+  ),
+  'paracetamol-pediatric-liquid': MedicationClinicalDetail(
+    therapyDuration:
+        'Short-term for fever/pain while cause is self-limited; persistent fever/pain needs age-appropriate assessment.',
+    exactAdministration:
+        'Dose by weight and exact concentration; use oral syringe for small children.',
+    formulationHandling:
+        'Concentrations and dropper/syringe markings vary by market/product. Never copy mL from another bottle.',
+    monitoring:
+        'Total daily exposure, duplicate cold/flu products, hydration and symptom duration.',
+    interactions:
+        'Few acute interactions, but chronic repeated dosing can matter with warfarin.',
+    specialPopulations:
+        'Young infants with fever need medical assessment rather than routine repeated antipyretic treatment alone.',
+    clinicalPearls:
+        'Weight-based dosing should use a recent weight, not age alone when possible.',
+    commonMistakes:
+        'Using a kitchen spoon; confusing mg with mL; alternating multiple fever medicines without a written plan.',
+    source: 'MedlinePlus / pediatric acetaminophen labeling',
+  ),
+  'spironolactone': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually chronic for heart failure, resistant hypertension or selected endocrine/dermatologic indications.',
+    exactAdministration:
+        'Take consistently with regard to food, especially for suspension products. Earlier-day dosing may reduce nocturia.',
+    formulationHandling:
+        'Tablet and suspension are not automatically bioequivalent/interchangeable.',
+    monitoring:
+        'Potassium and renal function after initiation/titration and periodically; blood pressure and volume status.',
+    interactions:
+        'ACEI/ARB/ARNI, potassium supplements/salt substitutes, trimethoprim and NSAIDs increase hyperkalemia/renal risk.',
+    specialPopulations:
+        'Avoid in significant hyperkalemia/renal failure; endocrine adverse effects may limit adherence.',
+    clinicalPearls:
+        'Trimethoprim is an under-recognized contributor to severe hyperkalemia in spironolactone users.',
+    commonMistakes:
+        'Adding potassium supplement automatically because it is a “diuretic.”',
+    source: 'MedlinePlus spironolactone',
+  ),
+  'hydrochlorothiazide': MedicationClinicalDetail(
+    therapyDuration:
+        'Usually chronic for hypertension; edema regimens may be intermittent.',
+    exactAdministration:
+        'Once daily or divided depending on indication; morning dosing is practical to reduce nocturia.',
+    monitoring:
+        'Blood pressure, sodium, potassium, renal function, uric acid/gout and glucose when clinically relevant.',
+    interactions:
+        'Lithium, NSAIDs and other BP-lowering drugs are high-value interactions.',
+    specialPopulations:
+        'Older adults and low-solute intake are at greater hyponatremia risk.',
+    clinicalPearls:
+        'Thiazide-induced hyponatremia can occur even after long-term stable use when circumstances change.',
+    commonMistakes:
+        'Assuming all muscle cramps mean low potassium without checking sodium/magnesium/volume status.',
+    source: 'MedlinePlus hydrochlorothiazide',
+  ),
+  'sitagliptin': MedicationClinicalDetail(
+    therapyDuration:
+        'Chronic glucose-lowering therapy while effective and tolerated.',
+    exactAdministration:
+        'Once daily with or without food.',
+    monitoring:
+        'A1c/glucose, renal function for dose adjustment, pancreatitis symptoms and heart-failure symptoms in susceptible patients.',
+    interactions:
+        'Hypoglycemia risk increases with insulin or sulfonylurea.',
+    specialPopulations:
+        'Renal impairment requires lower doses except for selected DPP-4 alternatives.',
+    clinicalPearls:
+        'Low hypoglycemia risk alone, but not when combined with insulin/sulfonylurea.',
+    commonMistakes:
+        'Failing to adjust dose after renal decline.',
+    source: 'MedlinePlus sitagliptin',
+  ),
 };

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/module_card.dart';
 import '../../patient_cards/presentation/patient_cards_screen.dart';
+import '../../medication_plan/presentation/medication_plan_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
   void _openModule(BuildContext context, String action) {
     final routes = <String, WidgetBuilder>{
       'patient_cards': (_) => const PatientCardsScreen(),
+      'medication_plan': (_) => const MedicationPlanScreen(),
     };
 
     final builder = routes[action];
@@ -32,6 +34,13 @@ class HomeScreen extends StatelessWidget {
     final columns = width >= 900 ? 3 : width >= 620 ? 2 : 1;
 
     final clinicalTools = [
+      (
+        'Medication Plan',
+        'Enter all patient medicines and supplements once to generate one organized daily schedule.',
+        Icons.event_note_outlined,
+        'medication_plan',
+        'Multi-drug'
+      ),
       (
         'IV Preparation',
         'General, NICU and PICU preparation profiles with formulation-specific safety.',

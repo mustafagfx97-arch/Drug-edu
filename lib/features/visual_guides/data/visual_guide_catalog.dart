@@ -325,6 +325,27 @@ const visualGuideCatalog = <VisualGuideData>[
         'الكبسولة هنا للاستنشاق وليست للبلع. ضعها في جهازها المخصص وافتح/اثقب الكبسولة بالطريقة الخاصة بالجهاز، ثم أخرج الهواء بعيدًا عنه واستنشق بعمق. اتبع تعليمات نفس جهازك لأن خطوات الفتح وعدد مرات الاستنشاق قد تختلف.',
   ),
   VisualGuideData(
+    id: 'daily-injection-pen',
+    title: 'Daily injection pen',
+    subtitle:
+        'Daily reusable/multidose pen framework; exact priming, dose window and storage remain product-specific.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Confirm the exact medicine, pen and prescribed daily dose.',
+      'Inspect the medicine and attach a new compatible needle when the product requires one.',
+      'Perform the exact product-specific preparation or flow-check step.',
+      'Inject at the recommended site using the device-specific activation and hold-time instructions.',
+      'Remove and discard the needle, recap the device and store it exactly as the IFU requires.',
+    ],
+    mistakes: [
+      'Leaving the needle attached between injections.',
+      'Transferring medicine from a pen into a syringe.',
+      'Using another pen brand’s priming, hold-time or storage instructions.',
+    ],
+    patientSummaryAr:
+        'تأكد من اسم الدواء والقلم، استخدم إبرة جديدة إذا كان المنتج يتطلبها، ونفّذ خطوات نفس الـIFU. بعد الحقن انزع الإبرة ولا تنقل الدواء من القلم إلى سرنجة. الحفظ بعد الاستخدام يختلف حسب المنتج.',
+  ),
+  VisualGuideData(
     id: 'weekly-injection-device',
     title: 'Weekly injection device',
     subtitle:
@@ -379,6 +400,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'mometasone-nasal': ['nasal-spray'],
   'azelastine-nasal': ['nasal-spray'],
   'oxymetazoline-nasal': ['nasal-spray'],
+  'teriparatide-forteo': ['daily-injection-pen'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

@@ -6,6 +6,7 @@ import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
 import 'package:drug_edu/core/models/medication.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
+import 'package:drug_edu/core/data/expanded_medications_2.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
 import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
@@ -32,7 +33,7 @@ void main() {
 
 
   test('medicine encyclopedia has substantial practical coverage', () {
-    expect(sampleMedications.length, greaterThanOrEqualTo(100));
+    expect(sampleMedications.length, greaterThanOrEqualTo(129));
 
     final ids = sampleMedications.map((medicine) => medicine.id).toList();
     expect(ids.toSet().length, ids.length, reason: 'Medication IDs must be unique');
@@ -222,6 +223,49 @@ void main() {
   test('patient guidance patches do not duplicate medication IDs', () {
     final patchIds = medicationPatientGuidancePatches.keys.toList();
     expect(patchIds.toSet().length, patchIds.length);
+  });
+
+  test('second expansion adds complete high-priority medicine records', () {
+    expect(expandedMedications2.length, 26);
+
+    final ids = expandedMedications2.map((medicine) => medicine.id).toSet();
+    expect(ids.length, expandedMedications2.length);
+    expect(ids, contains('tirzepatide-mounjaro'));
+    expect(ids, contains('denosumab-prolia'));
+    expect(ids, contains('risedronate'));
+    expect(ids, contains('lithium'));
+    expect(ids, contains('amoxicillin-clavulanate'));
+
+    for (final medicine in expandedMedications2) {
+      expect(medicine.useProfile.isEmpty, isFalse,
+          reason: medicine.name + ' structured profile');
+      expect(medicine.sourceLabel.trim(), isNotEmpty,
+          reason: medicine.name + ' source');
+      expect(medicine.patient.purposeAr.trim(), isNotEmpty);
+      expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
+      expect(medicine.patient.timingAr.trim(), isNotEmpty);
+      expect(medicine.patient.importantAr.trim(), isNotEmpty);
+      expect(medicine.patient.missedDoseAr.trim(), isNotEmpty);
+      expect(medicine.patient.seekHelpAr.trim(), isNotEmpty);
+      expect(medicine.patient.teachBackAr.trim(), isNotEmpty);
+    }
+
+    final mounjaro = expandedMedications2.firstWhere(
+      (medicine) => medicine.id == 'tirzepatide-mounjaro',
+    );
+    expect(mounjaro.patient.missedDoseAr, contains('96 ساعة'));
+    expect(mounjaro.patient.missedDoseAr, contains('72 ساعة'));
+
+    final risedronate = expandedMedications2.firstWhere(
+      (medicine) => medicine.id == 'risedronate',
+    );
+    expect(risedronate.patient.timingAr, contains('Atelvia'));
+    expect(risedronate.patient.timingAr, contains('30 دقيقة'));
+
+    final prolia = expandedMedications2.firstWhere(
+      (medicine) => medicine.id == 'denosumab-prolia',
+    );
+    expect(prolia.patient.missedDoseAr, contains('كل 6 أشهر'));
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

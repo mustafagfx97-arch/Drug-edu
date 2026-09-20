@@ -624,4 +624,82 @@ void main() {
     );
   });
 
+
+  test('multiple albuterol routes create duplicate bronchodilator alert', () {
+    final plan = engine.generate(
+      items: [
+        item('salbutamol-mdi', 'Salbutamol MDI'),
+        item(
+          'albuterol-nebulizer-0083',
+          'Albuterol Nebulizer',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Duplicate albuterol/salbutamol routes' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('HandiHaler plus Respimat flags duplicate tiotropium', () {
+    final plan = engine.generate(
+      items: [
+        item('tiotropium-capsule-inhalation', 'Tiotropium HandiHaler'),
+        item('tiotropium-respimat', 'Tiotropium Respimat'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Duplicate tiotropium devices' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('multiple inhaled corticosteroid products prompt duplication review', () {
+    final plan = engine.generate(
+      items: [
+        item('budesonide-nebulizer', 'Budesonide Nebulizer'),
+        item('fluticasone-hfa', 'Fluticasone HFA'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Inhaled corticosteroid duplication review',
+      ),
+      isTrue,
+    );
+  });
+
+  test('ipratropium plus tiotropium prompts anticholinergic overlap review', () {
+    final plan = engine.generate(
+      items: [
+        item('ipratropium-nebulizer', 'Ipratropium Nebulizer'),
+        item('tiotropium-respimat', 'Tiotropium Respimat'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Inhaled anticholinergic overlap',
+      ),
+      isTrue,
+    );
+  });
+
 }

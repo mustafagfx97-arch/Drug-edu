@@ -239,6 +239,29 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'ibuprofen-pediatric-liquid':
       TherapyDurationGuidance(kind: TherapyDurationKind.shortSelfCare),
+  'albuterol-nebulizer-0083':
+      TherapyDurationGuidance(kind: TherapyDurationKind.asNeeded),
+  'albuterol-nebulizer-concentrate-05':
+      TherapyDurationGuidance(kind: TherapyDurationKind.asNeeded),
+  'ipratropium-nebulizer':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'ipratropium-albuterol-nebulizer':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'budesonide-nebulizer':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'tiotropium-respimat':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'fluticasone-nasal':
+      TherapyDurationGuidance(kind: TherapyDurationKind.intermittent),
+  'mometasone-nasal':
+      TherapyDurationGuidance(kind: TherapyDurationKind.intermittent),
+  'azelastine-nasal':
+      TherapyDurationGuidance(kind: TherapyDurationKind.intermittent),
+  'oxymetazoline-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortSelfCare,
+    patientOverrideAr:
+        'للاستخدام الذاتي القصير فقط: لا تستخدم oxymetazoline أكثر من 3 أيام متتالية لأن الاحتقان قد يعود أو يزداد مع الاستخدام المطول.',
+  ),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

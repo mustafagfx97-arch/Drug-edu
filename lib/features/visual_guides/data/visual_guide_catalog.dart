@@ -369,6 +369,16 @@ const medicationVisualGuideIds = <String, List<String>>{
   'fluticasone-hfa': ['mdi', 'spacer'],
   'fluticasone-salmeterol-dpi': ['diskus', 'dpi'],
   'tirzepatide-mounjaro': ['weekly-injection-device'],
+  'albuterol-nebulizer-0083': ['nebulizer'],
+  'albuterol-nebulizer-concentrate-05': ['nebulizer'],
+  'ipratropium-nebulizer': ['nebulizer'],
+  'ipratropium-albuterol-nebulizer': ['nebulizer'],
+  'budesonide-nebulizer': ['nebulizer'],
+  'tiotropium-respimat': ['respimat'],
+  'fluticasone-nasal': ['nasal-spray'],
+  'mometasone-nasal': ['nasal-spray'],
+  'azelastine-nasal': ['nasal-spray'],
+  'oxymetazoline-nasal': ['nasal-spray'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

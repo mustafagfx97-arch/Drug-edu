@@ -711,4 +711,79 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'إذا استُخدم مع tetracycline/quinolone antibiotic يحتاج فصلًا زمنيًا.',
     source: 'NIH ODS Zinc',
   ),
+  'vitamin-b12': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لا يحتاج وجبة خاصة عادةً؛ اتبع شكل المنتج وتعليماته لأن lozenge/sublingual والوصفات قد تختلف.',
+    source: 'NIH ODS Vitamin B12',
+  ),
+  'folic-acid': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن تنظيمه في وقت ثابت حسب الوصفة أو المنتج؛ لا يحتاج وجبة دهنية خاصة.',
+    source: 'NIH ODS Folate',
+  ),
+  'vitamin-c': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن في وقت يناسبك حسب المنتج؛ إذا أزعج المعدة يمكن ربطه بالطعام بدل زيادة الجرعة.',
+    source: 'NIH ODS Vitamin C / MedlinePlus Ascorbic Acid',
+  ),
+  'vitamin-a': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع المنتج والجرعة المقصودة؛ لا يضع التطبيق جرعات عالية تلقائيًا ولا يكرر vitamin A الموجود في multivitamin.',
+    source: 'NIH ODS Vitamin A',
+  ),
+  'vitamin-e': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع تعليمات المنتج أو الوصفة؛ لا يحتاج التطبيق إلى فرض وقت وجبة موحد لكل منتج.',
+    source: 'NIH ODS Vitamin E / MedlinePlus',
+  ),
+  'vitamin-k': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'اتبع المنتج. مع warfarin لا تغيّر مكمل vitamin K أو كميته من نفسك؛ المشكلة ليست توقيتًا فقط.',
+    source: 'NIH ODS Vitamin K',
+  ),
+  'iodine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'استخدم الكمية المقصودة حسب المنتج، وراجع تكراره داخل prenatal/multivitamin وأمراض الغدة الدرقية.',
+    source: 'NIH ODS Iodine',
+  ),
+  'selenium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن تنظيمه حسب المنتج؛ لا تجمع عدة منتجات تحتوي selenium دون حاجة واضحة.',
+    source: 'NIH ODS Selenium',
+  ),
+  'pediatric-vitamin-d': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'أعط الجرعة باستمرار في وقت يناسب مقدم الرعاية، لكن تحقّق من IU لكل قطرة أو mL لنفس المنتج.',
+    source: 'CDC Infant Vitamin D / NIH ODS Vitamin D',
+  ),
+  'pediatric-iron': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'توقيت حديد الرضع/الأطفال يعتمد على التركيز ونمط التغذية والخطة؛ اختر التوقيت الموصوف ولا تعتمد Auto.',
+    autoScheduleSafe: false,
+    source: 'CDC Iron / pediatric iron guidance',
+  ),
+  'multivitamin-mineral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'راجع مكونات المنتج أولًا؛ وجود iron/calcium/magnesium قد يفرض فصلًا عن أدوية أخرى، لذلك اختر التوقيت يدويًا.',
+    autoScheduleSafe: false,
+    source: 'Ingredient-level NIH ODS guidance',
+  ),
+  'prenatal-combination': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'التوقيت يعتمد على مكونات prenatal وتحمل المعدة؛ بسبب الحديد/الكالسيوم المحتملين اختر التوقيت يدويًا وراجع الفصل عن الأدوية.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS prenatal nutrient guidance',
+  ),
 };

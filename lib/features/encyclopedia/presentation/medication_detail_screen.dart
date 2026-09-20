@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/data/medication_clinical_overlays.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
@@ -139,6 +140,10 @@ class _PharmacistTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final useProfile = resolvedMedicationUseProfile(medication);
+    final sourceLabel = resolvedMedicationSourceLabel(medication);
+    final reviewStatus = resolvedMedicationReviewStatus(medication);
+    final lastReviewed = resolvedMedicationLastReviewed(medication);
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
@@ -163,13 +168,13 @@ class _PharmacistTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        if (!medication.useProfile.isEmpty) ...[
+        if (!useProfile.isEmpty) ...[
           SectionCard(
             title: 'Medication-use essentials',
             icon: Icons.fact_check_outlined,
             child: Column(
               children: [
-                for (final fact in medication.useProfile.facts) ...[
+                for (final fact in useProfile.facts) ...[
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -220,7 +225,7 @@ class _PharmacistTab extends StatelessWidget {
           ),
           const SizedBox(height: 12),
         ],
-        if (medication.sourceLabel.isNotEmpty) ...[
+        if (sourceLabel.isNotEmpty) ...[
           SectionCard(
             title: 'Source & review',
             icon: Icons.verified_outlined,
@@ -228,12 +233,12 @@ class _PharmacistTab extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  medication.sourceLabel,
+                  sourceLabel,
                   style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
                 ),
                 const SizedBox(height: 7),
                 Text(
-                  medication.reviewStatus + ' · ' + medication.lastReviewed,
+                  reviewStatus + ' · ' + lastReviewed,
                   style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.w800,

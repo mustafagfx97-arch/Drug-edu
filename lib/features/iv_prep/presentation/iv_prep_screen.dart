@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/section_card.dart';
+import '../data/iv_medication_catalog.dart';
 
 class IvPrepScreen extends StatefulWidget {
   const IvPrepScreen({super.key});
@@ -11,133 +11,25 @@ class IvPrepScreen extends StatefulWidget {
 
 class _IvPrepScreenState extends State<IvPrepScreen> {
   String _population = 'General';
+  String _query = '';
 
-  List<_IvCategory> get _categories {
-    if (_population == 'NICU') {
-      return const [
-        _IvCategory(
-          title: 'Antimicrobials',
-          subtitle:
-              'Neonatal antibiotic, antiviral and antifungal preparation profiles.',
-          icon: Icons.biotech_outlined,
-        ),
-        _IvCategory(
-          title: 'Cardiac & vasoactive',
-          subtitle:
-              'Continuous infusions and high-risk cardiovascular preparations.',
-          icon: Icons.monitor_heart_outlined,
-        ),
-        _IvCategory(
-          title: 'Respiratory & PDA',
-          subtitle:
-              'Caffeine, pulmonary vasodilator and PDA-related preparation profiles.',
-          icon: Icons.air_outlined,
-        ),
-        _IvCategory(
-          title: 'Neurology, sedation & paralysis',
-          subtitle:
-              'Antiseizure, analgesic, sedative and neuromuscular-blocker preparations.',
-          icon: Icons.psychology_outlined,
-        ),
-        _IvCategory(
-          title: 'Electrolytes & glucose',
-          subtitle:
-              'Calcium, magnesium, bicarbonate, potassium, phosphate, saline and dextrose profiles.',
-          icon: Icons.water_drop_outlined,
-        ),
-        _IvCategory(
-          title: 'Emergency & special products',
-          subtitle:
-              'Antidotes, albumin, IVIG, endocrine and other neonatal high-risk preparations.',
-          icon: Icons.emergency_outlined,
-        ),
-      ];
-    }
+  List<IvCatalogEntry> get _entries {
+    final q = _query.trim().toLowerCase();
 
-    if (_population == 'PICU') {
-      return const [
-        _IvCategory(
-          title: 'Vasoactive & cardiac',
-          subtitle:
-              'Standard pediatric infusion concentrations and product-specific preparation.',
-          icon: Icons.monitor_heart_outlined,
-        ),
-        _IvCategory(
-          title: 'Sedation & analgesia',
-          subtitle:
-              'Opioid, sedative and continuous critical-care preparations.',
-          icon: Icons.bedtime_outlined,
-        ),
-        _IvCategory(
-          title: 'Neuromuscular blockade',
-          subtitle:
-              'Paralytic preparations with dedicated high-alert safety gates.',
-          icon: Icons.accessibility_new_outlined,
-        ),
-        _IvCategory(
-          title: 'Electrolytes & metabolic',
-          subtitle:
-              'Electrolyte replacement, dextrose, insulin and metabolic infusions.',
-          icon: Icons.bolt_outlined,
-        ),
-        _IvCategory(
-          title: 'Anticoagulation & hemostasis',
-          subtitle:
-              'Heparin, direct anticoagulants, fibrinolytic and antifibrinolytic preparation profiles.',
-          icon: Icons.bloodtype_outlined,
-        ),
-        _IvCategory(
-          title: 'Other continuous infusions',
-          subtitle:
-              'Additional pediatric standard concentrations and manufacturer-specific infusions.',
-          icon: Icons.speed_outlined,
-        ),
-      ];
-    }
-
-    return const [
-      _IvCategory(
-        title: 'Antibiotics',
-        subtitle:
-            'Reconstitution and further dilution for commonly used IV antibacterials.',
-        icon: Icons.biotech_outlined,
-      ),
-      _IvCategory(
-        title: 'Antifungals & antivirals',
-        subtitle:
-            'Product-specific preparation for systemic antifungal and antiviral agents.',
-        icon: Icons.coronavirus_outlined,
-      ),
-      _IvCategory(
-        title: 'Cardiovascular',
-        subtitle:
-            'Antiarrhythmics, vasopressors, vasodilators and cardiovascular infusions.',
-        icon: Icons.monitor_heart_outlined,
-      ),
-      _IvCategory(
-        title: 'Neurology & sedation',
-        subtitle:
-            'Antiseizure agents, sedatives, analgesics and anesthesia-related preparations.',
-        icon: Icons.psychology_outlined,
-      ),
-      _IvCategory(
-        title: 'Electrolytes & metabolic',
-        subtitle:
-            'Potassium, calcium, magnesium, bicarbonate, phosphate, dextrose and insulin.',
-        icon: Icons.bolt_outlined,
-      ),
-      _IvCategory(
-        title: 'Emergency & antidotes',
-        subtitle:
-            'Resuscitation, reversal agents, antidotes and other high-risk emergency preparations.',
-        icon: Icons.emergency_outlined,
-      ),
-    ];
+    return ivMedicationCatalog.where((entry) {
+      if (entry.population != _population) return false;
+      if (q.isEmpty) return true;
+      return entry.name.toLowerCase().contains(q) ||
+          entry.category.toLowerCase().contains(q);
+    }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final entries = _entries;
+    final categories = entries.map((entry) => entry.category).toSet().toList()
+      ..sort();
 
     return CustomScrollView(
       slivers: [
@@ -156,7 +48,10 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
               ],
               selected: {_population},
               onSelectionChanged: (value) {
-                setState(() => _population = value.first);
+                setState(() {
+                  _population = value.first;
+                  _query = '';
+                });
               },
             ),
           ),
@@ -165,22 +60,26 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
           padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
           sliver: SliverToBoxAdapter(
             child: TextField(
+              onChanged: (value) => setState(() => _query = value),
               decoration: const InputDecoration(
-                hintText: 'Search IV medication or formulation',
+                hintText: 'Search IV medication or category',
                 prefixIcon: Icon(Icons.search_rounded),
-                suffixIcon: Icon(Icons.tune_rounded),
               ),
             ),
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
           sliver: SliverToBoxAdapter(
-            child: SectionCard(
-              title: 'Safe workflow',
-              icon: Icons.shield_outlined,
-              child: Column(
-                children: const [
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primaryContainer.withValues(alpha: 0.45),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   _WorkflowRow(
                     number: '1',
                     title: 'Select population',
@@ -190,19 +89,19 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                     number: '2',
                     title: 'Select exact formulation',
                     detail:
-                        'Vial strength, salt/base and product-specific differences are explicit.',
+                        'Strength, salt/base and manufacturer differences must be explicit.',
                   ),
                   _WorkflowRow(
                     number: '3',
                     title: 'Verify preparation authority',
                     detail:
-                        'RTU, manufacturer, ANMF, ASHP or institution-specific.',
+                        'Manufacturer, ANMF/NeoMED, pediatric standard or institution-specific.',
                   ),
                   _WorkflowRow(
                     number: '4',
-                    title: 'Enter the prescribed dose',
+                    title: 'Use the calculator only after profile validation',
                     detail:
-                        'The calculator converts the order; it never chooses treatment doses.',
+                        'The calculator converts a prescribed order; it never invents a preparation recipe.',
                     isLast: true,
                   ),
                 ],
@@ -211,100 +110,103 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 2, 20, 10),
-          sliver: SliverToBoxAdapter(
-            child: Text(
-              '$_population library',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w900,
-              ),
-            ),
-          ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 14),
-          sliver: SliverToBoxAdapter(
-            child: _ProfileCard(
-              name: _population == 'NICU'
-                  ? 'Caffeine Citrate'
-                  : _population == 'PICU'
-                      ? 'Norepinephrine'
-                      : 'Vancomycin',
-              subtitle: _population == 'NICU'
-                  ? 'Example neonatal profile linked to the V1 calculator.'
-                  : _population == 'PICU'
-                      ? 'Example pediatric standard-concentration profile linked to the V1 calculator.'
-                      : 'Example intermittent IV preparation record.',
-              authority: _population == 'NICU'
-                  ? 'ANMF neonatal standard'
-                  : _population == 'PICU'
-                      ? 'Pediatric standard concentration'
-                      : 'Manufacturer / institutional',
-            ),
-          ),
-        ),
-        SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           sliver: SliverToBoxAdapter(
-            child: Text(
-              'Browse by category',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w900,
-              ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    _population + ' catalog',
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Text(
+                  entries.length.toString() + ' profiles',
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-        SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
-          sliver: SliverList.separated(
-            itemCount: _categories.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 10),
-            itemBuilder: (context, index) {
-              final category = _categories[index];
-              return Card(
-                child: ListTile(
-                  contentPadding: const EdgeInsets.all(16),
-                  leading: Container(
-                    width: 46,
-                    height: 46,
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primaryContainer,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Icon(
-                      category.icon,
-                      color: theme.colorScheme.onPrimaryContainer,
-                    ),
-                  ),
-                  title: Text(
-                    category.title,
-                    style: const TextStyle(fontWeight: FontWeight.w800),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(category.subtitle),
-                  ),
-                  trailing: const Icon(Icons.chevron_right_rounded),
+        for (final category in categories) ...[
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 8),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                category,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
                 ),
-              );
-            },
+              ),
+            ),
           ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 4),
+            sliver: SliverList.separated(
+              itemCount:
+                  entries.where((entry) => entry.category == category).length,
+              separatorBuilder: (_, __) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                final categoryEntries = entries
+                    .where((entry) => entry.category == category)
+                    .toList();
+                final entry = categoryEntries[index];
+
+                return Card(
+                  child: ListTile(
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    leading: Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: entry.structured
+                            ? theme.colorScheme.primaryContainer
+                            : theme.colorScheme.surfaceContainerHighest,
+                        borderRadius: BorderRadius.circular(13),
+                      ),
+                      child: Icon(
+                        Icons.vaccines_outlined,
+                        color: entry.structured
+                            ? theme.colorScheme.onPrimaryContainer
+                            : theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                    title: Text(
+                      entry.name,
+                      style: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        entry.structured
+                            ? 'Structured profile available'
+                            : 'Project-covered · exact structured values require migration before calculator use',
+                      ),
+                    ),
+                    trailing: entry.structured
+                        ? Icon(
+                            Icons.verified_outlined,
+                            color: theme.colorScheme.primary,
+                          )
+                        : const Icon(Icons.chevron_right_rounded),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+        const SliverPadding(
+          padding: EdgeInsets.only(bottom: 28),
         ),
       ],
     );
   }
-}
-
-class _IvCategory {
-  const _IvCategory({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-  });
-
-  final String title;
-  final String subtitle;
-  final IconData icon;
 }
 
 class _WorkflowRow extends StatelessWidget {
@@ -325,16 +227,17 @@ class _WorkflowRow extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: isLast ? 0 : 16),
+      padding: EdgeInsets.only(bottom: isLast ? 0 : 14),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             radius: 15,
-            backgroundColor: theme.colorScheme.primaryContainer,
+            backgroundColor: theme.colorScheme.primary,
             child: Text(
               number,
               style: theme.textTheme.labelMedium?.copyWith(
+                color: theme.colorScheme.onPrimary,
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -362,60 +265,6 @@ class _WorkflowRow extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ProfileCard extends StatelessWidget {
-  const _ProfileCard({
-    required this.name,
-    required this.subtitle,
-    required this.authority,
-  });
-
-  final String name;
-  final String subtitle;
-  final String authority;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Card(
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(16),
-        leading: Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(13),
-          ),
-          child: const Icon(Icons.vaccines_outlined),
-        ),
-        title: Text(
-          name,
-          style: const TextStyle(fontWeight: FontWeight.w800),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(subtitle),
-              const SizedBox(height: 8),
-              Text(
-                authority,
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: theme.colorScheme.primary,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-        ),
-        trailing: const Icon(Icons.chevron_right_rounded),
       ),
     );
   }

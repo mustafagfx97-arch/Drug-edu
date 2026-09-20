@@ -37,8 +37,8 @@ class MedicationDetailScreen extends StatelessWidget {
       id: 'medication-card',
       templateName: 'Medication Counseling Card',
       medicationName: medication.name,
-      subtitle: medication.subtitle,
-      instructionsAr: medication.patientCounselingAr,
+      subtitleAr: 'تعليمات مختصرة',
+      howToUseAr: medication.patientCounselingAr,
       category: 'Medication',
     );
 

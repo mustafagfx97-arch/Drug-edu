@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VisualGuideData {
-  VisualGuideData({
+  const VisualGuideData({
     required this.id,
     required this.title,
     required this.subtitle,

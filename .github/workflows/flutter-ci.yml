@@ -23,6 +23,7 @@ jobs:
         run: |
           if [ ! -d android ]; then
             flutter create . --platforms=android --project-name drug_edu
+            rm -f test/widget_test.dart
           fi
 
       - name: Install dependencies

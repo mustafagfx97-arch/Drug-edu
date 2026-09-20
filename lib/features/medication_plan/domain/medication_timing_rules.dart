@@ -869,6 +869,34 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed OTC Oxymetazoline 0.05% · 2026',
   ),
+  'ibandronate-monthly': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr: 'مرة شهريًا صباحًا بعد صيام الليل، ثم انتظر 60 دقيقة قبل الطعام/الشراب غير الماء أو أي دواء/مكمل آخر، وابقَ جالسًا أو واقفًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Ibandronate Sodium Tablets 150 mg · 2026',
+  ),
+  'teriparatide-forteo': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقنة تحت الجلد مرة يوميًا في وقت ثابت يناسبك؛ أخرج القلم من الثلاجة عند الجرعة وأعده مباشرة بعد الاستخدام.',
+    source: 'DailyMed FORTEO · August 2026',
+  ),
+  'romosozumab-evenity': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جرعة عيادية مرة كل شهر، وليست دواءً يوميًا يمكن للمخطط تحديد ساعة ثابتة له.',
+    autoScheduleSafe: false,
+    source: 'DailyMed EVENITY · January 2026',
+  ),
+  'drospirenone-pop': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حبة يوميًا بنفس الوقت تقريبًا؛ اتبع ترتيب 24 حبة فعالة ثم 4 حبوب غير فعالة من دون يوم فارغ بين العبوات.',
+    source: 'DailyMed SLYND · effective August 27, 2026',
+  ),
+  'depo-provera-ci': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقنة عيادية كل 3 أشهر (13 أسبوعًا)؛ إذا تأخرت عن الموعد تحتاج مراجعة الحمل وجدولة الحقنة مع العيادة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed DEPO-PROVERA CI · current 2026',
+  ),
   'oral-iron-salts': MedicationTimingRule(
     anchor: 'empty-stomach',
     instructionAr:

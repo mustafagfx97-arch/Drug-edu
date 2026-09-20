@@ -418,7 +418,11 @@ class _PrintablePlan extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
-                          formatMinutes(dose.minutes),
+                          (dose.dayLabel.isEmpty
+                                  ? ''
+                                  : dose.dayLabel + '\n') +
+                              formatMinutes(dose.minutes),
+                          textAlign: TextAlign.center,
                           style: theme.textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w900,
                           ),
@@ -631,6 +635,37 @@ class _MedicationSearchSheetState extends State<_MedicationSearchSheet> {
             ),
           ),
           const SizedBox(height: 12),
+          if (_query.trim().isNotEmpty)
+            ListTile(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+              tileColor: Theme.of(context).colorScheme.primaryContainer,
+              leading: const Icon(Icons.add_box_outlined),
+              title: Text(
+                'Add custom: ' + _query.trim(),
+                style: const TextStyle(fontWeight: FontWeight.w900),
+              ),
+              subtitle: const Text(
+                'Frequency can be organized, but administration rules require manual verification.',
+              ),
+              onTap: () {
+                final name = _query.trim();
+                final safeId = name
+                    .toLowerCase()
+                    .replaceAll(RegExp(r'[^a-z0-9]+'), '-');
+                Navigator.pop(
+                  context,
+                  _PlanCatalogOption(
+                    sourceId: 'custom-' + safeId,
+                    name: name,
+                    subtitle: 'Custom medicine',
+                    type: PlanItemType.medicine,
+                  ),
+                );
+              },
+            ),
+          if (_query.trim().isNotEmpty) const SizedBox(height: 8),
           Expanded(
             child: ListView.separated(
               itemCount: filtered.length,

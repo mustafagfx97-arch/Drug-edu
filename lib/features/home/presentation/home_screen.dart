@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/module_card.dart';
-import '../../feeding_tubes/presentation/feeding_tubes_screen.dart';
 import '../../patient_cards/presentation/patient_cards_screen.dart';
-import '../../supplements/presentation/supplements_screen.dart';
-import '../../visual_guides/presentation/visual_guides_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -17,9 +14,6 @@ class HomeScreen extends StatelessWidget {
   void _openModule(BuildContext context, String action) {
     final routes = <String, WidgetBuilder>{
       'patient_cards': (_) => const PatientCardsScreen(),
-      'visual_guides': (_) => const VisualGuidesScreen(),
-      'feeding_tubes': (_) => const FeedingTubesScreen(),
-      'supplements': (_) => const SupplementsScreen(),
     };
 
     final builder = routes[action];
@@ -51,27 +45,6 @@ class HomeScreen extends StatelessWidget {
         Icons.calculate_outlined,
         '3',
         'Dose not selected'
-      ),
-      (
-        'Visual Guides',
-        'Technique guides for inhalers, sprays, pens, drops and medication devices.',
-        Icons.auto_awesome_mosaic_outlined,
-        'visual_guides',
-        'Technique'
-      ),
-      (
-        'Feeding Tubes',
-        'Formulation handling, crushing, liquids and tube-administration workflows.',
-        Icons.route_outlined,
-        'feeding_tubes',
-        null
-      ),
-      (
-        'Supplement Encyclopedia',
-        'Vitamins, minerals and supplement products with exact how-to-take instructions.',
-        Icons.spa_outlined,
-        'supplements',
-        null
       ),
       (
         'Patient Cards',
@@ -163,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Browse by drug family or search a medicine.',
+                                  'Medicines, supplements, devices and feeding-tube education in one organized encyclopedia.',
                                   style:
                                       theme.textTheme.bodyMedium?.copyWith(
                                     color:

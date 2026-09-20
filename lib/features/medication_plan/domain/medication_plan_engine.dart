@@ -31,6 +31,11 @@ class MedicationPlanEngine {
         continue;
       }
 
+      final mealChoiceProvided =
+          item.preference == TimingPreference.breakfast ||
+          item.preference == TimingPreference.lunch ||
+          item.preference == TimingPreference.dinner;
+
       if (rule.requiresMealChoice &&
           item.preference == TimingPreference.auto) {
         alerts.add(
@@ -38,6 +43,47 @@ class MedicationPlanEngine {
             title: item.name + ' · Review required',
             message:
                 'اختر الوجبة التي سيؤخذ بعدها الدواء باستمرار حتى يستطيع التطبيق وضع وقت صحيح بدل افتراض وجبة من نفسه.',
+            isCritical: true,
+          ),
+        );
+        continue;
+      }
+
+      if (!rule.autoScheduleSafe &&
+          item.preference == TimingPreference.auto) {
+        alerts.add(
+          PlanAlert(
+            title: item.name + ' · Timing required',
+            message:
+                'تعليمات هذا الدواء تختلف حسب القوة أو formulation/indication. اختر توقيت الوصفة يدويًا بدل Auto.',
+            isCritical: true,
+          ),
+        );
+        continue;
+      }
+
+      if (item.sourceId == 'metformin' &&
+          item.frequency == RegimenFrequency.onceDaily &&
+          item.preference == TimingPreference.auto) {
+        alerts.add(
+          const PlanAlert(
+            title: 'Metformin · formulation required',
+            message:
+                'مرة يوميًا قد تكون تعليمات IR وER مختلفة. اختر الوجبة/التوقيت المكتوب في الوصفة قبل إنشاء الجدول.',
+            isCritical: true,
+          ),
+        );
+        continue;
+      }
+
+      if (rule.requiresMealChoice &&
+          !mealChoiceProvided &&
+          item.preference != TimingPreference.custom) {
+        alerts.add(
+          PlanAlert(
+            title: item.name + ' · Meal required',
+            message:
+                'اختر Breakfast أو Lunch أو Dinner لأن الدواء مرتبط بوجبة ثابتة.',
             isCritical: true,
           ),
         );

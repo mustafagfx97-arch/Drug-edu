@@ -154,4 +154,118 @@ void main() {
       isTrue,
     );
   });
+
+  test('insulin aspart auto timing is blocked', () {
+    final plan = engine.generate(
+      items: [item('insulin-aspart', 'Insulin Aspart')],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(
+      plan.alerts.any((alert) => alert.title.contains('Timing required')),
+      isTrue,
+    );
+  });
+
+  test('acarbose auto timing is blocked until meal is explicit', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'acarbose',
+          'Acarbose',
+          frequency: RegimenFrequency.threeTimesDaily,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(plan.alerts.any((alert) => alert.isCritical), isTrue);
+  });
+
+  test('carvedilol twice daily auto schedule follows meals', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'carvedilol',
+          'Carvedilol',
+          frequency: RegimenFrequency.twiceDaily,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses.length, 2);
+    expect(plan.doses.first.minutes, routine.breakfastMinutes);
+    expect(plan.doses.last.minutes, routine.dinnerMinutes);
+  });
+
+  test('methotrexate plus TMP-SMX creates critical interaction alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'methotrexate-rheumatology',
+          'Methotrexate',
+          frequency: RegimenFrequency.weekly,
+        ),
+        item(
+          'trimethoprim-sulfamethoxazole',
+          'Trimethoprim / Sulfamethoxazole',
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title.contains('Methotrexate') && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('potassium plus RAAS therapy creates critical monitoring alert', () {
+    final plan = engine.generate(
+      items: [
+        item('lisinopril', 'Lisinopril'),
+        item(
+          'potassium-oral',
+          'Oral Potassium Supplement',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Potassium + potassium-raising therapy' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('linezolid plus serotonergic medicine creates critical alert', () {
+    final plan = engine.generate(
+      items: [
+        item('linezolid-oral', 'Linezolid Oral'),
+        item('sertraline', 'Sertraline'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Linezolid + serotonergic medicine' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
 }

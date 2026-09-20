@@ -70,7 +70,8 @@ class _IvPreparationCalculatorScreenState
           ),
           const SizedBox(height: 16),
           DropdownButtonFormField<int>(
-            value: _profileIndex,
+            key: ValueKey(_profileIndex),
+            initialValue: _profileIndex,
             decoration: const InputDecoration(
               labelText: 'Verified preparation profile',
             ),

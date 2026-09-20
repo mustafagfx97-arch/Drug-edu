@@ -102,6 +102,13 @@ const medicationFamilies = <MedicationFamily>[
     searchTerms: ['child', 'pediatric', 'liquid', 'syrup'],
   ),
   MedicationFamily(
+    id: 'bone-health',
+    name: 'Bone Health',
+    subtitle: 'Osteoporosis and bone-directed medicines with administration-critical counseling.',
+    icon: Icons.accessibility_new_outlined,
+    searchTerms: ['osteoporosis', 'bisphosphonate', 'bone', 'alendronate'],
+  ),
+  MedicationFamily(
     id: 'otc',
     name: 'OTC & Self-care',
     subtitle: 'Common self-care medicines with duration and referral limits.',

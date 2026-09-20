@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/module_card.dart';
 import '../../../shared/widgets/section_card.dart';
+import '../../patient_cards/presentation/patient_cards_screen.dart';
+import '../../visual_guides/presentation/visual_guides_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -10,6 +12,24 @@ class HomeScreen extends StatelessWidget {
   });
 
   final ValueChanged<int> onSelectDestination;
+
+  void _openModule(BuildContext context, String action) {
+    if (action == 'patient_cards') {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const PatientCardsScreen()),
+      );
+      return;
+    }
+
+    if (action == 'visual_guides') {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const VisualGuidesScreen()),
+      );
+      return;
+    }
+
+    onSelectDestination(int.parse(action));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,42 +42,56 @@ class HomeScreen extends StatelessWidget {
         'Patient Counseling',
         'Clinical notes in English with a focused Arabic patient explanation.',
         Icons.record_voice_over_outlined,
-        1,
+        '1',
         'Core'
+      ),
+      (
+        'Patient Cards',
+        'Clone, customize and generate privacy-safe QR counseling cards.',
+        Icons.badge_outlined,
+        'patient_cards',
+        'QR'
       ),
       (
         'IV Preparation',
         'Reconstitution, dilution, compatible fluids, standard concentrations and safety locks.',
         Icons.vaccines_outlined,
-        2,
+        '2',
         'High safety'
       ),
       (
         'Calculators',
         'Preparation math only. Prescribed doses are entered by the clinician.',
         Icons.calculate_outlined,
-        3,
+        '3',
         'No dose selection'
       ),
       (
         'NICU / PICU',
         'Population-specific preparation profiles kept separate from adult/general profiles.',
         Icons.child_care_outlined,
-        2,
+        '2',
         'Separate profiles'
       ),
       (
+        'Visual Guides',
+        'Technique illustrations for inhalers, sprays, pens, drops and other medication devices.',
+        Icons.auto_awesome_mosaic_outlined,
+        'visual_guides',
+        'Technique'
+      ),
+      (
         'Devices & Technique',
-        'Inhalers, nasal devices, injections and other administration techniques.',
+        'Product-specific administration technique linked to the visual guide library.',
         Icons.medical_services_outlined,
-        1,
+        'visual_guides',
         null
       ),
       (
         'Feeding Tubes',
         'Tube administration, formulation handling, crushing and compatibility workflows.',
         Icons.route_outlined,
-        1,
+        '1',
         null
       ),
     ];
@@ -151,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle: item.$2,
                   icon: item.$3,
                   badge: item.$5,
-                  onTap: () => onSelectDestination(item.$4),
+                  onTap: () => _openModule(context, item.$4),
                 );
               },
               childCount: modules.length,

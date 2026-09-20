@@ -12,6 +12,7 @@ import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_preparation_profiles.dart';
 import 'package:drug_edu/features/feeding_tubes/data/feeding_tube_records.dart';
+import 'package:drug_edu/features/visual_guides/data/visual_guide_catalog.dart';
 
 void main() {
   test('every medicine family has at least one medicine', () {
@@ -44,6 +45,56 @@ void main() {
         familyIds,
         contains(medicine.familyId),
         reason: 'Unknown family for ' + medicine.name,
+      );
+    }
+  });
+
+  test('visual-guide medication links resolve to real guides', () {
+    final guideIds = visualGuideCatalog.map((guide) => guide.id).toList();
+    expect(
+      guideIds.toSet().length,
+      guideIds.length,
+      reason: 'Visual guide IDs must be unique',
+    );
+
+    for (final entry in medicationVisualGuideIds.entries) {
+      expect(
+        sampleMedications.any((medicine) => medicine.id == entry.key),
+        isTrue,
+        reason: 'Visual guide map references unknown medicine: ' + entry.key,
+      );
+      expect(entry.value, isNotEmpty);
+      for (final guideId in entry.value) {
+        expect(
+          visualGuideById(guideId),
+          isNotNull,
+          reason: entry.key + ' references missing visual guide ' + guideId,
+        );
+      }
+    }
+
+    for (final medicine in sampleMedications.where(
+      (medicine) => medicine.hasVisualGuide,
+    )) {
+      expect(
+        visualGuidesForMedication(medicine.id),
+        isNotEmpty,
+        reason: medicine.name + ' is flagged for a visual guide but has no link',
+      );
+    }
+  });
+
+  test('IV-preparation flag requires an exact verified source-locked profile', () {
+    for (final medicine in sampleMedications.where(
+      (medicine) => medicine.hasIvPreparation,
+    )) {
+      expect(
+        ivPreparationProfiles.any(
+          (profile) => profile.name == medicine.name,
+        ),
+        isTrue,
+        reason:
+            medicine.name + ' must not show IV preparation without a verified profile',
       );
     }
   });

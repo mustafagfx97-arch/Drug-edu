@@ -152,9 +152,9 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     reconstitution:
         'Reconstitute 2.25 g with 10 mL, 3.375 g with 15 mL, or 4.5 g with 20 mL of a compatible reconstitution diluent; swirl until dissolved.',
     resultingConcentration:
-        'Use the product vial strength and full reconstituted contents; do not calculate component concentration from the combo name alone.',
+        '202.5 mg/mL total product after the cited reconstitution (180 mg/mL piperacillin + 22.5 mg/mL tazobactam).',
     furtherDilution:
-        'The cited label recommends further dilution of the reconstituted dose in 50–150 mL of a compatible IV solution.',
+        'After withdrawing the prescribed dose, the current cited label requires further dilution to a final piperacillin concentration of 20–80 mg/mL (tazobactam 2.5–10 mg/mL) in a compatible IV solution.',
     allowedDiluents:
         'Reconstitution options in the cited label include 0.9% sodium chloride, Sterile Water for Injection and D5W; additional bacteriostatic options have product-specific restrictions.',
     administration:
@@ -174,17 +174,17 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     name: 'Ceftriaxone',
     population: 'General',
     formulation:
-        'Ceftriaxone powder for injection; this profile summarizes a conventional IV vial/piggyback label.',
+        'Ceftriaxone powder for injection; conventional vial and piggyback-bottle presentations have different labeled reconstitution volumes.',
     reconstitution:
-        'For the cited 1 g and 2 g IV piggyback-bottle preparation, add 10 mL or 20 mL compatible diluent, respectively.',
+        'For conventional vials in the cited label: 250 mg + 2.4 mL, 500 mg + 4.8 mL, 1 g + 9.6 mL, or 2 g + 19.2 mL appropriate IV diluent. For piggyback bottles: 1 g + 10 mL or 2 g + 20 mL.',
     resultingConcentration:
-        'Approximately 100 mg/mL after the cited reconstitution.',
+        'Approximately 100 mg/mL after the cited vial/piggyback reconstitution.',
     furtherDilution:
-        'The cited label then further dilutes to a 50 mL or 100 mL IV volume with an appropriate calcium-free IV diluent.',
+        'For standard vials, withdraw the dose and dilute to the desired IV concentration; the cited label recommends 10–40 mg/mL. Piggyback bottles are further diluted to 50 mL or 100 mL with an appropriate calcium-free IV diluent.',
     allowedDiluents:
         'Use calcium-free diluents supported by the exact label. Do not use calcium-containing diluents such as Ringer’s/Hartmann’s for reconstitution or further dilution.',
     administration:
-        'Use the infusion method/duration from the exact product and patient protocol.',
+        'The cited label administers IV ceftriaxone by infusion over 30 minutes; in neonates, 60 minutes is recommended to reduce bilirubin-encephalopathy risk.',
     stability:
         'Use the exact product label and local BUD; do not transfer stability across manufacturers or diluents.',
     incompatibilities:

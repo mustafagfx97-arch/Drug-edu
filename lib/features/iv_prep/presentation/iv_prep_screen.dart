@@ -209,7 +209,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (_) =>
-                                    IvPreparationDetailScreen(profile: profile),
+                                    IvPreparationDetailScreen(profile: profile!),
                               ),
                             );
                           }

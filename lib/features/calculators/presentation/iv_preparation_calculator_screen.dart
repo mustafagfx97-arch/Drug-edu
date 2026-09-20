@@ -79,7 +79,8 @@ class _IvPreparationCalculatorScreenState
           ),
           const SizedBox(height: 16),
           DropdownButtonFormField<int>(
-            value: _profileIndex,
+            key: ValueKey(_profileIndex),
+            initialValue: _profileIndex,
             decoration: const InputDecoration(labelText: 'Preparation profile'),
             items: List.generate(
               _profiles.length,
@@ -198,7 +199,7 @@ class _SafetyBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer.withOpacity(0.55),
+        color: theme.colorScheme.primaryContainer.withValues(alpha: 0.55),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(

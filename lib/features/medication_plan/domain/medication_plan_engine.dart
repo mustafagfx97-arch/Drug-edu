@@ -134,6 +134,7 @@ class MedicationPlanEngine {
             instructionAr: rule.instructionAr,
             isSuggested:
                 item.preference == TimingPreference.auto ||
+                item.frequency == RegimenFrequency.every6Hours ||
                 item.frequency == RegimenFrequency.every8Hours ||
                 item.frequency == RegimenFrequency.every12Hours,
             dayLabel: item.frequency == RegimenFrequency.weekly
@@ -174,6 +175,23 @@ class MedicationPlanEngine {
     if (item.preference == TimingPreference.custom &&
         item.customMinutes != null) {
       return _expandFromBase(item.frequency, item.customMinutes!);
+    }
+
+    if (item.frequency == RegimenFrequency.every6Hours ||
+        item.frequency == RegimenFrequency.every8Hours ||
+        item.frequency == RegimenFrequency.every12Hours) {
+      final preferred = _preferredBase(item.preference, routine);
+      final base = preferred ??
+          switch (rule.anchor) {
+            'before-breakfast' => routine.breakfastMinutes - 45,
+            'breakfast' => routine.breakfastMinutes,
+            'morning' => routine.wakeMinutes + 60,
+            'bedtime' => routine.bedtimeMinutes,
+            'with-meal' => routine.breakfastMinutes,
+            'empty-stomach' => routine.breakfastMinutes - 60,
+            _ => routine.wakeMinutes,
+          };
+      return _expandFromBase(item.frequency, base);
     }
 
     if (rule.anchor == 'after-selected-meal' &&
@@ -221,14 +239,34 @@ class MedicationPlanEngine {
       case RegimenFrequency.onceDaily:
         return [routine.dinnerMinutes];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
         return [routine.breakfastMinutes, routine.dinnerMinutes];
       case RegimenFrequency.threeTimesDaily:
-      case RegimenFrequency.every8Hours:
         return [
           routine.breakfastMinutes,
           routine.lunchMinutes,
           routine.dinnerMinutes,
+        ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes,
+          routine.lunchMinutes,
+          routine.dinnerMinutes,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [routine.breakfastMinutes, routine.breakfastMinutes + 720];
+      case RegimenFrequency.every8Hours:
+        return [
+          routine.breakfastMinutes,
+          routine.breakfastMinutes + 480,
+          routine.breakfastMinutes + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.breakfastMinutes,
+          routine.breakfastMinutes + 360,
+          routine.breakfastMinutes + 720,
+          routine.breakfastMinutes + 1080,
         ];
       case RegimenFrequency.morning:
         return [routine.breakfastMinutes];
@@ -245,25 +283,37 @@ class MedicationPlanEngine {
     RegimenFrequency frequency,
     PatientRoutine routine,
   ) {
+    final first = routine.breakfastMinutes - 60;
     switch (frequency) {
       case RegimenFrequency.onceDaily:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
-        return [routine.breakfastMinutes - 60, routine.dinnerMinutes - 120];
+        return [first, routine.dinnerMinutes - 120];
       case RegimenFrequency.threeTimesDaily:
-      case RegimenFrequency.every8Hours:
         return [
           routine.breakfastMinutes - 60,
           routine.lunchMinutes - 60,
           routine.dinnerMinutes - 60,
         ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes - 60,
+          routine.lunchMinutes - 60,
+          routine.dinnerMinutes - 60,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [first, first + 720];
+      case RegimenFrequency.every8Hours:
+        return [first, first + 480, first + 960];
+      case RegimenFrequency.every6Hours:
+        return [first, first + 360, first + 720, first + 1080];
       case RegimenFrequency.morning:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.bedtime:
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
-        return [routine.breakfastMinutes - 60];
+        return [first];
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -277,7 +327,6 @@ class MedicationPlanEngine {
       case RegimenFrequency.onceDaily:
         return [routine.breakfastMinutes + 60];
       case RegimenFrequency.twiceDaily:
-      case RegimenFrequency.every12Hours:
         return [routine.breakfastMinutes, routine.dinnerMinutes];
       case RegimenFrequency.threeTimesDaily:
         return [
@@ -285,11 +334,27 @@ class MedicationPlanEngine {
           routine.lunchMinutes,
           routine.dinnerMinutes,
         ];
+      case RegimenFrequency.fourTimesDaily:
+        return [
+          routine.breakfastMinutes,
+          routine.lunchMinutes,
+          routine.dinnerMinutes,
+          routine.bedtimeMinutes,
+        ];
+      case RegimenFrequency.every12Hours:
+        return [routine.wakeMinutes, routine.wakeMinutes + 720];
       case RegimenFrequency.every8Hours:
         return [
           routine.wakeMinutes,
           routine.wakeMinutes + 480,
           routine.wakeMinutes + 960,
+        ];
+      case RegimenFrequency.every6Hours:
+        return [
+          routine.wakeMinutes,
+          routine.wakeMinutes + 360,
+          routine.wakeMinutes + 720,
+          routine.wakeMinutes + 1080,
         ];
       case RegimenFrequency.morning:
         return [routine.wakeMinutes + 60];
@@ -315,6 +380,9 @@ class MedicationPlanEngine {
       case RegimenFrequency.threeTimesDaily:
       case RegimenFrequency.every8Hours:
         return [base, base + 480, base + 960];
+      case RegimenFrequency.fourTimesDaily:
+      case RegimenFrequency.every6Hours:
+        return [base, base + 360, base + 720, base + 1080];
       case RegimenFrequency.asNeeded:
         return const [];
     }

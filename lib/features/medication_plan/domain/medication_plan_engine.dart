@@ -14,11 +14,23 @@ class MedicationPlanEngine {
     final ids = items.map((item) => item.sourceId).toSet();
 
     for (final item in items) {
+      final isCustom = item.sourceId.startsWith('custom-');
       final rule = medicationTimingRules[item.sourceId] ??
           const MedicationTimingRule(
             instructionAr:
                 'اتبع توقيت الوصفة. الأوقات المعروضة هنا للتنظيم فقط إذا لم يحدد الطبيب وقتًا معينًا.',
           );
+
+      if (isCustom) {
+        alerts.add(
+          PlanAlert(
+            title: item.name + ' · Verify administration',
+            message:
+                'هذا الدواء غير موجود بعد في قاعدة القواعد الموثقة. الجدول ينظم التكرار فقط؛ راجع علاقته بالطعام والتداخلات قبل اعتماد البطاقة.',
+            isCritical: true,
+          ),
+        );
+      }
 
       if (item.frequency == RegimenFrequency.asNeeded) {
         alerts.add(
@@ -124,6 +136,9 @@ class MedicationPlanEngine {
                 item.preference == TimingPreference.auto ||
                 item.frequency == RegimenFrequency.every8Hours ||
                 item.frequency == RegimenFrequency.every12Hours,
+            dayLabel: item.frequency == RegimenFrequency.weekly
+                ? _weekdayAr(item.weekday ?? DateTime.monday)
+                : '',
           ),
         );
       }
@@ -338,6 +353,25 @@ class MedicationPlanEngine {
     List<PlanAlert> alerts,
   ) {
     final ids = items.map((item) => item.sourceId).toSet();
+
+    final counts = <String, int>{};
+    for (final item in items) {
+      counts[item.sourceId] = (counts[item.sourceId] ?? 0) + 1;
+    }
+    for (final entry in counts.entries) {
+      if (entry.value > 1 && !entry.key.startsWith('custom-')) {
+        final duplicateName =
+            items.firstWhere((item) => item.sourceId == entry.key).name;
+        alerts.add(
+          PlanAlert(
+            title: 'Possible duplicate: ' + duplicateName,
+            message:
+                'تمت إضافة نفس الدواء/المكمل أكثر من مرة. تأكد أن هذا مقصود وليس تكرارًا غير ضروري.',
+            isCritical: true,
+          ),
+        );
+      }
+    }
 
     if (ids.contains('levothyroxine')) {
       final blockers = <String>[

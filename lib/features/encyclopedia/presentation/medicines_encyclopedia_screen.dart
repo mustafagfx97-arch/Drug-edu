@@ -70,12 +70,12 @@ class _MedicinesEncyclopediaScreenState extends State<MedicinesEncyclopediaScree
     final families = _families;
     final medicines = _medicines;
 
-    return CustomScrollView(
-      slivers: [
-        const SliverAppBar.large(
-          title: Text('Medicines'),
-          automaticallyImplyLeading: false,
-        ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar.large(
+            title: Text('Medicines'),
+          ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           sliver: SliverToBoxAdapter(
@@ -265,7 +265,8 @@ class _MedicinesEncyclopediaScreenState extends State<MedicinesEncyclopediaScree
               },
             ),
           ),
-      ],
+        ],
+      ),
     );
   }
 }

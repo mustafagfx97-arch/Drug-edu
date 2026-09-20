@@ -234,7 +234,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     anchor: 'any',
     instructionAr: 'في وقت ثابت يوميًا؛ يمكن مع الطعام أو بدونه.',
     requiresMealChoice: false,
-    autoScheduleSafe: false,
+    autoScheduleSafe: true,
     source: 'DailyMed / MedlinePlus Losartan',
   ),
   'salbutamol-mdi': MedicationTimingRule(

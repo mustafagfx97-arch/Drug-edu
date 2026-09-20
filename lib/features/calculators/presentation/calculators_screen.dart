@@ -1,43 +1,24 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/section_card.dart';
+import 'continuous_infusion_calculator_screen.dart';
+import 'dextrose_mixing_calculator_screen.dart';
+import 'electrolyte_payload_calculator_screen.dart';
+import 'iv_preparation_calculator_screen.dart';
 
 class CalculatorsScreen extends StatelessWidget {
   const CalculatorsScreen({super.key});
 
-  void _showSafetyGate(BuildContext context, String title) {
-    showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      builder: (context) {
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 6, 20, 28),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w900,
-                      ),
-                ),
-                const SizedBox(height: 12),
-                const Text(
-                  'This calculator will open only after a verified medication profile and exact formulation are selected. Free-form drug calculations are intentionally disabled to reduce unit and concentration errors.',
-                ),
-                const SizedBox(height: 18),
-                FilledButton.icon(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.verified_user_outlined),
-                  label: const Text('Understood'),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+  void _open(BuildContext context, String key) {
+    final routes = <String, WidgetBuilder>{
+      'iv': (_) => const IvPreparationCalculatorScreen(),
+      'infusion': (_) => const ContinuousInfusionCalculatorScreen(),
+      'dextrose': (_) => const DextroseMixingCalculatorScreen(),
+      'electrolyte': (_) => const ElectrolytePayloadCalculatorScreen(),
+    };
+
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: routes[key]!),
     );
   }
 
@@ -48,23 +29,27 @@ class CalculatorsScreen extends StatelessWidget {
     final tools = [
       (
         'IV Preparation Calculator',
-        'Dose → withdrawal volume → final volume → diluent volume → vials required.',
-        Icons.science_outlined
+        'Profile-linked stock, dilution and dose-volume calculations.',
+        Icons.science_outlined,
+        'iv'
       ),
       (
         'Continuous Infusion',
-        'Prescribed rate and selected standard concentration → pump rate in mL/hr.',
-        Icons.speed_outlined
+        'Convert an entered prescribed rate to pump mL/hr.',
+        Icons.speed_outlined,
+        'infusion'
       ),
       (
         'Dextrose Mixing',
-        'Prepare a target dextrose concentration from verified source solutions.',
-        Icons.water_drop_outlined
+        'Mix two verified source concentrations to a target concentration.',
+        Icons.water_drop_outlined,
+        'dextrose'
       ),
       (
         'Electrolyte Payload',
-        'Show phosphate plus accompanying potassium or sodium and other linked electrolyte amounts.',
-        Icons.bolt_outlined
+        'Show phosphate plus the linked potassium or sodium contribution.',
+        Icons.bolt_outlined,
+        'electrolyte'
       ),
     ];
 
@@ -81,7 +66,7 @@ class CalculatorsScreen extends StatelessWidget {
               title: 'Calculation policy',
               icon: Icons.rule_rounded,
               child: Text(
-                'Calculators convert an already prescribed order. They never recommend a therapeutic dose. Drug, population, formulation, unit basis and allowed concentration must be selected before calculation.',
+                'Calculators convert an already prescribed order. They do not recommend a therapeutic dose. Product-specific calculators require a selected preparation profile.',
                 style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
               ),
             ),
@@ -97,7 +82,7 @@ class CalculatorsScreen extends StatelessWidget {
               return Card(
                 clipBehavior: Clip.antiAlias,
                 child: InkWell(
-                  onTap: () => _showSafetyGate(context, item.$1),
+                  onTap: () => _open(context, item.$4),
                   child: Padding(
                     padding: const EdgeInsets.all(17),
                     child: Row(

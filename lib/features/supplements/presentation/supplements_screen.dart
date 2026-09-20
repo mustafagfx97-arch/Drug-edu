@@ -58,6 +58,12 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
         icon: Icons.child_friendly_outlined,
       ),
       _SupplementGroup(
+        title: 'Other supplements',
+        subtitle:
+            'Omega-3 and other non-vitamin/mineral products with evidence and product-quality context.',
+        icon: Icons.science_outlined,
+      ),
+      _SupplementGroup(
         title: 'Combination products',
         subtitle:
             'Multivitamins and multi-mineral products with duplication and total-intake checks.',

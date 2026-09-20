@@ -135,7 +135,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'NICU', category: 'Antimicrobials'),
 
   // NICU cardiac / respiratory / neuro / electrolytes
-  IvCatalogEntry(name: 'Caffeine citrate', population: 'NICU', category: 'Cardiac & respiratory', structured: true),
+  IvCatalogEntry(name: 'Caffeine citrate', population: 'NICU', category: 'Cardiac & respiratory'),
   IvCatalogEntry(name: 'Digoxin', population: 'NICU', category: 'Cardiac & respiratory'),
   IvCatalogEntry(name: 'Adenosine', population: 'NICU', category: 'Cardiac & respiratory'),
   IvCatalogEntry(name: 'Sildenafil IV', population: 'NICU', category: 'Cardiac & respiratory'),
@@ -146,7 +146,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Calcium gluconate', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Calcium chloride', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Magnesium sulfate', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D10', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D12.5', population: 'NICU', category: 'Electrolytes & glucose'),
   IvCatalogEntry(name: 'Dextrose D20', population: 'NICU', category: 'Electrolytes & glucose'),
@@ -155,7 +155,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose'),
 
   // PICU representative profiles built from the same project library
-  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Epinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Dopamine', population: 'PICU', category: 'Vasoactive & cardiac'),
   IvCatalogEntry(name: 'Dobutamine', population: 'PICU', category: 'Vasoactive & cardiac'),

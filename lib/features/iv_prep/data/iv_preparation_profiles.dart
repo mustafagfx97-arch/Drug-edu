@@ -105,7 +105,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'Intermittent IV infusion over at least 60 minutes in the cited labeling. Infusion duration may need to be longer for larger doses/local policy.',
     stability:
-        'Stability depends on the exact manufacturer/product and diluent. Use the BUD from the dispensed product label/local sterile-compounding policy, not a generic app default.',
+        'For the cited Sandoz label: bolus solution in Sterile Water (up to 50 mg/mL) is stable up to 3 hours at ≤25°C or 13 hours at ≤5°C. Infusion solutions 1–20 mg/mL in 0.9% NaCl are stable 1 hour at ≤25°C or 15 hours at ≤5°C; D5W infusion solutions should be used immediately. Do not freeze. Local sterile-compounding BUD may be shorter.',
     incompatibilities:
         'Vancomycin solutions are acidic; physical incompatibility with beta-lactams is reported. Flush the line between incompatible agents.',
     criticalLocks: [
@@ -160,9 +160,9 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'The cited conventional label administers the further-diluted dose by IV infusion over at least 30 minutes.',
     stability:
-        'Use current manufacturer and institutional sterile-compounding BUD; do not transfer stability between premix and powder products.',
+        'For the cited single-dose-vial label: use immediately when possible; discard unused reconstituted vial contents after 24 hours at 20–25°C or 48 hours at 2–8°C. Chemically stable diluted IV bags are labeled up to 24 hours at room temperature or one week refrigerated. Local sterile-compounding BUD may be shorter.',
     incompatibilities:
-        'Compatibility with aminoglycosides and other solutions is product/concentration specific; do not mix in the same container without validated compatibility.',
+        'Piperacillin/tazobactam can inactivate aminoglycosides in vitro. Prepare and administer separately unless the exact Y-site drug, concentration and diluent combination is explicitly listed as compatible; the cited label states tobramycin is not compatible for simultaneous Y-site co-administration.',
     criticalLocks: [
       'Select the exact vial strength first; the three vial sizes use different reconstitution volumes.',
       'Premixed/ready-to-use presentations are not this profile.',
@@ -186,9 +186,9 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'The cited label administers IV ceftriaxone by infusion over 30 minutes; in neonates, 60 minutes is recommended to reduce bilirubin-encephalopathy risk.',
     stability:
-        'Use the exact product label and local BUD; do not transfer stability across manufacturers or diluents.',
+        'For the cited product, IV solutions at 10–40 mg/mL in Sterile Water, 0.9% NaCl or D5W are labeled stable for 2 days at 25°C or 10 days at 4°C; other diluents have different limits. Local sterile-compounding BUD may be shorter.',
     incompatibilities:
-        'Calcium-containing IV solutions can precipitate with ceftriaxone.',
+        'Do not use calcium-containing diluents such as Ringer’s/Hartmann’s. The cited label also reports incompatibility in admixture with vancomycin, aminoglycosides and fluconazole; administer sequentially with thorough line flushing when concomitant therapy is required.',
     criticalLocks: [
       'Neonatal lock: ceftriaxone is contraindicated in premature neonates up to postmenstrual age 41 weeks and in hyperbilirubinemic neonates.',
       'Neonatal calcium lock: contraindicated in neonates ≤28 days who require or are expected to require calcium-containing IV solutions, including parenteral nutrition.',

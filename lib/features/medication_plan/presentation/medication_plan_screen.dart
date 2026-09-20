@@ -315,10 +315,14 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
         return 'Twice daily';
       case RegimenFrequency.threeTimesDaily:
         return '3 times daily';
+      case RegimenFrequency.fourTimesDaily:
+        return '4 times daily';
       case RegimenFrequency.every12Hours:
         return 'Every 12 hours';
       case RegimenFrequency.every8Hours:
         return 'Every 8 hours';
+      case RegimenFrequency.every6Hours:
+        return 'Every 6 hours';
       case RegimenFrequency.morning:
         return 'Morning';
       case RegimenFrequency.bedtime:
@@ -865,10 +869,14 @@ class _MedicationConfigDialogState extends State<_MedicationConfigDialog> {
         return 'Twice daily';
       case RegimenFrequency.threeTimesDaily:
         return '3 times daily';
+      case RegimenFrequency.fourTimesDaily:
+        return '4 times daily';
       case RegimenFrequency.every12Hours:
         return 'Every 12 hours';
       case RegimenFrequency.every8Hours:
         return 'Every 8 hours';
+      case RegimenFrequency.every6Hours:
+        return 'Every 6 hours';
       case RegimenFrequency.morning:
         return 'Morning';
       case RegimenFrequency.bedtime:

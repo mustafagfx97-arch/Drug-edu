@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
+import '../../../core/data/therapy_duration_catalog.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
 import '../../patient_cards/domain/patient_card_data.dart';
@@ -16,7 +17,9 @@ class MedicationDetailScreen extends StatelessWidget {
   final Medication medication;
 
   PatientCardData get _patientCard {
+    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
     final important = <String>[
+      if (durationAr.isNotEmpty) 'مدة العلاج: ' + durationAr,
       if (medication.patient.importantAr.trim().isNotEmpty)
         medication.patient.importantAr.trim(),
       if (medication.patient.commonActionableAr.trim().isNotEmpty)
@@ -281,6 +284,7 @@ class _PatientTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -309,6 +313,33 @@ class _PatientTab extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
+          if (durationAr.isNotEmpty) ...[
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'مدة العلاج',
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 7),
+                    Text(
+                      durationAr,
+                      textAlign: TextAlign.right,
+                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
           for (final item in medication.patient.items) ...[
             Card(
               child: Padding(

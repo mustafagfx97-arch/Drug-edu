@@ -1642,4 +1642,1686 @@ const sampleMedications = <Medication>[
       seekHelpAr: 'إذا كان المنتج بدون وصفة ولم يتحسن الجلد خلال 7 أيام، توقف وراجع الطبيب أو الصيدلي.',
     ),
   ),
+
+  Medication(
+    id: 'valsartan',
+    familyId: 'cardiovascular',
+    name: 'Valsartan',
+    subtitle: 'ARB antihypertensive / heart-failure therapy',
+    tags: ['Blood pressure', 'Heart failure', 'Post-MI', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Valsartan',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Verify indication, renal function, potassium, pregnancy status and concomitant RAAS/potassium-raising therapy. Hypertension and heart-failure schedules are not always identical.',
+      ),
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'May be taken with or without food at consistent times. Usually chronic/long-term when used for hypertension or heart failure; duration after MI is indication-driven.',
+      ),
+      MedicationSection(
+        title: 'Monitoring & safety',
+        body:
+            'Monitor blood pressure, renal function and potassium after initiation/titration when clinically indicated. Avoid during pregnancy.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لخفض ضغط الدم أو لعلاج بعض حالات فشل القلب وحماية القلب حسب حالتك.',
+      howToUseAr: 'خذ الجرعة في نفس الوقت تقريبًا كل يوم، مع الطعام أو بدونه.',
+      importantAr: 'لا تستخدم مكملات البوتاسيوم أو بدائل الملح الغنية بالبوتاسيوم من نفسك.',
+      missedDoseAr: 'خذ الجرعة عندما تتذكر إذا لم يقترب موعد التالية، ولا تضاعف الجرعة.',
+      seekHelpAr: 'إذا حدث حمل أو دوخة شديدة أو إغماء، تواصل مع الطبيب.',
+    ),
+  ),
+  Medication(
+    id: 'sacubitril-valsartan',
+    familyId: 'cardiovascular',
+    name: 'Sacubitril / Valsartan',
+    subtitle: 'ARNI heart-failure therapy',
+    tags: ['Heart failure', 'ARNI', 'Oral', 'Chronic'],
+    sourceLabel: 'MedlinePlus Drug Information · Valsartan and Sacubitril',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Confirm heart-failure indication, blood pressure, renal function, potassium and prior ACE-inhibitor exposure. A washout interval is required when switching from an ACE inhibitor.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration / formulation',
+        body:
+            'Usually taken twice daily with or without food. Sprinkle capsules and pharmacist-prepared suspension have formulation-specific handling; do not crush oral pellets.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Monitor blood pressure, renal function, potassium and angioedema symptoms. Therapy is generally chronic if tolerated and clinically beneficial.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لعلاج بعض أنواع فشل القلب وتقليل الحاجة لدخول المستشفى.',
+      howToUseAr: 'خذ الجرعة مرتين يوميًا حسب الوصفة، مع الطعام أو بدونه.',
+      importantAr: 'لا تبدأ ACE inhibitor مثل lisinopril أو enalapril معه من نفسك، ولا تستخدم مكملات البوتاسيوم دون مراجعة.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر تورم في الوجه أو الشفتين أو اللسان، أو إذا حدث حمل.',
+    ),
+  ),
+  Medication(
+    id: 'carvedilol',
+    familyId: 'cardiovascular',
+    name: 'Carvedilol',
+    subtitle: 'Beta-blocker / alpha-blocker',
+    tags: ['Heart failure', 'Blood pressure', 'Post-MI', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Carvedilol',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Immediate-release tablets are generally taken with food to reduce orthostatic effects. Extended-release products have different once-daily handling; verify formulation.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review heart rate, blood pressure, heart-failure status, asthma/COPD, diabetes and adherence. Titrate gradually; do not stop abruptly.',
+      ),
+      MedicationSection(
+        title: 'Monitoring & counseling',
+        body:
+            'Monitor pulse/BP, dizziness, weight/heart-failure symptoms and glucose awareness in diabetes. Usually chronic therapy when used for HFrEF.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للضغط أو فشل القلب أو بعد بعض مشاكل القلب حسب حالتك.',
+      howToUseAr: 'إذا كان النوع العادي فخذه مع الطعام وفي نفس الأوقات يوميًا.',
+      importantAr: 'لا توقفه فجأة من نفسك.',
+      commonActionableAr: 'قد يسبب دوخة أو بطء النبض؛ انهض ببطء خاصة في البداية.',
+      seekHelpAr: 'راجع الطبيب إذا حدث إغماء أو بطء شديد في النبض أو زاد ضيق النفس والتورم.',
+    ),
+  ),
+  Medication(
+    id: 'digoxin-oral',
+    familyId: 'cardiovascular',
+    name: 'Digoxin Oral',
+    subtitle: 'Cardiac glycoside',
+    tags: ['Heart failure', 'Atrial fibrillation', 'Narrow therapeutic index'],
+    sourceLabel: 'MedlinePlus Drug Information · Digoxin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Narrow therapeutic index. Verify indication, renal function, age/weight, potassium/magnesium, interacting medicines and formulation. Dose changes should be conservative.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration & monitoring',
+        body:
+            'Take at the same time each day. Monitor renal function, electrolytes, heart rate/rhythm and serum concentration when clinically indicated; level interpretation depends on timing after dose.',
+      ),
+      MedicationSection(
+        title: 'Toxicity clues',
+        body:
+            'New nausea/vomiting, anorexia, confusion, unusual visual symptoms or arrhythmia/bradycardia should trigger toxicity assessment.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد القلب في بعض حالات فشل القلب أو اضطراب النبض.',
+      howToUseAr: 'خذ الجرعة في نفس الوقت كل يوم ولا تغيّرها من نفسك.',
+      importantAr: 'لا تضاعف الجرعة إذا نسيتها، وأخبر الصيدلي عن أي دواء جديد لأن التداخلات مهمة.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر غثيان شديد جديد أو تشوش أو بطء واضح في النبض أو اضطراب بالرؤية.',
+    ),
+  ),
+  Medication(
+    id: 'rosuvastatin',
+    familyId: 'cardiovascular',
+    name: 'Rosuvastatin',
+    subtitle: 'Statin lipid-lowering therapy',
+    tags: ['Cholesterol', 'Cardiovascular prevention', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Rosuvastatin',
+    sections: [
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'Once daily with or without food, at any consistent time. Usually long-term for lipid lowering and cardiovascular risk reduction.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Assess lipid response/adherence. Liver enzymes and CK are checked when clinically indicated rather than routinely in every asymptomatic patient.',
+      ),
+      MedicationSection(
+        title: 'Interactions / patient-specific',
+        body:
+            'Review cyclosporine, selected antivirals, gemfibrozil and antacids. Renal impairment and Asian ancestry may influence starting-dose selection.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفض الكوليسترول ويساعد على تقليل خطر الجلطات عند من يحتاجه.',
+      howToUseAr: 'خذ الجرعة مرة يوميًا في وقت ثابت تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'استمر عليه حتى إذا تحسنت التحاليل ما لم يغيّر الطبيب الخطة.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر ألم أو ضعف عضلي شديد وغير معتاد، خاصة مع بول غامق أو تعب شديد.',
+    ),
+  ),
+  Medication(
+    id: 'diltiazem-er',
+    familyId: 'cardiovascular',
+    name: 'Diltiazem Extended Release',
+    subtitle: 'Non-dihydropyridine calcium-channel blocker',
+    tags: ['Rate control', 'Angina', 'Blood pressure', 'Extended release'],
+    sourceLabel: 'MedlinePlus Drug Information · Diltiazem',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Multiple ER products are not automatically interchangeable and may have different food/opening instructions. Verify exact brand/formulation before counseling.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Heart rate, blood pressure, dizziness, edema and conduction symptoms; extra caution with beta-blockers or other rate-slowing drugs.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Usually chronic when used for hypertension, angina or rate control. Do not crush ER products unless exact product labeling explicitly allows a specific opening/sprinkling method.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للضغط أو الذبحة أو لتنظيم سرعة النبض حسب حالتك.',
+      howToUseAr: 'خذ نفس نوع الكبسولة أو الحبة المكتوب لك وفي نفس الوقت يوميًا.',
+      importantAr: 'لا تسحق أو تفتح النوع ممتد المفعول إلا إذا قال الصيدلي إن منتجك يسمح بذلك.',
+      commonActionableAr: 'قد يسبب دوخة أو بطء النبض أو تورم القدمين.',
+    ),
+  ),
+  Medication(
+    id: 'dapagliflozin',
+    familyId: 'diabetes-endocrine',
+    name: 'Dapagliflozin',
+    subtitle: 'SGLT2 inhibitor',
+    tags: ['Diabetes', 'Heart failure', 'CKD', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Dapagliflozin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review indication, renal function, volume status, genital/urinary infection history, ketoacidosis risk, diet/fasting and planned surgery.',
+      ),
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'Once daily with or without food. Usually chronic for diabetes, CKD or heart failure while beneficial and tolerated.',
+      ),
+      MedicationSection(
+        title: 'Sick-day / procedure counseling',
+        body:
+            'Temporary interruption may be needed for surgery, prolonged fasting, severe acute illness or dehydration according to current protocol to reduce ketoacidosis risk.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على خفض السكر وقد يفيد القلب أو الكلى حسب حالتك.',
+      howToUseAr: 'خذه مرة يوميًا في نفس الوقت تقريبًا، مع الطعام أو بدونه.',
+      commonActionableAr: 'قد يزيد التبول وقد تحدث التهابات فطرية أو بولية.',
+      importantAr: 'أخبر الفريق الطبي أنك تستخدمه قبل العمليات أو إذا كنت لا تستطيع الأكل أو الشرب بسبب المرض.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر غثيان أو قيء أو ألم بطن مع تنفس سريع أو تعب شديد.',
+    ),
+  ),
+  Medication(
+    id: 'dulaglutide',
+    familyId: 'diabetes-endocrine',
+    name: 'Dulaglutide',
+    subtitle: 'Weekly GLP-1 receptor agonist',
+    tags: ['Diabetes', 'Weekly injection', 'Pen'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Dulaglutide Injection',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Subcutaneous once weekly on the same day; rotate sites. Device is single-dose and product-specific—demonstrate activation and disposal.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'A1c/glucose, GI tolerance, weight, pancreatitis/gallbladder symptoms and hypoglycemia when combined with insulin or sulfonylurea.',
+      ),
+      MedicationSection(
+        title: 'Patient-specific',
+        body:
+            'Review severe GI disease, prior pancreatitis context, pregnancy and personal/family history relevant to boxed thyroid-tumor warning.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على ضبط السكر ويُستخدم مرة واحدة أسبوعيًا.',
+      howToUseAr: 'اختر يومًا ثابتًا كل أسبوع وغيّر موضع الحقن بين الجرعات.',
+      commonActionableAr: 'قد يسبب غثيانًا أو شبعًا سريعًا؛ الوجبات الأصغر قد تساعد.',
+      importantAr: 'لا تشارك جهاز الحقن مع أي شخص.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر ألم بطن شديد ومستمر أو قيء مستمر.',
+      teachBackAr: 'ما هو يوم الحقنة عندك؟ وأرني كيف ستستخدم القلم وتتخلص منه.',
+    ),
+  ),
+  Medication(
+    id: 'tirzepatide',
+    familyId: 'diabetes-endocrine',
+    name: 'Tirzepatide',
+    subtitle: 'Weekly GIP / GLP-1 receptor agonist',
+    tags: ['Diabetes', 'Weight management', 'Weekly injection'],
+    hasVisualGuide: true,
+    sourceLabel: 'FDA/MedlinePlus patient information · Tirzepatide',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Once weekly subcutaneous injection. Dose escalation is gradual and product/indication-specific; do not accelerate titration.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Glucose/A1c or weight depending on indication, GI tolerance, gallbladder/pancreatitis symptoms and hypoglycemia with insulin/sulfonylurea.',
+      ),
+      MedicationSection(
+        title: 'Important interaction',
+        body:
+            'Delayed gastric emptying can affect oral medicines. Product labeling contains specific advice for oral hormonal contraceptives during initiation/dose escalation.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للسكري أو لإنقاص الوزن في حالات محددة حسب المنتج.',
+      howToUseAr: 'احقن الجرعة مرة أسبوعيًا في نفس اليوم وبدّل موضع الحقن.',
+      importantAr: 'لا ترفع الجرعة أسرع من الخطة المكتوبة لك.',
+      commonActionableAr: 'الغثيان أو الشبع السريع شائعان عند البداية أو زيادة الجرعة.',
+      seekHelpAr: 'راجع الطبيب عند ألم بطن شديد ومستمر أو قيء شديد.',
+    ),
+  ),
+  Medication(
+    id: 'glipizide',
+    familyId: 'diabetes-endocrine',
+    name: 'Glipizide',
+    subtitle: 'Sulfonylurea',
+    tags: ['Diabetes', 'Hypoglycemia', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Glipizide',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Immediate-release and extended-release products have different timing. IR is usually before meals; ER is commonly with breakfast. Do not interchange counseling.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Glucose/A1c, hypoglycemia, meal pattern and renal/hepatic function when relevant.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'Irregular eating, frailty and renal/hepatic impairment increase hypoglycemia risk; the medication plan must match the patient’s real meal pattern.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على خفض سكر الدم.',
+      howToUseAr: 'طريقة التوقيت تختلف بين الحبة العادية والممتدة المفعول؛ اتبع نوعك بالضبط.',
+      importantAr: 'لا تأخذ الجرعة ثم تتجاوز الوجبة إذا كان منتجك مرتبطًا بالطعام.',
+      seekHelpAr: 'إذا ظهرت أعراض هبوط السكر بشكل متكرر، راجع الطبيب أو الصيدلي.',
+    ),
+  ),
+  Medication(
+    id: 'pioglitazone',
+    familyId: 'diabetes-endocrine',
+    name: 'Pioglitazone',
+    subtitle: 'Thiazolidinedione',
+    tags: ['Diabetes', 'Oral', 'Fluid retention'],
+    sourceLabel: 'MedlinePlus Drug Information · Pioglitazone',
+    sections: [
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'Usually once daily with or without food and used chronically if effective. Glucose-lowering effect is gradual rather than immediate.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Weight/edema, heart-failure symptoms, A1c and liver status when clinically indicated; fracture risk matters in selected patients.',
+      ),
+      MedicationSection(
+        title: 'High-value safety',
+        body:
+            'Can cause fluid retention and worsen heart failure. Review dyspnea, rapid weight gain and edema before initiation/titration.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على خفض السكر ويحتاج وقتًا حتى يظهر تأثيره الكامل.',
+      howToUseAr: 'خذه مرة يوميًا مع الطعام أو بدونه.',
+      commonActionableAr: 'قد يسبب زيادة وزن أو تورمًا بسبب احتباس السوائل.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر ضيق نفس جديد أو تورم واضح أو زيادة وزن سريعة.',
+    ),
+  ),
+  Medication(
+    id: 'insulin-lispro',
+    familyId: 'diabetes-endocrine',
+    name: 'Insulin Lispro',
+    subtitle: 'Rapid-acting mealtime insulin',
+    tags: ['Insulin', 'Mealtime', 'Injection', 'High alert'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Insulin Lispro Injection',
+    sections: [
+      MedicationSection(
+        title: 'Critical administration',
+        body:
+            'Timing relative to meals is product-specific but generally very close to meal intake. Confirm exact lispro product/concentration and whether the patient is actually ready to eat.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Formulation / device',
+        body:
+            'U-100 and U-200 products and pens are not interchangeable by volume. Do not withdraw U-200 from a pen into a syringe.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Glucose/CGM, hypoglycemia, carb intake, injection technique, lipohypertrophy and storage.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'إنسولين سريع المفعول لتغطية الوجبات وتصحيح السكر حسب الخطة.',
+      howToUseAr: 'استخدمه في الوقت المحدد بالنسبة للوجبة، ولا تحقنه ثم تؤخر الأكل من دون خطة واضحة.',
+      importantAr: 'تأكد من اسم الإنسولين وتركيزه قبل كل حقنة.',
+      seekHelpAr: 'عالج هبوط السكر حسب خطتك، واطلب المساعدة إذا كان شديدًا أو لم تستطع الأكل.',
+      teachBackAr: 'متى ستحقنه بالنسبة للوجبة؟ وكيف تتأكد من نوع وتركيز الإنسولين؟',
+    ),
+  ),
+  Medication(
+    id: 'fluticasone-inhaled',
+    familyId: 'respiratory',
+    name: 'Fluticasone Inhaled',
+    subtitle: 'Inhaled corticosteroid',
+    tags: ['Asthma', 'Controller', 'Inhaler', 'ICS'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Fluticasone Oral Inhalation',
+    sections: [
+      MedicationSection(
+        title: 'Device distinction',
+        body:
+            'Fluticasone exists as aerosol and multiple dry-powder devices. Inhalation speed, priming, cleaning, dose counter and spacer use differ by product.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Use consistently once or twice daily according to product; not for acute attacks. Rinse mouth with water and spit after dosing.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Asthma control, exacerbations, adherence, technique, oral candidiasis/dysphonia and growth in children when clinically relevant.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'بخاخ وقائي يقلل التهاب الشعب الهوائية ويساعد على منع أعراض الربو.',
+      howToUseAr: 'استخدمه يوميًا حتى عندما تكون بخير، بالطريقة الخاصة بجهازك.',
+      importantAr: 'ليس بخاخ إسعاف للنوبة المفاجئة. تمضمض بالماء وابصقه بعد الجرعة.',
+      teachBackAr: 'أرني طريقة استخدام جهازك، ثم قل لي ماذا تفعل بعد الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'fluticasone-salmeterol',
+    familyId: 'respiratory',
+    name: 'Fluticasone / Salmeterol',
+    subtitle: 'ICS / LABA combination inhaler',
+    tags: ['Asthma', 'COPD', 'Controller', 'Inhaler'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Fluticasone and Salmeterol',
+    sections: [
+      MedicationSection(
+        title: 'Device/formulation distinction',
+        body:
+            'Diskus, HFA and RespiClick-type products use different techniques and approved age ranges. Do not copy technique between devices.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Generally twice daily about 12 hours apart for many products. Rinse and spit after each dose. Not a rescue inhaler.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Symptoms, exacerbations, rescue use, adherence, device technique, oral candidiasis and duplicate LABA therapy.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يسيطر على الربو أو COPD ويقلل الأعراض مع الاستخدام المنتظم.',
+      howToUseAr: 'استخدمه في المواعيد المكتوبة لك وبطريقة جهازك الخاصة.',
+      importantAr: 'ليس للإسعاف السريع. تمضمض بالماء وابصقه بعد الجرعة.',
+      teachBackAr: 'أرني كيف تستخدم جهازك من البداية للنهاية.',
+    ),
+  ),
+  Medication(
+    id: 'ipratropium-inhaled',
+    familyId: 'respiratory',
+    name: 'Ipratropium Inhaled',
+    subtitle: 'Short-acting anticholinergic bronchodilator',
+    tags: ['COPD', 'Asthma adjunct', 'Inhaler', 'Nebulizer'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Ipratropium Oral Inhalation',
+    sections: [
+      MedicationSection(
+        title: 'Formulation/device',
+        body:
+            'Available by inhaler and nebulizer. Exact technique and dosing schedule differ; nebulizer solution should not be mixed with other drugs unless compatibility is established.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Symptom relief, dry mouth, urinary retention and eye symptoms in glaucoma-risk patients.',
+      ),
+      MedicationSection(
+        title: 'Common error',
+        body:
+            'Nebulized mist or aerosol contacting the eyes may worsen narrow-angle glaucoma symptoms in susceptible patients.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يفتح الشعب الهوائية ويُستخدم كثيرًا في COPD وأحيانًا مع علاجات أخرى للربو.',
+      howToUseAr: 'استخدم البخاخ أو النيبولايزر بالطريقة الخاصة بالمنتج.',
+      importantAr: 'تجنب وصول الرذاذ إلى العينين، وأخبر الطبيب إذا ظهر ألم عين أو تشوش شديد بالرؤية.',
+    ),
+  ),
+  Medication(
+    id: 'budesonide-nebulizer',
+    familyId: 'respiratory',
+    name: 'Budesonide Nebulizer',
+    subtitle: 'Nebulized inhaled corticosteroid',
+    tags: ['Asthma', 'Nebulizer', 'ICS', 'Pediatric'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus / product labeling · Budesonide Inhalation Suspension',
+    sections: [
+      MedicationSection(
+        title: 'Preparation / technique',
+        body:
+            'Use the exact unit-dose respule and compatible nebulizer system. Do not mix with another nebulized medicine unless compatibility is specifically established.',
+      ),
+      MedicationSection(
+        title: 'After dose',
+        body:
+            'Rinse mouth and spit after treatment; if a face mask is used, wash the face to reduce local steroid exposure.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Asthma control, adherence, device cleaning, oral candidiasis, voice changes and growth in children when clinically relevant.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'دواء وقائي للربو يُعطى بالنيبولايزر لتقليل التهاب الشعب الهوائية.',
+      howToUseAr: 'ضع محتوى العبوة المخصصة في حجرة الجهاز واستخدم النيبولايزر بالطريقة التي تعلمتها.',
+      importantAr: 'بعد الجلسة تمضمض بالماء وابصقه، وإذا استخدمت ماسك اغسل الوجه.',
+      teachBackAr: 'أرني كيف تركب الجهاز وتنظفه بعد الجلسة.',
+    ),
+  ),
+  Medication(
+    id: 'amoxicillin-clavulanate-oral',
+    familyId: 'antiinfective',
+    name: 'Amoxicillin / Clavulanate Oral',
+    subtitle: 'Penicillin / beta-lactamase inhibitor',
+    tags: ['Antibiotic', 'Oral', 'Suspension'],
+    sourceLabel: 'MedlinePlus Drug Information · Amoxicillin and Clavulanate',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take with a meal or snack, ideally at the start of the meal, to improve clavulanate tolerance/absorption.',
+      ),
+      MedicationSection(
+        title: 'Formulation warning',
+        body:
+            'Different tablet and suspension strengths are not interchangeable based only on amoxicillin mg because clavulanate content differs.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Duration / monitoring',
+        body:
+            'Course duration is infection-specific. Monitor allergy, GI tolerance, severe diarrhea and liver symptoms in susceptible patients.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض الالتهابات البكتيرية.',
+      howToUseAr: 'خذ الجرعة مع بداية الوجبة أو مع الطعام حسب تعليمات منتجك، وأكمل المدة الموصوفة.',
+      importantAr: 'لا تبدّل بين تركيزات الشراب من نفسك؛ كمية clavulanate تختلف بين المنتجات.',
+      seekHelpAr: 'اطلب المساعدة عند حساسية شديدة أو إسهال شديد ومستمر أو اصفرار الجلد/العينين.',
+    ),
+  ),
+  Medication(
+    id: 'cephalexin',
+    familyId: 'antiinfective',
+    name: 'Cephalexin',
+    subtitle: 'First-generation cephalosporin',
+    tags: ['Antibiotic', 'Oral', 'Suspension'],
+    sourceLabel: 'MedlinePlus Drug Information · Cephalexin',
+    sections: [
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'May be taken with or without food. Course duration depends on infection and guideline; space doses according to prescribed frequency.',
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review beta-lactam allergy history, renal function for adjustment, infection site and local susceptibility where relevant.',
+      ),
+      MedicationSection(
+        title: 'Suspension',
+        body:
+            'Shake well and measure with an oral syringe/cup. Reconstituted storage and beyond-use instructions should follow the exact manufacturer.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض الالتهابات البكتيرية.',
+      howToUseAr: 'خذ الجرعة في مواعيدها وأكمل مدة العلاج، مع الطعام أو بدونه.',
+      importantAr: 'إذا كان شرابًا فرج العبوة جيدًا واستعمل أداة قياس دوائية.',
+      seekHelpAr: 'اطلب المساعدة عند صعوبة التنفس أو تورم الوجه، أو راجع الطبيب عند إسهال شديد.',
+    ),
+  ),
+  Medication(
+    id: 'ciprofloxacin-oral',
+    familyId: 'antiinfective',
+    name: 'Ciprofloxacin Oral',
+    subtitle: 'Fluoroquinolone antibiotic',
+    tags: ['Antibiotic', 'Oral', 'Mineral interaction'],
+    sourceLabel: 'MedlinePlus Drug Information · Ciprofloxacin',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take with water at consistent times. Do not take with dairy/calcium-fortified juice alone, and separate from antacids, iron, calcium, magnesium and zinc according to label timing.',
+      ),
+      MedicationSection(
+        title: 'High-value safety',
+        body:
+            'Fluoroquinolone risks include tendon injury, peripheral neuropathy and CNS effects; reserve use according to indication and current guidance.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'Major interaction with tizanidine. Review QT-risk drugs, warfarin, theophylline/caffeine exposure and glucose-lowering therapy when relevant.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج أنواع محددة من الالتهابات.',
+      howToUseAr: 'خذه مع الماء وفي أوقات ثابتة، وافصل المعادن ومضادات الحموضة حسب تعليمات الصيدلي.',
+      importantAr: 'لا تأخذه مع الحليب أو العصير المدعم بالكالسيوم وحدهما كوجبة للجرعة.',
+      seekHelpAr: 'أوقفه وراجع الطبيب عند ألم أو تورم مفاجئ في وتر، تنميل/حرقان جديد بالأطراف، أو أعراض عصبية شديدة.',
+    ),
+  ),
+  Medication(
+    id: 'fluconazole-oral',
+    familyId: 'antiinfective',
+    name: 'Fluconazole Oral',
+    subtitle: 'Azole antifungal',
+    tags: ['Antifungal', 'Oral', 'Interactions'],
+    sourceLabel: 'MedlinePlus Drug Information · Fluconazole',
+    sections: [
+      MedicationSection(
+        title: 'Administration / duration',
+        body:
+            'With or without food. Regimen ranges from a single dose to prolonged treatment depending on infection and immune status.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'CYP-mediated interactions are clinically important; review warfarin, selected statins, sulfonylureas, phenytoin and QT-risk drugs.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Liver toxicity and QT risk are patient-specific concerns; prolonged/high-dose therapy may require laboratory monitoring.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد فطري لعلاج أنواع مختلفة من العدوى الفطرية.',
+      howToUseAr: 'خذ الجرعة حسب الخطة؛ بعض الحالات تحتاج جرعة واحدة وأخرى تحتاج علاجًا أطول.',
+      timingAr: 'يمكن أخذه مع الطعام أو بدونه.',
+      importantAr: 'أخبر الصيدلي عن جميع أدويتك لأن له تداخلات مهمة.',
+      seekHelpAr: 'راجع الطبيب عند اصفرار الجلد/العينين أو طفح شديد أو خفقان وإغماء.',
+    ),
+  ),
+  Medication(
+    id: 'valacyclovir',
+    familyId: 'antiinfective',
+    name: 'Valacyclovir',
+    subtitle: 'Antiviral prodrug',
+    tags: ['Herpes', 'Shingles', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Valacyclovir',
+    sections: [
+      MedicationSection(
+        title: 'Administration & duration',
+        body:
+            'With or without food; regimen and duration vary by herpes indication. Early initiation is important for episodic treatment.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Renal function and hydration are important, particularly in older adults, dehydration or renal impairment.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'Suppression, initial genital herpes, recurrent herpes and shingles use different dose schedules—do not copy one regimen to another.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد فيروسات لعلاج أو منع تكرار بعض عدوى الهربس والحزام الناري.',
+      howToUseAr: 'خذ الجرعات حسب الحالة وفي أوقات منتظمة، مع الطعام أو بدونه.',
+      importantAr: 'اشرب سوائل كافية ما لم يكن لديك تقييد للسوائل.',
+      missedDoseAr: 'خذ الجرعة عند التذكر إذا لم يقترب موعد التالية، ولا تضاعف الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'trimethoprim-sulfamethoxazole',
+    familyId: 'antiinfective',
+    name: 'Trimethoprim / Sulfamethoxazole',
+    subtitle: 'Sulfonamide combination antibiotic',
+    tags: ['Antibiotic', 'Oral', 'Potassium', 'Interactions'],
+    sourceLabel: 'MedlinePlus Drug Information · Co-trimoxazole',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take with a full glass of water; food may improve GI tolerance. Maintain hydration unless restricted.',
+      ),
+      MedicationSection(
+        title: 'Monitoring / interactions',
+        body:
+            'Renal function, potassium and CBC may be relevant, especially with prolonged therapy or high-risk patients. Major interaction concerns include warfarin, methotrexate and potassium-raising therapy.',
+      ),
+      MedicationSection(
+        title: 'High-value safety',
+        body:
+            'Serious rash, cytopenias, hyperkalemia and renal effects are important red flags.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج أنواع معينة من الالتهابات.',
+      howToUseAr: 'خذ الجرعة مع كوب ماء كامل وفي المواعيد المكتوبة لك.',
+      importantAr: 'أخبر الصيدلي إذا تستخدم warfarin أو methotrexate أو أدوية ترفع البوتاسيوم.',
+      seekHelpAr: 'أوقفه واطلب المساعدة إذا ظهر طفح شديد أو تقرحات بالفم أو صعوبة تنفس.',
+    ),
+  ),
+  Medication(
+    id: 'lamotrigine',
+    familyId: 'cns',
+    name: 'Lamotrigine',
+    subtitle: 'Antiseizure / mood-stabilizing medicine',
+    tags: ['Epilepsy', 'Bipolar', 'Slow titration', 'Rash'],
+    sourceLabel: 'MedlinePlus Drug Information · Lamotrigine',
+    sections: [
+      MedicationSection(
+        title: 'Critical titration',
+        body:
+            'Must be titrated slowly. Starting dose and schedule depend strongly on valproate and enzyme-inducing antiseizure drugs.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Formulation',
+        body:
+            'Standard tablets, chewable/dispersible and ODT products have different administration options. Do not improvise crushing/opening.',
+      ),
+      MedicationSection(
+        title: 'Rash counseling',
+        body:
+            'New rash—especially with fever, mucosal lesions or systemic symptoms—requires urgent assessment because severe cutaneous reactions can occur.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للصرع أو للمساعدة في علاج اضطراب ثنائي القطب.',
+      howToUseAr: 'ابدأ وارفع الجرعة فقط حسب الجدول المكتوب؛ لا ترفعها أسرع من الخطة.',
+      importantAr: 'إذا توقفت عدة أيام فلا ترجع لنفس الجرعة من نفسك قبل سؤال الطبيب أو الصيدلي.',
+      seekHelpAr: 'اطلب تقييمًا سريعًا إذا ظهر طفح جديد، خصوصًا مع حرارة أو تقرحات بالفم.',
+    ),
+  ),
+  Medication(
+    id: 'carbamazepine',
+    familyId: 'cns',
+    name: 'Carbamazepine',
+    subtitle: 'Antiseizure / neuralgia medicine',
+    tags: ['Epilepsy', 'Trigeminal neuralgia', 'Interactions', 'Monitoring'],
+    sourceLabel: 'MedlinePlus Drug Information · Carbamazepine',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Immediate-release, XR tablets/capsules and suspension differ in administration. Suspension can interact physically with some liquid medicines; do not mix in the same cup.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'CBC, sodium, liver function and drug level when clinically indicated; monitor rash, dizziness and blood dyscrasia symptoms.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'Potent enzyme inducer with many interactions, including hormonal contraceptives, anticoagulants and multiple antiseizure/psychiatric drugs.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للصرع أو ألم العصب الثلاثي وبعض الحالات الأخرى.',
+      howToUseAr: 'خذ الدواء بانتظام ولا تبدّل بين النوع العادي والممتد المفعول من نفسك.',
+      importantAr: 'له تداخلات دوائية كثيرة؛ أخبر الصيدلي قبل إضافة أي دواء أو مانع حمل جديد.',
+      seekHelpAr: 'راجع الطبيب عند طفح شديد أو حرارة مع التهاب حلق أو كدمات غير معتادة أو ارتباك شديد.',
+    ),
+  ),
+  Medication(
+    id: 'phenytoin-oral',
+    familyId: 'cns',
+    name: 'Phenytoin Oral',
+    subtitle: 'Narrow-therapeutic-index antiseizure medicine',
+    tags: ['Epilepsy', 'TDM', 'Feeding tube', 'Interactions'],
+    sourceLabel: 'MedlinePlus + ICU/enteral references · Phenytoin',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Nonlinear kinetics and narrow therapeutic range. Interpret levels with timing, albumin and renal function; free level is often more informative in hypoalbuminemia.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Feeding tube',
+        body:
+            'Enteral nutrition can markedly reduce phenytoin absorption. Tube-feed interruption and level monitoring should follow validated protocol; jejunal administration is problematic.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Formulation / salt',
+        body:
+            'Suspension, capsules and chewable products may use different salt/base expressions and are not blindly interchangeable.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على منع نوبات الصرع.',
+      howToUseAr: 'خذه في نفس الأوقات وبنفس الشكل الدوائي الذي وصفه الطبيب.',
+      importantAr: 'لا تبدّل بين الشراب والكبسولات أو تغير الشركة/المنتج دون مراجعة إذا كنت تحتاج متابعة مستويات.',
+      commonActionableAr: 'اهتم بنظافة الأسنان واللثة لأن تضخم اللثة قد يحدث مع الاستخدام الطويل.',
+      seekHelpAr: 'راجع الطبيب عند طفح شديد أو عدم اتزان شديد أو كلام متثاقل أو حركات عين غير طبيعية.',
+    ),
+  ),
+  Medication(
+    id: 'pregabalin',
+    familyId: 'cns',
+    name: 'Pregabalin',
+    subtitle: 'Neuropathic pain / antiseizure medicine',
+    tags: ['Neuropathic pain', 'Seizure adjunct', 'Renal adjustment'],
+    sourceLabel: 'MedlinePlus Drug Information · Pregabalin',
+    sections: [
+      MedicationSection(
+        title: 'Administration / duration',
+        body:
+            'Usually divided two or three times daily depending on product/indication; chronic use should be continued only with meaningful benefit.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Sedation, dizziness, edema, weight gain, falls and respiratory depression when combined with opioids/CNS depressants.',
+      ),
+      MedicationSection(
+        title: 'Renal / stopping',
+        body:
+            'Dose adjustment is required in renal impairment. Taper rather than abrupt discontinuation.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لبعض آلام الأعصاب وقد يُستخدم مع أدوية الصرع.',
+      howToUseAr: 'خذه بانتظام حسب الوصفة ولا توقفه فجأة.',
+      commonActionableAr: 'قد يسبب دوخة أو نعاسًا أو تورم القدمين.',
+      importantAr: 'اعرف تأثيره عليك قبل القيادة، وخاصة إذا تستخدم مسكنات أفيونية أو مهدئات.',
+    ),
+  ),
+  Medication(
+    id: 'duloxetine',
+    familyId: 'cns',
+    name: 'Duloxetine',
+    subtitle: 'SNRI antidepressant / neuropathic pain therapy',
+    tags: ['Depression', 'Anxiety', 'Neuropathic pain', 'Delayed release'],
+    sourceLabel: 'MedlinePlus Drug Information · Duloxetine',
+    sections: [
+      MedicationSection(
+        title: 'Administration / formulation',
+        body:
+            'Delayed-release capsules are swallowed whole; do not crush or chew. Take consistently with or without food according to tolerance/product instructions.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Mood/suicidality, blood pressure, nausea, withdrawal symptoms, liver risk and sodium in susceptible patients.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'MAOIs and other serotonergic drugs are key; NSAIDs/anticoagulants can increase bleeding risk.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للاكتئاب أو القلق أو بعض آلام الأعصاب حسب حالتك.',
+      howToUseAr: 'ابتلع الكبسولة كاملة وفي نفس الوقت تقريبًا يوميًا.',
+      importantAr: 'لا توقفه فجأة؛ قد تحتاج الجرعة إلى تقليل تدريجي.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهرت أفكار بإيذاء النفس أو أعراض شديدة غير معتادة.',
+    ),
+  ),
+  Medication(
+    id: 'escitalopram',
+    familyId: 'cns',
+    name: 'Escitalopram',
+    subtitle: 'SSRI antidepressant',
+    tags: ['Depression', 'Anxiety', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Escitalopram',
+    sections: [
+      MedicationSection(
+        title: 'Duration / expectations',
+        body:
+            'Benefit builds over several weeks. Continue for an adequate maintenance period after response; longer treatment may be needed for recurrent illness.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Mood/suicidality after initiation or dose changes, sexual adverse effects, hyponatremia risk and adherence.',
+      ),
+      MedicationSection(
+        title: 'Stopping / interactions',
+        body:
+            'Taper rather than abrupt stopping. Review MAOIs, other serotonergic medicines and QT-risk combinations in susceptible patients.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للاكتئاب أو القلق حسب حالتك.',
+      howToUseAr: 'خذه مرة يوميًا في وقت ثابت، مع الطعام أو بدونه.',
+      commonActionableAr: 'قد يحتاج عدة أسابيع حتى يظهر التحسن الكامل.',
+      importantAr: 'لا توقفه فجأة من نفسك.',
+      seekHelpAr: 'اطلب مساعدة إذا ظهرت أفكار بإيذاء النفس أو تدهور شديد ومفاجئ في المزاج.',
+    ),
+  ),
+  Medication(
+    id: 'topiramate',
+    familyId: 'cns',
+    name: 'Topiramate',
+    subtitle: 'Antiseizure / migraine-prevention medicine',
+    tags: ['Epilepsy', 'Migraine prevention', 'Hydration'],
+    sourceLabel: 'MedlinePlus Drug Information · Topiramate',
+    sections: [
+      MedicationSection(
+        title: 'Administration / formulation',
+        body:
+            'Tablets and sprinkle capsules have different handling. Swallow tablets whole; sprinkle products may be opened only as directed. Maintain hydration.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Cognition/word-finding, weight, bicarbonate/metabolic acidosis risk, kidney stones, eye symptoms and renal function when relevant.',
+      ),
+      MedicationSection(
+        title: 'Patient-specific',
+        body:
+            'Pregnancy risk is important. Enzyme/contraceptive interactions depend on dose and regimen.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للصرع أو لمنع نوبات الشقيقة.',
+      howToUseAr: 'خذه بانتظام واشرب سوائل كافية ما لم يكن لديك تقييد للسوائل.',
+      commonActionableAr: 'قد يسبب بطئًا بالتفكير أو تنميلًا أو فقدان شهية عند بعض الأشخاص.',
+      seekHelpAr: 'اطلب تقييمًا عاجلًا إذا ظهر ألم مفاجئ في العين أو تشوش شديد بالرؤية.',
+    ),
+  ),
+  Medication(
+    id: 'pantoprazole-oral',
+    familyId: 'gastrointestinal',
+    name: 'Pantoprazole Oral',
+    subtitle: 'Proton-pump inhibitor',
+    tags: ['GERD', 'Ulcer', 'Delayed release'],
+    sourceLabel: 'MedlinePlus Drug Information · Pantoprazole',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Delayed-release tablets are swallowed whole. Granules have specific mixing/administration rules and are not the same as tablets.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Treatment duration is indication-specific; uncomplicated GERD courses and chronic hypersecretory/maintenance indications differ.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Long-term therapy should be periodically reassessed for ongoing indication; monitor magnesium/B12/iron or bone risk only when clinically appropriate.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يقلل حموضة المعدة ويُستخدم للحموضة أو القرحة أو حالات زيادة إفراز الحمض.',
+      howToUseAr: 'ابتلع الحبة المتأخرة المفعول كاملة ولا تسحقها.',
+      importantAr: 'إذا كان لديك حبيبات/Granules فطريقة استخدامها مختلفة، اتبع تعليمات المنتج.',
+      timingAr: 'اتبع توقيت وصفتك؛ بعض الاستطبابات تحتاج توقيتًا قبل الطعام.',
+    ),
+  ),
+  Medication(
+    id: 'famotidine',
+    familyId: 'gastrointestinal',
+    name: 'Famotidine',
+    subtitle: 'H2-receptor blocker',
+    tags: ['Heartburn', 'GERD', 'Ulcer', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Famotidine',
+    sections: [
+      MedicationSection(
+        title: 'Administration / duration',
+        body:
+            'With or without food. OTC self-treatment has duration limits; persistent or alarm symptoms require referral.',
+      ),
+      MedicationSection(
+        title: 'Renal adjustment',
+        body:
+            'Dose/frequency reduction may be required in renal impairment to reduce CNS adverse effects.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'Night-time H2 blocker can be useful in selected patients, but tachyphylaxis can reduce effect with continuous use.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يقلل حمض المعدة ويساعد في الحموضة وبعض حالات القرحة والارتجاع.',
+      howToUseAr: 'خذه حسب الجرعة المكتوبة، مع الطعام أو بدونه.',
+      importantAr: 'إذا كنت تستخدمه بدون وصفة واستمرت الأعراض أو تكررت كثيرًا، راجع الطبيب أو الصيدلي.',
+    ),
+  ),
+  Medication(
+    id: 'sucralfate',
+    familyId: 'gastrointestinal',
+    name: 'Sucralfate',
+    subtitle: 'Mucosal-protective agent',
+    tags: ['Ulcer', 'Empty stomach', 'Drug separation'],
+    sourceLabel: 'MedlinePlus Drug Information · Sucralfate',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Typically taken on an empty stomach. It can bind many oral medicines; separation timing should be individualized by interacting drug.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Constipation is common; aluminum accumulation is a concern in significant renal impairment.',
+      ),
+      MedicationSection(
+        title: 'Common error',
+        body:
+            'Giving all morning medications together with sucralfate can markedly reduce absorption of selected drugs.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يغطي سطح القرحة ويساعد على حمايتها أثناء الالتئام.',
+      howToUseAr: 'غالبًا يؤخذ على معدة فارغة حسب الوصفة.',
+      importantAr: 'لا تأخذ كل أدويتك معه في نفس الوقت؛ بعض الأدوية تحتاج فصلًا عنه.',
+      commonActionableAr: 'الإمساك من الأعراض الشائعة.',
+    ),
+  ),
+  Medication(
+    id: 'mesalamine',
+    familyId: 'gastrointestinal',
+    name: 'Mesalamine',
+    subtitle: '5-ASA anti-inflammatory therapy',
+    tags: ['Ulcerative colitis', 'Delayed release', 'Maintenance'],
+    sourceLabel: 'MedlinePlus Drug Information · Mesalamine',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Different delayed-/extended-release products target different GI regions and have different food instructions. They are not automatically interchangeable.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Used for induction and/or long-term maintenance of ulcerative colitis depending on product and regimen.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Renal function before and during therapy; monitor intolerance syndrome, severe abdominal pain/diarrhea and rare cardiac/pancreatic reactions.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يقلل التهاب القولون التقرحي ويساعد على السيطرة على الأعراض ومنع عودتها.',
+      howToUseAr: 'خذ نفس المنتج والشكل الدوائي الموصوف لك؛ الأنواع المختلفة ليست بدائل مباشرة لبعضها.',
+      importantAr: 'لا تسحق أو تكسر الأقراص المتأخرة/الممتدة المفعول إلا إذا سمحت تعليمات منتجك.',
+      seekHelpAr: 'راجع الطبيب إذا ساء ألم البطن أو الإسهال بشكل واضح بعد بدء الدواء.',
+    ),
+  ),
+  Medication(
+    id: 'metoclopramide-oral',
+    familyId: 'gastrointestinal',
+    name: 'Metoclopramide Oral',
+    subtitle: 'Prokinetic / antiemetic',
+    tags: ['Nausea', 'Gastroparesis', 'Duration limit'],
+    sourceLabel: 'MedlinePlus Drug Information · Metoclopramide',
+    sections: [
+      MedicationSection(
+        title: 'Duration warning',
+        body:
+            'Avoid prolonged use beyond recommended limits because tardive dyskinesia risk rises with cumulative exposure.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Often scheduled before meals and at bedtime for gastroparesis/GERD regimens, but indication-specific instructions apply.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Akathisia, dystonia, parkinsonism, sedation and tardive movements. Renal dose adjustment may be needed.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم للغثيان أو بطء حركة المعدة في حالات محددة.',
+      howToUseAr: 'خذه في الأوقات المكتوبة لك؛ قد يكون قبل الوجبات في بعض الحالات.',
+      importantAr: 'لا تطل مدة الاستخدام من نفسك.',
+      seekHelpAr: 'أوقفه وراجع الطبيب إذا ظهرت حركات لا إرادية بالوجه أو اللسان أو الجسم، أو تشنجات عضلية شديدة.',
+    ),
+  ),
+  Medication(
+    id: 'diclofenac-topical',
+    familyId: 'pain-inflammation',
+    name: 'Diclofenac Topical',
+    subtitle: 'Topical NSAID',
+    tags: ['Arthritis pain', 'Topical', 'NSAID', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Diclofenac Topical',
+    sections: [
+      MedicationSection(
+        title: 'Product distinction',
+        body:
+            'Gel strengths/indications and topical solutions differ in dose, frequency and applicator. Do not treat all topical diclofenac as the same product.',
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Apply only to intact skin and avoid eyes/mucosa. Let treated skin dry before covering as directed; wash hands according to site/product instructions.',
+      ),
+      MedicationSection(
+        title: 'Duration / systemic risk',
+        body:
+            'OTC arthritis gel is time-limited unless clinician-directed. Systemic NSAID risk is lower than oral but not zero.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف ألم والتهاب بعض المفاصل عند وضعه على الجلد.',
+      howToUseAr: 'ضع الكمية المحددة لمنتجك على الجلد السليم فقط.',
+      importantAr: 'لا تضعه على جرح أو طفح، ولا تجمعه مع NSAID آخر من نفسك.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر طفح شديد أو أعراض نزف معدي أو ألم صدر.',
+    ),
+  ),
+  Medication(
+    id: 'celecoxib',
+    familyId: 'pain-inflammation',
+    name: 'Celecoxib',
+    subtitle: 'COX-2 selective NSAID',
+    tags: ['Pain', 'Arthritis', 'NSAID'],
+    sourceLabel: 'MedlinePlus Drug Information · Celecoxib',
+    sections: [
+      MedicationSection(
+        title: 'Administration / duration',
+        body:
+            'Use the lowest effective dose for the shortest appropriate duration. Food instructions depend on dose/product context.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'GI bleeding, blood pressure, renal function, edema and cardiovascular risk.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'Anticoagulants/antiplatelets, ACEI/ARB/diuretics, lithium and other NSAIDs require review.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف الألم والالتهاب في حالات مثل التهاب المفاصل.',
+      howToUseAr: 'خذ أقل جرعة فعالة حسب الوصفة ولا تجمعه مع NSAIDs أخرى من نفسك.',
+      importantAr: 'كونه COX-2 لا يعني أنه خالٍ من مخاطر القلب أو الكلى أو النزف.',
+      seekHelpAr: 'اطلب المساعدة عند براز أسود أو قيء دموي أو ألم صدر أو ضيق نفس.',
+    ),
+  ),
+  Medication(
+    id: 'dabigatran',
+    familyId: 'anticoagulation',
+    name: 'Dabigatran',
+    subtitle: 'Direct thrombin inhibitor',
+    tags: ['Anticoagulant', 'Capsule handling', 'Bleeding risk'],
+    sourceLabel: 'MedlinePlus Drug Information · Dabigatran',
+    sections: [
+      MedicationSection(
+        title: 'Critical formulation handling',
+        body:
+            'Capsules must be swallowed whole and kept in the original bottle/blister as directed; opening/crushing markedly increases bioavailability.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Renal function, bleeding, adherence and peri-procedure planning. Routine INR is not used.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Indication-specific: atrial fibrillation is often long-term; VTE treatment may be finite or extended.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مميع دم يقلل خطر تكوّن الجلطات.',
+      howToUseAr: 'ابتلع الكبسولة كاملة ولا تفتحها أو تسحقها أو تمضغها.',
+      importantAr: 'احفظها في العبوة الأصلية حسب تعليمات المنتج ولا توقفها من نفسك.',
+      seekHelpAr: 'اطلب المساعدة عند نزف شديد أو مستمر أو بعد ضربة قوية على الرأس.',
+    ),
+  ),
+  Medication(
+    id: 'enoxaparin',
+    familyId: 'anticoagulation',
+    name: 'Enoxaparin Injection',
+    subtitle: 'Low-molecular-weight heparin',
+    tags: ['Anticoagulant', 'Injection', 'Bleeding', 'Renal'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Enoxaparin Injection',
+    sections: [
+      MedicationSection(
+        title: 'Injection technique',
+        body:
+            'Subcutaneous abdominal injection; rotate sites and follow syringe-specific instructions. Do not expel the air bubble from prefilled syringes when product instructions say to retain it.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Bleeding, CBC/platelets, renal function; anti-Xa monitoring is reserved for selected situations rather than routine use.',
+      ),
+      MedicationSection(
+        title: 'High-value safety',
+        body:
+            'Neuraxial/spinal procedures carry serious hematoma risk; timing around epidural/spinal anesthesia must follow protocol.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'حقنة مميعة للدم لمنع أو علاج الجلطات.',
+      howToUseAr: 'احقنها تحت الجلد في البطن بالطريقة التي تم تدريبك عليها وبدّل مكان الحقن.',
+      importantAr: 'لا تفرك مكان الحقن بعد الجرعة، ولا تتخلص من فقاعة الهواء إذا كانت تعليمات السرنجة تقول إبقاءها.',
+      seekHelpAr: 'اطلب المساعدة عند نزف شديد أو ضعف/تنميل جديد بالساقين بعد إجراء في الظهر.',
+      teachBackAr: 'أرني أين ستحقن وكيف تتخلص من السرنجة.',
+    ),
+  ),
+  Medication(
+    id: 'loratadine',
+    familyId: 'allergy-dermatology',
+    name: 'Loratadine',
+    subtitle: 'Second-generation antihistamine',
+    tags: ['Allergy', 'Hives', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Loratadine',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually once daily with or without food. ODT/liquid products need formulation-specific handling.',
+      ),
+      MedicationSection(
+        title: 'Patient-specific',
+        body:
+            'Renal/hepatic impairment may alter dosing interval. Sedation is less common than with first-generation antihistamines but can still occur.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف أعراض الحساسية مثل العطاس والحكة وسيلان الأنف والشرى.',
+      howToUseAr: 'خذ الجرعة مرة يوميًا حسب المنتج، مع الطعام أو بدونه.',
+      commonActionableAr: 'النعاس أقل شيوعًا من بعض أدوية الحساسية القديمة لكنه قد يحدث.',
+    ),
+  ),
+  Medication(
+    id: 'chlorpheniramine',
+    familyId: 'allergy-dermatology',
+    name: 'Chlorpheniramine',
+    subtitle: 'First-generation antihistamine',
+    tags: ['Allergy', 'Sedating', 'Anticholinergic', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Chlorpheniramine',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Sedating/anticholinergic. Review age, falls, driving, glaucoma, urinary retention/prostate symptoms and other CNS depressants.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Short-term symptom relief rather than default chronic therapy when less-sedating alternatives are appropriate.',
+      ),
+      MedicationSection(
+        title: 'Common counseling issue',
+        body:
+            'Alcohol and other sedatives can markedly worsen drowsiness and impairment.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف أعراض الحساسية لكنه من الأنواع التي قد تسبب نعاسًا واضحًا.',
+      howToUseAr: 'خذ الجرعة حسب المنتج وتجنب القيادة حتى تعرف تأثيره عليك.',
+      importantAr: 'تجنب الكحول والمهدئات غير الضرورية معه.',
+      commonActionableAr: 'قد يسبب جفاف الفم والنعاس وصعوبة التبول عند بعض الأشخاص.',
+    ),
+  ),
+  Medication(
+    id: 'isotretinoin',
+    familyId: 'allergy-dermatology',
+    name: 'Isotretinoin',
+    subtitle: 'Systemic retinoid for severe acne',
+    tags: ['Acne', 'Teratogenic', 'Monitoring', 'Oral'],
+    sourceLabel: 'FDA / MedlinePlus Drug Information · Isotretinoin',
+    sections: [
+      MedicationSection(
+        title: 'Critical pregnancy safety',
+        body:
+            'Highly teratogenic. Pregnancy-prevention, testing and dispensing-program requirements must follow the applicable regulatory program.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Pregnancy testing where relevant, lipids, liver tests and clinically significant mood/visual/musculoskeletal symptoms.',
+      ),
+      MedicationSection(
+        title: 'Administration / interactions',
+        body:
+            'Take according to the exact product food instructions. Avoid vitamin A supplements and tetracyclines unless specifically managed.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لعلاج حب الشباب الشديد عندما لا تكفي العلاجات الأخرى.',
+      howToUseAr: 'خذه بالجرعة والطريقة الخاصة بمنتجك ولا تشاركه مع أي شخص.',
+      importantAr: 'يمنع الحمل أثناء العلاج وبالمدة المطلوبة بعده حسب برنامج العلاج. لا تستخدم فيتامين A إضافي من نفسك.',
+      seekHelpAr: 'راجع الطبيب عند أعراض شديدة غير معتادة، خصوصًا صداع شديد مع تشوش رؤية أو تغيرات نفسية مهمة.',
+    ),
+  ),
+  Medication(
+    id: 'hydroxychloroquine',
+    familyId: 'rheumatology-immunology',
+    name: 'Hydroxychloroquine',
+    subtitle: 'Conventional DMARD',
+    tags: ['Rheumatology', 'Lupus', 'Eye monitoring'],
+    sourceLabel: 'MedlinePlus Drug Information · Hydroxychloroquine',
+    sections: [
+      MedicationSection(
+        title: 'Administration / duration',
+        body:
+            'Usually long-term; take with food or milk to reduce GI upset. Therapeutic benefit may take weeks to months.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Baseline and follow-up retinal screening according to ophthalmology/rheumatology guidance; dose should account for body weight and renal risk factors.',
+      ),
+      MedicationSection(
+        title: 'Interactions / safety',
+        body:
+            'QT-prolonging combinations and hypoglycemia risk may matter. Severe rash, muscle weakness or cardiac symptoms require review.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لعلاج أمراض مثل الروماتويد والذئبة وقد يحتاج وقتًا حتى يظهر مفعوله.',
+      howToUseAr: 'خذه مع الطعام أو الحليب لتقليل انزعاج المعدة.',
+      importantAr: 'حافظ على مواعيد فحص العين المطلوبة أثناء العلاج الطويل.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر تشوش أو تغير جديد في الرؤية أو خفقان/إغماء غير معتاد.',
+    ),
+  ),
+  Medication(
+    id: 'sulfasalazine',
+    familyId: 'rheumatology-immunology',
+    name: 'Sulfasalazine',
+    subtitle: 'DMARD / 5-ASA prodrug',
+    tags: ['Rheumatoid arthritis', 'IBD', 'Monitoring'],
+    sourceLabel: 'MedlinePlus Drug Information · Sulfasalazine',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take after meals with adequate fluid. Enteric-coated products should be swallowed whole.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'CBC, liver function and renal function according to indication/stability; monitor rash, sore throat/fever and GI intolerance.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'Can reduce folate absorption and may cause reversible oligospermia; counseling is patient-specific.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لبعض أمراض الروماتيزم أو التهاب الأمعاء حسب حالتك.',
+      howToUseAr: 'خذه بعد الطعام ومع كمية كافية من الماء.',
+      importantAr: 'إذا كان النوع مغلفًا معويًا ابتلعه كاملًا.',
+      seekHelpAr: 'راجع الطبيب عند طفح شديد أو حرارة/التهاب حلق أو كدمات غير معتادة.',
+    ),
+  ),
+  Medication(
+    id: 'leflunomide',
+    familyId: 'rheumatology-immunology',
+    name: 'Leflunomide',
+    subtitle: 'Conventional DMARD',
+    tags: ['Rheumatoid arthritis', 'Teratogenic', 'Monitoring'],
+    sourceLabel: 'MedlinePlus Drug Information · Leflunomide',
+    sections: [
+      MedicationSection(
+        title: 'Duration / monitoring',
+        body:
+            'Long-term DMARD if effective. Monitor liver tests, CBC, blood pressure and infection risk.',
+      ),
+      MedicationSection(
+        title: 'Pregnancy safety',
+        body:
+            'Teratogenic with very long persistence; accelerated elimination procedure may be required before conception or after serious toxicity.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'Other hepatotoxic or immunosuppressive drugs require careful review.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يقلل نشاط التهاب المفاصل الروماتويدي ويُستخدم كعلاج طويل المدى عند الاستجابة.',
+      howToUseAr: 'خذه يوميًا حسب الوصفة ولا توقف المتابعة والفحوصات.',
+      importantAr: 'يمنع أثناء الحمل وقد يحتاج الجسم إلى خطة خاصة لإزالة الدواء سريعًا إذا لزم.',
+      seekHelpAr: 'راجع الطبيب عند اصفرار الجلد/العينين أو عدوى شديدة أو ضيق نفس جديد.',
+    ),
+  ),
+  Medication(
+    id: 'adalimumab',
+    familyId: 'rheumatology-immunology',
+    name: 'Adalimumab',
+    subtitle: 'TNF inhibitor biologic',
+    tags: ['Biologic', 'Injection', 'Rheumatology', 'IBD'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Adalimumab Injection',
+    sections: [
+      MedicationSection(
+        title: 'Before / during therapy',
+        body:
+            'Screen for tuberculosis and serious infection risk before therapy; review hepatitis B history, vaccines and demyelinating/heart-failure context.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Injection / storage',
+        body:
+            'Subcutaneous device-specific injection. Refrigerate, do not freeze, protect from light and allow warming to room temperature only according to exact product IFU.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Long-term biologic therapy if effective and tolerated; dosing interval and induction schedules differ by indication.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'دواء بيولوجي يقلل الالتهاب في أمراض مناعية مختلفة.',
+      howToUseAr: 'استخدم القلم/السرنجة في المواعيد الخاصة بحالتك وبدّل موضع الحقن.',
+      importantAr: 'لا تستخدمه إذا لديك عدوى شديدة من دون مراجعة الطبيب، واسأل قبل اللقاحات.',
+      storageAr: 'يحفظ في الثلاجة ولا يُجمّد، واتبع تعليمات منتجك إذا خرج من الثلاجة.',
+      teachBackAr: 'أرني طريقة الحقن والتخلص من القلم أو السرنجة.',
+    ),
+  ),
+  Medication(
+    id: 'solifenacin',
+    familyId: 'urology',
+    name: 'Solifenacin',
+    subtitle: 'Antimuscarinic for overactive bladder',
+    tags: ['Overactive bladder', 'Anticholinergic', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Solifenacin',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Once daily with or without food; swallow tablet whole with liquid.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Dry mouth, constipation, urinary retention, cognition in older adults and QT risk in susceptible patients.',
+      ),
+      MedicationSection(
+        title: 'Patient-specific',
+        body:
+            'Avoid/caution in urinary retention, gastric retention and uncontrolled narrow-angle glaucoma.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف كثرة التبول والحاجة الملحة للتبول في فرط نشاط المثانة.',
+      howToUseAr: 'خذ الحبة مرة يوميًا مع الطعام أو بدونه وابتلعها كاملة.',
+      commonActionableAr: 'قد يسبب جفاف الفم أو الإمساك.',
+      seekHelpAr: 'راجع الطبيب إذا لم تستطع التبول أو ظهر ألم شديد بالعين مع تشوش الرؤية.',
+    ),
+  ),
+  Medication(
+    id: 'mirabegron',
+    familyId: 'urology',
+    name: 'Mirabegron',
+    subtitle: 'Beta-3 agonist for overactive bladder',
+    tags: ['Overactive bladder', 'Blood pressure', 'Extended release'],
+    sourceLabel: 'MedlinePlus Drug Information · Mirabegron',
+    sections: [
+      MedicationSection(
+        title: 'Formulation',
+        body:
+            'Extended-release tablets should be swallowed whole. Pediatric/granule products have different instructions.',
+      ),
+      MedicationSection(
+        title: 'Monitoring',
+        body:
+            'Blood pressure, urinary retention and symptom response.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'CYP2D6 inhibition can increase exposure to selected drugs; digoxin coadministration requires review.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف أعراض فرط نشاط المثانة مثل الإلحاح وكثرة التبول.',
+      howToUseAr: 'ابتلع الحبة ممتدة المفعول كاملة في نفس الوقت يوميًا.',
+      importantAr: 'قد يرفع ضغط الدم عند بعض الأشخاص؛ التزم بقياساتك إذا طلبها الطبيب.',
+      seekHelpAr: 'راجع الطبيب إذا أصبحت غير قادر على التبول.',
+    ),
+  ),
+  Medication(
+    id: 'depot-medroxyprogesterone',
+    familyId: 'womens-health',
+    name: 'Depot Medroxyprogesterone Injection',
+    subtitle: 'Long-acting progestin contraception',
+    tags: ['Contraception', 'Injection', 'Every 3 months'],
+    sourceLabel: 'MedlinePlus Drug Information · Medroxyprogesterone Injection',
+    sections: [
+      MedicationSection(
+        title: 'Schedule',
+        body:
+            'Long-acting injection given on a strict repeating schedule; late injections require pregnancy assessment and backup-contraception advice per guidance.',
+      ),
+      MedicationSection(
+        title: 'Monitoring / duration',
+        body:
+            'Bleeding pattern, weight, bone-health risk factors and return-to-fertility expectations should be discussed. Long-term use requires individualized benefit-risk review.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'Amenorrhea is common with continued use and does not by itself indicate pregnancy when injections are on schedule.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'وسيلة منع حمل طويلة المفعول تُعطى بالحقن كل عدة أشهر حسب الجدول.',
+      howToUseAr: 'احرصي على موعد الحقنة التالية ولا تؤخريها من دون معرفة خطة التعويض.',
+      commonActionableAr: 'قد يحدث نزف غير منتظم في البداية ثم قد تنقطع الدورة مع الوقت.',
+      importantAr: 'عودة الخصوبة بعد إيقاف الحقن قد تتأخر عدة أشهر.',
+    ),
+  ),
+  Medication(
+    id: 'olopatadine-eye',
+    familyId: 'eye-ear',
+    name: 'Olopatadine Eye Drops',
+    subtitle: 'Antihistamine / mast-cell stabilizer',
+    tags: ['Allergic conjunctivitis', 'Eye drops', 'OTC'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Olopatadine Ophthalmic',
+    sections: [
+      MedicationSection(
+        title: 'Technique',
+        body:
+            'Avoid touching dropper tip. Remove contact lenses when required by product and wait the labeled interval before reinsertion.',
+      ),
+      MedicationSection(
+        title: 'Duration / referral',
+        body:
+            'Use for allergic eye symptoms; pain, significant photophobia, purulent discharge or visual loss suggests another diagnosis and needs evaluation.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف حكة واحمرار العين الناتجين عن الحساسية.',
+      howToUseAr: 'ضع القطرة من دون أن تلمس فوهة العبوة العين أو الرموش.',
+      importantAr: 'إذا تستخدم عدسات لاصقة، اتبع تعليمات المنتج حول إزالتها ووقت إعادتها.',
+      seekHelpAr: 'راجع الطبيب إذا ظهر ألم شديد بالعين أو حساسية للضوء أو نقص في النظر.',
+    ),
+  ),
+  Medication(
+    id: 'ibuprofen-pediatric-liquid',
+    familyId: 'pediatrics',
+    name: 'Ibuprofen Pediatric Liquid',
+    subtitle: 'Pediatric NSAID liquid',
+    tags: ['Pediatric', 'Fever', 'Pain', 'Liquid'],
+    sourceLabel: 'MedlinePlus / OTC labeling · Ibuprofen',
+    sections: [
+      MedicationSection(
+        title: 'Pediatric dosing safety',
+        body:
+            'Dose by weight and exact product concentration. Verify age suitability, hydration and renal/GI risk before use.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Shake suspension well and measure with oral syringe/cup. Give with food/milk if stomach upset occurs.',
+      ),
+      MedicationSection(
+        title: 'Avoid',
+        body:
+            'Avoid in dehydrated children and do not combine with another NSAID. Infants below product-approved age need clinician guidance.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف الألم والحرارة عند الطفل.',
+      howToUseAr: 'رج العبوة جيدًا وقس الجرعة حسب وزن الطفل وتركيز هذه العبوة باستخدام السرنجة الفموية.',
+      importantAr: 'لا تعطِ نفس عدد mL من عبوة بتركيز مختلف، ولا تجمعه مع مسكن NSAID آخر.',
+      seekHelpAr: 'إذا كان الطفل لا يشرب جيدًا أو يتقيأ باستمرار أو يبدو مصابًا بالجفاف، اسأل الطبيب قبل ibuprofen.',
+      teachBackAr: 'أرني وزن الطفل وتركيز العبوة والحجم الذي ستقيسه.',
+    ),
+  ),
+  Medication(
+    id: 'oral-rehydration-solution',
+    familyId: 'otc',
+    name: 'Oral Rehydration Solution',
+    subtitle: 'Glucose-electrolyte rehydration solution',
+    tags: ['Diarrhea', 'Dehydration', 'Pediatric', 'OTC'],
+    sourceLabel: 'WHO/UNICEF oral rehydration principles',
+    sections: [
+      MedicationSection(
+        title: 'Preparation',
+        body:
+            'Use an approved ORS product and mix with the exact volume of clean water stated on the sachet. Do not make it stronger or weaker.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Give frequent small sips; after vomiting, pause briefly then restart slowly. Continue age-appropriate feeding/breastfeeding unless medically contraindicated.',
+      ),
+      MedicationSection(
+        title: 'Referral',
+        body:
+            'Severe dehydration, persistent vomiting, lethargy, inability to drink, blood in stool or very young/high-risk patients require medical assessment.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يعوض الماء والأملاح المفقودة مع الإسهال أو القيء.',
+      howToUseAr: 'أذب الكيس فقط في كمية الماء المكتوبة عليه بالضبط، ثم أعطِ رشفات صغيرة ومتكررة.',
+      importantAr: 'لا تضف سكرًا أو ملحًا إضافيًا ولا تخلط الكيس في كمية ماء أقل أو أكثر من المطلوب.',
+      seekHelpAr: 'اطلب المساعدة إذا كان المريض لا يستطيع الشرب أو أصبح خاملًا جدًا أو ظهرت علامات جفاف شديد أو دم بالبراز.',
+    ),
+  ),
+  Medication(
+    id: 'psyllium',
+    familyId: 'otc',
+    name: 'Psyllium',
+    subtitle: 'Bulk-forming fiber laxative',
+    tags: ['Constipation', 'Fiber', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Psyllium',
+    sections: [
+      MedicationSection(
+        title: 'Critical administration',
+        body:
+            'Mix each dose with a full amount of liquid and drink promptly. Inadequate fluid can cause choking or obstruction.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'May reduce absorption of selected oral medicines; separation timing should follow the interacting drug/product guidance.',
+      ),
+      MedicationSection(
+        title: 'Duration / referral',
+        body:
+            'Useful for constipation and fiber supplementation, but new persistent change in bowel habit, dysphagia or obstruction symptoms need evaluation.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يزيد حجم وليونة البراز ويساعد على علاج الإمساك.',
+      howToUseAr: 'اخلط الجرعة مع كمية كافية من الماء واشربها مباشرة.',
+      importantAr: 'لا تأخذه جافًا، واشرب سوائل كافية ما لم يكن لديك تقييد للسوائل.',
+      seekHelpAr: 'اطلب المساعدة إذا حدثت صعوبة بالبلع أو التنفس أو ألم وانتفاخ شديد بالبطن.',
+    ),
+  ),
+  Medication(
+    id: 'simethicone',
+    familyId: 'otc',
+    name: 'Simethicone',
+    subtitle: 'Antiflatulent',
+    tags: ['Gas', 'Bloating', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Simethicone',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Products include chewable tablets, capsules and liquids. Chewables must be chewed thoroughly; liquids require accurate measurement.',
+      ),
+      MedicationSection(
+        title: 'Referral',
+        body:
+            'Persistent severe abdominal pain, vomiting, distension, weight loss or blood in stool should not be repeatedly self-treated as “gas.”',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد على تخفيف الغازات والانتفاخ.',
+      howToUseAr: 'استخدم شكل المنتج بالطريقة الصحيحة؛ امضغ الحبة القابلة للمضغ جيدًا وقس السائل بأداة مناسبة.',
+      importantAr: 'إذا كان الانتفاخ أو الألم شديدًا أو مستمرًا، لا تعتمد على الدواء وحده.',
+    ),
+  ),
 ];

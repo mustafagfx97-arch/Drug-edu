@@ -138,10 +138,10 @@ const medicationPatientGuidancePatches =
   ),
   'dupilumab': MedicationPatientGuidancePatch(
     missedDoseAr:
-        'قاعدة الجرعة المنسية تعتمد على جدول الحقن (كل أسبوعين أو كل 4 أسابيع وغير ذلك حسب الاستطباب). استخدم تعليمات نفس منتج DUPIXENT/جدولك ولا تنشئ يومًا جديدًا من نفسك.',
+        'إذا كانت الجرعة أسبوعية: أعطها عند التذكر وابدأ جدولًا أسبوعيًا جديدًا من ذلك التاريخ. إذا كانت كل أسبوعين أو كل 4 أسابيع: إذا تذكرت خلال 7 أيام أعط الجرعة ثم عد للجدول الأصلي؛ إذا مر أكثر من 7 أيام أعطها وابدأ جدولًا جديدًا من ذلك التاريخ.',
     seekHelpAr:
         'اطلب تقييمًا عند تحسس شديد، تورم/صعوبة تنفس، أو ألم/احمرار شديد بالعين أو تغير في الرؤية.',
-    sourceLabel: 'FDA prescribing information / DUPIXENT IFU',
+    sourceLabel: 'DailyMed DUPIXENT · 2026 missed-dose labeling',
   ),
   'tamsulosin': MedicationPatientGuidancePatch(
     missedDoseAr:

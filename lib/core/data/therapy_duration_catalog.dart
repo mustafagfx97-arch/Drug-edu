@@ -262,6 +262,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr:
         'للاستخدام الذاتي القصير فقط: لا تستخدم oxymetazoline أكثر من 3 أيام متتالية لأن الاحتقان قد يعود أو يزداد مع الاستخدام المطول.',
   ),
+  'ibandronate-monthly': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr:
+        'علاج شهري طويل الأمد لهشاشة العظام مع إعادة تقييم دورية لخطر الكسور والحاجة للاستمرار. لا توقفه أو تحدد drug holiday من نفسك.',
+  ),
+  'teriparatide-forteo': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'غالبًا يُستخدم كعلاج بنّاء للعظم لمدة محددة. استخدام FORTEO لأكثر من سنتين خلال العمر يُحجز عادةً لمن يبقى أو يعود لديه خطر كسور مرتفع حسب تقييم الطبيب.',
+  ),
+  'romosozumab-evenity': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'مدة EVENITY محددة: 12 جرعة شهرية فقط. إذا بقيت الحاجة لعلاج هشاشة العظام بعد ذلك، يخطط الطبيب عادةً لعلاج antiresorptive لاحق.',
+  ),
+  'drospirenone-pop': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'depo-provera-ci': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'تتكرر الحقنة كل 13 أسبوعًا ما دامت مناسبة لك. النشرة الحالية لا توصي بها كوسيلة طويلة الأمد لأكثر من سنتين إلا إذا كانت البدائل غير مناسبة بسبب تأثيرها على كثافة العظم.',
+  ),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

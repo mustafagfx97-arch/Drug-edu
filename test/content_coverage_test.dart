@@ -3,6 +3,7 @@ import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
 import 'package:drug_edu/core/data/medication_patient_guidance.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
 import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
+import 'package:drug_edu/core/models/medication.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';

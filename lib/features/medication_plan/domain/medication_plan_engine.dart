@@ -538,15 +538,112 @@ class MedicationPlanEngine {
 
     final hasAnticoagulant = ids.contains('warfarin') ||
         ids.contains('apixaban') ||
-        ids.contains('rivaroxaban');
-    final hasNsaid = ids.contains('ibuprofen') || ids.contains('naproxen');
+        ids.contains('rivaroxaban') ||
+        ids.contains('dabigatran') ||
+        ids.contains('enoxaparin');
+    final hasNsaid = ids.contains('ibuprofen') ||
+        ids.contains('naproxen') ||
+        ids.contains('celecoxib') ||
+        ids.contains('diclofenac-oral');
     if (hasAnticoagulant && hasNsaid) {
       alerts.add(
         const PlanAlert(
           title: 'Bleeding-risk combination',
           message:
-              'وجود مميع دم مع NSAID مثل ibuprofen/naproxen قد يزيد النزف. لا يكفي فصل الوقت؛ راجع ملاءمة الجمع نفسه.',
+              'وجود مميع دم مع NSAID قد يزيد خطر النزف. فصل الوقت لا يلغي التداخل؛ راجع ضرورة الجمع والبديل الأنسب.',
           isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sacubitril-valsartan') && ids.contains('lisinopril')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sacubitril/valsartan + ACE inhibitor',
+          message:
+              'لا يُجمع sacubitril/valsartan مع ACE inhibitor مثل lisinopril. يلزم فاصل 36 ساعة عند التحويل بينهما؛ لا تحاول حل المشكلة بتغيير وقت الجرعات فقط.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sildenafil-ed') &&
+        ids.contains('nitroglycerin-sublingual')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sildenafil + nitrate',
+          message:
+              'الجمع مع nitroglycerin/nitrates ممنوع بسبب خطر هبوط ضغط شديد. إذا حدث ألم صدر بعد sildenafil يجب إبلاغ الطوارئ بوقت آخر جرعة، وليس أخذ nitroglycerin من النفس.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('amiodarone-oral') &&
+        (ids.contains('warfarin') || ids.contains('digoxin'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Amiodarone interaction review',
+          message:
+              'amiodarone قد يرفع تأثير/تركيز warfarin أو digoxin. هذه ليست مشكلة توقيت فقط وتحتاج مراجعة الجرعات والمراقبة السريرية.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if ((ids.contains('carvedilol') && ids.contains('metoprolol')) ||
+        (ids.contains('diltiazem-er') &&
+            (ids.contains('metoprolol') || ids.contains('carvedilol')))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Heart-rate lowering combination',
+          message:
+              'يوجد أكثر من دواء يخفض النبض/الضغط. قد يكون الجمع مقصودًا في حالات محددة لكنه يحتاج مراجعة للنبض والضغط والأعراض؛ لا تعتمد على فصل الوقت وحده.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final ciproMinerals = ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('zinc') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('ciprofloxacin-oral') && ciproMinerals) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Ciprofloxacin + minerals',
+          message:
+              'الحديد والكالسيوم والزنك ومضادات الحموضة/المنتجات المعدنية قد تقلل امتصاص ciprofloxacin. استخدم فاصل المنتج الموثق ولا تضعها في نفس وقت الجرعة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final alendronateMorningConflict = ids.contains('levothyroxine') ||
+        ids.contains('oral-iron-salts') ||
+        ids.contains('calcium-carbonate') ||
+        ids.contains('calcium-citrate') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('alendronate') && alendronateMorningConflict) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Alendronate morning schedule conflict',
+          message:
+              'alendronate يجب أن يُؤخذ منفردًا عند الاستيقاظ مع ماء فقط ثم الانتظار قبل الطعام/الأدوية. وجود levothyroxine أو معادن صباحية يحتاج ترتيبًا يدويًا؛ لا تعتمد الجدولة التلقائية وحدها.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('sucralfate') && ids.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Sucralfate separation review',
+          message:
+              'sucralfate قد يقلل امتصاص أدوية متعددة. الفاصل الزمني ليس رقمًا واحدًا لكل الأدوية؛ راجع كل دواء في القائمة قبل اعتماد الجدول النهائي.',
         ),
       );
     }

@@ -211,23 +211,4 @@ const sampleMedications = <Medication>[
       commonActionableAr: 'قد يسبب نعاسًا عند بعض الأشخاص. اعرف تأثيره عليك قبل القيادة.',
     ),
   ),
-  Medication(
-    id: 'vitamin-d3',
-    familyId: 'supplements',
-    name: 'Vitamin D3',
-    subtitle: 'Cholecalciferol',
-    tags: ['Supplement', 'Vitamin', 'Oral'],
-    sections: [
-      MedicationSection(
-        title: 'Pharmacist essentials',
-        body:
-            'Distinguish routine supplementation from treatment of deficiency. Confirm strength because drops, capsules and high-dose products vary substantially.',
-      ),
-    ],
-    patient: PatientCounselingData(
-      purposeAr: 'يُستخدم للوقاية من نقص فيتامين د أو علاجه حسب الجرعة الموصوفة.',
-      howToUseAr: 'تأكد من قوة المنتج والجرعة قبل الاستخدام لأن التركيز يختلف كثيرًا بين المنتجات.',
-      importantAr: 'لا تستخدم جرعات عالية لفترة طويلة من نفسك.',
-    ),
-  ),
 ];

@@ -691,4 +691,342 @@ const supplementProfiles = <SupplementProfile>[
           'كون المنتج مكتوبًا عليه طبيعي لا يعني أنه آمن أو مناسب لك.',
     ),
   ),
+
+  SupplementProfile(
+    id: 'thiamine-b1',
+    group: 'Vitamins',
+    name: 'Vitamin B1 (Thiamine)',
+    subtitle: 'Thiamine hydrochloride / mononitrate',
+    formulation: 'Tablets, capsules and combination products',
+    howToTakeEn:
+        'No fatty meal is required. Take according to the exact product or treatment plan; thiamine can generally be taken with or without food.',
+    formulationAlert:
+        'Routine nutritional supplementation is different from high-dose treatment of suspected deficiency or alcohol-related neurologic risk.',
+    sourceLabel: 'NIH ODS Thiamin Fact Sheet',
+    useBasis: 'Dietary supplementation or deficiency treatment',
+    monitoringEn:
+        'Routine dietary supplementation does not require a thiamine level. Suspected severe deficiency is a clinical treatment problem rather than a self-supplementation decision.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Thiamine is water soluble and body stores are small. Identify the reason for use: routine multivitamin intake, poor nutrition, bariatric risk or treatment of deficiency are different scenarios.',
+      ),
+      MedicationSection(
+        title: 'Clinical pearl',
+        body:
+            'In patients at risk of Wernicke encephalopathy or severe deficiency, oral OTC supplementation should not delay appropriate parenteral treatment.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد الجسم على استخدام الطاقة ويُستخدم لتعويض نقص فيتامين B1 عند الحاجة.',
+      howToUseAr: 'خذه حسب الجرعة المكتوبة؛ لا يحتاج إلى وجبة دهنية خاصة.',
+      importantAr:
+          'إذا وُصف بسبب نقص شديد أو سوء تغذية شديد، اتبع خطة الطبيب ولا تعتمد على مكمل عادي من نفسك.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'riboflavin-b2',
+    group: 'Vitamins',
+    name: 'Vitamin B2 (Riboflavin)',
+    subtitle: 'Riboflavin',
+    formulation: 'Tablets, capsules and B-complex products',
+    howToTakeEn:
+        'Take according to the product directions. A special fatty meal is not required.',
+    formulationAlert:
+        'Bright yellow urine is expected with riboflavin and is usually harmless.',
+    sourceLabel: 'NIH ODS Riboflavin Fact Sheet',
+    useBasis: 'Dietary supplementation or selected clinical use',
+    monitoringEn:
+        'Routine supplementation does not require laboratory monitoring. Review the clinical reason before recommending high-dose use.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Riboflavin is water soluble and present in many multivitamins/B-complex products. Check duplication before adding a stand-alone product.',
+      ),
+      MedicationSection(
+        title: 'Counseling point',
+        body:
+            'High-dose riboflavin is sometimes used in migraine-prevention plans; this is distinct from routine replacement and should follow the chosen regimen.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يساعد في عمليات إنتاج الطاقة ويُستخدم عند الحاجة لتعويض فيتامين B2.',
+      howToUseAr: 'خذه حسب المنتج، مع الطعام أو بدونه.',
+      commonActionableAr:
+          'قد يصبح لون البول أصفر فاقعًا بعد الجرعة، وهذا غالبًا طبيعي وغير خطير.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'niacin-b3',
+    group: 'Vitamins',
+    name: 'Vitamin B3 (Niacin)',
+    subtitle: 'Nicotinic acid / niacinamide products',
+    formulation: 'Immediate-release, sustained-release and combination supplements',
+    howToTakeEn:
+        'Follow the exact formulation directions. Food can reduce flushing with nicotinic-acid products, but high-dose lipid-lowering niacin is not routine vitamin supplementation.',
+    formulationAlert:
+        'Nicotinic acid and niacinamide are not clinically interchangeable for all purposes. Modified-release niacin products can have different hepatotoxicity/flushing profiles.',
+    sourceLabel: 'NIH ODS Niacin Fact Sheet',
+    useBasis: 'Deficiency replacement or specific clinician-directed use',
+    monitoringEn:
+        'High-dose pharmacologic niacin can require liver, glucose and uric-acid monitoring. Routine nutritional doses do not.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Differentiate nutritional vitamin B3 from pharmacologic gram-dose niacin. Do not recommend high doses for cholesterol or “detox” without a defined indication and monitoring plan.',
+      ),
+      MedicationSection(
+        title: 'Common actionable effect',
+        body:
+            'Nicotinic acid commonly causes flushing, warmth and itching. The approach depends on formulation and clinical regimen rather than treating every niacin product the same.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'فيتامين B3 يُستخدم لتعويض النقص، بينما الجرعات العالية لها استخدامات مختلفة وتحتاج متابعة.',
+      howToUseAr: 'اتبع نوع المنتج والجرعة المكتوبة لك، ويفضل مع الطعام إذا كان النوع يسبب احمرارًا أو حرارة بالوجه.',
+      importantAr:
+          'لا تستخدم جرعات عالية من niacin لعلاج الكوليسترول من نفسك؛ قد تؤثر في الكبد والسكر وحمض اليوريك.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'vitamin-b6',
+    group: 'Vitamins',
+    name: 'Vitamin B6',
+    subtitle: 'Pyridoxine / pyridoxal products',
+    formulation: 'Tablets, capsules and B-complex products',
+    howToTakeEn:
+        'Take according to the product directions. A special fatty meal is not required.',
+    formulationAlert:
+        'Chronic high-dose vitamin B6 can itself cause sensory neuropathy. Check the total dose from B-complex, multivitamin and stand-alone products.',
+    sourceLabel: 'NIH ODS Vitamin B6 Fact Sheet',
+    useBasis: 'Dietary supplementation, deficiency or selected clinician-directed indications',
+    monitoringEn:
+        'Routine nutritional doses do not need laboratory monitoring. Long-term high-dose use should be reviewed for neuropathy and ongoing indication.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Vitamin B6 is present in many combination products. Calculate total pyridoxine exposure before recommending a separate B6 supplement.',
+      ),
+      MedicationSection(
+        title: 'Safety',
+        body:
+            'Tingling, numbness or gait problems during prolonged high-dose supplementation can represent B6-induced neuropathy.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتعويض فيتامين B6 أو في حالات محددة حسب الخطة.',
+      howToUseAr: 'خذه حسب الجرعة المكتوبة ولا تجمع عدة منتجات تحتوي على B6 من دون حساب الجرعة الكلية.',
+      seekHelpAr:
+          'إذا كنت تستخدم جرعة عالية لفترة طويلة وظهر تنميل أو حرقان أو ضعف بالإحساس، أوقف المكمل وراجع الطبيب أو الصيدلي.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'biotin-b7',
+    group: 'Vitamins',
+    name: 'Biotin (Vitamin B7)',
+    subtitle: 'Biotin supplement',
+    formulation: 'Tablets, gummies, hair/skin/nail combinations and multivitamins',
+    howToTakeEn:
+        'Take according to the product directions. A special meal is not required.',
+    formulationAlert:
+        'Biotin can interfere with some laboratory immunoassays and produce misleading results, including selected cardiac and thyroid tests. High-dose hair/nail products are especially relevant.',
+    sourceLabel: 'NIH ODS Biotin Fact Sheet + FDA laboratory-interference safety communications',
+    useBasis: 'Deficiency replacement; cosmetic use has limited evidence in people without deficiency',
+    monitoringEn:
+        'Ask about biotin before laboratory testing. The hold interval should follow the laboratory/test/manufacturer guidance rather than one universal number.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'True biotin deficiency is uncommon. Hair/skin/nail marketing doses can be far above nutritional requirements and may interfere with laboratory assays.',
+      ),
+      MedicationSection(
+        title: 'Laboratory safety',
+        body:
+            'Document biotin use in medication reconciliation and tell the patient to inform the lab/clinician before blood tests.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'البيوتين فيتامين يحتاجه الجسم، لكن فائدته للشعر والأظافر ليست مؤكدة عند من لا يعاني نقصًا.',
+      howToUseAr: 'خذه حسب المنتج؛ لا يحتاج إلى وجبة خاصة.',
+      importantAr:
+          'أخبر الطبيب والمختبر أنك تستخدم biotin قبل تحاليل الدم لأنه قد يعطي نتائج خاطئة لبعض الفحوصات.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'magnesium-oxide',
+    group: 'Minerals',
+    name: 'Magnesium Oxide',
+    subtitle: 'Magnesium salt',
+    formulation: 'Tablets and capsules',
+    howToTakeEn:
+        'Follow the exact purpose and product directions. Keep other medicines at least 2 hours away from magnesium oxide unless the interacting medicine requires a longer separation.',
+    formulationAlert:
+        'Magnesium oxide may be sold as a supplement, antacid or laxative. The intended dose and duration are different for each use.',
+    sourceLabel: 'MedlinePlus Magnesium Oxide + NIH ODS Magnesium',
+    useBasis: 'Supplementation or product-specific antacid/laxative use',
+    monitoringEn:
+        'Renal function matters when regular/high-dose magnesium is used. Recurrent laxative/antacid use should be reviewed rather than continued indefinitely.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Counsel using elemental magnesium rather than total salt weight. Do not treat oxide, citrate, glycinate and gluconate as equivalent milligram-for-milligram products.',
+      ),
+      MedicationSection(
+        title: 'Interaction separation',
+        body:
+            'MedlinePlus advises taking other medicines and magnesium oxide at least 2 hours apart; some interacting drugs need longer spacing.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم كمصدر للمغنيسيوم، وقد توجد منه منتجات للحموضة أو الإمساك بجرعات مختلفة.',
+      howToUseAr: 'خذ نوعك حسب الغرض المكتوب، وافصل باقي الأدوية عنه ساعتين على الأقل إلا إذا أعطاك الصيدلي فاصلًا أطول.',
+      commonActionableAr: 'قد يسبب إسهالًا أو مغصًا.',
+      importantAr: 'لا تقارن جرعة Magnesium Oxide بجرعة نوع آخر من المغنيسيوم اعتمادًا على رقم mg فقط.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'copper',
+    group: 'Minerals',
+    name: 'Copper',
+    subtitle: 'Trace-mineral supplement',
+    formulation: 'Stand-alone and multivitamin/mineral products',
+    howToTakeEn:
+        'Take only the amount recommended for the identified need. Review other multivitamin/mineral products before adding stand-alone copper.',
+    formulationAlert:
+        'High-dose zinc taken for long periods can impair copper status; copper should not be added automatically without assessing the reason.',
+    sourceLabel: 'NIH ODS Copper Fact Sheet',
+    useBasis: 'Deficiency replacement or selected nutrition support',
+    monitoringEn:
+        'When treating suspected deficiency, copper/ceruloplasmin and the underlying cause may need assessment. Routine healthy users do not need stand-alone copper monitoring.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Copper deficiency may occur with malabsorption, bariatric surgery or excessive zinc exposure. Identify the cause rather than simply adding indefinite copper.',
+      ),
+      MedicationSection(
+        title: 'Duplication',
+        body:
+            'Check multivitamin/mineral and trace-element products to prevent unnecessary stacking.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتعويض نقص النحاس في حالات محددة.',
+      howToUseAr: 'خذ الجرعة التي حددت لك ولا تجمع أكثر من منتج يحتوي على النحاس.',
+      importantAr:
+          'إذا كنت تستخدم جرعات عالية من الزنك لفترة طويلة، أخبر الصيدلي لأن الزنك قد يؤثر في النحاس.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'potassium-oral',
+    group: 'Minerals',
+    name: 'Oral Potassium Supplement',
+    subtitle: 'Potassium salts; product-specific',
+    formulation: 'Liquid, powder, granules, effervescent, immediate- and extended-release products',
+    howToTakeEn:
+        'Take only when prescribed/recommended for a documented need. Oral potassium is generally taken with or immediately after meals and with a full glass of fluid; follow the exact salt/formulation instructions.',
+    formulationAlert:
+        'Potassium chloride and other salts, liquid versus ER tablets/capsules, and mEq versus mg are not interchangeable without calculation. Extended-release products must not be chewed.',
+    sourceLabel: 'MedlinePlus Potassium Drug Information',
+    useBasis: 'Laboratory-/risk-guided replacement; not a routine wellness supplement',
+    monitoringEn:
+        'Serum potassium and renal function are central. Review ACE inhibitors, ARBs, ARNIs, spironolactone/eplerenone, trimethoprim and kidney disease before use.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Treat oral potassium as a high-consequence electrolyte, not a casual supplement. Verify the salt, concentration, mEq per unit and indication.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Liquids/powders require correct dilution. ER tablets/capsules have product-specific swallow/open instructions because localized GI injury can occur.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتعويض نقص البوتاسيوم عندما تحتاجه حسب التحاليل أو العلاج.',
+      howToUseAr: 'خذه مع أو بعد الطعام ومع كوب كامل من الماء حسب نوع المنتج.',
+      importantAr:
+          'لا تبدأ أو تزيد البوتاسيوم من نفسك، ولا تمضغ الحبوب ممتدة المفعول.',
+      seekHelpAr:
+          'إذا ظهر ضعف شديد أو خفقان أو تنميل غير معتاد، راجع الطبيب خاصة إذا لديك مرض بالكلى.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'chromium',
+    group: 'Minerals',
+    name: 'Chromium',
+    subtitle: 'Trivalent chromium supplement',
+    formulation: 'Chromium picolinate and other supplement forms',
+    howToTakeEn:
+        'Use only the labeled amount if there is a clear reason to use the supplement. Do not use chromium as a substitute for evidence-based diabetes or weight-management treatment.',
+    formulationAlert:
+        'Evidence for routine chromium supplementation for weight loss or glucose control is inconsistent. Product forms and doses vary.',
+    sourceLabel: 'NIH ODS Chromium Fact Sheet',
+    useBasis: 'Usually not routinely required; evaluate the claimed indication',
+    monitoringEn:
+        'People with diabetes using glucose-lowering medicines should monitor for changes in glucose if they choose a chromium product. Kidney/liver disease warrants extra caution.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Chromium is heavily marketed for weight loss and glucose control, but marketing claims exceed the strength of evidence. Avoid presenting it as a diabetes treatment.',
+      ),
+      MedicationSection(
+        title: 'Counseling position',
+        body:
+            'Start with diet, diagnosis and evidence-based therapy rather than adding chromium because a product says “metabolism support.”',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'الكروميوم عنصر موجود في الغذاء، لكن مكملاته ليست علاجًا مثبتًا للسكري أو التنحيف.',
+      howToUseAr: 'إذا استخدمته فالتزم بجرعة المنتج ولا تضاعفها.',
+      importantAr:
+          'لا تستبدل أدوية السكري أو خطة إنقاص الوزن بالكروميوم، وأخبر الصيدلي إذا تستخدم أدوية تخفض السكر.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'omega-3-fish-oil',
+    group: 'Other supplements',
+    name: 'Omega-3 / Fish Oil',
+    subtitle: 'EPA / DHA dietary supplement',
+    formulation: 'Softgels, liquids and concentrated EPA/DHA supplements',
+    howToTakeEn:
+        'Take according to the product directions; taking with a meal can improve GI tolerance. Compare products by EPA + DHA content, not by “fish oil” milligrams alone.',
+    formulationAlert:
+        'Dietary supplements are not equivalent to prescription omega-3 products. EPA/DHA amount, purity and formulation vary widely.',
+    sourceLabel: 'NIH ODS Omega-3 Fatty Acids Fact Sheet',
+    useBasis: 'Dietary supplementation or clinician-directed lipid/cardiovascular strategy',
+    monitoringEn:
+        'At high doses or with anticoagulants, review bleeding risk and the clinical indication. High-dose prescription therapy may require lipid and other monitoring.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Read the Supplement Facts panel for actual EPA and DHA. A capsule labeled “1000 mg fish oil” may contain far less than 1000 mg EPA+DHA.',
+      ),
+      MedicationSection(
+        title: 'Safety / evidence',
+        body:
+            'High-dose EPA/DHA can have antiplatelet effects and some high-dose trials found a small increase in atrial fibrillation risk. Avoid translating prescription-product evidence directly to any OTC fish-oil brand.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يوفر أحماض أوميغا-3 مثل EPA وDHA، لكن كمية المادة الفعلية تختلف كثيرًا بين المنتجات.',
+      howToUseAr: 'خذه حسب المنتج ويفضل مع وجبة إذا سبب تجشؤًا أو انزعاجًا بالمعدة.',
+      importantAr:
+          'انظر إلى كمية EPA + DHA وليس فقط رقم “Fish Oil”. إذا تستخدم مميع دم أو جرعات عالية أخبر الصيدلي.',
+    ),
+  ),
 ];

@@ -1098,6 +1098,66 @@ class MedicationPlanEngine {
       );
     }
 
+    final sabaProducts = <String>{
+      'salbutamol-mdi',
+      'albuterol-nebulizer-0083',
+      'albuterol-nebulizer-concentrate-05',
+      'ipratropium-albuterol-nebulizer',
+    }.where(ids.contains).toList();
+    if (sabaProducts.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Duplicate albuterol/salbutamol routes',
+          message:
+              'يوجد أكثر من منتج يحتوي albuterol/salbutamol (بخاخ/نيبولايزر أو combination). قد تكون الخطة مقصودة للإسعاف، لكن يجب تحديد متى يُستخدم كل شكل وما الحد؛ لا تعتبرها أدوية مختلفة بسبب اختلاف الجهاز.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('tiotropium-capsule-inhalation') &&
+        ids.contains('tiotropium-respimat')) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Duplicate tiotropium devices',
+          message:
+              'HandiHaler capsule وSPIRIVA RESPIMAT يحتويان tiotropium لكن بتقنيات/قوى مختلفة. وجودهما معًا يحتاج مراجعة لأنه قد يكون تكرارًا لنفس LAMA وليس علاجين مختلفين.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final shortAnticholinergic = ids.contains('ipratropium-hfa') ||
+        ids.contains('ipratropium-nebulizer') ||
+        ids.contains('ipratropium-albuterol-nebulizer');
+    final longAnticholinergic = ids.contains('tiotropium-capsule-inhalation') ||
+        ids.contains('tiotropium-respimat');
+    if (shortAnticholinergic && longAnticholinergic) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Inhaled anticholinergic overlap',
+          message:
+              'يوجد ipratropium قصير المفعول مع tiotropium طويل المفعول. قد يُستخدم ipratropium في خطة حادة محددة، لكن الاستخدام المتكرر مع LAMA يحتاج مراجعة بسبب زيادة التأثيرات المضادة للكولين.',
+        ),
+      );
+    }
+
+    final inhaledSteroids = <String>{
+      'budesonide-nebulizer',
+      'budesonide-formoterol',
+      'fluticasone-hfa',
+      'fluticasone-salmeterol-dpi',
+    }.where(ids.contains).toList();
+    if (inhaledSteroids.length > 1) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Inhaled corticosteroid duplication review',
+          message:
+              'يوجد أكثر من منتج يحتوي inhaled corticosteroid. قد تكون هناك خطة انتقالية مقصودة، لكن الاستخدام المتزامن قد يكرر الستيرويد؛ راجع المادة الفعالة والجرعة قبل اعتماد الجدول.',
+        ),
+      );
+    }
+
     if (ids.contains('fexofenadine')) {
       alerts.add(
         const PlanAlert(

@@ -58,7 +58,8 @@ class _ElectrolytePayloadCalculatorScreenState
           ),
           const SizedBox(height: 16),
           DropdownButtonFormField<int>(
-            value: _productIndex,
+            key: ValueKey(_productIndex),
+            initialValue: _productIndex,
             decoration: const InputDecoration(labelText: 'Product'),
             items: List.generate(
               _products.length,

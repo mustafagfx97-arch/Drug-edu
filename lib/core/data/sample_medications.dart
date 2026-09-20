@@ -1376,4 +1376,270 @@ const sampleMedications = <Medication>[
       seekHelpAr: 'اطلب المساعدة إذا ظهر ألم شديد ومستمر في البطن مع قيء، اصفرار الجلد أو العينين، أو كدمات ونزف غير معتاد.',
     ),
   ),
+
+  Medication(
+    id: 'combined-oral-contraceptive',
+    familyId: 'womens-health',
+    name: 'Combined Oral Contraceptive',
+    subtitle: 'Estrogen / progestin birth-control pill',
+    tags: ['Contraception', 'Daily', 'Women’s health'],
+    sourceLabel: 'MedlinePlus Drug Information · Combined Oral Contraceptives',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Identify the exact product and pack because active/placebo schedules and missed-pill instructions differ. Review smoking, age, migraine with aura, VTE risk, postpartum status and interacting enzyme-inducing medicines.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take one tablet daily according to the pack, at around the same time each day. Missed-pill actions must follow the exact product instructions rather than a generic rule.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لمنع الحمل، وقد يُستخدم لأسباب أخرى حسب وصف الطبيب.',
+      howToUseAr: 'خذي حبة واحدة يوميًا حسب ترتيب العبوة وفي نفس الوقت تقريبًا كل يوم.',
+      importantAr: 'إذا نسيتِ حبة أو أكثر، اتبعي تعليمات نفس العبوة لأن طريقة التصرف تختلف حسب عدد الحبات ومكانها في الشريط.',
+      seekHelpAr: 'اطلبي المساعدة إذا ظهر ألم أو تورم شديد في ساق واحدة، ضيق نفس مفاجئ، ألم صدر، أو صداع شديد جديد مع أعراض عصبية.',
+    ),
+  ),
+  Medication(
+    id: 'norethindrone-pop',
+    familyId: 'womens-health',
+    name: 'Norethindrone Progestin-Only Pill',
+    subtitle: 'Progestin-only oral contraceptive',
+    tags: ['Contraception', 'Daily', 'Timing sensitive'],
+    sourceLabel: 'MedlinePlus Drug Information · Progestin-Only Norethindrone Oral Contraceptives',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take one tablet every day at the same time. Timing and missed-pill rules are particularly important for progestin-only pills and should follow the exact product labeling.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لمنع الحمل من دون هرمون الإستروجين.',
+      howToUseAr: 'خذي حبة كل يوم في نفس الوقت بدقة، ولا تتركي أيامًا بين الشرائط إلا إذا كانت تعليمات منتجك تقول ذلك.',
+      importantAr: 'إذا تأخرتِ عن الجرعة أو نسيتها، اتبعي تعليمات نفس المنتج واستخدمي وسيلة إضافية إذا طُلب ذلك.',
+    ),
+  ),
+  Medication(
+    id: 'finasteride',
+    familyId: 'urology',
+    name: 'Finasteride',
+    subtitle: '5-alpha-reductase inhibitor',
+    tags: ['BPH', 'Hair loss', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Finasteride',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Take once daily at around the same time, with or without food. Benefit for BPH or hair loss takes time and continues only while therapy is maintained.',
+      ),
+      MedicationSection(
+        title: 'Pregnancy handling warning',
+        body:
+            'Women who are or may become pregnant should not handle broken or crushed finasteride tablets because fetal exposure can be harmful.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتضخم البروستات، وقد يُستخدم لتساقط الشعر عند الرجال حسب الجرعة.',
+      howToUseAr: 'خذ الحبة مرة يوميًا في وقت ثابت تقريبًا، مع الطعام أو بدونه.',
+      importantAr: 'النساء الحوامل أو من قد يحملن يجب ألا يلمسن الحبوب المكسورة أو المسحوقة.',
+      commonActionableAr: 'قد يؤثر على الرغبة أو الأداء الجنسي عند بعض الرجال.',
+    ),
+  ),
+  Medication(
+    id: 'timolol-ophthalmic',
+    familyId: 'eye-ear',
+    name: 'Timolol Eye Drops',
+    subtitle: 'Ophthalmic beta-blocker',
+    tags: ['Glaucoma', 'Eye drops', 'Technique'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Timolol Ophthalmic',
+    sections: [
+      MedicationSection(
+        title: 'Technique',
+        body:
+            'After instilling one drop, close the eye gently for 2–3 minutes and press the tear duct to reduce systemic absorption. Do not touch the dropper tip.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review asthma/COPD, bradycardia, heart block, heart failure and other beta-blockers. Soft contact lenses should be removed before dosing and generally reinserted after the product-specified interval.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لخفض ضغط العين في الجلوكوما أو ارتفاع ضغط العين.',
+      howToUseAr: 'ضع القطرة في جيب الجفن السفلي من دون أن تلمس الفوهة العين، ثم أغلق عينك واضغط بلطف قرب زاوية العين الداخلية.',
+      importantAr: 'إذا كنت تستخدم قطرات أخرى للعين، اترك الفاصل الذي حدده الصيدلي بينها.',
+      teachBackAr: 'أرني كيف ستضع القطرة ثم أين ستضغط بإصبعك بعد الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'ciprofloxacin-ophthalmic',
+    familyId: 'eye-ear',
+    name: 'Ciprofloxacin Eye Drops / Ointment',
+    subtitle: 'Ophthalmic fluoroquinolone antibiotic',
+    tags: ['Eye infection', 'Antibiotic', 'Eye drops'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Ciprofloxacin Ophthalmic',
+    sections: [
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Solution and ointment have different dosing schedules. Use the exact prescribed formulation and avoid contaminating the tip.',
+      ),
+      MedicationSection(
+        title: 'Contact lenses',
+        body:
+            'Patients with bacterial conjunctivitis should not wear contact lenses while symptoms persist or while applying the ophthalmic antibiotic.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض التهابات العين البكتيرية.',
+      howToUseAr: 'ضع الدواء في العين بالطريقة التي شرحها لك الصيدلي، ولا تجعل فوهة العبوة تلمس العين أو الرموش.',
+      importantAr: 'لا تلبس العدسات اللاصقة أثناء وجود التهاب بكتيري أو أثناء استخدام العلاج حتى يسمح لك الطبيب أو الصيدلي.',
+      seekHelpAr: 'راجع الطبيب إذا لم تتحسن العين أو أصبح الألم أو الاحمرار أسوأ.',
+    ),
+  ),
+  Medication(
+    id: 'ciprofloxacin-otic',
+    familyId: 'eye-ear',
+    name: 'Ciprofloxacin Ear Drops',
+    subtitle: 'Otic fluoroquinolone antibiotic',
+    tags: ['Ear infection', 'Antibiotic', 'Ear drops'],
+    hasVisualGuide: true,
+    sourceLabel: 'MedlinePlus Drug Information · Ciprofloxacin Otic',
+    sections: [
+      MedicationSection(
+        title: 'Technique',
+        body:
+            'For single-use ciprofloxacin otic solution, warm the container in the hand for at least 1 minute, instill with the affected ear upward, and remain in position for at least 60 seconds. Product formulations differ.',
+      ),
+      MedicationSection(
+        title: 'Formulation distinction',
+        body:
+            'Some ciprofloxacin otic suspensions are administered by a clinician as a single dose, while outpatient solution products are self-administered. Do not interchange instructions.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'مضاد حيوي لعلاج بعض التهابات الأذن.',
+      howToUseAr: 'دفّئ العبوة بين يديك إذا كانت تعليمات منتجك تسمح بذلك، واجعل الأذن المصابة للأعلى أثناء وضع القطرات.',
+      importantAr: 'هذا الدواء للأذن فقط وليس للعين، واتبع تعليمات نفس المنتج لأن بعض الأنواع تختلف في طريقة الاستخدام.',
+      teachBackAr: 'أرني وضعية الرأس وكم ستبقى والأذن للأعلى بعد وضع الجرعة.',
+    ),
+  ),
+  Medication(
+    id: 'naproxen',
+    familyId: 'pain-inflammation',
+    name: 'Naproxen',
+    subtitle: 'NSAID analgesic / anti-inflammatory',
+    tags: ['Pain', 'Inflammation', 'NSAID', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Naproxen',
+    sections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Review GI bleeding/ulcer history, cardiovascular risk, renal disease, anticoagulants, pregnancy and duplicate NSAID therapy. Different immediate, delayed and extended-release products are not interchangeable.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Nonprescription naproxen is generally taken with a full glass of water and may be taken with food or milk to reduce nausea. Prescription schedules vary by formulation and indication.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف الألم والالتهاب والحرارة.',
+      howToUseAr: 'خذ الجرعة حسب نوع المنتج والوصفة، ويمكن أخذه مع الطعام أو الحليب إذا أزعج المعدة.',
+      importantAr: 'لا تجمعه من نفسك مع ibuprofen أو diclofenac أو مسكنات أخرى من نفس عائلة NSAIDs.',
+      seekHelpAr: 'اطلب المساعدة إذا ظهر براز أسود أو قيء دموي أو ألم صدر أو ضيق نفس.',
+    ),
+  ),
+  Medication(
+    id: 'bisacodyl-tablets',
+    familyId: 'otc',
+    name: 'Bisacodyl Tablets',
+    subtitle: 'Stimulant laxative',
+    tags: ['Constipation', 'OTC', 'Short term'],
+    sourceLabel: 'MedlinePlus Drug Information · Bisacodyl',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Usually taken in the evening when a bowel movement is desired the next day. Swallow tablets whole. Keep at least a 1-hour interval from dairy products and antacids.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Short-term use only unless medically directed; MedlinePlus advises not using longer than 1 week without speaking to a clinician.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لفترة قصيرة لعلاج الإمساك.',
+      howToUseAr: 'ابتلع الحبة كاملة مع الماء، ولا تسحقها أو تمضغها.',
+      timingAr: 'لا تأخذها خلال ساعة من الحليب أو منتجات الألبان أو مضادات الحموضة.',
+      importantAr: 'لا تستخدمها أكثر من أسبوع من نفسك إذا استمر الإمساك.',
+      seekHelpAr: 'راجع الطبيب إذا كان لديك ألم بطن شديد أو قيء أو نزف من المستقيم.',
+    ),
+  ),
+  Medication(
+    id: 'senna',
+    familyId: 'otc',
+    name: 'Senna',
+    subtitle: 'Stimulant laxative',
+    tags: ['Constipation', 'OTC', 'Short term'],
+    sourceLabel: 'MedlinePlus Drug Information · Senna',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'May be taken once or twice daily; when taken at bedtime, a bowel movement commonly occurs the next day. Short-term use is preferred.',
+      ),
+      MedicationSection(
+        title: 'Duration',
+        body:
+            'Do not continue longer than 1 week without medical advice. Persistent constipation requires assessment rather than escalating stimulant laxatives indefinitely.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لفترة قصيرة لعلاج الإمساك.',
+      howToUseAr: 'خذ الجرعة حسب العبوة أو الوصفة؛ أخذه قبل النوم قد يساعد على حدوث التبرز في اليوم التالي.',
+      commonActionableAr: 'قد يسبب مغصًا أو تقلصات في البطن.',
+      importantAr: 'إذا استمر الإمساك أكثر من أسبوع أو احتجت المسهل باستمرار، راجع الطبيب أو الصيدلي.',
+    ),
+  ),
+  Medication(
+    id: 'hydrocortisone-topical',
+    familyId: 'allergy-dermatology',
+    name: 'Hydrocortisone Topical',
+    subtitle: 'Low-potency topical corticosteroid',
+    tags: ['Skin', 'Itching', 'Topical', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Hydrocortisone Topical',
+    sections: [
+      MedicationSection(
+        title: 'Administration',
+        body:
+            'Apply a small amount as a thin even film to the affected skin at the frequency directed by the product/prescription. Avoid eyes and mouth and do not occlude unless instructed.',
+      ),
+      MedicationSection(
+        title: 'OTC referral limit',
+        body:
+            'For nonprescription hydrocortisone, MedlinePlus advises stopping and contacting a clinician if the condition does not improve within 7 days.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يخفف الحكة والاحمرار والالتهاب في بعض مشاكل الجلد.',
+      howToUseAr: 'ضع طبقة رقيقة فقط على المكان المصاب وافركها بلطف حسب عدد المرات المكتوب.',
+      importantAr: 'لا تضعه داخل العين أو الفم ولا تغطِ المنطقة بضماد محكم إلا إذا طلب الطبيب ذلك.',
+      seekHelpAr: 'إذا كان المنتج بدون وصفة ولم يتحسن الجلد خلال 7 أيام، توقف وراجع الطبيب أو الصيدلي.',
+    ),
+  ),
 ];

@@ -8,6 +8,7 @@ import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications_2.dart';
 import 'package:drug_edu/core/data/expanded_medications_3.dart';
+import 'package:drug_edu/core/data/expanded_medications_4.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
 import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
@@ -35,7 +36,7 @@ void main() {
 
 
   test('medicine encyclopedia has substantial practical coverage', () {
-    expect(sampleMedications.length, greaterThanOrEqualTo(139));
+    expect(sampleMedications.length, greaterThanOrEqualTo(144));
 
     final ids = sampleMedications.map((medicine) => medicine.id).toList();
     expect(ids.toSet().length, ids.length, reason: 'Medication IDs must be unique');
@@ -369,6 +370,59 @@ void main() {
       (medicine) => medicine.id == 'oxymetazoline-nasal',
     );
     expect(oxymetazoline.patient.timingAr, contains('3 أيام'));
+  });
+
+  test('bone and women health expansion stays complete', () {
+    expect(expandedMedications4.length, 5);
+
+    final ids = expandedMedications4.map((medicine) => medicine.id).toSet();
+    expect(ids.length, expandedMedications4.length);
+    expect(ids, contains('ibandronate-monthly'));
+    expect(ids, contains('teriparatide-forteo'));
+    expect(ids, contains('romosozumab-evenity'));
+    expect(ids, contains('drospirenone-pop'));
+    expect(ids, contains('depo-provera-ci'));
+
+    for (final medicine in expandedMedications4) {
+      expect(medicine.useProfile.isEmpty, isFalse,
+          reason: medicine.name + ' structured profile');
+      expect(medicine.sourceLabel.trim(), isNotEmpty,
+          reason: medicine.name + ' source');
+      expect(medicine.patient.purposeAr.trim(), isNotEmpty);
+      expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
+      expect(medicine.patient.timingAr.trim(), isNotEmpty);
+      expect(medicine.patient.importantAr.trim(), isNotEmpty);
+      expect(medicine.patient.missedDoseAr.trim(), isNotEmpty);
+      expect(medicine.patient.seekHelpAr.trim(), isNotEmpty);
+      expect(medicine.patient.teachBackAr.trim(), isNotEmpty);
+    }
+
+    final ibandronate = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'ibandronate-monthly',
+    );
+    expect(ibandronate.patient.timingAr, contains('60 دقيقة'));
+    expect(ibandronate.patient.missedDoseAr, contains('7 أيام'));
+
+    final forteo = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'teriparatide-forteo',
+    );
+    expect(forteo.patient.storageAr, contains('28 يوم'));
+    expect(visualGuidesForMedication(forteo.id), isNotEmpty);
+
+    final evenity = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'romosozumab-evenity',
+    );
+    expect(evenity.patient.timingAr, contains('12 جرعة'));
+
+    final slynd = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'drospirenone-pop',
+    );
+    expect(slynd.patient.missedDoseAr, contains('7 أيام'));
+
+    final depo = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'depo-provera-ci',
+    );
+    expect(depo.patient.timingAr, contains('13 أسبوع'));
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

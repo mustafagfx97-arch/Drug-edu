@@ -153,6 +153,30 @@ class _PharmacistSupplementTab extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 12),
+        SectionCard(
+          title: 'Use basis',
+          icon: Icons.assignment_outlined,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                profile.useBasis,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+              if (profile.monitoringEn.isNotEmpty) ...[
+                const SizedBox(height: 7),
+                Text(
+                  profile.monitoringEn,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.45),
+                ),
+              ],
+            ],
+          ),
+        ),
         if (profile.formulationAlert.isNotEmpty) ...[
           const SizedBox(height: 12),
           Container(

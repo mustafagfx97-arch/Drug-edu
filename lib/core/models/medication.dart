@@ -84,6 +84,9 @@ class Medication {
     this.hasIvPreparation = false,
     this.hasCalculator = false,
     this.hasVisualGuide = false,
+    this.sourceLabel = '',
+    this.reviewStatus = 'Reviewed',
+    this.lastReviewed = '2026-09',
     this.isDemo = true,
   });
 
@@ -97,5 +100,8 @@ class Medication {
   final bool hasIvPreparation;
   final bool hasCalculator;
   final bool hasVisualGuide;
+  final String sourceLabel;
+  final String reviewStatus;
+  final String lastReviewed;
   final bool isDemo;
 }

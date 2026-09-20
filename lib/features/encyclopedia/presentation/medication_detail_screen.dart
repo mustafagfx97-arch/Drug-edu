@@ -23,7 +23,7 @@ class MedicationDetailScreen extends StatelessWidget {
     final patient = resolvedPatientCounseling(
       medication,
       timingFallbackAr:
-          medicationTimingRules[medication.id]?.instructionAr ?? '',
+          medicationPatientTimingInstruction(medication.id),
     );
     final important = <String>[
       if (durationAr.isNotEmpty) 'مدة العلاج: ' + durationAr,
@@ -294,7 +294,7 @@ class _PatientTab extends StatelessWidget {
     final patient = resolvedPatientCounseling(
       medication,
       timingFallbackAr:
-          medicationTimingRules[medication.id]?.instructionAr ?? '',
+          medicationPatientTimingInstruction(medication.id),
     );
 
     return Directionality(

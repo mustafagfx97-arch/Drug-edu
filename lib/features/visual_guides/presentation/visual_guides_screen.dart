@@ -103,6 +103,178 @@ class VisualGuidesScreen extends StatelessWidget {
         patientSummaryAr:
             'تأكد من نوع الإنسولين والقلم، استخدم إبرة جديدة، ونفّذ اختبار القلم أو التهيئة الخاصة بهذا المنتج ثم اضبط الجرعة الموصوفة. مدة بقاء الإبرة تحت الجلد قد تختلف حسب القلم لذلك اتبع تعليمات جهازك.',
       ),
+
+      const _GuideData(
+        title: 'Dry-powder inhaler (DPI)',
+        subtitle: 'Core DPI technique; loading differs by device.',
+        icon: Icons.air_rounded,
+        steps: [
+          'Prepare or load the dose according to the exact device.',
+          'Breathe out fully away from the mouthpiece.',
+          'Seal lips around the mouthpiece.',
+          'Inhale quickly and deeply through the device.',
+          'Hold the breath comfortably, then breathe out away from the device.',
+        ],
+        mistakes: [
+          'Breathing out into the device and exposing the powder to moisture.',
+          'Using a slow MDI-style inhalation instead of a forceful DPI inhalation.',
+          'Assuming every DPI is loaded the same way.',
+        ],
+        patientSummaryAr:
+            'حضّر الجرعة حسب جهازك، أخرج الهواء بعيدًا عن الجهاز، ثم استنشق بقوة وعمق من الفوهة. لا تزفر داخل الجهاز لأن الرطوبة قد تؤثر على البودرة.',
+      ),
+      const _GuideData(
+        title: 'Turbuhaler',
+        subtitle: 'Dose-loading and inhalation framework for Turbuhaler-type devices.',
+        icon: Icons.rotate_right_outlined,
+        steps: [
+          'Keep the device upright while loading the dose.',
+          'Load one dose using the exact twist sequence for the product.',
+          'Breathe out fully away from the mouthpiece.',
+          'Inhale quickly and deeply through the mouthpiece.',
+          'Hold the breath, then close the device and check the dose indicator.',
+        ],
+        mistakes: [
+          'Holding the device sideways while loading.',
+          'Exhaling into the mouthpiece.',
+          'Repeating the loading twist unnecessarily after a dose is already prepared.',
+        ],
+        patientSummaryAr:
+            'أمسك الجهاز بشكل مستقيم عند تحضير الجرعة، حمّل جرعة واحدة بالطريقة الخاصة بنوعك، ثم أخرج الهواء بعيدًا عنه واستنشق بقوة وعمق. لا تنفخ داخل الفوهة.',
+      ),
+      const _GuideData(
+        title: 'Diskus / Accuhaler',
+        subtitle: 'Lever-loaded dry-powder inhaler technique.',
+        icon: Icons.horizontal_rule_rounded,
+        steps: [
+          'Open the device until it is ready.',
+          'Move the dose lever only when you are ready to take the dose.',
+          'Breathe out away from the mouthpiece.',
+          'Inhale quickly and deeply through the mouthpiece.',
+          'Hold the breath and close the device.',
+        ],
+        mistakes: [
+          'Moving the lever repeatedly and wasting doses.',
+          'Exhaling into the device.',
+          'Using the device when the dose counter shows empty.',
+        ],
+        patientSummaryAr:
+            'افتح الجهاز وحضّر جرعة واحدة بالرافعة عندما تكون مستعدًا، أخرج الهواء بعيدًا عن الجهاز ثم استنشق بقوة وعمق. لا تحرك الرافعة أكثر من مرة للجرعة نفسها.',
+      ),
+      const _GuideData(
+        title: 'Ellipta',
+        subtitle: 'Open-and-inhale DPI workflow.',
+        icon: Icons.view_sidebar_outlined,
+        steps: [
+          'Open the cover only when you are ready to inhale the dose.',
+          'Breathe out away from the device.',
+          'Seal lips around the mouthpiece without blocking the air vent.',
+          'Take one long, steady, deep breath in.',
+          'Hold the breath and close the cover.',
+        ],
+        mistakes: [
+          'Opening and closing the cover without inhaling, which may waste a dose.',
+          'Blocking the air vent with the fingers or lips.',
+          'Breathing out into the mouthpiece.',
+        ],
+        patientSummaryAr:
+            'افتح الغطاء فقط عندما تكون مستعدًا للجرعة، أخرج الهواء بعيدًا عن الجهاز، ثم خذ شهيقًا طويلًا وعميقًا من الفوهة من دون سد فتحة الهواء.',
+      ),
+      const _GuideData(
+        title: 'Respimat-type soft mist inhaler',
+        subtitle: 'Slow-inhalation soft-mist technique; setup is product-specific.',
+        icon: Icons.blur_on_outlined,
+        steps: [
+          'Prepare and prime the device exactly as required for the product.',
+          'Breathe out slowly and fully away from the device.',
+          'Seal lips around the mouthpiece without covering the air vents.',
+          'Press the dose-release button while taking a slow deep breath.',
+          'Hold the breath comfortably, then close the cap.',
+        ],
+        mistakes: [
+          'Skipping first-use priming.',
+          'Inhaling too quickly.',
+          'Covering the air vents.',
+        ],
+        patientSummaryAr:
+            'حضّر الجهاز أول مرة حسب تعليماته، ثم أخرج الهواء وابدأ شهيقًا بطيئًا وعميقًا مع الضغط على زر الجرعة. لا تسد فتحات الهواء.',
+      ),
+      const _GuideData(
+        title: 'Nebulizer',
+        subtitle: 'Basic medication-nebulizer workflow.',
+        icon: Icons.cloud_outlined,
+        steps: [
+          'Confirm the prescribed medication and exact nebulizer volume.',
+          'Place the medicine in the nebulizer cup using the correct measuring method.',
+          'Sit upright and use the mouthpiece or fitted mask.',
+          'Breathe normally until the treatment is complete.',
+          'Clean and dry the nebulizer parts according to the device instructions.',
+        ],
+        mistakes: [
+          'Mixing nebulized medicines without confirmed compatibility.',
+          'Using a poorly fitted mask.',
+          'Leaving medication residue in an unclean device.',
+        ],
+        patientSummaryAr:
+            'ضع الدواء بالكمية الموصوفة في حجرة النيبولايزر، اجلس بشكل مستقيم وتنفس بشكل طبيعي حتى انتهاء الجلسة. نظف أجزاء الجهاز بالطريقة الخاصة به بعد الاستخدام.',
+      ),
+      const _GuideData(
+        title: 'Ear drops',
+        subtitle: 'Positioning and drop technique.',
+        icon: Icons.hearing_outlined,
+        steps: [
+          'Wash hands and warm the bottle in the hands if allowed by the product.',
+          'Position the affected ear upward.',
+          'Pull the ear as appropriate for the patient age and product instructions.',
+          'Instill the prescribed drops without touching the dropper tip.',
+          'Keep the ear upward for the recommended period.',
+        ],
+        mistakes: [
+          'Touching the dropper to the ear.',
+          'Using drops in a perforated eardrum unless the product is appropriate.',
+          'Immediately standing up so the drops drain out.',
+        ],
+        patientSummaryAr:
+            'اجعل الأذن المصابة للأعلى وضع القطرات من دون أن تلمس الفوهة الأذن. ابقَ على هذا الوضع للمدة التي شرحها لك الصيدلي حتى لا تخرج القطرات مباشرة.',
+      ),
+      const _GuideData(
+        title: 'Prefilled syringe injection',
+        subtitle: 'General subcutaneous prefilled-syringe framework.',
+        icon: Icons.vaccines_outlined,
+        steps: [
+          'Confirm the correct medicine, strength and dose.',
+          'Inspect the syringe and prepare the injection site.',
+          'Use the product-specific angle and skin-fold technique.',
+          'Inject the full prescribed dose as instructed.',
+          'Dispose of the syringe immediately in a sharps container.',
+        ],
+        mistakes: [
+          'Removing an air bubble when the product instructions say not to.',
+          'Rubbing the site when the product advises against it.',
+          'Reusing or recapping the syringe.',
+        ],
+        patientSummaryAr:
+            'تأكد من اسم الدواء والجرعة قبل الحقن، استخدم الطريقة الخاصة بالسرنجة التي شرحها لك الصيدلي، ثم تخلص منها مباشرة في حاوية الأدوات الحادة.',
+      ),
+      const _GuideData(
+        title: 'Oral syringe',
+        subtitle: 'Accurate liquid-medicine measurement.',
+        icon: Icons.straighten_outlined,
+        steps: [
+          'Confirm the medicine concentration and prescribed mL dose.',
+          'Insert the oral syringe into the bottle adapter when available.',
+          'Draw slightly more than needed, then remove air bubbles.',
+          'Adjust to the exact mL mark at eye level.',
+          'Give the medicine slowly into the inside of the cheek.',
+        ],
+        mistakes: [
+          'Using a household spoon.',
+          'Reading the syringe from the wrong edge of the plunger.',
+          'Using the same mL amount after changing to a different concentration.',
+        ],
+        patientSummaryAr:
+            'تأكد من تركيز الدواء والحجم المطلوب، اسحب الجرعة بالسرنجة الفموية حتى علامة mL الصحيحة، وأعطها ببطء داخل جانب الفم. لا تستخدم ملعقة منزلية.',
+      ),
     ];
 
     final theme = Theme.of(context);

@@ -112,6 +112,20 @@ void main() {
       }
     }
 
+    final vancomycin =
+        findIvPreparationProfile('Vancomycin', 'General')!;
+    final meropenem =
+        findIvPreparationProfile('Meropenem', 'General')!;
+    final piperacillinTazobactam =
+        findIvPreparationProfile('Piperacillin / Tazobactam', 'General')!;
+    final ceftriaxone =
+        findIvPreparationProfile('Ceftriaxone', 'General')!;
+
+    expect(vancomycin.stability, contains('14 days'));
+    expect(meropenem.stability, contains('3 hours'));
+    expect(piperacillinTazobactam.resultingConcentration, contains('202.5'));
+    expect(ceftriaxone.reconstitution, contains('9.6 mL'));
+
     expect(
       findIvPreparationProfile('Sodium bicarbonate', 'NICU'),
       isNull,

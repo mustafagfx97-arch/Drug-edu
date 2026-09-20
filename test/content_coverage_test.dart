@@ -153,7 +153,7 @@ void main() {
       final patient = resolvedPatientCounseling(
         medicine,
         timingFallbackAr:
-            medicationTimingRules[medicine.id]?.instructionAr ?? '',
+            medicationPatientTimingInstruction(medicine.id),
       );
 
       expect(patient.purposeAr.trim(), isNotEmpty);
@@ -178,6 +178,16 @@ void main() {
         isNotEmpty,
         reason: medicine.name + ' teach-back missing',
       );
+      expect(
+        patient.timingAr,
+        isNot(contains('Auto')),
+        reason: medicine.name + ' leaked engine wording to patient',
+      );
+      expect(
+        patient.timingAr,
+        isNot(contains('التطبيق')),
+        reason: medicine.name + ' leaked app-engine wording to patient',
+      );
     }
 
     PatientCounselingData patient(String id) {
@@ -185,7 +195,7 @@ void main() {
       return resolvedPatientCounseling(
         medicine,
         timingFallbackAr:
-            medicationTimingRules[medicine.id]?.instructionAr ?? '',
+            medicationPatientTimingInstruction(medicine.id),
       );
     }
 

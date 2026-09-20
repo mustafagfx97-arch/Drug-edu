@@ -70,6 +70,7 @@ class ScheduledDose {
     required this.minutes,
     required this.instructionAr,
     this.isSuggested = true,
+    this.dayLabel = '',
   });
 
   final String itemId;
@@ -78,6 +79,7 @@ class ScheduledDose {
   final int minutes;
   final String instructionAr;
   final bool isSuggested;
+  final String dayLabel;
 }
 
 class PlanAlert {

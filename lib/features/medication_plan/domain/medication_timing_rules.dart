@@ -64,11 +64,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'النوع العادي يؤخذ مع الوجبة أو بعدها مباشرة؛ اتبع نوع المنتج الموصوف.',
     source: 'MedlinePlus Metoprolol',
   ),
-  'glimepiride': MedicationTimingRule(
-    anchor: 'breakfast',
-    instructionAr: 'مع الفطور أو أول وجبة رئيسية.',
-    source: 'MedlinePlus Glimepiride',
-  ),
   'doxycycline': MedicationTimingRule(
     anchor: 'any',
     instructionAr:

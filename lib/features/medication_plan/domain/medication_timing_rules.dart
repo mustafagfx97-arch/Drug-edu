@@ -1295,6 +1295,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · HUMULIN R U-500 · Jul 2026',
   ),
 
+
+  'sumatriptan-tablets': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لعلاج النوبة الحادة فقط؛ إذا كانت الجرعة الثانية ضمن الوصفة فلا تكون قبل ساعتين، ولا ينشئ التطبيق تكرارًا تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sumatriptan tablets · Aug 2026',
+  ),
+  'rizatriptan-odt': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لعلاج النوبة الحادة؛ للبالغ يمكن تكرار الجرعة بعد ساعتين على الأقل إذا كانت موصوفة، أما الأطفال 6–17 سنة فلا يفترض التطبيق جرعة ثانية خلال 24 ساعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Rizatriptan ODT · Aug 2026',
+  ),
+  'rimegepant-nurtec-odt': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يجب تحديد الاستطباب أولًا: للنوبة الحادة عند الحاجة بحد أقصى 75 mg/24 h، أو للوقاية 75 mg كل يومين؛ لا يستخدم Auto دون اختيار الاستطباب.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NURTEC ODT · Mar 2026',
+  ),
+  'ubrogepant-ubrelvy': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لعلاج النوبة الحادة؛ الجرعة الثانية إن كانت مسموحة تكون بعد ساعتين على الأقل، لكن التداخلات قد تمنعها لذلك لا ينشئ التطبيق repeat تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · UBRELVY',
+  ),
+  'zavegepant-zavzpret-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'للنوبة الحادة فقط: جهاز واحد = بخة 10 mg واحدة في فتحة واحدة، ولا أكثر من جرعة واحدة خلال 24 ساعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ZAVZPRET IFU · Aug 2025',
+  ),
+
 };
 
 

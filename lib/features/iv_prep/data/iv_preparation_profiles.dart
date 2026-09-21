@@ -391,6 +391,150 @@ const ivPreparationProfiles = <IvPreparationProfile>[
         'DailyMed · Linezolid Injection 600 mg/300 mL · current ready-to-use infusion-bag labeling',
   ),
 
+  IvPreparationProfile(
+    name: 'Acyclovir',
+    population: 'General',
+    formulation:
+        'Acyclovir sodium lyophilized powder for IV infusion only; cited single-dose vials contain acyclovir equivalent to 500 mg or 1 g.',
+    reconstitution:
+        'Reconstitute the 500 mg vial with 10 mL Sterile Water for Injection or the 1 g vial with 20 mL Sterile Water for Injection. Shake well to dissolve. Do NOT use bacteriostatic water containing benzyl alcohol or parabens.',
+    resultingConcentration:
+        '50 mg/mL after reconstitution; the reconstituted solution has an alkaline pH of approximately 11.',
+    furtherDilution:
+        'Further dilution is required before infusion. Withdraw the prescribed dose and dilute in an appropriate IV solution so the infusion concentration is approximately 7 mg/mL or lower.',
+    allowedDiluents:
+        'The cited label states standard commercially available electrolyte and glucose IV solutions are suitable. Biologic or colloidal fluids such as blood products/protein solutions are not recommended.',
+    administration:
+        'IV infusion only over 1 hour. Rapid/bolus IV injection, IM injection and subcutaneous injection must be avoided. Adequate hydration is important during IV acyclovir therapy.',
+    stability:
+        'Use the reconstituted 50 mg/mL solution within 12 hours. Refrigeration may cause a precipitate that redissolves at room temperature. Once diluted for administration, use each dose within 24 hours. Store unopened vials at 15–25°C.',
+    incompatibilities:
+        'Do not use biologic/colloidal carrier fluids. Inspect for particulates/discoloration; verify specific Y-site compatibility separately.',
+    criticalLocks: [
+      'Reconstitution lock: 500 mg + 10 mL SWFI or 1 g + 20 mL SWFI = 50 mg/mL.',
+      'Concentration lock: final infusion concentration approximately 7 mg/mL or lower; higher concentrations such as 10 mg/mL may increase phlebitis/extravasation injury risk.',
+      'Administration lock: infusion over 1 hour only; never rapid IV bolus.',
+    ],
+    sourceLabel:
+        'DailyMed · Acyclovir for Injection, USP 500 mg/1 g lyophilized powder · preparation/administration label updated April 2024',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 50,
+  ),
+  IvPreparationProfile(
+    name: 'IV Paracetamol',
+    population: 'General',
+    formulation:
+        'Acetaminophen/paracetamol injection ready solution 1,000 mg/100 mL = 10 mg/mL in a single-dose container.',
+    reconstitution:
+        'None. The cited product is supplied as a ready 10 mg/mL solution for IV infusion.',
+    resultingConcentration:
+        '10 mg/mL.',
+    furtherDilution:
+        'For a full 1,000 mg dose in an eligible patient, the entire 100 mL container may be infused without further dilution. For doses below 1,000 mg, withdraw the prescribed volume from an intact container and transfer it to a separate empty sterile container or syringe before administration.',
+    allowedDiluents:
+        'No routine diluent is required for the ready 10 mg/mL product. Do not add other medications to the acetaminophen container or infusion device.',
+    administration:
+        'Administer only as a 15-minute IV infusion. Small pediatric volumes up to 60 mL may be placed in a syringe and administered over 15 minutes using a syringe pump according to the cited product instructions.',
+    stability:
+        'Single-dose container; discard unused portion. Once the seal is penetrated or solution is transferred to another container, administer the dose within 6 hours in the cited label.',
+    incompatibilities:
+        'Do not add other medications. Diazepam and chlorpromazine are physically incompatible with the cited acetaminophen injection.',
+    criticalLocks: [
+      'Total-acetaminophen lock: include acetaminophen/paracetamol from ALL routes/products when checking the prescribed daily limit.',
+      'Container lock: the full 100 mL container is not intended for patients requiring less than 1,000 mg; transfer only the prescribed volume to a separate sterile container.',
+      'Administration lock: 15-minute IV infusion only.',
+    ],
+    sourceLabel:
+        'DailyMed · Acetaminophen Injection 1,000 mg/100 mL (10 mg/mL) · IV administration instructions',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 10,
+  ),
+  IvPreparationProfile(
+    name: 'Gentamicin',
+    population: 'General',
+    formulation:
+        'Gentamicin sulfate injection product containing gentamicin 40 mg/mL; current U.S. presentations include 80 mg/2 mL and 800 mg/20 mL vials. Product must be diluted for IV use.',
+    reconstitution:
+        'None. This profile is for the 40 mg/mL solution. Withdraw the already prescribed gentamicin dose from the exact 40 mg/mL product.',
+    resultingConcentration:
+        '40 mg/mL in the vial before IV dilution.',
+    furtherDilution:
+        'For intermittent IV administration in adults, dilute the prescribed single dose in 50–200 mL of sterile isotonic saline or D5W. In infants and children, use a smaller diluent volume appropriate to fluid needs.',
+    allowedDiluents:
+        'Sterile isotonic saline solution or 5% Dextrose in Water for the intermittent IV method in the cited label.',
+    administration:
+        'Infuse the diluted intermittent dose over 30 minutes to 2 hours. Therapeutic-dose selection and renal adjustment are outside this preparation profile.',
+    stability:
+        'Store the vial at controlled room temperature according to the exact product label. The cited label does not provide a universal extended post-dilution BUD; use validated institutional sterile-compounding policy for the prepared infusion.',
+    incompatibilities:
+        'Gentamicin should not be physically premixed with other drugs; administer separately. Verify Y-site compatibility independently when sequential/shared-line administration is necessary.',
+    criticalLocks: [
+      'Product lock: this profile is for a 40 mg/mL gentamicin vial; pediatric 10 mg/mL products also exist and must not use this withdrawal concentration.',
+      'Renal/TDM lock: dosing interval and dose require renal-function and serum-level assessment when clinically indicated; the calculator must never select the dose.',
+      'IV lock: the 40 mg/mL vial must be diluted for IV use.',
+    ],
+    sourceLabel:
+        'DailyMed · Gentamicin Injection, USP 40 mg/mL · current U.S. vial labeling / IV administration section',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 40,
+  ),
+  IvPreparationProfile(
+    name: 'Fluconazole',
+    population: 'General',
+    formulation:
+        'Fluconazole injection ready-to-use iso-osmotic solution 2 mg/mL; current products include 200 mg/100 mL and 400 mg/200 mL containers in sodium chloride or dextrose diluent.',
+    reconstitution:
+        'None. The cited 2 mg/mL products are supplied as ready IV infusion solutions.',
+    resultingConcentration:
+        '2 mg/mL.',
+    furtherDilution:
+        'No routine further dilution is required. Do not add supplementary medication to the ready-to-use container.',
+    allowedDiluents:
+        'The commercial product is already formulated in sodium chloride or dextrose diluent, depending on the exact bag/container. Do not replace the labeled carrier by transferring rules from another presentation.',
+    administration:
+        'Administer by IV infusion at a maximum rate of approximately 200 mg/hour according to the cited label.',
+    stability:
+        'Store the exact ready-to-use container according to its label; current U.S. products are stored at controlled room temperature/range and protected from freezing. Single-dose container handling applies.',
+    incompatibilities:
+        'Do not add supplementary medication. Inspect the flexible container for leaks and solution integrity before use; verify shared-line compatibility independently.',
+    criticalLocks: [
+      'Ready-to-use lock: 2 mg/mL commercial infusion solution; do not invent a reconstitution step.',
+      'Rate lock: maximum infusion rate approximately 200 mg/hour.',
+      'Container lock: sodium-chloride and dextrose premixes both exist; identify the exact product.',
+    ],
+    sourceLabel:
+        'DailyMed · Fluconazole Injection, USP 2 mg/mL ready-to-use infusion solution · current U.S. labeling',
+  ),
+  IvPreparationProfile(
+    name: 'Ondansetron',
+    population: 'General',
+    formulation:
+        'Ondansetron injection solution 2 mg/mL; cited current product is 4 mg/2 mL in a single-dose vial.',
+    reconstitution:
+        'None. The vial is a ready 2 mg/mL solution. Whether further dilution is required depends on the INDICATION.',
+    resultingConcentration:
+        '2 mg/mL in the vial before any indication-specific dilution.',
+    furtherDilution:
+        'Chemotherapy-induced nausea/vomiting pathway: dilution is required in 50 mL D5W or 0.9% NaCl for adults and pediatric patients; for pediatric patients 6–12 months and/or ≤10 kg, 10–50 mL may be used according to fluid needs. Postoperative nausea/vomiting pathway: dilution is not required.',
+    allowedDiluents:
+        'For the chemotherapy pathway, D5W or 0.9% Sodium Chloride are the primary labeled dilution fluids. The label also reports room-temperature compatibility after dilution with NS, D5W, D5NS, D5 half-normal saline and 3% NaCl, but do not infer an indication-specific recipe from compatibility alone.',
+    administration:
+        'Chemotherapy pathway: infuse the diluted dose over 15 minutes. Postoperative pathway: administer the undiluted IV dose over at least 30 seconds and preferably over 2–5 minutes. Follow the prescribed indication-specific dose.',
+    stability:
+        'After recommended dilution, do not use beyond 24 hours despite longer physical/chemical compatibility data. Store unopened 2 mg/mL vials at the labeled temperature range and protect from light.',
+    incompatibilities:
+        'Do not mix with solutions lacking established compatibility; alkaline solutions are specifically cautioned because precipitation may occur.',
+    criticalLocks: [
+      'Indication lock: chemotherapy preparation requires dilution; postoperative IV administration does not.',
+      'Concentration lock: vial is 2 mg/mL; dilution volume is not a dose-selection rule.',
+      'Severe-hepatic-impairment dosing limits are clinical-order issues and must not be selected by the preparation calculator.',
+    ],
+    sourceLabel:
+        'DailyMed · Ondansetron Injection 2 mg/mL · current preparation, compatibility and postoperative administration labeling',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 2,
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

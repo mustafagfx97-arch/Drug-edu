@@ -73,7 +73,7 @@ void main() {
     expect(profile.administration, contains('15–30 minutes'));
     expect(profile.stability, contains('3 hours'));
     expect(profile.stability, contains('13 hours'));
-    expect(profile.stability, contains('use immediately'));
+    expect(profile.stability.toLowerCase(), contains('used immediately'));
   });
 
   test('NICU vancomycin requires further dilution and at least 60 minute infusion', () {

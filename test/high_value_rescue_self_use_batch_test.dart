@@ -26,8 +26,9 @@ void main() {
 
       final english = englishPatientCounseling[id];
       expect(english, isNotNull, reason: '$id English counseling');
-      expect(english!.howToUse.trim(), isNotEmpty, reason: id);
-      expect(english.missedDose.trim(), isNotEmpty, reason: id);
+      final reviewed = english!;
+      expect(reviewed.howToUse.trim(), isNotEmpty, reason: id);
+      expect(reviewed.missedDose.trim(), isNotEmpty, reason: id);
 
       expect(therapyDurationFor(id), isNotNull, reason: '$id duration');
       expect(medicationTimingRules[id], isNotNull, reason: '$id timing');

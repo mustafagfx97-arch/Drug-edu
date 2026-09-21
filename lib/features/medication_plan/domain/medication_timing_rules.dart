@@ -869,6 +869,81 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed OTC Oxymetazoline 0.05% · 2026',
   ),
+  'amoxicillin-pediatric-suspension': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'اتبع الفاصل المكتوب في الوصفة؛ قد يكون كل 8 أو 12 ساعة حسب النظام، ويمكن مع الطعام أو بدونه.',
+    source: 'DailyMed Amoxicillin Oral Suspension',
+  ),
+  'cefdinir-pediatric-suspension': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'اتبع عدد المرات المكتوب، وافصل مكمل الحديد أو antacid المحتوي magnesium/aluminum ساعتين على الأقل.',
+    source: 'DailyMed Cefdinir Oral Suspension',
+  ),
+  'simethicone-infant-drops': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'عند الحاجة حسب تعليمات نفس المنتج، وغالبًا بعد الرضعات وقبل النوم؛ لا تفترض أن كل المنتجات لها نفس التركيز.',
+    autoScheduleSafe: false,
+    source: 'DailyMed OTC Simethicone Infant Drops · 2026',
+  ),
+  'ibandronate-monthly': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr: 'صباحًا بعد صيام الليل مع ماء عادي فقط، ثم انتظر 60 دقيقة قبل الطعام أو أي دواء/مكمل آخر وابقَ جالسًا أو واقفًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Ibandronate Sodium 150 mg · 2026',
+  ),
+  'medroxyprogesterone-im-contraception': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'حقنة عيادية كل 13 أسبوعًا؛ إذا تجاوزتِ الموعد تواصلي مع العيادة لتقييم الحمل وترتيب الجرعة التالية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Medroxyprogesterone Acetate IM 150 mg/mL · 2026',
+  ),
+  'estradiol-transdermal-patch': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جدول تغيير اللاصقة يعتمد على المنتج: بعض الأنواع أسبوعية وبعضها مرتان أسبوعيًا، لذلك اتبع اسم المنتج وجدوله.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Estradiol Transdermal System',
+  ),
+  'bismuth-subsalicylate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'عند الحاجة فقط وضمن عدد الجرعات والحد اليومي المكتوب على نفس المنتج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed OTC Bismuth Subsalicylate · 2026',
+  ),
+  'dorzolamide-ophthalmic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدم القطرات في الأوقات المكتوبة، وافصل عن قطرات العين الأخرى 5 دقائق على الأقل وفق الملصق الحالي.',
+    source: 'DailyMed Dorzolamide Ophthalmic · revised 2026',
+  ),
+  'olopatadine-ophthalmic-otc': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدمها حسب قوة المنتج وعدد المرات المكتوب، وانزع العدسات قبل الجرعة وانتظر 10 دقائق على الأقل قبل إعادتها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed OTC Olopatadine Ophthalmic · 2026',
+  ),
+  'prednisolone-acetate-ophthalmic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'رج العبوة جيدًا قبل كل جرعة واتبع عدد المرات وخطة التخفيف التي وصفها طبيب العيون.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Prednisolone Acetate Ophthalmic Suspension 1%',
+  ),
+  'ofloxacin-otic': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'استخدم عدد القطرات والفاصل ومدة الكورس الخاصة بتشخيص الأذن؛ الجداول تختلف بين otitis externa والأنبوب/ثقب الطبلة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed Ofloxacin Otic 0.3%',
+  ),
+  'etanercept': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جدول الحقن يعتمد على الاستطباب والعمر/الوزن؛ التزم بيوم الجرعة المكتوب ولا تنقل جدول مريض آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed ENBREL · 2026',
+  ),
+  'secukinumab': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'جدول التحميل والصيانة يعتمد على الاستطباب والمنتج؛ اتبع الخطة المكتوبة ولا تفترض فاصلًا موحدًا لكل المرضى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed COSENTYX · revised 2026',
+  ),
   'oral-iron-salts': MedicationTimingRule(
     anchor: 'empty-stomach',
     instructionAr:

@@ -893,9 +893,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'medroxyprogesterone-im-contraception': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'حقنة عيادية كل 13 أسبوعًا؛ إذا تجاوزتِ الموعد تواصلي مع العيادة لتقييم الحمل وترتيب الجرعة التالية.',
+    instructionAr: 'الموعد الروتيني كل 13 أسبوعًا. CDC يسمح بإعادة الحقن حتى 15 أسبوعًا من الجرعة السابقة دون حماية إضافية؛ بعد ذلك يحتاج تقييم الحمل وخطة حماية مؤقتة.',
     autoScheduleSafe: false,
-    source: 'DailyMed Medroxyprogesterone Acetate IM 150 mg/mL · 2026',
+    source: 'DailyMed Medroxyprogesterone Acetate IM 150 mg/mL · 2026; CDC U.S. SPR 2024',
   ),
   'estradiol-transdermal-patch': MedicationTimingRule(
     anchor: 'any',

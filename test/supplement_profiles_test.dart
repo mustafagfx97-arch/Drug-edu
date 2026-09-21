@@ -13,16 +13,20 @@ void main() {
     expect(d3.patient.howToUseAr, contains('وجبة'));
   });
 
-  test('calcium salts remain separate profiles', () {
-    final carbonate = supplementProfiles.firstWhere(
-      (profile) => profile.id == 'calcium-carbonate',
+  test('calcium salts are consolidated inside one elemental-calcium profile', () {
+    final calcium = supplementProfiles.firstWhere(
+      (profile) => profile.id == 'calcium',
     );
-    final citrate = supplementProfiles.firstWhere(
-      (profile) => profile.id == 'calcium-citrate',
-    );
+    final carbonate =
+        calcium.saltVariants.firstWhere((item) => item.id == 'carbonate');
+    final citrate =
+        calcium.saltVariants.firstWhere((item) => item.id == 'citrate');
 
-    expect(carbonate.howToTakeEn.toLowerCase(), contains('with food'));
-    expect(citrate.howToTakeEn.toLowerCase(), contains('with or without food'));
+    expect(carbonate.administration.toLowerCase(), contains('with food'));
+    expect(
+      citrate.administration.toLowerCase(),
+      contains('with or without food'),
+    );
   });
   test('supplement expansion stays complete and source locked', () {
     expect(supplementProfiles.length, greaterThanOrEqualTo(26));
@@ -63,14 +67,21 @@ void main() {
     expect(b6.patient.importantAr, contains('أعصاب'));
     expect(supplementDecisionFor('vitamin-b6')!.safetyLock, contains('100 mg'));
 
-    final magnesiumOxide = supplementProfiles.firstWhere(
-      (profile) => profile.id == 'magnesium-oxide',
+    final magnesium = supplementProfiles.firstWhere(
+      (profile) => profile.id == 'magnesium',
     );
-    final magnesiumCitrate = supplementProfiles.firstWhere(
-      (profile) => profile.id == 'magnesium-citrate',
+    final magnesiumOxide =
+        magnesium.saltVariants.firstWhere((item) => item.id == 'oxide');
+    final magnesiumCitrate =
+        magnesium.saltVariants.firstWhere((item) => item.id == 'citrate');
+    expect(
+      magnesiumOxide.practicalUse.toLowerCase(),
+      contains('less bioavailable'),
     );
-    expect(magnesiumOxide.formulationAlert, contains('less bioavailable'));
-    expect(magnesiumCitrate.formulationAlert, contains('elemental magnesium'));
+    expect(
+      magnesiumCitrate.elementalAmount.toLowerCase(),
+      contains('elemental magnesium'),
+    );
 
     final omega3 = supplementProfiles.firstWhere(
       (profile) => profile.id == 'omega-3',

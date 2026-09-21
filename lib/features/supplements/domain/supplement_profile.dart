@@ -1,5 +1,31 @@
 import '../../../core/models/medication.dart';
 
+class SupplementSaltVariant {
+  const SupplementSaltVariant({
+    required this.id,
+    required this.name,
+    required this.elementalAmount,
+    required this.practicalUse,
+    required this.administration,
+    required this.cautions,
+    required this.source,
+    this.formula = '',
+    this.elementalPercent = '',
+    this.example = '',
+  });
+
+  final String id;
+  final String name;
+  final String formula;
+  final String elementalAmount;
+  final String elementalPercent;
+  final String example;
+  final String practicalUse;
+  final String administration;
+  final String cautions;
+  final String source;
+}
+
 class SupplementProfile {
   const SupplementProfile({
     required this.id,
@@ -15,6 +41,8 @@ class SupplementProfile {
     this.useBasis = 'Individualized',
     this.monitoringEn = '',
     this.isPediatric = false,
+    this.saltVariants = const [],
+    this.searchTerms = const [],
   });
 
   final String id;
@@ -30,4 +58,6 @@ class SupplementProfile {
   final PatientCounselingData patient;
   final String sourceLabel;
   final bool isPediatric;
+  final List<SupplementSaltVariant> saltVariants;
+  final List<String> searchTerms;
 }

@@ -30,7 +30,13 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
       return profile.name.toLowerCase().contains(q) ||
           profile.subtitle.toLowerCase().contains(q) ||
           profile.group.toLowerCase().contains(q) ||
-          profile.formulation.toLowerCase().contains(q);
+          profile.formulation.toLowerCase().contains(q) ||
+          profile.searchTerms.any((item) => item.toLowerCase().contains(q)) ||
+          profile.saltVariants.any(
+            (item) =>
+                item.name.toLowerCase().contains(q) ||
+                item.formula.toLowerCase().contains(q),
+          );
     }).toList();
   }
 

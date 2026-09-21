@@ -1092,6 +1092,95 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'يمكن في وقت ثابت، لكن اجمع B6 من كل المكملات ولا تجعل الجرعات العالية المزمنة تلقائية.',
     source: 'NIH ODS Vitamin B6',
   ),
+  'calcium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'التوقيت يعتمد على الملح: calcium carbonate مع الطعام، وcalcium citrate يمكن مع الطعام أو بدونه. افصل عن الأدوية المتداخلة حسب تعليماتها.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Calcium',
+  ),
+  'magnesium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن ربطه بالطعام إذا سبب انزعاجًا؛ الملح والهدف (مكمل أم laxative/antacid) يغيران التعليمات، لذلك لا يُجدول تلقائيًا دون تحديد المنتج.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Magnesium',
+  ),
+  'copper': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن في وقت ثابت حسب المنتج؛ راجع جرعات الزنك العالية لأنها قد تقلل امتصاص النحاس.',
+    source: 'NIH ODS Copper',
+  ),
+  'chromium': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'لا يحتاج توقيتًا خاصًا عادةً؛ لا تغيّر أدوية السكري أو توقيتها بسبب chromium من نفسك.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Chromium',
+  ),
+  'manganese': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'إذا كان ضمن multivitamin/mineral خذه حسب تعليمات المنتج؛ لا توجد حاجة روتينية لجرعة منفردة عالية.',
+    source: 'NIH ODS Manganese',
+  ),
+  'phosphorus': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'إذا كان phosphate علاجيًا فاتبع وصفة الملح المحدد؛ لا يحول التطبيق بين sodium وpotassium phosphate تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Phosphorus + product labeling',
+  ),
+  'vitamin-b1-thiamin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه في الجرعات الغذائية المعتادة؛ علاج النقص الشديد له خطة طبية منفصلة.',
+    source: 'NIH ODS Thiamin',
+  ),
+  'vitamin-b2-riboflavin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه حسب المنتج.',
+    source: 'NIH ODS Riboflavin',
+  ),
+  'vitamin-b3-niacin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'التوقيت يعتمد على الشكل والجرعة؛ nicotinic acid العلاجي عالي الجرعة يحتاج خطة خاصة ولا يُجدول كمكمل اعتيادي.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Niacin',
+  ),
+  'vitamin-b5-pantothenic-acid': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن في وقت ثابت حسب المنتج ومع الطعام إذا أزعج المعدة.',
+    source: 'NIH ODS Pantothenic Acid',
+  ),
+  'choline': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'يمكن مع الطعام أو بدونه؛ اربطه بوجبة ثابتة إذا كان ذلك يساعد على الالتزام.',
+    source: 'NIH ODS Choline',
+  ),
+  'creatine-monohydrate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'الانتظام اليومي أهم من ساعة محددة؛ يمكن ربطه بوجبة أو وقت التدريب، ولا يلزم loading للوصول إلى التشبع مع الاستمرار.',
+    source: 'Evidence-based sports nutrition consensus',
+  ),
+  'melatonin': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'التوقيت يعتمد على الهدف (أرق أم تعديل الساعة البيولوجية)؛ لا يفترض التطبيق أن كل استعمال يعني نفس وقت النوم.',
+    autoScheduleSafe: false,
+    source: 'NCCIH Melatonin',
+  ),
+  'probiotics': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'اتبع تعليمات السلالة/المنتج المحدد؛ لا توجد قاعدة توقيت واحدة لكل probiotics.',
+    autoScheduleSafe: false,
+    source: 'NCCIH Probiotics + product-specific evidence',
+  ),
+  'coenzyme-q10': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'يفضل مع وجبة تحتوي بعض الدهون لتحسين الامتصاص.',
+    source: 'NCCIH Coenzyme Q10',
+  ),
+  'molybdenum': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'لا يحتاج توقيتًا خاصًا عادةً؛ غالبًا يكون ضمن multivitamin/mineral ولا توجد حاجة روتينية لمكمل منفرد.',
+    source: 'NIH ODS Molybdenum',
+  ),
 };
 
 

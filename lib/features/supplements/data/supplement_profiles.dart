@@ -1,7 +1,8 @@
 import '../../../core/models/medication.dart';
 import '../domain/supplement_profile.dart';
+import 'supplement_profiles_expanded.dart';
 
-const supplementProfiles = <SupplementProfile>[
+const _legacySupplementProfiles = <SupplementProfile>[
   SupplementProfile(
     id: 'vitamin-d3',
     group: 'Vitamins',
@@ -986,4 +987,22 @@ const supplementProfiles = <SupplementProfile>[
     ),
   ),
 
+];
+
+const _replacedSupplementIds = <String>{
+  'oral-iron-salts',
+  'calcium-carbonate',
+  'calcium-citrate',
+  'magnesium-gluconate',
+  'magnesium-citrate',
+  'magnesium-oxide',
+  'zinc',
+  'potassium-supplements',
+};
+
+final supplementProfiles = <SupplementProfile>[
+  ...expandedSupplementProfiles,
+  ..._legacySupplementProfiles.where(
+    (profile) => !_replacedSupplementIds.contains(profile.id),
+  ),
 ];

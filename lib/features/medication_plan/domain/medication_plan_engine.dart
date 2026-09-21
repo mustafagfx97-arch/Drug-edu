@@ -725,6 +725,9 @@ class MedicationPlanEngine {
     final ciproMinerals = ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-citrate') ||
+        ids.contains('magnesium-oxide') ||
         ids.contains('zinc') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
@@ -743,6 +746,9 @@ class MedicationPlanEngine {
         ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-citrate') ||
+        ids.contains('magnesium-oxide') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
     if (ids.contains('alendronate') && alendronateMorningConflict) {
@@ -859,7 +865,7 @@ class MedicationPlanEngine {
       );
     }
 
-        final hasRasDrug = ids.contains('lisinopril') ||
+    final hasRasDrug = ids.contains('lisinopril') ||
         ids.contains('losartan') ||
         ids.contains('valsartan') ||
         ids.contains('sacubitril-valsartan');

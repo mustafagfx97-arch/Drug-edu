@@ -4785,6 +4785,241 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Norepinephrine',
+    population: 'PICU',
+    formulation:
+        'Norepinephrine Bitartrate Injection concentrate 1 mg/mL. ASHP Standardize 4 Safety pediatric continuous-infusion standards list 16, 32 and 64 mcg/mL.',
+    reconstitution:
+        'None. The stock is 1 mg/mL (1000 mcg/mL) and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 1000 mcg/mL. ASHP S4S pediatric standard final concentrations: 16, 32 or 64 mcg/mL.',
+    furtherDilution:
+        'Use 16, 32 or 64 mcg/mL only when it matches the validated PICU drug library/compounding protocol. The conventional manufacturer concentrate label uses a much lower adult dilution pathway; do not reuse that rate table or beyond-use assumptions for S4S concentrations.',
+    allowedDiluents:
+        'Use the exact PICU validated diluent for the selected standardized concentration. The current concentrate label supports dextrose-containing diluents for its labeled pathway and does not establish every S4S pediatric admixture.',
+    administration:
+        'Continuous IV infusion with an infusion pump, preferably through a large vein, with close blood-pressure, rhythm, perfusion and infusion-site monitoring. Dose/rate selection remains a PICU clinical order.',
+    stability:
+        'Use the validated sterile-compounding BUD for the selected 16/32/64 mcg/mL PICU preparation. Do not automatically transfer stability from the manufacturer’s conventional lower-concentration recipe.',
+    incompatibilities:
+        'Avoid iron salts, alkalis and oxidizing agents. Whole blood or plasma should be administered separately. Verify exact Y-site compatibility for the final PICU concentration.',
+    criticalLocks: [
+      'Concentrate lock: 1 mg/mL stock MUST be diluted.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 16, 32 and 64 mcg/mL.',
+      'Calculator lock: calculator converts an already prescribed norepinephrine amount to stock mL only; it never chooses final concentration or rate.',
+      'Compatibility/BUD lock: local validated PICU compounding data governs the selected standardized concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · Norepinephrine Bitartrate Injection concentrate 1 mg/mL · effective Aug 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-norepinephrine-1mg-ml',
+        label: 'Norepinephrine concentrate · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Stock withdrawal only. ASHP pediatric final standards: 16/32/64 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Epinephrine',
+    population: 'PICU',
+    formulation:
+        'Hikma Epinephrine Injection, USP 1 mg/mL single-dose ampule. ASHP S4S pediatric continuous-infusion standards list 10, 20 and 40 mcg/mL.',
+    reconstitution:
+        'None. The stock is 1 mg/mL (1000 mcg/mL) and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 1000 mcg/mL. ASHP S4S pediatric standard final concentrations: 10, 20 or 40 mcg/mL.',
+    furtherDilution:
+        'Prepare 10, 20 or 40 mcg/mL only through the validated PICU drug-library/compounding protocol. The manufacturer septic-shock label prepares 1 mcg/mL in dextrose-containing fluid for adults; do not reuse that adult concentration/rate table as the PICU standard.',
+    allowedDiluents:
+        'Current product labeling supports D5W or D5/0.9% NaCl for its labeled IV infusion pathway and does not recommend 0.9% NaCl alone. Any alternate PICU S4S admixture must have independent validated compatibility/stability support.',
+    administration:
+        'Continuous IV infusion through a controlled pump, preferably via a large vein, with close hemodynamic and infusion-site monitoring. Dose/rate selection remains a PICU clinical decision.',
+    stability:
+        'Use the validated PICU compounding BUD for 10/20/40 mcg/mL preparations. Do not transfer the adult manufacturer recipe’s stability to higher pediatric concentrations.',
+    incompatibilities:
+        'Whole blood or plasma should be administered separately. Protect the final admixture from unverified alkaline/oxidizing exposure and verify exact shared-line compatibility.',
+    criticalLocks: [
+      'Concentrate lock: 1 mg/mL stock MUST be diluted for continuous IV infusion.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 10, 20 and 40 mcg/mL.',
+      'Adult-label lock: the manufacturer adult septic-shock recipe is 1 mcg/mL and is not the PICU standard.',
+      'Calculator lock: calculator reports stock withdrawal only; it does not choose PICU dose, final concentration or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hikma Epinephrine Injection, USP 1 mg/mL · revised 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-epinephrine-1mg-ml',
+        label: 'Epinephrine stock · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Stock withdrawal only. ASHP pediatric final standards: 10/20/40 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dopamine',
+    population: 'PICU',
+    formulation:
+        'Hospira Dopamine Hydrochloride Injection concentrate 40 mg/mL (200 mg/5 mL or 400 mg/10 mL). ASHP S4S pediatric continuous-infusion standards list 800, 1600 and 3200 mcg/mL.',
+    reconstitution:
+        'None. The 40 mg/mL (40,000 mcg/mL) stock MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 40 mg/mL. ASHP S4S pediatric standard final concentrations: 800, 1600 or 3200 mcg/mL.',
+    furtherDilution:
+        'Select the final concentration only from the validated PICU drug library/protocol. Current product labeling directly supports 800 and 1600 mcg/mL examples and permits higher concentrations for fluid restriction; the calculator must not choose concentration or bag volume.',
+    allowedDiluents:
+        'Current Hospira label supports 0.9% Sodium Chloride, D5W, D5/0.9% NaCl, D5/0.45% NaCl, D5/Lactated Ringer’s, Sodium Lactate 1/6 molar, or Lactated Ringer’s.',
+    administration:
+        'Continuous IV infusion through an infusion pump, preferably via a large vein, with close hemodynamic and infusion-site monitoring.',
+    stability:
+        'The current label states the listed diluted solutions are stable for 24 hours. Use the stricter validated PICU sterile-compounding BUD when applicable.',
+    incompatibilities:
+        'Do not administer through the same infusion set with sodium bicarbonate/other alkalinizing substances, blood, or iron salts. Do not add unverified medications to the dopamine infusion.',
+    criticalLocks: [
+      'Concentrate lock: 40 mg/mL stock MUST be diluted.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 800, 1600 and 3200 mcg/mL.',
+      'Bicarbonate lock: sodium bicarbonate/alkaline solutions can inactivate dopamine.',
+      'Calculator lock: calculator converts prescribed drug amount to stock mL only.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Dopamine Hydrochloride Injection 40 mg/mL · updated May 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-dopamine-40mg-ml',
+        label: 'Dopamine concentrate · 40 mg/mL',
+        unit: 'mg',
+        concentration: 40,
+        note:
+            'Stock withdrawal only. ASHP pediatric final standards: 800/1600/3200 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dobutamine',
+    population: 'PICU',
+    formulation:
+        'Dobutamine Injection, USP 250 mg/20 mL = 12.5 mg/mL single-dose vial. ASHP S4S pediatric continuous-infusion standards list 1000, 2000 and 4000 mcg/mL.',
+    reconstitution:
+        'None. The 12.5 mg/mL stock is a liquid concentrate and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 12.5 mg/mL = 12,500 mcg/mL. ASHP S4S pediatric standard final concentrations: 1000, 2000 or 4000 mcg/mL.',
+    furtherDilution:
+        'The current label requires dilution to a total volume of at least 50 mL. Choose the S4S final concentration only when it matches the PICU drug library and fluid plan. Do not let the calculator invent final concentration or bag size.',
+    allowedDiluents:
+        'Current labeling supports multiple fluids including D5W, D5/0.45% NaCl, D5/0.9% NaCl, D10W, Lactated Ringer’s, D5/LR, 0.9% Sodium Chloride and Sodium Lactate; use the exact PICU-approved diluent.',
+    administration:
+        'Continuous IV infusion with pump and hemodynamic monitoring. Dose/rate selection and titration remain PICU clinical decisions.',
+    stability:
+        'Current product labeling states diluted IV solutions should be used within 24 hours.',
+    incompatibilities:
+        'Do not add to 5% Sodium Bicarbonate or other strongly alkaline solutions. Do not mix with other drugs in the same solution without established compatibility.',
+    criticalLocks: [
+      'Concentrate lock: 12.5 mg/mL stock MUST be diluted.',
+      'Minimum-volume lock: current label requires a total diluted volume of at least 50 mL.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 1000, 2000 and 4000 mcg/mL.',
+      'Calculator lock: calculator reports stock withdrawal only; it does not choose concentration, volume or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Dobutamine Injection, USP 12.5 mg/mL · current May 2026 labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-dobutamine-12_5mg-ml',
+        label: 'Dobutamine stock · 12.5 mg/mL',
+        unit: 'mg',
+        concentration: 12.5,
+        note:
+            'Stock withdrawal only. ASHP pediatric final standards: 1000/2000/4000 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Fentanyl',
+    population: 'PICU',
+    formulation:
+        'Fentanyl Citrate Injection preservative-free single-dose solution containing fentanyl 50 mcg/mL. ASHP S4S pediatric continuous-infusion standards list 10 and 50 mcg/mL.',
+    reconstitution:
+        'None. The exact stock is ready at 50 mcg/mL.',
+    resultingConcentration:
+        'Stock 50 mcg/mL. ASHP S4S pediatric standard final concentrations: 10 or 50 mcg/mL.',
+    furtherDilution:
+        'The 50 mcg/mL S4S standard can use the exact preservative-free stock undiluted. Preparing 10 mcg/mL requires a validated PICU sterile-compounding recipe and compatible diluent; the stock label alone does not establish one universal continuous-infusion recipe.',
+    allowedDiluents:
+        'No diluent is needed for the 50 mcg/mL standard. For 10 mcg/mL, use only the institution’s validated compatibility/stability recipe.',
+    administration:
+        'Continuous IV infusion via controlled pump with continuous respiratory/cardiorespiratory monitoring and opioid reversal/resuscitation capability available. Dose/rate remain PICU orders.',
+    stability:
+        'The stock product is single-dose and preservative-free; discard unused contents and protect from light. Compounded 10 mcg/mL BUD must come from the validated PICU preparation reference.',
+    incompatibilities:
+        'Do not infer Y-site/admixture compatibility from the stock label; verify the exact final concentration, diluent and co-infused drug.',
+    criticalLocks: [
+      'Unit lock: fentanyl is handled in mcg, not mg.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 10 and 50 mcg/mL.',
+      'Dilution lock: 10 mcg/mL requires a validated compounding recipe; do not invent it from the 50 mcg/mL stock.',
+      'Calculator lock: calculator converts prescribed mcg to stock mL only.',
+    ],
+    sourceLabel:
+        'DailyMed · Fentanyl Citrate Injection 50 mcg/mL preservative-free · current labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-fentanyl-50mcg-ml',
+        label: 'Fentanyl preservative-free · 50 mcg/mL',
+        unit: 'mcg',
+        concentration: 50,
+        note:
+            'Exact stock concentration. 50 mcg/mL is also an ASHP pediatric standard; 10 mcg/mL requires validated dilution.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Morphine',
+    population: 'PICU',
+    formulation:
+        'Hospira preservative-free Morphine Sulfate Injection single-dose vial available as 10 mg/10 mL = 1 mg/mL. ASHP S4S pediatric continuous-infusion standards are 0.2, 0.5 and 1 mg/mL.',
+    reconstitution:
+        'None. The exact preservative-free stock is ready at 1 mg/mL.',
+    resultingConcentration:
+        'Stock 1 mg/mL. ASHP S4S pediatric standard final concentrations: 0.2, 0.5 or 1 mg/mL.',
+    furtherDilution:
+        'The 1 mg/mL S4S standard can use the exact preservative-free 1 mg/mL product undiluted when locally approved. Preparing 0.2 or 0.5 mg/mL requires a validated PICU sterile-compounding recipe; final concentration and volume are not selected by the calculator.',
+    allowedDiluents:
+        'For diluted 0.2 or 0.5 mg/mL preparations, use the exact institution-approved compatibility/stability recipe. Do not import neuraxial preparation instructions into this PICU IV profile.',
+    administration:
+        'Continuous IV infusion through a controlled pump with close respiratory/hemodynamic monitoring and resuscitation capability immediately available. Dose/rate and weaning plan remain clinical orders.',
+    stability:
+        'Use exact product storage for the preservative-free stock and the validated PICU BUD for any 0.2/0.5 mg/mL compounded infusion.',
+    incompatibilities:
+        'Do not infer admixture/Y-site compatibility; verify the exact final concentration, diluent and co-infused medication.',
+    criticalLocks: [
+      'Preservative lock: use preservative-free product for this PICU continuous-infusion pathway.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 0.2, 0.5 and 1 mg/mL.',
+      'Route lock: this is an IV continuous-infusion profile; do not transfer neuraxial preparation instructions.',
+      'Calculator lock: calculator uses the exact 1 mg/mL stock only and does not choose final concentration or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira preservative-free Morphine Sulfate Injection 10 mg/10 mL (1 mg/mL) · Apr 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-morphine-pf-1mg-ml',
+        label: 'Preservative-free morphine · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Exact stock concentration; also an ASHP pediatric standard. 0.2/0.5 mg/mL require validated PICU dilution.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

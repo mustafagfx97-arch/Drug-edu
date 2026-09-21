@@ -1158,6 +1158,71 @@ class MedicationPlanEngine {
       );
     }
 
+    final cefdinirMinerals = ids.contains('oral-iron-salts') ||
+        ids.contains('multivitamin-mineral') ||
+        ids.contains('prenatal-combination');
+    if (ids.contains('cefdinir-pediatric-suspension') && cefdinirMinerals) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Cefdinir + iron',
+          message:
+              'مكملات الحديد قد تقلل امتصاص cefdinir. افصل cefdinir ساعتين على الأقل قبل/بعد الحديد أو multivitamin/prenatal المحتوي على الحديد. Iron-fortified infant formula مستثنى في الملصق الحالي.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('ibandronate-monthly') &&
+        (ids.contains('oral-iron-salts') ||
+            ids.contains('calcium-carbonate') ||
+            ids.contains('calcium-citrate') ||
+            ids.contains('magnesium-gluconate') ||
+            ids.contains('zinc') ||
+            ids.contains('multivitamin-mineral') ||
+            ids.contains('prenatal-combination'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Ibandronate + minerals',
+          message:
+              'ibandronate الشهري يجب أن يؤخذ وحده مع ماء عادي ثم الانتظار 60 دقيقة قبل أي calcium/iron/magnesium/zinc أو دواء فموي آخر. لا تستخدم قاعدة 30 دقيقة.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final hasBleedingRiskMedicine = ids.contains('warfarin') ||
+        ids.contains('apixaban') ||
+        ids.contains('rivaroxaban') ||
+        ids.contains('dabigatran') ||
+        ids.contains('enoxaparin') ||
+        ids.contains('clopidogrel');
+    if (ids.contains('bismuth-subsalicylate') && hasBleedingRiskMedicine) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Bismuth subsalicylate + bleeding-risk therapy',
+          message:
+              'bismuth subsalicylate يحتوي salicylate. مع anticoagulant/antiplatelet ترتفع أهمية مراجعة النزف والبدائل؛ فصل وقت الجرعات لا يلغي التأثير.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    final hasJakInhibitor =
+        ids.contains('upadacitinib') || ids.contains('tofacitinib');
+    final hasBiologicDmard = ids.contains('etanercept') ||
+        ids.contains('adalimumab') ||
+        ids.contains('secukinumab');
+    if (hasJakInhibitor && hasBiologicDmard) {
+      alerts.add(
+        const PlanAlert(
+          title: 'JAK inhibitor + biologic immunomodulator',
+          message:
+              'الجمع بين JAK inhibitor مثل upadacitinib/tofacitinib وبين biologic DMARD مثل etanercept/adalimumab/secukinumab ليس ترتيبًا يحل بفصل الوقت ويحتاج مراجعة اختصاصية بسبب زيادة خطر العدوى/المناعة.',
+          isCritical: true,
+        ),
+      );
+    }
+
     if (ids.contains('fexofenadine')) {
       alerts.add(
         const PlanAlert(

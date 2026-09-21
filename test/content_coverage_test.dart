@@ -1141,11 +1141,14 @@ void main() {
     expect(amiodaroneIv.administration, contains('150 mg over 10 minutes'));
     expect(amiodaroneIv.criticalLocks.join(' '), contains('central venous'));
 
+    final nicuBicarbonate =
+        findIvPreparationProfile('Sodium bicarbonate', 'NICU');
+    expect(nicuBicarbonate, isNotNull);
+    expect(nicuBicarbonate!.formulation, contains('4.2%'));
+    expect(nicuBicarbonate.calculatorVariants.single.concentration, 0.5);
     expect(
-      findIvPreparationProfile('Sodium bicarbonate', 'NICU'),
-      isNull,
-      reason:
-          'Unsourced legacy NICU sodium-bicarbonate recipe must remain locked.',
+      nicuBicarbonate.criticalLocks.join(' '),
+      contains('8.4% = 1 mEq/mL'),
     );
   });
 

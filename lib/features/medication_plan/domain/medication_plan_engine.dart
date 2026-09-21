@@ -722,6 +722,9 @@ class MedicationPlanEngine {
     final ciproMinerals = ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-oxide') ||
+        ids.contains('magnesium-citrate') ||
         ids.contains('zinc') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
@@ -740,6 +743,9 @@ class MedicationPlanEngine {
         ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-oxide') ||
+        ids.contains('magnesium-citrate') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
     if (ids.contains('alendronate') && alendronateMorningConflict) {
@@ -974,6 +980,8 @@ class MedicationPlanEngine {
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
         ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-oxide') ||
+        ids.contains('magnesium-citrate') ||
         ids.contains('zinc') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
@@ -989,7 +997,9 @@ class MedicationPlanEngine {
     }
 
     if (ids.contains('levothyroxine') &&
-        ids.contains('magnesium-gluconate')) {
+        (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-oxide') ||
+            ids.contains('magnesium-citrate'))) {
       alerts.add(
         const PlanAlert(
           title: 'Levothyroxine + magnesium',
@@ -1090,6 +1100,8 @@ class MedicationPlanEngine {
             ids.contains('calcium-carbonate') ||
             ids.contains('calcium-citrate') ||
             ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-oxide') ||
+            ids.contains('magnesium-citrate') ||
             ids.contains('multivitamin-mineral') ||
             ids.contains('prenatal-combination'))) {
       alerts.add(
@@ -1255,6 +1267,45 @@ class MedicationPlanEngine {
           message:
               'الجمع بين JAK inhibitor مثل upadacitinib/tofacitinib وبين biologic DMARD مثل etanercept/adalimumab/secukinumab ليس ترتيبًا يحل بفصل الوقت ويحتاج مراجعة اختصاصية بسبب زيادة خطر العدوى/المناعة.',
           isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('potassium-supplement') &&
+        (ids.contains('spironolactone') ||
+            ids.contains('lisinopril') ||
+            ids.contains('losartan') ||
+            ids.contains('valsartan') ||
+            ids.contains('sacubitril-valsartan'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Potassium supplement + potassium-raising therapy',
+          message:
+              'مكمل potassium مع spironolactone أو ACEI/ARB/ARNI قد يرفع خطر فرط البوتاسيوم، خصوصًا مع قصور الكلى. فصل وقت الجرعات لا يمنع التداخل؛ راجع K⁺ ووظائف الكلى وبدائل الملح قبل الاستمرار.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('vitamin-d2') &&
+        (ids.contains('vitamin-d3') ||
+            ids.contains('pediatric-vitamin-d'))) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Vitamin D duplication',
+          message:
+              'Vitamin D2 وD3 كلاهما يدخلان في إجمالي vitamin D. راجع مجموع IU/mcg والسبب والجدول قبل الجمع، خصوصًا إذا كانت إحدى الجرعات علاجية أو أسبوعية؛ تغيير وقت الجرعات لا يمنع التكرار.',
+          isCritical: true,
+        ),
+      );
+    }
+
+    if (ids.contains('omega-3-epa-dha') && hasAnticoagulant) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Omega-3 + anticoagulant review',
+          message:
+              'الجرعات العالية من EPA/DHA قد تؤثر في الصفائح. معظم البيانات لا تُظهر زيادة كبيرة في النزف عند الجرعات المعتادة، لكن مع anticoagulant راجع جرعة EPA+DHA وعلامات النزف، ومع warfarin التزم بخطة INR.',
         ),
       );
     }

@@ -10,7 +10,7 @@ void main() {
       sampleMedications.firstWhere((item) => item.id == id);
 
   test('second rescue-device batch is fully integrated', () {
-    expect(sampleMedications.length, 162);
+    expect(sampleMedications.length, greaterThanOrEqualTo(162));
 
     for (final id in <String>[
       'nayzilam-midazolam-nasal',

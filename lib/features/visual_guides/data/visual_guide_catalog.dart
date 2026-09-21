@@ -472,6 +472,113 @@ const visualGuideCatalog = <VisualGuideData>[
         'neffy: لا تختبر الجهاز. أدخل الفوهة كاملة واجعلها مستقيمة داخل الأنف، اضغط مرة واحدة ولا تشم أثناء أو بعد الرش. إذا احتجت جرعة ثانية فهي بجهاز جديد في نفس فتحة الأنف ابتداءً من 5 دقائق بعد الأولى.',
   ),
 
+
+  VisualGuideData(
+    id: 'tresiba-flextouch',
+    title: 'TRESIBA FlexTouch U-100 / U-200',
+    subtitle: 'No dose conversion; prime 2 units; hold for a slow 6-count.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Confirm TRESIBA and check whether the pen is U-100 or U-200.',
+      'Attach a new needle and prime the pen with 2 units.',
+      'Dial the prescribed number of insulin units directly; do not convert the dose.',
+      'Inject subcutaneously and press the dose button until the counter returns to 0.',
+      'Keep the needle in the skin and slowly count to 6 before removing it.',
+    ],
+    mistakes: [
+      'Converting units between U-100 and U-200.',
+      'Removing the needle before the slow 6-count is complete.',
+      'Withdrawing insulin from a U-200 pen with a syringe.',
+      'Storing the pen with a needle attached.',
+    ],
+    patientSummaryAr:
+        'TRESIBA U-100 وU-200 يعرضان عدد الوحدات الحقيقي على القلم؛ لا تعمل أي تحويل. اعمل prime بـ2 units، اضبط الجرعة الموصوفة، وبعد رجوع العداد إلى 0 أبقِ الإبرة داخل الجلد وعد ببطء إلى 6.',
+  ),
+  VisualGuideData(
+    id: 'humulin-n-kwikpen',
+    title: 'HUMULIN N KwikPen',
+    subtitle: 'Cloudy NPH insulin: roll 10 + invert 10 before attaching the needle.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Before attaching a needle, gently roll the pen between the hands 10 times.',
+      'Invert the pen up and down 10 times.',
+      'Confirm the insulin looks uniformly white and cloudy with no lumps or particles.',
+      'Attach a new needle and prime with 2 units before the injection.',
+      'Inject the prescribed dose and keep the dose knob pressed while slowly counting to 5 before removing the needle.',
+    ],
+    mistakes: [
+      'Skipping resuspension or shaking the pen vigorously.',
+      'Attaching the needle before mixing.',
+      'Using the insulin if it remains clear or contains lumps/particles.',
+      'Skipping the 2-unit prime or removing the needle before the 5-count.',
+    ],
+    patientSummaryAr:
+        'HUMULIN N عكر ويحتاج خلطًا لطيفًا قبل كل جرعة: roll عشر مرات ثم invert عشر مرات قبل تركيب الإبرة. بعدها prime بـ2 units، والإنسولين الصحيح يكون أبيض وعكرًا بشكل متجانس.',
+  ),
+  VisualGuideData(
+    id: 'humulin-r-u100-vial',
+    title: 'HUMULIN R U-100 vial',
+    subtitle: 'Clear regular insulin; U-100 syringe; approximately 30 minutes before a meal.',
+    icon: Icons.medication_liquid_outlined,
+    steps: [
+      'Confirm the vial says HUMULIN R U-100 and the insulin is clear and colorless.',
+      'Use a U-100 insulin syringe only for vial dosing.',
+      'Draw the exact prescribed number of units using the U-100 scale.',
+      'Inject subcutaneously at the site taught by the care team and rotate sites.',
+      'For the usual subcutaneous regimen, take the prescribed dose about 30 minutes before the planned meal.',
+    ],
+    mistakes: [
+      'Confusing U-100 with HUMULIN R U-500.',
+      'Using the wrong syringe type.',
+      'Injecting and then delaying or skipping the meal.',
+      'Using cloudy, colored or particulate regular insulin.',
+    ],
+    patientSummaryAr:
+        'HUMULIN R U-100 يجب أن يكون صافيًا وعديم اللون ويُسحب فقط بـU-100 insulin syringe. الجرعة تحت الجلد ترتبط عادة بالوجبة وتُعطى قبلها بنحو 30 دقيقة حسب الخطة.',
+  ),
+  VisualGuideData(
+    id: 'humulin-70-30-kwikpen',
+    title: 'HUMULIN 70/30 KwikPen',
+    subtitle: 'Fixed premix: roll 10 + invert 10, prime 2, hold 5, meal in 30–45 minutes.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Before attaching a needle, gently roll the pen 10 times.',
+      'Invert the pen 10 times until the suspension is uniformly white and cloudy.',
+      'Attach a new needle and prime with 2 units.',
+      'Dial and inject the prescribed dose; keep the dose knob pressed and slowly count to 5 before removing the needle.',
+      'Follow the prescribed meal plan; current labeling places the injection approximately 30–45 minutes before the meal.',
+    ],
+    mistakes: [
+      'Skipping the mixing step.',
+      'Trying to change the 70:30 ratio or add another insulin to the pen.',
+      'Injecting without a meal plan or delaying the meal after dosing.',
+      'Keeping an in-use KwikPen longer than 10 days.',
+    ],
+    patientSummaryAr:
+        'HUMULIN 70/30 خليط ثابت وعكر: roll عشر مرات + invert عشر مرات، ثم prime بـ2 units. بعد الحقن عد ببطء إلى 5، وتكون الجرعة عادة قبل الوجبة بـ30–45 دقيقة حسب الوصفة.',
+  ),
+  VisualGuideData(
+    id: 'humulin-r-u500-device',
+    title: 'HUMULIN R U-500',
+    subtitle: 'Five-times-concentrated insulin; KwikPen and vial require different locked devices.',
+    icon: Icons.warning_amber_rounded,
+    steps: [
+      'Verify the label says U-500 (500 units/mL) before every injection.',
+      'KwikPen: prime with 5 units, then dial the prescribed insulin units directly; do not convert or count clicks.',
+      'KwikPen: inject and keep the dose knob pressed while slowly counting to 5; never withdraw pen insulin with a syringe.',
+      'Vial: use only a dedicated U-500 insulin syringe and read the prescribed units directly on that syringe.',
+      'Follow the prescribed meal schedule; current labeling generally uses U-500 about 30 minutes before meals.',
+    ],
+    mistakes: [
+      'Using a U-100, tuberculin or allergy syringe with a U-500 vial.',
+      'Converting the prescribed units or counting pen clicks.',
+      'Drawing insulin out of the U-500 KwikPen with a syringe.',
+      'Mixing or diluting U-500 insulin.',
+    ],
+    patientSummaryAr:
+        'U-500 تركيزه خمسة أضعاف U-100. في KwikPen اضبط الوحدات الموصوفة مباشرة بدون تحويل وprime بـ5 units؛ لا تسحب من القلم بسرنجة. إذا كان فيال U-500 استخدم فقط U-500 insulin syringe المخصصة.',
+  ),
+
 ];
 
 
@@ -519,6 +626,11 @@ const medicationVisualGuideIds = <String, List<String>>{
   'diastat-acudial-diazepam-rectal': ['diastat-acudial-device'],
   'gvoke-hypopen-glucagon': ['gvoke-hypopen-device'],
   'neffy-epinephrine-nasal': ['neffy-device'],
+  'insulin-degludec-tresiba': ['tresiba-flextouch'],
+  'humulin-n-nph': ['humulin-n-kwikpen'],
+  'humulin-r-u100': ['humulin-r-u100-vial'],
+  'humulin-70-30': ['humulin-70-30-kwikpen'],
+  'humulin-r-u500': ['humulin-r-u500-device'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

@@ -343,6 +343,18 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
         'دواء إنقاذ للحساسية الشديدة/anaphylaxis؛ احتفظ بجهازين صالحين واستبدل الجهاز بعد الاستخدام أو انتهاء الصلاحية.',
   ),
 
+
+  'insulin-degludec-tresiba':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'humulin-n-nph':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'humulin-r-u100':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'humulin-70-30':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'humulin-r-u500':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

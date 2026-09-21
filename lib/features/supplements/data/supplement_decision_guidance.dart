@@ -467,6 +467,18 @@ const supplementDecisionGuidance = <String, SupplementDecisionGuidance>{
     source: 'NCCIH · Coenzyme Q10',
   ),
 
+  'molybdenum': SupplementDecisionGuidance(
+    labPlan:
+        'Routine molybdenum testing is not needed for general supplementation.',
+    useCheckpoint:
+        'Deficiency is extremely uncommon; check whether a multivitamin/mineral already supplies it before considering a stand-alone product.',
+    interactionLock:
+        'No major routine timing separation is required at nutritional doses.',
+    safetyLock:
+        'Avoid high-dose stand-alone use without a defined clinical reason.',
+    source: 'NIH ODS · Molybdenum',
+  ),
+
 };
 
 SupplementDecisionGuidance? supplementDecisionFor(String id) =>

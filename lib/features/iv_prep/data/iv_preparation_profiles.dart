@@ -1846,6 +1846,255 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Potassium phosphate',
+    population: 'General',
+    formulation:
+        'Potassium Phosphates Injection, USP concentrated solution: phosphorus 45 mmol/15 mL (3 mmol/mL) and potassium 66 mEq/15 mL (4.4 mEq/mL), single-dose 15 mL vial.',
+    reconstitution:
+        'None. This is a concentrated liquid, but it MUST be diluted before IV administration.',
+    resultingConcentration:
+        'Stock: phosphorus 3 mmol/mL plus potassium 4.4 mEq/mL.',
+    furtherDilution:
+        'Mandatory. Withdraw the ordered amount and add to 0.9% Sodium Chloride Injection or D5W. For adults and pediatric patients ≥12 years, the label recommends a total volume of 100 or 250 mL. Maximum concentration for adults/≥12 years: peripheral phosphorus 6.8 mmol/100 mL (potassium 10 mEq/100 mL); central phosphorus 18 mmol/100 mL (potassium 26.4 mEq/100 mL).',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection or 5% Dextrose Injection for correction of hypophosphatemia in the cited label pathway.',
+    administration:
+        'IV infusion only after dilution. For adults and pediatric patients ≥12 years, maximum infusion rate is phosphorus 6.8 mmol/hour (potassium 10 mEq/hour) via peripheral catheter and phosphorus 15 mmol/hour (potassium 22 mEq/hour) via central catheter. Continuous ECG monitoring with central administration is recommended above potassium 10 mEq/hour.',
+    stability:
+        'After dilution, the cited product is stable for up to 4 hours at room temperature or 14 days refrigerated at 2–8°C. Single-dose vial: discard unused contents.',
+    incompatibilities:
+        'Do not infuse undiluted or as IV bolus. Because calcium-phosphate precipitation can occur, verify exact compatibility before combining with calcium-containing solutions or parenteral nutrition admixtures.',
+    criticalLocks: [
+      'Concentrate lock: 3 mmol phosphorus/mL also delivers 4.4 mEq potassium/mL; both must be counted.',
+      'Dilution lock: MUST be diluted before IV administration.',
+      'Route lock: peripheral and central maximum concentrations/rates are different.',
+      'Calculator lock: calculator converts ordered phosphorus mmol to stock mL only; it must not choose the replacement dose or final infusion concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · Potassium Phosphates Injection, USP 3 mmol phosphorus/mL + 4.4 mEq potassium/mL · current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'potassium-phosphate-3mmol-ml',
+        label: 'Potassium phosphates concentrate · 3 mmol phosphorus/mL',
+        unit: 'mmol phosphorus',
+        concentration: 3,
+        note:
+            'Each 1 mL also contains 4.4 mEq potassium. Mandatory dilution; final concentration and rate depend on venous access and patient factors.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Phenytoin',
+    population: 'General',
+    formulation:
+        'Phenytoin Sodium Injection, USP ready solution 50 mg/mL; current single-dose presentations include 100 mg/2 mL and 250 mg/5 mL.',
+    reconstitution:
+        'None. Supplied as a ready solution at 50 mg/mL.',
+    resultingConcentration:
+        '50 mg/mL phenytoin sodium.',
+    furtherDilution:
+        'For IV infusion, dilute only in 0.9% Sodium Chloride. Final phenytoin concentration must be at least 5 mg/mL. Start administration immediately after preparation and complete within 1–4 hours.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection only for the cited infusion pathway. Avoid dextrose and dextrose-containing solutions because precipitation can occur.',
+    administration:
+        'Direct slow IV injection or NS infusion. Adult IV rate must not exceed 50 mg/min. Pediatric rate: 1–3 mg/kg/min or 50 mg/min, whichever is slower. Test IV patency with saline before administration and flush with saline afterward. Use an in-line 0.22–0.55 micron filter for infusion.',
+    stability:
+        'Prepared NS infusion must be used immediately and completed within 1–4 hours; do NOT refrigerate the infusion mixture. Single-dose vial: discard unused portion.',
+    incompatibilities:
+        'Avoid dextrose-containing solutions because of poor solubility and precipitation. Do not use solution if hazy or precipitated.',
+    criticalLocks: [
+      'Diluent lock: NS only for infusion; no D5W.',
+      'Concentration lock: final infusion concentration must be ≥5 mg/mL.',
+      'Rate lock: adults ≤50 mg/min; pediatric rate is slower of 1–3 mg/kg/min or 50 mg/min.',
+      'Filter lock: use 0.22–0.55 micron in-line filter for infusion.',
+    ],
+    sourceLabel:
+        'DailyMed · Phenytoin Sodium Injection, USP 50 mg/mL · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'phenytoin-50mg-ml',
+        label: 'Phenytoin sodium · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Stock withdrawal only. If infused, dilute in NS to final concentration ≥5 mg/mL and use immediately.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Valproate',
+    population: 'General',
+    formulation:
+        'Valproate Sodium Injection, USP preservative-free single-dose vial: 500 mg/5 mL = 100 mg/mL.',
+    reconstitution:
+        'None. Supplied as a ready solution at 100 mg/mL.',
+    resultingConcentration:
+        '100 mg/mL valproate sodium injection.',
+    furtherDilution:
+        'Mandatory for the cited IV infusion pathway. Dilute the ordered dose with at least 50 mL of a compatible diluent.',
+    allowedDiluents:
+        'D5W, 0.9% Sodium Chloride Injection, or Lactated Ringer’s Injection.',
+    administration:
+        'IV infusion over 60 minutes. Rapid infusion has been associated with more adverse reactions; experience is limited with infusion times <60 minutes or rates >20 mg/min in patients with epilepsy.',
+    stability:
+        'Physically compatible and chemically stable for at least 24 hours at controlled room temperature in D5W, NS or Lactated Ringer’s when stored in glass or PVC bags. Single-dose vial: discard unused portion.',
+    incompatibilities:
+        'Do not assume compatibility with solutions or medications outside the label-listed diluents without separate evidence.',
+    criticalLocks: [
+      'Infusion lock: for the cited pathway, dilute with at least 50 mL and infuse over 60 minutes.',
+      'Rate lock: avoid automatically converting this to a rapid IV push pathway.',
+      'Calculator lock: calculator reports stock withdrawal volume from 100 mg/mL only; it does not choose dose or final bag volume beyond the label minimum.',
+    ],
+    sourceLabel:
+        'DailyMed · Valproate Sodium Injection, USP 500 mg/5 mL (100 mg/mL) · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'valproate-100mg-ml',
+        label: 'Valproate sodium · 100 mg/mL',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Stock withdrawal only; dilute with at least 50 mL D5W, NS or LR for the cited 60-minute infusion pathway.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Phenobarbital',
+    population: 'General',
+    formulation:
+        'Phenobarbital Sodium Injection, USP single-dose 1 mL vials available as 65 mg/mL or 130 mg/mL; exact cited Nexus product.',
+    reconstitution:
+        'None. Both products are ready solutions for IM or slow IV use.',
+    resultingConcentration:
+        'Two distinct stock concentrations: 65 mg/mL and 130 mg/mL.',
+    furtherDilution:
+        'No routine dilution recipe is established by the cited product label for slow IV injection. Do not invent one.',
+    allowedDiluents:
+        'No routine IV diluent specified for direct slow IV use in the cited label. If dilution is required by local policy, verify exact compatibility separately.',
+    administration:
+        'Slow IV injection only when IV use is clinically required. Adult IV rate must not exceed 60 mg/min. Use a larger vein rather than small hand/wrist veins; monitor blood pressure, respiration and cardiac function, with resuscitation/ventilation capability available.',
+    stability:
+        'Store at 20–25°C. Do not use if discolored or if precipitate is present. Single-dose vial; discard unused portion.',
+    incompatibilities:
+        'Do not assume admixture compatibility. Avoid intra-arterial injection and extravasation; severe tissue injury can occur.',
+    criticalLocks: [
+      'Presentation lock: distinguish 65 mg/mL from 130 mg/mL before calculation.',
+      'Rate lock: adult IV rate must not exceed 60 mg/min.',
+      'Vein lock: avoid small peripheral veins such as dorsum of hand/wrist for IV administration.',
+      'Calculator lock: calculator converts ordered mg to stock mL only; it does not define a dilution recipe.',
+    ],
+    sourceLabel:
+        'DailyMed · Nexus Phenobarbital Sodium Injection, USP 65 mg/mL and 130 mg/mL · revised 2025/current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'phenobarbital-65mg-ml',
+        label: 'Phenobarbital sodium · 65 mg/mL',
+        unit: 'mg',
+        concentration: 65,
+        note:
+            'Exact 65 mg/mL vial only.',
+      ),
+      IvWithdrawalVariant(
+        id: 'phenobarbital-130mg-ml',
+        label: 'Phenobarbital sodium · 130 mg/mL',
+        unit: 'mg',
+        concentration: 130,
+        note:
+            'Exact 130 mg/mL vial only.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Midazolam',
+    population: 'General',
+    formulation:
+        'Preservative-free Midazolam Injection, USP single-dose vials available as 1 mg/mL and 5 mg/mL; this profile deliberately excludes benzyl-alcohol-containing multi-dose products.',
+    reconstitution:
+        'None. Ready solution at either 1 mg/mL or 5 mg/mL; verify the exact vial concentration before calculation.',
+    resultingConcentration:
+        'Stock concentration is product-specific: 1 mg/mL or 5 mg/mL.',
+    furtherDilution:
+        'For adult continuous infusion, the 5 mg/mL formulation is recommended diluted to 0.5 mg/mL with 0.9% Sodium Chloride or D5W. Both 1 mg/mL and 5 mg/mL formulations may be diluted with NS or D5W for other labeled workflows.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection or D5W. At 0.5 mg/mL, label compatibility is documented for up to 24 hours in NS or D5W and up to 4 hours in Lactated Ringer’s.',
+    administration:
+        'IV administration requires slow, individualized titration with continuous respiratory and cardiac monitoring and immediate resuscitation capability. This profile does not select a sedation dose or infusion rate.',
+    stability:
+        'At 0.5 mg/mL, compatible for up to 24 hours in NS or D5W and up to 4 hours in Lactated Ringer’s. Store unopened preservative-free vials at controlled room temperature; discard unused single-dose vial contents.',
+    incompatibilities:
+        'Do not infer compatibility beyond the label-listed diluents/admixtures. Avoid intra-arterial injection and extravasation.',
+    criticalLocks: [
+      'Concentration lock: distinguish 1 mg/mL from 5 mg/mL before calculation.',
+      'Formulation lock: this profile uses preservative-free single-dose products and does not apply benzyl-alcohol-containing multi-dose vial instructions.',
+      'Infusion lock: 5 mg/mL formulation → 0.5 mg/mL for the cited adult continuous-infusion pathway.',
+      'Monitoring lock: respiratory/cardiac monitoring and resuscitation capability are mandatory during IV sedation.',
+    ],
+    sourceLabel:
+        'DailyMed · Preservative-free Midazolam Injection, USP 1 mg/mL and 5 mg/mL · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'midazolam-pf-1mg-ml',
+        label: 'Preservative-free midazolam · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Exact preservative-free 1 mg/mL single-dose vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'midazolam-pf-5mg-ml',
+        label: 'Preservative-free midazolam · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Exact preservative-free 5 mg/mL single-dose vial; adult continuous infusion label pathway dilutes this to 0.5 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Furosemide',
+    population: 'General',
+    formulation:
+        'Furosemide Injection, USP preservative-free single-dose vials at 10 mg/mL; current labeled presentations include 20 mg/2 mL, 40 mg/4 mL and 100 mg/10 mL.',
+    reconstitution:
+        'None. Ready solution at 10 mg/mL.',
+    resultingConcentration:
+        '10 mg/mL furosemide.',
+    furtherDilution:
+        'Routine small IV doses may be given slowly without dilution. For high-dose controlled IV infusion, the label permits addition to 0.9% Sodium Chloride, Lactated Ringer’s, or D5W after the solution pH has been adjusted to above 5.5.',
+    allowedDiluents:
+        'For high-dose controlled infusion: 0.9% Sodium Chloride Injection, Lactated Ringer’s Injection, or D5W, with pH adjusted to >5.5.',
+    administration:
+        'For usual adult edema dosing, give the IV dose slowly over 1–2 minutes. For high-dose controlled IV infusion, rate must not exceed 4 mg/min.',
+    stability:
+        'Store at 20–25°C and protect from light. Single-dose vial; discard unused portion.',
+    incompatibilities:
+        'Do not assume compatibility with acidic solutions or other medications; furosemide can precipitate when pH falls. For high-dose infusion, keep admixture pH above 5.5 as directed by the label.',
+    criticalLocks: [
+      'Stock lock: 10 mg/mL is the ready vial concentration.',
+      'High-dose infusion lock: if diluted, use NS/LR/D5W with pH >5.5 and rate ≤4 mg/min.',
+      'Light lock: protect vial from light.',
+    ],
+    sourceLabel:
+        'DailyMed · Furosemide Injection, USP 10 mg/mL preservative-free single-dose vials · current 2025 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'furosemide-10mg-ml',
+        label: 'Furosemide · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Ready stock concentration. High-dose infusion requires separate label-defined dilution/pH handling.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

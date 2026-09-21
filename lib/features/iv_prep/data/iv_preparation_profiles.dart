@@ -4136,6 +4136,243 @@ const ivPreparationProfiles = <IvPreparationProfile>[
         'DailyMed · Piperacillin/Tazobactam for Injection single-dose vials · pediatric ≤40 kg preparation table',
   ),
 
+
+  IvPreparationProfile(
+    name: 'Digoxin',
+    population: 'NICU',
+    formulation:
+        'LANOXIN Injection Pediatric single-dose ampule/vial: 100 mcg/mL. This neonatal profile intentionally uses the pediatric product rather than the 250 mcg/mL adult injection.',
+    reconstitution:
+        'None. LANOXIN Injection Pediatric is supplied ready to use at 100 mcg/mL; dilution is not required.',
+    resultingConcentration:
+        '100 mcg/mL digoxin.',
+    furtherDilution:
+        'May be administered undiluted. If dilution is required, use a 4-fold or greater volume of Sterile Water for Injection, 0.9% Sodium Chloride, or D5W. Using less than a 4-fold diluent volume may precipitate digoxin. Use diluted product immediately.',
+    allowedDiluents:
+        'Sterile Water for Injection, 0.9% Sodium Chloride, or D5W when dilution is clinically required.',
+    administration:
+        'Administer IV over 5 minutes or longer; avoid bolus administration. Dose selection in premature/newborn infants must account for age, renal function and serum concentration monitoring and is not selected by this preparation profile.',
+    stability:
+        'Single-dose pediatric ampule/vial; discard unused portion. If diluted, immediate use is recommended.',
+    incompatibilities:
+        'Do not mix digoxin with other drugs in the same container or administer simultaneously through the same IV line without exact compatibility support.',
+    criticalLocks: [
+      'Pediatric product lock: use LANOXIN Injection Pediatric 100 mcg/mL, not the 250 mcg/mL adult injection.',
+      'Dilution lock: dilution is optional; if used, the diluent volume must be at least 4-fold.',
+      'Rate lock: IV administration over at least 5 minutes; no rapid bolus.',
+      'TDM lock: calculator converts an already prescribed mcg dose to mL only; it does not select dose or serum target.',
+    ],
+    sourceLabel:
+        'DailyMed · LANOXIN Injection Pediatric 100 mcg/mL · current NDA label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-lanoxin-pediatric-100mcg-ml',
+        label: 'LANOXIN Injection Pediatric · 100 mcg/mL',
+        unit: 'mcg',
+        concentration: 100,
+        note:
+            'Ready pediatric concentration. Dilution not required; if diluted, use at least 4-fold compatible diluent.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Adenosine',
+    population: 'NICU',
+    formulation:
+        'Adenosine Injection, USP preservative-free ready solution 3 mg/mL in normal saline; single-dose vial/syringe.',
+    reconstitution:
+        'None. Ready to use at 3 mg/mL.',
+    resultingConcentration:
+        '3 mg/mL adenosine.',
+    furtherDilution:
+        'No routine dilution. For pediatric PSVT, give the ordered dose as a rapid IV bolus through a central or peripheral line, followed immediately by a rapid saline flush.',
+    allowedDiluents:
+        'No dose diluent is required. Use normal saline for the immediate post-bolus flush.',
+    administration:
+        'Rapid IV bolus. Current label pediatric pathway: initial 0.05–0.1 mg/kg; if needed, repeat with incremental increases of 0.05–0.1 mg/kg up to a maximum single dose of 0.3 mg/kg. This profile does not choose whether/when to escalate.',
+    stability:
+        'Store at 20–25°C. DO NOT REFRIGERATE because crystallization may occur. If crystals occur, warm to room temperature until dissolved and use only if clear. Single-dose; discard unused portion.',
+    incompatibilities:
+        'Do not convert this rapid-bolus pathway into an infusion recipe. Ensure flush access and monitoring are immediately available.',
+    criticalLocks: [
+      'Concentration lock: 3 mg/mL ready-to-use product.',
+      'Route lock: rapid IV bolus only for the cited PSVT pathway.',
+      'Flush lock: saline flush immediately after each pediatric bolus.',
+      'Storage lock: do not refrigerate.',
+    ],
+    sourceLabel:
+        'DailyMed · Adenosine Injection, USP 3 mg/mL · current pediatric PSVT labeling Aug 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-adenosine-3mg-ml',
+        label: 'Adenosine ready-to-use · 3 mg/mL',
+        unit: 'mg',
+        concentration: 3,
+        note:
+            'Calculator converts an already prescribed pediatric mg dose to mL only.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Sildenafil IV',
+    population: 'NICU',
+    formulation:
+        'REVATIO (sildenafil) Injection single-dose vial: 10 mg/12.5 mL = 0.8 mg/mL, clear sterile ready-to-use solution.',
+    reconstitution:
+        'None. REVATIO Injection is ready to use at 0.8 mg/mL.',
+    resultingConcentration:
+        '0.8 mg/mL sildenafil.',
+    furtherDilution:
+        'No routine dilution is described for the exact ready-to-use REVATIO injection product. Do not create a neonatal dilution recipe from the oral suspension or tablet instructions.',
+    allowedDiluents:
+        'No added diluent is required for the exact ready-to-use vial pathway.',
+    administration:
+        'IV use only. Important age lock: the current FDA label establishes pediatric PAH safety/efficacy from age 1 year and older, while injection dosing in the label is specified for adults. Therefore neonatal IV dose/rate must come from a neonatal-specific protocol/reference, not from this product label.',
+    stability:
+        'Store at 20–25°C with permitted excursions to 15–30°C. Single-dose vial; discard unused portion.',
+    incompatibilities:
+        'Do not infer compatibility or neonatal infusion concentration beyond the exact ready-to-use product. Organic nitrates and riociguat are contraindicated with sildenafil.',
+    criticalLocks: [
+      'Product lock: REVATIO Injection 10 mg/12.5 mL = 0.8 mg/mL ready to use.',
+      'Age lock: FDA pediatric PAH labeling begins at 1 year; neonatal dosing is not label-derived.',
+      'Formulation lock: do not use oral suspension/tablet preparation instructions for IV use.',
+      'Calculator lock: converts an already prescribed mg dose to stock mL only; it does not select neonatal dose or frequency.',
+    ],
+    sourceLabel:
+        'DailyMed · REVATIO Injection 10 mg/12.5 mL (0.8 mg/mL) · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-revatio-0_8mg-ml',
+        label: 'REVATIO Injection · 0.8 mg/mL',
+        unit: 'mg',
+        concentration: 0.8,
+        note:
+            'Ready-to-use stock only. Neonatal dose/frequency must come from a neonatal-specific protocol.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Hydrocortisone',
+    population: 'NICU',
+    formulation:
+        'Apotex Hydrocortisone Sodium Succinate for Injection, USP preservative-free 100 mg single-dose plain vial.',
+    reconstitution:
+        'For preservative-free neonatal IV use, aseptically add not more than 2 mL Sterile Water for Injection to the 100 mg vial.',
+    resultingConcentration:
+        'Nominal concentration approximately 50 mg/mL when the full 100 mg vial is reconstituted to 2 mL.',
+    furtherDilution:
+        'For IV infusion, after preservative-free reconstitution the solution may be further added to D5W, isotonic saline, or D5W in isotonic saline when sodium restriction is not present. Do not use bacteriostatic diluent for the neonatal pathway.',
+    allowedDiluents:
+        'Reconstitution: Sterile Water for Injection when preservative-free diluent is needed. Final infusion: D5W, isotonic saline, or D5W in isotonic saline according to fluid/sodium requirements.',
+    administration:
+        'IV injection or infusion according to the neonatal order. Dose and duration are indication-specific and are not selected by this preparation profile.',
+    stability:
+        'Current Apotex label: use within 4 hours from a microbiological perspective when stored at room temperature. Product storage section also describes up to 12 hours at controlled room temperature or 24 hours refrigerated for reconstituted/diluted solution; local sterile-compounding policy should use the more conservative applicable BUD.',
+    incompatibilities:
+        'Do not use bacteriostatic water or bacteriostatic saline in the NICU preservative-free pathway. Avoid unverified admixtures.',
+    criticalLocks: [
+      'Preservative lock: exact NICU pathway uses the preservative-free 100 mg plain vial.',
+      'Diluent lock: neonatal reconstitution uses Sterile Water for Injection, not bacteriostatic diluent.',
+      'Concentration lock: 100 mg reconstituted to 2 mL is approximately 50 mg/mL.',
+      'BUD lock: follow the stricter local sterile-compounding BUD when product labeling presents multiple in-use limits.',
+    ],
+    sourceLabel:
+        'DailyMed · Apotex Hydrocortisone Sodium Succinate for Injection, USP 100 mg preservative-free vial · effective Jul 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-hydrocortisone-pf-100mg-vial',
+        label: 'Hydrocortisone sodium succinate PF 100 mg/2 mL · ~50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Preservative-free neonatal pathway after reconstitution with 2 mL SWFI.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Phenobarbital',
+    population: 'NICU',
+    formulation:
+        'SEZABY (phenobarbital sodium) for injection, FDA-approved specifically for neonatal seizures in term and preterm infants; 100 mg lyophilized single-dose vial.',
+    reconstitution:
+        'Aseptically reconstitute each 100 mg vial with 10 mL 0.9% Sodium Chloride Injection. Swirl gently until completely dissolved.',
+    resultingConcentration:
+        '100 mg/10 mL = 10 mg/mL phenobarbital sodium.',
+    furtherDilution:
+        'No additional dilution is required by the SEZABY label after the 10 mg/mL reconstitution. Withdraw the ordered volume and administer by IV infusion.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection only for the labeled reconstitution.',
+    administration:
+        'IV infusion over 15 minutes into a large peripheral vein. SEZABY is IV-only. Loading and maintenance doses are neonatal treatment decisions; the calculator converts an already ordered mg dose to mL only.',
+    stability:
+        'If not used immediately, protect from light in the original carton. Reconstituted vial may be stored up to 8 hours at 20–25°C or up to 24 hours refrigerated at 2–8°C. Discard unused portion.',
+    incompatibilities:
+        'Highly alkaline solution: avoid extravasation and intra-arterial injection because severe tissue injury can occur. SEZABY contains no benzyl alcohol or propylene glycol.',
+    criticalLocks: [
+      'Product lock: use FDA-approved SEZABY neonatal product, not conventional 65/130 mg/mL phenobarbital injection.',
+      'Reconstitution lock: 100 mg + 10 mL NS = 10 mg/mL.',
+      'Rate lock: IV infusion over 15 minutes into a large peripheral vein.',
+      'Excipient lock: SEZABY contains no benzyl alcohol or propylene glycol.',
+      'Calculator lock: dose selection remains outside the preparation calculator.',
+    ],
+    sourceLabel:
+        'DailyMed · SEZABY phenobarbital sodium for injection 100 mg vial · FDA-approved neonatal seizure labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-sezaby-10mg-ml',
+        label: 'SEZABY after reconstitution · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'FDA-approved neonatal product; infuse the ordered dose over 15 minutes.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Levetiracetam',
+    population: 'NICU',
+    formulation:
+        'Levetiracetam Injection single-dose vial 500 mg/5 mL = 100 mg/mL concentrate for IV use.',
+    reconstitution:
+        'None. Withdraw the ordered dose from the 100 mg/mL concentrate.',
+    resultingConcentration:
+        '100 mg/mL before dilution.',
+    furtherDilution:
+        'Mandatory. Dilute in a compatible fluid. If a smaller pediatric volume is needed, calculate the diluent so the final levetiracetam concentration does not exceed 15 mg/mL.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection, Lactated Ringer’s Injection, or D5W.',
+    administration:
+        'Administer as a 15-minute IV infusion. Important age lock: current FDA labeling establishes use from 1 month of age and older; use in neonates younger than 1 month is not label-established and requires a neonatal-specific protocol.',
+    stability:
+        'Current Sep 2026 label: diluted solution should not be stored more than 4 hours at controlled room temperature.',
+    incompatibilities:
+        'The current label documents compatibility with lorazepam, diazepam and valproate sodium in the studied conditions; do not generalize to other Y-site combinations.',
+    criticalLocks: [
+      'Stock lock: 100 mg/mL concentrate is not the final infusion concentration.',
+      'Final concentration lock: pediatric small-volume preparation must not exceed 15 mg/mL.',
+      'Rate lock: 15-minute IV infusion.',
+      'Age lock: FDA labeling begins at 1 month; neonatal use below 1 month requires a separate neonatal reference.',
+      'Stability lock: current label uses a 4-hour room-temperature limit for diluted solution.',
+    ],
+    sourceLabel:
+        'DailyMed · XGen Levetiracetam Injection 500 mg/5 mL · updated Sep 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-levetiracetam-100mg-ml',
+        label: 'Levetiracetam concentrate · 100 mg/mL',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Mandatory dilution; final concentration ≤15 mg/mL; infuse over 15 minutes.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

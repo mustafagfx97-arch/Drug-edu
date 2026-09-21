@@ -730,7 +730,7 @@ void main() {
         item(
           'ibandronate-monthly',
           'Ibandronate',
-          frequency: RegimenFrequency.monthly,
+          frequency: RegimenFrequency.asNeeded,
           preference: TimingPreference.breakfast,
         ),
         item(

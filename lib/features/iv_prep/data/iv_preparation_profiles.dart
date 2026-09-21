@@ -3416,6 +3416,249 @@ const ivPreparationProfiles = <IvPreparationProfile>[
         'emc SmPC · Viatris Omeprazole 40 mg powder for solution for infusion · current product page, last updated Jul 2024',
   ),
 
+
+  IvPreparationProfile(
+    name: 'Dopamine',
+    population: 'NICU',
+    formulation:
+        'Hospira Dopamine Hydrochloride Injection concentrate 40 mg/mL (200 mg/5 mL or 400 mg/10 mL). ASHP Standardize 4 Safety pediatric continuous-infusion standards list 800, 1600 and 3200 mcg/mL.',
+    reconstitution:
+        'None. The stock is a 40 mg/mL (40,000 mcg/mL) concentrate and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 40 mg/mL. ASHP S4S pediatric standard final concentrations: 800 mcg/mL, 1600 mcg/mL, or 3200 mcg/mL.',
+    furtherDilution:
+        'Select the final concentration only from the NICU drug library/protocol. The current Hospira label explicitly supports 800 and 1600 mcg/mL preparation examples and permits higher concentrations such as 3200 mcg/mL for fluid restriction. Do not let the calculator select the final concentration or bag volume.',
+    allowedDiluents:
+        'Current Hospira label supports 0.9% Sodium Chloride, D5W, D5/0.9% NaCl, D5/0.45% NaCl, D5/Lactated Ringer’s, Sodium Lactate 1/6 molar, or Lactated Ringer’s.',
+    administration:
+        'Continuous IV infusion with an infusion pump, preferably through a large vein, with close hemodynamic and infusion-site monitoring. Dose and rate remain NICU clinical orders.',
+    stability:
+        'The current Hospira label states the listed diluted solutions are stable for 24 hours. Local sterile-compounding BUD may be shorter and should govern practice.',
+    incompatibilities:
+        'Do not administer through the same infusion set with sodium bicarbonate/other alkalinizing substances, blood, or iron salts. Do not add other medications to the dopamine infusion bag.',
+    criticalLocks: [
+      'Concentrate lock: 40 mg/mL stock MUST be diluted.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 800, 1600 and 3200 mcg/mL.',
+      'Tiny-infant lock: ASHP notes some babies under 500 g may require a lower concentration; use the NICU drug library rather than forcing a standard.',
+      'Calculator lock: calculator converts an already prescribed dopamine amount to stock mL only; it never chooses the final concentration or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Dopamine Hydrochloride Injection 40 mg/mL · updated May 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-dopamine-40mg-ml',
+        label: 'Dopamine concentrate · 40 mg/mL',
+        unit: 'mg',
+        concentration: 40,
+        note:
+            'Stock withdrawal only. Final NICU concentration must be selected from the validated drug library; ASHP S4S standards are 800/1600/3200 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dobutamine',
+    population: 'NICU',
+    formulation:
+        'Hikma Dobutamine Injection 250 mg/20 mL = 12.5 mg/mL single-dose vial. ASHP S4S pediatric continuous-infusion standards list 1000, 2000 and 4000 mcg/mL.',
+    reconstitution:
+        'None. The 12.5 mg/mL stock is a liquid concentrate and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 12.5 mg/mL = 12,500 mcg/mL. ASHP S4S pediatric standard final concentrations: 1000, 2000 or 4000 mcg/mL.',
+    furtherDilution:
+        'The current label requires dilution to a total volume of at least 50 mL. Choose the S4S final concentration only when it matches the NICU drug library and patient fluid plan. The manufacturer label describes 500, 1000 and 2000 mcg/mL tables and reports use up to 5000 mcg/mL; ASHP standardization narrows pediatric options to 1000/2000/4000 mcg/mL.',
+    allowedDiluents:
+        'The current label supports multiple fluids including D5W, D5/0.45% NaCl, D5/0.9% NaCl, D10W, Lactated Ringer’s, D5/LR, 0.9% Sodium Chloride and Sodium Lactate; use the exact NICU-approved diluent.',
+    administration:
+        'Continuous IV infusion with pump and hemodynamic monitoring. Dose/rate selection and titration remain NICU clinical decisions.',
+    stability:
+        'The current Hikma label states diluted IV solutions should be used within 24 hours.',
+    incompatibilities:
+        'Do not add to 5% Sodium Bicarbonate or other strongly alkaline solutions. Do not mix with other drugs in the same solution without established compatibility.',
+    criticalLocks: [
+      'Concentrate lock: 12.5 mg/mL stock MUST be diluted.',
+      'Minimum-volume lock: current label requires a total diluted volume of at least 50 mL.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 1000, 2000 and 4000 mcg/mL.',
+      'Calculator lock: calculator reports stock withdrawal only; it does not choose concentration, fluid volume or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hikma Dobutamine Injection 12.5 mg/mL · current active label; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-dobutamine-12_5mg-ml',
+        label: 'Dobutamine stock · 12.5 mg/mL',
+        unit: 'mg',
+        concentration: 12.5,
+        note:
+            'Stock withdrawal only. Final NICU concentration is protocol-selected; ASHP S4S standards are 1000/2000/4000 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Norepinephrine',
+    population: 'NICU',
+    formulation:
+        'Norepinephrine Bitartrate Injection concentrate 4 mg/4 mL = 1 mg/mL. ASHP S4S pediatric continuous-infusion standards list 16, 32 and 64 mcg/mL.',
+    reconstitution:
+        'None. The stock is 1 mg/mL (1000 mcg/mL) and MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Stock 1000 mcg/mL. ASHP S4S pediatric standard final concentrations: 16, 32 or 64 mcg/mL.',
+    furtherDilution:
+        'Important label-vs-standard distinction: the conventional concentrate label prepares 4 mcg/mL, while ASHP S4S pediatric standards are 16/32/64 mcg/mL. Use an S4S concentration only through a validated NICU compounding/drug-library protocol; do not reuse the manufacturer’s 4 mcg/mL rate table or stability assumptions for the higher concentration.',
+    allowedDiluents:
+        'The cited concentrate label uses D5W or a sodium-chloride solution containing 5% dextrose and does not recommend saline alone. Any different NICU diluent must have its own validated compatibility/stability support.',
+    administration:
+        'Continuous IV infusion with pump, preferably through a large vein, with blood-pressure, rhythm and infusion-site monitoring. Clinical dose/rate selection is outside this preparation profile.',
+    stability:
+        'The manufacturer’s labeled 4 mcg/mL dilution may be stored up to 24 hours at room temperature protected from light. Do NOT automatically apply that 24-hour BUD to S4S 16/32/64 mcg/mL preparations; use the validated local compounding BUD.',
+    incompatibilities:
+        'Avoid iron salts, alkalis and oxidizing agents. Whole blood or plasma should be administered separately.',
+    criticalLocks: [
+      'Concentrate lock: 1 mg/mL stock MUST be diluted.',
+      'Label-vs-S4S lock: manufacturer standard recipe is 4 mcg/mL, whereas ASHP pediatric standards are 16/32/64 mcg/mL.',
+      'Tiny-infant lock: ASHP notes babies under 500 g may require a lower concentration.',
+      'BUD lock: do not transfer the label’s 24-hour stability to higher S4S concentrations without validated data.',
+    ],
+    sourceLabel:
+        'DailyMed · Norepinephrine Bitartrate Injection 1 mg/mL concentrate · current 2026 product labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-norepinephrine-1mg-ml',
+        label: 'Norepinephrine concentrate · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Stock withdrawal only. NICU final concentration requires a validated S4S/local protocol.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Fentanyl',
+    population: 'NICU',
+    formulation:
+        'Hospira preservative-free Fentanyl Citrate Injection containing fentanyl 50 mcg/mL. ASHP S4S pediatric continuous-infusion standards list 10 and 50 mcg/mL.',
+    reconstitution:
+        'None. The exact single-dose product is ready at 50 mcg/mL.',
+    resultingConcentration:
+        'Stock 50 mcg/mL. ASHP S4S pediatric standard final concentrations: 10 or 50 mcg/mL.',
+    furtherDilution:
+        'The 50 mcg/mL S4S concentration can use the exact preservative-free stock undiluted. Preparing 10 mcg/mL requires a validated NICU sterile-compounding recipe and compatible diluent; the manufacturer stock label does not provide one universal continuous-infusion dilution recipe.',
+    allowedDiluents:
+        'No diluent is needed for the 50 mcg/mL standard. For 10 mcg/mL, use only the institution’s validated compatibility/stability recipe; do not guess a diluent from the stock label.',
+    administration:
+        'Continuous IV infusion through a controlled pump with continuous respiratory/cardiorespiratory monitoring and opioid reversal/resuscitation capability available. Dose and rate remain NICU orders.',
+    stability:
+        'The stock product is single-dose and preservative-free; discard unused vial/ampule contents and protect from light. Compounded 10 mcg/mL BUD must come from the validated local preparation reference.',
+    incompatibilities:
+        'Do not infer Y-site or admixture compatibility from the stock label; verify the exact NICU concentration and co-infused drug.',
+    criticalLocks: [
+      'Unit lock: fentanyl is handled in mcg, not mg.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 10 and 50 mcg/mL.',
+      'Tiny-infant lock: ASHP notes some babies under 500 g may require a lower concentration.',
+      'Dilution lock: 10 mcg/mL requires a validated compounding recipe; do not invent one from the 50 mcg/mL stock.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Fentanyl Citrate Injection 50 mcg/mL preservative-free · updated Aug 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-fentanyl-50mcg-ml',
+        label: 'Fentanyl preservative-free · 50 mcg/mL',
+        unit: 'mcg',
+        concentration: 50,
+        note:
+            'Exact stock concentration. 50 mcg/mL is also an ASHP pediatric standard; 10 mcg/mL requires validated NICU dilution.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Morphine',
+    population: 'NICU',
+    formulation:
+        'Preservative-free morphine sulfate IV stock. Current U.S. single-dose products include 1 mg/mL and higher-strength vials; ASHP S4S pediatric continuous-infusion standards are 0.2, 0.5 and 1 mg/mL. This NICU profile calculator is locked to a 1 mg/mL preservative-free IV presentation.',
+    reconstitution:
+        'None for the cited 1 mg/mL preservative-free IV presentation.',
+    resultingConcentration:
+        'Stock 1 mg/mL. ASHP S4S pediatric standard final concentrations: 0.2, 0.5 or 1 mg/mL.',
+    furtherDilution:
+        'The 1 mg/mL standard may be used from an exact preservative-free 1 mg/mL IV product when locally approved. Preparing 0.2 or 0.5 mg/mL requires a validated NICU compounding recipe; final volume is not selected by this calculator.',
+    allowedDiluents:
+        'For diluted 0.2 or 0.5 mg/mL preparations, use the exact institution-approved compatibility/stability recipe. Do not infer a NICU diluent or BUD from neuraxial labeling.',
+    administration:
+        'Continuous IV infusion with controlled pump and close respiratory/hemodynamic monitoring. Dose/rate and weaning plan remain clinical orders.',
+    stability:
+        'Use the exact product storage for unopened stock; compounded 0.2/0.5 mg/mL preparations require the local validated BUD. Preservative-free single-dose containers are not multi-dose stock.',
+    incompatibilities:
+        'Do not infer admixture/Y-site compatibility; verify the exact final concentration and co-infused medication.',
+    criticalLocks: [
+      'Preservative lock: use preservative-free product for this neonatal continuous-infusion pathway.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 0.2, 0.5 and 1 mg/mL.',
+      'Route lock: this profile is IV only; do not transfer neuraxial instructions into NICU infusion preparation.',
+      'Calculator lock: calculator uses the exact 1 mg/mL stock only and does not choose the final concentration or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · preservative-free morphine sulfate 1 mg/mL IV presentation (current label); ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-morphine-pf-1mg-ml',
+        label: 'Preservative-free morphine · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Exact stock concentration used by this NICU profile. ASHP final standards: 0.2/0.5/1 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Midazolam',
+    population: 'NICU',
+    formulation:
+        'Preservative-free Midazolam Injection single-dose vials at 1 mg/mL and 5 mg/mL. ASHP S4S pediatric continuous-infusion standards list 0.3, 1 and 5 mg/mL.',
+    reconstitution:
+        'None. Verify the exact preservative-free stock vial: 1 mg/mL or 5 mg/mL.',
+    resultingConcentration:
+        'Stock 1 or 5 mg/mL. ASHP S4S pediatric standard final concentrations: 0.3, 1 or 5 mg/mL.',
+    furtherDilution:
+        'The 1 and 5 mg/mL S4S standards can correspond to exact preservative-free stock strengths. The 0.3 mg/mL standard requires dilution. The current product label permits dilution of 1 or 5 mg/mL stock with 0.9% Sodium Chloride or D5W, but use the NICU’s validated recipe/BUD for the 0.3 mg/mL preparation.',
+    allowedDiluents:
+        '0.9% Sodium Chloride or D5W are supported by the current preservative-free midazolam label for dilution.',
+    administration:
+        'Continuous IV infusion via controlled pump with continuous respiratory and cardiac monitoring and immediate resuscitation capability. Dose/rate is individualized and not selected by this profile.',
+    stability:
+        'The current label documents 0.5 mg/mL compatibility for up to 24 hours in NS or D5W and 4 hours in Lactated Ringer’s; do NOT automatically transfer those BUDs to the S4S 0.3 mg/mL preparation. Use a validated local BUD.',
+    incompatibilities:
+        'Avoid intra-arterial administration and extravasation. Do not infer compatibility beyond the exact final concentration/diluent/co-infused medication.',
+    criticalLocks: [
+      'Preservative lock: this NICU profile uses preservative-free single-dose midazolam products.',
+      'Concentration lock: distinguish 1 mg/mL from 5 mg/mL stock.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 0.3, 1 and 5 mg/mL.',
+      'BUD lock: label stability at 0.5 mg/mL is not automatically the BUD for a 0.3 mg/mL NICU compound.',
+    ],
+    sourceLabel:
+        'DailyMed · preservative-free Midazolam Injection 1 mg/mL and 5 mg/mL · revised Jun 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-midazolam-pf-1mg-ml',
+        label: 'Preservative-free midazolam · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Exact 1 mg/mL stock; also an ASHP pediatric standard concentration.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-midazolam-pf-5mg-ml',
+        label: 'Preservative-free midazolam · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Exact 5 mg/mL stock; also an ASHP pediatric standard concentration.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

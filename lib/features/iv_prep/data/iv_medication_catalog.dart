@@ -114,12 +114,12 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes', structured: true),
 
   // NICU continuous infusions
-  IvCatalogEntry(name: 'Dopamine', population: 'NICU', category: 'Continuous infusions'),
-  IvCatalogEntry(name: 'Dobutamine', population: 'NICU', category: 'Continuous infusions'),
-  IvCatalogEntry(name: 'Norepinephrine', population: 'NICU', category: 'Continuous infusions'),
-  IvCatalogEntry(name: 'Fentanyl', population: 'NICU', category: 'Continuous infusions'),
-  IvCatalogEntry(name: 'Morphine', population: 'NICU', category: 'Continuous infusions'),
-  IvCatalogEntry(name: 'Midazolam', population: 'NICU', category: 'Continuous infusions'),
+  IvCatalogEntry(name: 'Dopamine', population: 'NICU', category: 'Continuous infusions', structured: true),
+  IvCatalogEntry(name: 'Dobutamine', population: 'NICU', category: 'Continuous infusions', structured: true),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'NICU', category: 'Continuous infusions', structured: true),
+  IvCatalogEntry(name: 'Fentanyl', population: 'NICU', category: 'Continuous infusions', structured: true),
+  IvCatalogEntry(name: 'Morphine', population: 'NICU', category: 'Continuous infusions', structured: true),
+  IvCatalogEntry(name: 'Midazolam', population: 'NICU', category: 'Continuous infusions', structured: true),
   IvCatalogEntry(name: 'Insulin', population: 'NICU', category: 'Continuous infusions'),
   IvCatalogEntry(name: 'Heparin', population: 'NICU', category: 'Continuous infusions'),
 

@@ -763,6 +763,123 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
     critical: true,
   ),
 
+
+  TubeMedicationRecord(
+    medicine: 'LINZESS linaclotide capsules',
+    formulation:
+        'Linaclotide capsules containing drug-coated beads; exact capsule strength remains indication- and age-specific.',
+    status: 'Label-supported NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. The current label does not specify a minimum French size; use an appropriately sized catheter-tip syringe.',
+    preparation:
+        'Open the capsule and empty all beads into a clean container with 30 mL room-temperature bottled water. Gently swirl for at least 20 seconds. Draw the beads/water mixture into an appropriately sized catheter-tip syringe and administer with rapid, steady pressure at approximately 10 mL per 10 seconds. If beads remain in the container, add another 30 mL water, swirl for at least 20 seconds and repeat. After the dose, flush the NG/G tube with at least 10 mL water. The label notes that the medicine dissolves off the bead surface, so it is not necessary to force every bead through the tube to deliver the full dose.',
+    feedPlan:
+        'Give on an empty stomach at least 30 minutes before a meal, at approximately the same time each day.',
+    doNot:
+        'Do not crush or chew the capsule contents. Do not use another liquid or soft food for the tube method. Do not store the bead-water mixture for later use.',
+    monitoring:
+        'Monitor bowel response and clinically important diarrhea/dehydration. If severe diarrhea occurs, stop the medicine and contact the prescriber.',
+    pediatricNicu:
+        'Current labeling includes selected pediatric indications from age 2 years, but LINZESS is contraindicated in patients younger than 2 years because of the risk of serious dehydration. This is not a neonatal/NICU tube method.',
+    practicalAr:
+        'LINZESS عبر NG/G: افتح الكبسولة وضع الحبيبات في 30 mL bottled water بدرجة الغرفة، حرّك ≥20 ثانية، أعطِ بسرعة ثابتة تقريبًا 10 mL/10 sec، كرر 30 mL إذا بقيت حبيبات، ثم flush ≥10 mL. يُعطى قبل الطعام بـ30 دقيقة ولا تُسحق الحبيبات.',
+    source:
+        'DailyMed · LINZESS (linaclotide) capsules · Administration with Water via Nasogastric or Gastrostomy Tube · current labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'TAGRISSO osimertinib tablets',
+    formulation:
+        'Osimertinib tablets dispersed in non-carbonated water without crushing; this method is distinct from simply crushing a tablet.',
+    status: 'Label-supported NG method',
+    tubeRoute:
+        'Nasogastric tube. The label provides an NG method and does not establish gastrostomy or jejunal administration by extrapolation.',
+    preparation:
+        'For NG administration, place the prescribed TAGRISSO tablet in 15 mL non-carbonated water and stir until dispersed into small pieces; the tablet will not completely dissolve. Do not crush, heat or ultrasonicate. Use an additional 15 mL non-carbonated water to transfer any residue to the syringe, producing about 30 mL total. Administer through the NG tube, then flush with approximately 30 mL water. Repeat the rinse/flush as needed until no tablet pieces remain in the syringe. Administer the dispersion and all residues within 30 minutes of first adding the tablet to water.',
+    feedPlan:
+        'TAGRISSO may be given with or without food; no routine enteral-feed hold is required by the label.',
+    doNot:
+        'Do not crush, heat or use ultrasound. Do not use carbonated water or another liquid. Do not transfer the NG method to a G-tube or jejunal tube without separate product-specific support.',
+    monitoring:
+        'This is oncology therapy. Monitor according to the EGFR-mutated lung-cancer regimen, including clinically relevant cardiac/QT, pulmonary and hematologic safety parameters.',
+    pediatricNicu:
+        'This is not a pediatric or NICU tube method. The labeled preparation and flush volumes are adult oncology instructions and must not be scaled to neonates.',
+    practicalAr:
+        'TAGRISSO عبر NG فقط: tablet في 15 mL ماء غير غازي، حرّك دون سحق، ثم 15 mL إضافية لنقل البقايا؛ أعطِ نحو 30 mL عبر NG ثم flush بنحو 30 mL. يجب إنهاء التحضير والبقايا خلال 30 دقيقة.',
+    source:
+        'DailyMed · TAGRISSO (osimertinib) tablets · Administration to Patients Who Have Difficulty Swallowing Solids · current label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'LENVIMA lenvatinib capsules',
+    formulation:
+        'Lenvatinib capsules prepared as a water suspension for feeding-tube delivery without breaking or crushing the capsules.',
+    status: 'Label-supported feeding-tube method with material-specific minimum bore',
+    tubeRoute:
+        'Feeding tube at least 5 French for polyvinyl chloride or polyurethane tubing, and at least 6 French for silicone tubing.',
+    preparation:
+        'Place the prescribed daily dose, up to 5 capsules, into a 20 mL syringe. Add 3 mL water. Wait 10 minutes for the capsule shell to fully disintegrate, then stir or shake for 3 minutes until the capsules are fully disintegrated. Administer the mixture through the feeding tube. Then use a second syringe to add another 2 mL water to the first syringe, cap it, swirl or shake, and administer the rinse. Repeat the 2 mL rinse at least once and continue until no visible residue remains. If the daily dose requires 6 capsules, prepare and administer 3 capsules at a time using the same method.',
+    feedPlan:
+        'LENVIMA may be taken with or without food. The label does not require a routine enteral-feed hold for tube administration.',
+    doNot:
+        'Do not break or crush the capsules. For feeding-tube administration use water, not apple juice. Do not ignore tube material: silicone requires at least 6 Fr, while PVC/polyurethane requires at least 5 Fr.',
+    monitoring:
+        'Oncology monitoring is regimen-specific and includes blood pressure, renal/hepatic function, proteinuria, thyroid function and other toxicity surveillance as clinically indicated.',
+    pediatricNicu:
+        'This current feeding-tube method is not a NICU recipe. Although the minimum bore can be small, the oncology indication and capsule-dose regimen must not be extrapolated to neonates or small infants.',
+    practicalAr:
+        'LENVIMA feeding tube: PVC/polyurethane ≥5 Fr، silicone ≥6 Fr. ضع حتى 5 capsules في syringe 20 mL، أضف 3 mL ماء، انتظر 10 دقائق ثم رج/حرّك 3 دقائق، أعطِ الخليط، ثم rinse بـ2 mL ماء وكرر مرة على الأقل حتى لا تبقى بقايا. لا تسحق الكبسولات.',
+    source:
+        'DailyMed · LENVIMA (lenvatinib) capsules · Preparation of Suspension for Feeding-Tube Administration · current label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'MEKINIST trametinib oral solution',
+    formulation:
+        'Pharmacist-reconstituted trametinib oral solution, final concentration 0.05 mg/mL.',
+    status: 'FDA-IFU supported NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastric feeding tube, 4 French or larger. The IFU specifies use of the supplied 20 mL oral syringe and an ENFIT adapter when needed.',
+    preparation:
+        'Pharmacy reconstitution: tap the bottle until the powder flows freely, add 90 mL distilled or purified water, replace the cap and invert or gently shake for up to 5 minutes until fully dissolved. Final concentration is 0.05 mg/mL. For tube dosing, measure the prescribed dose with the supplied 20 mL oral syringe, flush the feeding tube according to the tube manufacturer instructions immediately before the dose, connect the syringe, apply steady pressure to deliver the full dose, confirm no solution remains in the syringe and repeat delivery if needed, then flush the tube again according to manufacturer instructions. Reconstituted solution may be used for 35 days, stored in the original bottle below 25°C, and must not be frozen.',
+    feedPlan:
+        'When MEKINIST oral solution is given alone, it may be given with a low-fat meal or on an empty stomach. When coadministered with dabrafenib, give on an empty stomach at least 1 hour before or 2 hours after a meal; breastfeeding or baby formula may be given on demand if a pediatric patient cannot tolerate fasting.',
+    doNot:
+        'Do not transfer this feeding-tube method to MEKINIST tablets. Do not use a tube smaller than 4 Fr. Do not invent a universal flush volume because the IFU directs pre- and post-flushing according to the feeding-tube manufacturer instructions.',
+    monitoring:
+        'This is oncology therapy. Dose is age/weight/regimen specific in pediatrics and toxicity monitoring follows the exact trametinib treatment protocol.',
+    pediatricNicu:
+        'The oral-solution formulation is pediatric-capable, but the current dosing tables begin at 8 kg. A 4 Fr tube does not make the product an automatic neonatal/NICU option; weight and indication criteria still apply.',
+    practicalAr:
+        'MEKINIST oral solution تركيزه 0.05 mg/mL بعد تحضير الصيدلي بـ90 mL distilled/purified water. يمكن عبر NG/G ≥4 Fr باستخدام syringe 20 mL. اعمل flush قبل وبعد حسب تعليمات الشركة المصنّعة للأنبوب؛ لا نخترع حجم flush ثابتًا.',
+    source:
+        'DailyMed · MEKINIST (trametinib) for oral solution · FDA Instructions for Use · current 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Glycerol phenylbutyrate oral liquid 1.1 g/mL',
+    formulation:
+        'Glycerol phenylbutyrate oral liquid 1.1 g/mL; separate from sodium phenylbutyrate products and other nitrogen-scavenger formulations.',
+    status: 'Label-supported NG / G-tube method with small-dose delivery warning',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube for patients who cannot swallow. The label does not provide a minimum French size.',
+    preparation:
+        'Use a new dry oral syringe for each prescribed dose. Withdraw the exact prescribed volume from the bottle and administer directly through the NG/G tube. Using a separate syringe, flush once with 10 mL water or formula and allow the flush to drain. If needed, flush a second time with another 10 mL water or formula to clear the tube. Discard the bottle and any remaining contents 28 days after opening; if water enters the bottle and the liquid becomes cloudy, do not use it.',
+    feedPlan:
+        'Give with food or formula. In breastfeeding infants, administer the dose just before breastfeeding.',
+    doNot:
+        'Do not substitute sodium phenylbutyrate or another nitrogen-scavenger formulation by volume. Do not assume reliable tube delivery for doses below 1 mL: the label warns that drug adherence to plastic tubing can reduce the delivered dose.',
+    monitoring:
+        'Monitor plasma ammonia and the broader urea-cycle-disorder treatment plan. For tube doses below 1 mL, closely monitor ammonia after initiation or dose changes because delivered dose may be lower than intended.',
+    pediatricNicu:
+        'This is directly relevant to neonatal metabolic care: glycerol phenylbutyrate has been studied in patients younger than 2 months, including infants enrolled from about 0.1 month of age. However, tube doses below 1 mL have a specific under-delivery risk, so neonatal use requires close ammonia-guided specialist management.',
+    practicalAr:
+        'Glycerol phenylbutyrate 1.1 g/mL عبر NG/G: استخدم syringe جافة جديدة للجرعة، أعطِ الجرعة ثم flush بـ10 mL ماء أو formula؛ يمكن تكرار 10 mL مرة ثانية إذا لزم. إذا الجرعة <1 mL قد يلتصق الدواء بالأنبوب ويصل أقل من المطلوب، لذلك يجب مراقبة ammonia بدقة.',
+    source:
+        'DailyMed · Glycerol phenylbutyrate oral liquid 1.1 g/mL · NG/G-tube administration section · current Mar 2026 labeling',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

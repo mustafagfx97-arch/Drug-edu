@@ -77,7 +77,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   // Neurology / GI / steroids
   IvCatalogEntry(name: 'IV Paracetamol', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Pantoprazole', population: 'General', category: 'Other IV medicines', structured: true),
-  IvCatalogEntry(name: 'Omeprazole', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Omeprazole', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Ondansetron', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Metoclopramide', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Phenytoin', population: 'General', category: 'Neurology & sedation', structured: true),

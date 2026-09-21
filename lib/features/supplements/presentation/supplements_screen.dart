@@ -70,6 +70,12 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
         icon: Icons.trending_up_rounded,
       ),
       _SupplementGroup(
+        title: 'Other supplements',
+        subtitle:
+            'Omega-3 and other common non-vitamin/mineral supplements with product-specific counseling.',
+        icon: Icons.water_drop_outlined,
+      ),
+      _SupplementGroup(
         title: 'Safety review',
         subtitle:
             'High-risk, withdrawn, misleading or inappropriate weight-loss and supplement products.',

@@ -595,6 +595,9 @@ class MedicationPlanEngine {
         if (ids.contains('oral-iron-salts')) 'الحديد',
         if (ids.contains('calcium-carbonate')) 'Calcium Carbonate',
         if (ids.contains('calcium-citrate')) 'Calcium Citrate',
+        if (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-citrate') ||
+            ids.contains('magnesium-oxide')) 'Magnesium',
         if (ids.contains('multivitamin-mineral')) 'Multivitamin/Mineral',
         if (ids.contains('prenatal-combination')) 'Prenatal vitamin',
       ];
@@ -722,6 +725,9 @@ class MedicationPlanEngine {
     final ciproMinerals = ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-citrate') ||
+        ids.contains('magnesium-oxide') ||
         ids.contains('zinc') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
@@ -740,6 +746,9 @@ class MedicationPlanEngine {
         ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
+        ids.contains('magnesium-gluconate') ||
+        ids.contains('magnesium-citrate') ||
+        ids.contains('magnesium-oxide') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
     if (ids.contains('alendronate') && alendronateMorningConflict) {
@@ -834,6 +843,24 @@ class MedicationPlanEngine {
           title: 'Potassium / renal monitoring',
           message:
               'spironolactone مع ACEI/ARB/ARNI قد يكون مقصودًا خصوصًا في فشل القلب، لكنه يزيد خطر ارتفاع البوتاسيوم وتدهور وظائف الكلى. راجع K⁺/renal monitoring ولا تضف بدائل ملح أو بوتاسيوم من نفسك.',
+        ),
+      );
+    }
+
+    final hasPotassiumRaisingMedicine =
+        ids.contains('spironolactone') ||
+        ids.contains('lisinopril') ||
+        ids.contains('losartan') ||
+        ids.contains('valsartan') ||
+        ids.contains('sacubitril-valsartan');
+    if (ids.contains('potassium-supplements') &&
+        hasPotassiumRaisingMedicine) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Potassium supplement + potassium-raising therapy',
+          message:
+              'مكملات البوتاسيوم/بدائل الملح المحتوية على potassium مع ACEI/ARB/ARNI أو spironolactone قد ترفع K⁺ إلى مستوى خطير. فصل الوقت لا يحل التداخل؛ راجع serum K⁺ ووظائف الكلى والحاجة الفعلية للمكمل.',
+          isCritical: true,
         ),
       );
     }
@@ -973,7 +1000,9 @@ class MedicationPlanEngine {
     final doxyMinerals = ids.contains('oral-iron-salts') ||
         ids.contains('calcium-carbonate') ||
         ids.contains('calcium-citrate') ||
-        ids.contains('magnesium-gluconate') ||
+        (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-citrate') ||
+            ids.contains('magnesium-oxide')) ||
         ids.contains('zinc') ||
         ids.contains('multivitamin-mineral') ||
         ids.contains('prenatal-combination');
@@ -989,7 +1018,9 @@ class MedicationPlanEngine {
     }
 
     if (ids.contains('levothyroxine') &&
-        ids.contains('magnesium-gluconate')) {
+        (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-citrate') ||
+            ids.contains('magnesium-oxide'))) {
       alerts.add(
         const PlanAlert(
           title: 'Levothyroxine + magnesium',
@@ -1089,7 +1120,9 @@ class MedicationPlanEngine {
         (ids.contains('oral-iron-salts') ||
             ids.contains('calcium-carbonate') ||
             ids.contains('calcium-citrate') ||
-            ids.contains('magnesium-gluconate') ||
+            (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-citrate') ||
+            ids.contains('magnesium-oxide')) ||
             ids.contains('multivitamin-mineral') ||
             ids.contains('prenatal-combination'))) {
       alerts.add(
@@ -1212,7 +1245,9 @@ class MedicationPlanEngine {
         (ids.contains('oral-iron-salts') ||
             ids.contains('calcium-carbonate') ||
             ids.contains('calcium-citrate') ||
-            ids.contains('magnesium-gluconate') ||
+            (ids.contains('magnesium-gluconate') ||
+            ids.contains('magnesium-citrate') ||
+            ids.contains('magnesium-oxide')) ||
             ids.contains('zinc') ||
             ids.contains('multivitamin-mineral') ||
             ids.contains('prenatal-combination'))) {
@@ -1232,6 +1267,16 @@ class MedicationPlanEngine {
         ids.contains('dabigatran') ||
         ids.contains('enoxaparin') ||
         ids.contains('clopidogrel');
+    if (ids.contains('omega-3') && hasBleedingRiskMedicine) {
+      alerts.add(
+        const PlanAlert(
+          title: 'Omega-3 + bleeding-risk therapy',
+          message:
+              'جرعات omega-3 العالية قد تضيف تأثيرًا مضادًا للصفيحات. مع anticoagulant/antiplatelet راجع جرعة EPA+DHA، سبب الاستخدام وعلامات النزف بدل افتراض أن fish oil لا يتداخل.',
+        ),
+      );
+    }
+
     if (ids.contains('bismuth-subsalicylate') && hasBleedingRiskMedicine) {
       alerts.add(
         const PlanAlert(

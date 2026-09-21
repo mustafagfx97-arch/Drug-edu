@@ -27,7 +27,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Ertapenem', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Imipenem / Cilastatin', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Aztreonam', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Gentamicin', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Gentamicin', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Amikacin', population: 'General', category: 'Antibiotics'),
   IvCatalogEntry(name: 'Metronidazole', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Ciprofloxacin', population: 'General', category: 'Antibiotics'),
@@ -41,8 +41,8 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Daptomycin', population: 'General', category: 'Antibiotics'),
 
   // General antifungals / antivirals
-  IvCatalogEntry(name: 'Fluconazole', population: 'General', category: 'Antifungals & antivirals'),
-  IvCatalogEntry(name: 'Acyclovir', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Fluconazole', population: 'General', category: 'Antifungals & antivirals', structured: true),
+  IvCatalogEntry(name: 'Acyclovir', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Amphotericin B liposomal', population: 'General', category: 'Antifungals & antivirals'),
   IvCatalogEntry(name: 'Amphotericin B conventional', population: 'General', category: 'Antifungals & antivirals'),
   IvCatalogEntry(name: 'Voriconazole', population: 'General', category: 'Antifungals & antivirals'),
@@ -74,10 +74,10 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
 
   // Neurology / GI / steroids
-  IvCatalogEntry(name: 'IV Paracetamol', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'IV Paracetamol', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Pantoprazole', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Omeprazole', population: 'General', category: 'Other IV medicines'),
-  IvCatalogEntry(name: 'Ondansetron', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Ondansetron', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Metoclopramide', population: 'General', category: 'Other IV medicines'),
   IvCatalogEntry(name: 'Phenytoin', population: 'General', category: 'Neurology & sedation'),
   IvCatalogEntry(name: 'Fosphenytoin', population: 'General', category: 'Neurology & sedation'),

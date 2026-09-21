@@ -823,6 +823,303 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     withdrawalConcentration: 50,
   ),
 
+  IvPreparationProfile(
+    name: 'Potassium chloride',
+    population: 'General',
+    formulation:
+        'Potassium Chloride for Injection Concentrate, USP, 2 mEq/mL. Current Hospira single-dose presentations: 10 mEq/5 mL, 20 mEq/10 mL, and 40 mEq/20 mL.',
+    reconstitution:
+        'None. This is a concentrated ready solution at 2 mEq/mL, but it MUST be diluted before intravenous administration.',
+    resultingConcentration:
+        'Stock concentration is 2 mEq/mL potassium. This stock concentration is NOT an infusion concentration.',
+    furtherDilution:
+        'Withdraw the already prescribed mEq from the 2 mEq/mL concentrate, add it to a suitable large-volume IV fluid, and mix completely. The cited label states that when serum potassium is above 2.5 mEq/L, concentrations up to 40 mEq/L and rates no faster than 10 mEq/hour may be used. Urgent severe hypokalemia is a separate monitored pathway and must not be selected by the calculator.',
+    allowedDiluents:
+        'Use a suitable large-volume parenteral according to the clinical order/local protocol. The current label specifically notes that in critical conditions saline may be preferred, unless contraindicated, because dextrose may lower serum potassium.',
+    administration:
+        'IV infusion ONLY after dilution. Never direct IV inject the concentrate. Dose, final concentration and rate depend on the patient; continuous cardiac monitoring is required for the label-described urgent high-rate pathway.',
+    stability:
+        'Single-dose concentrate. Use promptly after adding to the IV fluid and mix thoroughly; discard unused concentrate. Store unopened vials at 20–25°C.',
+    incompatibilities:
+        'Do not use the calculator to choose a final concentration or rate. Verify compatibility of the selected large-volume fluid and any co-infused medication.',
+    criticalLocks: [
+      'Fatal-error lock: 2 mEq/mL is a CONCENTRATE and must never be directly injected.',
+      'Mixing lock: completely mix potassium in the large-volume container before starting the infusion.',
+      'Rate lock: the calculator converts an already prescribed mEq to stock mL only; it never selects 10 or 40 mEq/hour pathways.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Potassium Chloride for Injection Concentrate 2 mEq/mL · current Jul 2026 label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'kcl-2meq-ml',
+        label: 'KCl concentrate · 2 mEq/mL',
+        unit: 'mEq',
+        concentration: 2,
+        note:
+            'Stock withdrawal only. Example: an ordered 10 mEq corresponds to 5 mL of concentrate; the withdrawn amount MUST then be diluted in a suitable IV fluid.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Magnesium sulfate',
+    population: 'General',
+    formulation:
+        'Magnesium Sulfate Injection, USP 50% = 500 mg/mL = 0.5 g/mL (about 4.06 mEq magnesium/mL).',
+    reconstitution:
+        'None. The 50% solution is supplied as a concentrated injectable solution.',
+    resultingConcentration:
+        'Stock: 500 mg/mL (0.5 g/mL). For IV infusion, the current label requires dilution to 20% (200 mg/mL) or less.',
+    furtherDilution:
+        'For IV infusion, dilute the prescribed amount so the final magnesium sulfate concentration is 20% or less. The label gives an example for severe magnesium deficiency: 5 g added to 1 L of D5W or 0.9% NaCl for slow infusion over 3 hours; this example is indication-specific and is not a universal target recipe.',
+    allowedDiluents:
+        '5% Dextrose Injection or 0.9% Sodium Chloride Injection are the commonly used IV diluents in the cited label.',
+    administration:
+        'IV rate is indication-specific. The current label states IV injection should generally not exceed 150 mg/minute (or equivalent) except in severe eclampsia with seizures. Monitor clinical response and serum magnesium when treating deficiency.',
+    stability:
+        'Use the exact product/container policy and local sterile-compounding BUD after dilution. Inspect solution before administration.',
+    incompatibilities:
+        'Do not infer compatibility with other IV medicines from the fact that D5W/NS are permitted diluents; verify Y-site/admixture compatibility separately.',
+    criticalLocks: [
+      'IV dilution lock: 50% magnesium sulfate must be diluted to 20% or less for IV infusion.',
+      'Unit lock: stock is 500 mg/mL = 0.5 g/mL; do not confuse grams, milligrams and mEq.',
+      'Indication lock: eclampsia, deficiency and other uses do not share one universal dose/rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Magnesium Sulfate Injection 50% · updated Aug 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'mgso4-50percent-g',
+        label: 'Magnesium sulfate 50% · 0.5 g/mL',
+        unit: 'g',
+        concentration: 0.5,
+        note:
+            'Stock withdrawal only. IV infusion requires further dilution to 20% or less; final concentration and rate remain indication/order specific.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Calcium gluconate',
+    population: 'General',
+    formulation:
+        'Calcium Gluconate Injection 100 mg/mL; each mL contains 9.3 mg elemental calcium = 0.465 mEq elemental calcium.',
+    reconstitution:
+        'None. It is supplied as a 100 mg/mL solution. The current label requires dilution before IV administration.',
+    resultingConcentration:
+        'Stock: 100 mg/mL calcium gluconate. Labeled bolus-infusion final concentration: 10–50 mg/mL. Labeled continuous-infusion final concentration: 5.8–10 mg/mL.',
+    furtherDilution:
+        'For bolus IV administration, dilute the prescribed dose in D5W or normal saline to 10–50 mg/mL. For continuous IV infusion, dilute to 5.8–10 mg/mL. Use the diluted solution immediately after preparation.',
+    allowedDiluents:
+        '5% Dextrose Injection or normal saline (0.9% Sodium Chloride Injection).',
+    administration:
+        'Administer through a secure IV line. For bolus-infusion administration, the label says do not exceed 200 mg/minute in adults or 100 mg/minute in pediatric patients including neonates; monitor vitals and ECG.',
+    stability:
+        'Use the diluted solution immediately after preparation for the cited single-dose product.',
+    incompatibilities:
+        'Physically incompatible with phosphate- or bicarbonate-containing fluids because precipitation may occur. Ceftriaxone-calcium restrictions are especially important in neonates; follow the current product warning.',
+    criticalLocks: [
+      'Elemental lock: 100 mg calcium gluconate is not 100 mg elemental calcium; each mL contains 9.3 mg elemental Ca = 0.465 mEq.',
+      'Dilution lock: current labeling requires dilution before IV use.',
+      'Compatibility lock: do not mix with bicarbonate or phosphate solutions.',
+    ],
+    sourceLabel:
+        'DailyMed · Calcium Gluconate Injection 100 mg/mL · revised Feb 2026/current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'calcium-gluconate-100mg-ml',
+        label: 'Calcium gluconate stock · 100 mg/mL',
+        unit: 'mg calcium gluconate',
+        concentration: 100,
+        note:
+            'Stock withdrawal only. Dilute to the labeled final concentration for the ordered bolus-infusion or continuous-infusion pathway.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Calcium chloride',
+    population: 'General',
+    formulation:
+        '10% Calcium Chloride Injection, USP = 1,000 mg/10 mL = 100 mg/mL; each mL represents 27 mg elemental calcium = 1.4 mEq elemental calcium.',
+    reconstitution:
+        'None. The cited current single-dose vial is a ready 100 mg/mL solution for IV use.',
+    resultingConcentration:
+        '100 mg/mL calcium chloride (27 mg elemental calcium or 1.4 mEq elemental calcium per mL).',
+    furtherDilution:
+        'The current 2026 vial label does not require a routine dilution step for the acute symptomatic hypocalcemia use described; administer the exact prescribed volume by slow IV infusion through a central or deep vein.',
+    allowedDiluents:
+        'No routine diluent is required for the cited 10% vial method. Do not invent dilution or transfer a calcium-gluconate recipe to calcium chloride.',
+    administration:
+        'Slow IV infusion in a central or deep vein; do NOT administer as IV bolus. Maximum recommended rate is 1 mL/minute (100 mg/minute). Do not use IM or SC.',
+    stability:
+        'Single-dose vial; discard unused portion. Inspect for clarity and intact seal before use.',
+    incompatibilities:
+        'Do not mix or simultaneously administer with ceftriaxone because calcium-ceftriaxone precipitation can occur. Neonates up to 28 days requiring/expected to require IV ceftriaxone are specifically contraindicated in the current label.',
+    criticalLocks: [
+      'Salt lock: calcium chloride and calcium gluconate are NOT interchangeable mg-for-mg.',
+      'Route lock: central/deep-vein slow IV infusion; no IM, SC or rapid bolus.',
+      'Rate lock: do not exceed 1 mL/minute for the current 10% product.',
+    ],
+    sourceLabel:
+        'DailyMed · PAI Pharma 10% Calcium Chloride Injection 1 g/10 mL · revised Apr 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'calcium-chloride-100mg-ml',
+        label: 'Calcium chloride 10% · 100 mg/mL',
+        unit: 'mg calcium chloride',
+        concentration: 100,
+        note:
+            'Current product method uses the 100 mg/mL solution by slow IV infusion; the calculator does not convert between calcium-chloride mg and elemental-calcium units.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Sodium bicarbonate 8.4%',
+    population: 'General',
+    formulation:
+        'Sodium Bicarbonate Injection, USP 8.4% = 84 mg/mL = 1 mEq/mL sodium and 1 mEq/mL bicarbonate; current cited vial 50 mEq/50 mL.',
+    reconstitution:
+        'None. The cited 8.4% product is a ready hypertonic IV solution at 1 mEq/mL.',
+    resultingConcentration:
+        '1 mEq/mL bicarbonate (and 1 mEq/mL sodium). The solution is hypertonic.',
+    furtherDilution:
+        'Preparation depends on indication. The current label allows IV administration in cardiac-arrest emergencies and states that in less urgent metabolic acidosis sodium bicarbonate may be added to other IV fluids. The calculator must not select an indication-specific dose or dilution.',
+    allowedDiluents:
+        'For less urgent metabolic-acidosis infusions, use the exact ordered IV fluid/validated protocol. Do not add calcium-containing solutions unless compatibility has been established because precipitate/haze may form.',
+    administration:
+        'IV route only. Monitor acid-base status and electrolytes. In neonates and children under 2 years, rapid injection of hypertonic bicarbonate is hazardous; the label notes a 4.2% solution may be preferred for slow administration.',
+    stability:
+        'Single-dose vial; discard unused portion. When additives are introduced, use aseptic technique, mix thoroughly and do not store the admixture per the cited label.',
+    incompatibilities:
+        'Norepinephrine and dobutamine are incompatible with sodium bicarbonate. Avoid addition to calcium-containing parenteral solutions unless compatibility is established.',
+    criticalLocks: [
+      'Concentration lock: 8.4% = 1 mEq/mL; do not confuse with 4.2% formulations.',
+      'Pediatric lock: neonatal/under-2 administration requires special caution; do not copy adult rapid-emergency administration.',
+      'Compatibility lock: bicarbonate can precipitate with calcium and is incompatible with selected catecholamines.',
+    ],
+    sourceLabel:
+        'DailyMed · Civica Sodium Bicarbonate Injection 8.4%, 50 mEq/50 mL · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'bicarbonate-8-4-1meq-ml',
+        label: 'Sodium bicarbonate 8.4% · 1 mEq/mL',
+        unit: 'mEq',
+        concentration: 1,
+        note:
+            'Converts an already ordered mEq to stock mL only. The clinical indication determines whether/how the dose is further diluted or infused.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Dopamine',
+    population: 'General',
+    formulation:
+        'Dopamine Hydrochloride Injection concentrate 40 mg/mL; current Hospira vials contain 200 mg/5 mL or 400 mg/10 mL.',
+    reconstitution:
+        'None. This is a 40 mg/mL concentrate that MUST be diluted before IV infusion.',
+    resultingConcentration:
+        'Manufacturer table for 40 mg/mL product: 5 mL (200 mg) in 250 mL = 800 mcg/mL; in 500 mL = 400 mcg/mL. 10 mL (400 mg) in 250 mL = 1,600 mcg/mL; in 500 mL = 800 mcg/mL.',
+    furtherDilution:
+        'Transfer either 5 mL (200 mg) or 10 mL (400 mg) to 250 mL or 500 mL of an allowed IV solution. Select the exact manufacturer recipe/clinical concentration ordered; the calculator does not choose a hemodynamic target.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, D5W, D5/0.9% NaCl, D5/0.45% NaCl, D5/Lactated Ringers, 1/6 M Sodium Lactate, or Lactated Ringers.',
+    administration:
+        'Continuous IV infusion only after dilution, preferably through a large vein with an infusion pump in an intensive-care setting. Inspect for discoloration before use.',
+    stability:
+        'The current label states the listed diluted solutions are stable for 24 hours.',
+    incompatibilities:
+        'Do not administer through the same infusion set with sodium bicarbonate/other alkalinizing substances, blood, or iron salts. Do not add additional medicines to the diluted dopamine infusion.',
+    criticalLocks: [
+      'Concentrate lock: 40 mg/mL must be diluted before IV administration.',
+      'Alkaline lock: sodium bicarbonate inactivates dopamine.',
+      'Extravasation lock: use a large vein and monitor the site because tissue necrosis can occur.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Dopamine Hydrochloride Injection 40 mg/mL · updated May 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'dopamine-40mg-ml',
+        label: 'Dopamine concentrate · 40 mg/mL',
+        unit: 'mg',
+        concentration: 40,
+        note:
+            'Stock withdrawal only. Choose one of the source-locked final dilution recipes in the preparation profile; do not infuse the concentrate directly.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Epinephrine',
+    population: 'General',
+    formulation:
+        'Epinephrine Injection 1 mg/mL concentrate/vial; this profile is specifically for the labeled adult septic-shock IV infusion preparation, not IM anaphylaxis dosing.',
+    reconstitution:
+        'None. Stock is 1 mg/mL epinephrine.',
+    resultingConcentration:
+        'For septic-shock infusion: add 1 mL (1 mg) to 1,000 mL of a 5% dextrose-containing solution to produce 1 mcg/mL.',
+    furtherDilution:
+        'Use the exact 1 mg in 1,000 mL labeled recipe for this profile. Do not use the calculator to choose an infusion dose or convert this preparation into an anaphylaxis regimen.',
+    allowedDiluents:
+        '5% Dextrose Injection or 5% Dextrose with 0.9% Sodium Chloride. The current label does not recommend 0.9% sodium chloride alone for this septic-shock preparation.',
+    administration:
+        'Continuous IV infusion for hypotension associated with septic shock, preferably through a large vein. Clinical dose/rate titration is outside this preparation calculator.',
+    stability:
+        'For the cited current product, the diluted 1 mcg/mL solution is stable up to 6 hours at room temperature or 24 hours refrigerated.',
+    incompatibilities:
+        'Whole blood/plasma should be administered separately. Verify shared-line compatibility with other medicines.',
+    criticalLocks: [
+      'Indication lock: this IV dilution profile is septic-shock preparation; do not transfer it to IM anaphylaxis use.',
+      'Dextrose lock: use D5W or D5/NS; saline alone is not recommended by the cited label for this preparation.',
+      'Concentration lock: 1 mg/mL stock becomes 1 mcg/mL only after the labeled 1:1000 dilution step.',
+    ],
+    sourceLabel:
+        'DailyMed · Epinephrine Injection 1 mg/mL · current 2026 septic-shock preparation labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'epinephrine-1mg-ml',
+        label: 'Epinephrine stock · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'For this profile, the label recipe uses 1 mL = 1 mg stock in 1,000 mL D5-containing fluid to make 1 mcg/mL.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Labetalol',
+    population: 'General',
+    formulation:
+        'Labetalol Hydrochloride Injection 5 mg/mL; current cited product 100 mg/20 mL multidose vial.',
+    reconstitution:
+        'None. Stock concentration is 5 mg/mL.',
+    resultingConcentration:
+        'Repeated slow-IV injection uses the 5 mg/mL stock. For continuous infusion, a labeled example adds 40 mL = 200 mg to 160 mL compatible IV fluid, yielding 200 mL at 1 mg/mL.',
+    furtherDilution:
+        'Continuous-infusion example: 40 mL stock + 160 mL compatible fluid = 200 mL total at 1 mg/mL. An alternative label example adds 40 mL stock to 250 mL fluid and yields about 2 mg per 3 mL; keep the exact method visible rather than treating both as the same final concentration.',
+    allowedDiluents:
+        'Current label compatibility list includes Ringers, Lactated Ringers, D5/Ringers, D5/LR, D5W, 0.9% NaCl, and specified dextrose/saline combinations.',
+    administration:
+        'Repeated IV injection and continuous-infusion methods are distinct. The cited label gives an initial repeated-injection dose over 2 minutes and a continuous-infusion example at 1 mg/mL; clinical dose selection remains outside the preparation calculator.',
+    stability:
+        'The cited compatibility section reports diluted labetalol at tested final concentrations as stable for 24 hours refrigerated or at room temperature in listed compatible fluids.',
+    incompatibilities:
+        'Not compatible with 5% Sodium Bicarbonate Injection. Alkaline drugs including furosemide can precipitate with labetalol; verify compatibility before same-line use.',
+    criticalLocks: [
+      'Method lock: repeated IV injection and continuous infusion are separate pathways.',
+      'Bicarbonate lock: not compatible with 5% sodium bicarbonate.',
+      'Dose lock: the calculator only converts an already prescribed mg amount from the 5 mg/mL stock.',
+    ],
+    sourceLabel:
+        'DailyMed · Labetalol Hydrochloride Injection 5 mg/mL · current Jul 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'labetalol-5mg-ml',
+        label: 'Labetalol stock · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Stock withdrawal. If preparing continuous infusion, follow the exact source-locked dilution method shown in the profile.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

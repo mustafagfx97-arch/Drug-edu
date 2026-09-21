@@ -1181,6 +1181,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'لا يحتاج توقيتًا خاصًا عادةً؛ غالبًا يكون ضمن multivitamin/mineral ولا توجد حاجة روتينية لمكمل منفرد.',
     source: 'NIH ODS Molybdenum',
   ),
+
+  'semaglutide-oral-tablets': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr:
+        'صباحًا على معدة فارغة مع ماء عادي فقط بحد أقصى 120 mL، ثم انتظر 30 دقيقة على الأقل قبل الطعام أو أي شراب/دواء فموي آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RYBELSUS / OZEMPIC tablets · 2026',
+  ),
+  'epipen-auto-injector': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'للطوارئ فقط: استخدمه فور أعراض anaphylaxis حسب خطة الطوارئ ثم اطلب الإسعاف؛ لا يوجد موعد يومي.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · EPIPEN / EPIPEN Jr IFU',
+  ),
+  'naloxone-narcan-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'للطوارئ فقط: أعط الجرعة فور الاشتباه بالـopioid overdose، اتصل بالطوارئ، وكرر بجهاز جديد كل 2–3 دقائق عند الحاجة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NARCAN 4 mg OTC Drug Facts · Aug 2026',
+  ),
+  'baqsimi-glucagon-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'للطوارئ عند severe hypoglycemia فقط؛ اتصل بالطوارئ بعد الجرعة ويمكن تكرار جرعة من جهاز جديد بعد 15 دقيقة إذا لم تحدث استجابة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · BAQSIMI 3 mg IFU',
+  ),
+  'dulaglutide-trulicity': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr:
+        'مرة أسبوعيًا في نفس اليوم تقريبًا، في أي وقت ومع الطعام أو بدونه؛ يجب أن تفصل 72 ساعة على الأقل بين جرعتين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TRULICITY · 2026',
+  ),
+
 };
 
 

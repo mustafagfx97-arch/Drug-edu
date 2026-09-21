@@ -3148,6 +3148,242 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Amoxicillin / Clavulanate IV',
+    population: 'General',
+    formulation:
+        'Esteve Co-amoxiclav 1000 mg/200 mg powder for solution for injection/infusion, single-dose vial.',
+    reconstitution:
+        'For IV injection, dissolve the 1000 mg/200 mg vial in 20 mL Water for Injection. The resulting volume is approximately 20.9 mL. A transient pink colour may occur; the normal reconstituted solution is colourless to yellow.',
+    resultingConcentration:
+        'Combination product: the vial contains 1000 mg amoxicillin + 200 mg clavulanic acid in approximately 20.9 mL after reconstitution. Because this is a fixed-ratio combination and the displacement volume matters, no single calculator concentration is exposed.',
+    furtherDilution:
+        'For IV infusion, reconstitute as above and without delay transfer the reconstituted solution into 100 mL of compatible infusion fluid. Use the diluted infusion immediately.',
+    allowedDiluents:
+        'Reconstitution: Water for Injection. Final infusion: Water for Injection, 0.9% Sodium Chloride, or Ringer’s Solution for this exact Esteve product.',
+    administration:
+        'Slow IV injection over 3–4 minutes, or IV infusion over 30–40 minutes. Not for IM use. Children under 3 months should receive the drug by infusion only.',
+    stability:
+        'Administer within 20 minutes of reconstitution. After final dilution for infusion, use immediately. Vial is single-dose; discard unused solution.',
+    incompatibilities:
+        'Do not mix with blood products, proteinaceous fluids/protein hydrolysates, or IV lipid emulsions. If an aminoglycoside is also prescribed, do not mix the two antibiotics in the same syringe, IV container, or giving set.',
+    criticalLocks: [
+      'Product lock: this profile applies to the exact Esteve 1000 mg/200 mg vial.',
+      'Combination lock: calculator remains manual because the prescribed dose contains two components and the reconstituted volume is approximately 20.9 mL.',
+      'Time lock: administer within 20 minutes after reconstitution; diluted infusion is for immediate use.',
+      'Route lock: IV only; patients under 3 months use infusion rather than IV injection.',
+    ],
+    sourceLabel:
+        'emc SmPC · Esteve Co-amoxiclav 1000 mg/200 mg powder for solution for injection/infusion · revised Jul 2026',
+  ),
+
+  IvPreparationProfile(
+    name: 'Teicoplanin',
+    population: 'General',
+    formulation:
+        'Targocid 400 mg teicoplanin powder for solution for injection/infusion; exact Sanofi UK SmPC.',
+    reconstitution:
+        'Slowly add 3.14 mL Water for Injection to the 400 mg vial and rotate until all powder is dissolved, avoiding foam. If foam develops, allow the vial to stand for about 15 minutes. Use only a clear yellowish-to-dark-yellow solution.',
+    resultingConcentration:
+        'The SmPC states that the nominal 400 mg dose is contained in 3.0 mL of the reconstituted solution, corresponding to approximately 133.3 mg/mL for calculator withdrawal.',
+    furtherDilution:
+        'The reconstituted solution may be injected directly or further diluted for infusion in a compatible solution.',
+    allowedDiluents:
+        'Compatible infusion solutions include 0.9% Sodium Chloride, Ringer, Ringer-lactate, D5W, D10W, 0.18% NaCl/4% glucose, 0.45% NaCl/5% glucose, and the specified glucose-containing peritoneal dialysis solutions.',
+    administration:
+        'IV injection may be given as a bolus over 3–5 minutes or as a 30-minute infusion. Neonates should receive teicoplanin by infusion only.',
+    stability:
+        'Chemical/physical in-use stability of both reconstituted and diluted solution is demonstrated for 24 hours at 2–8°C. From a microbiological standpoint, use immediately when possible.',
+    incompatibilities:
+        'Teicoplanin and aminoglycoside solutions are incompatible when mixed directly and must not be mixed before injection. Other unlisted medicines should be administered separately unless compatibility is established.',
+    criticalLocks: [
+      'Product lock: exact Targocid 400 mg vial only.',
+      'Reconstitution lock: add 3.14 mL WFI; nominal 400 mg dose occupies 3.0 mL after reconstitution.',
+      'Foam lock: rotate rather than shake; if foam forms, stand about 15 minutes.',
+      'Neonate lock: IV infusion only in neonates.',
+      'Aminoglycoside lock: do not directly mix teicoplanin and aminoglycoside solutions.',
+    ],
+    sourceLabel:
+        'emc SmPC · Sanofi Targocid 400 mg powder for solution for injection/infusion · updated Jan 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'targocid-400mg-reconstituted',
+        label: 'Targocid 400 mg reconstituted · ~133.3 mg/mL',
+        unit: 'mg',
+        concentration: 133.333333,
+        note:
+            'SmPC nominal dose volume is 400 mg in 3.0 mL after adding 3.14 mL WFI.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Sodium phosphate',
+    population: 'General',
+    formulation:
+        'Glenmark Sodium Phosphates Injection, USP concentrated solution: phosphorus 3 mmol/mL plus sodium 4 mEq/mL.',
+    reconstitution:
+        'None. This is a concentrated ready solution, but it MUST be diluted and thoroughly mixed in a larger volume of IV fluid before administration.',
+    resultingConcentration:
+        'Stock provides 3 mmol phosphorus/mL and 4 mEq sodium/mL.',
+    furtherDilution:
+        'Mandatory. Using aseptic technique, add the required amount to a larger-volume IV fluid and mix thoroughly. The current label does not specify one universal final concentration or infusion rate; both depend on the individual patient and clinical order.',
+    allowedDiluents:
+        'The current label describes addition to other intravenous fluids rather than one universal diluent recipe. Use an exact compatible IV fluid per institutional/pharmacy compatibility policy.',
+    administration:
+        'IV administration only after dilution. Dose and rate depend on the individual patient. Monitor serum sodium, phosphorus and calcium to guide therapy.',
+    stability:
+        'Single-dose partial-fill vial; discard any unused portion. Use the prepared admixture according to institutional sterile-compounding policy because this label does not define one universal admixture beyond-use time.',
+    incompatibilities:
+        'Do not administer undiluted. Phosphate can precipitate with calcium-containing solutions; verify exact compatibility before combining with calcium or parenteral nutrition components.',
+    criticalLocks: [
+      'Concentrate lock: 3 mmol phosphorus/mL also delivers 4 mEq sodium/mL.',
+      'Dilution lock: MUST be diluted before IV administration.',
+      'Calculator lock: calculator converts ordered phosphorus mmol to stock mL only; it does not choose final concentration, fluid, dose, or infusion rate.',
+      'Compatibility lock: verify calcium/phosphate compatibility before compounding.',
+    ],
+    sourceLabel:
+        'DailyMed · Glenmark Sodium Phosphates Injection, USP 3 mmol phosphorus/mL + 4 mEq sodium/mL · updated Mar 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'sodium-phosphate-3mmol-ml',
+        label: 'Sodium phosphate concentrate · 3 mmol phosphorus/mL',
+        unit: 'mmol phosphorus',
+        concentration: 3,
+        note:
+            'Each 1 mL also contains 4 mEq sodium. Mandatory dilution; calculator does not select final concentration or rate.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Metoclopramide',
+    population: 'General',
+    formulation:
+        'Metoclopramide Injection, USP preservative-free single-dose vial: 10 mg/2 mL = 5 mg/mL.',
+    reconstitution:
+        'None. Supplied as a ready solution at 5 mg/mL.',
+    resultingConcentration:
+        '5 mg/mL metoclopramide.',
+    furtherDilution:
+        'A 10 mg dose may be administered undiluted slowly. For doses greater than 10 mg, dilute the dose in 50 mL of a parenteral solution. Normal saline is the preferred diluent for the cited label.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, D5W, D5/0.45% NaCl, Ringer’s Injection, or Lactated Ringer’s Injection for diluted administration.',
+    administration:
+        'Undiluted 10 mg IV should be administered slowly over 1–2 minutes. Diluted IV administration should be given over not less than 15 minutes.',
+    stability:
+        'Dilutions in NS, D5W, D5/0.45% NaCl, Ringer’s or LR may be stored up to 48 hours if protected from light; under normal light, use within 24 hours. Single-dose vial: discard unused portion.',
+    incompatibilities:
+        'Do not give rapidly because rapid IV administration can cause intense anxiety/restlessness followed by drowsiness. For frozen storage, the label specifically supports NS; metoclopramide is degraded when admixed and frozen in D5W.',
+    criticalLocks: [
+      'Stock lock: 5 mg/mL.',
+      'Direct-IV lock: 10 mg undiluted over 1–2 minutes.',
+      'Large-dose lock: doses >10 mg should be diluted in 50 mL and infused over at least 15 minutes.',
+      'Stability lock: protected-from-light dilutions up to 48 hours; normal-light exposure up to 24 hours.',
+    ],
+    sourceLabel:
+        'DailyMed · Avet Metoclopramide Injection, USP 5 mg/mL · updated Apr 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'metoclopramide-5mg-ml',
+        label: 'Metoclopramide · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            '10 mg may be given undiluted slowly; doses >10 mg require the separate 50 mL dilution pathway.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Methylprednisolone',
+    population: 'General',
+    formulation:
+        'Pfizer SOLU-MEDROL preservative-free ACT-O-VIAL single-dose presentations: 40 mg/1 mL and 125 mg/2 mL after activation.',
+    reconstitution:
+        'ACT-O-VIAL: press down on the plastic activator to force the built-in diluent into the lower compartment, gently agitate until dissolved, remove the plastic tab, disinfect the stopper, then withdraw the dose.',
+    resultingConcentration:
+        '40 mg ACT-O-VIAL → 40 mg/mL. 125 mg ACT-O-VIAL → 62.5 mg/mL.',
+    furtherDilution:
+        'For IV/IM injection, use the reconstituted ACT-O-VIAL solution. For IV infusion, first prepare the injection solution, then add the indicated dose to D5W, isotonic saline, or D5W in isotonic saline.',
+    allowedDiluents:
+        'Built-in ACT-O-VIAL diluent for reconstitution. For further IV infusion dilution: D5W, isotonic saline, or D5W in isotonic saline.',
+    administration:
+        'IV or IM. IV is preferred for initial emergency use. The desired dose may be administered IV over several minutes; indication-specific high-dose regimens are separate clinical protocols and are not selected by this preparation profile.',
+    stability:
+        'Reconstituted solution that is not further diluted may be stored at 20–25°C and used within 48 hours. Further diluted product has demonstrated chemical/physical stability for 4 hours below 25°C or 24 hours at 2–8°C.',
+    incompatibilities:
+        'The 40 mg SOLU-MEDROL presentation contains lactose monohydrate produced from cow’s milk and is contraindicated in patients with known or suspected hypersensitivity to cow’s milk or its components. Keep preservative-free ACT-O-VIAL instructions separate from benzyl-alcohol-containing multidose presentations.',
+    criticalLocks: [
+      'Presentation lock: this profile applies only to preservative-free 40 mg and 125 mg ACT-O-VIAL products.',
+      'Concentration lock: 40 mg/1 mL = 40 mg/mL; 125 mg/2 mL = 62.5 mg/mL.',
+      'Activation lock: press activator, then gently agitate; do not substitute plain-vial reconstitution instructions.',
+      '40 mg allergy lock: the 40 mg presentation contains lactose sourced from cow’s milk.',
+      'Neonate lock: benzyl-alcohol-containing SOLU-MEDROL formulations should not be used in neonates.',
+    ],
+    sourceLabel:
+        'DailyMed/FDA label · Pfizer SOLU-MEDROL preservative-free 40 mg and 125 mg ACT-O-VIAL · revised Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'solu-medrol-40mg-actovial',
+        label: 'SOLU-MEDROL ACT-O-VIAL 40 mg/1 mL · 40 mg/mL',
+        unit: 'mg',
+        concentration: 40,
+        note:
+            'Preservative-free 40 mg ACT-O-VIAL; contains lactose from cow’s milk.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-medrol-125mg-actovial',
+        label: 'SOLU-MEDROL ACT-O-VIAL 125 mg/2 mL · 62.5 mg/mL',
+        unit: 'mg',
+        concentration: 62.5,
+        note:
+            'Preservative-free 125 mg ACT-O-VIAL after activation.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Diazepam',
+    population: 'General',
+    formulation:
+        'Civica Diazepam Injection, USP CIV single-dose prefilled syringe: 10 mg/2 mL = 5 mg/mL for IV or IM use.',
+    reconstitution:
+        'None. The cited prefilled syringe is supplied ready to use at 5 mg/mL.',
+    resultingConcentration:
+        '5 mg/mL diazepam.',
+    furtherDilution:
+        'Do NOT mix or dilute diazepam injection with other solutions or drugs in a syringe or infusion container. If direct IV administration is not feasible, inject slowly through infusion tubing as close as possible to the vein insertion site.',
+    allowedDiluents:
+        'None for this exact product pathway; the current label specifically says not to mix or dilute.',
+    administration:
+        'For IV use, inject slowly, taking at least 1 minute for each 5 mg (1 mL) for most indications. Do not use small veins such as those on the dorsum of the hand or wrist, and avoid intra-arterial injection or extravasation. Respiratory support/resuscitation equipment should be immediately available.',
+    stability:
+        'Store at 20–25°C and protect from light. Do not use if darker than slightly yellow or if precipitate is present. Single-dose prefilled syringe; discard unused portion.',
+    incompatibilities:
+        'Do not mix or dilute with other solutions or drugs. The cited formulation contains propylene glycol, alcohol and benzyl alcohol; benzyl alcohol has been associated with fatal gasping syndrome in premature infants.',
+    criticalLocks: [
+      'Stock lock: 5 mg/mL ready-to-use prefilled syringe.',
+      'No-dilution lock: do not mix or dilute in a syringe or infusion container.',
+      'Rate lock: most IV indications require at least 1 minute per 5 mg (1 mL).',
+      'Vein lock: avoid small hand/wrist veins and avoid intra-arterial injection/extravasation.',
+      'Premature-infant lock: formulation contains benzyl alcohol.',
+    ],
+    sourceLabel:
+        'DailyMed · Civica Diazepam Injection, USP 5 mg/mL prefilled syringe · effective Aug 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'diazepam-prefilled-5mg-ml',
+        label: 'Diazepam prefilled syringe · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Ready to use. Do not mix or dilute; administer slowly by the labeled IV pathway.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

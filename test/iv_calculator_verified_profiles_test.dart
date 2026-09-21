@@ -65,11 +65,11 @@ void main() {
   test('source-locked IV filter excludes unverified catalog backlog', () {
     final ceftriaxone =
         verifiedIvEntriesFor('General', query: 'Ceftriaxone');
-    final teicoplanin =
-        verifiedIvEntriesFor('General', query: 'Teicoplanin');
+    final omeprazole =
+        verifiedIvEntriesFor('General', query: 'Omeprazole');
 
     expect(ceftriaxone.map((item) => item.name), contains('Ceftriaxone'));
-    expect(teicoplanin, isEmpty);
+    expect(omeprazole, isEmpty);
   });
 
   testWidgets('IV prep UI no longer shows locked-placeholder wording',

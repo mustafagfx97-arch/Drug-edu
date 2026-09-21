@@ -68,6 +68,12 @@ void main() {
     selector.onChanged?.call('hormonal-acne-hirsutism');
     await tester.pumpAndSettle();
 
+    // Re-open the patient tab after the parent state update. This also
+    // guards against a tab reset during rebuild while verifying the selected
+    // indication is actually propagated into patient counseling.
+    await tester.tap(find.text('Patient'));
+    await tester.pumpAndSettle();
+
     expect(
       find.textContaining('يُستخدم أحيانًا لدى النساء لعلاج حب الشباب الهرموني'),
       findsOneWidget,

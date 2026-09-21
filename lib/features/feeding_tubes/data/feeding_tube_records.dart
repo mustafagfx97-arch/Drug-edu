@@ -532,6 +532,122 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
     critical: true,
   ),
 
+
+  TubeMedicationRecord(
+    medicine: 'XARELTO rivaroxaban oral suspension',
+    formulation:
+        'Commercial granules reconstituted by the pharmacy to rivaroxaban 1 mg/mL oral suspension.',
+    status: 'Label-supported pediatric NG / gastric-tube formulation',
+    tubeRoute:
+        'Nasogastric or gastric feeding tube after confirming gastric placement. The label supports PVC, polyurethane and silicone NG tubing; it does not establish post-pyloric administration.',
+    preparation:
+        'Pharmacy reconstitution: tap the bottle until granules flow freely, add 150 mL purified water, shake for 60 seconds and verify a uniform suspension. Final concentration is 1 mg/mL. Before each dose shake the bottle slowly for 10 seconds. Withdraw the prescribed mL dose with the supplied oral syringe, administer through the NG/gastric tube, then flush the tube with water. Reconstituted suspension is used within 60 days, stored at room temperature and not frozen.',
+    feedPlan:
+        'For pediatric treatment or reduction of recurrent VTE, immediately follow the tube dose with enteral feeding to increase absorption. For thromboprophylaxis after the Fontan procedure, the label states that enteral feeding is not required after the dose.',
+    doNot:
+        'Do not give the suspension distal to the stomach by assumption. Do not add flavor to the reconstituted product. Do not switch between suspension and tablets or invent a fractional tablet dose without the prescribed pediatric plan.',
+    monitoring:
+        'Verify current weight-based dose and indication because pediatric schedules differ. Monitor bleeding, renal/hepatic context and clinical response.',
+    pediatricNicu:
+        'This is a pediatric formulation, but the current label does not recommend rivaroxaban below the studied weight limits for the specific indication. A neonate or small infant must meet the labeled age/weight/indication criteria; tube use does not authorize off-label NICU dosing.',
+    practicalAr:
+        'XARELTO suspension تركيزه 1 mg/mL بعد إضافة 150 mL purified water ورج 60 ثانية. يُرج ببطء 10 ثوانٍ قبل كل جرعة، ويمكن عبر NG/gastric ثم flush بالماء. في pediatric VTE تتبع الجرعة بالتغذية مباشرة، بينما Fontan thromboprophylaxis لا يحتاج feed بعدها.',
+    source:
+        'DailyMed · XARELTO (rivaroxaban) for oral suspension · Administration Options and Pharmacy Preparation Instructions · current label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'ELIQUIS 0.5 mg tablets for oral suspension',
+    formulation:
+        'Pediatric apixaban 0.5 mg tablets for oral suspension supplied in single-use packets; packet configurations provide prescribed doses below 35 kg.',
+    status: 'FDA-IFU supported pediatric NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube using 5 Fr, 6.5 Fr or 12 Fr tube sizes described in the IFU.',
+    preparation:
+        'Use the liquid-mixing method. Empty the prescribed packet contents into a medicine cup. Add 10 mL total of water, infant formula or apple juice regardless of packet count; only use 2.5 mL instead if the healthcare provider specifically directs this for fluid restriction. Crush the tablet(s) in the liquid and stir until no tablets are visible, about 5 to 7 minutes. Administer the liquid mixture through the NG/G tube, then flush with water or infant formula according to tube size: 5 Fr = 10 mL, 6.5 Fr = 15 mL, 12 Fr = 25 mL. Liquid mixtures must be given promptly and within 2 hours.',
+    feedPlan:
+        'The IFU does not require a routine enteral-feed hold. The preparation liquid is product-specific; do not invent a fasting interval.',
+    doNot:
+        'Do not use an unlisted tube size as though the IFU validated it. Do not place the medicine in a baby bottle. Do not substitute another mixing liquid. Do not use adult 2.5 mg or 5 mg tablet instructions for a child below 35 kg.',
+    monitoring:
+        'Dose is weight-tiered and must be adjusted as pediatric weight changes. Monitor bleeding and reassess the prescribed presentation whenever the child crosses a weight tier.',
+    pediatricNicu:
+        'ELIQUIS is not recommended in pediatric patients under 2.6 kg because it was not studied in that group. The availability of a 5 Fr method does not remove this weight limitation or make neonatal dosing automatic.',
+    practicalAr:
+        'ELIQUIS pediatric 0.5 mg packets لها IFU واضح: حضّرها عادةً في 10 mL ماء/infant formula/apple juice، اسحق وحرّك 5–7 دقائق، ثم عبر NG/G. flush حسب الأنبوب: 5 Fr = 10 mL، 6.5 Fr = 15 mL، 12 Fr = 25 mL. أقل من 2.6 kg غير موصى به حسب الدراسة الحالية.',
+    source:
+        'DailyMed · ELIQUIS 0.5 mg tablets for oral suspension · FDA Instructions for Use issued Apr 2025',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Edoxaban SAVAYSA tablets',
+    formulation: 'Immediate-release SAVAYSA tablets: 15 mg, 30 mg and 60 mg.',
+    status: 'Label-supported crushed gastric-tube method',
+    tubeRoute:
+        'Gastric feeding tube. The label supports gastric-tube delivery and does not establish jejunal/post-pyloric administration.',
+    preparation:
+        'Crush the prescribed tablet, mix it with 2 to 3 ounces of water, and administer immediately through the gastric tube.',
+    feedPlan:
+        'SAVAYSA may be taken with or without food; the current label does not require a routine feed hold for the crushed gastric-tube method.',
+    doNot:
+        'Do not delay administration after preparing the crushed-water mixture. Do not generalize the gastric-tube instruction to a jejunal tube. Do not alter the prescribed anticoagulant dose based on tube use.',
+    monitoring:
+        'Review indication, renal function, interacting P-gp medicines and bleeding risk; tube administration does not change those dose-selection requirements.',
+    pediatricNicu:
+        'This record is not a NICU preparation method. Use only when the prescribed edoxaban regimen is clinically appropriate for the patient; do not extrapolate adult tablet instructions to neonates.',
+    practicalAr:
+        'SAVAYSA يمكن سحق القرص وخلطه مع 2–3 oz ماء ثم إعطاؤه فورًا عبر gastric tube. الملصق لا يثبت jejunal use ولا يحتاج feed hold روتيني.',
+    source:
+        'DailyMed · SAVAYSA (edoxaban) tablets · Dosage and Administration / gastric-tube instructions · current label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Ticagrelor tablets',
+    formulation:
+        'Immediate-release ticagrelor tablets, including BRILINTA-type products with label-supported crushing.',
+    status: 'Label-supported crushed NG method',
+    tubeRoute:
+        'Nasogastric tube CH8 or greater into the stomach.',
+    preparation:
+        'Crush the prescribed tablet and mix with water, then administer the mixture through an NG tube size CH8 or greater. The label does not specify a fixed preparation-water volume, so do not invent one; ensure the complete prepared dose is delivered according to local tube-flush practice.',
+    feedPlan:
+        'Ticagrelor may be taken with or without food. No routine enteral-feed hold is required by the cited label.',
+    doNot:
+        'Do not assume smaller NG tubes are validated. Do not change the antiplatelet dose or combine with another oral P2Y12 inhibitor because of tube administration.',
+    monitoring:
+        'Monitor for bleeding and treatment response; review aspirin dose and clinically important CYP3A interactions according to the prescribed regimen.',
+    pediatricNicu:
+        'This is not a neonatal tube method. The CH8-or-greater labeled technique and adult antiplatelet indications should not be extrapolated to NICU patients.',
+    practicalAr:
+        'Ticagrelor يمكن سحقه وخلطه بالماء عبر NG مقاس CH8 أو أكبر إلى المعدة. لا يوجد حجم ماء ثابت في الملصق، لذلك لا نخترع حجمًا. لا يحتاج feed hold روتيني.',
+    source:
+        'DailyMed · Ticagrelor / BRILINTA tablets · General Administration Instructions and NG bioequivalence data · current 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Phenytoin oral suspension 125 mg/5 mL',
+    formulation:
+        'Immediate-release phenytoin oral suspension 125 mg/5 mL; exact manufacturer/excipients should be checked.',
+    status: 'Avoid tube if a suitable alternative exists; major feed interaction',
+    tubeRoute:
+        'Enteral feeding-tube administration only when no suitable alternative exists. NHS SPS does not provide a universal validated tube size or gastric-vs-jejunal product method for phenytoin.',
+    preparation:
+        'If enteral-tube use is clinically necessary, use the exact prescribed oral suspension and a local validated tube-administration procedure rather than crushing another phenytoin formulation by assumption. Shake the 125 mg/5 mL suspension well before each use, measure with a calibrated device, administer separately from other medicines and ensure the full dose is delivered.',
+    feedPlan:
+        'NHS SPS advises withholding enteral feed for 2 hours before and 2 hours after each phenytoin dose because enteral nutrition can markedly reduce absorption.',
+    doNot:
+        'Do not mix phenytoin directly into enteral feed. Do not assume capsule, chewable-tablet and suspension doses/formulations are interchangeable without review. Do not compensate for reduced absorption by an unmonitored dose increase.',
+    monitoring:
+        'Monitor serum phenytoin concentrations closely and assess seizure control/toxicity whenever tube route, formulation or feeding pattern changes.',
+    pediatricNicu:
+        'Phenytoin is used in pediatrics, but this record does not establish a NICU tube recipe or small-bore volume. Neonates need local neonatal dosing, formulation and therapeutic-drug-monitoring protocols.',
+    practicalAr:
+        'Phenytoin عبر feeding tube ليس خيارًا روتينيًا إذا يوجد بديل. إذا اضطررنا: استخدم suspension المحدد، رجّه جيدًا، وافصل التغذية ساعتين قبل وساعتين بعد الجرعة مع مراقبة مستوى phenytoin. لا تخلطه داخل الـfeed.',
+    source:
+        'NHS SPS · Managing interactions between medicines and enteral feeds · 18 Sep 2025; DailyMed · Phenytoin oral suspension 125 mg/5 mL · shake-well labeling',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

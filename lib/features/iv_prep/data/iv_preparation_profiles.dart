@@ -1120,6 +1120,254 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+  IvPreparationProfile(
+    name: 'Cefotaxime',
+    population: 'General',
+    formulation:
+        'Cefotaxime for Injection, USP conventional vials: 500 mg, 1 g, or 2 g dry powder.',
+    reconstitution:
+        'For IV use, reconstitute conventional vials with at least 10 mL Sterile Water for Injection. Current label table: 500 mg + 10 mL → about 50 mg/mL; 1 g + 10 mL → about 95 mg/mL; 2 g + 10 mL → about 180 mg/mL.',
+    resultingConcentration:
+        'Approximate IV vial concentrations after 10 mL SWFI: 50 mg/mL (500 mg vial), 95 mg/mL (1 g vial), 180 mg/mL (2 g vial).',
+    furtherDilution:
+        'For intermittent direct IV, the label permits 1 g or 2 g in 10 mL SWFI over 3–5 minutes. For higher-dose continuous IV infusion, the reconstituted solution may be added to compatible IV fluids; there is no single universal final concentration to assume.',
+    allowedDiluents:
+        'Initial IV vial reconstitution: Sterile Water for Injection. For infusion bottles/further dilution, current label lists 0.9% Sodium Chloride, D5W and multiple other compatible solutions.',
+    administration:
+        'Intermittent IV: 1 g or 2 g in 10 mL SWFI over 3–5 minutes; do not administer over less than 3 minutes. Continuous infusion is a separate pathway.',
+    stability:
+        'Current label: reconstituted IV 500 mg and 1 g vials are chemically stable 24 h at ≤22°C and 7 days refrigerated in original containers; 2 g IV vial 12 h at ≤22°C and 7 days refrigerated. Further-diluted compatible solutions maintain satisfactory potency 24 h at ≤22°C and at least 5 days refrigerated.',
+    incompatibilities:
+        'Do not admix cefotaxime with aminoglycoside solutions. Avoid high-pH diluents such as Sodium Bicarbonate Injection (pH >7.5).',
+    criticalLocks: [
+      'Vial lock: 500 mg, 1 g and 2 g IV vials do NOT produce the same concentration after adding 10 mL.',
+      'Aminoglycoside lock: administer separately; do not mix in the same solution.',
+      'Rate lock: direct intermittent IV administration should not be faster than 3 minutes.',
+    ],
+    sourceLabel:
+        'DailyMed · Cefotaxime for Injection, USP · preparation/compatibility labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'cefotaxime-500mg-vial',
+        label: '500 mg IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Approximate concentration 50 mg/mL; select only for the exact 500 mg vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'cefotaxime-1g-vial',
+        label: '1 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 95,
+        note:
+            'Approximate concentration 95 mg/mL; do not round this to 100 mg/mL in the calculator.',
+      ),
+      IvWithdrawalVariant(
+        id: 'cefotaxime-2g-vial',
+        label: '2 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 180,
+        note:
+            'Approximate concentration 180 mg/mL; exact 2 g vial presentation only.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Ceftazidime',
+    population: 'General',
+    formulation:
+        'Ceftazidime for Injection, USP conventional single-dose vials: 1 g or 2 g.',
+    reconstitution:
+        'For IV use, current label table: add 10 mL Sterile Water for Injection to either vial. 1 g vial gives about 100 mg/mL; 2 g vial gives about 170 mg/mL after displacement.',
+    resultingConcentration:
+        'Approximate reconstituted IV concentrations: 100 mg/mL (1 g vial) and 170 mg/mL (2 g vial).',
+    furtherDilution:
+        'For direct intermittent IV, use the reconstituted solution over 3–5 minutes. For IV infusion, add an appropriate quantity of reconstituted drug to a compatible IV fluid. Current label documents compatibility/stability at final concentrations 1–40 mg/mL in listed fluids.',
+    allowedDiluents:
+        'Initial IV reconstitution: Sterile Water for Injection. Compatible infusion fluids include 0.9% Sodium Chloride, D5W, D5/0.45% NaCl, D5/0.9% NaCl, Lactated Ringer’s and other fluids listed in the exact label.',
+    administration:
+        'Direct intermittent IV: slowly inject over 3–5 minutes. IV infusion is a separate method using compatible infusion fluid.',
+    stability:
+        'Current label: reconstituted IV solution in SWFI maintains satisfactory potency 12 h at room temperature or 3 days refrigerated. Final concentrations 1–40 mg/mL in listed compatible IV fluids may be stored up to 12 h room temperature or 3 days refrigerated.',
+    incompatibilities:
+        'Do not add ceftazidime to aminoglycoside solutions because of potential interaction. If both are needed, administer separately.',
+    criticalLocks: [
+      'Vial lock: 1 g + 10 mL ≈100 mg/mL; 2 g + 10 mL ≈170 mg/mL.',
+      'Pressure lock: reconstitution releases CO₂ and positive pressure develops; follow product constitution technique.',
+      'Aminoglycoside lock: do not admix in the same solution.',
+    ],
+    sourceLabel:
+        'DailyMed · Sagent Ceftazidime for Injection, USP · updated Aug 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ceftazidime-1g-vial',
+        label: '1 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Approximate 100 mg/mL. Current label says withdraw 10 mL to obtain a 1 g dose after reconstitution.',
+      ),
+      IvWithdrawalVariant(
+        id: 'ceftazidime-2g-vial',
+        label: '2 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 170,
+        note:
+            'Approximate 170 mg/mL. Current label says withdraw 11.5 mL to obtain a 2 g dose after reconstitution.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Ertapenem',
+    population: 'General',
+    formulation:
+        'Ertapenem for Injection 1 g single-dose vial.',
+    reconstitution:
+        'For IV use, reconstitute 1 g vial with 10 mL Water for Injection, 0.9% Sodium Chloride Injection, or Bacteriostatic Water for Injection. Resulting concentration is approximately 100 mg/mL.',
+    resultingConcentration:
+        'After 1 g + 10 mL: approximately 100 mg/mL. After immediately transferring the reconstituted adult vial contents to 50 mL 0.9% Sodium Chloride: approximately 20 mg/mL.',
+    furtherDilution:
+        'Adults and patients ≥13 years: immediately transfer the reconstituted vial contents to 50 mL 0.9% Sodium Chloride Injection. Pediatric patients 3 months–12 years: withdraw the ordered 15 mg/kg volume from the ~100 mg/mL vial and dilute in 0.9% Sodium Chloride to a final concentration ≤20 mg/mL.',
+    allowedDiluents:
+        'Vial reconstitution: Water for Injection, 0.9% Sodium Chloride Injection, or Bacteriostatic Water for Injection. Final IV dilution: 0.9% Sodium Chloride Injection only in the cited label method.',
+    administration:
+        'IV infusion after mandatory reconstitution and dilution. Complete the infusion within 6 hours of reconstitution for the cited vial method.',
+    stability:
+        'Use the prepared infusion within the label-defined time; current labeling directs completion of infusion within 6 hours of reconstitution.',
+    incompatibilities:
+        'Do NOT mix or co-infuse with other medications. Do NOT use dextrose-containing diluents.',
+    criticalLocks: [
+      'Two-step lock: the 1 g vial must be reconstituted AND then diluted before IV administration.',
+      'Dextrose lock: dextrose-containing diluents are prohibited for this preparation.',
+      'Route lock: the lidocaine reconstitution recipe is IM-only and must never be used for IV administration.',
+    ],
+    sourceLabel:
+        'DailyMed · Ertapenem for Injection · current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ertapenem-1g-iv-vial',
+        label: '1 g vial after 10 mL IV reconstitution',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Approximately 100 mg/mL before mandatory further dilution in 0.9% Sodium Chloride.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Amikacin',
+    population: 'General',
+    formulation:
+        'Amikacin Sulfate Injection, USP equivalent to amikacin 250 mg/mL; current presentations include 500 mg/2 mL and 1 g/4 mL.',
+    reconstitution:
+        'None. This is a ready solution at 250 mg/mL.',
+    resultingConcentration:
+        'Stock concentration 250 mg/mL. Current label documents diluted IV solution stability at 0.25–5 mg/mL in compatible fluids.',
+    furtherDilution:
+        'Adult label example: add the contents of a 500 mg vial (2 mL) to 100 or 200 mL sterile diluent such as 0.9% Sodium Chloride or D5W. Pediatric fluid volume is individualized to allow the ordered dose to infuse over the required time.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection, D5W, and additional compatible fluids listed in the label including Lactated Ringer’s and selected balanced solutions.',
+    administration:
+        'Adults: IV infusion over 30–60 minutes. Infants: 1–2 hour infusion. Pediatric patients otherwise receive sufficient fluid to infuse over 30–60 minutes.',
+    stability:
+        'Current label: amikacin concentrations 0.25–5 mg/mL are stable for 24 h at room temperature in the listed compatible IV fluids.',
+    incompatibilities:
+        'Do not physically premix amikacin with other drugs; administer separately according to the recommended dose and route.',
+    criticalLocks: [
+      'Stock lock: 250 mg/mL is the vial concentration; it is not the routine infusion concentration.',
+      'Pediatric lock: do not force the adult 100/200 mL dilution volume onto infants/children.',
+      'Premix lock: do not physically mix with other medications.',
+    ],
+    sourceLabel:
+        'DailyMed · Amikacin Sulfate Injection 250 mg/mL · updated Jul 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'amikacin-250mg-ml',
+        label: 'Amikacin stock · 250 mg/mL',
+        unit: 'mg',
+        concentration: 250,
+        note:
+            'Stock withdrawal only. Adult label example further dilutes 500 mg into 100 or 200 mL; pediatric fluid volume is individualized.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Levofloxacin',
+    population: 'General',
+    formulation:
+        'Levofloxacin Injection premix in D5W, 5 mg/mL: 250 mg/50 mL, 500 mg/100 mL, or 750 mg/150 mL single-dose flexible container.',
+    reconstitution:
+        'None. Premixed ready-to-use solution at 5 mg/mL.',
+    resultingConcentration:
+        '5 mg/mL in 5% Dextrose for all cited premix bag sizes.',
+    furtherDilution:
+        'No further dilution is necessary for the cited premix flexible-container products.',
+    allowedDiluents:
+        'No added diluent for the cited premix product; it is already prepared in D5W.',
+    administration:
+        'Slow IV infusion only: 250 mg or 500 mg over 60 minutes; 750 mg over 90 minutes. Avoid rapid or bolus IV administration.',
+    stability:
+        'Use as the intact single-dose flexible container according to product storage conditions; discard unused portion.',
+    incompatibilities:
+        'Do not add medications/additives to the premix container or infuse other medications simultaneously through the same IV line. If a common line is used sequentially, flush before and after with a mutually compatible fluid.',
+    criticalLocks: [
+      'Premix lock: 5 mg/mL bags are ready to use; no routine dilution.',
+      'Rate lock: 250/500 mg → at least 60 min; 750 mg → at least 90 min.',
+      'Line lock: no simultaneous mixed-line infusion with other medications without compatibility evidence.',
+    ],
+    sourceLabel:
+        'DailyMed · Levofloxacin Injection 5 mg/mL premix · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'levofloxacin-premix-5mg-ml',
+        label: 'Premix flexible container · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Ready-to-use 5 mg/mL solution. The calculator reports the bag volume corresponding to an already prescribed mg dose; do not withdraw partial premix doses unless the clinical system/product policy specifically supports that workflow.',
+      ),
+    ],
+  ),
+  IvPreparationProfile(
+    name: 'Daptomycin',
+    population: 'General',
+    formulation:
+        'Daptomycin for Injection 500 mg single-dose lyophilized vial.',
+    reconstitution:
+        'For the cited current 500 mg product, reconstitute with 10 mL 0.9% Sodium Chloride Injection to 50 mg/mL. Slowly direct diluent toward the vial wall, gently rotate, let stand undisturbed 10 minutes, then gently rotate/swirl as needed. Avoid vigorous agitation or shaking.',
+    resultingConcentration:
+        '50 mg/mL after reconstituting 500 mg vial with 10 mL 0.9% Sodium Chloride Injection.',
+    furtherDilution:
+        'Adults: for 30-minute IV infusion, further dilute the appropriate volume into a 50 mL 0.9% Sodium Chloride infusion bag. Adult 2-minute IV injection is a separate label-permitted method using the 50 mg/mL reconstituted solution. Pediatric patients require age-specific infusion preparation; do not use the adult 2-minute injection method.',
+    allowedDiluents:
+        'Reconstitution and further dilution for this product: 0.9% Sodium Chloride Injection only.',
+    administration:
+        'Adults: either 2-minute IV injection or 30-minute IV infusion according to the ordered method. Pediatrics 1–6 years: 60-minute infusion in 25 mL NS; 7–17 years: 30-minute infusion in 50 mL NS. Do not use adult 2-minute injection in pediatric patients.',
+    stability:
+        'Current label: reconstituted vial stable 12 h room temperature or 48 h refrigerated; diluted infusion bag stable 12 h room temperature or 48 h refrigerated. Combined storage time must not exceed those limits.',
+    incompatibilities:
+        'Not compatible with dextrose-containing diluents. Do not add other medications to daptomycin vials/bags or co-infuse simultaneously through the same line without exact compatibility evidence.',
+    criticalLocks: [
+      'Formulation lock: daptomycin products can differ in reconstitution procedure; follow the exact product label.',
+      'Diluent lock: cited product uses 0.9% Sodium Chloride only; no dextrose.',
+      'Pediatric lock: do not use the adult 2-minute IV injection method in children.',
+      'Handling lock: avoid vigorous shaking/foaming during reconstitution.',
+    ],
+    sourceLabel:
+        'DailyMed · Daptomycin for Injection 500 mg · revised Jan 2026/current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'daptomycin-500mg-vial',
+        label: '500 mg vial + 10 mL 0.9% NaCl',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Reconstituted concentration 50 mg/mL. Adult infusion requires further dilution into 50 mL 0.9% NaCl; pediatric infusion volumes differ by age.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

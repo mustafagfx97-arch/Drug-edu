@@ -5020,6 +5020,234 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+  IvPreparationProfile(
+    name: 'Midazolam',
+    population: 'PICU',
+    formulation:
+        'Preservative-free Midazolam Injection, USP single-dose vials are available as 1 mg/mL and 5 mg/mL. ASHP Standardize 4 Safety pediatric continuous-infusion standards are 0.3, 1 and 5 mg/mL.',
+    reconstitution:
+        'None. Use the exact preservative-free single-dose 1 mg/mL or 5 mg/mL product selected by the PICU protocol.',
+    resultingConcentration:
+        'Stock 1 mg/mL or 5 mg/mL. ASHP S4S pediatric standard final concentrations: 0.3, 1 or 5 mg/mL.',
+    furtherDilution:
+        'The 1 mg/mL and 5 mg/mL S4S standards can use the corresponding exact preservative-free stock when locally approved. Preparing 0.3 mg/mL requires a validated PICU sterile-compounding recipe; the calculator must not select or create the final concentration.',
+    allowedDiluents:
+        'Current midazolam labeling supports 0.9% Sodium Chloride Injection or 5% Dextrose Injection for dilution of the 1 mg/mL and 5 mg/mL formulations. Do not extrapolate label stability data from 0.5 mg/mL to the 0.3 mg/mL PICU standard.',
+    administration:
+        'Continuous IV infusion through a controlled pump with continuous cardiorespiratory monitoring and resuscitation capability. Dose, infusion rate, sedation target and weaning plan remain PICU clinical orders.',
+    stability:
+        'The exact stock vials are single-dose; discard unused contents. The cited label documents 0.5 mg/mL compatibility for up to 24 hours in 0.9% sodium chloride or D5W and up to 4 hours in Lactated Ringer’s, but those limits are not automatically transferable to 0.3 mg/mL; use the validated PICU BUD.',
+    incompatibilities:
+        'Do not infer admixture or Y-site compatibility from the stock label. Verify the exact final concentration, diluent, container and co-infused medication.',
+    criticalLocks: [
+      'Preservative lock: use the exact preservative-free single-dose product for this PICU pathway; do not substitute a benzyl-alcohol-containing multidose formulation.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 0.3, 1 and 5 mg/mL.',
+      'Stability lock: do not transfer the label’s 0.5 mg/mL stability data to a 0.3 mg/mL compounded infusion.',
+      'Calculator lock: calculator converts an already prescribed mg amount to mL of the manually selected 1 or 5 mg/mL stock only; it does not choose dose, rate or final concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · preservative-free Midazolam Injection, USP 1 mg/mL and 5 mg/mL single-dose vials · current Sep 2026 labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-midazolam-pf-1mg-ml',
+        label: 'Preservative-free midazolam · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Exact stock concentration and ASHP pediatric standard; select manually.',
+      ),
+      IvWithdrawalVariant(
+        id: 'picu-midazolam-pf-5mg-ml',
+        label: 'Preservative-free midazolam · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Exact stock concentration and ASHP pediatric standard; select manually.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dexmedetomidine',
+    population: 'PICU',
+    formulation:
+        'Dexmedetomidine hydrochloride injection concentrate 200 mcg/2 mL = 100 mcg/mL in a single-dose vial. This concentrate MUST be diluted before administration.',
+    reconstitution:
+        'None. For the cited 200 mcg/2 mL concentrate, withdraw the full 2 mL vial and add it to 48 mL of 0.9% Sodium Chloride Injection for a total 50 mL preparation.',
+    resultingConcentration:
+        '4 mcg/mL after the labeled 2 mL concentrate + 48 mL 0.9% sodium chloride preparation. This is also the ASHP S4S pediatric continuous-infusion standard concentration.',
+    furtherDilution:
+        'Mandatory for this 100 mcg/mL concentrate. Use the exact labeled 2 mL + 48 mL 0.9% sodium chloride recipe to prepare 4 mcg/mL; do not let the calculator create an alternative final concentration.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection is the labeled diluent for preparation of the 4 mcg/mL infusion from this concentrate. Other listed compatible fluids do not replace the exact preparation recipe.',
+    administration:
+        'Administer only as a controlled IV infusion with continuous cardiorespiratory monitoring. Pediatric ICU indication, dose and rate must come from the PICU protocol; do not infer them from the FDA procedural-sedation regimen.',
+    stability:
+        'Single-dose concentrate; discard unused vial contents. Use the institution-validated sterile-compounding BUD for the diluted 4 mcg/mL preparation when the product label does not supply the required local BUD.',
+    incompatibilities:
+        'Do not co-administer through the same IV catheter with blood or plasma. The cited label reports incompatibility with amphotericin B and diazepam; verify any other Y-site combination separately.',
+    criticalLocks: [
+      'Dilution lock: 100 mcg/mL concentrate MUST be diluted before administration.',
+      'Recipe lock: cited product preparation is 2 mL concentrate + 48 mL 0.9% sodium chloride = 50 mL at 4 mcg/mL.',
+      'Indication lock: pediatric FDA labeling includes procedural sedation from 1 month of age; PICU continuous-infusion dosing remains protocol-specific.',
+      'Calculator lock: calculator converts an already prescribed mcg amount to mL of the 100 mcg/mL concentrate only; it never selects the dose, infusion rate or final concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · Dexmedetomidine Hydrochloride Injection 200 mcg/2 mL (100 mcg/mL) concentrate · revised Jun 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-dexmedetomidine-100mcg-ml',
+        label: 'Dexmedetomidine concentrate · 100 mcg/mL',
+        unit: 'mcg',
+        concentration: 100,
+        note:
+            'Stock concentrate only. Mandatory labeled dilution produces 4 mcg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Ketamine',
+    population: 'PICU',
+    formulation:
+        'KETALAR (ketamine hydrochloride) multidose vials are labeled as 10 mg/mL, 50 mg/mL and 100 mg/mL. ASHP S4S pediatric continuous-infusion standards are 2 and 10 mg/mL.',
+    reconstitution:
+        'None. The 10, 50 and 100 mg/mL presentations are solutions. The 100 mg/mL strength MUST be diluted before IV administration.',
+    resultingConcentration:
+        'Stock 10, 50 or 100 mg/mL. ASHP S4S pediatric continuous-infusion standard final concentrations: 2 or 10 mg/mL.',
+    furtherDilution:
+        'For the 2 mg/mL standard, KETALAR labeling provides a fluid-restricted maintenance preparation using 10 mL of 50 mg/mL or 5 mL of 100 mg/mL with a 250 mL D5W or 0.9% sodium chloride infusion. The 10 mg/mL labeled product can support the 10 mg/mL standard when locally approved. Final concentration is selected by protocol, never by the calculator.',
+    allowedDiluents:
+        'For the cited maintenance admixtures, use 5% Dextrose Injection or 0.9% Sodium Chloride Injection. The 100 mg/mL product also has a separate labeled equal-volume dilution instruction for IV induction; do not substitute that induction recipe for a PICU continuous infusion.',
+    administration:
+        'Continuous IV infusion through a controlled pump with cardiorespiratory monitoring and airway/resuscitation capability. Dose, infusion rate and sedation/analgesia target are PICU clinical orders.',
+    stability:
+        'The cited KETALAR label directs immediate use of prepared IV dilutions. Store unopened product at controlled room temperature and protect from light.',
+    incompatibilities:
+        'Do not infer Y-site or admixture compatibility beyond the exact labeled preparation. Verify co-infused medications separately.',
+    criticalLocks: [
+      'Strength lock: KETALAR 100 mg/mL MUST be diluted before IV administration.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 2 and 10 mg/mL.',
+      'Recipe lock: the 2 mg/mL maintenance preparation is label-supported; do not transfer the separate IV-induction dilution recipe into the continuous-infusion pathway.',
+      'Calculator lock: calculator converts an already prescribed mg amount to mL of the manually selected labeled stock strength only; it never chooses the dose, rate or final concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · KETALAR ketamine hydrochloride injection 10, 50 and 100 mg/mL · revised Mar 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-ketamine-10mg-ml',
+        label: 'KETALAR · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Exact labeled stock; also an ASHP pediatric standard concentration.',
+      ),
+      IvWithdrawalVariant(
+        id: 'picu-ketamine-50mg-ml',
+        label: 'KETALAR · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Exact labeled stock; use only within a validated final-preparation pathway.',
+      ),
+      IvWithdrawalVariant(
+        id: 'picu-ketamine-100mg-ml',
+        label: 'KETALAR · 100 mg/mL',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Exact labeled stock. MUST be diluted before IV administration.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Regular insulin infusion',
+    population: 'PICU',
+    formulation:
+        'HUMULIN R U-100 regular human insulin injection = 100 units/mL in a multidose vial. ASHP S4S pediatric continuous-infusion standards are 0.2 and 1 unit/mL.',
+    reconstitution:
+        'None. HUMULIN R U-100 is a 100 units/mL solution. Use only regular insulin U-100 for this profile.',
+    resultingConcentration:
+        'Stock 100 units/mL. ASHP S4S pediatric standard final concentrations: 0.2 or 1 unit/mL.',
+    furtherDilution:
+        'IV infusion requires dilution. Current HUMULIN R labeling permits 0.1 to 1 unit/mL in infusion systems containing 0.9% Sodium Chloride Injection; use the PICU-prescribed standard of 0.2 or 1 unit/mL. The calculator must not choose the final concentration or bag volume.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection for the cited HUMULIN R IV infusion pathway.',
+    administration:
+        'Continuous IV infusion under medical supervision using a controlled pump with close blood-glucose and serum-potassium monitoring. Dose, titration target and rate remain PICU clinical orders.',
+    stability:
+        'The cited HUMULIN R label states IV infusion bags at 0.1 to 1 unit/mL in 0.9% sodium chloride are stable refrigerated at 2–8°C for 48 hours and may then be used at room temperature for an additional 48 hours. Local sterile-compounding BUD may be shorter and governs.',
+    incompatibilities:
+        'Do not mix with other insulins for this IV pathway and do not infer compatibility with other medications in the same line.',
+    criticalLocks: [
+      'Product lock: this profile is HUMULIN R regular insulin U-100 = 100 units/mL; never substitute U-500 or another insulin formulation.',
+      'Unit lock: calculate in insulin units, not mg.',
+      'Standard-concentration lock: ASHP S4S pediatric options are 0.2 and 1 unit/mL, both within the label’s 0.1–1 unit/mL IV range.',
+      'Calculator lock: calculator converts an already prescribed number of units to mL of U-100 stock only; it never chooses dose, titration rate, bag volume or final concentration.',
+    ],
+    sourceLabel:
+        'DailyMed · HUMULIN R U-100 regular human insulin injection 100 units/mL · current Sep 2026 labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-regular-insulin-u100',
+        label: 'HUMULIN R U-100 · 100 units/mL',
+        unit: 'units',
+        concentration: 100,
+        note:
+            'Exact U-100 stock concentration. IV infusion still requires dilution to the ordered PICU standard.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Heparin',
+    population: 'PICU',
+    formulation:
+        'Ready-to-use Heparin Sodium in 0.45% Sodium Chloride Injection premix is available as 50 units/mL (12,500 units/250 mL or 25,000 units/500 mL) and 100 units/mL (25,000 units/250 mL). These match ASHP S4S pediatric anticoagulation-therapy standards.',
+    reconstitution:
+        'None. These are ready-to-use single-dose premixed infusion containers; do not reconstitute and do not add medication to the container.',
+    resultingConcentration:
+        '50 units/mL or 100 units/mL, selected as the exact premix ordered. ASHP S4S pediatric anticoagulation-therapy standards are 50 and 100 units/mL.',
+    furtherDilution:
+        'None for the cited ready-to-use premixes. Do not use a vial-concentrate dilution recipe for this profile.',
+    allowedDiluents:
+        'No additional diluent is required for the cited premixed 0.45% sodium chloride containers. Do not make additives to the container.',
+    administration:
+        'Continuous IV infusion using a controlled pump. Confirm the exact bag strength before connection and monitor coagulation parameters, platelets/hematocrit and bleeding according to the clinical protocol. Dose, rate and therapeutic target remain PICU orders.',
+    stability:
+        'Store the cited premix at 20–25°C, protect from freezing, and keep the container in the overwrap until ready for use. It is single-dose; discard unused portion.',
+    incompatibilities:
+        'Do not admix other drugs into the premix. Verify Y-site compatibility separately when a shared line cannot be avoided.',
+    criticalLocks: [
+      'Strength lock: fatal medication errors can occur from selecting the wrong heparin strength; verify 50 versus 100 units/mL and the total units/container.',
+      'Route lock: this anticoagulation infusion profile is NOT a catheter-lock or flush product.',
+      'Product lock: use the exact ready-to-use heparin in 0.45% sodium chloride premix; do not import vial-concentrate preparation instructions.',
+      'Calculator lock: calculator converts an already prescribed number of units to mL of the manually selected 50 or 100 units/mL premix only; it does not choose concentration, dose, rate or target.',
+    ],
+    sourceLabel:
+        'DailyMed · Heparin Sodium in 0.45% Sodium Chloride Injection ready-to-use premix 50 and 100 units/mL · updated May 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'picu-heparin-premix-50u-ml',
+        label: 'Heparin premix · 50 units/mL',
+        unit: 'units',
+        concentration: 50,
+        note:
+            'Ready-to-use premix; select manually only when this exact strength is ordered.',
+      ),
+      IvWithdrawalVariant(
+        id: 'picu-heparin-premix-100u-ml',
+        label: 'Heparin premix · 100 units/mL',
+        unit: 'units',
+        concentration: 100,
+        note:
+            'Ready-to-use premix; select manually only when this exact strength is ordered.',
+      ),
+    ],
+  ),
+
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

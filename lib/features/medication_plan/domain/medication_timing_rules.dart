@@ -1176,6 +1176,11 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'يفضل مع وجبة تحتوي بعض الدهون لتحسين الامتصاص.',
     source: 'NCCIH Coenzyme Q10',
   ),
+  'molybdenum': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'لا يحتاج توقيتًا خاصًا عادةً؛ غالبًا يكون ضمن multivitamin/mineral ولا توجد حاجة روتينية لمكمل منفرد.',
+    source: 'NIH ODS Molybdenum',
+  ),
 };
 
 

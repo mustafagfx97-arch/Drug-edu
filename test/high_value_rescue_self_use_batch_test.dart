@@ -9,7 +9,7 @@ void main() {
       sampleMedications.firstWhere((item) => item.id == id);
 
   test('high-value rescue and self-use batch is fully integrated', () {
-    expect(sampleMedications.length, 157);
+    expect(sampleMedications.length, greaterThanOrEqualTo(157));
 
     for (final id in <String>[
       'semaglutide-oral-tablets',

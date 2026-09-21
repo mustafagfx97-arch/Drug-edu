@@ -36,7 +36,7 @@ void main() {
   testWidgets('medicine without reviewed English record stays Arabic only',
       (tester) async {
     final medicine = sampleMedications.firstWhere(
-      (item) => item.id == 'acetazolamide',
+      (item) => item.id == 'cetirizine',
     );
 
     await tester.pumpWidget(

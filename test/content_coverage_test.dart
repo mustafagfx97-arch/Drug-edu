@@ -520,7 +520,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(13));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(19));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -616,6 +616,48 @@ void main() {
     final bupropion = tubeDrug('Bupropion XL tablets');
     expect(bupropion.doNot, contains('crush'));
     expect(bupropion.doNot, contains('seizure'));
+
+    final dexlansoprazole =
+        tubeDrug('Dexlansoprazole delayed-release capsule');
+    expect(dexlansoprazole.tubeRoute, contains('16 French'));
+    expect(dexlansoprazole.preparation, contains('20 mL'));
+    expect(dexlansoprazole.preparation, contains('10 mL'));
+    expect(dexlansoprazole.preparation, contains('repeat'));
+
+    final drizalma = tubeDrug('Duloxetine DRIZALMA SPRINKLE');
+    expect(drizalma.tubeRoute, contains('12 French'));
+    expect(drizalma.preparation, contains('50 mL water'));
+    expect(drizalma.preparation, contains('10 seconds'));
+    expect(drizalma.preparation, contains('15 mL'));
+    expect(drizalma.doNot, contains('product-specific'));
+
+    final mycophenolate =
+        tubeDrug('Mycophenolate mofetil oral suspension');
+    expect(mycophenolate.tubeRoute, contains('8 French'));
+    expect(mycophenolate.preparation, contains('94 mL'));
+    expect(mycophenolate.preparation, contains('200 mg/mL'));
+    expect(mycophenolate.doNot, contains('Do not mix'));
+    expect(mycophenolate.doNot, contains('crush tablets'));
+
+    final aspruzyo = tubeDrug('Ranolazine ASPRUZYO SPRINKLE');
+    expect(aspruzyo.tubeRoute, contains('12 Fr'));
+    expect(aspruzyo.preparation, contains('NG:'));
+    expect(aspruzyo.preparation, contains('50 mL'));
+    expect(aspruzyo.preparation, contains('G-tube:'));
+    expect(aspruzyo.preparation, contains('30 mL'));
+    expect(aspruzyo.preparation, contains('20 mL'));
+
+    final metoprololEr =
+        tubeDrug('Metoprolol succinate extended-release tablet');
+    expect(metoprololEr.status, contains('Do NOT'));
+    expect(metoprololEr.doNot, contains('whole or half'));
+    expect(metoprololEr.practicalAr, contains('score'));
+
+    final divalproex =
+        tubeDrug('Divalproex delayed-release sprinkle capsule');
+    expect(divalproex.status, contains('tube-validated'));
+    expect(divalproex.preparation, contains('soft food'));
+    expect(divalproex.doNot, contains('mixed with water'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

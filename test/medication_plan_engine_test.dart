@@ -866,4 +866,73 @@ void main() {
     );
   });
 
+  test('potassium supplement plus RAS blocker creates critical hyperkalemia alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'potassium-supplements',
+          'Potassium',
+          type: PlanItemType.supplement,
+          preference: TimingPreference.breakfast,
+        ),
+        item('lisinopril', 'Lisinopril'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Potassium supplement + potassium-raising therapy' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('magnesium citrate plus levothyroxine creates separation review', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'magnesium-citrate',
+          'Magnesium Citrate',
+          type: PlanItemType.supplement,
+          preference: TimingPreference.dinner,
+        ),
+        item('levothyroxine', 'Levothyroxine'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Levothyroxine + magnesium',
+      ),
+      isTrue,
+    );
+  });
+
+  test('omega-3 plus apixaban creates bleeding-risk review', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'omega-3',
+          'Omega-3',
+          type: PlanItemType.supplement,
+          preference: TimingPreference.dinner,
+        ),
+        item('apixaban', 'Apixaban'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Omega-3 + bleeding-risk therapy',
+      ),
+      isTrue,
+    );
+  });
+
+
 }

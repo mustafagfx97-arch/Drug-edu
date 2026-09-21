@@ -2378,6 +2378,276 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Regular insulin infusion',
+    population: 'General',
+    formulation:
+        'HUMULIN R (insulin human) U-100 clear solution: 100 units/mL. This profile applies to the labeled intravenous use of HUMULIN R U-100, not concentrated U-500 insulin.',
+    reconstitution:
+        'None. HUMULIN R U-100 is supplied as a clear ready solution at 100 units/mL.',
+    resultingConcentration:
+        'Stock concentration 100 units/mL. For IV administration, the labeled final concentration range is 0.1 unit/mL to 1 unit/mL.',
+    furtherDilution:
+        'Mandatory for IV infusion. Prepare in an infusion system containing 0.9% Sodium Chloride Injection so that the final insulin concentration is between 0.1 and 1 unit/mL. The exact concentration within this range must follow the prescribed/institutional protocol.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection for the cited IV HUMULIN R pathway.',
+    administration:
+        'IV infusion only under medical supervision with close blood-glucose and potassium monitoring. This preparation profile does not select the therapeutic infusion rate or titration algorithm.',
+    stability:
+        'Prepared IV infusion bags are stable refrigerated at 2–8°C for 48 hours, then may be used at room temperature for up to an additional 48 hours. Protect HUMULIN R from heat and light and do not freeze.',
+    incompatibilities:
+        'Do not substitute U-500 or another insulin formulation for this U-100 IV preparation. Do not use a non-NS IV diluent unless the exact insulin product label explicitly supports it.',
+    criticalLocks: [
+      'Product lock: HUMULIN R U-100 = 100 units/mL; do not confuse with U-500 insulin.',
+      'IV concentration lock: final infusion concentration must remain within 0.1–1 unit/mL.',
+      'Diluent lock: use 0.9% Sodium Chloride for the cited IV pathway.',
+      'Monitoring lock: close glucose and potassium monitoring is required.',
+      'Calculator lock: calculator converts prescribed units to stock mL only; it must not choose the infusion protocol.',
+    ],
+    sourceLabel:
+        'DailyMed · HUMULIN R (insulin human) U-100 · current prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'humulin-r-u100',
+        label: 'HUMULIN R U-100 · 100 units/mL',
+        unit: 'units',
+        concentration: 100,
+        note:
+            'Stock withdrawal only. Mandatory IV dilution in 0.9% NaCl to a final 0.1–1 unit/mL concentration.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Heparin',
+    population: 'General',
+    formulation:
+        'Heparin Sodium Injection, USP for IV/SC use. Current labeling includes 1,000, 5,000 and 10,000 USP units/mL vial concentrations; some presentations contain benzyl alcohol while others are preservative-free.',
+    reconstitution:
+        'None. Supplied as ready heparin solutions at product-specific concentrations.',
+    resultingConcentration:
+        'Common labeled stock concentrations: 1,000 units/mL, 5,000 units/mL and 10,000 units/mL. Verify the exact vial concentration and preservative status before withdrawal.',
+    furtherDilution:
+        'For continuous adult IV infusion, the cited label provides 20,000–40,000 units per 24 hours in 1,000 mL of 0.9% Sodium Chloride Injection (or another specifically compatible solution). Intermittent IV doses may be given undiluted or in 50–100 mL of 0.9% Sodium Chloride. Do not let the calculator select a therapeutic heparin regimen.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection for the explicit labeled adult intermittent and continuous infusion examples. Other infusion solutions require confirmed compatibility.',
+    administration:
+        'IV bolus/intermittent injection or continuous infusion according to the prescribed anticoagulation protocol with laboratory-guided dose adjustment.',
+    stability:
+        'Use and storage depend on the exact manufacturer/presentation. Preserved and preservative-free heparin products are not interchangeable for all populations; follow the exact vial/syringe label.',
+    incompatibilities:
+        'Heparin treatment vials are NOT heparin lock-flush products. Do not use a treatment-strength vial as a catheter-lock product. Verify admixture/Y-site compatibility before coadministration.',
+    criticalLocks: [
+      'Concentration lock: 1,000, 5,000 and 10,000 units/mL are different stock products.',
+      'Preservative lock: some vials contain benzyl alcohol; verify before use in neonates/infants.',
+      'Lock-flush lock: treatment-strength heparin is not a heparin lock-flush product.',
+      'Protocol lock: therapeutic dose and infusion rate require the ordered anticoagulation protocol and laboratory monitoring.',
+    ],
+    sourceLabel:
+        'DailyMed · Heparin Sodium Injection, USP · current IV/SC prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'heparin-1000units-ml',
+        label: 'Heparin · 1,000 units/mL',
+        unit: 'units',
+        concentration: 1000,
+        note:
+            'Verify the exact vial and preservative status before use.',
+      ),
+      IvWithdrawalVariant(
+        id: 'heparin-5000units-ml',
+        label: 'Heparin · 5,000 units/mL',
+        unit: 'units',
+        concentration: 5000,
+        note:
+            'Verify the exact vial/syringe and preservative status before use.',
+      ),
+      IvWithdrawalVariant(
+        id: 'heparin-10000units-ml',
+        label: 'Heparin · 10,000 units/mL',
+        unit: 'units',
+        concentration: 10000,
+        note:
+            'Verify the exact vial and preservative status before use.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Alteplase',
+    population: 'General',
+    formulation:
+        'ACTIVASE (alteplase) lyophilized powder in 50 mg and 100 mg single-dose vials supplied with preservative-free Sterile Water for Injection.',
+    reconstitution:
+        '50 mg vial: reconstitute with the accompanying 50 mL SWFI. 100 mg vial: reconstitute with the accompanying 100 mL SWFI using the supplied transfer device according to the product IFU. Both yield 1 mg/mL. Do not use Bacteriostatic Water for Injection. Avoid vigorous agitation; gently swirl/slowly invert.',
+    resultingConcentration:
+        '1 mg/mL alteplase after labeled reconstitution of either the 50 mg or 100 mg Activase vial.',
+    furtherDilution:
+        'May be administered at 1 mg/mL or further diluted immediately before administration with an equal volume of 0.9% Sodium Chloride or D5W to yield 0.5 mg/mL.',
+    allowedDiluents:
+        'Reconstitution: only the accompanying preservative-free SWFI. Optional further dilution: equal volume of 0.9% Sodium Chloride Injection or D5W.',
+    administration:
+        'IV administration regimen is indication-specific (for example acute ischemic stroke, myocardial infarction or pulmonary embolism). This preparation profile intentionally does not choose the bolus/infusion dose or schedule.',
+    stability:
+        'Use within 8 hours after reconstitution when stored at 2–30°C. Activase contains no antibacterial preservatives; discard unused solution after administration is complete.',
+    incompatibilities:
+        'Do not use bacteriostatic water for reconstitution. Do not add unverified medications to Activase solution; verify any planned coadministration separately.',
+    criticalLocks: [
+      'Product lock: ACTIVASE systemic alteplase is not the same workflow as Cathflo Activase catheter declotting.',
+      'Reconstitution lock: 50 mg + 50 mL SWFI and 100 mg + 100 mL SWFI both yield 1 mg/mL.',
+      'Optional dilution lock: only equal-volume NS or D5W to 0.5 mg/mL.',
+      'Agitation lock: avoid vigorous agitation; gently swirl or slowly invert.',
+      'Protocol lock: calculator must not choose an indication-specific thrombolytic dose.',
+    ],
+    sourceLabel:
+        'DailyMed · ACTIVASE (alteplase) 50 mg and 100 mg systemic IV product · current prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'activase-50mg-1mg-ml',
+        label: 'ACTIVASE 50 mg after reconstitution · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            '50 mg vial + accompanying 50 mL SWFI. Do not confuse with Cathflo Activase.',
+      ),
+      IvWithdrawalVariant(
+        id: 'activase-100mg-1mg-ml',
+        label: 'ACTIVASE 100 mg after reconstitution · 1 mg/mL',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            '100 mg vial + accompanying 100 mL SWFI using the product transfer device.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Tenecteplase',
+    population: 'General',
+    formulation:
+        'TNKase (tenecteplase) lyophilized powder supplied as 25 mg or 50 mg single-dose vials with the corresponding Sterile Water for Injection diluent vial.',
+    reconstitution:
+        'Use only the supplied SWFI. Reconstitute the 25 mg vial with the supplied 5.2 mL SWFI or the 50 mg vial with the supplied 10 mL SWFI. Direct diluent toward the lyophilized powder, allow large bubbles to dissipate, and gently swirl until dissolved. DO NOT SHAKE.',
+    resultingConcentration:
+        '5 mg/mL tenecteplase after reconstitution of either the 25 mg or 50 mg vial.',
+    furtherDilution:
+        'No further dilution for the cited TNKase bolus pathway.',
+    allowedDiluents:
+        'Only the supplied Sterile Water for Injection for vial reconstitution.',
+    administration:
+        'Administer the reconstituted dose as a single IV bolus over 5 seconds. Dose is indication- and weight-specific; the preparation calculator does not select the dose.',
+    stability:
+        'TNKase contains no antibacterial preservatives. Reconstitute immediately before use. If not used immediately, refrigerate the reconstituted vial at 2–8°C and use within 8 hours. Discard unused solution.',
+    incompatibilities:
+        'Precipitation may occur in an IV line containing dextrose. Flush a dextrose-containing line with 0.9% Sodium Chloride before and after the TNKase bolus.',
+    criticalLocks: [
+      'Product lock: tenecteplase is not alteplase and must not inherit Activase preparation instructions.',
+      'Vial lock: 25 mg + supplied 5.2 mL SWFI and 50 mg + supplied 10 mL SWFI both yield 5 mg/mL.',
+      'Bolus lock: single IV bolus over 5 seconds; no infusion recipe.',
+      'Dextrose-line lock: flush dextrose-containing lines with NS before and after TNKase.',
+      'Protocol lock: AIS and STEMI use different weight-based dosing ceilings; calculator must not choose the indication or dose.',
+    ],
+    sourceLabel:
+        'DailyMed · TNKase (tenecteplase) 25 mg and 50 mg · current Feb 2025 prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'tnkase-25mg-5mg-ml',
+        label: 'TNKase 25 mg after reconstitution · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            '25 mg vial + supplied 5.2 mL SWFI; use the required reconstituted volume for the prescribed dose.',
+      ),
+      IvWithdrawalVariant(
+        id: 'tnkase-50mg-5mg-ml',
+        label: 'TNKase 50 mg after reconstitution · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            '50 mg vial + supplied 10 mL SWFI; use the required reconstituted volume for the prescribed dose.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Naloxone',
+    population: 'General',
+    formulation:
+        'Naloxone Hydrochloride Injection, USP preservative-free single-dose vial: 0.4 mg/mL for IV, IM or SC use.',
+    reconstitution:
+        'None. Supplied as a ready solution at 0.4 mg/mL.',
+    resultingConcentration:
+        '0.4 mg/mL naloxone hydrochloride stock.',
+    furtherDilution:
+        'For continuous IV infusion, the cited label permits 2 mg naloxone in 500 mL of 0.9% Sodium Chloride or D5W, yielding 0.004 mg/mL (4 mcg/mL).',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection or D5W for the cited continuous-infusion pathway.',
+    administration:
+        'IV provides the most rapid onset in emergencies. Infusion rate must be titrated to patient response; this preparation profile does not choose the reversal dose or titration rate.',
+    stability:
+        'Prepared infusion mixtures should be used within 24 hours; discard any remaining solution after 24 hours. Store the stock product at controlled room temperature and protect from light. Discard unused single-dose vial contents.',
+    incompatibilities:
+        'Do not mix with preparations containing bisulfite, metabisulfite, long-chain/high-molecular-weight anions, or alkaline solutions. Do not add other drugs unless compatibility has been established.',
+    criticalLocks: [
+      'Stock lock: exact cited vial concentration is 0.4 mg/mL.',
+      'Infusion recipe lock: 2 mg in 500 mL NS or D5W = 0.004 mg/mL.',
+      'Stability lock: discard infusion after 24 hours.',
+      'Titration lock: calculator must not choose the clinical reversal dose or infusion rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Naloxone Hydrochloride Injection, USP 0.4 mg/mL preservative-free · current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'naloxone-0_4mg-ml',
+        label: 'Naloxone · 0.4 mg/mL',
+        unit: 'mg',
+        concentration: 0.4,
+        note:
+            'Ready stock concentration. Continuous infusion, when ordered, uses the separate labeled 0.004 mg/mL preparation.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Flumazenil',
+    population: 'General',
+    formulation:
+        'Flumazenil Injection, USP ready solution for IV use only: 0.1 mg/mL.',
+    reconstitution:
+        'None. Supplied ready to use at 0.1 mg/mL.',
+    resultingConcentration:
+        '0.1 mg/mL flumazenil.',
+    furtherDilution:
+        'Routine dilution is not required. If drawn into a syringe or mixed with a compatible IV solution, discard after 24 hours.',
+    allowedDiluents:
+        'Compatible solutions listed in the label: D5W, Lactated Ringer’s and normal saline.',
+    administration:
+        'IV use only. For adult reversal of conscious sedation/general anesthesia, the label starts with 0.2 mg (2 mL) over 15 seconds and uses repeated small doses as needed rather than one large bolus. Clinical reversal dosing remains indication- and patient-specific.',
+    stability:
+        'For optimum sterility, keep in the vial until just before use. If drawn into a syringe or mixed with D5W, LR or NS, discard after 24 hours.',
+    incompatibilities:
+        'Administer through a freely running IV into a large vein when possible. Do not assume compatibility with solutions outside D5W, LR and NS.',
+    criticalLocks: [
+      'Route lock: IV use only.',
+      'Concentration lock: 0.1 mg/mL = 0.2 mg in 2 mL.',
+      'Administration lock: use a series of small IV doses rather than a single large bolus.',
+      'Stability lock: discard drawn/mixed solution after 24 hours.',
+    ],
+    sourceLabel:
+        'DailyMed · Flumazenil Injection, USP 0.1 mg/mL · current prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'flumazenil-0_1mg-ml',
+        label: 'Flumazenil · 0.1 mg/mL',
+        unit: 'mg',
+        concentration: 0.1,
+        note:
+            'Ready IV concentration. Adult labeled initial reversal dose is 0.2 mg = 2 mL over 15 seconds.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/section_card.dart';
+import '../../nebulizers/presentation/nebulizer_prep_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({
@@ -26,6 +27,30 @@ class MoreScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 18),
+        SectionCard(
+          title: 'Clinical tools',
+          icon: Icons.medical_services_outlined,
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.air_rounded),
+            title: const Text(
+              'Nebulizer preparation',
+              style: TextStyle(fontWeight: FontWeight.w800),
+            ),
+            subtitle: const Text(
+              'Exact draw volume, sterile diluent, final volume, mixing compatibility and administration technique.',
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const NebulizerPrepScreen(),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 12),
         SectionCard(
           title: 'Appearance',
           icon: Icons.brightness_6_outlined,

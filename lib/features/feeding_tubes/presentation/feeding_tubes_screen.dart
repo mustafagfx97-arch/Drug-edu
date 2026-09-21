@@ -212,38 +212,87 @@ class _FeedInteractionsTabState extends State<_FeedInteractionsTab> {
   }
 }
 
-class _FormulationTab extends StatelessWidget {
+class _FormulationTab extends StatefulWidget {
   const _FormulationTab();
+
+  @override
+  State<_FormulationTab> createState() => _FormulationTabState();
+}
+
+class _FormulationTabState extends State<_FormulationTab> {
+  String _query = '';
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final q = _query.trim().toLowerCase();
+    final records = tubeMedicationRecords.where((record) {
+      if (q.isEmpty) return true;
+      return record.medicine.toLowerCase().contains(q) ||
+          record.formulation.toLowerCase().contains(q) ||
+          record.status.toLowerCase().contains(q) ||
+          record.tubeRoute.toLowerCase().contains(q);
+    }).toList();
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
       children: [
         Text(
-          'Crush / open / formulation screen',
+          'Drug-by-drug tube administration',
           style: theme.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.w900,
           ),
         ),
         const SizedBox(height: 7),
         Text(
-          'Start with the dosage form—not the generic drug name. Different products of the same drug can have different tube instructions.',
+          'Start with the exact dosage form, product instructions, tube destination and bore. An “openable” capsule is not automatically tube-compatible, and different formulations of the same drug may have opposite instructions.',
           style: theme.textTheme.bodyLarge?.copyWith(
             color: theme.colorScheme.onSurfaceVariant,
             height: 1.45,
           ),
         ),
+        const SizedBox(height: 12),
+        const _SafetyBanner(
+          title: 'Source-locked records only',
+          text:
+              'The records below are included only when the exact label or current enteral guidance supports the stated method or restriction. If your exact formulation is different, stop and re-check it.',
+          critical: true,
+        ),
         const SizedBox(height: 14),
+        TextField(
+          onChanged: (value) => setState(() => _query = value),
+          decoration: const InputDecoration(
+            hintText: 'Search drug, formulation, NG, tube size...',
+            prefixIcon: Icon(Icons.search_rounded),
+          ),
+        ),
+        const SizedBox(height: 14),
+        for (final record in records) ...[
+          _TubeMedicationCard(record: record),
+          const SizedBox(height: 10),
+        ],
+        if (records.isEmpty)
+          const _SafetyBanner(
+            title: 'No verified drug-specific record',
+            text:
+                'Do not infer that the medicine can be crushed or pushed through the tube. Check the exact product label, tube destination, and a current enteral-medicines reference.',
+            critical: true,
+          ),
+        const SizedBox(height: 24),
+        Text(
+          'General formulation safety rules',
+          style: theme.textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 8),
         for (final rule in tubeSafetyRules) ...[
           _RuleCard(rule: rule),
           const SizedBox(height: 9),
         ],
         const _SourceCard(
           text:
-              'Source set: NHS SPS Choosing medicines for enteral tube administration (2025) and swallowing-difficulties guidance, reviewed/republished through 2026.',
+              'General source set: NHS SPS Choosing medicines for enteral tube administration and Administering a medicine through an enteral feeding tube, updated through 2026. Drug-specific records use current DailyMed/FDA labeling where available.',
         ),
       ],
     );
@@ -315,6 +364,91 @@ class _SpecialSituationsTab extends StatelessWidget {
               'Source: NHS SPS Assessing injectables for enteral administration; updated 2 Jan 2026.',
         ),
       ],
+    );
+  }
+}
+
+class _TubeMedicationCard extends StatelessWidget {
+  const _TubeMedicationCard({required this.record});
+
+  final TubeMedicationRecord record;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final background = record.critical
+        ? theme.colorScheme.errorContainer.withValues(alpha: 0.38)
+        : theme.colorScheme.surfaceContainerLow;
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: theme.colorScheme.outlineVariant),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            record.medicine,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 3),
+          Text(
+            record.status,
+            style: theme.textTheme.labelLarge?.copyWith(
+              color: record.critical
+                  ? theme.colorScheme.error
+                  : theme.colorScheme.primary,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          const SizedBox(height: 10),
+          _FactLine(label: 'Exact formulation', text: record.formulation),
+          _FactLine(
+            label: 'Tube / destination',
+            text: record.tubeRoute,
+            critical: record.critical,
+          ),
+          _FactLine(
+            label: 'Preparation',
+            text: record.preparation,
+            critical: true,
+          ),
+          _FactLine(label: 'Feed plan', text: record.feedPlan),
+          _FactLine(
+            label: 'Do NOT',
+            text: record.doNot,
+            critical: true,
+          ),
+          _FactLine(label: 'Monitoring', text: record.monitoring),
+          _FactLine(label: 'Pediatrics / NICU', text: record.pediatricNicu),
+          const SizedBox(height: 8),
+          Text(
+            'الخلاصة العملية',
+            style: theme.textTheme.labelLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 3),
+          Text(
+            record.practicalAr,
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.right,
+            style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            record.source,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

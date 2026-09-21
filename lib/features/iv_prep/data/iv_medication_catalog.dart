@@ -156,12 +156,12 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
 
   // PICU representative profiles built from the same project library
-  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
-  IvCatalogEntry(name: 'Epinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),
-  IvCatalogEntry(name: 'Dopamine', population: 'PICU', category: 'Vasoactive & cardiac'),
-  IvCatalogEntry(name: 'Dobutamine', population: 'PICU', category: 'Vasoactive & cardiac'),
-  IvCatalogEntry(name: 'Fentanyl', population: 'PICU', category: 'Sedation & analgesia'),
-  IvCatalogEntry(name: 'Morphine', population: 'PICU', category: 'Sedation & analgesia'),
+  IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Epinephrine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Dopamine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Dobutamine', population: 'PICU', category: 'Vasoactive & cardiac', structured: true),
+  IvCatalogEntry(name: 'Fentanyl', population: 'PICU', category: 'Sedation & analgesia', structured: true),
+  IvCatalogEntry(name: 'Morphine', population: 'PICU', category: 'Sedation & analgesia', structured: true),
   IvCatalogEntry(name: 'Midazolam', population: 'PICU', category: 'Sedation & analgesia'),
   IvCatalogEntry(name: 'Dexmedetomidine', population: 'PICU', category: 'Sedation & analgesia'),
   IvCatalogEntry(name: 'Ketamine', population: 'PICU', category: 'Sedation & analgesia'),

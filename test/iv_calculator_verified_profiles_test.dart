@@ -62,14 +62,14 @@ void main() {
     expect(ampicillin.reconstitution, contains('250 mg/mL'));
   });
 
-  test('source-locked IV filter excludes unverified catalog backlog', () {
+  test('source-locked IV filter includes final verified omeprazole profile', () {
     final ceftriaxone =
         verifiedIvEntriesFor('General', query: 'Ceftriaxone');
     final omeprazole =
         verifiedIvEntriesFor('General', query: 'Omeprazole');
 
     expect(ceftriaxone.map((item) => item.name), contains('Ceftriaxone'));
-    expect(omeprazole, isEmpty);
+    expect(omeprazole.map((item) => item.name), contains('Omeprazole'));
   });
 
   testWidgets('IV prep UI no longer shows locked-placeholder wording',

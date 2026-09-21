@@ -413,6 +413,9 @@ void main() {
       (medicine) => medicine.id == 'medroxyprogesterone-im-contraception',
     );
     expect(dmpa.patient.timingAr, contains('13'));
+    expect(dmpa.patient.timingAr, contains('15'));
+    expect(dmpa.patient.importantAr, contains('7 أيام'));
+    expect(dmpa.sourceLabel, contains('CDC'));
 
     final predEye = expandedMedications4.firstWhere(
       (medicine) => medicine.id == 'prednisolone-acetate-ophthalmic',

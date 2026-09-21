@@ -3384,6 +3384,38 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Omeprazole',
+    population: 'General',
+    formulation:
+        'Viatris Omeprazole 40 mg powder for solution for infusion; each vial contains omeprazole sodium equivalent to 40 mg omeprazole.',
+    reconstitution:
+        'Use the same 100 mL infusion bottle/bag that will be used for the final infusion. Withdraw approximately 5 mL of 0.9% Sodium Chloride or D5W from the 100 mL container, add it to the 40 mg vial, and mix thoroughly until dissolved. Draw the solution back into the syringe, return it to the same infusion container, then repeat the transfer steps to ensure all omeprazole is transferred.',
+    resultingConcentration:
+        'One 40 mg vial prepared in a 100 mL infusion container gives a final concentration of approximately 0.4 mg/mL.',
+    furtherDilution:
+        'The entire vial must be dissolved and immediately diluted to 100 mL using only the exact permitted infusion fluid and quantity. Do not substitute another solvent or final volume because omeprazole stability is pH-dependent.',
+    allowedDiluents:
+        '0.9% Sodium Chloride solution for infusion or 5% glucose (D5W) solution for infusion only.',
+    administration:
+        'IV infusion only for this exact product, administered over 20–30 minutes. The profile does not convert this infusion product into a direct-IV injection pathway.',
+    stability:
+        'Chemical and physical in-use stability is demonstrated for 12 hours at 25°C when prepared in 0.9% Sodium Chloride and for 6 hours at 25°C when prepared in 5% glucose. From a microbiological standpoint, use immediately after preparation when possible. Store unopened vials below 25°C and protect from light.',
+    incompatibilities:
+        'In the absence of compatibility studies, do not mix with other medicinal products. Use only 0.9% Sodium Chloride or 5% glucose and the specified preparation volumes.',
+    criticalLocks: [
+      'Product lock: this profile applies to the Viatris 40 mg infusion-only vial.',
+      'Volume lock: dissolve the full vial using approximately 5 mL taken from the same 100 mL infusion container, then return all solution to that container.',
+      'Diluent lock: only 0.9% Sodium Chloride or D5W; no other solvent or quantity.',
+      'Route lock: infusion over 20–30 minutes; do not reinterpret as an IV-push product.',
+      'Stability lock: 12 hours in NS versus 6 hours in D5W at 25°C.',
+      'Calculator lock: profile remains manual because arbitrary dose-to-volume conversion could create a non-label bag preparation for doses above or below the exact 40 mg vial pathway.',
+    ],
+    sourceLabel:
+        'emc SmPC · Viatris Omeprazole 40 mg powder for solution for infusion · current product page, last updated Jul 2024',
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

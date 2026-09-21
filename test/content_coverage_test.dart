@@ -574,7 +574,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(39));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(45));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -884,6 +884,60 @@ void main() {
     expect(evrysdiTablet.preparation, contains('within 10 minutes'));
     expect(evrysdiTablet.preparation, contains('at least 15 mL'));
     expect(evrysdiTablet.doNot, contains('Do not chew, cut or crush'));
+
+
+    final brivaracetam =
+        tubeDrug('Brivaracetam oral solution 10 mg/mL');
+    expect(brivaracetam.tubeRoute, contains('Nasogastric'));
+    expect(brivaracetam.tubeRoute, contains('gastrostomy'));
+    expect(brivaracetam.preparation, contains('No dilution is necessary'));
+    expect(brivaracetam.preparation, contains('5 months'));
+    expect(brivaracetam.pediatricNicu, contains('1 month of age'));
+
+    final lacosamide =
+        tubeDrug('Lacosamide oral solution 10 mg/mL');
+    expect(lacosamide.tubeRoute, contains('Nasogastric'));
+    expect(lacosamide.tubeRoute, contains('gastrostomy'));
+    expect(lacosamide.preparation, contains('6 months'));
+    expect(lacosamide.monitoring, contains('at least 1 week'));
+    expect(lacosamide.pediatricNicu, contains('1 month of age'));
+
+    final sodiumPhenylbutyrate =
+        tubeDrug('Sodium phenylbutyrate powder');
+    expect(sodiumPhenylbutyrate.tubeRoute, contains('gastrostomy'));
+    expect(sodiumPhenylbutyrate.tubeRoute, contains('nasogastric'));
+    expect(sodiumPhenylbutyrate.preparation, contains('1 week'));
+    expect(sodiumPhenylbutyrate.preparation, contains('5 g per 10 mL'));
+    expect(sodiumPhenylbutyrate.feedPlan, contains('3 to 6 times'));
+    expect(sodiumPhenylbutyrate.pediatricNicu, contains('first 28 days'));
+
+    final morphineEr =
+        tubeDrug('Morphine sulfate extended-release pellet capsules');
+    expect(morphineEr.status, contains('Do NOT'));
+    expect(morphineEr.tubeRoute, contains('No supported'));
+    expect(morphineEr.doNot, contains('nasogastric'));
+    expect(morphineEr.doNot, contains('gastric tube'));
+    expect(morphineEr.doNot, contains('overdose or death'));
+
+    final xtampza =
+        tubeDrug('XTAMPZA ER oxycodone extended-release capsules');
+    expect(xtampza.tubeRoute, contains('Nasogastric'));
+    expect(xtampza.tubeRoute, contains('gastrostomy'));
+    expect(xtampza.preparation, contains('15 mL'));
+    expect(xtampza.preparation, contains('two more times'));
+    expect(xtampza.preparation, contains('10 mL'));
+    expect(xtampza.doNot, contains('do not pre-mix'));
+    expect(xtampza.feedPlan, contains('must be administered with food'));
+
+    final rozlytrek =
+        tubeDrug('ROZLYTREK entrectinib capsules prepared as suspension');
+    expect(rozlytrek.tubeRoute, contains('8 French'));
+    expect(rozlytrek.preparation, contains('15 minutes'));
+    expect(rozlytrek.preparation, contains('2 aliquots'));
+    expect(rozlytrek.preparation, contains('three 10 mL aliquots'));
+    expect(rozlytrek.preparation, contains('equal in volume'));
+    expect(rozlytrek.doNot, contains('oral pellets'));
+    expect(rozlytrek.doNot, contains('clog'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

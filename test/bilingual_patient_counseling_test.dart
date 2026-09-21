@@ -30,6 +30,12 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('Why am I using it?'), findsOneWidget);
+
+    await tester.scrollUntilVisible(
+      find.text('Teach-back'),
+      500,
+      scrollable: find.byType(Scrollable).last,
+    );
     expect(find.text('Teach-back'), findsOneWidget);
   });
 

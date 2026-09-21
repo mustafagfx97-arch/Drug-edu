@@ -365,6 +365,113 @@ const visualGuideCatalog = <VisualGuideData>[
         'تأكد أولًا من اسم اللاصقة وجدول تغييرها. ضعها على جلد نظيف وجاف وسليم في المكان المسموح لنفس المنتج، واضغط جيدًا على الحواف. عند موعد التغيير أزل اللاصقة القديمة وبدّل مكان اللصق حسب التعليمات.',
   ),
 
+
+  VisualGuideData(
+    id: 'nayzilam-device',
+    title: 'NAYZILAM seizure-rescue spray',
+    subtitle: 'One 5 mg dose per unit; second dose uses the opposite nostril after 10 minutes only if authorized.',
+    icon: Icons.water_drop_outlined,
+    steps: [
+      'Keep the single-dose unit sealed in the blister until the seizure-cluster rescue plan says to use it.',
+      'Do not test or prime the device.',
+      'Insert the spray tip into one nostril and press the plunger once to deliver the full 5 mg dose.',
+      'Observe breathing, alertness and seizure response.',
+      'If the prescriber has authorized a second dose and it is still needed after 10 minutes, use a NEW unit in the opposite nostril.',
+    ],
+    mistakes: [
+      'Testing or priming and losing the only dose.',
+      'Reusing the first spray unit.',
+      'Giving the second dose before 10 minutes or into the same nostril.',
+      'Giving a second dose when breathing is concerning or sedation is excessive.',
+    ],
+    patientSummaryAr:
+        'NAYZILAM جهاز جرعة واحدة 5 mg. لا تختبره قبل الاستخدام. أعطِ بخة واحدة في فتحة أنف واحدة؛ وإذا سمح الطبيب بجرعة ثانية بعد 10 دقائق فتكون بجهاز جديد في فتحة الأنف الأخرى. لا تعطِ الجرعة الثانية إذا كان التنفس مقلقًا أو النعاس شديدًا بشكل غير معتاد.',
+  ),
+  VisualGuideData(
+    id: 'valtoco-device',
+    title: 'VALTOCO seizure-rescue spray',
+    subtitle: 'Device count depends on the prescribed dose; 15/20 mg use both nostrils.',
+    icon: Icons.water_drop_outlined,
+    steps: [
+      'Check the exact prescribed VALTOCO dose before opening the blister.',
+      'Do not test the single-use device.',
+      'For a prescribed 5 mg or 10 mg dose, use one device and one spray in one nostril.',
+      'For a prescribed 15 mg or 20 mg dose, use both devices in that dose pack: one spray in each nostril.',
+      'If a second dose is prescribed, use a NEW blister pack no sooner than 4 hours after the first dose.',
+    ],
+    mistakes: [
+      'Assuming every VALTOCO dose uses one device.',
+      'Using only one device for a prescribed 15 mg or 20 mg dose.',
+      'Repeating the dose before 4 hours.',
+      'Testing a device before the emergency.',
+    ],
+    patientSummaryAr:
+        'VALTOCO يختلف حسب الجرعة الموصوفة: 5 أو 10 mg = جهاز واحد في فتحة واحدة؛ 15 أو 20 mg = جهازان، بخة في كل فتحة. إذا كانت هناك جرعة ثانية موصوفة فلا تكون قبل 4 ساعات وتحتاج عبوة جديدة.',
+  ),
+  VisualGuideData(
+    id: 'diastat-acudial-device',
+    title: 'DIASTAT AcuDial rectal rescue system',
+    subtitle: 'Pharmacist-locked dose with caregiver count-to-three administration technique.',
+    icon: Icons.medical_services_outlined,
+    steps: [
+      'Before use, confirm the prescribed dose is visible in the dose window and the green READY band is visible.',
+      'Place the patient on the side, expose the rectum and lubricate the rectal tip.',
+      'Remove the cap and make sure the seal pin comes off with the cap.',
+      'Insert the tip gently, then push the plunger slowly while counting aloud to 3.',
+      'Count to 3 before removing the syringe, then hold the buttocks together while counting to 3 and continue observation.',
+    ],
+    mistakes: [
+      'Trying to change a pharmacist-locked AcuDial dose.',
+      'Using the device when the prescribed dose or green READY band is not visible.',
+      'Skipping lubrication or forcing the tip.',
+      'Removing the syringe immediately without the count-to-three sequence.',
+    ],
+    patientSummaryAr:
+        'قبل DIASTAT AcuDial تأكد من الجرعة الظاهرة والشريط الأخضر READY. ضع المريض على جانبه، زيّت الطرف، أدخله بلطف، اضغط المكبس ببطء مع العد 1-2-3، انتظر 1-2-3 قبل إخراج السرنجة ثم اضغط الإليتين معًا 1-2-3.',
+  ),
+  VisualGuideData(
+    id: 'gvoke-hypopen-device',
+    title: 'GVOKE HypoPen',
+    subtitle: 'Ready-to-use glucagon auto-injector; bare skin, click, 5-count, red window.',
+    icon: Icons.vaccines_outlined,
+    steps: [
+      'Open the foil pouch only when the severe-hypoglycemia emergency occurs and inspect the solution.',
+      'Pull the red needle cap straight off; keep fingers away from the yellow needle guard.',
+      'Place the device straight down on bare skin of the lower abdomen, outer thigh or outer upper arm.',
+      'Push and hold until you hear the click, then keep holding while slowly counting to 5.',
+      'Confirm the viewing window is red, lift the device, turn an unconscious patient onto the side and call emergency medical help.',
+    ],
+    mistakes: [
+      'Injecting through clothing.',
+      'Covering the yellow needle guard with fingers.',
+      'Lifting before the slow 5-count is complete or before the window turns red.',
+      'Reusing the single-dose device.',
+    ],
+    patientSummaryAr:
+        'GVOKE HypoPen: افتح الـfoil وقت الطوارئ، اسحب الغطاء الأحمر، ضع القلم مستقيمًا على جلد مكشوف، اضغط حتى تسمع click واستمر بالضغط مع العد ببطء إلى 5. اكتمال الجرعة يظهر عندما تصبح النافذة حمراء.',
+  ),
+  VisualGuideData(
+    id: 'neffy-device',
+    title: 'neffy epinephrine nasal spray',
+    subtitle: 'Straight intranasal placement; do not sniff; second dose uses the same nostril after 5 minutes.',
+    icon: Icons.water_drop_outlined,
+    steps: [
+      'Do not prime the single-dose device.',
+      'Insert the nozzle fully into one nostril until the fingers touch the nose.',
+      'Keep the device straight into the nose; do not angle toward the septum or outer nasal wall.',
+      'Press the plunger firmly once and do not sniff during or after administration.',
+      'If symptoms do not improve or worsen, use a NEW device in the SAME nostril starting 5 minutes after the first dose and follow the emergency plan.',
+    ],
+    mistakes: [
+      'Priming the device.',
+      'Angling the spray toward the septum or outer nasal wall.',
+      'Sniffing during or after the dose.',
+      'Using the opposite nostril for the second dose.',
+    ],
+    patientSummaryAr:
+        'neffy: لا تختبر الجهاز. أدخل الفوهة كاملة واجعلها مستقيمة داخل الأنف، اضغط مرة واحدة ولا تشم أثناء أو بعد الرش. إذا احتجت جرعة ثانية فهي بجهاز جديد في نفس فتحة الأنف ابتداءً من 5 دقائق بعد الأولى.',
+  ),
+
 ];
 
 
@@ -407,6 +514,11 @@ const medicationVisualGuideIds = <String, List<String>>{
   'olopatadine-ophthalmic-otc': ['eye-drops'],
   'prednisolone-acetate-ophthalmic': ['eye-drops'],
   'ofloxacin-otic': ['ear-drops'],
+  'nayzilam-midazolam-nasal': ['nayzilam-device'],
+  'valtoco-diazepam-nasal': ['valtoco-device'],
+  'diastat-acudial-diazepam-rectal': ['diastat-acudial-device'],
+  'gvoke-hypopen-glucagon': ['gvoke-hypopen-device'],
+  'neffy-epinephrine-nasal': ['neffy-device'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

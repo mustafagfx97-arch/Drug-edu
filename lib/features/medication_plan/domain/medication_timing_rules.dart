@@ -1218,6 +1218,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · TRULICITY · 2026',
   ),
 
+
+  'nayzilam-midazolam-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنقاذ seizure cluster فقط؛ الجرعة الثانية إن كانت مسموحة تكون بعد 10 دقائق بجهاز جديد في فتحة الأنف الأخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NAYZILAM IFU',
+  ),
+  'valtoco-diazepam-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنقاذ seizure cluster فقط؛ الجرعة الثانية إن كانت موصوفة تكون بعد 4 ساعات على الأقل وبعبوة جديدة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VALTOCO · effective Jun 2026',
+  ),
+  'diastat-acudial-diazepam-rectal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنقاذ seizure cluster فقط؛ الجرعة الثانية ليست تلقائية، وإذا وصفها الطبيب فتكون عادة بعد 4–12 ساعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · DIASTAT / DIASTAT AcuDial caregiver IFU',
+  ),
+  'gvoke-hypopen-glucagon': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لـsevere hypoglycemia فقط؛ اتصل بالمساعدة الطبية بعد الحقن ويمكن استخدام جهاز جديد بعد 15 دقيقة إذا لم تحدث استجابة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · GVOKE HypoPen IFU',
+  ),
+  'neffy-epinephrine-nasal': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لـanaphylaxis فقط؛ إذا لم تتحسن الأعراض أو ساءت، جهاز جديد في نفس فتحة الأنف ابتداءً من 5 دقائق بعد الأولى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · neffy · revised Mar 2026',
+  ),
+
 };
 
 

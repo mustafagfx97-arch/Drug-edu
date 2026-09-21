@@ -316,6 +316,33 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'dulaglutide-trulicity':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'nayzilam-midazolam-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ متقطع لنوبات seizure cluster حسب الخطة، وليس علاجًا يوميًا.',
+  ),
+  'valtoco-diazepam-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ متقطع لنوبات seizure cluster؛ لا يُستخدم كجرعة يومية ثابتة.',
+  ),
+  'diastat-acudial-diazepam-rectal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ متقطع لنوبات seizure cluster ويعطى فقط وفق خطة الطبيب بواسطة caregiver مدرَّب.',
+  ),
+  'gvoke-hypopen-glucagon': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ لهبوط السكر الشديد؛ احتفظ بجهاز غير منتهي الصلاحية واستبدله بعد الاستخدام.',
+  ),
+  'neffy-epinephrine-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ للحساسية الشديدة/anaphylaxis؛ احتفظ بجهازين صالحين واستبدل الجهاز بعد الاستخدام أو انتهاء الصلاحية.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

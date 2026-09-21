@@ -20,6 +20,9 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
 
     return ivMedicationCatalog.where((entry) {
       if (entry.population != _population) return false;
+      final verifiedProfile =
+          findIvPreparationProfile(entry.name, entry.population);
+      if (!entry.structured || verifiedProfile == null) return false;
       if (q.isEmpty) return true;
       return entry.name.toLowerCase().contains(q) ||
           entry.category.toLowerCase().contains(q);
@@ -30,8 +33,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final entries = _entries;
-    final verifiedCount = entries.where((entry) =>
-        findIvPreparationProfile(entry.name, entry.population) != null).length;
+    final verifiedCount = entries.length;
     final categories = entries.map((entry) => entry.category).toSet().toList()
       ..sort();
 
@@ -68,6 +70,21 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
               decoration: const InputDecoration(
                 hintText: 'Search IV medication or category',
                 prefixIcon: Icon(Icons.search_rounded),
+              ),
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          sliver: SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.secondaryContainer.withValues(alpha: 0.45),
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: const Text(
+                'Only exact source-locked preparation profiles are shown here. Unverified catalog candidates remain internal research backlog and are not presented as usable preparation instructions.',
               ),
             ),
           ),
@@ -127,8 +144,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                   ),
                 ),
                 Text(
-                  verifiedCount.toString() + ' verified / ' +
-                      entries.length.toString() + ' catalogued',
+                  verifiedCount.toString() + ' verified profiles',
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.w800,
@@ -164,7 +180,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
 
                 final profile =
                     findIvPreparationProfile(entry.name, entry.population);
-                final verified = entry.structured && profile != null;
+                assert(profile != null);
 
                 return Card(
                   child: ListTile(
@@ -174,16 +190,12 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                       width: 44,
                       height: 44,
                       decoration: BoxDecoration(
-                        color: verified
-                            ? theme.colorScheme.primaryContainer
-                            : theme.colorScheme.surfaceContainerHighest,
+                        color: theme.colorScheme.primaryContainer,
                         borderRadius: BorderRadius.circular(13),
                       ),
                       child: Icon(
                         Icons.vaccines_outlined,
-                        color: verified
-                            ? theme.colorScheme.onPrimaryContainer
-                            : theme.colorScheme.onSurfaceVariant,
+                        color: theme.colorScheme.onPrimaryContainer,
                       ),
                     ),
                     title: Text(
@@ -193,27 +205,21 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                     subtitle: Padding(
                       padding: const EdgeInsets.only(top: 4),
                       child: Text(
-                        verified
-                            ? 'Verified source-locked preparation profile'
-                            : 'Catalogued only · preparation values locked until exact product data are verified',
+                        'Verified source-locked preparation profile',
                       ),
                     ),
-                    trailing: verified
-                        ? Icon(
-                            Icons.verified_outlined,
-                            color: theme.colorScheme.primary,
-                          )
-                        : const Icon(Icons.lock_outline_rounded),
-                    onTap: verified
-                        ? () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) =>
-                                    IvPreparationDetailScreen(profile: profile),
-                              ),
-                            );
-                          }
-                        : null,
+                    trailing: Icon(
+                      Icons.verified_outlined,
+                      color: theme.colorScheme.primary,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              IvPreparationDetailScreen(profile: profile),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

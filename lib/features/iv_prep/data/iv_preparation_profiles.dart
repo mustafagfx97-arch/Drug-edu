@@ -1,3 +1,19 @@
+class IvWithdrawalVariant {
+  const IvWithdrawalVariant({
+    required this.id,
+    required this.label,
+    required this.unit,
+    required this.concentration,
+    required this.note,
+  });
+
+  final String id;
+  final String label;
+  final String unit;
+  final double concentration;
+  final String note;
+}
+
 class IvPreparationProfile {
   const IvPreparationProfile({
     required this.name,
@@ -14,6 +30,7 @@ class IvPreparationProfile {
     required this.sourceLabel,
     this.withdrawalUnit = '',
     this.withdrawalConcentration,
+    this.withdrawalVariants = const [],
   });
 
   final String name;
@@ -33,6 +50,24 @@ class IvPreparationProfile {
   /// to a withdrawal volume. It never selects a dose or target concentration.
   final String withdrawalUnit;
   final double? withdrawalConcentration;
+  final List<IvWithdrawalVariant> withdrawalVariants;
+
+  List<IvWithdrawalVariant> get calculatorVariants {
+    if (withdrawalVariants.isNotEmpty) return withdrawalVariants;
+    final concentration = withdrawalConcentration;
+    if (concentration == null || withdrawalUnit.trim().isEmpty) {
+      return const [];
+    }
+    return [
+      IvWithdrawalVariant(
+        id: 'default',
+        label: 'Verified product concentration',
+        unit: withdrawalUnit,
+        concentration: concentration,
+        note: resultingConcentration,
+      ),
+    ];
+  }
 }
 
 const ivPreparationProfiles = <IvPreparationProfile>[
@@ -88,6 +123,16 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
     sourceLabel:
         'DailyMed · Norepinephrine Bitartrate Injection concentrate 4 mg/4 mL · labeled 4 mcg/mL dilution',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: '4mg-4ml-concentrate',
+        label: '4 mg/4 mL concentrate · before required dilution',
+        unit: 'mg',
+        concentration: 1,
+        note:
+            'Use only to calculate volume drawn from the 1 mg/mL concentrate. The label then requires dilution; 4 mcg/mL is the labeled infusion concentration for the cited recipe.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Vancomycin',
@@ -169,6 +214,16 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
     sourceLabel:
         'DailyMed · Piperacillin and Tazobactam for Injection · reconstitution/dilution section',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'reconstituted-total-product',
+        label: 'Reconstituted single-dose vial · total product',
+        unit: 'mg total product',
+        concentration: 202.5,
+        note:
+            'After the cited 2.25 g/10 mL, 3.375 g/15 mL or 4.5 g/20 mL reconstitution: 202.5 mg/mL total product = 180 mg/mL piperacillin + 22.5 mg/mL tazobactam. Further dilution is still required.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Ceftriaxone',
@@ -363,6 +418,16 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
     sourceLabel:
         'DailyMed · Metronidazole Injection USP 500 mg/100 mL premixed bag · current preparation instructions',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'premix-5mg-ml',
+        label: 'Premixed 500 mg/100 mL bag',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Ready-to-use 5 mg/mL solution. No routine dilution or buffering; do not add supplementary medication to the container.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Linezolid',
@@ -389,6 +454,16 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
     sourceLabel:
         'DailyMed · Linezolid Injection 600 mg/300 mL · current ready-to-use infusion-bag labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'premix-2mg-ml',
+        label: 'Ready-to-use 600 mg/300 mL bag',
+        unit: 'mg',
+        concentration: 2,
+        note:
+            'Ready-to-use 2 mg/mL infusion bag. Do not add supplementary medication.',
+      ),
+    ],
   ),
 
   IvPreparationProfile(
@@ -504,6 +579,16 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
     sourceLabel:
         'DailyMed · Fluconazole Injection, USP 2 mg/mL ready-to-use infusion solution · current U.S. labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'premix-2mg-ml',
+        label: 'Ready-to-use 2 mg/mL infusion solution',
+        unit: 'mg',
+        concentration: 2,
+        note:
+            'Commercial 200 mg/100 mL and 400 mg/200 mL presentations are both 2 mg/mL. Identify the exact carrier/container and do not add supplementary medication.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Ondansetron',
@@ -561,6 +646,24 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     sourceLabel:
         'DailyMed · Cefepime for Injection · updated 2026 · sections 2.4–2.6',
     withdrawalUnit: 'mg',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: '1g-vial-iv',
+        label: '1 g IV vial + 10 mL diluent',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Approximately 100 mg/mL after the cited IV reconstitution. Further dilute the withdrawn dose for IV infusion.',
+      ),
+      IvWithdrawalVariant(
+        id: '2g-vial-iv',
+        label: '2 g IV vial + 10 mL diluent',
+        unit: 'mg',
+        concentration: 160,
+        note:
+            'Approximately 160 mg/mL after the cited IV reconstitution. Do not apply a generic 100 mg/mL assumption to the 2 g vial.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Ampicillin',
@@ -644,6 +747,24 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     sourceLabel:
         'DailyMed · Micafungin for Injection · current 2025–2026 labeling · sections 2.4–2.5',
     withdrawalUnit: 'mg',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: '50mg-vial',
+        label: '50 mg vial + 5 mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Reconstituted concentration 10 mg/mL. Adult doses are then added to 100 mL NS or D5W; pediatric final-concentration rules remain profile-specific.',
+      ),
+      IvWithdrawalVariant(
+        id: '100mg-vial',
+        label: '100 mg vial + 5 mL',
+        unit: 'mg',
+        concentration: 20,
+        note:
+            'Reconstituted concentration 20 mg/mL. Select this only when the exact 100 mg vial is being used.',
+      ),
+    ],
   ),
   IvPreparationProfile(
     name: 'Fosphenytoin',

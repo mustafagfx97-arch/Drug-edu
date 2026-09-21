@@ -125,15 +125,15 @@ const ivMedicationCatalog = <IvCatalogEntry>[
 
   // NICU antimicrobials
   IvCatalogEntry(name: 'Ampicillin', population: 'NICU', category: 'Antimicrobials', structured: true),
-  IvCatalogEntry(name: 'Benzylpenicillin', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Benzylpenicillin', population: 'NICU', category: 'Antimicrobials', structured: true),
   IvCatalogEntry(name: 'Gentamicin', population: 'NICU', category: 'Antimicrobials', structured: true),
   IvCatalogEntry(name: 'Amikacin', population: 'NICU', category: 'Antimicrobials', structured: true),
   IvCatalogEntry(name: 'Cefotaxime', population: 'NICU', category: 'Antimicrobials', structured: true),
-  IvCatalogEntry(name: 'Ceftazidime', population: 'NICU', category: 'Antimicrobials'),
-  IvCatalogEntry(name: 'Cefepime', population: 'NICU', category: 'Antimicrobials'),
-  IvCatalogEntry(name: 'Meropenem', population: 'NICU', category: 'Antimicrobials'),
-  IvCatalogEntry(name: 'Vancomycin intermittent', population: 'NICU', category: 'Antimicrobials'),
-  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'NICU', category: 'Antimicrobials'),
+  IvCatalogEntry(name: 'Ceftazidime', population: 'NICU', category: 'Antimicrobials', structured: true),
+  IvCatalogEntry(name: 'Cefepime', population: 'NICU', category: 'Antimicrobials', structured: true),
+  IvCatalogEntry(name: 'Meropenem', population: 'NICU', category: 'Antimicrobials', structured: true),
+  IvCatalogEntry(name: 'Vancomycin intermittent', population: 'NICU', category: 'Antimicrobials', structured: true),
+  IvCatalogEntry(name: 'Piperacillin / Tazobactam', population: 'NICU', category: 'Antimicrobials', structured: true),
 
   // NICU cardiac / respiratory / neuro / electrolytes
   IvCatalogEntry(name: 'Caffeine citrate', population: 'NICU', category: 'Cardiac & respiratory', structured: true),

@@ -3902,6 +3902,240 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Benzylpenicillin',
+    population: 'NICU',
+    formulation:
+        'Benzylpenicillin sodium 600 mg powder for injection (about 1 million IU) single-dose vial; current UK product labeling includes explicit newborn/preterm use.',
+    reconstitution:
+        'For IV injection, the cited current product permits dissolving 600 mg in 4–10 mL Water for Injection or 0.9% Sodium Chloride. For IV infusion, dissolve 600 mg in at least 10 mL of Water for Injection or 0.9% Sodium Chloride. Prepare freshly.',
+    resultingConcentration:
+        'No single calculator concentration is exposed because the exact label permits a range of IV reconstitution volumes. 600 mg is considered approximately equivalent to 1 million IU.',
+    furtherDilution:
+        'Use the exact NICU-ordered route and fluid plan. Do not force a single concentration when the label explicitly permits a reconstitution range. For preterm/newborn infants, IV therapy is preferred over IM because severe local IM reactions have been reported.',
+    allowedDiluents:
+        'Water for Injection or 0.9% Sodium Chloride Injection for the cited IV product.',
+    administration:
+        'IV injection or infusion according to the neonatal order. Premature/newborn dosing intervals must account for reduced renal clearance; this preparation profile does not select the dose or interval.',
+    stability:
+        'Use freshly prepared solution immediately when possible. The cited product states reconstituted solution is intended for immediate administration.',
+    incompatibilities:
+        'Do not mix with unverified medicines in the same syringe/infusion. Sodium-containing diluent adds sodium load; consider electrolyte/fluid burden in neonates.',
+    criticalLocks: [
+      'Product lock: exact 600 mg benzylpenicillin sodium vial; approximately 1 million IU.',
+      'Manual calculator lock: label permits 4–10 mL for IV injection and at least 10 mL for IV infusion, so one automatic concentration would be misleading.',
+      'Neonate lock: reduced renal clearance in premature/newborn infants requires neonatal dose/interval selection outside this calculator.',
+      'Route lock: IV is preferred over IM in infants when feasible because severe local IM reactions can occur.',
+    ],
+    sourceLabel:
+        'emc SmPC · Genus Benzylpenicillin sodium 600 mg Powder for Injection · updated May 2026',
+  ),
+
+  IvPreparationProfile(
+    name: 'Ceftazidime',
+    population: 'NICU',
+    formulation:
+        'Sagent Ceftazidime for Injection conventional IV vials: 1 g and 2 g; current label updated Aug 2026.',
+    reconstitution:
+        'For IV use, add 10 mL Sterile Water for Injection. The 1 g vial gives approximately 100 mg/mL; the 2 g vial gives approximately 170 mg/mL after displacement.',
+    resultingConcentration:
+        'Approximate IV vial concentrations: 100 mg/mL for 1 g + 10 mL SWFI; 170 mg/mL for 2 g + 10 mL SWFI.',
+    furtherDilution:
+        'For IV infusion, transfer the required amount of reconstituted solution into a compatible IV fluid. For NICU fractional doses, select the exact vial concentration used and a validated neonatal final volume; do not assume one universal final concentration.',
+    allowedDiluents:
+        'Initial IV vial reconstitution: Sterile Water for Injection. Further IV infusion may use label-listed compatible fluids.',
+    administration:
+        'Direct intermittent IV may be given over 3–5 minutes. Infusion is a separate pathway. Neonatal dose and interval remain clinical orders.',
+    stability:
+        'Use the current product stability table for the chosen final fluid/concentration and local sterile-compounding BUD.',
+    incompatibilities:
+        'Do not add ceftazidime solutions to aminoglycoside solutions because of potential interaction; administer separately when both are required.',
+    criticalLocks: [
+      'Vial lock: 1 g and 2 g IV vials do not produce the same concentration after 10 mL diluent.',
+      'Pressure lock: carbon dioxide is released on reconstitution and positive vial pressure develops; follow product constitution technique.',
+      'Aminoglycoside lock: do not physically admix with gentamicin/amikacin.',
+      'Rate lock: direct IV administration is 3–5 minutes.',
+    ],
+    sourceLabel:
+        'DailyMed · Sagent Ceftazidime for Injection 1 g/2 g IV vials · updated Aug 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-ceftazidime-1g-vial',
+        label: 'Ceftazidime 1 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 100,
+        note: 'Approximate post-reconstitution concentration 100 mg/mL.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-ceftazidime-2g-vial',
+        label: 'Ceftazidime 2 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 170,
+        note: 'Approximate post-reconstitution concentration 170 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Cefepime',
+    population: 'NICU',
+    formulation:
+        'WG Critical Care Cefepime for Injection conventional IV vials: 1 g and 2 g; current label updated Jun 2026.',
+    reconstitution:
+        'For IV use: 1 g vial + 10 mL compatible IV diluent → approximately 100 mg/mL; 2 g vial + 10 mL → approximately 160 mg/mL.',
+    resultingConcentration:
+        'Approximate IV vial concentrations: 100 mg/mL (1 g vial) or 160 mg/mL (2 g vial).',
+    furtherDilution:
+        'For IV infusion, further dilute to a compatible final cefepime concentration within the labeled 1–40 mg/mL range. In NICU, final volume/concentration must match the validated neonatal protocol rather than an adult bag volume.',
+    allowedDiluents:
+        'Label-compatible IV fluids include 0.9% Sodium Chloride, D5W, D10W, M/6 Sodium Lactate, D5/0.9% NaCl, Lactated Ringer’s plus D5W, and listed Normosol solutions.',
+    administration:
+        'Administer the resulting IV infusion over approximately 30 minutes. Dose/interval selection in neonates is outside this preparation profile.',
+    stability:
+        'Labeled IV infusion solutions at 1–40 mg/mL are stable up to 24 hours at 20–25°C or 7 days refrigerated at 2–8°C; local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Do not physically admix with vancomycin, gentamicin, tobramycin, netilmicin, metronidazole or aminophylline unless exact compatibility is established.',
+    criticalLocks: [
+      'Vial lock: 1 g IV vial ≈100 mg/mL; 2 g IV vial ≈160 mg/mL after adding 10 mL.',
+      'Final concentration lock: label-supported infusion range is 1–40 mg/mL.',
+      'Rate lock: IV infusion over approximately 30 minutes.',
+      'Compatibility lock: do not infer admixture compatibility with vancomycin or aminoglycosides.',
+    ],
+    sourceLabel:
+        'DailyMed · WG Critical Care Cefepime for Injection 1 g/2 g · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-cefepime-1g-vial',
+        label: 'Cefepime 1 g IV vial + 10 mL',
+        unit: 'mg',
+        concentration: 100,
+        note: 'Approximate post-reconstitution concentration 100 mg/mL.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-cefepime-2g-vial',
+        label: 'Cefepime 2 g IV vial + 10 mL',
+        unit: 'mg',
+        concentration: 160,
+        note: 'Approximate post-reconstitution concentration 160 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Meropenem',
+    population: 'NICU',
+    formulation:
+        'Meropenem for Injection conventional 500 mg and 1 g vials. Current U.S. labeling includes explicit dosing information for infants younger than 3 months.',
+    reconstitution:
+        'For IV bolus preparation: 500 mg vial + 10 mL Sterile Water for Injection → approximately 50 mg/mL; 1 g vial + 20 mL SWFI → approximately 50 mg/mL. Shake to dissolve and let stand until clear.',
+    resultingConcentration:
+        'Approximately 50 mg/mL after labeled bolus reconstitution of either 500 mg or 1 g vial.',
+    furtherDilution:
+        'For infusion, the vial may be directly reconstituted with compatible infusion fluid or the 50 mg/mL concentrate may be further diluted. Labeled infusion concentration range is 1–20 mg/mL.',
+    allowedDiluents:
+        'SWFI for the labeled bolus reconstitution. 0.9% Sodium Chloride and D5W are among supported infusion fluids; stability differs substantially by diluent.',
+    administration:
+        'Diluted IV infusion over approximately 15–30 minutes. The neonatal dose/interval is gestational-age and postnatal-age dependent and is not selected by this preparation profile.',
+    stability:
+        'SWFI bolus solution up to 50 mg/mL: up to 3 hours at ≤25°C or 13 hours at ≤5°C. Infusion 1–20 mg/mL in NS: 1 hour at ≤25°C or 15 hours at ≤5°C. D5W infusion should be used immediately. Do not freeze.',
+    incompatibilities:
+        'Compatibility with other drugs has not been established; do not mix or physically add meropenem to solutions containing other drugs.',
+    criticalLocks: [
+      'Vial lock: 500 mg + 10 mL and 1 g + 20 mL both produce approximately 50 mg/mL.',
+      'Infusion lock: final infusion concentration is 1–20 mg/mL.',
+      'Dextrose stability lock: D5W infusion should be used immediately; do not copy NS stability.',
+      'Neonate lock: dose/interval depends on gestational and postnatal age; calculator does not select it.',
+    ],
+    sourceLabel:
+        'DailyMed · Meropenem for Injection 500 mg/1 g · neonatal and preparation labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-meropenem-500mg-vial',
+        label: 'Meropenem 500 mg + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 50,
+        note: 'Approximate 50 mg/mL bolus concentrate.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-meropenem-1g-vial',
+        label: 'Meropenem 1 g + 20 mL SWFI',
+        unit: 'mg',
+        concentration: 50,
+        note: 'Approximate 50 mg/mL bolus concentrate.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Vancomycin intermittent',
+    population: 'NICU',
+    formulation:
+        'Vancomycin Hydrochloride for Injection conventional 500 mg and 1 g lyophilized vials.',
+    reconstitution:
+        'Reconstitute with Sterile Water for Injection to 50 mg/mL: 500 mg vial + 10 mL; 1 g vial + 20 mL. Further dilution is mandatory.',
+    resultingConcentration:
+        '50 mg/mL after vial reconstitution.',
+    furtherDilution:
+        'Further dilute for intermittent infusion. Product labeling recommends vancomycin concentrations ≤5 mg/mL; concentrations up to 10 mg/mL may be used for selected fluid-restricted patients but may increase infusion-related reactions. Use NICU protocol for the final neonatal concentration.',
+    allowedDiluents:
+        'Compatible fluids include D5W, 0.9% Sodium Chloride, D5/0.9% NaCl, Lactated Ringer’s, D5/LR, Normosol-M in D5W and Isolyte E.',
+    administration:
+        'Neonatal intermittent doses should be infused over at least 60 minutes. Close serum-concentration and renal-function monitoring is recommended, especially in premature infants.',
+    stability:
+        'Reconstituted 50 mg/mL vial solution may be refrigerated for 14 days per the cited product label. Final dilution stability depends on the infusion fluid; local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Vancomycin has low pH and may be physically incompatible with other compounds. Beta-lactam mixtures may precipitate; flush IV lines adequately between vancomycin and beta-lactams.',
+    criticalLocks: [
+      'Reconstitution lock: 500 mg + 10 mL or 1 g + 20 mL SWFI = 50 mg/mL.',
+      'Mandatory dilution lock: reconstituted vancomycin is not the final NICU infusion concentration.',
+      'Concentration lock: ≤5 mg/mL is preferred; up to 10 mg/mL only when fluid restriction justifies the added reaction risk.',
+      'Rate lock: neonatal intermittent infusion is at least 60 minutes.',
+      'TDM lock: calculator never selects neonatal dose, interval or serum target.',
+    ],
+    sourceLabel:
+        'DailyMed · Vancomycin Hydrochloride for Injection 500 mg/1 g conventional vials · neonatal/intermittent infusion labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-vancomycin-50mg-ml',
+        label: 'Vancomycin after reconstitution · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note: 'Mandatory further dilution before intermittent IV infusion.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Piperacillin / Tazobactam',
+    population: 'NICU',
+    formulation:
+        'Piperacillin/Tazobactam for Injection single-dose vials. Pediatric preparation table gives 2.25 g, 3.375 g and 4.5 g vials after reconstitution at total concentration 202.5 mg/mL (180 mg/mL piperacillin + 22.5 mg/mL tazobactam).',
+    reconstitution:
+        'Reconstitute 2.25 g with 10 mL, 3.375 g with 15 mL, or 4.5 g with 20 mL of a compatible reconstitution diluent; swirl until completely dissolved. All three yield the same total concentration: 202.5 mg/mL.',
+    resultingConcentration:
+        '202.5 mg/mL total drug = 180 mg/mL piperacillin + 22.5 mg/mL tazobactam.',
+    furtherDilution:
+        'For pediatric patients ≤40 kg, withdraw the patient-specific volume from the 202.5 mg/mL reconstituted vial, then further dilute so final piperacillin concentration is 20–80 mg/mL and tazobactam is 2.5–10 mg/mL. Infuse over at least 30 minutes.',
+    allowedDiluents:
+        'Reconstitution options include 0.9% Sodium Chloride, SWFI or D5W. Compatible final solutions include 0.9% Sodium Chloride, D5W, Dextran 6% in saline, or SWFI with maximum recommended 50 mL per dose. Lactated Ringer’s is not compatible with this exact product.',
+    administration:
+        'IV infusion over at least 30 minutes using an appropriately sized syringe or IV bag. Important: the cited pediatric dosing label begins at 2 months of age; neonatal dosing must come from a neonatal-specific reference/protocol rather than this label.',
+    stability:
+        'Single-dose vial should be used immediately when possible; label allows discard after 24 hours room temperature or 48 hours refrigerated after reconstitution. IV-bag chemical stability is up to 24 hours room temperature or one week refrigerated; local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Aminoglycosides should generally be reconstituted, diluted and administered separately because piperacillin can inactivate them in vitro. Do not mix with blood products, albumin hydrolysates, sodium-bicarbonate-only solutions, or Lactated Ringer’s for this exact product.',
+    criticalLocks: [
+      'Component lock: 202.5 mg/mL total = 180 mg/mL piperacillin + 22.5 mg/mL tazobactam.',
+      'Manual calculator lock: neonatal orders may be expressed by piperacillin component or total combination; automatic dose-to-volume conversion is intentionally disabled.',
+      'Final concentration lock: pediatric final piperacillin 20–80 mg/mL and tazobactam 2.5–10 mg/mL.',
+      'Age lock: label pediatric dosing starts at 2 months; NICU neonatal dose/interval requires a separate neonatal reference.',
+      'Aminoglycoside lock: separate administration is preferred unless exact Y-site conditions are validated.',
+    ],
+    sourceLabel:
+        'DailyMed · Piperacillin/Tazobactam for Injection single-dose vials · pediatric ≤40 kg preparation table',
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

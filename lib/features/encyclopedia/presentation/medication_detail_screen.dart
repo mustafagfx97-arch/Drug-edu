@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
 import '../../../core/data/medication_patient_guidance.dart';
+import '../../../core/data/medication_patient_guidance_en.dart';
 import '../../../core/data/therapy_duration_catalog.dart';
 import '../../../core/models/medication.dart';
 import '../../../shared/widgets/section_card.dart';
@@ -330,14 +331,63 @@ class _PharmacistTab extends StatelessWidget {
   }
 }
 
-class _PatientTab extends StatelessWidget {
+class _PatientTab extends StatefulWidget {
   const _PatientTab({required this.medication});
 
   final Medication medication;
 
   @override
+  State<_PatientTab> createState() => _PatientTabState();
+}
+
+class _PatientTabState extends State<_PatientTab> {
+  bool _english = false;
+
+  @override
   Widget build(BuildContext context) {
+    final medication = widget.medication;
+    final english = englishPatientCounselingFor(medication.id);
+    final hasEnglish = english != null;
+    final useEnglish = hasEnglish && _english;
+
+    return Directionality(
+      textDirection: useEnglish ? TextDirection.ltr : TextDirection.rtl,
+      child: useEnglish
+          ? _buildEnglish(context, english)
+          : _buildArabic(context, hasEnglish: hasEnglish),
+    );
+  }
+
+  Widget _languageToggle(BuildContext context, {required bool english}) {
+    return Align(
+      alignment: english ? Alignment.centerLeft : Alignment.centerRight,
+      child: SegmentedButton<bool>(
+        segments: const [
+          ButtonSegment<bool>(
+            value: false,
+            label: Text('العربية'),
+            icon: Icon(Icons.translate_rounded),
+          ),
+          ButtonSegment<bool>(
+            value: true,
+            label: Text('English'),
+            icon: Icon(Icons.language_rounded),
+          ),
+        ],
+        selected: <bool>{_english},
+        onSelectionChanged: (selection) {
+          setState(() => _english = selection.first);
+        },
+      ),
+    );
+  }
+
+  Widget _buildArabic(
+    BuildContext context, {
+    required bool hasEnglish,
+  }) {
     final theme = Theme.of(context);
+    final medication = widget.medication;
     final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
     final patient = resolvedPatientCounseling(
       medication,
@@ -346,162 +396,284 @@ class _PatientTab extends StatelessWidget {
     );
     final visualGuides = visualGuidesForMedication(medication.id);
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              textDirection: TextDirection.rtl,
-              children: [
-                const Icon(Icons.record_voice_over_outlined),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    'هذا هو الشرح المخصص للمريض فقط: بسيط، مباشر، ومن دون تفاصيل صيدلانية لا يحتاجها.',
-                    textAlign: TextAlign.right,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
-                  ),
-                ),
-              ],
-            ),
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+      children: [
+        if (hasEnglish) ...[
+          _languageToggle(context, english: false),
+          const SizedBox(height: 12),
+        ],
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
+            borderRadius: BorderRadius.circular(20),
           ),
-          const SizedBox(height: 14),
-          if (visualGuides.isNotEmpty) ...[
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(17),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'دليل الاستخدام العملي',
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Wrap(
-                      alignment: WrapAlignment.end,
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        for (final guide in visualGuides)
-                          ActionChip(
-                            avatar: Icon(guide.icon, size: 18),
-                            label: Text(guide.title),
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => VisualGuideDetailScreen(
-                                    title: guide.title,
-                                    subtitle: guide.subtitle,
-                                    steps: guide.steps,
-                                    mistakes: guide.mistakes,
-                                    patientSummaryAr: guide.patientSummaryAr,
-                                    icon: guide.icon,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                      ],
-                    ),
-                  ],
+          child: Row(
+            textDirection: TextDirection.rtl,
+            children: [
+              const Icon(Icons.record_voice_over_outlined),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'هذا هو الشرح المخصص للمريض فقط: بسيط، مباشر، ومن دون تفاصيل صيدلانية لا يحتاجها.',
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
                 ),
               ),
-            ),
-            const SizedBox(height: 10),
-          ],
-          if (durationAr.isNotEmpty) ...[
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(17),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'مدة العلاج',
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    const SizedBox(height: 7),
-                    Text(
-                      durationAr,
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-          ],
-          for (final item in patient.items) ...[
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(17),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      item.titleAr,
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    const SizedBox(height: 7),
-                    Text(
-                      item.bodyAr,
-                      textAlign: TextAlign.right,
-                      style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-          ],
-          if (patient.teachBackAr.isNotEmpty)
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.secondaryContainer,
-                borderRadius: BorderRadius.circular(18),
-              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        if (visualGuides.isNotEmpty) ...[
+          _patientVisualGuideCard(
+            context,
+            title: 'دليل الاستخدام العملي',
+            alignment: WrapAlignment.end,
+            textAlign: TextAlign.right,
+          ),
+          const SizedBox(height: 10),
+        ],
+        if (durationAr.isNotEmpty) ...[
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(17),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'تأكد من الفهم',
+                    'مدة العلاج',
                     textAlign: TextAlign.right,
                     style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.primary,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
                   const SizedBox(height: 7),
                   Text(
-                    patient.teachBackAr,
+                    durationAr,
                     textAlign: TextAlign.right,
-                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
                   ),
                 ],
               ),
             ),
+          ),
+          const SizedBox(height: 10),
         ],
+        for (final item in patient.items) ...[
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(17),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    item.titleAr,
+                    textAlign: TextAlign.right,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: 7),
+                  Text(
+                    item.bodyAr,
+                    textAlign: TextAlign.right,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.7),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+        if (patient.teachBackAr.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.secondaryContainer,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'تأكد من الفهم',
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  patient.teachBackAr,
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildEnglish(
+    BuildContext context,
+    EnglishPatientCounseling patient,
+  ) {
+    final theme = Theme.of(context);
+    final visualGuides = visualGuidesForMedication(widget.medication.id);
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
+      children: [
+        _languageToggle(context, english: true),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primaryContainer.withValues(alpha: 0.4),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.record_voice_over_outlined),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'Patient-focused counseling only: simple, actionable instructions without unnecessary clinical detail.',
+                  style: theme.textTheme.bodyLarge?.copyWith(height: 1.55),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        if (visualGuides.isNotEmpty) ...[
+          _patientVisualGuideCard(
+            context,
+            title: 'Practical technique guide',
+            alignment: WrapAlignment.start,
+            textAlign: TextAlign.left,
+          ),
+          const SizedBox(height: 10),
+        ],
+        for (final item in patient.items) ...[
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(17),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    item.title,
+                    textAlign: TextAlign.left,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: 7),
+                  Text(
+                    item.body,
+                    textAlign: TextAlign.left,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.65),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+        ],
+        if (patient.teachBack.trim().isNotEmpty)
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.secondaryContainer,
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Teach-back',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 7),
+                Text(
+                  patient.teachBack,
+                  style: theme.textTheme.bodyLarge?.copyWith(height: 1.55),
+                ),
+              ],
+            ),
+          ),
+        const SizedBox(height: 12),
+        Text(
+          'English counseling is shown only for medication records that have been individually reviewed. The app does not auto-translate clinical instructions.',
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+            height: 1.4,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _patientVisualGuideCard(
+    BuildContext context, {
+    required String title,
+    required WrapAlignment alignment,
+    required TextAlign textAlign,
+  }) {
+    final theme = Theme.of(context);
+    final visualGuides = visualGuidesForMedication(widget.medication.id);
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(17),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              title,
+              textAlign: textAlign,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              alignment: alignment,
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                for (final guide in visualGuides)
+                  ActionChip(
+                    avatar: Icon(guide.icon, size: 18),
+                    label: Text(guide.title),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => VisualGuideDetailScreen(
+                            title: guide.title,
+                            subtitle: guide.subtitle,
+                            steps: guide.steps,
+                            mistakes: guide.mistakes,
+                            patientSummaryAr: guide.patientSummaryAr,
+                            icon: guide.icon,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

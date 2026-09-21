@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:drug_edu/core/data/medication_clinical_overlays.dart';
 import 'package:drug_edu/core/data/medication_patient_guidance.dart';
+import 'package:drug_edu/core/data/medication_patient_guidance_en.dart';
 import 'package:drug_edu/core/data/sample_families.dart';
 import 'package:drug_edu/core/data/therapy_duration_catalog.dart';
 import 'package:drug_edu/core/models/medication.dart';
@@ -34,6 +35,59 @@ void main() {
     }
   });
 
+
+  test('reviewed English patient counseling is complete and source locked', () {
+    expect(englishPatientCounseling.length, greaterThanOrEqualTo(32));
+
+    for (final entry in englishPatientCounseling.entries) {
+      expect(
+        sampleMedications.any((medicine) => medicine.id == entry.key),
+        isTrue,
+        reason: 'English counseling references unknown medicine: ' + entry.key,
+      );
+
+      final patient = entry.value;
+      expect(patient.purpose.trim(), isNotEmpty, reason: entry.key + ' purpose');
+      expect(patient.howToUse.trim(), isNotEmpty, reason: entry.key + ' how');
+      expect(patient.timing.trim(), isNotEmpty, reason: entry.key + ' timing');
+      expect(patient.duration.trim(), isNotEmpty, reason: entry.key + ' duration');
+      expect(patient.important.trim(), isNotEmpty, reason: entry.key + ' important');
+      expect(patient.missedDose.trim(), isNotEmpty, reason: entry.key + ' missed');
+      expect(patient.seekHelp.trim(), isNotEmpty, reason: entry.key + ' red flags');
+      expect(patient.teachBack.trim(), isNotEmpty, reason: entry.key + ' teach-back');
+    }
+
+    final warfarin = englishPatientCounselingFor('warfarin')!;
+    expect(warfarin.missedDose.toLowerCase(), contains('same day'));
+    expect(warfarin.missedDose.toLowerCase(), contains('next day'));
+    expect(warfarin.important, contains('INR'));
+
+    final dabigatran = englishPatientCounselingFor('dabigatran')!;
+    expect(dabigatran.missedDose, contains('6 hours'));
+    expect(dabigatran.howToUse.toLowerCase(), contains('do not break'));
+
+    final methotrexate =
+        englishPatientCounselingFor('methotrexate-rheumatology')!;
+    expect(methotrexate.howToUse, contains('ONCE A WEEK'));
+    expect(methotrexate.important.toLowerCase(), contains('fatal'));
+
+    final rivaroxaban = englishPatientCounselingFor('rivaroxaban')!;
+    expect(rivaroxaban.timing, contains('15 mg'));
+    expect(rivaroxaban.timing, contains('20 mg'));
+    expect(rivaroxaban.missedDose.toLowerCase(), contains('regimen-specific'));
+
+    final cefdinir =
+        englishPatientCounselingFor('cefdinir-pediatric-suspension')!;
+    expect(cefdinir.storage, contains('10 days'));
+    expect(cefdinir.timing, contains('2 hours'));
+
+    expect(
+      englishPatientCounselingFor('cetirizine'),
+      isNull,
+      reason:
+          'Medicines without a reviewed English record must not get an automatic translation fallback.',
+    );
+  });
 
   test('medicine encyclopedia has substantial practical coverage', () {
     expect(sampleMedications.length, greaterThanOrEqualTo(152));

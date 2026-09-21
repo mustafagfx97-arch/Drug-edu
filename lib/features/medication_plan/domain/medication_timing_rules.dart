@@ -1255,6 +1255,46 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · neffy · revised Mar 2026',
   ),
 
+
+  'insulin-degludec-tresiba': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إنسولين قاعدي مرة يوميًا؛ للبالغ يمكن في أي وقت من اليوم حسب الخطة، وللطفل في نفس الوقت يوميًا. لا ينشئ التطبيق وقتًا أو جرعة تعويضية تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TRESIBA U-100/U-200',
+  ),
+  'humulin-n-nph': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'وقت NPH وعدد الجرعات يعتمدان على خطة الإنسولين والوجبات؛ لا تستخدم Auto دون معرفة الجدول الموصوف.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN N',
+  ),
+  'humulin-r-u100': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'HUMULIN R U-100 تحت الجلد يُعطى عادة قبل الوجبة بحوالي 30 دقيقة؛ اختر الوجبة والجرعة من الوصفة ولا ينشئ التطبيق dose correction.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN R U-100',
+  ),
+  'humulin-70-30': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'HUMULIN 70/30 يُعطى عادة قبل الوجبة بحوالي 30–45 دقيقة؛ يحتاج اختيار الوجبة والجدول الموصوف ولا يُفترض تلقائيًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN 70/30 · Jun 2026',
+  ),
+  'humulin-r-u500': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'U-500 عالي التركيز ويُعطى عادة مرتين أو ثلاثًا يوميًا قبل الوجبة بنحو 30 دقيقة حسب الوصفة؛ لا ينشئ التطبيق الجرعة أو التحويل أو الجدول.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN R U-500 · Jul 2026',
+  ),
+
 };
 
 

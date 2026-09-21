@@ -997,6 +997,146 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
     critical: true,
   ),
 
+
+  TubeMedicationRecord(
+    medicine: 'Brivaracetam oral solution 10 mg/mL',
+    formulation:
+        'Immediate-release brivaracetam oral solution 10 mg/mL; tube instructions apply to the oral solution, not the tablet or IV formulation.',
+    status: 'Label-supported NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. The current label does not specify a minimum French size or a fixed flush volume.',
+    preparation:
+        'Measure the prescribed dose with a calibrated oral measuring device. No dilution is necessary. Administer the measured oral solution through the NG or G-tube. Because the label establishes tube compatibility but does not provide a fixed tube-flush volume, use the local validated tube-flush procedure rather than inventing one. Discard unused oral solution 5 months after first opening the bottle.',
+    feedPlan:
+        'May be taken with or without food; the label does not require a routine enteral-feed hold.',
+    doNot:
+        'Do not use a household teaspoon or tablespoon. Do not transfer this liquid tube method to BRIVIACT/brivaracetam tablets or injection. Do not invent a minimum Fr or fixed flush volume.',
+    monitoring:
+        'Monitor seizure control, somnolence/dizziness and behavioral or psychiatric adverse effects. Avoid abrupt withdrawal because seizure frequency and status epilepticus can increase.',
+    pediatricNicu:
+        'Current labeling includes partial-onset seizure treatment from 1 month of age, with weight-based dosing in children. This supports young-infant use but does not create a neonatal dose or tube-flush recipe below the labeled age.',
+    practicalAr:
+        'Brivaracetam oral solution 10 mg/mL يمكن عبر NG أو G-tube بدون dilution. قِس الجرعة بأداة معايرة، ولا نخترع minimum Fr أو flush volume لأن الملصق لا يحددهما. يُتلف المتبقي بعد 5 أشهر من فتح العبوة.',
+    source:
+        'DailyMed · BRIVIACT / brivaracetam oral solution · NG/G-tube administration · current 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Lacosamide oral solution 10 mg/mL',
+    formulation:
+        'Immediate-release lacosamide oral solution 10 mg/mL; keep separate from lacosamide tablets and injection.',
+    status: 'Label-supported NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. The current label does not specify a minimum French size or a fixed flush volume.',
+    preparation:
+        'Measure the prescribed dose with a calibrated measuring device and administer the oral solution through the NG or G-tube. The label does not provide a universal flush volume, so use the local validated feeding-tube flushing procedure. Discard any unused oral solution remaining 6 months after first opening the bottle.',
+    feedPlan:
+        'May be taken with or without food; no routine enteral-feed hold is required by the label.',
+    doNot:
+        'Do not use household teaspoons or tablespoons. Do not substitute lacosamide tablet manipulation for this validated oral-solution tube method. Do not invent a fixed flush volume.',
+    monitoring:
+        'Monitor seizure control and dizziness/ataxia. Review cardiac conduction risk when clinically relevant, especially with underlying proarrhythmic conditions or concomitant conduction-active medicines. Withdraw gradually over at least 1 week when discontinuing unless urgent clinical circumstances require otherwise.',
+    pediatricNicu:
+        'The oral solution is labeled for partial-onset seizures from 1 month of age. The tube route does not establish neonatal dosing below that age.',
+    practicalAr:
+        'Lacosamide oral solution 10 mg/mL يمكن عبر NG أو G-tube. استخدم measuring device معايرة؛ لا يوجد flush volume ثابت في الملصق. يُتلف المتبقي بعد 6 أشهر من فتح العبوة، ولا يوقف فجأة عادةً.',
+    source:
+        'DailyMed · Lacosamide oral solution 10 mg/mL · Administration Instructions · updated 2026',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Sodium phenylbutyrate powder',
+    formulation:
+        'Sodium phenylbutyrate powder for urea-cycle disorders; this powder is distinct from sodium phenylbutyrate oral pellets or packet formulations that may have different tube restrictions.',
+    status: 'Label-supported oral / NG / G-tube powder formulation',
+    tubeRoute:
+        'Oral use via mouth, gastrostomy tube, or nasogastric tube. The label does not specify a minimum French size or a fixed flush volume.',
+    preparation:
+        'Shake the powder lightly before use. Measure the prescribed amount with the product measuring device. The powder may be mixed with solid or liquid food for immediate use. When dissolved in water, sodium phenylbutyrate has been shown stable for up to 1 week at room temperature or refrigerated; solubility is about 5 g per 10 mL water. Note that the active drug dissolves but excipients may not. For tube delivery, use the validated local flushing procedure because the label does not provide a universal flush volume.',
+    feedPlan:
+        'Give the prescribed total daily amount in equally divided doses with each meal or feeding, typically 3 to 6 times daily according to the metabolic regimen.',
+    doNot:
+        'Do not transfer this tube permission to PHEBURANE oral pellets or OLPRUVA packets: those formulations have different administration restrictions. Do not assume undissolved excipient means the dose is lost; only the active sodium phenylbutyrate is expected to dissolve in water.',
+    monitoring:
+        'This is specialist metabolic therapy. Monitor plasma ammonia, glutamine, amino acids, nutrition/protein intake and the overall urea-cycle-disorder plan.',
+    pediatricNicu:
+        'This powder is specifically relevant to neonatal-onset urea-cycle disorders; current labeling includes patients presenting within the first 28 days of life. Acute hyperammonemia remains a life-threatening emergency and is not managed by routine enteral dosing alone.',
+    practicalAr:
+        'Sodium phenylbutyrate powder مسموح فمويًا أو عبر NG/G. يمكن خلطه مع الطعام/السائل للاستعمال الفوري، وإذا ذُوّب بالماء فثباته حتى أسبوع بدرجة الغرفة أو الثلاجة؛ الذوبانية نحو 5 g/10 mL. لا تعمم ذلك على PHEBURANE أو OLPRUVA.',
+    source:
+        'DailyMed · Sodium phenylbutyrate powder / BUPHENYL-type powder · Dosage and Administration · updated Apr 2026',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Morphine sulfate extended-release pellet capsules',
+    formulation:
+        'Once-daily morphine sulfate extended-release capsules containing controlled-release pellets; exact pellet-filled ER formulation.',
+    status: 'Do NOT administer pellets through NG or gastric tubes',
+    tubeRoute:
+        'No supported nasogastric or gastric feeding-tube route for this pellet-filled extended-release capsule under the current label.',
+    preparation:
+        'For patients who cannot swallow the capsule whole but can reliably swallow soft food, the capsule may be opened and the pellets sprinkled onto a small amount of applesauce and swallowed immediately without chewing. This is an oral applesauce method only, not a feeding-tube method.',
+    feedPlan:
+        'No enteral-tube feed plan applies because tube administration is not supported. For oral use, follow the prescribed once-daily extended-release regimen.',
+    doNot:
+        'Do not crush, chew, dissolve, or administer the pellets through a nasogastric or gastric tube. Crushing or dissolving can cause uncontrolled morphine release with overdose or death.',
+    monitoring:
+        'High-risk opioid: monitor sedation, respiratory depression, misuse risk, constipation and concurrent CNS depressants according to the opioid regimen.',
+    pediatricNicu:
+        'This is not a pediatric/NICU tube formulation. Neonatal opioid withdrawal considerations relate to maternal opioid exposure and are separate from enteral administration of this product.',
+    practicalAr:
+        'Morphine ER pellet capsules: ممنوع إعطاء الـpellets عبر NG أو gastric tube. يمكن فتح الكبسولة فقط على كمية صغيرة من applesauce وبلع الحبيبات بدون مضغ لمن يستطيع ذلك. السحق أو الإذابة قد يسبب dose dumping وخطر overdose.',
+    source:
+        'DailyMed · Morphine sulfate extended-release capsules, pellet-filled once-daily formulation · Administration section · updated Mar 2026',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'XTAMPZA ER oxycodone extended-release capsules',
+    formulation:
+        'Oxycodone extended-release capsule containing microspheres; tube method is product-specific to XTAMPZA ER.',
+    status: 'FDA-IFU supported NG / G-tube microsphere method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. The current IFU does not state a minimum French size.',
+    preparation:
+        'Flush the NG/G tube with water, milk, or a liquid nutritional supplement. Open the capsule and carefully pour the microspheres directly into the tube; do not pre-mix the microspheres with the flushing liquid. Draw up 15 mL of the chosen liquid and flush the microspheres through the tube. Then flush two more times, each with 10 mL of liquid, to ensure no microspheres remain.',
+    feedPlan:
+        'XTAMPZA ER must be administered with food and with approximately the same amount of food for consistent exposure. Coordinate the tube dose with a consistent enteral-nutrition amount rather than giving it fasting.',
+    doNot:
+        'Do not crush, chew, or dissolve the microspheres. Do not pre-mix the capsule contents with the liquid before placing them into the tube. Do not substitute another oxycodone ER product into this method.',
+    monitoring:
+        'High-risk opioid: monitor sedation, respiratory depression, constipation, misuse risk and concurrent CNS depressants. Extended-release opioid dosing is not interchangeable mg-for-mg with other formulations without clinical review.',
+    pediatricNicu:
+        'This is not a neonatal/NICU method. The 15 mL + 10 mL + 10 mL flushing sequence and adult ER opioid regimen must not be scaled down empirically for infants.',
+    practicalAr:
+        'XTAMPZA ER عبر NG/G: flush أولًا، افتح الكبسولة واسكب microspheres مباشرة داخل الأنبوب بدون premixing، ثم 15 mL liquid وبعدها flush مرتين كل مرة 10 mL. يجب إعطاؤه مع الطعام/التغذية وبكمية متقاربة كل مرة.',
+    source:
+        'DailyMed · XTAMPZA ER (oxycodone) extended-release capsules · FDA Instructions for Use · issued Dec 2025',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'ROZLYTREK entrectinib capsules prepared as suspension',
+    formulation:
+        'ROZLYTREK 100 mg/200 mg capsules opened and prepared as a water-or-milk suspension for enteral delivery; oral pellets are a separate formulation and are not tube-compatible.',
+    status: 'FDA-IFU supported NG / G-tube capsule-suspension method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. For suspension dose volumes of 3 mL or more, use a tube at least 8 French.',
+    preparation:
+        'Prepare the capsule suspension using the exact dose-specific table in the product IFU with room-temperature drinking water or milk, then let the mixture sit for 15 minutes. For enteral doses of 3 mL or more, divide the dose into at least 2 aliquots; for a 30 mL dose, divide into at least three 10 mL aliquots. Administer each aliquot through the NG/G tube and flush after each aliquot with water or milk equal in volume to the aliquot just administered.',
+    feedPlan:
+        'May be administered with or without food. No routine feed hold is required by the label.',
+    doNot:
+        'Do not crush or chew intact capsules. Do not use ROZLYTREK oral pellets for enteral-tube administration because they may clog the tube. Do not use a tube smaller than 8 Fr when the suspension dose volume is 3 mL or more.',
+    monitoring:
+        'Oncology monitoring is indication- and age-specific. Dose is based on the cancer indication and, in pediatric patients, age/body-surface area; review CYP3A interactions and treatment toxicity monitoring.',
+    pediatricNicu:
+        'Current NTRK-fusion labeling includes pediatric patients older than 1 month. This does not create a neonatal protocol for the first month of life; use the exact pediatric oncology dose and IFU preparation table.',
+    practicalAr:
+        'ROZLYTREK capsules يمكن تحويلها إلى suspension بالماء أو الحليب حسب جدول الجرعة في IFU ثم الانتظار 15 دقيقة. إذا volume ≥3 mL استخدم NG/G ≥8 Fr وقسّم الجرعة إلى ≥2 aliquots مع flush مساوي لحجم كل aliquot. لا تستخدم oral pellets عبر الأنبوب لأنها قد تسده.',
+    source:
+        'DailyMed · ROZLYTREK (entrectinib) capsules · FDA Instructions for Use / enteral-tube administration · current labeling',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

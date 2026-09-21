@@ -941,7 +941,7 @@ void main() {
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {
-    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(18));
+    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(24));
 
     for (final entry in ivMedicationCatalog.where((item) => item.structured)) {
       expect(
@@ -1072,6 +1072,55 @@ void main() {
     expect(ondansetron.administration, contains('15 minutes'));
     expect(ondansetron.administration, contains('30 seconds'));
     expect(ondansetron.stability, contains('24 hours'));
+
+    final cefepime =
+        findIvPreparationProfile('Cefepime', 'General')!;
+    final ampicillin =
+        findIvPreparationProfile('Ampicillin', 'General')!;
+    final azithromycinIv =
+        findIvPreparationProfile('Azithromycin', 'General')!;
+    final micafungin =
+        findIvPreparationProfile('Micafungin', 'General')!;
+    final fosphenytoin =
+        findIvPreparationProfile('Fosphenytoin', 'General')!;
+    final amiodaroneIv =
+        findIvPreparationProfile('Amiodarone', 'General')!;
+
+    expect(cefepime.reconstitution, contains('1 g'));
+    expect(cefepime.reconstitution, contains('2 g'));
+    expect(cefepime.resultingConcentration, contains('100 mg/mL'));
+    expect(cefepime.resultingConcentration, contains('160 mg/mL'));
+    expect(cefepime.administration, contains('30 minutes'));
+
+    expect(ampicillin.reconstitution, contains('7.4 mL'));
+    expect(ampicillin.reconstitution, contains('14.8 mL'));
+    expect(ampicillin.criticalLocks.join(' ').toLowerCase(), contains('newborn'));
+    expect(ampicillin.administration, contains('10–15 minutes'));
+
+    expect(azithromycinIv.withdrawalConcentration, 100);
+    expect(azithromycinIv.reconstitution, contains('4.8 mL'));
+    expect(azithromycinIv.furtherDilution, contains('1 mg/mL'));
+    expect(azithromycinIv.furtherDilution, contains('2 mg/mL'));
+    expect(azithromycinIv.administration, contains('3 hours'));
+    expect(azithromycinIv.administration, contains('1 hour'));
+
+    expect(micafungin.reconstitution, contains('5 mL'));
+    expect(micafungin.resultingConcentration, contains('10 mg/mL'));
+    expect(micafungin.resultingConcentration, contains('20 mg/mL'));
+    expect(micafungin.administration, contains('1 hour'));
+    expect(micafungin.criticalLocks.join(' '), contains('1.5 mg/mL'));
+
+    expect(fosphenytoin.withdrawalConcentration, 50);
+    expect(fosphenytoin.withdrawalUnit, contains('mg PE'));
+    expect(fosphenytoin.furtherDilution, contains('1.5 to 25 mg PE/mL'));
+    expect(fosphenytoin.criticalLocks.join(' '), contains('500 mg PE'));
+
+    expect(amiodaroneIv.withdrawalConcentration, 50);
+    expect(amiodaroneIv.resultingConcentration, contains('1.5 mg/mL'));
+    expect(amiodaroneIv.resultingConcentration, contains('1.8 mg/mL'));
+    expect(amiodaroneIv.allowedDiluents, contains('D5W'));
+    expect(amiodaroneIv.administration, contains('150 mg over 10 minutes'));
+    expect(amiodaroneIv.criticalLocks.join(' '), contains('central venous'));
 
     expect(
       findIvPreparationProfile('Sodium bicarbonate', 'NICU'),

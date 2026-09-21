@@ -1278,6 +1278,7 @@ const sampleMedications = <Medication>[
     name: 'Azithromycin',
     subtitle: 'Macrolide antibiotic',
     tags: ['Antibiotic', 'Oral', 'Short course'],
+    hasIvPreparation: true,
     sourceLabel: 'MedlinePlus Drug Information · Azithromycin',
     sections: [
       MedicationSection(

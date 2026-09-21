@@ -9,3 +9,8 @@ coverage/
 .vscode/
 *.iml
 .DS_Store
+
+# Android signing material
+**/key.properties
+**/*.jks
+**/*.keystore

@@ -3659,6 +3659,249 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Insulin',
+    population: 'NICU',
+    formulation:
+        'HUMULIN R regular insulin U-100 = 100 units/mL. ASHP Standardize 4 Safety pediatric continuous-infusion standards list 0.2 unit/mL and 1 unit/mL.',
+    reconstitution:
+        'None. HUMULIN R U-100 is supplied as a clear solution at 100 units/mL. For IV use it MUST be diluted in an infusion system containing 0.9% Sodium Chloride.',
+    resultingConcentration:
+        'Stock 100 units/mL. FDA labeling permits IV concentrations from 0.1–1 unit/mL; ASHP S4S pediatric standards are 0.2 unit/mL and 1 unit/mL.',
+    furtherDilution:
+        'Choose 0.2 or 1 unit/mL only when it matches the NICU drug library/protocol. Do not use the subcutaneous U-10/U-50 dilution instructions for IV infusion. The calculator converts ordered units to U-100 stock volume only.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection for the labeled IV HUMULIN R pathway.',
+    administration:
+        'Continuous IV infusion under medical supervision with close blood-glucose and potassium monitoring. Dose, titration and target glucose remain NICU clinical orders.',
+    stability:
+        'The manufacturer label states IV infusion bags are stable refrigerated at 2–8°C for 48 hours and then may be used at room temperature for up to an additional 48 hours. Local sterile-compounding BUD may be shorter and should govern practice.',
+    incompatibilities:
+        'Do not substitute U-500 insulin or another insulin formulation for this U-100 IV pathway. Do not use a non-NS IV diluent unless supported by an exact product/local validation.',
+    criticalLocks: [
+      'Product lock: HUMULIN R U-100 = 100 units/mL; never confuse with U-500.',
+      'IV standard lock: ASHP S4S pediatric standards are 0.2 and 1 unit/mL.',
+      'Route lock: subcutaneous U-10/U-50 dilution instructions are NOT the IV preparation method.',
+      'Monitoring lock: close glucose and potassium monitoring is mandatory.',
+      'Calculator lock: calculator reports U-100 stock withdrawal only; it does not choose final concentration, dose or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · HUMULIN R U-100 IV labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-humulin-r-u100',
+        label: 'HUMULIN R U-100 · 100 units/mL',
+        unit: 'units',
+        concentration: 100,
+        note:
+            'Stock withdrawal only. Final NICU concentration should match the validated 0.2 or 1 unit/mL S4S/local standard.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Heparin',
+    population: 'NICU',
+    formulation:
+        'Preservative-free Heparin Sodium Injection, USP 1,000 units/mL single-dose vial. ASHP S4S pediatric anticoagulation standards are 50 and 100 units/mL.',
+    reconstitution:
+        'None. Use a preservative-free neonatal/infant product. This exact stock pathway uses 1,000 units/mL preservative-free single-dose heparin.',
+    resultingConcentration:
+        'Stock 1,000 units/mL. ASHP S4S pediatric continuous anticoagulation concentrations: 50 units/mL or 100 units/mL.',
+    furtherDilution:
+        'Prepare the final 50 or 100 units/mL infusion only through the validated NICU anticoagulation compounding/drug-library protocol. The ASHP arterial-line maintenance standards (0.5 units/mL neonatal and 2 units/mL) are a DIFFERENT indication and are intentionally excluded from this therapeutic anticoagulation profile.',
+    allowedDiluents:
+        'Use the institution’s validated compatible infusion fluid for the selected therapeutic heparin standard. Do not infer an arterial-line flush recipe from this anticoagulation profile.',
+    administration:
+        'Continuous IV anticoagulation infusion with pump and protocol-directed laboratory monitoring. The heparin label notes infants may require higher weight-based maintenance rates than older children; this profile does not select dose or target.',
+    stability:
+        'Use exact product storage for stock and the validated sterile-compounding BUD for the 50/100 units/mL NICU infusion.',
+    incompatibilities:
+        'Do not use benzyl-alcohol-preserved heparin in neonates or infants. Treatment-strength heparin is not a catheter lock-flush product.',
+    criticalLocks: [
+      'Preservative lock: neonates and infants require preservative-free heparin.',
+      'Stock lock: this calculator pathway uses preservative-free 1,000 units/mL stock.',
+      'Therapy standard lock: 50 and 100 units/mL are ASHP pediatric anticoagulation standards.',
+      'Indication lock: 0.5 units/mL neonatal arterial-line maintenance is a separate pathway and must not be confused with anticoagulation therapy.',
+      'Calculator lock: calculator reports stock withdrawal only; anticoagulation dose/rate remains protocol-directed.',
+    ],
+    sourceLabel:
+        'DailyMed · preservative-free Heparin Sodium Injection 1,000 units/mL / pediatric labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-heparin-pf-1000units-ml',
+        label: 'Preservative-free heparin · 1,000 units/mL',
+        unit: 'units',
+        concentration: 1000,
+        note:
+            'Neonatal/infant stock withdrawal only. Therapeutic S4S final concentrations are 50 or 100 units/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Ampicillin',
+    population: 'NICU',
+    formulation:
+        'Ampicillin for Injection, USP powder; exact cited product includes a 125 mg vial intended primarily for pediatric use.',
+    reconstitution:
+        'For direct IV use of the 125 mg pediatric vial, add 5 mL Sterile Water for Injection. The product label also permits bacteriostatic water generally, but bacteriostatic water MUST NOT be used when the product will be used in newborns.',
+    resultingConcentration:
+        'Manual exact-product profile. The direct-IV label specifies added volume but does not provide a calculator-safe post-displacement concentration for fractional neonatal withdrawal.',
+    furtherDilution:
+        'For IV drip, first reconstitute using the product direct-IV method, then further dilute using the exact product concentration/stability table and local NICU fluid plan. Do not repurpose the separate 250 mg/mL IM/withdrawal table as a neonatal direct-IV concentration.',
+    allowedDiluents:
+        'Direct-IV neonatal reconstitution: Sterile Water for Injection. Final IV-drip fluid must follow the exact product/local compatibility table.',
+    administration:
+        'The cited label administers 125 mg, 250 mg and 500 mg direct-IV preparations slowly over 3–5 minutes. Dose, interval and final drip volume remain neonatal clinical orders.',
+    stability:
+        'The cited label states IM/direct-IV solutions should be administered within 1 hour after preparation; IV-drip stability depends on diluent and concentration.',
+    incompatibilities:
+        'Do not physically mix ampicillin with aminoglycosides in the same syringe/bag without exact compatibility support. Use separate administration when required by compatibility guidance.',
+    criticalLocks: [
+      'Newborn diluent lock: no bacteriostatic water for newborns.',
+      'Manual calculator lock: do not invent a post-displacement concentration for the 125 mg + 5 mL direct-IV pathway.',
+      '250 mg/mL lock: do not transfer the separate concentrated vial table into neonatal direct-IV preparation.',
+      'Rate lock: cited 125/250/500 mg direct-IV pathway is 3–5 minutes.',
+    ],
+    sourceLabel:
+        'DailyMed · Ampicillin for Injection, USP pediatric 125 mg vial / direct-IV instructions · current label',
+  ),
+
+  IvPreparationProfile(
+    name: 'Gentamicin',
+    population: 'NICU',
+    formulation:
+        'Eugia Gentamicin Injection, USP (PEDIATRIC), preservative-free single-dose vial 20 mg/2 mL = 10 mg/mL.',
+    reconstitution:
+        'None. The pediatric single-dose vial is a ready 10 mg/mL solution, but it MUST be diluted for intravenous use.',
+    resultingConcentration:
+        'Stock concentration 10 mg/mL preservative-free gentamicin.',
+    furtherDilution:
+        'Dilute the prescribed dose in 0.9% Sodium Chloride or D5W. The label states infants and children should use a smaller diluent volume than adult 50–200 mL examples; select the final volume according to NICU fluid needs rather than forcing an adult volume.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection or D5W for intermittent IV administration.',
+    administration:
+        'Intermittent IV infusion over 30 minutes to 2 hours. Dose/interval require neonatal age, renal function and therapeutic-drug-monitoring considerations and are not selected by this profile.',
+    stability:
+        'Store the unopened pediatric single-dose vial at 20–25°C and discard unused portion. Use the validated local sterile-compounding BUD for the diluted infusion.',
+    incompatibilities:
+        'Do not physically premix gentamicin with other drugs; administer separately. Verify shared-line/Y-site compatibility independently.',
+    criticalLocks: [
+      'Pediatric product lock: use the preservative-free 10 mg/mL pediatric single-dose vial, not a preserved 40 mg/mL adult/multidose vial.',
+      'IV dilution lock: the 10 mg/mL pediatric vial MUST be diluted for IV use.',
+      'Fluid lock: infant/neonatal diluent volume is individualized; do not copy adult 50–200 mL volumes.',
+      'TDM lock: calculator never selects neonatal dose or interval.',
+    ],
+    sourceLabel:
+        'DailyMed · Eugia Gentamicin Injection, USP (PEDIATRIC) preservative-free 10 mg/mL · current Jan 2026 label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-gentamicin-pediatric-10mg-ml',
+        label: 'Gentamicin pediatric preservative-free · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Stock withdrawal only. Mandatory further dilution for IV infusion; final volume is NICU-specific.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Amikacin',
+    population: 'NICU',
+    formulation:
+        'Amikacin Sulfate Injection, USP solution equivalent to amikacin 250 mg/mL; current presentations include 500 mg/2 mL and 1 g/4 mL.',
+    reconstitution:
+        'None. Supplied as a ready stock solution at 250 mg/mL.',
+    resultingConcentration:
+        'Stock 250 mg/mL. Current labeling documents IV solution stability at final concentrations of 0.25–5 mg/mL in listed compatible fluids.',
+    furtherDilution:
+        'Pediatric fluid volume is individualized. Do NOT copy the adult 500 mg in 100/200 mL example into NICU practice. Use a sufficient validated volume to deliver the ordered neonatal dose over the required infusion time.',
+    allowedDiluents:
+        'Current label supports 0.9% Sodium Chloride, D5W, Lactated Ringer’s and additional listed balanced solutions.',
+    administration:
+        'Infants should receive the IV infusion over 1–2 hours. Dose/interval and serum-level monitoring remain NICU clinical decisions.',
+    stability:
+        'The current label states amikacin concentrations 0.25–5 mg/mL are stable for 24 hours at room temperature in the listed compatible IV fluids.',
+    incompatibilities:
+        'Do not physically premix amikacin with other drugs; administer separately.',
+    criticalLocks: [
+      'Stock lock: 250 mg/mL is the vial concentration, not the final neonatal infusion concentration.',
+      'Infant time lock: infuse over 1–2 hours.',
+      'Fluid lock: pediatric/neonatal volume is individualized; never copy adult 100/200 mL examples automatically.',
+      'TDM lock: calculator does not select neonatal dose, interval or serum-level target.',
+    ],
+    sourceLabel:
+        'DailyMed · Amikacin Sulfate Injection 250 mg/mL · updated Jul 2026 / infant IV administration section',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-amikacin-250mg-ml',
+        label: 'Amikacin stock · 250 mg/mL',
+        unit: 'mg',
+        concentration: 250,
+        note:
+            'Stock withdrawal only. Infant infusion is 1–2 hours; final volume is individualized.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Cefotaxime',
+    population: 'NICU',
+    formulation:
+        'Cefotaxime for Injection, USP conventional IV vials: 500 mg, 1 g or 2 g dry powder.',
+    reconstitution:
+        'For IV use, add at least 10 mL Sterile Water for Injection. Label table: 500 mg + 10 mL → about 50 mg/mL; 1 g + 10 mL → about 95 mg/mL; 2 g + 10 mL → about 180 mg/mL.',
+    resultingConcentration:
+        'Approximate post-reconstitution concentrations: 50 mg/mL (500 mg vial), 95 mg/mL (1 g vial), or 180 mg/mL (2 g vial).',
+    furtherDilution:
+        'For intermittent direct IV, the label supports 1 g or 2 g in 10 mL SWFI over 3–5 minutes. For NICU small doses, use the exact selected vial concentration and local validated volume/administration pathway; do not assume a universal final infusion concentration.',
+    allowedDiluents:
+        'Initial vial reconstitution: Sterile Water for Injection. Further infusion dilution may use label-supported fluids such as 0.9% Sodium Chloride or D5W when clinically required.',
+    administration:
+        'Direct intermittent IV administration should be over 3–5 minutes and never under 3 minutes. A longer infusion is a separate validated pathway.',
+    stability:
+        'Current label: IV 500 mg and 1 g vial solutions are chemically stable 24 hours at ≤22°C and 7 days refrigerated; the 2 g IV vial is 12 hours at ≤22°C and 7 days refrigerated. Local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Do not admix cefotaxime with aminoglycoside solutions. Avoid high-pH diluents such as sodium bicarbonate.',
+    criticalLocks: [
+      'Vial lock: 500 mg, 1 g and 2 g vials produce different post-reconstitution concentrations.',
+      'Aminoglycoside lock: cefotaxime and gentamicin/amikacin must not be physically mixed in the same solution.',
+      'Rate lock: direct IV administration must not be faster than 3 minutes.',
+      'Calculator lock: use only the concentration corresponding to the exact vial selected.',
+    ],
+    sourceLabel:
+        'DailyMed · Cefotaxime for Injection, USP · current conventional-vial preparation and compatibility labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-cefotaxime-500mg-vial',
+        label: 'Cefotaxime 500 mg IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Approximate concentration 50 mg/mL; exact 500 mg vial pathway.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-cefotaxime-1g-vial',
+        label: 'Cefotaxime 1 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 95,
+        note:
+            'Approximate concentration 95 mg/mL; exact 1 g vial pathway.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-cefotaxime-2g-vial',
+        label: 'Cefotaxime 2 g IV vial + 10 mL SWFI',
+        unit: 'mg',
+        concentration: 180,
+        note:
+            'Approximate concentration 180 mg/mL; exact 2 g vial pathway.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

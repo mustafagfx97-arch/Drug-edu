@@ -731,12 +731,14 @@ class _PatientTabState extends State<_PatientTab> {
                 ),
                 for (final option in options)
                   DropdownMenuItem<String?>(
+                    key: ValueKey('indication-option-' + option.id),
                     value: option.id,
                     child: Text(
                       (english ? option.labelEn : option.labelAr) +
                           (option.offLabel
                               ? (english ? ' · off-label' : ' · خارج النشرة')
                               : ''),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
               ],

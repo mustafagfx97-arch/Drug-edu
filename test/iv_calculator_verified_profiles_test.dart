@@ -62,8 +62,21 @@ void main() {
     expect(ampicillin.reconstitution, contains('250 mg/mL'));
   });
 
-  testWidgets('IV prep UI hides unverified catalog backlog', (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: Scaffold(body: IvPrepScreen())));
+  test('source-locked IV filter excludes unverified catalog backlog', () {
+    final ceftriaxone =
+        verifiedIvEntriesFor('General', query: 'Ceftriaxone');
+    final cefotaxime =
+        verifiedIvEntriesFor('General', query: 'Cefotaxime');
+
+    expect(ceftriaxone.map((item) => item.name), contains('Ceftriaxone'));
+    expect(cefotaxime, isEmpty);
+  });
+
+  testWidgets('IV prep UI no longer shows locked-placeholder wording',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: Scaffold(body: IvPrepScreen())),
+    );
     await tester.pumpAndSettle();
 
     expect(
@@ -74,15 +87,6 @@ void main() {
       find.textContaining('Only exact source-locked preparation profiles'),
       findsOneWidget,
     );
-
-    final search = find.byType(TextField);
-    await tester.enterText(search, 'Ceftriaxone');
-    await tester.pumpAndSettle();
-    expect(find.widgetWithText(ListTile, 'Ceftriaxone'), findsOneWidget);
-
-    await tester.enterText(search, 'Cefotaxime');
-    await tester.pumpAndSettle();
-    expect(find.widgetWithText(ListTile, 'Cefotaxime'), findsNothing);
   });
 
   testWidgets('IV calculator exposes verified profiles and variant selector',

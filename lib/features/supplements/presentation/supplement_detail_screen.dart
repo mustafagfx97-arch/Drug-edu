@@ -5,6 +5,7 @@ import '../../patient_cards/domain/patient_card_data.dart';
 import '../../patient_cards/presentation/patient_card_preview.dart';
 import '../../patient_cards/presentation/printable_patient_card_screen.dart';
 import '../domain/supplement_profile.dart';
+import '../data/supplement_decision_guidance.dart';
 
 class SupplementDetailScreen extends StatelessWidget {
   const SupplementDetailScreen({
@@ -154,6 +155,38 @@ class _PharmacistSupplementTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
+        if (supplementDecisionFor(profile.id) != null) ...[
+          Builder(
+            builder: (context) {
+              final guide = supplementDecisionFor(profile.id)!;
+              return SectionCard(
+                title: 'Decision checkpoint',
+                icon: Icons.fact_check_outlined,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Lab plan', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 4),
+                    Text(guide.labPlan, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+                    const SizedBox(height: 10),
+                    Text('Before recommending', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 4),
+                    Text(guide.useCheckpoint, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+                    const SizedBox(height: 10),
+                    Text('Interaction lock', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 4),
+                    Text(guide.interactionLock, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+                    const SizedBox(height: 10),
+                    Text('Safety lock', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w900)),
+                    const SizedBox(height: 4),
+                    Text(guide.safetyLock, style: theme.textTheme.bodyMedium?.copyWith(height: 1.45)),
+                  ],
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 12),
+        ],
         SectionCard(
           title: 'Use basis',
           icon: Icons.assignment_outlined,

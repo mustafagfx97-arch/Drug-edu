@@ -50,7 +50,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Caspofungin', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Micafungin', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Anidulafungin', population: 'General', category: 'Antifungals & antivirals', structured: true),
-  IvCatalogEntry(name: 'Ganciclovir', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Ganciclovir', population: 'General', category: 'Antifungals & antivirals', structured: true),
 
   // Cardiovascular
   IvCatalogEntry(name: 'Amiodarone', population: 'General', category: 'Cardiovascular', structured: true),
@@ -106,11 +106,11 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   // Emergency / antidotes
   IvCatalogEntry(name: 'Naloxone', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Flumazenil', population: 'General', category: 'Emergency & antidotes', structured: true),
-  IvCatalogEntry(name: 'Atropine', population: 'General', category: 'Emergency & antidotes'),
-  IvCatalogEntry(name: 'Digoxin immune Fab', population: 'General', category: 'Emergency & antidotes'),
-  IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes'),
-  IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes'),
-  IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Atropine', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Digoxin immune Fab', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes', structured: true),
 
   // NICU continuous infusions

@@ -2648,6 +2648,252 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Atropine',
+    population: 'General',
+    formulation:
+        'Hospira Atropine Sulfate Injection, USP ready-to-use single-dose IV syringes: pediatric 0.25 mg/5 mL (0.05 mg/mL) and adult/general 0.5 mg/5 mL or 1 mg/10 mL (0.1 mg/mL).',
+    reconstitution:
+        'None. These cited Hospira syringes are supplied ready to use for intravenous administration.',
+    resultingConcentration:
+        'Two source-locked concentrations: 0.05 mg/mL and 0.1 mg/mL.',
+    furtherDilution:
+        'No routine dilution is required for the cited prefilled syringe products. Do not invent a dilution solely from the prescribed atropine dose.',
+    allowedDiluents:
+        'No added diluent is required for the cited ready-to-use syringes.',
+    administration:
+        'Intravenous administration. Dose is indication-specific and should be titrated according to heart rate, PR interval, blood pressure and symptoms; this preparation profile does not select the clinical dose.',
+    stability:
+        'Store at 20–25°C with permitted excursions to 15–30°C. Single-dose syringe; discard unused portion.',
+    incompatibilities:
+        'Do not transfer product-specific instructions between 0.05 mg/mL pediatric and 0.1 mg/mL syringes without verifying the concentration in hand.',
+    criticalLocks: [
+      'Concentration lock: distinguish 0.05 mg/mL from 0.1 mg/mL before calculation.',
+      'Ready-to-use lock: no routine reconstitution or dilution for the cited Hospira prefilled syringes.',
+      'Protocol lock: calculator converts an already prescribed mg dose to mL only; it does not choose the atropine indication or dose.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Atropine Sulfate Injection, USP 0.05 mg/mL and 0.1 mg/mL single-dose syringes · updated May 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'atropine-pediatric-0_05mg-ml',
+        label: 'Atropine pediatric syringe · 0.05 mg/mL',
+        unit: 'mg',
+        concentration: 0.05,
+        note:
+            'Exact 0.25 mg/5 mL pediatric single-dose syringe.',
+      ),
+      IvWithdrawalVariant(
+        id: 'atropine-0_1mg-ml',
+        label: 'Atropine syringe · 0.1 mg/mL',
+        unit: 'mg',
+        concentration: 0.1,
+        note:
+            'Applies to cited 0.5 mg/5 mL and 1 mg/10 mL single-dose syringes.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'N-acetylcysteine IV',
+    population: 'General',
+    formulation:
+        'Acetylcysteine Injection 20%: 6 g/30 mL = 200 mg/mL sterile single-dose vial for intravenous acetaminophen-overdose treatment.',
+    reconstitution:
+        'None. Stock is a 200 mg/mL solution, but it MUST be further diluted before intravenous administration.',
+    resultingConcentration:
+        'Stock concentration 200 mg/mL. Final treatment concentration varies by patient weight, regimen and diluent.',
+    furtherDilution:
+        'Mandatory. Dilute in Sterile Water for Injection, 0.45% Sodium Chloride Injection, or D5W. In the exact cited label, the three-bag regimen is 150 mg/kg over 1 hour, then 50 mg/kg over 4 hours, then 100 mg/kg over 16 hours; volume is weight-based. The alternative two-bag regimen is labeled for patients ≥41 kg: 200 mg/kg in 1,000 mL over 4 hours, then 100 mg/kg in 500 mL over 16 hours. For patients ≥100 kg, capped label doses apply. Do not let the calculator choose the regimen.',
+    allowedDiluents:
+        'Sterile Water for Injection, 0.45% Sodium Chloride Injection, or D5W. The cited current label generally prefers 0.45% Sodium Chloride because of its osmolarity/free-water profile, while allowing the other two when clinically appropriate.',
+    administration:
+        'IV infusion only. The full course is either the exact label-defined 21-hour three-bag regimen or 20-hour two-bag regimen when the patient meets label criteria. Monitor hepatic/renal function and electrolytes; regimen continuation beyond the standard course is clinical/poison-center guided.',
+    stability:
+        'Diluted solution may be stored for up to 24 hours at room temperature. Discard unused vial contents; do not use a previously opened vial for IV administration.',
+    incompatibilities:
+        'Because the 200 mg/mL stock is hyperosmolar, never administer it IV undiluted. Final volume and osmolarity require special care in small children and fluid-restricted patients.',
+    criticalLocks: [
+      'Concentrate lock: 200 mg/mL stock MUST be diluted before IV use.',
+      'Diluent lock: SWFI, 0.45% NaCl or D5W only for the cited pathway.',
+      'Regimen lock: three-bag and two-bag regimens are distinct and must not be mixed.',
+      'Population lock: cited two-bag regimen applies to patients ≥41 kg.',
+      'Calculator lock: calculator converts the ordered acetylcysteine mg to stock mL only; it does not select regimen, dose or bag volume.',
+    ],
+    sourceLabel:
+        'DailyMed · Acetylcysteine Injection 6 g/30 mL (200 mg/mL), current version published Feb 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'acetylcysteine-iv-200mg-ml',
+        label: 'Acetylcysteine IV stock · 200 mg/mL',
+        unit: 'mg',
+        concentration: 200,
+        note:
+            'Stock withdrawal only. Mandatory further dilution using the exact weight/regimen-specific label table.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Mannitol',
+    population: 'General',
+    formulation:
+        'ICU Medical Mannitol Injection, USP 20% ready-to-use flexible containers: 50 g/250 mL or 100 g/500 mL = 0.2 g/mL (200 mg/mL).',
+    reconstitution:
+        'None. Supplied as a ready 20% IV solution. Inspect for crystals before administration.',
+    resultingConcentration:
+        '20% mannitol = 0.2 g/mL = 200 mg/mL.',
+    furtherDilution:
+        'No routine dilution is required for the cited 20% flexible-container product. Admixing other medications is not recommended.',
+    allowedDiluents:
+        'No diluent is required for the ready-to-use 20% product.',
+    administration:
+        'IV infusion, preferably through a large central vein. Use an administration set with a final in-line filter because mannitol crystals can form. Dose/rate depend on indication and patient status and are not selected by this preparation profile.',
+    stability:
+        'Store at 20–25°C and protect from freezing. If crystals are visible, keep the overwrap intact and warm with agitation in a dry-heat cabinet up to 70°C; do not use a water bath. Cool to body temperature or less, reinspect, and discard if all crystals do not dissolve. Single-dose container; discard unused portion.',
+    incompatibilities:
+        'Admixing with other drugs is not recommended. Do not administer simultaneously with blood products through the same set. Do not connect flexible containers in series.',
+    criticalLocks: [
+      'Concentration lock: cited product is 20% = 0.2 g/mL.',
+      'Filter lock: use a final in-line filter.',
+      'Crystal lock: inspect before use; exact current label allows dry-heat warming up to 70°C with overwrap intact, then cooling/reinspection.',
+      'Container lock: do not use in series connection.',
+      'Calculator lock: calculator converts a prescribed gram dose to mL only; it does not choose the therapeutic dose or infusion rate.',
+    ],
+    sourceLabel:
+        'DailyMed · ICU Medical Mannitol Injection, USP 20% in 250 mL/500 mL flexible containers · revised Oct 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'mannitol-20percent-0_2g-ml',
+        label: 'Mannitol 20% · 0.2 g/mL',
+        unit: 'g',
+        concentration: 0.2,
+        note:
+            'Ready-to-use 20% product. Inspect for crystals and use a final in-line filter.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Ganciclovir',
+    population: 'General',
+    formulation:
+        'Ganciclovir for Injection 500 mg lyophilized single-dose vial for IV use.',
+    reconstitution:
+        'Inject 10 mL preservative-free Sterile Water for Injection into the 500 mg vial and gently swirl until clear. Do NOT use bacteriostatic water containing parabens because precipitation may occur.',
+    resultingConcentration:
+        '500 mg + 10 mL SWFI → 50 mg/mL ganciclovir concentrate.',
+    furtherDilution:
+        'Mandatory. Withdraw the calculated dose volume from the 50 mg/mL concentrate and add to a compatible infusion fluid, typically 100 mL. Final infusion concentrations >10 mg/mL are not recommended.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, D5W, Ringer’s Injection, or Lactated Ringer’s Injection for the final infusion.',
+    administration:
+        'IV infusion only over 1 hour at a constant rate. Never give by rapid IV injection, IM or SC. Ensure adequate hydration and adjust dose for renal function according to the clinical order.',
+    stability:
+        'Reconstituted 50 mg/mL vial solution is stable for 12 hours at room temperature (25°C); do not refrigerate or freeze the reconstituted vial. After further dilution, use within 24 hours and refrigerate at 2–8°C; do not freeze.',
+    incompatibilities:
+        'Do not use bacteriostatic water containing parabens for reconstitution. Do not exceed 10 mg/mL in the final infusion. Handle with disposable gloves because ganciclovir solutions are alkaline and the drug has mutagenic/carcinogenic properties.',
+    criticalLocks: [
+      'Reconstitution lock: 500 mg + 10 mL preservative-free SWFI = 50 mg/mL.',
+      'Bacteriostatic-water lock: no paraben-containing bacteriostatic water.',
+      'Final concentration lock: >10 mg/mL is not recommended.',
+      'Rate lock: infusion over 1 hour; no rapid IV bolus.',
+      'Handling lock: use appropriate hazardous-drug handling precautions.',
+    ],
+    sourceLabel:
+        'DailyMed · Ganciclovir for Injection 500 mg lyophilized vial · current prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ganciclovir-500mg-vial-50mg-ml',
+        label: 'Ganciclovir 500 mg + 10 mL SWFI · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Reconstituted concentrate only. Mandatory further dilution to a final concentration ≤10 mg/mL for 1-hour infusion.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Protamine',
+    population: 'General',
+    formulation:
+        'Protamine Sulfate Injection, USP 50 mg/5 mL = 10 mg/mL single-dose vial.',
+    reconstitution:
+        'None. Supplied ready for injection at 10 mg/mL.',
+    resultingConcentration:
+        '10 mg/mL protamine sulfate.',
+    furtherDilution:
+        'No further dilution is required. If dilution is desired, D5W or 0.9% Sodium Chloride may be used; diluted solution should not be stored because it contains no preservative.',
+    allowedDiluents:
+        'Optional dilution: D5W or 0.9% Sodium Chloride Injection.',
+    administration:
+        'Very slow IV injection over 10 minutes. Do not exceed 50 mg during a 10-minute period. Dose is based on the amount/timing of heparin exposure and coagulation assessment; this preparation profile does not calculate the reversal dose.',
+    stability:
+        'Store at 20–25°C and do not freeze. If diluted, do not store the diluted solution.',
+    incompatibilities:
+        'Do not mix with other drugs without confirmed compatibility. Protamine is incompatible with certain antibiotics including several cephalosporins and penicillins.',
+    criticalLocks: [
+      'Concentration lock: 10 mg/mL.',
+      'Rate lock: very slow IV over 10 minutes; maximum 50 mg in 10 minutes.',
+      'Dilution lock: dilution is optional, not mandatory; if diluted, use D5W or NS and do not store.',
+      'Dose lock: calculator converts an already prescribed mg dose to mL only; it does not estimate heparin-neutralization dose.',
+    ],
+    sourceLabel:
+        'DailyMed · Protamine Sulfate Injection, USP 50 mg/5 mL (10 mg/mL) · current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'protamine-10mg-ml',
+        label: 'Protamine sulfate · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Ready stock concentration. Administer very slowly; do not exceed 50 mg in 10 minutes.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Digoxin immune Fab',
+    population: 'General',
+    formulation:
+        'DIGIFAB digoxin immune Fab (ovine) lyophilized single-dose vial containing 40 mg Fab protein.',
+    reconstitution:
+        'Reconstitute each 40 mg vial with 4 mL Sterile Water for Injection and gently mix.',
+    resultingConcentration:
+        'Approximately 10 mg/mL digoxin immune Fab after reconstitution.',
+    furtherDilution:
+        'Add the reconstituted product to an appropriate volume of 0.9% Sodium Chloride for infusion. For infants/small children requiring very small doses, the label permits adding 36 mL isotonic saline to one reconstituted vial to obtain 1 mg/mL.',
+    allowedDiluents:
+        'Sterile Water for Injection for vial reconstitution; 0.9% Sodium Chloride for final infusion or the special 1 mg/mL small-dose dilution.',
+    administration:
+        'Administer slowly by IV infusion over at least 30 minutes. If cardiac arrest is imminent, bolus injection may be used, with a higher expected incidence of infusion-related reactions.',
+    stability:
+        'Use promptly after reconstitution. If not used immediately, refrigerate at 2–8°C for up to 4 hours. Do not freeze.',
+    incompatibilities:
+        'Do not use cloudy, turbid or particulate-containing reconstituted solution. Do not infer compatibility with diluents other than those specified by the DIGIFAB label.',
+    criticalLocks: [
+      'Reconstitution lock: 40 mg + 4 mL SWFI ≈ 10 mg/mL.',
+      'Infusion lock: standard administration is at least 30 minutes.',
+      'Small-dose lock: optional 1 mg/mL dilution is specifically for very small pediatric doses.',
+      'Stability lock: refrigerated reconstituted product maximum 4 hours.',
+      'Dose lock: calculator must not determine the number of vials required for digoxin toxicity.',
+    ],
+    sourceLabel:
+        'DailyMed · DIGIFAB digoxin immune Fab (ovine) 40 mg vial · current prescribing information',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'digifab-40mg-vial-10mg-ml',
+        label: 'DIGIFAB 40 mg + 4 mL SWFI · ~10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Reconstituted vial concentration. Further dilute in 0.9% NaCl for standard infusion.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

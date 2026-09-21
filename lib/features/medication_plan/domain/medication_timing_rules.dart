@@ -1052,6 +1052,46 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'NIH ODS prenatal nutrient guidance',
   ),
+  'magnesium-citrate': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'يمكن ربطه بوجبة لتقليل انزعاج المعدة، لكن افصل عن الأدوية التي يتداخل امتصاصها مع المغنيسيوم.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Magnesium',
+  ),
+  'magnesium-oxide': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'يمكن ربطه بوجبة لتحسين التحمل، لكن لا تنقل نفس التوقيت تلقائيًا إذا كان المنتج antacid/laxative أو توجد أدوية تتداخل معه.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Magnesium',
+  ),
+  'potassium-supplements': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لا يضع التطبيق توقيتًا تلقائيًا للبوتاسيوم؛ الطريقة تعتمد على نفس المنتج والحاجة ووظائف الكلى والأدوية التي ترفع K⁺.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Potassium',
+  ),
+  'omega-3': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'يمكن ربطه بوجبة لتقليل الطعم أو انزعاج المعدة. راجع جرعة EPA+DHA وأدوية النزف قبل تثبيت الخطة.',
+    source: 'NIH ODS Omega-3 Fatty Acids',
+  ),
+  'biotin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن أخذه في وقت ثابت حسب المنتج، لكن يجب إبلاغ المختبر/الطبيب قبل التحاليل لأن إيقافه يعتمد على نوع التحليل والجرعة.',
+    autoScheduleSafe: false,
+    source: 'FDA Biotin safety communication / NIH ODS Biotin',
+  ),
+  'vitamin-b6': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن في وقت ثابت، لكن اجمع B6 من كل المكملات ولا تجعل الجرعات العالية المزمنة تلقائية.',
+    source: 'NIH ODS Vitamin B6',
+  ),
 };
 
 

@@ -5,7 +5,7 @@ void main() {
   dynamic profile(String id) =>
       nebulizerPreparationProfiles.firstWhere((item) => item.id == id);
 
-  test('expanded nebulizer library adds five product-locked preparation pathways', () {
+  test('expanded nebulizer library adds six product-locked preparation pathways', () {
     expect(nebulizerPreparationProfiles.length, greaterThanOrEqualTo(19));
 
     for (final id in <String>[

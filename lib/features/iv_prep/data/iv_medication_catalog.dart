@@ -71,7 +71,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Sodium bicarbonate 8.4%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Sodium bicarbonate 4.2%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Hypertonic sodium chloride 3%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
-  IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
 
   // Neurology / GI / steroids
@@ -80,17 +80,17 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Omeprazole', population: 'General', category: 'Other IV medicines'),
   IvCatalogEntry(name: 'Ondansetron', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Metoclopramide', population: 'General', category: 'Other IV medicines'),
-  IvCatalogEntry(name: 'Phenytoin', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Phenytoin', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Fosphenytoin', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Levetiracetam', population: 'General', category: 'Neurology & sedation', structured: true),
-  IvCatalogEntry(name: 'Valproate', population: 'General', category: 'Neurology & sedation'),
-  IvCatalogEntry(name: 'Phenobarbital', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Valproate', population: 'General', category: 'Neurology & sedation', structured: true),
+  IvCatalogEntry(name: 'Phenobarbital', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Dexamethasone', population: 'General', category: 'Other IV medicines'),
   IvCatalogEntry(name: 'Hydrocortisone', population: 'General', category: 'Other IV medicines'),
   IvCatalogEntry(name: 'Methylprednisolone', population: 'General', category: 'Other IV medicines'),
 
   // ICU / sedation
-  IvCatalogEntry(name: 'Midazolam', population: 'General', category: 'Neurology & sedation'),
+  IvCatalogEntry(name: 'Midazolam', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Lorazepam', population: 'General', category: 'Neurology & sedation'),
   IvCatalogEntry(name: 'Diazepam', population: 'General', category: 'Neurology & sedation'),
   IvCatalogEntry(name: 'Ketamine', population: 'General', category: 'Neurology & sedation'),
@@ -111,7 +111,7 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes'),
   IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes'),
   IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes'),
-  IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes'),
+  IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes', structured: true),
 
   // NICU continuous infusions
   IvCatalogEntry(name: 'Dopamine', population: 'NICU', category: 'Continuous infusions'),

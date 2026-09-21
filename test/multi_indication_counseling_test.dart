@@ -64,10 +64,10 @@ void main() {
 
     await tester.tap(find.byType(DropdownButtonFormField<String?>));
     await tester.pumpAndSettle();
-    await tester.tap(find.textContaining('استخدام هرموني').last);
+    await tester.tap(find.byKey(const ValueKey('indication-option-hormonal-acne-hirsutism')).last);
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('حب الشباب الهرموني'), findsOneWidget);
+    expect(find.textContaining('يُستخدم أحيانًا لدى النساء لعلاج حب الشباب الهرموني'), findsOneWidget);
     expect(find.textContaining('استخدام خارج النشرة'), findsWidgets);
 
     await tester.tap(find.text('Print Card'));

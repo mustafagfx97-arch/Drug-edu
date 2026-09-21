@@ -499,7 +499,7 @@ const expandedSupplementProfiles = <SupplementProfile>[
     howToTakeEn:
         'Use the elemental potassium amount or mEq on the exact product. Most U.S. dietary supplements provide no more than 99 mg potassium per serving, whereas prescription potassium products can provide much larger therapeutic doses.',
     formulationAlert:
-        'A potassium “supplement” may be nutritionally small, while prescription KCl/citrate or potassium salt substitutes can deliver clinically important amounts. Do not interchange them.',
+        'Most U.S. dietary potassium supplements provide 99 mg elemental potassium or less per serving, while prescription KCl/citrate or potassium salt substitutes can deliver clinically important mEq doses. Do not interchange them.',
     useBasis: 'Laboratory/clinical indication or limited dietary supplementation',
     monitoringEn:
         'Serum potassium and kidney function are central when treating hypokalemia or when ACEI/ARB/ARNI/MRA therapy, CKD or other hyperkalemia risks are present.',

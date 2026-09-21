@@ -2095,6 +2095,289 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Lorazepam',
+    population: 'General',
+    formulation:
+        'Lorazepam Injection, USP for IV/IM use. Current labeled strengths include 2 mg/mL and 4 mg/mL; this profile applies only to products whose label requires dilution before IV administration.',
+    reconstitution:
+        'None. The supplied product is a ready solution, but immediately before IV use it MUST be diluted with an equal volume of compatible diluent.',
+    resultingConcentration:
+        'Stock is 2 mg/mL or 4 mg/mL. Equal-volume dilution produces 1 mg/mL from the 2 mg/mL product and 2 mg/mL from the 4 mg/mL product.',
+    furtherDilution:
+        'For IV use, mix the withdrawn lorazepam volume with an equal volume of compatible diluent immediately before administration. Mix gently by repeated inversion until homogeneous; do not shake vigorously.',
+    allowedDiluents:
+        'Sterile Water for Injection, 0.9% Sodium Chloride Injection, or 5% Dextrose Injection.',
+    administration:
+        'Slow IV administration only after equal-volume dilution. The labeled injection rate must not exceed 2 mg/min. Respiratory support and monitoring appropriate for IV benzodiazepine use must be available.',
+    stability:
+        'Protect from light and refrigerate according to the exact product label. Prepare the IV dilution immediately before use; discard unused single-dose product.',
+    incompatibilities:
+        'Do not add additional medication to a Carpuject syringe/cartridge. Do not use if discolored or if precipitate is present.',
+    criticalLocks: [
+      'IV dilution lock: equal-volume dilution is required immediately before IV administration for this cited product pathway.',
+      'Concentration lock: distinguish 2 mg/mL from 4 mg/mL stock before withdrawal.',
+      'Rate lock: IV injection must not exceed 2 mg/min.',
+      'Mixing lock: gently invert; do not shake vigorously.',
+    ],
+    sourceLabel:
+        'DailyMed · Lorazepam Injection, USP 2 mg/mL and 4 mg/mL · current 2026 IV dilution labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'lorazepam-2mg-ml',
+        label: 'Lorazepam stock · 2 mg/mL',
+        unit: 'mg',
+        concentration: 2,
+        note:
+            'Withdraw from 2 mg/mL stock, then dilute with an equal volume immediately before IV use to yield 1 mg/mL.',
+      ),
+      IvWithdrawalVariant(
+        id: 'lorazepam-4mg-ml',
+        label: 'Lorazepam stock · 4 mg/mL',
+        unit: 'mg',
+        concentration: 4,
+        note:
+            'Withdraw from 4 mg/mL stock, then dilute with an equal volume immediately before IV use to yield 2 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Ketamine',
+    population: 'General',
+    formulation:
+        'KETALAR/ketamine hydrochloride injection products are available as 10 mg/mL, 50 mg/mL and 100 mg/mL. Preparation differs by concentration.',
+    reconstitution:
+        'None. For IV induction, 10 mg/mL and 50 mg/mL may be administered without dilution in the cited KETALAR pathway. The 100 mg/mL concentration MUST be diluted before IV administration.',
+    resultingConcentration:
+        '10 mg/mL, 50 mg/mL or 100 mg/mL stock. For IV induction, equal-volume dilution of the 100 mg/mL product yields 50 mg/mL. For maintenance infusion, labeled preparations include 1 mg/mL and, when fluid restricted, 2 mg/mL.',
+    furtherDilution:
+        'For IV induction using 100 mg/mL: dilute with an equal volume of SWFI, 0.9% NaCl or D5W and use immediately. For maintenance: 10 mL of 50 mg/mL or 5 mL of 100 mg/mL into 500 mL D5W or NS yields 1 mg/mL; use a 250 mL final volume for 2 mg/mL when fluid restriction is required.',
+    allowedDiluents:
+        'SWFI, 0.9% Sodium Chloride or D5W for equal-volume dilution of 100 mg/mL. Maintenance infusion: D5W or 0.9% Sodium Chloride.',
+    administration:
+        'IV administration should be slow and under continuous respiratory and hemodynamic monitoring. For the cited induction pathway, the label describes administration over about 60 seconds; therapeutic dose selection remains outside this preparation profile.',
+    stability:
+        'Use diluted ketamine immediately after preparation. Store unopened product according to the exact manufacturer label.',
+    incompatibilities:
+        'Do not inject the 100 mg/mL concentration IV without proper dilution. Do not extrapolate a dilution rule from one concentration to another.',
+    criticalLocks: [
+      'Concentration lock: 10, 50 and 100 mg/mL are different preparation pathways.',
+      '100 mg/mL IV lock: MUST be diluted 1:1 before IV induction.',
+      'Maintenance lock: labeled maintenance concentrations are 1 mg/mL, or 2 mg/mL when fluid restricted.',
+      'Immediate-use lock: use diluted solution immediately.',
+    ],
+    sourceLabel:
+        'DailyMed · KETALAR / Ketamine Hydrochloride Injection 10, 50 and 100 mg/mL · current preparation labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ketamine-10mg-ml',
+        label: 'Ketamine · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Cited IV induction pathway may use this concentration without dilution.',
+      ),
+      IvWithdrawalVariant(
+        id: 'ketamine-50mg-ml',
+        label: 'Ketamine · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Cited IV induction pathway may use this concentration without dilution; maintenance infusion requires separate dilution.',
+      ),
+      IvWithdrawalVariant(
+        id: 'ketamine-100mg-ml',
+        label: 'Ketamine concentrate · 100 mg/mL',
+        unit: 'mg',
+        concentration: 100,
+        note:
+            'Stock withdrawal only. MUST be diluted before IV administration.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Propofol',
+    population: 'General',
+    formulation:
+        'Propofol Injectable Emulsion, USP 10 mg/mL in single-patient-use vials; common vial sizes are 200 mg/20 mL, 500 mg/50 mL and 1000 mg/100 mL.',
+    reconstitution:
+        'None. Propofol injectable emulsion is supplied ready to use at 10 mg/mL. Shake well before use and maintain strict aseptic technique.',
+    resultingConcentration:
+        '10 mg/mL ready-to-use emulsion.',
+    furtherDilution:
+        'Routine dilution is not required. If dilution is clinically necessary, dilute only with D5W and never below 2 mg/mL.',
+    allowedDiluents:
+        'D5W only for direct dilution of the propofol emulsion. The label separately lists selected fluids compatible through a Y-type set; do not treat Y-site compatibility as permission to admix drugs into the vial.',
+    administration:
+        'IV administration only by clinicians trained in anesthesia/sedation with continuous monitoring and airway/resuscitation capability. Use a controlled infusion device when infusing.',
+    stability:
+        'Single-patient use. Start administration promptly after opening/spiking. Discard unused propofol, reservoirs and dedicated tubing at the end of the procedure or at 12 hours, whichever comes first; change administration lines at 12 hours. Do not freeze.',
+    incompatibilities:
+        'Do not mix propofol with other therapeutic agents before administration. Compatibility with coadministration of blood/serum/plasma is not established.',
+    criticalLocks: [
+      'Emulsion lock: ready-to-use concentration is 10 mg/mL.',
+      'Dilution lock: if dilution is necessary, D5W only and final concentration must remain ≥2 mg/mL.',
+      'Asepsis lock: strict aseptic technique and single-patient use are mandatory.',
+      '12-hour lock: discard drug/tubing at procedure end or 12 hours, whichever occurs sooner.',
+    ],
+    sourceLabel:
+        'DailyMed · Propofol Injectable Emulsion, USP 10 mg/mL single-patient-use vial · current 2025–2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'propofol-10mg-ml',
+        label: 'Propofol emulsion · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Ready-to-use emulsion. If dilution is needed, D5W only and final concentration must be at least 2 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dexmedetomidine',
+    population: 'General',
+    formulation:
+        'Dexmedetomidine is available both as 200 mcg/2 mL concentrate (100 mcg/mL) requiring dilution and as ready-to-use 4 mcg/mL premix presentations such as 200 mcg/50 mL and 400 mcg/100 mL.',
+    reconstitution:
+        'For the 100 mcg/mL concentrate: withdraw 2 mL and add to 48 mL of 0.9% Sodium Chloride to a total of 50 mL, then gently mix. Ready-to-use 4 mcg/mL premix containers require no dilution.',
+    resultingConcentration:
+        'Concentrate pathway: 200 mcg in 50 mL final volume = 4 mcg/mL. Premix presentations are already 4 mcg/mL.',
+    furtherDilution:
+        'Mandatory only for the 100 mcg/mL concentrate. Do not further dilute the cited ready-to-use 4 mcg/mL premix presentations unless the exact product label/local validated protocol explicitly requires it.',
+    allowedDiluents:
+        '0.9% Sodium Chloride for preparation of the 100 mcg/mL concentrate to 4 mcg/mL.',
+    administration:
+        'IV infusion using a controlled infusion device with continuous blood pressure, heart-rate and oxygen monitoring. Therapeutic loading/maintenance rate selection is outside this preparation profile.',
+    stability:
+        'Use prepared/premixed solution according to exact product labeling and institutional sterile-handling policy. Single-dose concentrate vial: discard unused portion.',
+    incompatibilities:
+        'Do not co-administer through the same IV catheter with blood or plasma because physical compatibility is not established. Dexmedetomidine has documented incompatibility with amphotericin B and diazepam in cited labeling.',
+    criticalLocks: [
+      'Presentation lock: 100 mcg/mL concentrate and 4 mcg/mL premix are not interchangeable preparation pathways.',
+      'Concentrate lock: 2 mL concentrate + 48 mL NS = 50 mL at 4 mcg/mL.',
+      'Premix lock: 200 mcg/50 mL and 400 mcg/100 mL are ready to use at 4 mcg/mL.',
+      'Blood/plasma lock: do not co-administer through the same catheter.',
+    ],
+    sourceLabel:
+        'DailyMed · Dexmedetomidine Injection 100 mcg/mL concentrate and 4 mcg/mL ready-to-use premix · current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'dexmedetomidine-concentrate-100mcg-ml',
+        label: 'Dexmedetomidine concentrate · 100 mcg/mL',
+        unit: 'mcg',
+        concentration: 100,
+        note:
+            'Stock withdrawal only. Mandatory dilution: 2 mL + 48 mL NS → 4 mcg/mL.',
+      ),
+      IvWithdrawalVariant(
+        id: 'dexmedetomidine-premix-4mcg-ml',
+        label: 'Dexmedetomidine premix · 4 mcg/mL',
+        unit: 'mcg',
+        concentration: 4,
+        note:
+            'Ready-to-use premix concentration; no further dilution required.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Fentanyl',
+    population: 'General',
+    formulation:
+        'Fentanyl Citrate Injection, USP preservative-free solution containing fentanyl 50 mcg/mL for IV or IM use.',
+    reconstitution:
+        'None. Supplied as a ready solution at 50 mcg/mL.',
+    resultingConcentration:
+        '50 mcg/mL fentanyl.',
+    furtherDilution:
+        'The cited product label does not establish one universal IV dilution recipe for all indications. Do not invent a continuous-infusion concentration from the stock vial.',
+    allowedDiluents:
+        'No routine diluent is required for labeled slow IV use. If a continuous infusion or dilution is ordered, use an exact institutional/product-specific compatibility reference.',
+    administration:
+        'Slow IV use by personnel specifically trained in opioid administration, with respiratory monitoring and resuscitation capability immediately available.',
+    stability:
+        'Protect from light and store according to the exact product label. Preservative-free single-dose vial: discard unused contents.',
+    incompatibilities:
+        'Do not assume admixture or Y-site compatibility from the stock product label; verify any planned infusion mixture separately.',
+    criticalLocks: [
+      'Stock lock: fentanyl concentration is 50 mcg/mL.',
+      'Unit lock: calculator uses mcg, not mg.',
+      'Infusion lock: do not invent a universal continuous-infusion dilution recipe.',
+      'Single-dose lock: discard unused preservative-free vial contents.',
+    ],
+    sourceLabel:
+        'DailyMed · Fentanyl Citrate Injection, USP 50 mcg/mL preservative-free · current Aug 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'fentanyl-50mcg-ml',
+        label: 'Fentanyl · 50 mcg/mL',
+        unit: 'mcg',
+        concentration: 50,
+        note:
+            'Ready stock concentration. Calculator converts an already prescribed mcg dose to mL only.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Morphine',
+    population: 'General',
+    formulation:
+        'Morphine Sulfate Injection, USP preservative-free single-dose vials for IV/IM use; exact cited Hikma strengths are 2 mg/mL, 4 mg/mL and 10 mg/mL.',
+    reconstitution:
+        'None. Supplied as ready solutions at 2 mg/mL, 4 mg/mL or 10 mg/mL.',
+    resultingConcentration:
+        'Product-specific stock concentration: 2 mg/mL, 4 mg/mL or 10 mg/mL.',
+    furtherDilution:
+        'The cited direct-IV product label does not define one universal dilution recipe for all clinical uses. Do not let the calculator create a continuous-infusion concentration.',
+    allowedDiluents:
+        'No routine diluent is required for the labeled direct-IV pathway. Any continuous-infusion or special dilution should follow an exact institutional/product-specific compatibility protocol.',
+    administration:
+        'IV use requires close respiratory and hemodynamic monitoring. The exact IV dose and administration speed are indication- and patient-specific and are not selected by this preparation profile.',
+    stability:
+        'Store at 20–25°C, protect from light, keep from freezing, and discard unused portion of the preservative-free single-dose vial.',
+    incompatibilities:
+        'Do not infer admixture or Y-site compatibility from the stock product label. Verify any planned diluted infusion separately.',
+    criticalLocks: [
+      'Presentation lock: distinguish 2, 4 and 10 mg/mL before withdrawal.',
+      'Opioid monitoring lock: respiratory monitoring and resuscitation capability are required.',
+      'Infusion lock: calculator converts prescribed mg to stock mL only and does not create a universal infusion recipe.',
+      'Single-dose lock: discard unused preservative-free vial contents.',
+    ],
+    sourceLabel:
+        'DailyMed · Hikma Morphine Sulfate Injection, USP preservative-free 2, 4 and 10 mg/mL · current Jul 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'morphine-2mg-ml',
+        label: 'Morphine sulfate · 2 mg/mL',
+        unit: 'mg',
+        concentration: 2,
+        note:
+            'Exact 2 mg/mL single-dose vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'morphine-4mg-ml',
+        label: 'Morphine sulfate · 4 mg/mL',
+        unit: 'mg',
+        concentration: 4,
+        note:
+            'Exact 4 mg/mL single-dose vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'morphine-10mg-ml',
+        label: 'Morphine sulfate · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Exact 10 mg/mL single-dose vial.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

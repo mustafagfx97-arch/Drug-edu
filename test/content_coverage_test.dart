@@ -926,7 +926,7 @@ void main() {
     expect(xtampza.preparation, contains('15 mL'));
     expect(xtampza.preparation, contains('two more times'));
     expect(xtampza.preparation, contains('10 mL'));
-    expect(xtampza.doNot, contains('do not pre-mix'));
+    expect(xtampza.doNot, contains('Do not pre-mix'));
     expect(xtampza.feedPlan, contains('must be administered with food'));
 
     final rozlytrek =

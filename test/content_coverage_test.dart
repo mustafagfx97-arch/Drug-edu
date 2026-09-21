@@ -574,7 +574,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(34));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(39));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -838,6 +838,52 @@ void main() {
     expect(glycerolPhenylbutyrate.doNot, contains('below 1 mL'));
     expect(glycerolPhenylbutyrate.monitoring, contains('ammonia'));
     expect(glycerolPhenylbutyrate.pediatricNicu, contains('younger than 2 months'));
+
+    final epidiolex = tubeDrug('EPIDIOLEX cannabidiol oral solution');
+    expect(epidiolex.tubeRoute, contains('Silicone'));
+    expect(epidiolex.tubeRoute, contains('PVC'));
+    expect(epidiolex.tubeRoute, contains('polyurethane'));
+    expect(epidiolex.tubeRoute, contains('50 cm'));
+    expect(epidiolex.tubeRoute, contains('5 Fr'));
+    expect(epidiolex.preparation, contains('5 times the priming volume'));
+    expect(epidiolex.feedPlan, contains('consistent'));
+
+    final fintepla = tubeDrug('FINTEPLA fenfluramine oral solution');
+    expect(fintepla.formulation, contains('2.2 mg/mL'));
+    expect(fintepla.tubeRoute, contains('gastric'));
+    expect(fintepla.tubeRoute, contains('nasogastric'));
+    expect(fintepla.preparation, contains('3 mL or 6 mL'));
+    expect(fintepla.doNot, contains('fixed flush volume'));
+    expect(fintepla.pediatricNicu, contains('2 years'));
+
+    final daybue = tubeDrug('DAYBUE trofinetide oral solution');
+    expect(daybue.formulation, contains('200 mg/mL'));
+    expect(daybue.tubeRoute, contains('Gastrostomy'));
+    expect(daybue.tubeRoute, contains('G-port'));
+    expect(daybue.doNot, contains('J-port'));
+    expect(daybue.doNot, contains('NG tube'));
+    expect(daybue.preparation, contains('14 days'));
+    expect(daybue.pediatricNicu, contains('9 kg'));
+
+    final evrysdiSolution =
+        tubeDrug('EVRYSDI risdiplam oral solution 0.75 mg/mL');
+    expect(evrysdiSolution.preparation, contains('79 mL'));
+    expect(evrysdiSolution.preparation, contains('0.75 mg/mL'));
+    expect(evrysdiSolution.preparation, contains('15 seconds'));
+    expect(evrysdiSolution.preparation, contains('10 minutes'));
+    expect(evrysdiSolution.preparation, contains('10 to 20 mL water'));
+    expect(evrysdiSolution.preparation, contains('5 minutes'));
+    expect(evrysdiSolution.preparation, contains('64 days'));
+    expect(evrysdiSolution.pediatricNicu, contains('younger than 2 months'));
+
+    final evrysdiTablet =
+        tubeDrug('EVRYSDI risdiplam 5 mg tablet dispersion');
+    expect(evrysdiTablet.tubeRoute, contains('8 French'));
+    expect(evrysdiTablet.preparation, contains('5 mL'));
+    expect(evrysdiTablet.preparation, contains('up to 3 minutes'));
+    expect(evrysdiTablet.preparation, contains('within 10 minutes'));
+    expect(evrysdiTablet.preparation, contains('at least 15 mL'));
+    expect(evrysdiTablet.doNot, contains('Do not chew, cut or crush'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

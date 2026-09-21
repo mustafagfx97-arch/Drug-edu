@@ -1,5 +1,6 @@
 import 'package:drug_edu/core/data/medication_indication_options.dart';
 import 'package:drug_edu/core/data/sample_medications.dart';
+import 'package:drug_edu/core/models/medication.dart';
 import 'package:drug_edu/features/encyclopedia/presentation/medication_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -22,6 +23,14 @@ void main() {
     expect(hormonal.offLabel, isTrue);
     expect(hormonal.purposeAr, contains('حب الشباب'));
     expect(hormonal.importantAr, contains('الحمل'));
+
+    const base = PatientCounselingData(
+      purposeAr: 'شرح عام',
+      howToUseAr: 'طريقة عامة',
+    );
+    final resolved = applyIndicationToArabic(base, hormonal);
+    expect(resolved.purposeAr, contains('حب الشباب الهرموني'));
+    expect(resolved.importantAr, contains('الحمل'));
   });
 
   test('multi-use options preserve product or indication distinctions', () {
@@ -75,13 +84,16 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(
-      find.textContaining('يُستخدم أحيانًا لدى النساء لعلاج حب الشباب الهرموني'),
+      find.textContaining('استخدام هرموني: حب الشباب / الشعرانية'),
       findsOneWidget,
     );
     expect(find.textContaining('استخدام خارج النشرة'), findsWidgets);
 
     await tester.tap(find.text('Print Card'));
     await tester.pumpAndSettle();
-    expect(find.textContaining('حب الشباب الهرموني'), findsOneWidget);
+    expect(
+      find.textContaining('تعليمات المريض · استخدام هرموني'),
+      findsOneWidget,
+    );
   });
 }

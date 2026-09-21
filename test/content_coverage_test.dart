@@ -574,7 +574,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(19));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(24));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -712,6 +712,46 @@ void main() {
     expect(divalproex.status, contains('tube-validated'));
     expect(divalproex.preparation, contains('soft food'));
     expect(divalproex.doNot, contains('mixed with water'));
+
+    final xareltoSuspension =
+        tubeDrug('XARELTO rivaroxaban oral suspension');
+    expect(xareltoSuspension.preparation, contains('150 mL'));
+    expect(xareltoSuspension.preparation, contains('60 seconds'));
+    expect(xareltoSuspension.preparation, contains('1 mg/mL'));
+    expect(xareltoSuspension.preparation, contains('60 days'));
+    expect(xareltoSuspension.feedPlan, contains('recurrent VTE'));
+    expect(xareltoSuspension.feedPlan, contains('Fontan'));
+
+    final eliquisPediatric =
+        tubeDrug('ELIQUIS 0.5 mg tablets for oral suspension');
+    expect(eliquisPediatric.tubeRoute, contains('5 Fr'));
+    expect(eliquisPediatric.tubeRoute, contains('6.5 Fr'));
+    expect(eliquisPediatric.tubeRoute, contains('12 Fr'));
+    expect(eliquisPediatric.preparation, contains('10 mL'));
+    expect(eliquisPediatric.preparation, contains('5 to 7 minutes'));
+    expect(eliquisPediatric.preparation, contains('5 Fr = 10 mL'));
+    expect(eliquisPediatric.preparation, contains('6.5 Fr = 15 mL'));
+    expect(eliquisPediatric.preparation, contains('12 Fr = 25 mL'));
+    expect(eliquisPediatric.pediatricNicu, contains('2.6 kg'));
+
+    final edoxaban = tubeDrug('Edoxaban SAVAYSA tablets');
+    expect(edoxaban.tubeRoute, contains('Gastric'));
+    expect(edoxaban.preparation, contains('2 to 3 ounces'));
+    expect(edoxaban.preparation, contains('immediately'));
+    expect(edoxaban.doNot, contains('jejunal'));
+
+    final ticagrelor = tubeDrug('Ticagrelor tablets');
+    expect(ticagrelor.tubeRoute, contains('CH8'));
+    expect(ticagrelor.preparation, contains('does not specify'));
+    expect(ticagrelor.feedPlan, contains('without food'));
+
+    final phenytoinSuspension =
+        tubeDrug('Phenytoin oral suspension 125 mg/5 mL');
+    expect(phenytoinSuspension.status, contains('Avoid tube'));
+    expect(phenytoinSuspension.preparation, contains('Shake'));
+    expect(phenytoinSuspension.feedPlan, contains('2 hours before'));
+    expect(phenytoinSuspension.feedPlan, contains('2 hours after'));
+    expect(phenytoinSuspension.monitoring, contains('serum phenytoin'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

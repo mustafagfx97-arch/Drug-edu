@@ -504,12 +504,15 @@ void main() {
   });
 
   test('supplement encyclopedia contains all major groups', () {
+    expect(supplementProfiles.length, greaterThanOrEqualTo(29));
+
     final groups = supplementProfiles.map((item) => item.group).toSet();
 
     expect(groups, contains('Vitamins'));
     expect(groups, contains('Minerals'));
     expect(groups, contains('Pediatric supplements'));
     expect(groups, contains('Combination products'));
+    expect(groups, contains('Performance & specialty'));
     expect(groups, contains('Growth / amino-acid products'));
     expect(groups, contains('Safety review'));
   });

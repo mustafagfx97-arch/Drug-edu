@@ -1,3 +1,5 @@
+part 'medication_patient_guidance_en_expanded.dart';
+
 class EnglishPatientCounseling {
   const EnglishPatientCounseling({
     required this.purpose,
@@ -683,6 +685,7 @@ const englishPatientCounseling = <String, EnglishPatientCounseling>{
     teachBack:
         'Show me your inhaler technique and tell me whether your specific inhaler is maintenance-only or also part of a MART/SMART reliever plan.',
   ),
+  ...reviewedEnglishPatientCounselingExpansion,
 };
 
 EnglishPatientCounseling? englishPatientCounselingFor(String medicationId) =>

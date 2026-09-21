@@ -39,7 +39,7 @@ void main() {
     expect(find.text('Teach-back'), findsOneWidget);
   });
 
-  testWidgets('medicine without reviewed English record stays Arabic only',
+  testWidgets('newly reviewed medicine exposes bilingual counseling',
       (tester) async {
     final medicine = sampleMedications.firstWhere(
       (item) => item.id == 'cetirizine',
@@ -54,7 +54,12 @@ void main() {
     await tester.tap(find.text('Patient'));
     await tester.pumpAndSettle();
 
-    expect(find.text('English'), findsNothing);
-    expect(find.text('لماذا أستخدمه؟'), findsOneWidget);
+    expect(find.text('English'), findsOneWidget);
+    expect(find.text('العربية'), findsOneWidget);
+
+    await tester.tap(find.text('English'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Why am I using it?'), findsOneWidget);
   });
 }

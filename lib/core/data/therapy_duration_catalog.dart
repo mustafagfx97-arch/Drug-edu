@@ -295,6 +295,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
       TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
   'etanercept': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'secukinumab': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
+  'semaglutide-oral-tablets':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'epipen-auto-injector': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إسعاف يُحمل ويُستبدل قبل انتهاء الصلاحية أو بعد الاستخدام؛ لا يُستخدم كعلاج يومي.',
+  ),
+  'naloxone-narcan-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ للطوارئ عند الاشتباه بجرعة أفيونية زائدة؛ احتفظ بجرعات غير منتهية الصلاحية واستبدل الجهاز بعد الاستخدام.',
+  ),
+  'baqsimi-glucagon-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'دواء إنقاذ لهبوط السكر الشديد؛ احتفظ بجهاز غير منتهي الصلاحية واستبدله فور استخدامه.',
+  ),
+  'dulaglutide-trulicity':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

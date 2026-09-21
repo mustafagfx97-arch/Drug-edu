@@ -83,7 +83,7 @@ flutter test
 flutter run
 ```
 
-The committed Android wrapper is the reference Android project for version 1.0. If platform files ever need regeneration, preserve the existing application ID and signing configuration rather than accepting a new default `com.example` identity.
+The CI pipeline regenerates the Android wrapper from the pinned Flutter stable toolchain using `--org com.mustafagfx97`, then verifies the application ID and visible app label before every build. This avoids committing generated platform binaries while keeping the Android identity reproducible.
 
 ## Project documentation
 

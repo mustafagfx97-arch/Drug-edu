@@ -90,7 +90,7 @@ void main() {
     expect(profile.calculatorVariants[0].concentration, 4);
     expect(profile.calculatorVariants[1].concentration, 10);
     expect(profile.reconstitution.toLowerCase(), contains('none'));
-    expect(profile.furtherDilution, contains('not mandatory'));
+    expect(profile.furtherDilution.toLowerCase(), contains('not mandatory'));
     expect(profile.allowedDiluents, contains('Sodium Chloride'));
     expect(profile.allowedDiluents, contains('Dextrose'));
     expect(profile.stability, contains('24 hours'));

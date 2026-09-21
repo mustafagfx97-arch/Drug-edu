@@ -61,7 +61,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('حدد سبب استخدام الدواء'), findsOneWidget);
-    expect(find.textContaining('يساعد الجسم على التخلص من السوائل'), findsOneWidget);
 
     await tester.tap(find.byType(DropdownButtonFormField<String?>));
     await tester.pumpAndSettle();

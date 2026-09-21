@@ -527,7 +527,7 @@ void main() {
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {
-    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(13));
+    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(18));
 
     for (final entry in ivMedicationCatalog.where((item) => item.structured)) {
       expect(
@@ -619,6 +619,45 @@ void main() {
     expect(linezolid.resultingConcentration, contains('2 mg/mL'));
     expect(linezolid.furtherDilution, contains('No routine further dilution'));
     expect(linezolid.administration, contains('30–120 minutes'));
+
+    final acyclovir =
+        findIvPreparationProfile('Acyclovir', 'General')!;
+    final ivParacetamol =
+        findIvPreparationProfile('IV Paracetamol', 'General')!;
+    final gentamicin =
+        findIvPreparationProfile('Gentamicin', 'General')!;
+    final fluconazole =
+        findIvPreparationProfile('Fluconazole', 'General')!;
+    final ondansetron =
+        findIvPreparationProfile('Ondansetron', 'General')!;
+
+    expect(acyclovir.reconstitution, contains('500 mg'));
+    expect(acyclovir.reconstitution, contains('10 mL'));
+    expect(acyclovir.resultingConcentration, contains('50 mg/mL'));
+    expect(acyclovir.furtherDilution, contains('7 mg/mL'));
+    expect(acyclovir.administration.toLowerCase(), contains('1 hour'));
+    expect(acyclovir.administration.toLowerCase(), contains('bolus'));
+
+    expect(ivParacetamol.resultingConcentration, contains('10 mg/mL'));
+    expect(ivParacetamol.administration, contains('15-minute'));
+    expect(ivParacetamol.stability, contains('6 hours'));
+
+    expect(gentamicin.withdrawalConcentration, 40);
+    expect(gentamicin.furtherDilution, contains('50–200 mL'));
+    expect(gentamicin.administration, contains('30 minutes to 2 hours'));
+    expect(gentamicin.criticalLocks.join(' '), contains('10 mg/mL'));
+
+    expect(fluconazole.resultingConcentration, contains('2 mg/mL'));
+    expect(fluconazole.furtherDilution, contains('No routine further dilution'));
+    expect(fluconazole.administration, contains('200 mg/hour'));
+
+    expect(ondansetron.withdrawalConcentration, 2);
+    expect(ondansetron.furtherDilution, contains('Chemotherapy'));
+    expect(ondansetron.furtherDilution, contains('Postoperative'));
+    expect(ondansetron.furtherDilution, contains('50 mL'));
+    expect(ondansetron.administration, contains('15 minutes'));
+    expect(ondansetron.administration, contains('30 seconds'));
+    expect(ondansetron.stability, contains('24 hours'));
 
     expect(
       findIvPreparationProfile('Sodium bicarbonate', 'NICU'),

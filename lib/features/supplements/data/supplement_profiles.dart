@@ -691,4 +691,299 @@ const supplementProfiles = <SupplementProfile>[
           'كون المنتج مكتوبًا عليه طبيعي لا يعني أنه آمن أو مناسب لك.',
     ),
   ),
+  SupplementProfile(
+    id: 'magnesium-citrate',
+    group: 'Minerals',
+    name: 'Magnesium Citrate',
+    subtitle: 'Magnesium supplement — citrate salt',
+    formulation:
+        'Tablets, capsules, powders and liquids; some products are laxatives rather than daily supplements',
+    howToTakeEn:
+        'Follow the exact product and intended use. For routine supplementation, counsel by elemental magnesium and use food if it improves GI tolerance. Do not transfer laxative-product directions to a daily supplement.',
+    formulationAlert:
+        'Magnesium citrate is relatively well absorbed, but total “magnesium citrate” milligrams are not the same as elemental magnesium. Laxative liquids can contain very different amounts and directions.',
+    sourceLabel: 'NIH ODS Magnesium Fact Sheet · current',
+    useBasis: 'Dietary supplementation or deficiency treatment; indication-specific',
+    monitoringEn:
+        'Routine low-dose use does not automatically require a magnesium level. Renal function and serum magnesium become more important with suspected deficiency/toxicity, kidney impairment or substantial/prolonged dosing.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Read the Supplement Facts panel for elemental magnesium. NIH ODS notes citrate is among the more readily absorbed forms. Keep supplement use separate from magnesium-citrate laxative dosing.',
+      ),
+      MedicationSection(
+        title: 'Interactions',
+        body:
+            'Magnesium can reduce absorption of selected antibiotics and bisphosphonates and can interfere with levothyroxine absorption. Use the interacting medicine’s exact separation rule rather than a single generic interval.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Renal / GI safety',
+        body:
+            'Diarrhea is a common dose-limiting effect. Significant kidney impairment increases the risk of magnesium accumulation and should trigger clinical review before substantial supplementation.',
+        priority: ClinicalPriority.critical,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم لتعويض المغنيسيوم أو كمكمل حسب الحاجة.',
+      howToUseAr:
+          'اتبع نفس المنتج واقرأ كمية elemental magnesium، وليس وزن Magnesium Citrate فقط. إذا أزعج المعدة يمكن أخذه مع الطعام حسب المنتج.',
+      timingAr:
+          'إذا كنت تستخدم أدوية أخرى مثل بعض المضادات الحيوية أو أدوية الغدة/العظام فقد تحتاج فصل الجرعات؛ أخبر الصيدلي بكل أدويتك.',
+      commonActionableAr:
+          'قد يسبب إسهالًا أو مغصًا، خصوصًا مع الجرعات الأعلى.',
+      importantAr:
+          'لا تستخدم تعليمات منتج magnesium citrate الملين كأنها نفس تعليمات مكمل المغنيسيوم اليومي.',
+      seekHelpAr:
+          'إذا لديك مرض كلوي أو ظهرت خمول شديد أو ضعف غير معتاد أثناء جرعات كبيرة، راجع الطبيب.',
+      teachBackAr:
+          'أرني كم mg من elemental magnesium في الجرعة، وهل منتجك مكمل أم laxative؟',
+    ),
+  ),
+  SupplementProfile(
+    id: 'magnesium-oxide',
+    group: 'Minerals',
+    name: 'Magnesium Oxide',
+    subtitle: 'Magnesium supplement — oxide salt',
+    formulation:
+        'Tablets/capsules; also appears in antacid and laxative products',
+    howToTakeEn:
+        'Counsel by elemental magnesium and the intended indication. Food may improve GI tolerance. Do not use antacid/laxative directions as the default supplement schedule.',
+    formulationAlert:
+        'Magnesium oxide contains substantial elemental magnesium by weight but is less bioavailable than several more soluble forms; product milligrams cannot be compared directly across salts.',
+    sourceLabel: 'NIH ODS Magnesium Fact Sheet · current',
+    useBasis: 'Supplementation or product-specific GI use',
+    monitoringEn:
+        'Routine low-dose supplementation does not automatically require testing. Check renal context and consider serum magnesium when deficiency or toxicity is clinically suspected.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Do not choose the product from salt weight alone. NIH ODS notes more soluble forms such as citrate, lactate, chloride and aspartate tend to be more bioavailable than oxide.',
+      ),
+      MedicationSection(
+        title: 'Common mistake',
+        body:
+            'Comparing “500 mg magnesium oxide” with “500 mg magnesium citrate” as if they provided the same elemental dose and absorption.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Interactions / safety',
+        body:
+            'Magnesium can impair absorption of selected antibiotics, bisphosphonates and levothyroxine. GI adverse effects are common, and kidney impairment raises accumulation risk.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr: 'يُستخدم كمصدر للمغنيسيوم، وبعض المنتجات تُستخدم لأغراض هضمية أيضًا.',
+      howToUseAr:
+          'تأكد من كمية elemental magnesium على المنتج؛ رقم Magnesium Oxide الكلي لا يخبرك وحده بجرعة المغنيسيوم الفعلية.',
+      timingAr:
+          'إذا أزعج المعدة يمكن أخذه مع الطعام حسب المنتج، وقد يحتاج فصلًا عن بعض الأدوية.',
+      commonActionableAr: 'قد يسبب إسهالًا أو انزعاجًا في المعدة.',
+      importantAr:
+          'لا تبدّل بين أملاح المغنيسيوم بنفس عدد الـmg من نفسك؛ الامتصاص والكمية الفعلية يختلفان.',
+      seekHelpAr:
+          'إذا لديك قصور كلوي فلا تستخدم جرعات كبيرة من المغنيسيوم من نفسك.',
+      teachBackAr:
+          'قل لي كم elemental magnesium في الحبة، وما سبب استخدامك لهذا المنتج تحديدًا؟',
+    ),
+  ),
+  SupplementProfile(
+    id: 'potassium-supplements',
+    group: 'Minerals',
+    name: 'Potassium Supplements / Salt Substitutes',
+    subtitle: 'Potassium-containing supplements and salt substitutes',
+    formulation:
+        'OTC dietary supplements, prescription potassium salts and potassium-containing salt substitutes',
+    howToTakeEn:
+        'Do not create one generic dose or timing rule. First identify the exact product, potassium amount, indication, kidney function and potassium-raising medicines. Prescription potassium should follow the prescribed product instructions.',
+    formulationAlert:
+        'Food potassium, OTC supplements, prescription potassium chloride/citrate and salt substitutes are not interchangeable. Some salt substitutes can provide clinically important potassium.',
+    sourceLabel: 'NIH ODS Potassium Fact Sheet · current',
+    useBasis: 'Laboratory/clinical indication or diet-specific plan — not routine self-treatment',
+    monitoringEn:
+        'Serum potassium and renal function are central when potassium is being replaced therapeutically or when hyperkalemia risk exists. Monitoring frequency depends on the clinical plan and interacting medicines.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Critical medication screen',
+        body:
+            'ACE inhibitors, ARBs, ARNIs, potassium-sparing diuretics such as spironolactone/eplerenone, kidney disease and several other conditions can raise potassium. Ask specifically about salt substitutes.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Do not infer need from symptoms',
+        body:
+            'Cramps, fatigue or “low energy” are not sufficient reasons to start potassium. Establish whether supplementation is actually indicated and safe.',
+      ),
+      MedicationSection(
+        title: 'Product distinction',
+        body:
+            'Prescription potassium formulations can have specific food, dilution and swallow-whole instructions. Those instructions must come from the exact product label, not from this general supplement profile.',
+        priority: ClinicalPriority.important,
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr:
+          'يُستخدم فقط عندما تكون هناك حاجة واضحة للبوتاسيوم أو حسب خطة الطبيب/التغذية.',
+      howToUseAr:
+          'لا تبدأ مكمل بوتاسيوم أو بديل ملح يحتوي بوتاسيوم قبل مراجعة أدويتك ووظائف الكلى، واتبع نفس المنتج إذا كان موصوفًا لك.',
+      timingAr:
+          'طريقة الاستخدام تختلف حسب نوع المنتج؛ لا توجد جرعة أو ساعة واحدة تناسب كل مكملات البوتاسيوم.',
+      importantAr:
+          'أدوية الضغط/القلب مثل بعض ACEI/ARB وspironolactone قد ترفع البوتاسيوم، وبدائل الملح قد تحتوي كمية مهمة منه.',
+      seekHelpAr:
+          'اطلب مراجعة طبية عند ضعف شديد أو خفقان غير معتاد، خصوصًا إذا لديك مرض كلوي أو تستخدم أدوية ترفع البوتاسيوم.',
+      teachBackAr:
+          'أرني اسم المنتج وكمية potassium فيه، واذكر لي أدوية الضغط/القلب والكلى التي تستخدمها.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'omega-3',
+    group: 'Other supplements',
+    name: 'Omega-3 / Fish Oil',
+    subtitle: 'EPA / DHA dietary supplements',
+    formulation:
+        'Fish-oil, krill-oil, algal DHA/EPA capsules or liquids; prescription omega-3 products are separate medicines',
+    howToTakeEn:
+        'Take according to the exact product; taking with a meal often improves tolerance. Compare products by actual EPA + DHA per serving, not by total “fish oil” milligrams.',
+    formulationAlert:
+        '“Fish oil 1000 mg” does not mean 1000 mg EPA+DHA. Prescription omega-3 products used for lipid disorders are not interchangeable with dietary supplements.',
+    sourceLabel: 'NIH ODS Omega-3 Fatty Acids Fact Sheet · current',
+    useBasis: 'Dietary intake support or clinician-directed indication',
+    monitoringEn:
+        'Routine omega-3 blood testing is not required for general supplement use. If being used for severe hypertriglyceridemia, lipid monitoring belongs to the clinician-directed treatment plan.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Pharmacist essentials',
+        body:
+            'Verify EPA and DHA separately. Distinguish dietary supplementation from prescription-strength treatment for hypertriglyceridemia.',
+      ),
+      MedicationSection(
+        title: 'Bleeding / rhythm review',
+        body:
+            'High-dose omega-3 can have antiplatelet effects. Review anticoagulants/antiplatelets. Trials using 4 g/day in cardiovascular-risk populations reported a small increase in atrial fibrillation.',
+        priority: ClinicalPriority.important,
+      ),
+      MedicationSection(
+        title: 'Tolerability',
+        body:
+            'Fishy taste, reflux, nausea and GI discomfort are common and may improve with meals or a different product.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr:
+          'يوفر أحماض أوميغا-3 مثل EPA وDHA؛ فائدته تعتمد على سبب الاستخدام والجرعة الفعلية.',
+      howToUseAr:
+          'خذ المنتج حسب الملصق، وغالبًا مع وجبة لتقليل الطعم أو الانزعاج. اقرأ كمية EPA + DHA وليس فقط رقم fish oil.',
+      timingAr:
+          'يمكن ربطه بوجبة ثابتة؛ التوقيت أقل أهمية من معرفة الجرعة الفعلية ومراجعة أدوية النزف.',
+      commonActionableAr:
+          'قد يسبب طعمًا سمكيًا أو حرقة أو انزعاجًا بالمعدة.',
+      importantAr:
+          'إذا كنت تستخدم مميع دم أو جرعة عالية من omega-3، أخبر الصيدلي/الطبيب. مكملات fish oil ليست بديلًا تلقائيًا للمنتجات الوصفية.',
+      seekHelpAr:
+          'راجع الطبيب عند نزف غير معتاد أو خفقان/عدم انتظام جديد، خاصة مع الجرعات العالية أو مرض قلبي.',
+      teachBackAr:
+          'أرني كم mg من EPA وكم mg من DHA في الجرعة اليومية، وليس فقط كم mg fish oil.',
+    ),
+  ),
+  SupplementProfile(
+    id: 'biotin',
+    group: 'Vitamins',
+    name: 'Biotin',
+    subtitle: 'Vitamin B7 / hair-nail products',
+    formulation:
+        'Stand-alone tablets/capsules/gummies and high-dose hair/skin/nail combinations',
+    howToTakeEn:
+        'Take according to the exact product if there is a clear reason to use it. No special meal is required. The key counseling point is to disclose biotin use before laboratory testing.',
+    formulationAlert:
+        'Hair/nail products may contain biotin doses far above nutritional requirements. The main practical risk is interference with certain laboratory assays.',
+    sourceLabel: 'FDA Biotin Laboratory-Test Safety Communication + NIH ODS Biotin',
+    useBasis: 'Deficiency is uncommon; use should have a clear rationale',
+    monitoringEn:
+        'Routine biotin testing is rarely useful. Before blood tests, the laboratory/clinician should know the dose and timing because assay interference is method-specific; do not invent a universal stop interval.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Laboratory interference',
+        body:
+            'FDA continues to warn that biotin can significantly interfere with certain lab assays and produce incorrect results. Some troponin assays are a clinically important example.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'No universal washout',
+        body:
+            'Do not tell every patient to stop biotin for the same number of hours. Needed interruption depends on dose, assay and laboratory/platform instructions.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Evidence check',
+        body:
+            'Deficiency is uncommon. High-dose “hair/nails” marketing should not be treated as proof that the patient needs pharmacologic biotin.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr:
+          'البيوتين فيتامين B7، لكن نقصه غير شائع والجرعات العالية الموجودة في منتجات الشعر ليست ضرورية لكل شخص.',
+      howToUseAr:
+          'إذا كنت تستخدمه فاتبع المنتج، ولا يحتاج وجبة خاصة. الأهم أن تخبر المختبر والطبيب أنك تستخدم biotin قبل التحاليل.',
+      timingAr:
+          'لا توجد قاعدة واحدة لإيقافه قبل كل تحليل؛ المدة تعتمد على الجرعة ونوع التحليل والمختبر.',
+      importantAr:
+          'Biotin قد يعطي نتائج خاطئة في بعض التحاليل. لا تنسَ ذكره حتى لو كنت تعتبره مجرد فيتامين.',
+      seekHelpAr:
+          'إذا طُلب منك تحليل مهم مثل تحاليل القلب أو الهرمونات، أخبر الفريق الطبي عن biotin قبل سحب العينة.',
+      teachBackAr:
+          'إذا ذهبت لعمل تحليل، ماذا ستخبر المختبر عن biotin الذي تستخدمه؟',
+    ),
+  ),
+  SupplementProfile(
+    id: 'vitamin-b6',
+    group: 'Vitamins',
+    name: 'Vitamin B6',
+    subtitle: 'Pyridoxine / pyridoxal-5-phosphate products',
+    formulation:
+        'Stand-alone B6, B-complex, multivitamins and combination products',
+    howToTakeEn:
+        'No special meal is required for routine supplementation. First add up vitamin B6 from every product because high-dose B-complex and combination products can create unintended chronic exposure.',
+    formulationAlert:
+        'B6 may be hidden in B-complex, magnesium, “energy” and neuropathy products. Chronic high supplemental intake can cause sensory neuropathy.',
+    sourceLabel: 'NIH ODS Vitamin B6 Fact Sheet · current',
+    useBasis: 'Routine nutritional intake or indication-specific therapy',
+    monitoringEn:
+        'Routine levels are not needed for typical low-dose use. Consider targeted evaluation when deficiency or toxicity/neuropathy is suspected.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Neuropathy safety',
+        body:
+            'Long-term high supplemental B6 can cause severe sensory neuropathy. The U.S. adult UL is 100 mg/day, while some authorities use lower limits; do not treat chronic high-dose B6 as harmless.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
+        title: 'Duplication check',
+        body:
+            'Add B6 from all supplements. A patient may unknowingly combine a multivitamin, B-complex and magnesium/energy product that all contain pyridoxine.',
+      ),
+      MedicationSection(
+        title: 'Patient-specific use',
+        body:
+            'Higher therapeutic doses can be appropriate for selected indications under clinician supervision; this is different from unsupervised chronic supplementation.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr:
+          'فيتامين B6 مهم للجسم، لكن معظم الناس لا يحتاجون جرعات عالية مزمنة.',
+      howToUseAr:
+          'اتبع الجرعة المقصودة، واجمع كمية B6 من كل منتجاتك مثل B-complex والملتي فيتامين ومنتجات الطاقة.',
+      timingAr:
+          'لا يحتاج وجبة خاصة عادةً؛ الأهم عدم تكرار الجرعة من أكثر من منتج.',
+      importantAr:
+          'الجرعات العالية لفترة طويلة قد تسبب تنميلًا أو أذية أعصاب بدل أن تعالجها.',
+      seekHelpAr:
+          'إذا ظهر تنميل أو وخز أو عدم توازن جديد وأنت تستخدم جرعة مرتفعة من B6، أوقف التقييم الذاتي وراجع الطبيب/الصيدلي.',
+      teachBackAr:
+          'اجمع لي كمية B6 من كل مكمل تستخدمه، وهل أي منها يعطي جرعة عالية يوميًا؟',
+    ),
+  ),
+
 ];

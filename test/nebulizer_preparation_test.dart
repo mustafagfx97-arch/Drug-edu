@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  dynamic NebulizerPreparationProfileById(String id) =>
+  dynamic nebulizerProfileById(String id) =>
       nebulizerPreparationProfiles.firstWhere((item) => item.id == id);
 
   test('nebulizer library locks concentrate versus ready-to-use preparation', () {
     expect(nebulizerPreparationProfiles.length, greaterThanOrEqualTo(13));
 
-    final albuterolRtu = NebulizerPreparationProfileById('albuterol-0083-rtu');
+    final albuterolRtu = nebulizerProfileById('albuterol-0083-rtu');
     expect(albuterolRtu.doses.single.finalVolume, '3 mL');
     expect(albuterolRtu.doses.single.diluent, 'None.');
     expect(albuterolRtu.doNot.join(' ').toLowerCase(), contains('concentrate'));
 
     final albuterolConcentrate =
-        NebulizerPreparationProfileById('albuterol-05-concentrate');
+        nebulizerProfileById('albuterol-05-concentrate');
     expect(albuterolConcentrate.doses[0].drawVolume, contains('0.25 mL'));
     expect(albuterolConcentrate.doses[0].diluent, contains('2.75 mL'));
     expect(albuterolConcentrate.doses[1].drawVolume, contains('0.5 mL'));
@@ -29,11 +29,11 @@ void main() {
   });
 
   test('ipratropium and budesonide mixing rules stay source locked', () {
-    final ipratropium = NebulizerPreparationProfileById('ipratropium-002');
+    final ipratropium = nebulizerProfileById('ipratropium-002');
     expect(ipratropium.mixing.toLowerCase(), contains('albuterol'));
     expect(ipratropium.mixing, contains('1 hour'));
 
-    final budesonide = NebulizerPreparationProfileById('budesonide-suspension');
+    final budesonide = nebulizerProfileById('budesonide-suspension');
     expect(budesonide.mixing.toLowerCase(), contains('separately'));
     expect(budesonide.device.toLowerCase(), contains('jet'));
     expect(budesonide.doNot.join(' ').toLowerCase(), contains('ultrasonic'));
@@ -41,22 +41,22 @@ void main() {
   });
 
   test('specialty inhalation solutions preserve do-not-mix restrictions', () {
-    final dornase = NebulizerPreparationProfileById('dornase-alfa');
+    final dornase = nebulizerProfileById('dornase-alfa');
     expect(dornase.mixing, contains('DO NOT'));
     expect(dornase.doses.single.diluent, contains('NONE'));
 
     final tobramycin =
-        NebulizerPreparationProfileById('tobramycin-inhalation');
+        nebulizerProfileById('tobramycin-inhalation');
     expect(tobramycin.doses.single.finalVolume, '5 mL');
     expect(tobramycin.mixing.toLowerCase(), contains('dornase alfa'));
 
-    final formoterol = NebulizerPreparationProfileById('formoterol-neb');
+    final formoterol = nebulizerProfileById('formoterol-neb');
     expect(formoterol.doses.single.finalVolume, '2 mL');
     expect(formoterol.mixing.toLowerCase(), contains('not been established'));
   });
 
   test('acetylcysteine keeps 10 and 20 percent instructions distinct', () {
-    final nac = NebulizerPreparationProfileById('acetylcysteine');
+    final nac = nebulizerProfileById('acetylcysteine');
     expect(nac.doses[0].sourceStrength, contains('20%'));
     expect(nac.doses[0].drawVolume, contains('3–5 mL'));
     expect(nac.doses[1].sourceStrength, contains('10%'));

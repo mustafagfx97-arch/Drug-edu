@@ -648,6 +648,121 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
     critical: true,
   ),
 
+
+  TubeMedicationRecord(
+    medicine: 'Levetiracetam tablets for oral suspension',
+    formulation:
+        'Product-specific levetiracetam tablets designed to disperse for oral suspension; do not substitute ordinary immediate-release tablets by assumption.',
+    status: 'Label-supported NG / G-tube method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube, French size 10 to 14, as specified in the current label.',
+    preparation:
+        'Place the prescribed number of whole tablets in a small dosing cup; do not use partial tablets. Add approximately 10 mL room-temperature water and gently swirl until dispersed. Draw the mixture into a 10 mL oral catheter-tip syringe, hold it vertically, and administer immediately through the tube. Then flush the feeding tube twice: each flush uses another 10 mL room-temperature water in the same dosing cup to re-suspend residue, drawn into the same syringe and pushed through immediately.',
+    feedPlan:
+        'May be administered with or without food. The label does not require a routine enteral-feed hold for this tube method.',
+    doNot:
+        'Do not use partial tablets. Do not copy this method to ordinary levetiracetam tablets or to an unlisted tube size without product-specific support.',
+    monitoring:
+        'Monitor seizure control and tolerability. Dose selection remains indication-, age-, weight- and renal-function dependent.',
+    pediatricNicu:
+        'This formulation has pediatric labeling, but the tube IFU does not establish a neonatal method. The initial 10 mL dispersion plus two additional 10 mL flush cycles may be excessive for neonates or fluid-restricted small infants; do not proportionally scale the labeled volumes by guesswork.',
+    practicalAr:
+        'Levetiracetam tablets for oral suspension لها طريقة NG/G موثقة لمقاس 10–14 Fr: استخدم whole tablets فقط، مع نحو 10 mL ماء بدرجة الغرفة، أعطِ فورًا ثم اعمل flush مرتين؛ كل مرة 10 mL ماء إضافي لإخراج البقايا. لا تعممها على levetiracetam tablets العادية.',
+    source:
+        'DailyMed · Levetiracetam tablets for oral suspension · NG/G-tube Administration · Rev. 07/2025',
+  ),
+  TubeMedicationRecord(
+    medicine: 'Baclofen oral suspension 5 mg/mL',
+    formulation:
+        'Baclofen oral suspension 25 mg/5 mL (5 mg/mL); product concentration must be verified before dose-volume calculation.',
+    status: 'Label-supported NG method',
+    tubeRoute:
+        'Nasogastric tube size 8 French or larger.',
+    preparation:
+        'Shake the suspension well. Before the dose, flush the NG tube with 15 to 30 mL purified water. Draw the prescribed dose into an oral/enteral syringe and administer through the tube. If drug remains in the syringe, draw purified water into the syringe, shake gently and administer the residue. After the dose, flush the tube with at least 25 mL purified water. The label states the medication may remain in the dosing syringe for up to 4 hours before administration.',
+    feedPlan:
+        'The current label does not require a routine enteral-feed hold; this record is about the specific NG delivery method.',
+    doNot:
+        'Do not assume another baclofen liquid has the same concentration or NG instructions. Do not reduce the labeled flush volumes for a small-bore pediatric patient without a validated local method.',
+    monitoring:
+        'Verify dose and concentration carefully. Avoid abrupt discontinuation because clinically important withdrawal can occur; monitor sedation and clinical response.',
+    pediatricNicu:
+        'The labeled 15–30 mL pre-flush plus at least 25 mL post-flush is usually unsuitable for neonates/small infants. This is not a NICU-volume recipe and must not be scaled down empirically.',
+    practicalAr:
+        'Baclofen suspension 5 mg/mL عبر NG ≥8 Fr: رجّ جيدًا، pre-flush بـ15–30 mL purified water، أعطِ الجرعة، ثم post-flush لا يقل عن 25 mL. هذه الأحجام ليست مناسبة تلقائيًا للـNICU ولا تُصغّر بالتخمين.',
+    source:
+        'DailyMed · Baclofen oral suspension 25 mg/5 mL · Nasogastric Tube Administration · current label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'LYVISPAH baclofen granules',
+    formulation:
+        'Baclofen oral granules supplied in single-dose packets; the entire packet is used for the prescribed packet strength.',
+    status: 'Label-supported NG / G / PEG / GJ methods',
+    tubeRoute:
+        'NG tube 8 Fr or larger; G-tube 12 Fr or larger; PEG 14 Fr or larger; GJ tube 16 Fr or larger.',
+    preparation:
+        'Flush the feeding tube with up to 15 mL water using a catheter-tip syringe. Open one packet and empty the full contents into 15 mL liquid such as apple juice or milk; mix so all granules are wetted. Draw into a dosing syringe immediately and administer through the tube within 2 hours of mixing. If the syringe stands for 15 minutes before administration, invert it three times. Refill the dosing syringe with 15 mL water and flush the tube. If multiple packets are prescribed, mix each packet separately in its own 15 mL liquid volume.',
+    feedPlan:
+        'The label does not require a routine enteral-feed hold for the feeding-tube method.',
+    doNot:
+        'Do not combine multiple packets into one shared 15 mL preparation. Do not use a smaller tube than the product-specific minimum for that tube type. Do not transfer these granule instructions to baclofen tablets or another suspension.',
+    monitoring:
+        'Verify packet strength and total prescribed dose. Monitor sedation, weakness and clinical response; avoid abrupt discontinuation.',
+    pediatricNicu:
+        'Although the product supports several enteral tube types including GJ, the 15 mL preparation plus flush volume can be excessive in small infants. Do not treat this as a neonatal-volume protocol.',
+    practicalAr:
+        'LYVISPAH له tube sizes مختلفة حسب النوع: NG ≥8 Fr، G ≥12، PEG ≥14، GJ ≥16. كل packet يُخلط منفردًا في 15 mL liquid، ويُعطى خلال ساعتين، ثم flush بـ15 mL ماء. إذا بقيت السرنجة 15 دقيقة اقلبها 3 مرات قبل الإعطاء.',
+    source:
+        'DailyMed · LYVISPAH (baclofen) oral granules · Administration via Feeding Tube · current labeling',
+  ),
+  TubeMedicationRecord(
+    medicine: 'Carglumic acid tablets for oral suspension',
+    formulation:
+        'Carglumic acid 200 mg tablet for oral suspension, functionally scored into quarters.',
+    status: 'Label-supported NG / G-tube method including pediatric use from birth',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube; the current label provides a water-dispersion method without a stated minimum French size.',
+    preparation:
+        'Add a minimum of 2.5 mL water to a small cup for each whole, half or quarter tablet needed for the prescribed dose. Add the tablet portion(s), carefully stir, draw the mixture into a catheter-tip syringe and administer immediately through the NG or G-tube. Undissolved pieces may remain. Flush immediately with 1 to 2 mL additional water and repeat flushing as needed until no tablet pieces remain in the syringe or tube.',
+    feedPlan:
+        'Administer immediately before meals or feedings. Water is the studied preparation vehicle; use in other foods or liquids is not recommended by the label.',
+    doNot:
+        'Do not swallow the tablet whole and do not crush it. Do not mix with food, formula or another liquid instead of water. Do not leave residual tablet pieces in the syringe or tube.',
+    monitoring:
+        'This is specialist metabolic therapy. Closely monitor plasma ammonia and titrate the prescribed dose to the patient’s age and clinical condition; renal impairment changes dosing.',
+    pediatricNicu:
+        'The label establishes use from birth to 17 years for NAGS-deficiency hyperammonemia and states treatment may begin as soon as birth when the diagnosis is suspected. This is therefore directly relevant to neonatal care, but dose selection and ammonia-lowering co-therapy remain metabolic-specialist decisions.',
+    practicalAr:
+        'Carglumic acid مهم للـNICU لأن الملصق يدعم الاستخدام منذ الولادة في NAGS deficiency. للـNG/G: حد أدنى 2.5 mL ماء لكل whole/half/quarter tablet، حرّك وأعطِ فورًا، ثم flush بـ1–2 mL وكرر حتى لا تبقى قطع. لا تسحقه ولا تخلطه مع formula.',
+    source:
+        'DailyMed · Carglumic acid tablets for oral suspension · revised Mar 2026 · NG/G-tube Instructions for Use',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'TAFINLAR dabrafenib tablets for oral suspension',
+    formulation:
+        'Dabrafenib tablets for oral suspension; separate from TAFINLAR capsules, which must not be opened, crushed or broken.',
+    status: 'FDA-IFU supported pediatric feeding-tube method',
+    tubeRoute:
+        'Feeding tube 10 Fr or larger for 1 to 3 tablets; 12 Fr or larger for 4 to 15 tablets. The label does not specify a gastric-vs-jejunal destination, so do not invent one.',
+    preparation:
+        'Prepare 1 to 4 tablets in approximately 5 mL water, or 5 to 15 tablets in approximately 10 mL water, in the provided dosing cup. Gently stir until fully dispersed/dissolved; this may take at least 3 minutes. Administer immediately and discard if not used within 30 minutes. For feeding-tube dosing, pre-flush the tube with drinking water, draw up the full suspension in an oral syringe and administer. Then follow the IFU residue-rinse sequence using about 5 mL water and repeat Steps 4 through 7 three times to deliver remaining medicine, followed by a final drinking-water tube flush.',
+    feedPlan:
+        'Give on an empty stomach: at least 1 hour before or 2 hours after a meal. For a pediatric patient unable to tolerate fasting, breastfeeding and/or baby formula may be given on demand according to the label.',
+    doNot:
+        'Do not swallow the tablets for oral suspension whole, chew them or crush them. Do not use the capsule formulation for this tube method. Do not keep a prepared suspension beyond 30 minutes. Follow spill/skin/eye exposure precautions from the product IFU.',
+    monitoring:
+        'This is oncology therapy. Dose and combination treatment are protocol-specific; monitor according to the oncology regimen and exact indication.',
+    pediatricNicu:
+        'This is a pediatric oncology formulation, not a general NICU medicine. The smallest labeled feeding-tube method begins at 10 Fr, and the preparation/rinse volumes must not be adapted to neonates without specialist product-specific validation.',
+    practicalAr:
+        'TAFINLAR tablets for oral suspension: 1–4 tablets مع نحو 5 mL ماء، و5–15 tablets مع نحو 10 mL، تحريك ≥3 دقائق، ويجب الاستخدام خلال 30 دقيقة. للـtube: 1–3 tablets تحتاج ≥10 Fr و4–15 تحتاج ≥12 Fr. أعطه على معدة فارغة 1 ساعة قبل أو 2 ساعة بعد الطعام.',
+    source:
+        'DailyMed · TAFINLAR (dabrafenib) tablets for oral suspension · revised Mar 2026 · FDA Instructions for Use',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

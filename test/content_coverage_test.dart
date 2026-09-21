@@ -518,12 +518,102 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(13));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
       expect(record.feedInstruction.trim(), isNotEmpty);
       expect(record.source.trim(), isNotEmpty);
     }
+
+    final medicationKeys = tubeMedicationRecords
+        .map((record) => record.medicine + '|' + record.formulation)
+        .toList();
+    expect(medicationKeys.toSet().length, medicationKeys.length);
+
+    for (final record in tubeMedicationRecords) {
+      expect(record.medicine.trim(), isNotEmpty);
+      expect(record.formulation.trim(), isNotEmpty);
+      expect(record.status.trim(), isNotEmpty);
+      expect(record.tubeRoute.trim(), isNotEmpty);
+      expect(record.preparation.trim(), isNotEmpty);
+      expect(record.feedPlan.trim(), isNotEmpty);
+      expect(record.doNot.trim(), isNotEmpty);
+      expect(record.pediatricNicu.trim(), isNotEmpty);
+      expect(record.practicalAr.trim(), isNotEmpty);
+      expect(record.source.trim(), isNotEmpty);
+    }
+
+    TubeMedicationRecord tubeDrug(String name) =>
+        tubeMedicationRecords.firstWhere((record) => record.medicine == name);
+
+    final lansoprazoleOdt =
+        tubeDrug('Lansoprazole delayed-release ODT');
+    expect(lansoprazoleOdt.tubeRoute, contains('8 French'));
+    expect(lansoprazoleOdt.preparation, contains('4 mL'));
+    expect(lansoprazoleOdt.preparation, contains('10 mL'));
+    expect(lansoprazoleOdt.preparation, contains('15 minutes'));
+
+    final lansoprazoleCapsule =
+        tubeDrug('Lansoprazole delayed-release capsule');
+    expect(lansoprazoleCapsule.tubeRoute, contains('16 French'));
+    expect(lansoprazoleCapsule.preparation, contains('40 mL apple juice'));
+    expect(lansoprazoleCapsule.doNot, contains('apple juice only'));
+
+    final esomeprazole =
+        tubeDrug('Esomeprazole delayed-release oral suspension');
+    expect(esomeprazole.tubeRoute, contains('French size 6'));
+    expect(esomeprazole.preparation, contains('5 mL'));
+    expect(esomeprazole.preparation, contains('15 mL'));
+    expect(esomeprazole.preparation, contains('30 minutes'));
+
+    final prilosec =
+        tubeDrug('Omeprazole delayed-release oral suspension (PRILOSEC-type)');
+    expect(prilosec.tubeRoute, contains('6 French'));
+    expect(prilosec.preparation, contains('2.5 mg'));
+    expect(prilosec.preparation, contains('10 mg'));
+
+    final omeprazoleBicarb =
+        tubeDrug('Omeprazole / sodium bicarbonate oral suspension');
+    expect(omeprazoleBicarb.preparation, contains('20 mL'));
+    expect(omeprazoleBicarb.feedPlan, contains('3 hours'));
+    expect(omeprazoleBicarb.feedPlan, contains('1 hour'));
+
+    final pantoprazole =
+        tubeDrug('Pantoprazole delayed-release oral suspension');
+    expect(pantoprazole.tubeRoute, contains('16 French'));
+    expect(pantoprazole.preparation, contains('10 mL apple juice'));
+    expect(pantoprazole.doNot, contains('40 mg packet'));
+
+    final rivaroxaban = tubeDrug('Rivaroxaban tablets');
+    expect(rivaroxaban.preparation, contains('50 mL water'));
+    expect(rivaroxaban.doNot, contains('distal to the stomach'));
+    expect(rivaroxaban.feedPlan, contains('15 mg'));
+    expect(rivaroxaban.feedPlan, contains('20 mg'));
+
+    final apixaban = tubeDrug('Apixaban 2.5 mg / 5 mg tablets');
+    expect(apixaban.tubeRoute, contains('12 French'));
+    expect(apixaban.preparation, contains('60 mL'));
+    expect(apixaban.preparation, contains('20 mL'));
+
+    final dabigatran = tubeDrug('Dabigatran etexilate capsules');
+    expect(dabigatran.status, contains('Do NOT'));
+    expect(dabigatran.doNot, contains('open'));
+    expect(dabigatran.doNot, contains('increases'));
+
+    final tamsulosin = tubeDrug('Tamsulosin capsules');
+    expect(tamsulosin.doNot, contains('open'));
+
+    final nifedipine = tubeDrug('Nifedipine extended-release tablets');
+    expect(nifedipine.doNot, contains('crush'));
+
+    final venlafaxine = tubeDrug('Venlafaxine XR capsules');
+    expect(venlafaxine.status, contains('tube-validated'));
+    expect(venlafaxine.doNot, contains('place them in water'));
+
+    final bupropion = tubeDrug('Bupropion XL tablets');
+    expect(bupropion.doNot, contains('crush'));
+    expect(bupropion.doNot, contains('seizure'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

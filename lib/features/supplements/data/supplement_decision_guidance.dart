@@ -301,6 +301,172 @@ const supplementDecisionGuidance = <String, SupplementDecisionGuidance>{
         'Chronic high supplemental B6 can cause sensory neuropathy. In the U.S. Dietary Reference Intake framework the adult UL is 100 mg/day, while some authorities use lower limits.',
     source: 'NIH ODS · Vitamin B6',
   ),
+  'calcium': SupplementDecisionGuidance(
+    labPlan:
+        'Serum calcium does not measure dietary calcium adequacy. Laboratory monitoring is most relevant with CKD, parathyroid disease, hypercalcemia risk, nephrolithiasis risk or therapeutic calcium replacement.',
+    useCheckpoint:
+        'Calculate TOTAL elemental calcium from diet, supplements and antacids. Choose carbonate versus citrate based on acid dependence, GI tolerance and pill burden.',
+    interactionLock:
+        'Calcium can reduce absorption of levothyroxine, bisphosphonates, iron and selected antibiotics; use the interacting medicine’s exact separation interval.',
+    safetyLock:
+        'Avoid duplicate calcium products and large single supplemental doses; calcium absorption is highest at about 500 mg elemental calcium or less at one time.',
+    source: 'NIH ODS · Calcium',
+  ),
+  'magnesium': SupplementDecisionGuidance(
+    labPlan:
+        'Assess renal function before substantial/prolonged supplementation. Serum magnesium is useful when deficiency or toxicity is suspected, although a normal serum value does not always exclude low body stores.',
+    useCheckpoint:
+        'Counsel by elemental magnesium and distinguish supplement use from magnesium-containing laxative/antacid products.',
+    interactionLock:
+        'Magnesium can reduce absorption of tetracyclines, fluoroquinolones, bisphosphonates and levothyroxine; apply product-specific separation.',
+    safetyLock:
+        'Diarrhea is dose/form dependent; significant renal impairment raises the risk of magnesium accumulation and toxicity.',
+    source: 'NIH ODS · Magnesium',
+  ),
+  'copper': SupplementDecisionGuidance(
+    labPlan:
+        'Targeted copper/ceruloplasmin and hematologic assessment is appropriate when deficiency or toxicity is suspected; routine wellness testing is not required.',
+    useCheckpoint:
+        'Look for the cause of deficiency, especially malabsorption or chronic high-dose zinc use.',
+    interactionLock:
+        'High zinc intake can impair copper absorption; review duplicated mineral products.',
+    safetyLock:
+        'Avoid unsupervised high-dose copper, especially in disorders of copper handling.',
+    source: 'NIH ODS · Copper',
+  ),
+  'chromium': SupplementDecisionGuidance(
+    labPlan:
+        'Routine chromium testing is not a standard wellness assessment. In diabetes, follow glucose/A1C rather than chromium levels.',
+    useCheckpoint:
+        'Do not substitute chromium supplements for evidence-based diabetes or weight-management treatment.',
+    interactionLock:
+        'Review glucose-lowering therapy because supplement claims may prompt unsafe self-adjustment of medicines.',
+    safetyLock:
+        'Avoid high-dose or prolonged use without a clear rationale; benefit for weight loss or major glucose reduction is inconsistent.',
+    source: 'NIH ODS · Chromium',
+  ),
+  'manganese': SupplementDecisionGuidance(
+    labPlan:
+        'Routine manganese testing is not indicated for typical supplementation; specialist assessment is appropriate for suspected deficiency or toxicity.',
+    useCheckpoint:
+        'Most people obtain adequate manganese from food; stand-alone supplementation is rarely necessary.',
+    interactionLock:
+        'Review total intake from multivitamin/mineral products and occupational/environmental exposure.',
+    safetyLock:
+        'Chronic excessive manganese exposure can cause neurologic toxicity.',
+    source: 'NIH ODS · Manganese',
+  ),
+  'phosphorus': SupplementDecisionGuidance(
+    labPlan:
+        'Therapeutic phosphate replacement requires serum phosphate plus calcium and renal assessment, with attention to sodium/potassium carried by the salt.',
+    useCheckpoint:
+        'Routine dietary phosphorus supplementation is rarely needed; prescription phosphate replacement is a separate clinical treatment.',
+    interactionLock:
+        'The sodium or potassium load of phosphate salts can materially change safety.',
+    safetyLock:
+        'CKD frequently calls for phosphate restriction rather than supplementation.',
+    source: 'NIH ODS · Phosphorus',
+  ),
+  'vitamin-b1-thiamin': SupplementDecisionGuidance(
+    labPlan:
+        'Routine levels are not required for typical supplementation; suspected severe deficiency or Wernicke risk requires clinical assessment and treatment.',
+    useCheckpoint:
+        'Separate routine nutritional supplementation from treatment of high-risk deficiency states.',
+    interactionLock:
+        'The main issue is clinical context rather than clock-time separation.',
+    safetyLock:
+        'Do not manage suspected Wernicke encephalopathy with an OTC multivitamin dose.',
+    source: 'NIH ODS · Thiamin',
+  ),
+  'vitamin-b2-riboflavin': SupplementDecisionGuidance(
+    labPlan:
+        'Routine laboratory testing is not needed for typical low-risk supplementation.',
+    useCheckpoint:
+        'Clarify whether the goal is basic nutrition or an indication-specific higher-dose regimen such as migraine prevention.',
+    interactionLock:
+        'No major routine timing separation is required for nutritional doses.',
+    safetyLock:
+        'Bright-yellow urine is expected and harmless; avoid unnecessary duplication across B-complex products.',
+    source: 'NIH ODS · Riboflavin',
+  ),
+  'vitamin-b3-niacin': SupplementDecisionGuidance(
+    labPlan:
+        'High-dose nicotinic-acid therapy may require liver enzymes, glucose and uric acid monitoring; nutritional doses do not.',
+    useCheckpoint:
+        'Distinguish nicotinic acid from niacinamide and nutritional from pharmacologic dosing.',
+    interactionLock:
+        'Review statins, glucose-lowering therapy and other hepatotoxic exposures when pharmacologic niacin is used.',
+    safetyLock:
+        'High-dose niacin is not a routine supplement; flushing, hepatotoxicity and metabolic effects become clinically important.',
+    source: 'NIH ODS · Niacin',
+  ),
+  'vitamin-b5-pantothenic-acid': SupplementDecisionGuidance(
+    labPlan:
+        'Routine testing is not needed; deficiency is rare.',
+    useCheckpoint:
+        'Check duplication across B-complex and multivitamin products before recommending a stand-alone high dose.',
+    interactionLock:
+        'No major routine medication-separation rule at nutritional doses.',
+    safetyLock:
+        'Do not extrapolate essential-vitamin status into proof for high-dose acne or energy claims.',
+    source: 'NIH ODS · Pantothenic Acid',
+  ),
+  'choline': SupplementDecisionGuidance(
+    labPlan:
+        'Routine blood choline testing is not a standard wellness test.',
+    useCheckpoint:
+        'Assess dietary intake plus supplements, especially in pregnancy when requirements increase.',
+    interactionLock:
+        'Check prenatal/multivitamin labels because choline content varies widely.',
+    safetyLock:
+        'Dose from actual choline content, not choline-bitartrate compound weight.',
+    source: 'NIH ODS · Choline',
+  ),
+  'creatine-monohydrate': SupplementDecisionGuidance(
+    labPlan:
+        'Routine CK or creatinine monitoring is not required in every healthy user, but kidney disease or unexplained renal dysfunction warrants clinical review.',
+    useCheckpoint:
+        'Use a reputable creatine-monohydrate product and set realistic performance expectations.',
+    interactionLock:
+        'Review nephrotoxic medicines/conditions when kidney safety is a concern.',
+    safetyLock:
+        'A rise in serum creatinine can occur from creatine metabolism and must be interpreted clinically rather than automatically labeled kidney injury.',
+    source: 'Evidence-based sports nutrition consensus',
+  ),
+  'melatonin': SupplementDecisionGuidance(
+    labPlan:
+        'Routine laboratory monitoring is not required. Persistent insomnia needs evaluation for an underlying cause.',
+    useCheckpoint:
+        'Timing must match the sleep/circadian goal; bedtime is not a universal rule for circadian-shift treatment.',
+    interactionLock:
+        'Review sedatives and clinically important anticoagulant/other interactions.',
+    safetyLock:
+        'Avoid indefinite dose escalation, driving while impaired, and unsupervised long-term pediatric use.',
+    source: 'NCCIH · Melatonin',
+  ),
+  'probiotics': SupplementDecisionGuidance(
+    labPlan:
+        'Routine laboratory monitoring is not required for most users.',
+    useCheckpoint:
+        'Match the exact genus/species/strain and CFU to evidence for the intended condition; “probiotic” is not one interchangeable active ingredient.',
+    interactionLock:
+        'Review severe immunocompromise, central lines and critical illness before use.',
+    safetyLock:
+        'Rare invasive infections have occurred in high-risk hosts; avoid generic reassurance in critically ill/immunocompromised patients.',
+    source: 'NCCIH · Probiotics + strain-specific evidence',
+  ),
+  'coenzyme-q10': SupplementDecisionGuidance(
+    labPlan:
+        'No routine CoQ10 level is needed.',
+    useCheckpoint:
+        'Use only for a defined goal; evidence varies substantially by indication.',
+    interactionLock:
+        'Review warfarin and blood-pressure therapy.',
+    safetyLock:
+        'Do not present CoQ10 as a universally necessary adjunct to statins or cardiovascular therapy.',
+    source: 'NCCIH · Coenzyme Q10',
+  ),
+
 };
 
 SupplementDecisionGuidance? supplementDecisionFor(String id) =>

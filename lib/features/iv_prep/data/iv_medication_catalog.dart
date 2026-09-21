@@ -54,14 +54,14 @@ const ivMedicationCatalog = <IvCatalogEntry>[
 
   // Cardiovascular
   IvCatalogEntry(name: 'Amiodarone', population: 'General', category: 'Cardiovascular', structured: true),
-  IvCatalogEntry(name: 'Adenosine', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Adenosine', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Norepinephrine', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Epinephrine', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Dopamine', population: 'General', category: 'Cardiovascular', structured: true),
-  IvCatalogEntry(name: 'Dobutamine', population: 'General', category: 'Cardiovascular'),
-  IvCatalogEntry(name: 'Nitroglycerin', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Dobutamine', population: 'General', category: 'Cardiovascular', structured: true),
+  IvCatalogEntry(name: 'Nitroglycerin', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Labetalol', population: 'General', category: 'Cardiovascular', structured: true),
-  IvCatalogEntry(name: 'Esmolol', population: 'General', category: 'Cardiovascular'),
+  IvCatalogEntry(name: 'Esmolol', population: 'General', category: 'Cardiovascular', structured: true),
 
   // Electrolytes / metabolic
   IvCatalogEntry(name: 'Potassium chloride', population: 'General', category: 'Electrolytes & metabolic', structured: true),
@@ -69,8 +69,8 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Calcium gluconate', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Calcium chloride', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Sodium bicarbonate 8.4%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
-  IvCatalogEntry(name: 'Sodium bicarbonate 4.2%', population: 'General', category: 'Electrolytes & metabolic'),
-  IvCatalogEntry(name: 'Hypertonic sodium chloride 3%', population: 'General', category: 'Electrolytes & metabolic'),
+  IvCatalogEntry(name: 'Sodium bicarbonate 4.2%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
+  IvCatalogEntry(name: 'Hypertonic sodium chloride 3%', population: 'General', category: 'Electrolytes & metabolic', structured: true),
   IvCatalogEntry(name: 'Potassium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
   IvCatalogEntry(name: 'Sodium phosphate', population: 'General', category: 'Electrolytes & metabolic'),
 

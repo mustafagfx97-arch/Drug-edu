@@ -32,6 +32,27 @@ class MedicationPlanEngine {
         );
       }
 
+      if (item.frequency == RegimenFrequency.monthly ||
+          item.frequency == RegimenFrequency.every13Weeks ||
+          item.frequency == RegimenFrequency.every6Months) {
+        final interval = switch (item.frequency) {
+          RegimenFrequency.monthly => 'شهري',
+          RegimenFrequency.every13Weeks => 'كل 13 أسبوعًا',
+          RegimenFrequency.every6Months => 'كل 6 أشهر',
+          _ => '',
+        };
+        alerts.add(
+          PlanAlert(
+            title: item.name + ' · Calendar regimen',
+            message:
+                'هذا العلاج ' + interval + ' وليس جرعة يومية. لا ينشئ التطبيق ساعة متكررة له؛ ثبّت تاريخ الجرعة/الزيارة حسب الوصفة. ' +
+                rule.instructionAr,
+            isCritical: true,
+          ),
+        );
+        continue;
+      }
+
       if (item.frequency == RegimenFrequency.asNeeded) {
         alerts.add(
           PlanAlert(
@@ -332,6 +353,9 @@ class MedicationPlanEngine {
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
         return [routine.breakfastMinutes - 45];
+      case RegimenFrequency.monthly:
+      case RegimenFrequency.every13Weeks:
+      case RegimenFrequency.every6Months:
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -377,6 +401,9 @@ class MedicationPlanEngine {
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
         return [routine.breakfastMinutes];
+      case RegimenFrequency.monthly:
+      case RegimenFrequency.every13Weeks:
+      case RegimenFrequency.every6Months:
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -417,6 +444,9 @@ class MedicationPlanEngine {
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
         return [first];
+      case RegimenFrequency.monthly:
+      case RegimenFrequency.every13Weeks:
+      case RegimenFrequency.every6Months:
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -465,6 +495,9 @@ class MedicationPlanEngine {
         return [routine.bedtimeMinutes];
       case RegimenFrequency.weekly:
         return [routine.breakfastMinutes + 60];
+      case RegimenFrequency.monthly:
+      case RegimenFrequency.every13Weeks:
+      case RegimenFrequency.every6Months:
       case RegimenFrequency.asNeeded:
         return const [];
     }
@@ -486,6 +519,9 @@ class MedicationPlanEngine {
       case RegimenFrequency.fourTimesDaily:
       case RegimenFrequency.every6Hours:
         return [base, base + 360, base + 720, base + 1080];
+      case RegimenFrequency.monthly:
+      case RegimenFrequency.every13Weeks:
+      case RegimenFrequency.every6Months:
       case RegimenFrequency.asNeeded:
         return const [];
     }

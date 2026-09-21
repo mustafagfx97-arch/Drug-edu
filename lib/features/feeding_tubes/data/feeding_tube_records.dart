@@ -399,6 +399,139 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
         'DailyMed · Bupropion hydrochloride extended-release tablets (XL) · current 2026 labeling',
     critical: true,
   ),
+  TubeMedicationRecord(
+    medicine: 'Dexlansoprazole delayed-release capsule',
+    formulation: 'Delayed-release capsule containing intact granules/pellets.',
+    status: 'Label-supported NG method',
+    tubeRoute:
+        'Nasogastric tube into the stomach; tube must be 16 French or larger.',
+    preparation:
+        'Open the capsule and empty the intact granules into a clean container with 20 mL water. Draw the entire mixture into a catheter-tip syringe, gently swirl to keep granules suspended, and administer immediately through the NG tube into the stomach. Refill the syringe with 10 mL water, swirl and flush; repeat the 10 mL rinse once more.',
+    feedPlan:
+        'Dexlansoprazole may be taken without regard to food. The label does not require a routine enteral-feed hold for this NG method.',
+    doNot:
+        'Do not chew or crush the granules. Do not save the water/granule mixture. Do not use this labeled method through an NG tube smaller than 16 Fr or assume jejunal delivery is equivalent.',
+    monitoring:
+        'Ensure all granules clear the syringe/tube and monitor acid-suppression response.',
+    pediatricNicu:
+        'The labeled 20 mL preparation plus two 10 mL rinses is usually excessive for neonates/small infants. Do not reduce volumes by guesswork; use a validated pediatric/NICU alternative when fluid or tube size is limiting.',
+    practicalAr:
+        'Dexlansoprazole DR عبر NG يحتاج 16 Fr أو أكبر: افتح الكبسولة دون سحق الحبيبات، ضعها في 20 mL ماء، أعطها فورًا ثم flush بـ10 mL مرتين.',
+    source:
+        'DailyMed · Dexlansoprazole delayed-release capsules · labeled NG administration instructions · current 2026 label',
+  ),
+  TubeMedicationRecord(
+    medicine: 'Duloxetine DRIZALMA SPRINKLE',
+    formulation: 'Duloxetine delayed-release sprinkle capsule with intact pellets.',
+    status: 'Label-supported NG method for this product',
+    tubeRoute:
+        'Nasogastric tube into the stomach; tube must be 12 French or larger.',
+    preparation:
+        'Remove the plunger from a 60 mL catheter-tip syringe, open the capsule and place the pellets in the syringe barrel. Add 50 mL water only, replace the plunger, and gently shake for about 10 seconds. Administer immediately through the ≥12 Fr NG tube into the stomach, then flush with 15 mL additional water.',
+    feedPlan:
+        'May be administered with or without food. The label does not require a routine feed-hold interval for the NG method.',
+    doNot:
+        'Do not use other liquids for the labeled NG method. Do not crush or chew the pellets. Do not transfer this tube instruction to every duloxetine delayed-release capsule; it is product-specific to DRIZALMA SPRINKLE.',
+    monitoring:
+        'Ensure no pellets remain in the syringe and monitor clinical response/adverse effects when formulation is changed.',
+    pediatricNicu:
+        'The labeled 50 mL preparation plus 15 mL flush is not a NICU-volume method. Pediatric labeling also differs by product/indication; do not extrapolate this technique to neonates.',
+    practicalAr:
+        'DRIZALMA SPRINKLE له طريقة NG موثقة: ≥12 Fr، pellets + 50 mL ماء فقط، رجّ بلطف نحو 10 ثوانٍ، أعطه فورًا ثم flush بـ15 mL. لا تعممها على كل duloxetine.',
+    source:
+        'DailyMed · DRIZALMA SPRINKLE (duloxetine delayed-release capsules) · NG Instructions for Use',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Mycophenolate mofetil oral suspension',
+    formulation:
+        'Powder reconstituted by the pharmacist to an oral suspension containing 200 mg/mL mycophenolate mofetil.',
+    status: 'Label-supported NG route with hazardous-handling lock',
+    tubeRoute:
+        'Nasogastric tube; minimum 8 French (minimum 1.7 mm internal diameter).',
+    preparation:
+        'Pharmacy reconstitution: loosen powder, measure 94 mL water, add about half and shake the closed bottle well for about 1 minute; add the remainder and shake again for about 1 minute. Final concentration is 200 mg/mL. Once reconstituted, administer the measured suspension directly; the label states it must not be mixed with liquids before dose administration.',
+    feedPlan:
+        'Recommended on an empty stomach. In stable transplant patients, administration with food may be used if necessary. Do not invent a universal feed-hold interval beyond the prescribed transplant plan.',
+    doNot:
+        'Do not mix the suspension with another medication or liquid before administration. Do not crush tablets or open/crush capsules. Avoid inhalation or skin/mucosal contact with powder/suspension because mycophenolate is hazardous and teratogenic.',
+    monitoring:
+        'Dose selection and monitoring are transplant-specialist decisions. Verify the exact concentration (200 mg/mL), dose volume, immunosuppression monitoring and infection/toxicity surveillance.',
+    pediatricNicu:
+        'Pediatric transplant dosing is specialist- and body-size-dependent. The 8 Fr minimum is a product constraint; neonatal use is not inferred. Use appropriate PPE and a dedicated enteral syringe.',
+    practicalAr:
+        'Mycophenolate suspension تركيزه بعد التحضير 200 mg/mL: الصيدلي يضيف 94 mL ماء على مرحلتين مع رج دقيقة لكل مرحلة. يمكن عبر NG ≥8 Fr. لا تخلطه بسائل أو دواء آخر ولا تسحق tablets/تفتح capsules.',
+    source:
+        'DailyMed · Mycophenolate mofetil for oral suspension · revised Aug 2026',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Ranolazine ASPRUZYO SPRINKLE',
+    formulation: 'Extended-release ranolazine granules in sachets.',
+    status: 'Label-supported NG and G-tube methods',
+    tubeRoute:
+        'Nasogastric tube ≥12 Fr or gastric (G) tube ≥12 Fr; product-specific methods differ by route.',
+    preparation:
+        'NG: place sachet granules in a plastic catheter-tip syringe, add 50 mL water, shake gently about 15 seconds, and administer immediately; rinse with about 15 mL additional water if needed. G-tube: add granules to a catheter-tip syringe with 30 mL water, shake about 15 seconds, administer immediately, then rinse with 20 mL water; use about 15 mL more if granules remain.',
+    feedPlan:
+        'May be taken with or without meals. The labeled NG/G-tube methods do not require a routine enteral-feed hold.',
+    doNot:
+        'Do not crush or chew the extended-release granules. Do not interchange NG and G-tube water volumes. Do not transfer these instructions to ranolazine extended-release tablets.',
+    monitoring:
+        'Ranolazine dosing and interaction/QT review remain clinical decisions; tube administration only describes delivery of the prescribed dose.',
+    pediatricNicu:
+        'Not a routine NICU medicine; labeled water volumes are adult/product instructions and should not be adapted to neonates.',
+    practicalAr:
+        'ASPRUZYO له طريقتان مختلفتان: NG ≥12 Fr مع 50 mL ماء؛ G-tube ≥12 Fr مع 30 mL ماء ثم flush 20 mL. لا تسحق granules ولا تستخدم هذه الطريقة لـranolazine ER tablets.',
+    source:
+        'DailyMed · ASPRUZYO SPRINKLE (ranolazine extended-release granules) · tube administration instructions',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Metoprolol succinate extended-release tablet',
+    formulation: 'Extended-release metoprolol succinate tablet.',
+    status: 'Do NOT crush for tube',
+    tubeRoute:
+        'No label-supported crushed-tablet feeding-tube method. The scored tablet may be divided orally, but this does not make it crushable for a tube.',
+    preparation:
+        'Do not prepare the extended-release tablet by crushing. If tube administration is required, review the clinical indication and use an appropriate alternative formulation/regimen rather than destroying the ER system.',
+    feedPlan:
+        'Feed timing cannot make crushing the extended-release tablet safe.',
+    doNot:
+        'Do not crush or chew either the whole or half extended-release tablet. A score line permits division; it does not permit pulverizing the ER dosage form.',
+    monitoring:
+        'If switching formulation/regimen, monitor heart rate, blood pressure and heart-failure/angina response as appropriate.',
+    pediatricNicu:
+        'Do not extrapolate the adult ER product to NICU. Pediatric beta-blocker formulation and dose selection require an age-appropriate product/protocol.',
+    practicalAr:
+        'Metoprolol succinate ER قد يكون scored ويمكن تقسيمه فمويًا، لكن لا يجوز سحق الحبة أو نصفها للـNG. الـscore لا يعني أن الـER قابل للسحق.',
+    source:
+        'DailyMed · Metoprolol succinate extended-release tablets · administration section · current 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'Divalproex delayed-release sprinkle capsule',
+    formulation: 'Delayed-release capsule containing coated sprinkle particles.',
+    status: 'Openable orally ≠ tube-validated',
+    tubeRoute:
+        'The current label provides an oral soft-food method but does not provide a feeding-tube administration method.',
+    preparation:
+        'For oral swallowing difficulty, the capsule may be opened and all sprinkles placed on about one teaspoon of soft food such as applesauce or pudding, then swallowed immediately without chewing. This oral method does not establish NG/PEG compatibility.',
+    feedPlan:
+        'Food timing does not solve the absence of a validated tube method. If enteral-tube administration is needed, verify an alternative valproate formulation and patient-specific dosing/monitoring plan.',
+    doNot:
+        'Do not chew or crush the coated particles. Do not assume “sprinkle capsule” means the particles can be mixed with water and passed through a tube.',
+    monitoring:
+        'Changing valproate formulation can affect dose equivalence/tolerability; monitor seizure control or other indication, concentrations when clinically indicated, and safety parameters.',
+    pediatricNicu:
+        'Valproate use in infants/young children has important age-specific toxicity considerations. Do not improvise a tube method from the sprinkle instructions.',
+    practicalAr:
+        'Divalproex sprinkle يمكن فتحه على كمية صغيرة من soft food للفم، لكن الملصق لا يعطي طريقة NG. لا تخلط الحبيبات بالماء أو تسحقها فقط لأنها “sprinkle”.',
+    source:
+        'DailyMed · Divalproex sodium delayed-release sprinkle capsules · Instructions for Use · revised 2026',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

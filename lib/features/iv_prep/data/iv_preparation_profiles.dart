@@ -1597,6 +1597,255 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Adenosine',
+    population: 'General',
+    formulation:
+        'Adenosine Injection, USP ready-to-use solution 3 mg/mL in normal saline; current labeled single-dose vials include 6 mg/2 mL and 12 mg/4 mL.',
+    reconstitution:
+        'None. The cited product is supplied ready to use at 3 mg/mL.',
+    resultingConcentration:
+        '3 mg/mL adenosine.',
+    furtherDilution:
+        'No routine dilution is used for the labeled PSVT rapid-bolus pathway.',
+    allowedDiluents:
+        'No added diluent for the dose itself. If administered through an IV line, the label directs a rapid saline flush immediately afterward.',
+    administration:
+        'For PSVT conversion, administer only as a rapid IV bolus. Adult initial labeled dose is 6 mg over 1–2 seconds; if needed, 12 mg may follow after 1–2 minutes and may be repeated once. Give directly into a vein or as close to the patient as possible in the IV line, followed immediately by a rapid saline flush.',
+    stability:
+        'Store at 20–25°C. Do NOT refrigerate because crystallization may occur. If crystals occur, warm to room temperature until dissolved and use only when the solution is clear. Single-dose, preservative-free; discard unused portion.',
+    incompatibilities:
+        'This profile is for the labeled rapid-bolus pathway and does not establish admixture or Y-site compatibility with other medications.',
+    criticalLocks: [
+      'Route lock: rapid IV bolus only for the cited PSVT pathway; do not convert this profile into a slow infusion recipe.',
+      'Flush lock: when using an IV line, inject as close to the patient as possible and follow immediately with a rapid saline flush.',
+      'Storage lock: do not refrigerate; crystallization can occur.',
+    ],
+    sourceLabel:
+        'DailyMed · Adenosine Injection, USP 3 mg/mL · current label Sep 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'adenosine-3mg-ml',
+        label: 'Adenosine ready-to-use · 3 mg/mL',
+        unit: 'mg',
+        concentration: 3,
+        note:
+            'Ready-to-use labeled concentration. Calculator converts an already prescribed mg dose to mL only; it does not choose the dose.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dobutamine',
+    population: 'General',
+    formulation:
+        'Dobutamine Injection, USP 250 mg/20 mL = 12.5 mg/mL single-dose vial; exact cited Hikma product.',
+    reconstitution:
+        'None. This is a liquid concentrate at 12.5 mg/mL, but it MUST be diluted before IV administration.',
+    resultingConcentration:
+        'Stock vial concentration 12.5 mg/mL. The label provides infusion examples at 500, 1000 and 2000 mcg/mL and notes that concentrations up to 5000 mcg/mL (250 mg/50 mL) have been administered; final concentration must be selected according to the patient and prescribed infusion plan.',
+    furtherDilution:
+        'Mandatory. At administration, further dilute in an IV container to a total volume of at least 50 mL. Do not let the calculator invent a final infusion concentration.',
+    allowedDiluents:
+        'Current label lists compatible diluents including D5W, D5/0.45% NaCl, D5/0.9% NaCl, D10W, Lactated Ringer’s, D5/LR, 0.9% Sodium Chloride, Sodium Lactate, and selected balanced/osmotic solutions listed in the exact product label.',
+    administration:
+        'Continuous IV infusion with hemodynamic monitoring. Infusion rate is titrated to the prescribed mcg/kg/min target and patient response; this preparation profile does not select a therapeutic dose.',
+    stability:
+        'Diluted IV solutions should be used within 24 hours. Store unopened vials at 20–25°C. Single-dose vial; discard unused portion.',
+    incompatibilities:
+        'Do not add to 5% Sodium Bicarbonate Injection or other strongly alkaline solutions. Because of potential physical incompatibilities, do not mix dobutamine with other drugs in the same solution. Avoid agents/diluents containing both sodium bisulfite and ethanol.',
+    criticalLocks: [
+      'Dilution lock: 12.5 mg/mL is the stock concentration and must not be infused undiluted.',
+      'Volume lock: final IV container volume must be at least 50 mL for the cited product.',
+      'Bicarbonate lock: do not add to 5% sodium bicarbonate or other strongly alkaline solutions.',
+      'Calculator lock: calculator reports stock withdrawal volume only; final infusion concentration remains a prescribed/institutional decision.',
+    ],
+    sourceLabel:
+        'DailyMed · Hikma Dobutamine Injection USP 250 mg/20 mL (12.5 mg/mL) · current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'dobutamine-12_5mg-ml',
+        label: 'Dobutamine stock vial · 12.5 mg/mL',
+        unit: 'mg',
+        concentration: 12.5,
+        note:
+            'Stock withdrawal only. Mandatory further dilution to at least 50 mL; do not interpret this as an infusion concentration.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Nitroglycerin',
+    population: 'General',
+    formulation:
+        'Nitroglycerin Injection, USP concentrated solution 50 mg/10 mL = 5 mg/mL single-dose vial.',
+    reconstitution:
+        'None. The vial is a 5 mg/mL concentrate and is NOT for direct IV injection.',
+    resultingConcentration:
+        'Stock concentration 5 mg/mL. The current label provides final infusion concentrations such as 50, 100, 200 and 400 mcg/mL depending on the exact dilution pathway; the final concentration must match the ordered protocol.',
+    furtherDilution:
+        'Mandatory. Dilute only in D5W or 0.9% Sodium Chloride before infusion. Label examples: 5 mg diluted to 100 mL gives 50 mcg/mL; 25 mg q.s. to 500 mL gives 50 mcg/mL; 50 mg q.s. to 500 mL gives 100 mcg/mL. Label dilution tables also support 200 and 400 mcg/mL; do not exceed 400 mcg/mL in the cited pathway.',
+    allowedDiluents:
+        'Dextrose 5% Injection or Sodium Chloride 0.9% Injection only for the cited label pathway.',
+    administration:
+        'Continuous IV infusion using a pump that can maintain a constant rate. Use the least absorptive infusion tubing available (non-PVC preferred) because PVC can adsorb nitroglycerin. The exact container/set affects delivered dose; follow the cited product and institutional infusion-set standard.',
+    stability:
+        'Protect the unopened vial from light and retain in carton until use. Store at 20–25°C (excursions 15–30°C). Single-dose vial; discard unused portion. The cited label does not provide a universal compounded beyond-use time; use institutional sterile-compounding policy for prepared admixtures.',
+    incompatibilities:
+        'Do not mix the diluted nitroglycerin infusion with other medications. Do not run through the same set as blood. Some in-line filters adsorb nitroglycerin and should be avoided. The cited label uses glass IV bottles for preparation and cautions that tubing/container material affects delivered dose.',
+    criticalLocks: [
+      'Direct-IV lock: never give the 5 mg/mL concentrate by direct IV injection.',
+      'Diluent lock: use D5W or 0.9% Sodium Chloride for the cited product.',
+      'Concentration lock: final concentration is protocol-specific; do not let the calculator select 50/100/200/400 mcg/mL automatically.',
+      'Tubing lock: use least-absorptive/non-PVC tubing because PVC adsorption can substantially reduce delivered drug.',
+    ],
+    sourceLabel:
+        'DailyMed · Nitroglycerin Injection, USP 5 mg/mL · current label Sep 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nitroglycerin-5mg-ml-stock',
+        label: 'Nitroglycerin concentrate · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Stock withdrawal only. Mandatory dilution in D5W or 0.9% NaCl before infusion; calculator does not choose final infusion concentration.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Esmolol',
+    population: 'General',
+    formulation:
+        'BREVIBLOC (esmolol hydrochloride) ready-to-use presentations: 100 mg/10 mL vial (10 mg/mL), 2500 mg/250 mL premix bag (10 mg/mL), and 2000 mg/100 mL double-strength premix bag (20 mg/mL).',
+    reconstitution:
+        'None for the cited BREVIBLOC presentations. The vial and premix bags are ready to use.',
+    resultingConcentration:
+        '10 mg/mL for the 100 mg/10 mL vial and 2500 mg/250 mL bag; 20 mg/mL for the 2000 mg/100 mL double-strength bag.',
+    furtherDilution:
+        'No routine dilution is required for the cited ready-to-use vial or premix bags. If a local workflow prepares another concentration, use only an explicitly validated product/institutional method.',
+    allowedDiluents:
+        'No added diluent is required for the ready-to-use products. The label documents compatibility at 10 mg/mL with D5W, D5/LR, D5/Ringer’s, D5/0.45% NaCl, D5/0.9% NaCl, Lactated Ringer’s, 0.45% NaCl, 0.9% NaCl and selected listed fluids.',
+    administration:
+        'IV loading dose and continuous infusion are separate ordered actions. The ready-to-use vial may be used for a loading dose while the maintenance infusion is prepared. The premix bag medication port is only for withdrawing an initial bolus; do not add medications to the bag.',
+    stability:
+        'Store at 25°C with excursions to 15–30°C; protect from freezing and excessive heat. Once drug has been withdrawn from a premix bag, use the bag within 24 hours and discard unused portion.',
+    incompatibilities:
+        'Not compatible with Sodium Bicarbonate 5% solution (limited stability) or furosemide (precipitation). Do not add medications to the premix bag.',
+    criticalLocks: [
+      'Presentation lock: distinguish 10 mg/mL from 20 mg/mL before calculation.',
+      'Premix lock: bags are ready to use; do not add medications to them.',
+      'Bolus/infusion lock: loading dose and maintenance infusion are distinct ordered steps.',
+      'Compatibility lock: avoid sodium bicarbonate 5% and furosemide in the same solution.',
+    ],
+    sourceLabel:
+        'DailyMed · BREVIBLOC (esmolol hydrochloride) · current label Sep 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'esmolol-vial-10mg-ml',
+        label: 'Ready-to-use vial · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            '100 mg/10 mL ready-to-use vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'esmolol-premix-10mg-ml',
+        label: 'Premix bag · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            '2500 mg/250 mL premix bag; medication port is for withdrawing an initial bolus only.',
+      ),
+      IvWithdrawalVariant(
+        id: 'esmolol-premix-20mg-ml',
+        label: 'Double-strength premix · 20 mg/mL',
+        unit: 'mg',
+        concentration: 20,
+        note:
+            '2000 mg/100 mL double-strength premix bag.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Sodium bicarbonate 4.2%',
+    population: 'General',
+    formulation:
+        'Fresenius Kabi Sodium Bicarbonate Injection, USP 4.2%: 42 mg/mL = 0.5 mEq/mL sodium and 0.5 mEq/mL bicarbonate; 2.5 mEq/5 mL single-dose vial.',
+    reconstitution:
+        'None. The cited 4.2% product is a ready solution at 0.5 mEq/mL.',
+    resultingConcentration:
+        '0.5 mEq/mL Na+ and 0.5 mEq/mL HCO3− (42 mg/mL sodium bicarbonate).',
+    furtherDilution:
+        'No universal further-dilution recipe is assumed. Use the exact indication/order and institutional protocol if admixture into another IV fluid is required.',
+    allowedDiluents:
+        'Do not infer a universal compatible diluent list from concentration alone. If added to another IV fluid, compatibility must be established for the exact solution and co-administered drugs.',
+    administration:
+        'IV use only. Dose and rate depend on indication, age, acid-base status and monitoring. This 4.2% profile is kept separate from 8.4%. In neonates and children under 2 years, the label warns against rapid hypertonic bicarbonate administration and notes that 4.2% may be preferred for slower administration.',
+    stability:
+        'Store at 20–25°C and do not freeze. Single-dose vial; discard unused portion.',
+    incompatibilities:
+        'Norepinephrine and dobutamine are incompatible with sodium bicarbonate solution. Avoid addition to calcium-containing parenteral solutions unless compatibility is established because precipitation or haze may occur.',
+    criticalLocks: [
+      'Concentration lock: 4.2% = 0.5 mEq/mL; do not substitute the 8.4% 1 mEq/mL concentration.',
+      'Pediatric lock: hypertonic bicarbonate administration in neonates/children under 2 years requires special rate caution.',
+      'Compatibility lock: do not admix with norepinephrine or dobutamine; avoid calcium-containing solutions unless compatibility is established.',
+    ],
+    sourceLabel:
+        'DailyMed · Fresenius Kabi Sodium Bicarbonate Injection USP 4.2% · current label Oct 2025',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'sodium-bicarbonate-4_2-0_5meq-ml',
+        label: 'Sodium bicarbonate 4.2% · 0.5 mEq/mL',
+        unit: 'mEq',
+        concentration: 0.5,
+        note:
+            'Calculator converts an already prescribed mEq dose to mL of the exact 4.2% product only.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Hypertonic sodium chloride 3%',
+    population: 'General',
+    formulation:
+        'B. Braun 3% Sodium Chloride Injection, USP hypertonic solution in 500 mL EXCEL container; 30 g/L NaCl, sodium 513 mEq/L and chloride 513 mEq/L, calculated osmolarity about 1030 mOsm/L.',
+    reconstitution:
+        'None. The cited 3% sodium chloride product is supplied ready to use.',
+    resultingConcentration:
+        '3% w/v sodium chloride = 30 mg/mL NaCl; sodium 513 mEq/L = 0.513 mEq/mL and chloride 0.513 mEq/mL.',
+    furtherDilution:
+        'No routine dilution is required for the cited 3% product. Do not let the calculator create a different saline concentration.',
+    allowedDiluents:
+        'No diluent is required. Some additives may be incompatible; verify exact compatibility before adding any medication.',
+    administration:
+        'IV infusion only. The product label identifies it as concentrated/hypertonic and directs slow infusion with constant observation to avoid pulmonary edema. Therapeutic volume and rate must follow the indication-specific order/protocol; this preparation profile does not choose a hypertonic-saline treatment regimen.',
+    stability:
+        'Single-dose container. Store at room temperature around 25°C, avoid excessive heat, protect from freezing, and do not remove overwrap until ready for use. If additives are introduced, the cited label instructs not to store the admixture.',
+    incompatibilities:
+        'Some additives may be incompatible. Do not use the container in series connection. Use only if solution is clear and the container/seals are intact.',
+    criticalLocks: [
+      'Product lock: this is ready-to-use 3% saline, not a recipe for compounding 3% from other sodium chloride products.',
+      'Concentration lock: sodium = 0.513 mEq/mL; do not confuse with 0.9% saline.',
+      'Protocol lock: calculator must not select bolus volume or infusion rate; those are indication-specific clinical orders.',
+      'Container lock: do not use in series connection.',
+    ],
+    sourceLabel:
+        'DailyMed · B. Braun 3% Sodium Chloride Injection USP 500 mL EXCEL container · current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'hypertonic-saline-3percent-sodium',
+        label: '3% Sodium Chloride · sodium 0.513 mEq/mL',
+        unit: 'mEq sodium',
+        concentration: 0.513,
+        note:
+            'Converts an already prescribed sodium mEq amount to mL of the exact 3% product only. Does not determine a therapeutic bolus or infusion rate.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

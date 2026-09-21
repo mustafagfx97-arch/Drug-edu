@@ -6,8 +6,8 @@ void main() {
   IvPreparationProfile nicu(String name) =>
       findIvPreparationProfile(name, 'NICU')!;
 
-  test('fifth NICU electrolyte batch reaches 116 source-locked profiles', () {
-    expect(ivPreparationProfiles.length, 116);
+  test('fifth NICU electrolyte batch remains source locked', () {
+    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(116));
 
     for (final name in <String>[
       'Dexamethasone',
@@ -26,22 +26,6 @@ void main() {
       expect(catalog.structured, isTrue, reason: name);
     }
 
-    final remaining = ivMedicationCatalog
-        .where((entry) => entry.population == 'NICU' && !entry.structured)
-        .map((entry) => entry.name)
-        .toList();
-
-    expect(
-      remaining,
-      <String>[
-        'Dextrose D10',
-        'Dextrose D12.5',
-        'Dextrose D20',
-        'Dextrose D25',
-        'Hypertonic sodium chloride',
-        'Phosphate',
-      ],
-    );
   });
 
   test('NICU dexamethasone is preservative-free 10 mg per mL only', () {

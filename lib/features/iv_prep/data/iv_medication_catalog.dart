@@ -148,12 +148,12 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Calcium chloride', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
   IvCatalogEntry(name: 'Magnesium sulfate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
   IvCatalogEntry(name: 'Sodium bicarbonate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
-  IvCatalogEntry(name: 'Dextrose D10', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Dextrose D12.5', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Dextrose D20', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Dextrose D25', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Hypertonic sodium chloride', population: 'NICU', category: 'Electrolytes & glucose'),
-  IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose'),
+  IvCatalogEntry(name: 'Dextrose D10', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Dextrose D12.5', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Dextrose D20', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Dextrose D25', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Hypertonic sodium chloride', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
+  IvCatalogEntry(name: 'Phosphate', population: 'NICU', category: 'Electrolytes & glucose', structured: true),
 
   // PICU representative profiles built from the same project library
   IvCatalogEntry(name: 'Norepinephrine', population: 'PICU', category: 'Vasoactive & cardiac'),

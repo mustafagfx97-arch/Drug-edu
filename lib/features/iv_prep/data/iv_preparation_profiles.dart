@@ -4561,6 +4561,230 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Dextrose D10',
+    population: 'NICU',
+    formulation:
+        'Baxter Dextrose Injection, USP 10% = 10 g/100 mL = 100 mg/mL dextrose hydrous in a single-dose flexible container; current labeling includes pediatric use.',
+    reconstitution:
+        'None. The cited D10 product is supplied ready for intravenous infusion at 100 mg/mL.',
+    resultingConcentration:
+        '10% w/v dextrose = 100 mg/mL = 0.1 g/mL.',
+    furtherDilution:
+        'No routine dilution is required for the exact ready 10% product. Do not use this profile as a recipe to create another dextrose concentration.',
+    allowedDiluents:
+        'No diluent is required for the ready D10 bag. If another medication is added, verify compatibility with the exact additive and use aseptic technique.',
+    administration:
+        'IV infusion only. The infusion rate and glucose infusion rate are patient-specific and must come from the neonatal order/protocol. Closely monitor blood glucose in neonates because both hypo- and hyperglycemia can occur.',
+    stability:
+        'Single-dose container; discard unused portion. Use promptly and do not store solutions containing additives according to the cited label.',
+    incompatibilities:
+        'Avoid simultaneous administration with blood products through the same administration set because pseudoagglutination or hemolysis may occur; if one access is used, flush per the product label/local protocol.',
+    criticalLocks: [
+      'Product lock: ready-to-use Baxter Dextrose Injection 10% = 100 mg/mL.',
+      'Concentration lock: D10 is 0.1 g/mL; do not confuse with D5, D12.5, D20 or D25.',
+      'Calculator lock: converts an already prescribed dextrose amount to D10 volume only; it never selects GIR, infusion rate or daily fluid volume.',
+      'Neonatal monitoring lock: closely monitor glucose and fluid/electrolyte status.',
+    ],
+    sourceLabel:
+        'DailyMed · Baxter Dextrose Injection 5% and 10% · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-d10-ready-0_1g-ml',
+        label: 'Dextrose 10% ready solution · 0.1 g/mL',
+        unit: 'g dextrose',
+        concentration: 0.1,
+        note:
+            'Ready D10 solution only. The calculator does not choose neonatal GIR or infusion rate.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dextrose D12.5',
+    population: 'NICU',
+    formulation:
+        'Target pharmacy-compounded dextrose concentration 12.5% w/v = 12.5 g/100 mL = 125 mg/mL. This is not locked to a unique ready-to-use manufacturer bag. Source concentrate may be an exact 70% Dextrose Injection Pharmacy Bulk Package intended only for admixture/dilution in a pharmacy compounding program.',
+    reconstitution:
+        'None. D12.5 is treated here as a final compounded concentration, not a vial reconstitution.',
+    resultingConcentration:
+        'Final target concentration: 12.5% w/v = 125 mg/mL dextrose.',
+    furtherDilution:
+        'Manual compounding only. The app does not provide a universal D70-to-D12.5 recipe because the source container, base fluid, final volume, sterile-compounding method and neonatal fluid plan are institution-specific. Use a validated pharmacy worksheet for the exact preparation.',
+    allowedDiluents:
+        'Not universally locked. The exact base fluid must be specified by the validated NICU/pharmacy compounding procedure.',
+    administration:
+        'Administer only from the final pharmacy-labeled IV preparation. Route/access, infusion rate and glucose infusion rate remain neonatal clinical decisions and are outside this preparation profile.',
+    stability:
+        'No generic final-product stability is assigned. Apply the exact sterile-compounding beyond-use date for the validated D12.5 preparation and the handling limits of the source bulk container.',
+    incompatibilities:
+        'Do not assume compatibility with medications, blood products or parenteral-nutrition components merely because the final dextrose concentration is 12.5%; verify the complete final admixture.',
+    criticalLocks: [
+      'Compounding lock: D12.5 is a final compounded concentration, not a universal manufacturer product.',
+      'Recipe lock: no generic source-volume/diluent formula is exposed in the app.',
+      'Source lock: concentrated 70% dextrose bulk products are not for direct infusion and must be handled in a pharmacy admixture program.',
+      'Calculator lock: disabled for this profile because the app must not invent the source stock, diluent or final volume.',
+    ],
+    sourceLabel:
+        'DailyMed · ICU Medical 70% Dextrose Injection USP Pharmacy Bulk Package · current label Oct 2025; target D12.5 concentration is pharmacy-compounded',
+  ),
+
+  IvPreparationProfile(
+    name: 'Dextrose D20',
+    population: 'NICU',
+    formulation:
+        'Target pharmacy-compounded dextrose concentration 20% w/v = 20 g/100 mL = 200 mg/mL. This profile is not tied to a unique ready-to-use U.S. neonatal product. An exact 70% Dextrose Injection Pharmacy Bulk Package may be used only within a validated pharmacy admixture process.',
+    reconstitution:
+        'None. D20 is represented as a final compounded IV concentration.',
+    resultingConcentration:
+        'Final target concentration: 20% w/v = 200 mg/mL dextrose.',
+    furtherDilution:
+        'Manual compounding only. Do not calculate a universal D70-to-D20 recipe in the app; the exact source concentrate, base solution, final volume, line/access plan and sterile-compounding process must be defined by the institutional protocol.',
+    allowedDiluents:
+        'No universal diluent is source-locked for all NICU D20 preparations. Use the exact validated pharmacy formulation.',
+    administration:
+        'Use only the final pharmacy-labeled preparation. D20 is hypertonic; venous access, infusion rate and glucose infusion rate must be selected by the neonatal protocol/order, not by this calculator.',
+    stability:
+        'No generic stability or beyond-use date is assigned to all compounded D20 preparations. Follow the validated formulation-specific sterile-compounding BUD.',
+    incompatibilities:
+        'Compatibility depends on the complete final admixture. Verify any co-administered medication, electrolyte, blood product or parenteral-nutrition component separately.',
+    criticalLocks: [
+      'Compounding lock: D20 is a final compounded concentration, not a universal ready-to-use neonatal product.',
+      'Recipe lock: no generic compounding recipe is exposed.',
+      'Source lock: 70% dextrose Pharmacy Bulk Package is not for direct infusion.',
+      'Calculator lock: disabled because source stock/diluent/final volume are preparation-specific.',
+    ],
+    sourceLabel:
+        'DailyMed · ICU Medical 70% Dextrose Injection USP Pharmacy Bulk Package · current label Oct 2025; target D20 concentration is pharmacy-compounded',
+  ),
+
+  IvPreparationProfile(
+    name: 'Dextrose D25',
+    population: 'NICU',
+    formulation:
+        'Hospira Dextrose Injection, USP 25% = 2.5 g/10 mL = 250 mg/mL dextrose hydrous in a single-dose Ansyr plastic syringe; FDA labeling is for acute symptomatic hypoglycemia from birth to less than 2 years.',
+    reconstitution:
+        'None. The exact pediatric product is supplied ready at 250 mg/mL.',
+    resultingConcentration:
+        '25% w/v dextrose = 250 mg/mL = 0.25 g/mL.',
+    furtherDilution:
+        'No routine dilution is required for the labeled D25 syringe pathway. If a lower dextrose concentration is desired, use the commercially available lower concentration or a validated neonatal compounding protocol rather than inventing a bedside dilution.',
+    allowedDiluents:
+        'No routine diluent is required for the cited D25 syringe. Any alternative dilution must be validated separately.',
+    administration:
+        'IV only; do not give subcutaneously or intramuscularly. The current label directs slow IV injection into a central vein and warns that neonates and low-birth-weight infants are at increased risk from excessive or rapid administration. Dose and injection rate remain clinical decisions.',
+    stability:
+        'Single-dose syringe; discard unused portion. Store at 20–25°C according to the current label.',
+    incompatibilities:
+        'Do not administer simultaneously with blood through the same infusion set because pseudoagglutination may occur.',
+    criticalLocks: [
+      'Product lock: exact Hospira pediatric D25 syringe 250 mg/mL.',
+      'Age lock: current FDA indication is acute symptomatic hypoglycemia from birth to less than 2 years.',
+      'Route lock: slow IV injection into a central vein; no IM or SC administration.',
+      'Calculator lock: converts an already prescribed dextrose amount to D25 volume only; it does not choose the neonatal dose or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Dextrose Injection USP 25%, 250 mg/mL Ansyr syringe · updated Jun 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-d25-0_25g-ml',
+        label: 'Dextrose 25% pediatric syringe · 0.25 g/mL',
+        unit: 'g dextrose',
+        concentration: 0.25,
+        note:
+            'Use only for conversion of an already ordered dextrose amount. Neonatal dose and rate remain outside the calculator.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Hypertonic sodium chloride',
+    population: 'NICU',
+    formulation:
+        'B. Braun 3% Sodium Chloride Injection, USP ready hypertonic solution in a single-dose 500 mL container; 30 g/L NaCl with sodium 513 mEq/L and chloride 513 mEq/L.',
+    reconstitution:
+        'None. The exact 3% sodium chloride product is supplied ready for IV infusion.',
+    resultingConcentration:
+        '3% w/v NaCl = 30 mg/mL; sodium 0.513 mEq/mL and chloride 0.513 mEq/mL; osmolarity about 1030 mOsm/L.',
+    furtherDilution:
+        'No routine dilution is required for the cited ready 3% product. Do not use this profile as a compounding recipe for other hypertonic saline concentrations.',
+    allowedDiluents:
+        'No diluent is required. Verify any additive compatibility before introduction.',
+    administration:
+        'IV infusion only. The manufacturer describes the solution as hypertonic/concentrated and directs slow infusion with close observation. Neonatal indication, correction target, volume and rate must come from the NICU protocol/order.',
+    stability:
+        'Single-dose container. Store according to the product label; if additives are introduced, follow the exact additive compatibility and storage instructions.',
+    incompatibilities:
+        'Some additives may be incompatible. Do not use flexible containers in series. Use only if the solution is clear and the container/seals are intact.',
+    criticalLocks: [
+      'Product lock: ready-to-use 3% Sodium Chloride Injection, not a bedside recipe.',
+      'Concentration lock: sodium = 0.513 mEq/mL and chloride = 0.513 mEq/mL.',
+      'Hypertonicity lock: osmolarity is about 1030 mOsm/L; venous access and rate are clinical/protocol decisions.',
+      'Calculator lock: converts an already prescribed sodium mEq amount to 3% saline volume only; it never chooses the correction regimen.',
+    ],
+    sourceLabel:
+        'DailyMed · B. Braun 3% Sodium Chloride Injection USP 500 mL EXCEL container · current label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-3percent-saline-sodium',
+        label: '3% sodium chloride · sodium 0.513 mEq/mL',
+        unit: 'mEq sodium',
+        concentration: 0.513,
+        note:
+            'Stock conversion only. Correction target, infusion rate and route are not selected by the calculator.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Phosphate',
+    population: 'NICU',
+    formulation:
+        'Two exact phosphate concentrates are supported and must be selected explicitly: Glenmark Sodium Phosphates Injection USP provides phosphorus 3 mmol/mL plus sodium 4 mEq/mL; Amneal Potassium Phosphates Injection USP provides phosphorus 3 mmol/mL plus potassium 4.4 mEq/mL.',
+    reconstitution:
+        'None. Both products are concentrated solutions, but both require dilution or admixing in a larger IV volume before administration.',
+    resultingConcentration:
+        'Both products provide phosphorus 3 mmol/mL. Sodium phosphate also provides sodium 4 mEq/mL; potassium phosphate also provides potassium 4.4 mEq/mL.',
+    furtherDilution:
+        'Mandatory. Do not administer either concentrate undiluted. Sodium phosphate must be diluted in a larger compatible IV fluid. Potassium phosphate labeling permits 0.9% Sodium Chloride or D5W and provides age/route-specific maximum concentrations; the calculator does not select the final concentration.',
+    allowedDiluents:
+        'Potassium phosphate: 0.9% Sodium Chloride Injection or D5W for the labeled hypophosphatemia pathway. Sodium phosphate: use the exact compatible larger-volume IV fluid selected by the institutional/pharmacy protocol.',
+    administration:
+        'IV only after dilution. Select sodium versus potassium phosphate based on the prescribed salt and the patient’s electrolyte status. Current potassium-phosphate labeling includes preterm/term infants and requires consideration of potassium, calcium, phosphorus and magnesium; sodium-phosphate labeling states pediatric safety/effectiveness includes neonates.',
+    stability:
+        'Single-dose vials: discard unused portion. For the cited potassium-phosphate product, diluted solution is stable up to 4 hours at room temperature or 14 days refrigerated; final parenteral-nutrition admixtures have separate limits. For sodium phosphate, follow the validated admixture BUD because the label does not define one universal final preparation.',
+    incompatibilities:
+        'Calcium-phosphate precipitation is a critical risk. Do not infuse potassium phosphate with calcium-containing IV fluids, and verify calcium/phosphate compatibility in every PN or electrolyte admixture.',
+    criticalLocks: [
+      'Salt-selection lock: choose sodium phosphate or potassium phosphate explicitly; they are not interchangeable as co-electrolyte sources.',
+      'Concentration lock: both provide phosphorus 3 mmol/mL, but sodium phosphate adds 4 mEq sodium/mL while potassium phosphate adds 4.4 mEq potassium/mL.',
+      'Dilution lock: both concentrates must be diluted before IV administration.',
+      'Calcium lock: calcium-phosphate precipitation can cause serious harm; compatibility must be verified for the complete admixture.',
+      'Calculator lock: calculator converts an already prescribed phosphorus mmol amount to stock mL only after the exact phosphate salt is selected; it does not choose dose, salt, final concentration or rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Glenmark Sodium Phosphates Injection USP 3 mmol P/mL + 4 mEq Na/mL · Mar 2026; DailyMed · Amneal Potassium Phosphates Injection USP 3 mmol P/mL + 4.4 mEq K/mL · May 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-sodium-phosphate-3mmol-ml',
+        label: 'Sodium phosphates · 3 mmol phosphorus/mL',
+        unit: 'mmol phosphorus',
+        concentration: 3,
+        note:
+            'Each mL also contains 4 mEq sodium. Mandatory dilution.',
+      ),
+      IvWithdrawalVariant(
+        id: 'nicu-potassium-phosphate-3mmol-ml',
+        label: 'Potassium phosphates · 3 mmol phosphorus/mL',
+        unit: 'mmol phosphorus',
+        concentration: 3,
+        note:
+            'Each mL also contains 4.4 mEq potassium. Mandatory dilution; select only when potassium status allows.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

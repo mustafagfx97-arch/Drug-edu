@@ -82,7 +82,7 @@ void main() {
     expect(cefdinir.timing, contains('2 hours'));
 
     expect(
-      englishPatientCounselingFor('acetazolamide'),
+      englishPatientCounselingFor('cetirizine'),
       isNull,
       reason:
           'Medicines without a reviewed English record must not get an automatic translation fallback.',

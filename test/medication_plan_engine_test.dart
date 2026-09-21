@@ -866,4 +866,119 @@ void main() {
     );
   });
 
+
+  test('magnesium citrate plus doxycycline creates mineral separation alert', () {
+    final plan = engine.generate(
+      items: [
+        item('doxycycline', 'Doxycycline'),
+        item(
+          'magnesium-citrate',
+          'Magnesium Citrate',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Doxycycline + minerals' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('magnesium oxide plus ciprofloxacin creates mineral separation alert', () {
+    final plan = engine.generate(
+      items: [
+        item('ciprofloxacin-oral', 'Ciprofloxacin'),
+        item(
+          'magnesium-oxide',
+          'Magnesium Oxide',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Ciprofloxacin + minerals' &&
+            alert.message.contains('المغنيسيوم') &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('potassium supplement plus spironolactone creates hyperkalemia review', () {
+    final plan = engine.generate(
+      items: [
+        item('spironolactone', 'Spironolactone'),
+        item(
+          'potassium-supplement',
+          'Potassium Supplement',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Potassium supplement + potassium-raising therapy' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('vitamin D2 plus D3 creates duplicate vitamin D alert', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'vitamin-d2',
+          'Vitamin D2',
+          type: PlanItemType.supplement,
+        ),
+        item(
+          'vitamin-d3',
+          'Vitamin D3',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Vitamin D duplication' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('omega-3 plus warfarin creates dose and bleeding review without contraindication label', () {
+    final plan = engine.generate(
+      items: [
+        item('warfarin', 'Warfarin'),
+        item(
+          'omega-3-epa-dha',
+          'Omega-3 EPA/DHA',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    final alert = plan.alerts.firstWhere(
+      (alert) => alert.title == 'Omega-3 + anticoagulant review',
+    );
+    expect(alert.isCritical, isFalse);
+    expect(alert.message, contains('EPA/DHA'));
+    expect(alert.message, contains('INR'));
+  });
+
 }

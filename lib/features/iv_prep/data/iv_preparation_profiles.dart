@@ -535,6 +535,173 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     withdrawalConcentration: 2,
   ),
 
+  IvPreparationProfile(
+    name: 'Cefepime',
+    population: 'General',
+    formulation:
+        'Cefepime for injection single-dose vials. Current cited label: 1 g and 2 g vials for IV/IM use; preparation is route-specific.',
+    reconstitution:
+        'For IV use: add 10 mL diluent to the 1 g vial to give approximately 100 mg/mL; add 10 mL to the 2 g vial to give approximately 160 mg/mL. Compatible vial diluents in the cited label include Sterile Water for Injection, 0.9% Sodium Chloride Injection and 5% Dextrose Injection. Do not reuse the IM reconstitution volumes for IV preparation.',
+    resultingConcentration:
+        '1 g IV vial after 10 mL: approximately 100 mg/mL. 2 g IV vial after 10 mL: approximately 160 mg/mL.',
+    furtherDilution:
+        'Further dilute the reconstituted dose for IV infusion. The cited label supports final cefepime concentrations from 1 to 40 mg/mL.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, 5% or 10% Dextrose, M/6 Sodium Lactate, D5/0.9% Sodium Chloride, Lactated Ringers with 5% Dextrose, and the exact Normosol solutions listed in the cited product label.',
+    administration:
+        'Administer the resulting IV infusion over approximately 30 minutes.',
+    stability:
+        'At supported final concentrations, cited label: up to 24 hours at 20–25°C or 7 days refrigerated at 2–8°C. Apply the exact product/container policy in local practice.',
+    incompatibilities:
+        'Do not extrapolate Y-site compatibility from diluent compatibility. During Y-site infusion the label advises discontinuing the other solution when feasible.',
+    criticalLocks: [
+      'Route lock: IV and IM reconstitution volumes differ.',
+      'Do not use a generic 100 mg/mL assumption for the 2 g IV vial; cited 2 g + 10 mL is approximately 160 mg/mL.',
+    ],
+    sourceLabel:
+        'DailyMed · Cefepime for Injection · updated 2026 · sections 2.4–2.6',
+    withdrawalUnit: 'mg',
+  ),
+  IvPreparationProfile(
+    name: 'Ampicillin',
+    population: 'General',
+    formulation:
+        'Ampicillin sodium for injection powder. Product strengths include 125 mg, 250 mg, 500 mg, 1 g and 2 g; exact reconstitution depends on route and vial strength.',
+    reconstitution:
+        'For direct IV use in the cited label: add 5 mL Sterile Water for Injection to 125 mg, 250 mg or 500 mg vials; 1 g and 2 g vials may be dissolved in 7.4 mL and 14.8 mL respectively for slow direct IV administration. For the common 250 mg/mL withdrawal preparation used in the same product family, 1 g + 3.5 mL or 2 g + 6.8 mL gives a withdrawable concentration of about 250 mg/mL. Verify the exact product method before preparing.',
+    resultingConcentration:
+        'Product/route specific. A common cited vial table gives approximately 250 mg/mL after 1 g + 3.5 mL or 2 g + 6.8 mL; direct-IV preparation uses different added volumes.',
+    furtherDilution:
+        'For IV drip, first reconstitute using the product direct-IV method, then further dilute in a compatible infusion solution according to the exact concentration/stability table for the product.',
+    allowedDiluents:
+        'Sterile Water for Injection for direct IV reconstitution. Compatible infusion fluid and allowable concentration are product-specific; use the exact cited/local table.',
+    administration:
+        '250 mg/500 mg direct IV: slowly over 3–5 minutes. 1 g/2 g direct IV: at least 10–15 minutes in the cited label. Faster administration can provoke seizures.',
+    stability:
+        'Use freshly prepared solutions. The cited vial label states IM/direct-IV solutions should be administered within 1 hour after preparation; IV-drip stability depends on diluent and concentration.',
+    incompatibilities:
+        'Do not assume compatibility with aminoglycosides or other antibiotics in the same container/line without a current compatibility reference.',
+    criticalLocks: [
+      'Newborn lock: do not use bacteriostatic water containing benzyl alcohol as a diluent in newborns.',
+      'Do not confuse the 250 mg/mL withdrawal table with the separate direct-IV reconstitution method.',
+      'Administration rate is strength-dependent; 1 g/2 g direct IV is slower than 250/500 mg.',
+    ],
+    sourceLabel:
+        'DailyMed · Ampicillin Sodium for Injection · updated Jul 2026 · Directions for Use',
+    withdrawalUnit: 'mg',
+  ),
+  IvPreparationProfile(
+    name: 'Azithromycin',
+    population: 'General',
+    formulation:
+        'Azithromycin for injection 500 mg lyophilized single-dose vial for IV infusion.',
+    reconstitution:
+        'Add exactly 4.8 mL Sterile Water for Injection to the 500 mg vial and shake until dissolved. The reconstituted concentration is 100 mg/mL. A standard 5 mL non-automated syringe is recommended by the label because the vial is under vacuum.',
+    resultingConcentration: '100 mg/mL after reconstitution.',
+    furtherDilution:
+        'Transfer 5 mL (500 mg) of the 100 mg/mL solution into a compatible infusion fluid to make either 1 mg/mL or 2 mg/mL final concentration.',
+    allowedDiluents:
+        'Current labeling includes 0.9% Sodium Chloride, 0.45% Sodium Chloride, D5W, Lactated Ringers, and specified dextrose/saline combinations.',
+    administration:
+        '1 mg/mL: infuse over 3 hours. 2 mg/mL: infuse over 1 hour. Do not give as IV bolus or IM injection.',
+    stability:
+        'Reconstituted 100 mg/mL vial solution: 24 hours below 30°C in the cited label. Final diluted stability remains product/diluent specific.',
+    incompatibilities:
+        'Do not add other IV substances to the azithromycin infusion or infuse simultaneously through the same line unless compatibility is established.',
+    criticalLocks: [
+      'Exact-water lock: 500 mg vial + 4.8 mL SWFI, not a rounded 5 mL recipe.',
+      'Never IV bolus; final concentration determines minimum infusion time.',
+    ],
+    sourceLabel:
+        'DailyMed · ZITHROMAX / azithromycin for injection · revised Jul 2026 · section 2.3',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 100,
+  ),
+  IvPreparationProfile(
+    name: 'Micafungin',
+    population: 'General',
+    formulation:
+        'Micafungin for injection lyophilized powder, 50 mg and 100 mg single-dose vials.',
+    reconstitution:
+        'Aseptically add 5 mL of 0.9% Sodium Chloride Injection without bacteriostatic agent or 5% Dextrose Injection. Gently swirl; do not vigorously shake. 50 mg vial becomes 10 mg/mL; 100 mg vial becomes 20 mg/mL.',
+    resultingConcentration:
+        '50 mg vial: 10 mg/mL. 100 mg vial: 20 mg/mL.',
+    furtherDilution:
+        'Adult preparation: add the required reconstituted volume to 100 mL NS or D5W. Pediatric labeling supports a final concentration between 0.5 and 4 mg/mL; concentrations above 1.5 mg/mL should be administered through a central catheter to reduce infusion-reaction risk.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection (without bacteriostatic agent) or 5% Dextrose Injection.',
+    administration:
+        'IV infusion only over 1 hour. Flush an existing IV line with 0.9% Sodium Chloride before infusion.',
+    stability:
+        'Protect reconstituted vial and diluted solution from light. Current labeling supports up to 24 hours at room temperature for the reconstituted vial and up to 24 hours for the diluted bag/syringe.',
+    incompatibilities:
+        'Do not mix or co-infuse with other medications; direct mixing can precipitate.',
+    criticalLocks: [
+      'Do not vigorously shake during reconstitution.',
+      'Concentration >1.5 mg/mL: central catheter warning in pediatric labeling.',
+      'Preservative-free product; discard partially used vials.',
+    ],
+    sourceLabel:
+        'DailyMed · Micafungin for Injection · current 2025–2026 labeling · sections 2.4–2.5',
+    withdrawalUnit: 'mg',
+  ),
+  IvPreparationProfile(
+    name: 'Fosphenytoin',
+    population: 'General',
+    formulation:
+        'Fosphenytoin sodium injection 50 mg phenytoin sodium equivalents (PE) per mL; single-dose vials.',
+    reconstitution:
+        'No powder reconstitution. For IV infusion, withdraw the prescribed dose in mg PE from the 50 mg PE/mL solution, then dilute before infusion.',
+    resultingConcentration: 'Stock concentration: 50 mg PE/mL.',
+    furtherDilution:
+        'Dilute in D5W or 0.9% Sodium Chloride to a final concentration from 1.5 to 25 mg PE/mL. Do not exceed 25 mg PE/mL.',
+    allowedDiluents: '5% Dextrose Injection or 0.9% Sodium Chloride Injection.',
+    administration:
+        'Express dose and rate in mg PE. Adult IV rate must not exceed 150 mg PE/min; pediatric rate for status epilepticus must not exceed 2 mg PE/kg/min or 150 mg PE/min, whichever is slower. ECG, blood pressure and respiratory monitoring are required during high-rate loading.',
+    stability:
+        'Single-dose vial; discard unused product after opening. Prepared-infusion stability should follow the exact product/local sterile-compounding policy.',
+    incompatibilities:
+        'Do not extrapolate phenytoin sodium compatibility or concentration rules to fosphenytoin.',
+    criticalLocks: [
+      'PE lock: prescribe, prepare and display fosphenytoin in phenytoin sodium equivalents (mg PE), not mg of fosphenytoin compound.',
+      '50 mg PE/mL is the concentration, not the total vial dose; 2 mL vial contains 100 mg PE and 10 mL vial contains 500 mg PE.',
+      'Final IV concentration must be 1.5–25 mg PE/mL.',
+    ],
+    sourceLabel:
+        'DailyMed · Fosphenytoin Sodium Injection · Preparation / dosing-error warnings',
+    withdrawalUnit: 'mg PE',
+    withdrawalConcentration: 50,
+  ),
+  IvPreparationProfile(
+    name: 'Amiodarone',
+    population: 'General',
+    formulation:
+        'Amiodarone hydrochloride injection 50 mg/mL for IV use; the preparation below is the adult life-threatening VT/VF label regimen, not a generic pediatric recipe.',
+    reconstitution:
+        'No vial reconstitution. Initial labeled load: withdraw 3 mL = 150 mg from the 50 mg/mL injection and add to 100 mL D5W.',
+    resultingConcentration:
+        'Initial 150 mg in 100 mL D5W = 1.5 mg/mL. Labeled slow-load bag: 18 mL = 900 mg added to 500 mL D5W = approximately 1.8 mg/mL.',
+    furtherDilution:
+        'After the first 24 hours, the label allows 1–6 mg/mL for maintenance; use a central venous catheter for concentrations above 2 mg/mL.',
+    allowedDiluents:
+        'D5W is the labeled diluent for the standard infusion regimen. Do not substitute normal saline without a product-specific compatibility reference.',
+    administration:
+        'Initial load: 150 mg over 10 minutes. Then 1 mg/min for 6 hours, followed by 0.5 mg/min. Breakthrough unstable VT/VF supplemental infusion: 150 mg in 100 mL D5W over 10 minutes per label.',
+    stability:
+        'For infusions longer than 2 hours, the label requires glass or polyolefin containers with D5W. Do not use evacuated glass containers.',
+    incompatibilities:
+        'Multiple Y-site incompatibilities exist. Amiodarone adsorbs to PVC and can leach DEHP; use product/local administration-set policy and a dedicated line when required.',
+    criticalLocks: [
+      'Adult VT/VF label regimen only; do not use this as a NICU/PICU dosing recipe.',
+      'For infusions longer than 1 hour, do not exceed 2 mg/mL peripherally; concentrations above 2 mg/mL require central venous access.',
+      'Initial load is 150 mg in 100 mL D5W over 10 minutes; not an IV push.',
+    ],
+    sourceLabel:
+        'DailyMed · Amiodarone Hydrochloride Injection 50 mg/mL · adult VT/VF infusion regimen',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 50,
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

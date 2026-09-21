@@ -717,6 +717,7 @@ class _PatientTabState extends State<_PatientTab> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String?>(
+              isExpanded: true,
               initialValue: widget.selectedIndicationId,
               decoration: InputDecoration(
                 labelText: english ? 'Indication' : 'الاستطباب',

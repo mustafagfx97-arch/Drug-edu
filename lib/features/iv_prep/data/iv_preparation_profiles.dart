@@ -5024,7 +5024,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     name: 'Midazolam',
     population: 'PICU',
     formulation:
-        'Preservative-free Midazolam Injection, USP single-dose vials are available as 1 mg/mL and 5 mg/mL. ASHP Standardize 4 Safety pediatric continuous-infusion standards are 0.3, 1 and 5 mg/mL.',
+        'OneSource Midazolam Injection, USP preservative-free single-dose vials are NDC 83270-170/171 at 1 mg/mL and NDC 83270-172/173 at 5 mg/mL. ASHP Standardize 4 Safety pediatric continuous-infusion standards are 0.3, 1 and 5 mg/mL.',
     reconstitution:
         'None. Use the exact preservative-free single-dose 1 mg/mL or 5 mg/mL product selected by the PICU protocol.',
     resultingConcentration:
@@ -5036,7 +5036,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     administration:
         'Continuous IV infusion through a controlled pump with continuous cardiorespiratory monitoring and resuscitation capability. Dose, infusion rate, sedation target and weaning plan remain PICU clinical orders.',
     stability:
-        'The exact stock vials are single-dose; discard unused contents. The cited label documents 0.5 mg/mL compatibility for up to 24 hours in 0.9% sodium chloride or D5W and up to 4 hours in Lactated Ringer’s, but those limits are not automatically transferable to 0.3 mg/mL; use the validated PICU BUD.',
+        'The exact preservative-free stock vials are single-dose; discard unused contents. The combined DailyMed labeling also contains preserved presentations, so do not transfer its 0.5 mg/mL time limits to this preservative-free PICU pathway. Use the validated PICU compatibility/stability reference and sterile-compounding BUD for any diluted infusion.',
     incompatibilities:
         'Do not infer admixture or Y-site compatibility from the stock label. Verify the exact final concentration, diluent, container and co-infused medication.',
     criticalLocks: [
@@ -5046,7 +5046,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
       'Calculator lock: calculator converts an already prescribed mg amount to mL of the manually selected 1 or 5 mg/mL stock only; it does not choose dose, rate or final concentration.',
     ],
     sourceLabel:
-        'DailyMed · preservative-free Midazolam Injection, USP 1 mg/mL and 5 mg/mL single-dose vials · current Sep 2026 labeling; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
+        'DailyMed · OneSource Midazolam Injection, USP preservative-free NDC 83270-170/171 (1 mg/mL) and 83270-172/173 (5 mg/mL) · revised Jun 2026; ASHP Standardize 4 Safety Pediatric Continuous Infusion Standards · updated Jun 2026',
     withdrawalVariants: [
       IvWithdrawalVariant(
         id: 'picu-midazolam-pf-1mg-ml',

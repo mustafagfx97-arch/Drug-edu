@@ -37,7 +37,12 @@ void main() {
 
 
   test('reviewed English patient counseling is complete and source locked', () {
-    expect(englishPatientCounseling.length, greaterThanOrEqualTo(32));
+    expect(englishPatientCounseling.length, sampleMedications.length);
+    expect(
+      englishPatientCounseling.keys.toSet(),
+      sampleMedications.map((medicine) => medicine.id).toSet(),
+      reason: 'Reviewed English counseling must cover every medication exactly once',
+    );
 
     for (final entry in englishPatientCounseling.entries) {
       expect(
@@ -81,12 +86,26 @@ void main() {
     expect(cefdinir.storage, contains('10 days'));
     expect(cefdinir.timing, contains('2 hours'));
 
-    expect(
-      englishPatientCounselingFor('cetirizine'),
-      isNull,
-      reason:
-          'Medicines without a reviewed English record must not get an automatic translation fallback.',
-    );
+    final cetirizine = englishPatientCounselingFor('cetirizine')!;
+    expect(cetirizine.important.toLowerCase(), contains('drowsiness'));
+
+    final tirzepatide =
+        englishPatientCounselingFor('tirzepatide-mounjaro')!;
+    expect(tirzepatide.missedDose, contains('96 hours'));
+    expect(tirzepatide.timing, contains('72 hours'));
+
+    final ibandronate =
+        englishPatientCounselingFor('ibandronate-monthly')!;
+    expect(ibandronate.timing, contains('60 minutes'));
+    expect(ibandronate.missedDose, contains('7 days'));
+
+    final norethindrone = englishPatientCounselingFor('norethindrone-pop')!;
+    expect(norethindrone.timing, contains('3 hours'));
+    expect(norethindrone.missedDose, contains('48 hours'));
+
+    final semaglutide = englishPatientCounselingFor('semaglutide-injection')!;
+    expect(semaglutide.missedDose, contains('Ozempic'));
+    expect(semaglutide.missedDose, contains('Wegovy'));
   });
 
   test('medicine encyclopedia has substantial practical coverage', () {

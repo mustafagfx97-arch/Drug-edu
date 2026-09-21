@@ -344,7 +344,27 @@ const visualGuideCatalog = <VisualGuideData>[
     ],
     patientSummaryAr:
         'أول خطوة هي التأكد من اسم المنتج وشكل الجهاز لأن أقلام وعبوات semaglutide وtirzepatide ليست متطابقة. اتبع تعليمات نفس الجهاز في التحضير والحقن والحفظ ولا تنقل خطوات منتج إلى آخر.',
+  ),  VisualGuideData(
+    id: 'transdermal-patch',
+    title: 'Transdermal patch',
+    subtitle: 'General medicated-patch workflow; site and replacement schedule remain product-specific.',
+    icon: Icons.layers_outlined,
+    steps: [
+      'Confirm the exact patch product and replacement schedule.',
+      'Choose clean, dry, intact skin at a site allowed by that product.',
+      'Remove the liner without touching the adhesive more than necessary.',
+      'Apply the patch and press firmly, especially around the edges.',
+      'Remove the old patch on schedule, fold adhesive sides together, and rotate sites.',
+    ],
+    mistakes: [
+      'Using the same replacement schedule for every patch brand.',
+      'Applying to oily, irritated, damaged, or prohibited skin sites.',
+      'Leaving the old patch on when the new patch is applied.',
+    ],
+    patientSummaryAr:
+        'تأكد أولًا من اسم اللاصقة وجدول تغييرها. ضعها على جلد نظيف وجاف وسليم في المكان المسموح لنفس المنتج، واضغط جيدًا على الحواف. عند موعد التغيير أزل اللاصقة القديمة وبدّل مكان اللصق حسب التعليمات.',
   ),
+
 ];
 
 
@@ -379,6 +399,14 @@ const medicationVisualGuideIds = <String, List<String>>{
   'mometasone-nasal': ['nasal-spray'],
   'azelastine-nasal': ['nasal-spray'],
   'oxymetazoline-nasal': ['nasal-spray'],
+  'amoxicillin-pediatric-suspension': ['oral-syringe'],
+  'cefdinir-pediatric-suspension': ['oral-syringe'],
+  'simethicone-infant-drops': ['oral-syringe'],
+  'estradiol-transdermal-patch': ['transdermal-patch'],
+  'dorzolamide-ophthalmic': ['eye-drops'],
+  'olopatadine-ophthalmic-otc': ['eye-drops'],
+  'prednisolone-acetate-ophthalmic': ['eye-drops'],
+  'ofloxacin-otic': ['ear-drops'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

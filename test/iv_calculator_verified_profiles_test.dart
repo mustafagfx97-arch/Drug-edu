@@ -66,14 +66,23 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: Scaffold(body: IvPrepScreen())));
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('locked until exact product data are verified'),
-        findsNothing);
-    expect(find.text('Ceftriaxone'), findsOneWidget);
-    expect(find.text('Cefotaxime'), findsNothing);
+    expect(
+      find.textContaining('locked until exact product data are verified'),
+      findsNothing,
+    );
     expect(
       find.textContaining('Only exact source-locked preparation profiles'),
       findsOneWidget,
     );
+
+    final search = find.byType(TextField);
+    await tester.enterText(search, 'Ceftriaxone');
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ListTile, 'Ceftriaxone'), findsOneWidget);
+
+    await tester.enterText(search, 'Cefotaxime');
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ListTile, 'Cefotaxime'), findsNothing);
   });
 
   testWidgets('IV calculator exposes verified profiles and variant selector',

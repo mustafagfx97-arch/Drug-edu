@@ -528,6 +528,273 @@ const nebulizerPreparationProfiles = <NebulizerPreparationProfile>[
         'Tobramycin inhalation solution 300 mg/5 mL: استخدم 5 mL كاملة، بدون تخفيف وبدون خلط مع Pulmozyme أو أي دواء آخر. العلاج نحو 15 دقيقة بالجهاز المحدد في المنتج.',
     source: 'DailyMed · Tobramycin Inhalation Solution 300 mg/5 mL · current labeling',
   ),
+
+  NebulizerPreparationProfile(
+    id: 'albuterol-lower-strength-rtu',
+    name: 'Albuterol 0.63 mg/3 mL and 1.25 mg/3 mL unit-dose solution',
+    formulation:
+        'Sterile preservative-free albuterol sulfate inhalation solution in 3 mL unit-dose vials: 0.63 mg/3 mL (0.021%) or 1.25 mg/3 mL (0.042%), potency expressed as albuterol.',
+    status: 'Ready to use — NO mixing or dilution',
+    device:
+        'Jet nebulizer with adequate airflow, mouthpiece or suitable face mask. The cited label was studied with PARI LC Plus + PARI PRONEB; safety/efficacy with other nebulizer systems was not established in that label.',
+    doses: [
+      NebulizerDosePreparation(
+        label: '0.63 mg unit-dose vial',
+        prescribedDose: '0.63 mg albuterol',
+        sourceStrength: '0.63 mg / 3 mL (0.021%)',
+        drawVolume: 'Use the entire 3 mL single-dose vial.',
+        diluent: 'None — no mixing or dilution is needed.',
+        finalVolume: '3 mL',
+      ),
+      NebulizerDosePreparation(
+        label: '1.25 mg unit-dose vial',
+        prescribedDose: '1.25 mg albuterol',
+        sourceStrength: '1.25 mg / 3 mL (0.042%)',
+        drawVolume: 'Use the entire 3 mL single-dose vial.',
+        diluent: 'None — no mixing or dilution is needed.',
+        finalVolume: '3 mL',
+      ),
+    ],
+    preparation: [
+      'Confirm the exact lower-strength unit-dose vial: 0.63 mg/3 mL or 1.25 mg/3 mL.',
+      'Remove one vial from the foil pouch immediately before use and return remaining vials to the pouch.',
+      'Twist off the top and squeeze the entire 3 mL into the nebulizer reservoir.',
+    ],
+    administration: [
+      'Sit comfortably upright and use the mouthpiece or a suitable face mask.',
+      'Breathe calmly, deeply and evenly through the mouth until no more mist forms; the cited IFU describes about 5–15 minutes.',
+    ],
+    mixing:
+        'The cited product is ready to use and requires no mixing or dilution. Do not add another nebulized medicine unless the exact combination has separate compatibility evidence.',
+    doNot: [
+      'Do not add saline to these 3 mL ready-to-use vials.',
+      'Do not confuse these lower-strength vials with albuterol 0.5% (5 mg/mL) concentrate.',
+      'Do not use a household or drinking-water product as nebulizer diluent.',
+    ],
+    cleaning: 'Clean the nebulizer after each treatment according to the nebulizer manufacturer instructions.',
+    practicalAr:
+        'Albuterol 0.63 mg/3 mL أو 1.25 mg/3 mL: هذه أمبولات جاهزة للاستعمال. استخدم 3 mL كاملة بدون إضافة normal saline. لا تخلطها مع albuterol 0.5% concentrate.',
+    source:
+        'DailyMed · Albuterol Sulfate Inhalation Solution 0.63 mg/3 mL and 1.25 mg/3 mL · current unit-dose labeling; no dilution required',
+  ),
+  NebulizerPreparationProfile(
+    id: 'cromolyn-sodium-20mg-2ml',
+    name: 'Cromolyn sodium inhalation solution',
+    formulation:
+        'Cromolyn Sodium Inhalation Solution, USP 20 mg/2 mL; sterile, preservative-free, single-dose aqueous solution for nebulization.',
+    status: 'Ready-to-use single-dose vial — use fresh vial each treatment',
+    device:
+        'Power-driven nebulizer with adequate airflow and a suitable mask or mouthpiece. The cited IFU specifies 6–8 L/min; hand-operated nebulizers are not suitable.',
+    doses: [
+      NebulizerDosePreparation(
+        label: 'Single-dose vial',
+        prescribedDose: '20 mg cromolyn sodium',
+        sourceStrength: '20 mg / 2 mL',
+        drawVolume: 'Use the entire fresh 2 mL vial.',
+        diluent: 'No dilution step is specified in the cited IFU.',
+        finalVolume: '2 mL',
+      ),
+    ],
+    preparation: [
+      'Remove one fresh 2 mL vial from the protective pouch/tray at time of use.',
+      'Twist off the top and squeeze the entire vial into the nebulizer solution container.',
+      'Do not use if the solution is discolored, cloudy or contains a precipitate.',
+    ],
+    administration: [
+      'Use a power-driven nebulizer at the product-specified airflow, with mouthpiece or suitable mask.',
+      'Breathe in through the mouth and out through the nose in a normal relaxed manner; the cited IFU describes about 5–10 minutes.',
+    ],
+    mixing:
+        'Drug stability and safety when cromolyn sodium inhalation solution is mixed with other drugs in a nebulizer have not been established.',
+    doNot: [
+      'Do not use a hand-operated nebulizer for this product.',
+      'Do not mix routinely with other nebulized medicines.',
+      'Do not use as a rescue bronchodilator for an acute asthma attack.',
+    ],
+    cleaning: 'Clean the power-driven nebulizer according to its manufacturer instructions after treatment.',
+    practicalAr:
+        'Cromolyn sodium 20 mg/2 mL: استخدم الأمبولة 2 mL كاملة في power-driven nebulizer. لا تضف دواء آخر في نفس chamber لأن ثبات وسلامة الخلط غير مثبتين. ليس دواء rescue للنوبة الحادة.',
+    source:
+        'DailyMed · Cromolyn Sodium Inhalation Solution, USP 20 mg/2 mL · revised Dec 2025 · current IFU',
+  ),
+  NebulizerPreparationProfile(
+    id: 'cayston-aztreonam-75mg',
+    name: 'Aztreonam for inhalation solution (CAYSTON)',
+    formulation:
+        'CAYSTON single-use vial containing 75 mg lyophilized aztreonam, supplied with a 1 mL ampule of sterile 0.17% sodium chloride diluent.',
+    status: 'RECONSTITUTE immediately before use with the supplied 1 mL diluent only',
+    device:
+        'Altera Nebulizer System only. The FDA labeling states CAYSTON should not be administered with any other nebulizer.',
+    doses: [
+      NebulizerDosePreparation(
+        label: 'One CAYSTON vial',
+        prescribedDose: '75 mg aztreonam',
+        sourceStrength: '75 mg lyophilized powder per single-use vial',
+        drawVolume: 'Use the entire reconstituted vial.',
+        diluent: 'Add the entire supplied 1 mL ampule of sterile 0.17% sodium chloride.',
+        finalVolume: 'Approximately 1 mL reconstituted solution',
+      ),
+    ],
+    preparation: [
+      'Do not reconstitute until ready to administer the dose.',
+      'Open one CAYSTON vial and one supplied saline ampule.',
+      'Squeeze the entire 1 mL diluent ampule into the CAYSTON vial.',
+      'Replace the rubber stopper and gently swirl until the powder is fully dissolved and the solution is clear.',
+      'If cloudy or particulate, discard the dose and prepare a new vial with a new supplied diluent ampule.',
+      'Use the reconstituted dose immediately.',
+    ],
+    administration: [
+      'Pour all reconstituted CAYSTON into the Altera medication reservoir.',
+      'Sit upright, seal lips around the mouthpiece, and breathe normally through the mouth; the current label describes about 2–3 minutes.',
+      'When multiple inhaled therapies are prescribed, the label sequence is bronchodilator, then mucolytic, then CAYSTON.',
+    ],
+    mixing:
+        'Do not mix CAYSTON with any other medicine in the Altera handset. Use only the supplied 0.17% sodium chloride diluent; do not substitute routine 0.9% normal saline.',
+    doNot: [
+      'Do not reconstitute with 0.9% sodium chloride or sterile water.',
+      'Do not use another nebulizer system in place of Altera.',
+      'Do not prepare doses in advance; use immediately after reconstitution.',
+    ],
+    cleaning:
+        'Clean and disinfect the Altera Nebulizer Handset according to the manufacturer IFU after treatment.',
+    practicalAr:
+        'CAYSTON 75 mg: افتح الفيال فقط وقت الجرعة، أضف كامل 1 mL من الـdiluent المرفق 0.17% NaCl، أعد السدادة وحرّك بلطف حتى يذوب ويصبح المحلول صافياً، ثم استخدمه فوراً في جهاز Altera فقط. لا تستخدم NS 0.9% بدل المذيب المرفق ولا تخلطه مع دواء آخر.',
+    source:
+        'DailyMed · CAYSTON (aztreonam for inhalation solution) 75 mg/vial + supplied 1 mL 0.17% sodium chloride diluent · revised Dec 2025',
+  ),
+  NebulizerPreparationProfile(
+    id: 'arikayce-590mg-8_4ml',
+    name: 'Amikacin liposome inhalation suspension (ARIKAYCE)',
+    formulation:
+        'ARIKAYCE sterile liposomal suspension, 590 mg amikacin / 8.4 mL in a single-dose glass vial.',
+    status: 'Ready-to-use SUSPENSION — room temperature before use; shake well',
+    device:
+        'Lamira Nebulizer System only. The FDA-approved Lamira IFU states the system is made specifically for ARIKAYCE and no other medicine should be placed in the handset.',
+    doses: [
+      NebulizerDosePreparation(
+        label: 'One ARIKAYCE vial',
+        prescribedDose: '590 mg amikacin',
+        sourceStrength: '590 mg / 8.4 mL',
+        drawVolume: 'Use the entire 8.4 mL single-dose vial.',
+        diluent: 'None — the FDA IFU provides no dilution step.',
+        finalVolume: '8.4 mL',
+      ),
+    ],
+    preparation: [
+      'If refrigerated, remove the vial at least 45 minutes before use so it reaches room temperature; do not use if frozen.',
+      'Shake the vial for at least 10–15 seconds until the suspension looks uniform and well mixed.',
+      'Open the vial carefully and pour the entire contents into the Lamira medication reservoir.',
+      'Use an opened vial immediately and discard the vial after use.',
+    ],
+    administration: [
+      'Use only with the Lamira Nebulizer System and its supplied handset/aerosol head.',
+      'Sit relaxed and upright and take slow, deep breaths through the mouthpiece.',
+      'If the patient uses an inhaled bronchodilator, the ARIKAYCE label instructs using the bronchodilator first.',
+    ],
+    mixing:
+        'Do not place any other medicine in the Lamira handset. Do not dilute or combine ARIKAYCE with another nebulized medicine.',
+    doNot: [
+      'Do not use another nebulizer handset or aerosol head in place of the Lamira components supplied for ARIKAYCE.',
+      'Do not use if the vial has been frozen.',
+      'Do not swallow the vial contents or use the product by another route.',
+    ],
+    cleaning:
+        'Rinse and clean the Lamira handset including the aerosol head immediately after every use, and disinfect after every use according to the FDA-approved Lamira IFU. Replace the aerosol head after 7 uses and the handset after 28 days as supplied with the kit.',
+    practicalAr:
+        'ARIKAYCE 590 mg/8.4 mL: أخرجه من الثلاجة قبل الاستعمال بـ45 دقيقة، ثم رجّ الفيال 10–15 ثانية حتى يصبح متجانساً. صب 8.4 mL كاملة في Lamira فقط، بدون تخفيف وبدون إضافة أي دواء آخر. نظّف وعقّم الـhandset بعد كل استعمال.',
+    source:
+        'DailyMed · ARIKAYCE (amikacin liposome inhalation suspension) 590 mg/8.4 mL · current Jun 2026 labeling and FDA-approved Lamira IFU',
+  ),
+  NebulizerPreparationProfile(
+    id: 'pentamidine-inhalation-300mg',
+    name: 'Pentamidine isethionate for inhalation',
+    formulation:
+        'Pentamidine isethionate 300 mg lyophilized powder in a single-dose vial for oral inhalation after reconstitution.',
+    status: 'RECONSTITUTE with Sterile Water for Injection ONLY — saline causes precipitation',
+    device:
+        'Respirgard II nebulizer. The current label specifies 5–7 L/min from a 40–50 PSI air/oxygen source or equivalent compressor setup; low-pressure compressors are not suitable.',
+    doses: [
+      NebulizerDosePreparation(
+        label: 'One 300 mg vial',
+        prescribedDose: '300 mg pentamidine isethionate',
+        sourceStrength: '300 mg lyophilized powder per vial',
+        drawVolume: 'Place the entire reconstituted contents into the Respirgard II reservoir.',
+        diluent: 'Add exactly 6 mL Sterile Water for Injection, USP.',
+        finalVolume: '6 mL',
+      ),
+    ],
+    preparation: [
+      'Reconstitute one 300 mg vial with exactly 6 mL Sterile Water for Injection, USP.',
+      'Dissolve completely and transfer the entire reconstituted contents to the Respirgard II reservoir.',
+      'Fresh preparation is preferred; protect reconstituted solution from light.',
+    ],
+    administration: [
+      'Administer through the Respirgard II until the chamber is empty; current labeling describes approximately 30–45 minutes.',
+      'Use the product-specified airflow/pressure setup; low-pressure compressors below the labeled threshold are not appropriate.',
+    ],
+    mixing:
+        'Do not mix pentamidine with any other medicine. Do not use saline for reconstitution because the drug will precipitate. Do not use the Respirgard II to administer a bronchodilator.',
+    doNot: [
+      'Do not reconstitute with normal saline.',
+      'Do not mix another medication into the pentamidine solution.',
+      'Do not use a low-pressure compressor or substitute an unverified nebulizer setup.',
+    ],
+    cleaning:
+        'Handle and clean/dispose of Respirgard II components according to the device and institutional infection-control procedure.',
+    practicalAr:
+        'Pentamidine inhalation 300 mg: حل الفيال بـ6 mL Sterile Water for Injection فقط. ممنوع NS لأن الدواء يترسب. ضع كامل 6 mL في Respirgard II ولا تخلطه مع أي دواء آخر. الجلسة تقارب 30–45 دقيقة حسب النشرة.',
+    source:
+        'DailyMed · Pentamidine Isethionate for Inhalation 300 mg/vial · revised Mar/Jun 2026 · Respirgard II labeling',
+  ),
+  NebulizerPreparationProfile(
+    id: 'hypertonic-sodium-chloride-3-7',
+    name: 'Hypertonic sodium chloride inhalation solution 3% / 7%',
+    formulation:
+        'Nephron Sodium Chloride Inhalation Solution, USP: sterile preservative-free single-use 4 mL vials at 3% (120 mg/4 mL) or 7% (280 mg/4 mL), for respiratory therapy only.',
+    status: 'Ready-to-use inhalation solution — concentration must match the prescription',
+    device:
+        'Nebulizer for respiratory therapy. The cited product labeling provides the solution and single-use handling but does not establish a universal disease-specific dose or device recipe.',
+    doses: [
+      NebulizerDosePreparation(
+        label: '3% single-use vial',
+        prescribedDose: 'Prescribed volume of 3% sodium chloride',
+        sourceStrength: '3% = 30 mg/mL; 120 mg in 4 mL',
+        drawVolume: 'Dispense only the prescribed volume; the unit-dose vial contains 4 mL.',
+        diluent: 'None specified for the ready 3% inhalation solution.',
+        finalVolume: 'Prescribed volume; whole vial = 4 mL',
+      ),
+      NebulizerDosePreparation(
+        label: '7% single-use vial',
+        prescribedDose: 'Prescribed volume of 7% sodium chloride',
+        sourceStrength: '7% = 70 mg/mL; 280 mg in 4 mL',
+        drawVolume: 'Dispense only the prescribed volume; the unit-dose vial contains 4 mL.',
+        diluent: 'None specified for the ready 7% inhalation solution.',
+        finalVolume: 'Prescribed volume; whole vial = 4 mL',
+      ),
+    ],
+    preparation: [
+      'Confirm 3% versus 7% before opening the vial.',
+      'Twist/pull off the vial top, invert, and squeeze the prescribed volume into the nebulizer cup.',
+      'Discard any unused portion of the single-use vial and any solution remaining in the nebulizer cup.',
+    ],
+    administration: [
+      'Use only for respiratory therapy by nebulizer according to the clinical order.',
+      'This profile does not choose the indication, treatment frequency or therapeutic concentration.',
+    ],
+    mixing:
+        'The cited sodium chloride inhalation labels do not establish these hypertonic solutions as universal diluents for other nebulized drugs. Only mix when the exact other product explicitly supports that concentration and combination.',
+    doNot: [
+      'Do not inject or use parenterally.',
+      'Do not substitute 7% for 3% or vice versa.',
+      'Do not automatically use hypertonic saline as a diluent for another nebulized medicine.',
+    ],
+    cleaning: 'Clean the nebulizer according to the device manufacturer instructions after use.',
+    practicalAr:
+        'Hypertonic saline 3% أو 7% يأتي 4 mL single-use. تأكد من التركيز المكتوب في الوصفة، وضع الحجم الموصوف في nebulizer ثم تخلص من الباقي. لا تستبدل 3% بـ7%، ولا تستخدمه تلقائياً كمذيب لدواء آخر.',
+    source:
+        'DailyMed · Nephron Sodium Chloride Inhalation Solution, USP 3% and 7%, 4 mL single-use vials · current listed labeling',
+  ),
+
 ];
 
 NebulizerPreparationProfile? nebulizerPreparationById(String id) {

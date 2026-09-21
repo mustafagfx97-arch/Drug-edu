@@ -355,6 +355,33 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'humulin-r-u500':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'sumatriptan-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'لعلاج نوبة الشقيقة الحادة عند الحاجة؛ إذا أصبحت تحتاج علاجًا حادًا بشكل متكرر فراجع خطة الوقاية بدل تكرار الجرعات تلقائيًا.',
+  ),
+  'rizatriptan-odt': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'لعلاج النوبة الحادة عند الحاجة، وليس علاجًا يوميًا للوقاية.',
+  ),
+  'rimegepant-nurtec-odt': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'تختلف المدة حسب الاستطباب: عند الحاجة للنوبة الحادة، أو علاج وقائي مجدول كل يومين إذا وصف لهذا الغرض.',
+  ),
+  'ubrogepant-ubrelvy': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'لعلاج نوبة الشقيقة الحادة عند الحاجة، وليس جدول وقاية يوميًا.',
+  ),
+  'zavegepant-zavzpret-nasal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.asNeeded,
+    patientOverrideAr:
+        'بخاخ لعلاج النوبة الحادة عند الحاجة؛ ليس علاج وقاية مجدولًا.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

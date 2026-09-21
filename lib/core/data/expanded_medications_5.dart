@@ -142,7 +142,7 @@ const expandedMedications5 = <Medication>[
       duration:
           'Keep available wherever opioid overdose could occur; replace used, damaged or expired devices.',
       formulationHandling:
-          'Do not prime or test the device. Insert the nozzle into either nostril and press the plunger firmly once. Each repeat dose requires a new device.',
+          'Do not prime or test the device. Each device contains one dose. Insert the nozzle into either nostril and press the plunger firmly once. Each repeat dose requires a new device.',
       monitoring:
           'Call emergency services immediately after the first dose. Watch breathing and responsiveness continuously; repeat a new 4 mg device every 2–3 minutes if there is no response or respiratory depression returns.',
       interactions:

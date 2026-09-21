@@ -1368,6 +1368,235 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Imipenem / Cilastatin',
+    population: 'General',
+    formulation:
+        'PRIMAXIN IV single-dose vial containing imipenem 500 mg plus cilastatin 500 mg.',
+    reconstitution:
+        'Add approximately 10 mL of an appropriate labeled diluent to the vial, shake well, and transfer the resulting suspension to 100 mL of an appropriate infusion solution. Repeat the transfer with an additional 10 mL of the infusion solution to ensure complete transfer, then agitate until clear.',
+    resultingConcentration:
+        'The cited PRIMAXIN pathway uses the entire 500 mg/500 mg vial transferred into a 100 mL infusion solution. The temporary vial suspension is not a direct-IV product and is not exposed as a calculator concentration.',
+    furtherDilution:
+        'Mandatory. The reconstituted vial suspension must be transferred into the 100 mL infusion solution before administration; do not administer the vial suspension directly.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection; 5% Dextrose Injection; 5% Dextrose/0.9% Sodium Chloride; or 5% Dextrose with 0.225% or 0.45% saline, per the cited PRIMAXIN label.',
+    administration:
+        'Dose is expressed as the imipenem component. Doses up to and including 500 mg are infused over 20–30 minutes; doses greater than 500 mg are infused over 40–60 minutes. If nausea occurs, the infusion rate may be slowed.',
+    stability:
+        'Prepared PRIMAXIN infusion solution maintains satisfactory potency for 4 hours at room temperature or 24 hours refrigerated at 5°C. Do not freeze.',
+    incompatibilities:
+        'Do not mix PRIMAXIN with or physically add it to other antibacterial drugs. Concomitant administration through separate/managed delivery may be possible according to the label; do not infer admixture compatibility.',
+    criticalLocks: [
+      'Two-step lock: the approximately 10 mL vial step creates a suspension that must be transferred to the 100 mL infusion solution.',
+      'Calculator lock: no vial-withdrawal concentration is exposed because the label uses the whole vial and mandatory transfer rather than partial dosing from the suspension.',
+      'Neonate lock: do not use benzyl-alcohol-containing diluents for neonates; small pediatric patients may also be at risk.',
+      'Interaction lock: carbapenems can markedly lower valproic acid/divalproex concentrations; this is a clinical interaction, not an admixture rule.',
+    ],
+    sourceLabel:
+        'DailyMed · PRIMAXIN IV (imipenem/cilastatin) 500 mg/500 mg single-dose vial · current prescribing information',
+  ),
+
+  IvPreparationProfile(
+    name: 'Aztreonam',
+    population: 'General',
+    formulation:
+        'AZACTAM (aztreonam for injection) powder for IV/IM use; this profile locks the labeled IV bolus and infusion preparation pathways.',
+    reconstitution:
+        'IV bolus pathway: constitute the vial with 6–10 mL Sterile Water for Injection. IV infusion pathway: initially constitute each 1 g aztreonam with at least 3 mL Sterile Water for Injection before further dilution.',
+    resultingConcentration:
+        'No single vial concentration is safe to assume because the label permits a 6–10 mL bolus constitution range and uses at least 3 mL SWFI per gram for the infusion pathway.',
+    furtherDilution:
+        'For infusion, further dilute with a compatible IV solution. When using the label-described volume-control approach, the final aztreonam concentration should not exceed 2% w/v (20 mg/mL).',
+    allowedDiluents:
+        'Initial IV constitution: Sterile Water for Injection. Further infusion dilution includes 0.9% Sodium Chloride, Ringer’s, Lactated Ringer’s, D5W, D10W, selected dextrose/saline combinations, Normosol/Isolyte solutions and other fluids specifically listed in the AZACTAM label.',
+    administration:
+        'IV bolus: inject slowly over 3–5 minutes. IV infusion: complete over 20–60 minutes. Flush a shared delivery tube before and after aztreonam when the other drug is not pharmaceutically compatible.',
+    stability:
+        'IV infusion solutions at concentrations not exceeding 2% w/v should be used within 48 hours at controlled room temperature or 7 days refrigerated (2–8°C), per the cited AZACTAM label.',
+    incompatibilities:
+        'Aztreonam is incompatible with nafcillin sodium, cephradine and metronidazole. Other admixtures should not be assumed compatible when data are unavailable.',
+    criticalLocks: [
+      'Route lock: bolus constitution (6–10 mL SWFI) and infusion constitution (at least 3 mL SWFI per gram plus further dilution) are different pathways.',
+      'Calculator lock: no single withdrawal concentration is exposed because the labeled constitution volume is not unique.',
+      'Final concentration lock: infusion concentration should not exceed 2% w/v when using the cited volume-control method.',
+    ],
+    sourceLabel:
+        'DailyMed · AZACTAM (aztreonam for injection, USP) · IV preparation, compatibility and stability labeling',
+  ),
+
+  IvPreparationProfile(
+    name: 'Ciprofloxacin',
+    population: 'General',
+    formulation:
+        'Ciprofloxacin Injection in 5% Dextrose, ready-to-use flexible container: 200 mg/100 mL or 400 mg/200 mL (2 mg/mL).',
+    reconstitution:
+        'None. The cited flexible-container product is a 0.2% premixed solution in D5W.',
+    resultingConcentration:
+        '2 mg/mL ciprofloxacin for both 200 mg/100 mL and 400 mg/200 mL premix bags.',
+    furtherDilution:
+        'No further dilution is required for the cited premix flexible containers.',
+    allowedDiluents:
+        'No added diluent for this exact product; it is supplied ready to use in 5% Dextrose Injection.',
+    administration:
+        'Administer by IV infusion over 60 minutes. Do not use as a rapid IV injection.',
+    stability:
+        'Store the cited premix between 5–25°C, protect from light, avoid excessive heat, protect from freezing, and discard unused portion.',
+    incompatibilities:
+        'Do not add drug additives to the premix bag. Do not use flexible containers in series connections. Do not infer Y-site or admixture compatibility from the premix label.',
+    criticalLocks: [
+      'Premix lock: 200 mg/100 mL and 400 mg/200 mL are both ready-to-use at 2 mg/mL.',
+      'Rate lock: infuse over 60 minutes.',
+      'Container lock: do not add medications to the premix bag and do not use in series connections.',
+    ],
+    sourceLabel:
+        'DailyMed · Ciprofloxacin Injection in 5% Dextrose · 200 mg/100 mL and 400 mg/200 mL flexible containers',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ciprofloxacin-premix-2mg-ml',
+        label: 'Ciprofloxacin premix · 2 mg/mL',
+        unit: 'mg',
+        concentration: 2,
+        note:
+            'Ready-to-use premix concentration. Use the intact labeled bag when the ordered dose matches a marketed presentation; do not invent partial-bag workflows without local policy.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Voriconazole',
+    population: 'General',
+    formulation:
+        'Voriconazole for Injection 200 mg lyophilized single-dose vial; this profile applies to the powder product requiring reconstitution, not ready-solution presentations.',
+    reconstitution:
+        'Reconstitute the 200 mg powder vial with exactly 19 mL Water for Injection to obtain an extractable 20 mL concentrate containing 10 mg/mL. Use a standard 20 mL non-automated syringe for the 19 mL diluent volume. Discard the vial if vacuum does not pull diluent into the vial; shake until dissolved.',
+    resultingConcentration:
+        '10 mg/mL voriconazole concentrate after reconstitution.',
+    furtherDilution:
+        'Mandatory. Withdraw the required volume from the 10 mg/mL concentrate and further dilute to a final concentration between 0.5 and 5 mg/mL before infusion.',
+    allowedDiluents:
+        'Compatible final diluents listed in the cited label include 0.9% Sodium Chloride, 0.45% Sodium Chloride, Lactated Ringer’s, D5W, D5/0.45% NaCl, D5/0.9% NaCl, D5/LR and D5W with 20 mEq KCl.',
+    administration:
+        'IV infusion only over 1–3 hours. Maximum infusion rate 3 mg/kg/hour. Do not administer as an IV bolus.',
+    stability:
+        'Single-dose unpreserved product. Use immediately when possible; if not used immediately, the cited label limits refrigerated in-use storage to no longer than 24 hours at 2–8°C. Discard unused solution.',
+    incompatibilities:
+        'Do not dilute with 4.2% Sodium Bicarbonate Infusion. Do not infuse concomitantly with blood products or short-term infusions of concentrated electrolytes. Compatibility with unlisted diluents is unknown.',
+    criticalLocks: [
+      'Formulation lock: this recipe is for the 200 mg lyophilized powder vial; ready-solution voriconazole products must not be reconstituted.',
+      'Two-step lock: 19 mL WFI creates 10 mg/mL concentrate, which must then be diluted to 0.5–5 mg/mL.',
+      'Rate lock: infusion only over 1–3 hours at no more than 3 mg/kg/hour; never IV bolus.',
+      'Bicarbonate lock: do not use 4.2% sodium bicarbonate as diluent.',
+    ],
+    sourceLabel:
+        'DailyMed · Voriconazole for Injection 200 mg lyophilized vial · current FDA-label instructions',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'voriconazole-200mg-lyophilized',
+        label: '200 mg vial after 19 mL WFI · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Calculator converts ordered mg to mL of the reconstituted concentrate only. Mandatory final dilution to 0.5–5 mg/mL remains a separate step.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Caspofungin',
+    population: 'General',
+    formulation:
+        'Caspofungin acetate for injection, exact cited Fresenius Kabi 50 mg and 70 mg single-dose lyophilized vials.',
+    reconstitution:
+        'Aseptically add 10.8 mL of 0.9% Sodium Chloride Injection, Sterile Water for Injection, or one of the bacteriostatic Water for Injection options specifically listed in the cited label. The 50 mg vial yields 5 mg/mL; the 70 mg vial yields 7 mg/mL. Mix gently until clear.',
+    resultingConcentration:
+        '50 mg vial + 10.8 mL diluent → 5 mg/mL. 70 mg vial + 10.8 mL diluent → 7 mg/mL.',
+    furtherDilution:
+        'Transfer the required reconstituted volume to an IV bag/bottle containing 250 mL of 0.9%, 0.45% or 0.225% Sodium Chloride Injection or Lactated Ringer’s. A reduced infusion volume may be used provided final concentration does not exceed 0.5 mg/mL.',
+    allowedDiluents:
+        'Vial reconstitution: exact label permits 0.9% Sodium Chloride, Sterile Water for Injection, or specified bacteriostatic WFI products. Final infusion: 0.9%, 0.45% or 0.225% Sodium Chloride Injection, or Lactated Ringer’s. Do not use dextrose-containing diluents.',
+    administration:
+        'Administer by slow IV infusion over approximately 1 hour. Do not administer as an IV bolus.',
+    stability:
+        'Reconstituted vial may be held for up to 1 hour at ≤25°C before infusion preparation. Final infusion may be stored up to 24 hours at ≤25°C or 48 hours refrigerated at 2–8°C.',
+    incompatibilities:
+        'Do not mix or co-infuse with other medications. Do not use dextrose-containing diluents because caspofungin is not stable in them.',
+    criticalLocks: [
+      'Product lock: this exact profile uses 10.8 mL reconstitution; caspofungin products can differ, so follow the exact vial label in hand.',
+      'Vial lock: 50 mg vial = 5 mg/mL; 70 mg vial = 7 mg/mL.',
+      'Dextrose lock: no dextrose-containing reconstitution or infusion diluent.',
+      'Final concentration lock: reduced infusion volume must still keep the final concentration ≤0.5 mg/mL.',
+    ],
+    sourceLabel:
+        'DailyMed · Fresenius Kabi Caspofungin Acetate for Injection 50 mg/70 mg · current preparation label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'caspofungin-50mg-10_8ml',
+        label: '50 mg vial + 10.8 mL · 5 mg/mL',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Exact cited product concentration after reconstitution. Further dilution is mandatory before infusion.',
+      ),
+      IvWithdrawalVariant(
+        id: 'caspofungin-70mg-10_8ml',
+        label: '70 mg vial + 10.8 mL · 7 mg/mL',
+        unit: 'mg',
+        concentration: 7,
+        note:
+            'Exact cited product concentration after reconstitution. Further dilution is mandatory before infusion.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Anidulafungin',
+    population: 'General',
+    formulation:
+        'ERAXIS (anidulafungin) for Injection single-dose lyophilized vials: 50 mg or 100 mg.',
+    reconstitution:
+        'Reconstitute the 50 mg vial with 15 mL Sterile Water for Injection or the 100 mg vial with 30 mL Sterile Water for Injection. Either pathway yields 3.33 mg/mL.',
+    resultingConcentration:
+        '3.33 mg/mL after reconstitution for both 50 mg and 100 mg ERAXIS vials.',
+    furtherDilution:
+        'Further dilute only with 5% Dextrose Injection or 0.9% Sodium Chloride. Adult label examples: 50 mg uses 15 mL concentrate + 50 mL diluent (65 mL total); 100 mg uses 30 mL + 100 mL (130 mL total); 200 mg uses 60 mL + 200 mL (260 mL total). Final concentration is approximately 0.77 mg/mL.',
+    allowedDiluents:
+        'Vial reconstitution: Sterile Water for Injection only. Final infusion: 5% Dextrose Injection or 0.9% Sodium Chloride Injection only.',
+    administration:
+        'Do not exceed 1.1 mg/min. With label-prepared adult infusions: 50 mg over about 45 minutes, 100 mg over about 90 minutes, and 200 mg over about 180 minutes. Pediatric infusion volume is weight-dependent and targets 0.77 mg/mL.',
+    stability:
+        'Reconstituted solution may be stored up to 24 hours at 25°C before dilution. Final infusion solution may be stored up to 48 hours at temperatures up to 25°C. Do not freeze.',
+    incompatibilities:
+        'Compatibility with IV substances other than D5W or 0.9% Sodium Chloride has not been established. Do not dilute with other solutions or co-infuse with other medications or electrolytes.',
+    criticalLocks: [
+      'Vial lock: 50 mg + 15 mL SWFI and 100 mg + 30 mL SWFI both yield 3.33 mg/mL.',
+      'Diluent lock: SWFI for vial reconstitution; only D5W or 0.9% NaCl for final infusion.',
+      'Rate lock: infusion rate must not exceed 1.1 mg/min.',
+      'Pediatric lock: pediatric final volume is weight-dependent; do not copy adult 65/130/260 mL volumes automatically.',
+    ],
+    sourceLabel:
+        'DailyMed · ERAXIS (anidulafungin) for Injection · 50 mg/100 mg preparation and administration labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'anidulafungin-50mg-vial',
+        label: '50 mg vial + 15 mL SWFI · 3.33 mg/mL',
+        unit: 'mg',
+        concentration: 3.33,
+        note:
+            'Exact ERAXIS reconstituted concentration; mandatory final dilution with D5W or 0.9% NaCl.',
+      ),
+      IvWithdrawalVariant(
+        id: 'anidulafungin-100mg-vial',
+        label: '100 mg vial + 30 mL SWFI · 3.33 mg/mL',
+        unit: 'mg',
+        concentration: 3.33,
+        note:
+            'Exact ERAXIS reconstituted concentration; mandatory final dilution with D5W or 0.9% NaCl.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

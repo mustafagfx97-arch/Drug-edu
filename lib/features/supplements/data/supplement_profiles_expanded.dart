@@ -955,4 +955,37 @@ const expandedSupplementProfiles = <SupplementProfile>[
     ),
     sourceLabel: 'NCCIH Coenzyme Q10 guidance + interaction review',
   ),
+  SupplementProfile(
+    id: 'molybdenum',
+    group: 'Minerals',
+    name: 'Molybdenum',
+    subtitle: 'Essential trace mineral',
+    formulation: 'Usually present in multivitamin/mineral products',
+    searchTerms: ['molybdate', 'sodium molybdate'],
+    howToTakeEn:
+        'Most people obtain adequate molybdenum from food. Stand-alone supplementation is rarely necessary; count it from multivitamin/mineral products before adding more.',
+    formulationAlert:
+        'Molybdenum deficiency is very rare outside unusual clinical settings; high-dose wellness use has no routine role.',
+    useBasis: 'Routine dietary adequacy; deficiency treatment is specialist-directed',
+    monitoringEn:
+        'Routine molybdenum testing is not needed for general supplementation.',
+    pharmacistSections: [
+      MedicationSection(
+        title: 'Practical checkpoint',
+        body:
+            'Do not recommend a stand-alone high-dose product solely because molybdenum is an essential nutrient. Verify total intake and the specific clinical reason.',
+      ),
+    ],
+    patient: PatientCounselingData(
+      purposeAr:
+          'الموليبدينوم معدن يحتاجه الجسم بكميات صغيرة جدًا وغالبًا يحصل عليه الشخص من الغذاء.',
+      howToUseAr:
+          'إذا كان موجودًا ضمن multivitamin/mineral فاحسب الكمية من المنتج ولا تضف مكملًا منفردًا بدون سبب واضح.',
+      importantAr:
+          'نقصه نادر جدًا؛ الجرعات العالية ليست مكملًا روتينيًا.',
+      teachBackAr: 'هل الموليبدينوم موجود أصلًا في الملتي فيتامين الذي تستخدمه؟',
+    ),
+    sourceLabel: 'NIH ODS Molybdenum Fact Sheet',
+  ),
+
 ];

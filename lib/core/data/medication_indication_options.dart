@@ -449,6 +449,55 @@ const medicationIndicationOptions =
       source: 'DailyMed · Finasteride 1 mg · androgenetic alopecia indication',
     ),
   ],
+  'rimegepant-nurtec-odt': [
+    MedicationIndicationOption(
+      id: 'acute-migraine',
+      labelAr: 'علاج نوبة الشقيقة الحادة',
+      labelEn: 'Acute migraine treatment',
+      purposeAr:
+          'يُستخدم لإيقاف نوبة الشقيقة عند حدوثها، وليس كجرعة وقاية في هذا الاستعمال.',
+      purposeEn:
+          'Used to treat a migraine attack when it occurs; this selection is the acute-treatment schedule, not preventive dosing.',
+      timingAr:
+          '75 mg عند الحاجة للنوبة، وبحد أقصى 75 mg خلال 24 ساعة. سلامة استخدام أكثر من 18 جرعة خلال 30 يومًا غير مثبتة.',
+      timingEn:
+          '75 mg as needed for an attack, with a maximum of 75 mg in 24 hours. Safety of more than 18 doses in 30 days has not been established.',
+      durationAr:
+          'استخدام متقطع للنوبات الحادة؛ إذا أصبحت النوبات كثيرة فراجع خطة الوقاية.',
+      durationEn:
+          'Intermittent acute treatment; frequent attacks should trigger review of the preventive plan.',
+      importantAr:
+          'لا تأخذ جرعة ثانية في نفس 24 ساعة. راجع التداخلات لأن بعض مثبطات CYP3A/P-gp تفرض الانتظار 48 ساعة قبل جرعة أخرى.',
+      importantEn:
+          'Do not take a second dose in the same 24 hours. Interaction review is important because some CYP3A/P-gp inhibitors require a 48-hour interval before another dose.',
+      source:
+          'DailyMed · NURTEC ODT · acute migraine treatment · revised Mar 2026',
+    ),
+    MedicationIndicationOption(
+      id: 'episodic-migraine-prevention',
+      labelAr: 'الوقاية من الشقيقة العرضية',
+      labelEn: 'Episodic migraine prevention',
+      purposeAr:
+          'يُستخدم كعلاج وقائي لتقليل نوبات الشقيقة العرضية لدى البالغين.',
+      purposeEn:
+          'Used as preventive treatment to reduce episodic migraine attacks in adults.',
+      timingAr:
+          '75 mg كل يومين حسب الوصفة؛ هذا جدول وقائي وليس جرعة عند كل صداع.',
+      timingEn:
+          '75 mg every other day according to the prescription; this is a preventive schedule rather than an as-needed attack dose.',
+      durationAr:
+          'علاج وقائي مستمر طالما كان فعالًا ومتحملًا وتحت متابعة الطبيب.',
+      durationEn:
+          'Ongoing preventive treatment while effective, tolerated and clinically appropriate.',
+      importantAr:
+          'حافظ على جدول كل يومين ولا تضاعف الجرعة عند النسيان. راجع الأدوية الجديدة بسبب تداخلات CYP3A/P-gp.',
+      importantEn:
+          'Keep the every-other-day schedule and do not double after a missed dose. Review new medicines because of CYP3A/P-gp interactions.',
+      source:
+          'DailyMed · NURTEC ODT · episodic migraine prevention · revised Mar 2026',
+    ),
+  ],
+
 };
 
 List<MedicationIndicationOption> indicationOptionsFor(String medicationId) {

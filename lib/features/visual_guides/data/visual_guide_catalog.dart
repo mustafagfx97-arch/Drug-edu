@@ -579,6 +579,72 @@ const visualGuideCatalog = <VisualGuideData>[
         'U-500 تركيزه خمسة أضعاف U-100. في KwikPen اضبط الوحدات الموصوفة مباشرة بدون تحويل وprime بـ5 units؛ لا تسحب من القلم بسرنجة. إذا كان فيال U-500 استخدم فقط U-500 insulin syringe المخصصة.',
   ),
 
+
+  VisualGuideData(
+    id: 'rizatriptan-odt',
+    title: 'Rizatriptan ODT',
+    subtitle: 'Dry-hand orally disintegrating tablet technique; no liquid required.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'Keep the ODT in its original container until you are ready to take the dose.',
+      'Open with dry hands and remove the tablet only immediately before dosing.',
+      'Place the ODT on the tongue.',
+      'Allow it to dissolve and swallow it with saliva; no liquid is required.',
+      'Follow the prescribed repeat-dose rule rather than automatically redosing.',
+    ],
+    mistakes: [
+      'Handling the ODT with wet hands.',
+      'Removing it long before the dose and exposing it to moisture.',
+      'Assuming a child can automatically take a second dose in the same 24 hours.',
+      'Ignoring the propranolol-specific dose adjustment.',
+    ],
+    patientSummaryAr:
+        'Rizatriptan ODT: استخدم يدين جافتين، أخرج الحبة فقط وقت الجرعة وضعها على اللسان لتذوب وتُبلع مع اللعاب. لا تحتاج ماء، ولا تفترض جرعة ثانية للأطفال أو عند استخدام propranolol دون مراجعة الوصفة.',
+  ),
+  VisualGuideData(
+    id: 'nurtec-odt',
+    title: 'NURTEC ODT',
+    subtitle: 'Peel the blister foil; do not push the fragile ODT through it.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'Use dry hands.',
+      'Peel back the foil covering one blister; do not push the ODT through the foil.',
+      'Remove the ODT gently and use it immediately.',
+      'Place it on or under the tongue and allow it to disintegrate in saliva.',
+      'Swallow without additional liquid and do not store the ODT outside the opened blister.',
+    ],
+    mistakes: [
+      'Pushing the ODT through the foil and breaking it.',
+      'Handling it with wet hands.',
+      'Opening the blister early and storing the tablet outside it.',
+      'Confusing the as-needed acute schedule with the every-other-day preventive schedule.',
+    ],
+    patientSummaryAr:
+        'NURTEC ODT: بيدين جافتين انزع الـfoil من الخلف ولا تدفع الحبة عبره. ضعها على اللسان أو تحته فورًا واتركها تذوب؛ لا تحتاج ماء. تأكد أيضًا هل الاستعمال للنوبة الحادة أم للوقاية كل يومين.',
+  ),
+  VisualGuideData(
+    id: 'zavzpret-device',
+    title: 'ZAVZPRET nasal spray',
+    subtitle: 'Single-use 10 mg device: one spray into one nostril, no priming.',
+    icon: Icons.water_drop_outlined,
+    steps: [
+      'Keep the device sealed until use and gently blow the nose first.',
+      'Do not test, prime or press the plunger before dosing.',
+      'Keep the head level and upright, close the opposite nostril and insert the nozzle comfortably into the open nostril.',
+      'Slowly breathe in through the nose while firmly pressing the plunger once.',
+      'Remove the device, keep the head level and breathe gently for 10–20 seconds.',
+    ],
+    mistakes: [
+      'Testing or priming and losing the single dose.',
+      'Using both nostrils for one dose.',
+      'Tilting the head back or lying down during administration.',
+      'Using more than one dose in 24 hours.',
+      'Using an intranasal decongestant before ZAVZPRET or too soon afterward.',
+    ],
+    patientSummaryAr:
+        'ZAVZPRET جهاز جرعة واحدة: لا تختبره. انفخ الأنف بلطف، أبقِ الرأس مستقيمًا، أغلق الفتحة الأخرى، خذ شهيقًا بطيئًا واضغط مرة واحدة في فتحة واحدة فقط، ثم أبقِ الرأس مستقيمًا 10–20 ثانية.',
+  ),
+
 ];
 
 
@@ -631,6 +697,9 @@ const medicationVisualGuideIds = <String, List<String>>{
   'humulin-r-u100': ['humulin-r-u100-vial'],
   'humulin-70-30': ['humulin-70-30-kwikpen'],
   'humulin-r-u500': ['humulin-r-u500-device'],
+  'rizatriptan-odt': ['rizatriptan-odt'],
+  'rimegepant-nurtec-odt': ['nurtec-odt'],
+  'zavegepant-zavzpret-nasal': ['zavzpret-device'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

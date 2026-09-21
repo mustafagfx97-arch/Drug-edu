@@ -22,9 +22,21 @@ jobs:
       - name: Generate Android wrapper when absent
         run: |
           if [ ! -d android ]; then
-            flutter create . --platforms=android --project-name drug_edu
+            flutter create . --platforms=android --project-name drug_edu --org com.mustafagfx97
             rm -f test/widget_test.dart
           fi
+
+      - name: Normalize Android identity
+        run: |
+          sed -i 's/android:label="drug_edu"/android:label="Drug Edu"/' android/app/src/main/AndroidManifest.xml
+
+      - name: Upload generated Android wrapper
+        uses: actions/upload-artifact@v4
+        with:
+          name: drug-edu-generated-android-wrapper
+          path: android
+          include-hidden-files: true
+          if-no-files-found: error
 
       - name: Install dependencies
         run: flutter pub get

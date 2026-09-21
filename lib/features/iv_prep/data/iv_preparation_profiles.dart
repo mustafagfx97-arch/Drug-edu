@@ -2894,6 +2894,260 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Colistimethate / Colistin',
+    population: 'General',
+    formulation:
+        'Colistimethate for Injection, USP vial containing colistimethate sodium equivalent to 150 mg colistin base activity (CBA).',
+    reconstitution:
+        'Reconstitute the 150 mg CBA vial with 2 mL Sterile Water for Injection. Swirl gently to avoid frothing.',
+    resultingConcentration:
+        '75 mg/mL colistin base activity after reconstitution.',
+    furtherDilution:
+        'For the cited continuous-infusion pathway, the remaining half of the ordered total daily dose may be added to a compatible infusion solution. Final volume is determined by fluid/electrolyte requirements; the label does not establish one universal final concentration.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, D5/0.9% NaCl, D5W, D5/0.45% NaCl, D5/0.225% NaCl, Lactated Ringer’s, or 10% invert sugar solution for the cited continuous-infusion pathway.',
+    administration:
+        'The current label describes direct intermittent IV administration over 3–5 minutes every 12 hours, or a continuous-infusion pathway in which half the daily dose is given over 3–5 minutes and the remainder begins 1–2 hours later over the next 22–23 hours. Dose selection must remain protocol- and renal-function-specific.',
+    stability:
+        'Final IV infusion solution should be freshly prepared and used for no longer than 24 hours. Store unreconstituted product at 20–25°C. The label separately describes reconstituted IM solution stability up to 7 days; do not transfer that 7-day statement to a final IV infusion bag.',
+    incompatibilities:
+        'There are insufficient data to recommend use with other drugs or with infusion solutions outside the label-listed fluids.',
+    criticalLocks: [
+      'Unit lock: this exact U.S. label expresses strength in mg colistin base activity (CBA); do not silently convert from international-unit products.',
+      'Reconstitution lock: 150 mg CBA + 2 mL SWFI = 75 mg/mL CBA.',
+      'Frothing lock: swirl gently; do not shake vigorously.',
+      'IV stability lock: final infusion solution maximum 24 hours.',
+      'Calculator lock: calculator converts an already prescribed mg CBA dose to mL only; it does not choose a renal-adjusted regimen.',
+    ],
+    sourceLabel:
+        'DailyMed · Colistimethate for Injection, USP 150 mg colistin base activity · current 2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'colistimethate-150mg-cba-75mg-ml',
+        label: 'Colistimethate · 75 mg/mL CBA after reconstitution',
+        unit: 'mg CBA',
+        concentration: 75,
+        note:
+            'Exact U.S.-label CBA units only. Verify unit conventions before using non-U.S. products.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Tigecycline',
+    population: 'General',
+    formulation:
+        'Tigecycline for Injection 50 mg single-dose lyophilized vial for IV infusion.',
+    reconstitution:
+        'Reconstitute each 50 mg vial with 5.3 mL of 0.9% Sodium Chloride, D5W, or Lactated Ringer’s to achieve 10 mg/mL. Gently swirl until dissolved. Because the vial contains overage, 5 mL of reconstituted solution is equivalent to 50 mg.',
+    resultingConcentration:
+        '10 mg/mL in the reconstituted vial; 5 mL contains the labeled 50 mg dose.',
+    furtherDilution:
+        'Mandatory. Withdraw 5 mL from each reconstituted vial and add to a 100 mL IV bag. For 100 mg, use two vials. Maximum final concentration in the IV bag is 1 mg/mL.',
+    allowedDiluents:
+        '0.9% Sodium Chloride, D5W, or Lactated Ringer’s for reconstitution and compatible IV infusion use.',
+    administration:
+        'IV infusion over approximately 30–60 minutes. If a shared line is used sequentially, flush before and after tigecycline with NS, D5W or Lactated Ringer’s.',
+    stability:
+        'At room temperature ≤25°C, total storage after reconstitution is up to 24 hours, including no more than 6 hours in the vial and the remaining time in the IV bag. If immediately transferred to an NS or D5W bag, it may be refrigerated at 2–8°C for up to 48 hours.',
+    incompatibilities:
+        'Do not administer simultaneously through the same Y-site with amphotericin B, amphotericin B lipid complex, diazepam, esomeprazole or omeprazole.',
+    criticalLocks: [
+      'Overage lock: reconstitute with 5.3 mL, but 5 mL of the 10 mg/mL solution represents the labeled 50 mg dose.',
+      'Mandatory dilution lock: reconstituted solution must be transferred to an IV bag.',
+      'Final concentration lock: do not exceed 1 mg/mL in the IV bag.',
+      'Color lock: reconstituted solution should be yellow to orange; discard abnormal green/black discoloration.',
+    ],
+    sourceLabel:
+        'DailyMed · Tigecycline for Injection 50 mg vial · current 2025–2026 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'tigecycline-50mg-vial-10mg-ml',
+        label: 'Tigecycline after 5.3 mL diluent · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Use 5 mL for the labeled 50 mg vial dose; mandatory further dilution into IV bag, max 1 mg/mL.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Amphotericin B liposomal',
+    population: 'General',
+    formulation:
+        'AmBisome / amphotericin B liposome for injection 50 mg single-dose vial. This liposomal product is NOT interchangeable mg-for-mg with conventional amphotericin B.',
+    reconstitution:
+        'Aseptically add 12 mL preservative-free Sterile Water for Injection to each 50 mg vial to obtain 4 mg/mL. Do NOT use saline. Immediately shake the vial vigorously for 30 seconds until completely dispersed.',
+    resultingConcentration:
+        '4 mg/mL amphotericin B liposome concentrate after reconstitution.',
+    furtherDilution:
+        'Mandatory. Withdraw the required reconstituted volume, attach the supplied 5-micron filter, and inject through the filter into D5W. Final concentration should be 1–2 mg/mL; 0.2–0.5 mg/mL may be appropriate for infants/small children.',
+    allowedDiluents:
+        'Reconstitution: preservative-free SWFI only. Final dilution: D5W only.',
+    administration:
+        'IV infusion with controlled infusion device over approximately 120 minutes. In well-tolerated patients the infusion may be reduced to about 60 minutes. Flush an existing line with D5W before infusion or use a separate line.',
+    stability:
+        'Reconstituted concentrate may be refrigerated at 2–8°C for up to 24 hours; do not freeze. After dilution in D5W, infusion should commence within 6 hours. Discard partially used vials.',
+    incompatibilities:
+        'Do not reconstitute with saline, add saline to the reconstituted concentrate, or mix with other drugs. An in-line membrane filter may be used for administration only if mean pore diameter is not less than 1.0 micron; the supplied 5-micron filter is specifically used during transfer into D5W.',
+    criticalLocks: [
+      'Formulation lock: liposomal amphotericin B is not interchangeable mg-for-mg with conventional amphotericin B.',
+      'Reconstitution lock: 50 mg + 12 mL SWFI = 4 mg/mL; no saline.',
+      'Mixing lock: shake vigorously for 30 seconds after adding SWFI.',
+      'Filter lock: use the supplied 5-micron filter when transferring into D5W.',
+      'Final concentration lock: usually 1–2 mg/mL; pediatric small-volume option 0.2–0.5 mg/mL.',
+    ],
+    sourceLabel:
+        'DailyMed · AmBisome / Amphotericin B Liposome for Injection 50 mg · current 2025 labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'ambisome-50mg-4mg-ml',
+        label: 'Liposomal amphotericin B · 4 mg/mL after reconstitution',
+        unit: 'mg',
+        concentration: 4,
+        note:
+            'Mandatory 5-micron-filter transfer into D5W; do not apply conventional amphotericin B instructions.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Amphotericin B conventional',
+    population: 'General',
+    formulation:
+        'XGen Amphotericin B for Injection, USP 50 mg lyophilized vial (conventional amphotericin B deoxycholate). NOT interchangeable mg-for-mg with liposomal amphotericin B.',
+    reconstitution:
+        'Rapidly add 10 mL Sterile Water for Injection without bacteriostatic agent directly to the 50 mg vial using a sterile needle of at least 20 gauge. Shake immediately until the colloidal solution is clear.',
+    resultingConcentration:
+        '5 mg/mL conventional amphotericin B concentrate.',
+    furtherDilution:
+        'Mandatory. Further dilute the 5 mg/mL concentrate 1:50 with D5W of pH >4.2 to a recommended final infusion concentration of 0.1 mg/mL.',
+    allowedDiluents:
+        'Reconstitution: preservative-free SWFI only. Final infusion: D5W with verified pH >4.2.',
+    administration:
+        'Slow IV infusion over approximately 2–6 hours depending on dose. The product label recommends a final concentration of 0.1 mg/mL.',
+    stability:
+        'Unreconstituted vial: refrigerate 2–8°C and protect from light. Reconstituted 5 mg/mL concentrate may be stored in the dark for 24 hours at room temperature or 1 week refrigerated. Final infusion solution (0.1 mg/mL or less) should be used promptly and protected from light.',
+    incompatibilities:
+        'Do not reconstitute with saline or bacteriostatic diluent; these may precipitate the drug. If an in-line membrane filter is used during administration, mean pore diameter must not be less than 1.0 micron.',
+    criticalLocks: [
+      'Formulation lock: conventional amphotericin B is not interchangeable mg-for-mg with liposomal amphotericin B.',
+      'Reconstitution lock: 50 mg + 10 mL preservative-free SWFI = 5 mg/mL.',
+      'Dextrose lock: final infusion uses D5W with pH >4.2; no saline.',
+      'Final concentration lock: recommended 0.1 mg/mL.',
+      'Rate lock: infuse slowly over approximately 2–6 hours.',
+    ],
+    sourceLabel:
+        'DailyMed · XGen Amphotericin B for Injection, USP 50 mg conventional product · active ANDA label',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'amphotericin-b-conventional-5mg-ml',
+        label: 'Conventional amphotericin B · 5 mg/mL concentrate',
+        unit: 'mg',
+        concentration: 5,
+        note:
+            'Mandatory 1:50 dilution in D5W pH >4.2 to recommended 0.1 mg/mL final infusion.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Dexamethasone',
+    population: 'General',
+    formulation:
+        'Dexamethasone Sodium Phosphate Injection, USP ready solutions: 4 mg/mL and 10 mg/mL. Product excipients/preservatives vary by manufacturer; this profile follows the cited 4 mg/mL and 10 mg/mL label.',
+    reconstitution:
+        'None. Supplied as ready solution at either 4 mg/mL or 10 mg/mL.',
+    resultingConcentration:
+        'Stock concentration is product-specific: 4 mg/mL or 10 mg/mL dexamethasone phosphate equivalent.',
+    furtherDilution:
+        'Not mandatory for IV injection. The cited label permits direct IV administration from the vial or addition to Sodium Chloride Injection or Dextrose Injection for IV drip.',
+    allowedDiluents:
+        'Sodium Chloride Injection or Dextrose Injection for IV drip. In neonates, especially premature infants, IV/further-dilution solutions should be preservative-free.',
+    administration:
+        'IV injection or IV drip according to the clinical order. This preparation profile does not select corticosteroid dose or disease-specific schedule.',
+    stability:
+        'When mixed with an infusion solution, use within 24 hours under sterile handling because infusion solutions generally lack preservatives.',
+    incompatibilities:
+        'Verify the exact manufacturer’s preservative/excipient content before neonatal use; some dexamethasone sodium phosphate products contain benzyl alcohol or other preservatives.',
+    criticalLocks: [
+      'Concentration lock: distinguish 4 mg/mL from 10 mg/mL before calculation.',
+      'Dilution lock: direct IV or NS/dextrose drip are separate permitted pathways; dilution is not automatically required.',
+      'Neonatal lock: preservative-free solutions are required for IV/further dilution in neonates, especially premature infants.',
+      'Manufacturer lock: preservative composition varies across products.',
+    ],
+    sourceLabel:
+        'DailyMed · Dexamethasone Sodium Phosphate Injection, USP 4 mg/mL and 10 mg/mL · current labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'dexamethasone-4mg-ml',
+        label: 'Dexamethasone sodium phosphate · 4 mg/mL',
+        unit: 'mg',
+        concentration: 4,
+        note:
+            'Verify manufacturer/preservative status, especially for neonatal use.',
+      ),
+      IvWithdrawalVariant(
+        id: 'dexamethasone-10mg-ml',
+        label: 'Dexamethasone sodium phosphate · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'IV/IM strength; verify manufacturer/preservative status.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Hydrocortisone',
+    population: 'General',
+    formulation:
+        'SOLU-CORTEF hydrocortisone sodium succinate ACT-O-VIAL single-dose presentations: 100 mg/2 mL, 250 mg/2 mL, 500 mg/4 mL and 1,000 mg/8 mL after activation/reconstitution.',
+    reconstitution:
+        'ACT-O-VIAL: press the plastic activator to force the built-in Water for Injection into the lower compartment, gently agitate until dissolved, remove tab, disinfect stopper, then withdraw through the stopper. The built-in diluent is preservative-free Water for Injection.',
+    resultingConcentration:
+        '100 mg/2 mL = 50 mg/mL. 250 mg/2 mL, 500 mg/4 mL and 1,000 mg/8 mL each yield 125 mg/mL.',
+    furtherDilution:
+        'Further dilution is not necessary for IV or IM injection. For IV infusion, the reconstituted ACT-O-VIAL solution may be added to D5W; if the patient is not sodium-restricted, isotonic saline or D5W in isotonic saline may also be used. Label examples use 100–1,000 mL depending on vial strength, with 50 mL permitted when small fluid volume is desired.',
+    allowedDiluents:
+        'Built-in WFI for ACT-O-VIAL reconstitution. For final infusion: D5W, isotonic saline, or D5W in isotonic saline when sodium restriction is not present.',
+    administration:
+        'IV injection, IV infusion or IM injection. For emergency IV use, the label describes administration over about 30 seconds for 100 mg and up to about 10 minutes for 500 mg or more.',
+    stability:
+        'Resulting infusion solutions prepared as directed are stable for at least 4 hours. Use aseptic technique and use immediately when possible; exact in-use storage remains governed by sterile-compounding conditions.',
+    incompatibilities:
+        'Because physical incompatibilities are possible, do not mix with unlisted solutions or medications. Keep the ACT-O-VIAL pathway distinct from the separate plain 100 mg vial, which has different reconstitution instructions.',
+    criticalLocks: [
+      'Presentation lock: this calculator profile applies to SOLU-CORTEF ACT-O-VIAL presentations, not the plain 100 mg vial.',
+      'Concentration lock: 100 mg ACT-O-VIAL = 50 mg/mL; 250/500/1000 mg ACT-O-VIAL presentations = 125 mg/mL.',
+      'Activation lock: use the built-in WFI by pressing the ACT-O-VIAL activator, then gently agitate.',
+      'Rate lock: label examples range from ~30 seconds for 100 mg to ~10 minutes for 500 mg or more.',
+    ],
+    sourceLabel:
+        'DailyMed · SOLU-CORTEF hydrocortisone sodium succinate ACT-O-VIAL · current Pfizer labeling',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'solu-cortef-actovial-100mg',
+        label: 'SOLU-CORTEF ACT-O-VIAL 100 mg/2 mL · 50 mg/mL',
+        unit: 'mg',
+        concentration: 50,
+        note:
+            'Exact 100 mg ACT-O-VIAL after activation with its built-in WFI.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-cortef-actovial-250-1000mg',
+        label: 'SOLU-CORTEF ACT-O-VIAL 250/500/1000 mg · 125 mg/mL',
+        unit: 'mg',
+        concentration: 125,
+        note:
+            '250 mg/2 mL, 500 mg/4 mL and 1,000 mg/8 mL ACT-O-VIAL presentations.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

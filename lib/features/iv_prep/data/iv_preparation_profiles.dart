@@ -4373,6 +4373,194 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
+
+  IvPreparationProfile(
+    name: 'Dexamethasone',
+    population: 'NICU',
+    formulation:
+        'Micro Labs Dexamethasone Sodium Phosphate Injection, USP 10 mg/mL, preservative-free, 1 mL single-dose vial for IV or IM use.',
+    reconstitution:
+        'None. This exact product is supplied as a ready 10 mg/mL solution.',
+    resultingConcentration:
+        '10 mg/mL dexamethasone phosphate equivalent.',
+    furtherDilution:
+        'The exact current label does not provide a neonatal dilution recipe. If the ordered neonatal volume is too small for direct administration or a diluted syringe is required, use a validated NICU/pharmacy protocol for the exact diluent and final concentration; do not invent one.',
+    allowedDiluents:
+        'No universal neonatal diluent is source-locked in this exact product label. Use only a locally validated neonatal dilution/compatibility protocol when further dilution is required.',
+    administration:
+        'IV use is labeled, but neonatal dose, injection rate and duration are not established by this product label. Those parameters must come from the neonatal order/protocol; the calculator only converts an already ordered mg amount to stock mL.',
+    stability:
+        'Store at 20–25°C, protect from light and freezing, keep in the container until use, and discard unused portion of the single-dose vial.',
+    incompatibilities:
+        'Do not transfer compatibility or dilution instructions from preserved 4 mg/mL or multidose dexamethasone products to this preservative-free 10 mg/mL vial.',
+    criticalLocks: [
+      'Product lock: preservative-free 10 mg/mL single-dose vial only.',
+      'Concentration lock: this NICU profile is 10 mg/mL, not a 4 mg/mL preserved product.',
+      'Dilution lock: no neonatal final concentration is invented; local validated NICU compounding guidance is required if further dilution is needed.',
+      'Rate lock: neonatal administration rate is outside this product label and must come from the clinical protocol.',
+    ],
+    sourceLabel:
+        'DailyMed · Micro Labs Dexamethasone Sodium Phosphate Injection USP 10 mg/mL preservative-free single-dose vial · effective Aug 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-dexamethasone-pf-10mg-ml',
+        label: 'Preservative-free dexamethasone sodium phosphate · 10 mg/mL',
+        unit: 'mg',
+        concentration: 10,
+        note:
+            'Stock withdrawal only. Any neonatal further dilution and administration rate remain protocol-specific.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Calcium gluconate',
+    population: 'NICU',
+    formulation:
+        'Calcium Gluconate Injection, USP single-dose vial, 100 mg/mL calcium gluconate; each mL contains 9.3 mg elemental calcium = 0.465 mEq elemental calcium.',
+    reconstitution:
+        'None. The stock solution is 100 mg/mL calcium gluconate.',
+    resultingConcentration:
+        'Stock 100 mg/mL calcium gluconate. After dilution: 10–50 mg/mL for labeled bolus-infusion administration or 5.8–10 mg/mL for continuous infusion.',
+    furtherDilution:
+        'Mandatory before IV use. Dilute the already prescribed dose in D5W or 0.9% Sodium Chloride to 10–50 mg/mL for bolus-infusion use, or 5.8–10 mg/mL for continuous infusion. Use the diluted solution immediately.',
+    allowedDiluents:
+        '5% Dextrose Injection or 0.9% Sodium Chloride Injection.',
+    administration:
+        'Use a secure IV line. For pediatric patients including neonates, the label says do not exceed 100 mg/minute calcium gluconate for bolus-infusion administration, with vital-sign and ECG monitoring. Dose selection remains outside the calculator.',
+    stability:
+        'Use the diluted solution immediately after preparation. Single-dose vial: discard unused portion.',
+    incompatibilities:
+        'Do not mix with phosphate- or bicarbonate-containing fluids because precipitation may occur. In neonates 28 days of age or younger, concomitant IV ceftriaxone and calcium is contraindicated.',
+    criticalLocks: [
+      'Salt/unit lock: 100 mg/mL refers to calcium gluconate, not elemental calcium.',
+      'Elemental-calcium lock: 1 mL contains 9.3 mg = 0.465 mEq elemental calcium.',
+      'Dilution lock: current labeling requires dilution before IV administration.',
+      'Ceftriaxone lock: contraindicated in neonates 28 days or younger receiving or expected to receive IV ceftriaxone.',
+      'Prematurity lock: the label warns that premature neonates are especially vulnerable to aluminum accumulation with prolonged parenteral exposure.',
+    ],
+    sourceLabel:
+        'DailyMed · Amneal Calcium Gluconate Injection USP 100 mg/mL · revised May 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-calcium-gluconate-100mg-ml',
+        label: 'Calcium gluconate stock · 100 mg/mL',
+        unit: 'mg calcium gluconate',
+        concentration: 100,
+        note:
+            'Stock withdrawal only; further dilution is mandatory. Do not enter elemental-calcium mg or mEq into this variant.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Calcium chloride',
+    population: 'NICU',
+    formulation:
+        '10% Calcium Chloride Injection, USP = 1,000 mg/10 mL = 100 mg/mL; each mL represents 27 mg elemental calcium = 1.4 mEq elemental calcium.',
+    reconstitution:
+        'None. The cited product is a ready hypertonic 100 mg/mL calcium chloride solution.',
+    resultingConcentration:
+        '100 mg/mL calcium chloride = 27 mg/mL elemental calcium = 1.4 mEq/mL elemental calcium.',
+    furtherDilution:
+        'No universal neonatal dilution is source-locked here. Because neonatal dosing may be expressed as calcium chloride, elemental calcium, or mEq and tiny volumes may require pharmacy preparation, this NICU profile is manual and does not expose a withdrawal calculator.',
+    allowedDiluents:
+        'Do not invent a diluent or target concentration. Use the exact NICU/pharmacy protocol when a smaller-volume or diluted neonatal preparation is required.',
+    administration:
+        'Slow IV administration through a central or deep vein is required; do not give IM or SC. The current labeling limits administration to no more than 1 mL/minute. Neonatal dose and any dilution strategy remain protocol-specific.',
+    stability:
+        'Single-dose product: discard unused portion. Store at controlled room temperature according to the exact product label.',
+    incompatibilities:
+        'Do not mix with ceftriaxone. In neonates 28 days of age or younger, calcium chloride is contraindicated when IV ceftriaxone is required or expected because of calcium-ceftriaxone precipitation risk.',
+    criticalLocks: [
+      'Salt lock: calcium chloride and calcium gluconate are not interchangeable mg-for-mg.',
+      'Unit lock: 100 mg/mL calcium chloride equals 27 mg/mL elemental calcium = 1.4 mEq/mL.',
+      'Calculator lock: disabled because neonatal orders may use different calcium units and local dilution/device accuracy matters.',
+      'Route lock: slow IV through a central or deep vein; no IM or SC administration.',
+      'Ceftriaxone lock: contraindicated in neonates 28 days or younger who require or are expected to require IV ceftriaxone.',
+    ],
+    sourceLabel:
+        'DailyMed · 10% Calcium Chloride Injection USP 100 mg/mL · current pediatric labeling, 2025–2026',
+  ),
+
+  IvPreparationProfile(
+    name: 'Magnesium sulfate',
+    population: 'NICU',
+    formulation:
+        'Hospira Magnesium Sulfate Injection, USP 50% = 10 g/20 mL = 500 mg/mL = 0.5 g/mL, preservative-free single-use vial.',
+    reconstitution:
+        'None. The vial contains a concentrated 50% solution.',
+    resultingConcentration:
+        'Stock 500 mg/mL = 0.5 g/mL. For IV infusion, the label requires dilution to 20% (200 mg/mL) or less.',
+    furtherDilution:
+        'Mandatory before IV use. Dilute the already ordered amount with D5W or 0.9% Sodium Chloride so the final magnesium sulfate concentration is 20% or less. The calculator does not choose a neonatal final concentration or rate.',
+    allowedDiluents:
+        '5% Dextrose Injection or 0.9% Sodium Chloride Injection.',
+    administration:
+        'Use slow, cautious IV administration. The product label states IV injection should generally not exceed 150 mg/minute, but neonatal indication-specific dosing and rate must come from the NICU protocol and monitoring plan.',
+    stability:
+        'Preservative-free single-use vial; discard unused portion. Use the exact local sterile-compounding beyond-use policy after dilution.',
+    incompatibilities:
+        'Do not infer Y-site or admixture compatibility from the permitted diluents; verify each co-administered medicine separately.',
+    criticalLocks: [
+      'Concentration lock: 50% = 500 mg/mL = 0.5 g/mL.',
+      'IV dilution lock: must be diluted to 20% or less before IV infusion.',
+      'Preservative lock: cited Hospira vial is preservative-free and single-use.',
+      'Rate lock: the calculator never selects neonatal dose or infusion rate.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Magnesium Sulfate Injection USP 50%, 500 mg/mL · updated Feb 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-magnesium-sulfate-50percent',
+        label: 'Magnesium sulfate 50% · 0.5 g/mL',
+        unit: 'g',
+        concentration: 0.5,
+        note:
+            'Stock withdrawal only. IV use requires dilution to 20% or less; neonatal final concentration and rate remain protocol-specific.',
+      ),
+    ],
+  ),
+
+  IvPreparationProfile(
+    name: 'Sodium bicarbonate',
+    population: 'NICU',
+    formulation:
+        'Hospira Sodium Bicarbonate Injection, USP 4.2% = 42 mg/mL = 0.5 mEq/mL sodium and 0.5 mEq/mL bicarbonate; 2.5 mEq/5 mL single-use vial with no bacteriostat or antimicrobial agent.',
+    reconstitution:
+        'None. The exact NICU product is supplied ready at 4.2% (0.5 mEq/mL).',
+    resultingConcentration:
+        '0.5 mEq/mL bicarbonate and 0.5 mEq/mL sodium.',
+    furtherDilution:
+        'No universal further-dilution recipe is assumed. The 4.2% product is already half the bicarbonate concentration of 8.4%. If an admixture or additional dilution is ordered, use a validated neonatal protocol and verified compatibility.',
+    allowedDiluents:
+        'Do not infer a universal compatible diluent list. If added to another IV fluid, verify the exact fluid and co-administered medicines.',
+    administration:
+        'IV use only. The label warns that rapid hypertonic bicarbonate administration in neonates and children under 2 years may cause hypernatremia, reduced CSF pressure and intracranial hemorrhage; 4.2% may be preferred for slow administration. The calculator does not choose dose or rate.',
+    stability:
+        'Single-use vial; discard unused portion. Store at 20–25°C and protect from freezing. If additives are introduced, use aseptic technique, mix thoroughly and do not store the admixture per the label.',
+    incompatibilities:
+        'Norepinephrine and dobutamine are incompatible with sodium bicarbonate. Avoid calcium-containing parenteral solutions unless compatibility is established because precipitation or haze may occur.',
+    criticalLocks: [
+      'Product lock: NICU profile uses 4.2% = 0.5 mEq/mL, not 8.4% = 1 mEq/mL.',
+      'Pediatric lock: avoid rapid hypertonic bicarbonate administration in neonates.',
+      'Compatibility lock: do not admix with norepinephrine or dobutamine; avoid calcium-containing solutions unless compatibility is established.',
+      'Calculator lock: converts an already ordered mEq amount to stock mL only; it does not select dose, rate or a target pH.',
+    ],
+    sourceLabel:
+        'DailyMed · Hospira Sodium Bicarbonate Injection USP 4.2%, 2.5 mEq/5 mL · current DailyMed version Apr 2026',
+    withdrawalVariants: [
+      IvWithdrawalVariant(
+        id: 'nicu-bicarbonate-4_2-0_5meq-ml',
+        label: 'Sodium bicarbonate 4.2% · 0.5 mEq/mL',
+        unit: 'mEq',
+        concentration: 0.5,
+        note:
+            'Stock conversion only. Dose, rate and any further dilution are neonatal-protocol decisions.',
+      ),
+    ],
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

@@ -4,6 +4,22 @@ import '../data/iv_medication_catalog.dart';
 import '../data/iv_preparation_profiles.dart';
 import 'iv_preparation_detail_screen.dart';
 
+List<IvCatalogEntry> verifiedIvEntriesFor(
+  String population, {
+  String query = '',
+}) {
+  final q = query.trim().toLowerCase();
+  return ivMedicationCatalog.where((entry) {
+    if (entry.population != population) return false;
+    final verifiedProfile =
+        findIvPreparationProfile(entry.name, entry.population);
+    if (!entry.structured || verifiedProfile == null) return false;
+    if (q.isEmpty) return true;
+    return entry.name.toLowerCase().contains(q) ||
+        entry.category.toLowerCase().contains(q);
+  }).toList(growable: false);
+}
+
 class IvPrepScreen extends StatefulWidget {
   const IvPrepScreen({super.key});
 
@@ -15,19 +31,8 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
   String _population = 'General';
   String _query = '';
 
-  List<IvCatalogEntry> get _entries {
-    final q = _query.trim().toLowerCase();
-
-    return ivMedicationCatalog.where((entry) {
-      if (entry.population != _population) return false;
-      final verifiedProfile =
-          findIvPreparationProfile(entry.name, entry.population);
-      if (!entry.structured || verifiedProfile == null) return false;
-      if (q.isEmpty) return true;
-      return entry.name.toLowerCase().contains(q) ||
-          entry.category.toLowerCase().contains(q);
-    }).toList();
-  }
+  List<IvCatalogEntry> get _entries =>
+      verifiedIvEntriesFor(_population, query: _query);
 
   @override
   Widget build(BuildContext context) {

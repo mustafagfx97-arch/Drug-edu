@@ -1038,6 +1038,65 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'CDC Iron / pediatric iron guidance',
   ),
+  'magnesium-oxide': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام إذا أزعج المعدة؛ افصل عن الأدوية التي تتأثر بالمغنيسيوم حسب تعليمات الدواء الآخر.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Magnesium',
+  ),
+  'magnesium-citrate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام لتحسين التحمل. إذا كان المنتج laxative فلا تستخدم جدول المكمل اليومي نفسه.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Magnesium',
+  ),
+  'vitamin-d2': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'مع وجبة أو سناك يحتوي بعض الدهون؛ التزم بتكرار الجرعة المكتوب خصوصًا إذا كانت أسبوعية/عالية.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Vitamin D',
+  ),
+  'biotin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام أو بدونه؛ الأهم إبلاغ الطبيب والمختبر قبل التحاليل لأن biotin قد يتداخل مع بعض الفحوص.',
+    source: 'NIH ODS Biotin / FDA',
+  ),
+  'vitamin-b6': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام أو بدونه؛ راجع مجموع B6 من كل المكملات ولا تستخدم جرعات عالية مزمنة من نفسك.',
+    source: 'NIH ODS Vitamin B6',
+  ),
+  'thiamine-b1': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام أو بدونه. إذا كان الاستخدام لعلاج نقص شديد أو حالة عالية الخطورة فاتبع الخطة الطبية بدل جدول مكمل عادي.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Thiamin',
+  ),
+  'potassium-supplement': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'التوقيت يعتمد على salt/formulation والوصفة؛ لا يعتمد التطبيق Auto لأن وظيفة الكلى والأدوية التي ترفع potassium أهم من وقت الجرعة.',
+    autoScheduleSafe: false,
+    source: 'NIH ODS Potassium',
+  ),
+  'omega-3-epa-dha': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'يمكن أخذه مع وجبة لتحسين التحمل الهضمي؛ راجع EPA+DHA الفعليين وتداخلات مميعات الدم عند الجرعات العالية.',
+    source: 'NIH ODS Omega-3 Fatty Acids',
+  ),
+  'creatine-monohydrate': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'الاستمرار اليومي أهم من ساعة محددة؛ اتبع الجرعة المقصودة ولا تعتبر loading phase إلزامية.',
+    source: 'NIH ODS Exercise and Athletic Performance',
+  ),
   'multivitamin-mineral': MedicationTimingRule(
     anchor: 'any',
     instructionAr:

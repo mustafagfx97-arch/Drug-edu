@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/data/medication_clinical_overlays.dart';
+import '../../../core/data/medication_indication_options.dart';
 import '../../../core/data/medication_patient_guidance.dart';
 import '../../../core/data/medication_patient_guidance_en.dart';
 import '../../../core/data/therapy_duration_catalog.dart';
@@ -16,7 +17,7 @@ import '../../patient_cards/presentation/printable_patient_card_screen.dart';
 import '../../visual_guides/data/visual_guide_catalog.dart';
 import '../../visual_guides/presentation/visual_guide_detail_screen.dart';
 
-class MedicationDetailScreen extends StatelessWidget {
+class MedicationDetailScreen extends StatefulWidget {
   const MedicationDetailScreen({
     super.key,
     required this.medication,
@@ -24,13 +25,31 @@ class MedicationDetailScreen extends StatelessWidget {
 
   final Medication medication;
 
-  PatientCardData get _patientCard {
-    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
-    final patient = resolvedPatientCounseling(
+  @override
+  State<MedicationDetailScreen> createState() => _MedicationDetailScreenState();
+}
+
+class _MedicationDetailScreenState extends State<MedicationDetailScreen> {
+  String? _selectedIndicationId;
+
+  Medication get medication => widget.medication;
+
+  MedicationIndicationOption? get _selectedIndication =>
+      indicationOptionFor(medication.id, _selectedIndicationId);
+
+  PatientCounselingData get _resolvedArabicPatient {
+    final base = resolvedPatientCounseling(
       medication,
-      timingFallbackAr:
-          medicationPatientTimingInstruction(medication.id),
+      timingFallbackAr: medicationPatientTimingInstruction(medication.id),
     );
+    return applyIndicationToArabic(base, _selectedIndication);
+  }
+
+  PatientCardData get _patientCard {
+    final durationAr = _selectedIndication?.durationAr.trim().isNotEmpty == true
+        ? _selectedIndication!.durationAr.trim()
+        : (therapyDurationFor(medication.id)?.patientAr ?? '');
+    final patient = _resolvedArabicPatient;
     final important = <String>[
       if (durationAr.isNotEmpty) 'مدة العلاج: ' + durationAr,
       if (patient.importantAr.trim().isNotEmpty) patient.importantAr.trim(),
@@ -40,11 +59,14 @@ class MedicationDetailScreen extends StatelessWidget {
         'الحفظ: ' + patient.storageAr.trim(),
     ].join(' ');
 
+    final indicationLabel = _selectedIndication?.labelAr ?? '';
     return PatientCardData(
       id: 'card-' + medication.id,
       templateName: 'Medication Counseling Card',
       medicationName: medication.name,
-      subtitleAr: 'تعليمات مختصرة للمريض',
+      subtitleAr: indicationLabel.isEmpty
+          ? 'تعليمات مختصرة للمريض'
+          : 'تعليمات المريض · ' + indicationLabel,
       category: 'Medication',
       purposeAr: patient.purposeAr,
       howToUseAr: patient.howToUseAr,
@@ -116,7 +138,13 @@ class MedicationDetailScreen extends StatelessWidget {
               child: TabBarView(
                 children: [
                   _PharmacistTab(medication: medication),
-                  _PatientTab(medication: medication),
+                  _PatientTab(
+                    medication: medication,
+                    selectedIndicationId: _selectedIndicationId,
+                    onIndicationChanged: (value) {
+                      setState(() => _selectedIndicationId = value);
+                    },
+                  ),
                   _PrintCardTab(card: _patientCard),
                 ],
               ),
@@ -332,9 +360,15 @@ class _PharmacistTab extends StatelessWidget {
 }
 
 class _PatientTab extends StatefulWidget {
-  const _PatientTab({required this.medication});
+  const _PatientTab({
+    required this.medication,
+    required this.selectedIndicationId,
+    required this.onIndicationChanged,
+  });
 
   final Medication medication;
+  final String? selectedIndicationId;
+  final ValueChanged<String?> onIndicationChanged;
 
   @override
   State<_PatientTab> createState() => _PatientTabState();
@@ -346,14 +380,18 @@ class _PatientTabState extends State<_PatientTab> {
   @override
   Widget build(BuildContext context) {
     final medication = widget.medication;
-    final english = englishPatientCounselingFor(medication.id);
-    final hasEnglish = english != null;
+    final englishBase = englishPatientCounselingFor(medication.id);
+    final hasEnglish = englishBase != null;
+    final option =
+        indicationOptionFor(medication.id, widget.selectedIndicationId);
+    final english =
+        englishBase == null ? null : applyIndicationToEnglish(englishBase, option);
     final useEnglish = hasEnglish && _english;
 
     return Directionality(
       textDirection: useEnglish ? TextDirection.ltr : TextDirection.rtl,
       child: useEnglish
-          ? _buildEnglish(context, english)
+          ? _buildEnglish(context, english!)
           : _buildArabic(context, hasEnglish: hasEnglish),
     );
   }
@@ -388,19 +426,32 @@ class _PatientTabState extends State<_PatientTab> {
   }) {
     final theme = Theme.of(context);
     final medication = widget.medication;
-    final durationAr = therapyDurationFor(medication.id)?.patientAr ?? '';
-    final patient = resolvedPatientCounseling(
+    final option =
+        indicationOptionFor(medication.id, widget.selectedIndicationId);
+    final durationAr = option?.durationAr.trim().isNotEmpty == true
+        ? option!.durationAr.trim()
+        : (therapyDurationFor(medication.id)?.patientAr ?? '');
+    final basePatient = resolvedPatientCounseling(
       medication,
-      timingFallbackAr:
-          medicationPatientTimingInstruction(medication.id),
+      timingFallbackAr: medicationPatientTimingInstruction(medication.id),
     );
+    final patient = applyIndicationToArabic(basePatient, option);
     final visualGuides = visualGuidesForMedication(medication.id);
+    final indicationOptions = indicationOptionsFor(medication.id);
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
       children: [
         if (hasEnglish) ...[
           _languageToggle(context, english: false),
+          const SizedBox(height: 12),
+        ],
+        if (indicationOptions.isNotEmpty) ...[
+          _indicationSelector(
+            context,
+            options: indicationOptions,
+            english: false,
+          ),
           const SizedBox(height: 12),
         ],
         Container(
@@ -530,6 +581,14 @@ class _PatientTabState extends State<_PatientTab> {
       children: [
         _languageToggle(context, english: true),
         const SizedBox(height: 12),
+        if (indicationOptionsFor(widget.medication.id).isNotEmpty) ...[
+          _indicationSelector(
+            context,
+            options: indicationOptionsFor(widget.medication.id),
+            english: true,
+          ),
+          const SizedBox(height: 12),
+        ],
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -619,6 +678,94 @@ class _PatientTabState extends State<_PatientTab> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _indicationSelector(
+    BuildContext context, {
+    required List<MedicationIndicationOption> options,
+    required bool english,
+  }) {
+    final theme = Theme.of(context);
+    final selected = indicationOptionFor(
+      widget.medication.id,
+      widget.selectedIndicationId,
+    );
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment:
+              english ? CrossAxisAlignment.start : CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              english ? 'Select the reason for use' : 'حدد سبب استخدام الدواء',
+              textAlign: english ? TextAlign.left : TextAlign.right,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              english
+                  ? 'The patient explanation and printable card will change to match the selected indication.'
+                  : 'سيتغير شرح المريض وبطاقة الطباعة حسب الاستطباب الذي تختاره.',
+              textAlign: english ? TextAlign.left : TextAlign.right,
+              style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
+            ),
+            const SizedBox(height: 12),
+            DropdownButtonFormField<String?>(
+              initialValue: widget.selectedIndicationId,
+              decoration: InputDecoration(
+                labelText: english ? 'Indication' : 'الاستطباب',
+              ),
+              items: [
+                DropdownMenuItem<String?>(
+                  value: null,
+                  child: Text(
+                    english ? 'General / not selected' : 'عام / غير محدد',
+                  ),
+                ),
+                for (final option in options)
+                  DropdownMenuItem<String?>(
+                    value: option.id,
+                    child: Text(
+                      (english ? option.labelEn : option.labelAr) +
+                          (option.offLabel
+                              ? (english ? ' · off-label' : ' · خارج النشرة')
+                              : ''),
+                    ),
+                  ),
+              ],
+              onChanged: widget.onIndicationChanged,
+            ),
+            if (selected != null) ...[
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.all(11),
+                decoration: BoxDecoration(
+                  color: selected.offLabel
+                      ? theme.colorScheme.tertiaryContainer
+                      : theme.colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  (selected.offLabel
+                          ? (english
+                              ? 'Off-label use — counsel using the documented guideline context. '
+                              : 'استخدام خارج النشرة — يُشرح ضمن سياق الدليل السريري الموثق. ')
+                          : '') +
+                      (english ? selected.source : 'المصدر: ' + selected.source),
+                  textAlign: english ? TextAlign.left : TextAlign.right,
+                  style: theme.textTheme.bodySmall?.copyWith(height: 1.4),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
     );
   }
 

@@ -4,10 +4,16 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   analyze-test-build:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
 
     steps:
       - name: Checkout
@@ -19,11 +25,41 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Generate Android wrapper when absent
+      - name: Generate Android wrapper
         run: |
-          if [ ! -d android ]; then
-            flutter create . --platforms=android --project-name drug_edu
-            rm -f test/widget_test.dart
+          rm -rf android
+          flutter create . --platforms=android --project-name drug_edu --org com.mustafagfx97
+          rm -f test/widget_test.dart
+          sed -i 's/android:label="drug_edu"/android:label="Drug Edu"/' android/app/src/main/AndroidManifest.xml
+
+      - name: Verify Android identity
+        run: |
+          grep -F 'namespace = "com.mustafagfx97.drug_edu"' android/app/build.gradle.kts
+          grep -F 'applicationId = "com.mustafagfx97.drug_edu"' android/app/build.gradle.kts
+          grep -F 'android:label="Drug Edu"' android/app/src/main/AndroidManifest.xml
+
+      - name: Configure production signing when secrets are present
+        if: env.ANDROID_KEYSTORE_BASE64 != '' && env.ANDROID_KEYSTORE_PASSWORD != '' && env.ANDROID_KEY_ALIAS != '' && env.ANDROID_KEY_PASSWORD != ''
+        run: |
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/upload-keystore.jks
+          cat > android/key.properties <<EOF
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyPassword=$ANDROID_KEY_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          storeFile=../upload-keystore.jks
+          EOF
+
+      - name: Record signing status
+        run: |
+          mkdir -p build
+          if [ -f android/key.properties ]; then
+            echo "PRODUCTION_SIGNED=true" | tee build/release-signing-status.txt
+          else
+            {
+              echo "PRODUCTION_SIGNED=false"
+              echo "This CI artifact uses the Flutter template fallback signing and is NOT for Google Play upload."
+              echo "Configure ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS and ANDROID_KEY_PASSWORD for production signing."
+            } | tee build/release-signing-status.txt
           fi
 
       - name: Install dependencies
@@ -38,9 +74,25 @@ jobs:
       - name: Build Android debug APK
         run: flutter build apk --debug
 
-      - name: Upload Android APK
+      - name: Build Android release APK
+        run: flutter build apk --release
+
+      - name: Build Android release AAB
+        run: flutter build appbundle --release
+
+      - name: Upload Android debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: drug-edu-v1-preview-apk
+          name: drug-edu-v1-debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: error
+
+      - name: Upload Android release candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: drug-edu-v1-release-candidate
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+            build/release-signing-status.txt
           if-no-files-found: error

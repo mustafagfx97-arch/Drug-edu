@@ -233,6 +233,87 @@ class _PharmacistSupplementTab extends StatelessWidget {
             ),
           ),
         ],
+        if (profile.saltVariants.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          SectionCard(
+            title: 'Salt / formulation comparison',
+            icon: Icons.science_outlined,
+            child: Column(
+              children: [
+                for (final variant in profile.saltVariants) ...[
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceContainerLow,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: theme.colorScheme.outlineVariant,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          variant.name,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w900,
+                            color: theme.colorScheme.primary,
+                          ),
+                        ),
+                        if (variant.formula.isNotEmpty) ...[
+                          const SizedBox(height: 3),
+                          Text(
+                            variant.formula,
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                        const SizedBox(height: 9),
+                        _VariantFact(
+                          label: 'Elemental amount',
+                          text: variant.elementalAmount,
+                        ),
+                        if (variant.elementalPercent.isNotEmpty)
+                          _VariantFact(
+                            label: 'Elemental fraction',
+                            text: variant.elementalPercent,
+                          ),
+                        if (variant.example.isNotEmpty)
+                          _VariantFact(
+                            label: 'Example',
+                            text: variant.example,
+                          ),
+                        _VariantFact(
+                          label: 'Best practical use',
+                          text: variant.practicalUse,
+                        ),
+                        _VariantFact(
+                          label: 'How to take',
+                          text: variant.administration,
+                        ),
+                        _VariantFact(
+                          label: 'Cautions',
+                          text: variant.cautions,
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Source: ' + variant.source,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                            height: 1.35,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 14),
         for (final section in profile.pharmacistSections) ...[
           SectionCard(
@@ -258,6 +339,37 @@ class _PharmacistSupplementTab extends StatelessWidget {
     );
   }
 }
+
+class _VariantFact extends StatelessWidget {
+  const _VariantFact({
+    required this.label,
+    required this.text,
+  });
+
+  final String label;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child: RichText(
+        text: TextSpan(
+          style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
+          children: [
+            TextSpan(
+              text: label + ': ',
+              style: const TextStyle(fontWeight: FontWeight.w900),
+            ),
+            TextSpan(text: text),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 class _PatientSupplementTab extends StatelessWidget {
   const _PatientSupplementTab({required this.profile});

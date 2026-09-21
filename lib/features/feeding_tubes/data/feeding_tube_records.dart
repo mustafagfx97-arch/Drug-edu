@@ -880,6 +880,123 @@ const tubeMedicationRecords = <TubeMedicationRecord>[
     critical: true,
   ),
 
+
+  TubeMedicationRecord(
+    medicine: 'EPIDIOLEX cannabidiol oral solution',
+    formulation:
+        'Cannabidiol oral solution 100 mg/mL; enteral-tube compatibility is material-specific and should not be generalized to other cannabidiol products.',
+    status: 'Label-supported enteral use through selected silicone feeding tubes',
+    tubeRoute:
+        'Silicone feeding tubes such as nasogastric or gastrostomy tubes. Avoid polyvinyl chloride (PVC) and polyurethane tubes. Also avoid short, narrow silicone NG tubes such as those less than 50 cm long and less than 5 Fr.',
+    preparation:
+        'Measure the prescribed dose with the calibrated 1 mL or 5 mL oral syringe supplied for the product. When enteral administration is necessary, give the measured dose through the compatible silicone feeding tube. Flush after each dose with room-temperature drinking water using approximately 5 times the priming volume of the tube; modify the flush volume when clinically necessary for fluid restriction.',
+    feedPlan:
+        'Food can change cannabidiol exposure. Keep administration consistent in relation to meals rather than alternating unpredictably between fed and fasting conditions.',
+    doNot:
+        'Do not use PVC or polyurethane feeding tubes. Do not assume every silicone NG tube is suitable; avoid very short/narrow silicone NG tubing such as <50 cm and <5 Fr. Do not substitute a household spoon for the calibrated syringe.',
+    monitoring:
+        'Monitor seizure response, sedation and clinically important drug interactions. Follow liver-function monitoring and dose-adjustment recommendations from the current EPIDIOLEX regimen.',
+    pediatricNicu:
+        'EPIDIOLEX has pediatric indications, but the tube instructions do not make it a neonatal/NICU product. In very small or fluid-restricted children, use the label\'s tube-material restrictions and individualize the post-dose flush rather than automatically giving an adult-sized volume.',
+    practicalAr:
+        'EPIDIOLEX يمكن إعطاؤه عبر silicone NG/G tube فقط عند الحاجة. لا تستخدم PVC أو polyurethane، وتجنب silicone NG القصير والرفيع مثل <50 cm و<5 Fr. بعد الجرعة flush بماء الشرب بدرجة الغرفة بحجم يقارب 5× priming volume للأنبوب مع تعديل الحجم إذا كان المريض fluid-restricted.',
+    source:
+        'DailyMed · EPIDIOLEX (cannabidiol) oral solution · enteral feeding-tube administration section · current 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'FINTEPLA fenfluramine oral solution',
+    formulation:
+        'Fenfluramine oral solution 2.2 mg/mL supplied for seizure disorders under the product-specific monitoring program.',
+    status: 'Label-supported gastric / NG tube compatibility',
+    tubeRoute:
+        'Commercially available gastric and nasogastric feeding tubes. The current label does not specify a minimum French size, tube material, or a fixed flush volume.',
+    preparation:
+        'Measure the prescribed dose with the calibrated 3 mL or 6 mL oral syringe supplied by the pharmacy and administer through the gastric or NG tube. Because the label establishes tube compatibility but does not provide a universal flush volume or tube-size method, follow the feeding-tube manufacturer/local validated flushing procedure rather than inventing a product volume.',
+    feedPlan:
+        'May be given with or without food; no routine enteral-feed hold is required by the label.',
+    doNot:
+        'Do not invent a minimum French size or fixed flush volume. Do not use household teaspoons or tablespoons. Do not stop FINTEPLA abruptly unless clinically required; antiseizure withdrawal is normally gradual.',
+    monitoring:
+        'FINTEPLA requires the product-specific cardiac safety program, including echocardiographic monitoring for valvular heart disease and pulmonary arterial hypertension, plus seizure/tolerability review.',
+    pediatricNicu:
+        'Current labeling is for Dravet syndrome and Lennox-Gastaut syndrome in patients 2 years of age and older. Tube compatibility therefore does not establish neonatal or infant use below the labeled age range.',
+    practicalAr:
+        'FINTEPLA 2.2 mg/mL متوافق مع gastric وNG feeding tubes. الملصق لا يعطي minimum Fr ولا flush volume ثابت، لذلك لا نخترع أرقامًا؛ نقيس الجرعة بالـ3 أو 6 mL syringe ونستخدم flushing procedure المعتمدة للأنبوب.',
+    source:
+        'DailyMed · FINTEPLA (fenfluramine) oral solution · Administration Instructions · revised Oct 2025',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'DAYBUE trofinetide oral solution',
+    formulation:
+        'Trofinetide oral solution 200 mg/mL for Rett syndrome; this record is for the ready oral solution, not a generic trofinetide preparation.',
+    status: 'Label-supported G-tube / gastric-port method',
+    tubeRoute:
+        'Gastrostomy (G) tube. If a gastrojejunal (GJ) tube is present, administer through the G-port only. The label does not establish direct jejunal-port or nasogastric administration.',
+    preparation:
+        'Measure the prescribed weight-based volume with a calibrated oral syringe or oral dosing cup and administer through the G-tube or the G-port of a GJ tube. The label does not specify a fixed flush volume or minimum French size, so use the local validated tube-flush procedure instead of inventing one. Keep the bottle refrigerated at 2°C to 8°C, upright, and discard unused oral solution 14 days after first opening.',
+    feedPlan:
+        'May be administered with or without food.',
+    doNot:
+        'Do not administer a GJ dose through the J-port. Do not extrapolate this record to an NG tube. Do not use a household measuring cup, teaspoon or tablespoon.',
+    monitoring:
+        'Diarrhea can be frequent and may be severe; monitor hydration and weight, and follow the prescribed interruption/reduction plan when severe diarrhea, dehydration or significant weight loss occurs.',
+    pediatricNicu:
+        'DAYBUE is labeled for Rett syndrome in patients 2 years of age and older, with current weight-based dosing beginning at 9 kg. This is not a neonatal or NICU tube method.',
+    practicalAr:
+        'DAYBUE oral solution 200 mg/mL يمكن عبر G-tube، وإذا كان GJ فيجب الإعطاء من G-port فقط وليس J-port. لا توجد طريقة NG مثبتة في الملصق. يُحفظ مبردًا ويُتلف بعد 14 يومًا من فتح العبوة.',
+    source:
+        'DailyMed · DAYBUE (trofinetide) oral solution · Dosage and Administration / G-tube and GJ G-port instructions · current 2026 label',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'EVRYSDI risdiplam oral solution 0.75 mg/mL',
+    formulation:
+        'Pharmacist-constituted risdiplam oral solution, 60 mg/80 mL (0.75 mg/mL).',
+    status: 'FDA-IFU supported NG / G-tube method including infants',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube. The current oral-solution IFU provides the same immediate post-dose water-flush range for either route.',
+    preparation:
+        'Healthcare-provider constitution: add 79 mL purified water to the powder bottle to yield 0.75 mg/mL, cap and shake well for 15 seconds, then wait 10 minutes; if the solution is not clear, shake again for another 15 seconds or until clear. For a tube dose, draw the prescribed volume using the supplied reusable oral syringe and give the full dose through the NG or G-tube. Check that no EVRYSDI remains in the syringe, then flush the tube immediately with 10 to 20 mL water. Give the drawn-up dose promptly; if it is not administered within 5 minutes of drawing it up, discard that syringe contents and prepare a new dose. Refrigerated constituted solution is discarded 64 days after constitution.',
+    feedPlan:
+        'Give once daily with or without a meal at approximately the same time each day. In breastfed infants it may be given before or after breastfeeding. Do not mix the oral solution with formula or milk.',
+    doNot:
+        'Do not dispense or use the product as powder; the pharmacy must constitute it before patient use. Do not mix with formula or milk. Do not store a measured dose in the syringe beyond the label window.',
+    monitoring:
+        'Dose is age- and weight-dependent. Monitor SMA response and treatment tolerability, and reassess the measured volume whenever weight-based dosing changes.',
+    pediatricNicu:
+        'This formulation is directly relevant to very young infants: the current dosing table includes patients younger than 2 months. The labeled NG/G method and 10–20 mL flush are product instructions, but fluid-restricted neonates still require a patient-specific tube/fluid plan rather than silent volume reduction.',
+    practicalAr:
+        'EVRYSDI oral solution: الصيدلي يضيف 79 mL purified water ليصبح 0.75 mg/mL، يرج 15 ثانية وينتظر 10 دقائق. للـNG/G أعطِ الجرعة بالـsyringe المرفق ثم flush فورًا بـ10–20 mL ماء. إذا بقيت الجرعة في السرنجة أكثر من 5 دقائق لا تستخدمها.',
+    source:
+        'DailyMed · EVRYSDI (risdiplam) for oral solution · FDA Instructions for Constitution and Use · current Feb 2026 labeling',
+    critical: true,
+  ),
+  TubeMedicationRecord(
+    medicine: 'EVRYSDI risdiplam 5 mg tablet dispersion',
+    formulation:
+        'EVRYSDI 5 mg tablet dispersed in non-chlorinated drinking water; this method is separate from the 0.75 mg/mL oral solution.',
+    status: 'FDA-IFU supported NG / G-tube tablet-dispersion method',
+    tubeRoute:
+        'Nasogastric or gastrostomy tube at least 8 French.',
+    preparation:
+        'Place one 5 mg tablet in a small cup with 5 mL room-temperature non-chlorinated drinking water such as filtered water. Gently swirl for up to 3 minutes until mixed; some particles may remain. Administer the dispersion through the NG/G tube immediately and within 10 minutes of adding water. Refill the cup with at least 15 mL non-chlorinated drinking water, swirl to collect remaining medicine, draw up the rinse and administer it through the tube to deliver the residue.',
+    feedPlan:
+        'Give once daily with or without a meal at approximately the same time each day.',
+    doNot:
+        'Do not chew, cut or crush the tablet. Do not disperse it in any liquid other than room-temperature non-chlorinated drinking water. Do not use a feeding tube smaller than 8 Fr. Discard the dispersion if not administered within 10 minutes.',
+    monitoring:
+        'The tablet is only for patients prescribed the 5 mg dose. Monitor SMA response and confirm that a formulation switch does not accidentally change the prescribed dose.',
+    pediatricNicu:
+        'The tablet option is for patients receiving the fixed 5 mg dose and is not a neonatal formulation. Young infants use the weight-based oral-solution pathway instead.',
+    practicalAr:
+        'EVRYSDI 5 mg tablet للـNG/G ≥8 Fr: ضع الحبة في 5 mL ماء شرب non-chlorinated بدرجة الغرفة، حرّك حتى 3 دقائق، أعطِ خلال 10 دقائق، ثم rinse الكوب بـ≥15 mL من نفس الماء وأعطه عبر الأنبوب. لا تسحق الحبة ولا تستخدم سائلًا آخر.',
+    source:
+        'DailyMed · EVRYSDI (risdiplam) 5 mg tablet · FDA Instructions for Use · approved Feb 2026',
+    critical: true,
+  ),
+
 ];
 
 const tubeSafetyRules = <TubeSafetyRule>[

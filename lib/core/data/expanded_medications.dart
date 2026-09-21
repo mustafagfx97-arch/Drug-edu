@@ -817,6 +817,7 @@ const expandedMedications = <Medication>[
     subtitle: 'Proton-pump inhibitor',
     tags: ['GERD', 'PPI', 'Acid suppression'],
     aliases: ['Protonix'],
+    hasIvPreparation: true,
     useProfile: MedicationUseProfile(
       route: 'Delayed-release tablets or granules; IV is separate.',
       foodTiming: 'Tablets can be taken with or without food, while granule administration is product-specific and commonly tied to meals.',

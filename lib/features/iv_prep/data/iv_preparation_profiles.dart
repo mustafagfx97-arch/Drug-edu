@@ -198,6 +198,199 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     withdrawalUnit: 'mg',
     withdrawalConcentration: 100,
   ),
+  IvPreparationProfile(
+    name: 'Levetiracetam',
+    population: 'General',
+    formulation:
+        'Levetiracetam injection concentrate 500 mg/5 mL = 100 mg/mL in a single-dose vial.',
+    reconstitution:
+        'None. The vial is a 100 mg/mL solution concentrate. Withdraw the already prescribed dose from the exact 100 mg/mL vial.',
+    resultingConcentration:
+        '100 mg/mL before dilution.',
+    furtherDilution:
+        'The cited label dilutes the prescribed adult dose in 100 mL of a compatible diluent. If a smaller volume is required, such as in pediatric patients, calculate the diluent so the final levetiracetam concentration does not exceed 15 mg/mL.',
+    allowedDiluents:
+        '0.9% Sodium Chloride Injection, Lactated Ringer’s Injection, or 5% Dextrose Injection.',
+    administration:
+        'Administer the diluted dose as a 15-minute IV infusion.',
+    stability:
+        'The cited label states the diluted solution may be stored in PVC bags for no more than 24 hours at controlled room temperature. Discard unused vial contents.',
+    incompatibilities:
+        'Use only compatibility information supported by the exact label/local reference; do not add unverified medicines to the same bag.',
+    criticalLocks: [
+      'Concentration lock: the vial is 100 mg/mL; do not confuse this with a final infusion concentration.',
+      'Small-volume lock: final diluted concentration must not exceed 15 mg/mL when using less than 100 mL.',
+    ],
+    sourceLabel:
+        'DailyMed · Levetiracetam Injection 500 mg/5 mL · preparation and administration section',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 100,
+  ),
+  IvPreparationProfile(
+    name: 'Ampicillin / Sulbactam',
+    population: 'General',
+    formulation:
+        'Ampicillin/sulbactam powder for injection in 1.5 g and 3 g standard single-dose vials.',
+    reconstitution:
+        'For the cited standard vials: add 3.2 mL Sterile Water for Injection to the 1.5 g vial or 6.4 mL to the 3 g vial.',
+    resultingConcentration:
+        '375 mg/mL total drug after reconstitution = 250 mg/mL ampicillin + 125 mg/mL sulbactam. Approximate post-reconstitution volumes are 4 mL for 1.5 g and 8 mL for 3 g.',
+    furtherDilution:
+        'For IV infusion, immediately further dilute with a suitable parenteral diluent to a total ampicillin/sulbactam concentration of 3–45 mg/mL. The dosage section also describes greater dilution in 50–100 mL for infusion.',
+    allowedDiluents:
+        'The cited table supports Sterile Water for Injection, 0.9% Sodium Chloride, D5W, Lactated Ringer’s, M/6 sodium lactate and selected dextrose/saline solutions, with different stability limits.',
+    administration:
+        'The cited label allows slow IV injection over at least 10–15 minutes or an IV infusion over 15–30 minutes after appropriate further dilution.',
+    stability:
+        'Stability is diluent/concentration specific. Examples from the cited label: in SWFI or 0.9% NaCl at 45 mg/mL total, 8 hours at about 25°C or 48 hours refrigerated; at 30 mg/mL in those diluents, up to 72 hours refrigerated. D5W limits are shorter. Local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Aminoglycosides should be reconstituted and administered separately because aminopenicillins can inactivate them in vitro.',
+    criticalLocks: [
+      'Dose-basis lock: concentrations and withdrawal calculations here use TOTAL ampicillin + sulbactam mg, not ampicillin alone.',
+      'Product lock: 1.5 g/3 g standard vials are not the 15 g pharmacy bulk package.',
+    ],
+    sourceLabel:
+        'DailyMed · Ampicillin and Sulbactam for Injection, USP · current standard-vial directions for use',
+    withdrawalUnit: 'mg total ampicillin/sulbactam',
+    withdrawalConcentration: 375,
+  ),
+  IvPreparationProfile(
+    name: 'Cefazolin',
+    population: 'General',
+    formulation:
+        'Cefazolin powder for injection in 1 g, 2 g or 3 g single-dose vials.',
+    reconstitution:
+        'For the cited vial product: add 2.5 mL Sterile Water for Injection to 1 g, 5 mL to 2 g, or 7.5 mL to 3 g; shake well.',
+    resultingConcentration:
+        'Approximately 330 mg/mL after reconstitution. Approximate available volumes are 3 mL, 6 mL and 9 mL for the 1 g, 2 g and 3 g vials, respectively.',
+    furtherDilution:
+        'For intermittent or continuous IV infusion, further dilute the reconstituted dose in 50–100 mL of a compatible solution. For labeled direct IV injection, the reconstituted vial is further diluted with approximately 5 mL Sterile Water for Injection.',
+    allowedDiluents:
+        'The cited vial label lists 0.9% Sodium Chloride, D5W or D10W, Lactated Ringer’s, several dextrose/saline combinations, Ringer’s and selected other solutions.',
+    administration:
+        'For direct IV injection in the cited label, inject slowly over 3–5 minutes. For infusion, use the prescribed/local infusion method after the labeled 50–100 mL further dilution.',
+    stability:
+        'The cited vial label states reconstituted/diluted solutions are stable for 24 hours at room temperature or 10 days refrigerated at about 5°C. Local sterile-compounding BUD may be shorter.',
+    incompatibilities:
+        'Verify Y-site/admixture compatibility separately; the profile does not imply that listed carrier fluids make other co-infused drugs compatible.',
+    criticalLocks: [
+      'Product lock: this profile is for 1 g/2 g/3 g single-dose vials, not SmartPak pharmacy bulk or premixed/dual-chamber products.',
+      'Reconstituted concentration is about 330 mg/mL, not 100 mg/mL used by some pharmacy-bulk preparations.',
+    ],
+    sourceLabel:
+        'DailyMed · Cefazolin for Injection, USP · current 1 g/2 g/3 g single-dose vial label',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 330,
+  ),
+  IvPreparationProfile(
+    name: 'Clindamycin',
+    population: 'General',
+    formulation:
+        'Clindamycin phosphate injection solution equivalent to clindamycin 150 mg/mL in single-dose vials; IV use requires dilution.',
+    reconstitution:
+        'None. The vial is a 150 mg/mL solution. Withdraw the prescribed dose, then dilute for IV infusion.',
+    resultingConcentration:
+        '150 mg/mL in the vial before dilution.',
+    furtherDilution:
+        'Final clindamycin concentration for IV infusion should not exceed 18 mg/mL. Labeled examples: 300 mg in 50 mL, 600 mg in 50 mL, 900 mg in 50–100 mL, or 1,200 mg in 100 mL.',
+    allowedDiluents:
+        'Compatibility studies in the cited label support common IV solutions containing sodium chloride, glucose, calcium or potassium; use the exact local/product compatibility reference for a specific admixture.',
+    administration:
+        'Infusion rate should not exceed 30 mg/min. Labeled examples: 300 mg over 10 min, 600 mg over 20 min, 900 mg over 30 min, 1,200 mg over 40 min. More than 1,200 mg in a single 1-hour infusion is not recommended.',
+    stability:
+        'The cited label reports compatibility studies monitored for 24 hours at room temperature; admixture stability depends on concentration and conditions. Use the local sterile-compounding BUD when shorter.',
+    incompatibilities:
+        'The cited label lists physical incompatibility with ampicillin sodium, phenytoin sodium, barbiturates, aminophylline, calcium gluconate and magnesium sulfate.',
+    criticalLocks: [
+      'IV lock: the 150 mg/mL vial must be diluted before IV administration.',
+      'Rate lock: do not exceed 30 mg/min or a final concentration of 18 mg/mL.',
+    ],
+    sourceLabel:
+        'DailyMed · Clindamycin Injection, USP 150 mg/mL · dilution and IV infusion-rate table',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 150,
+  ),
+  IvPreparationProfile(
+    name: 'Pantoprazole',
+    population: 'General',
+    formulation:
+        'Pantoprazole sodium for injection, 40 mg lyophilized single-dose vial.',
+    reconstitution:
+        'Reconstitute each 40 mg vial with 10 mL of 0.9% Sodium Chloride Injection to approximately 4 mg/mL.',
+    resultingConcentration:
+        'Approximately 4 mg/mL after vial reconstitution.',
+    furtherDilution:
+        'For the labeled 15-minute infusion pathway, further dilute with 100 mL of D5W, 0.9% Sodium Chloride, or Lactated Ringer’s to a final concentration of approximately 0.4 mg/mL. The label also contains a separate adult 2-minute IV pathway using the reconstituted 4 mg/mL solution.',
+    allowedDiluents:
+        '0.9% Sodium Chloride for vial reconstitution. For the 15-minute infusion: D5W, 0.9% Sodium Chloride, or Lactated Ringer’s. Use the same supported fluids for line flushing/Y-site carrier as specified by the exact label.',
+    administration:
+        'For the 15-minute pathway, infuse over approximately 15 minutes. A separate labeled adult pathway administers the reconstituted dose over at least 2 minutes; do not mix the two preparation pathways.',
+    stability:
+        'For the 15-minute pathway, the cited label permits the reconstituted solution up to 6 hours at room temperature before further dilution; the final admixed solution must be used within 24 hours from initial reconstitution. Do not freeze. The separate 2-minute pathway has its own 24-hour reconstituted-solution limit.',
+    incompatibilities:
+        'Flush the IV line before and after with a supported carrier. Midazolam is incompatible at the Y-site in the cited label; zinc-containing products may also be incompatible.',
+    criticalLocks: [
+      'Pathway lock: 15-minute infusion and adult ≥2-minute IV administration use different preparation steps.',
+      'Reconstitute the vial with 0.9% Sodium Chloride; do not substitute an unverified vial diluent.',
+    ],
+    sourceLabel:
+        'DailyMed · Pantoprazole Sodium for Injection 40 mg · preparation, stability and compatibility section',
+    withdrawalUnit: 'mg',
+    withdrawalConcentration: 4,
+  ),
+  IvPreparationProfile(
+    name: 'Metronidazole',
+    population: 'General',
+    formulation:
+        'Metronidazole Injection premixed isotonic solution, 500 mg in 100 mL = 5 mg/mL, single-dose bag.',
+    reconstitution:
+        'None. The cited product is ready to use.',
+    resultingConcentration:
+        '5 mg/mL (500 mg/100 mL).',
+    furtherDilution:
+        'None required. The current label explicitly states that no dilution or buffering is required and prohibits additives in the container.',
+    allowedDiluents:
+        'No routine diluent is needed for this premixed bag. If connected to a primary IV fluid system, discontinue the primary solution during metronidazole infusion as directed by the cited label.',
+    administration:
+        'Administer by slow IV drip infusion only. The cited adult anaerobic-infection table infuses maintenance doses over one hour; surgical prophylaxis uses 30–60 minute infusions. Follow the indication-specific order.',
+    stability:
+        'Store the premixed product at controlled room temperature, protect from freezing and protect from light until use. Single-dose container; discard unused portion. Do not refrigerate.',
+    incompatibilities:
+        'Avoid admixtures/additives with other drugs. Do not use equipment containing aluminum that would contact the solution.',
+    criticalLocks: [
+      'Ready-to-use lock: no dilution or buffering is required for the 500 mg/100 mL premixed bag.',
+      'Container lock: do not introduce supplementary medications into the bag.',
+    ],
+    sourceLabel:
+        'DailyMed · Metronidazole Injection USP 500 mg/100 mL premixed bag · current preparation instructions',
+  ),
+  IvPreparationProfile(
+    name: 'Linezolid',
+    population: 'General',
+    formulation:
+        'Linezolid injection ready-to-use single-dose infusion bag, commonly 600 mg/300 mL = 2 mg/mL.',
+    reconstitution:
+        'None. The cited 600 mg/300 mL bag is supplied ready to use.',
+    resultingConcentration:
+        '2 mg/mL.',
+    furtherDilution:
+        'No routine further dilution. Do not introduce additives into the ready-to-use bag.',
+    allowedDiluents:
+        'If the same line is used sequentially for other drugs, compatible flush solutions include 0.9% Sodium Chloride, D5W and Lactated Ringer’s.',
+    administration:
+        'Administer by IV infusion over 30–120 minutes. Do not use the infusion bag in series connections.',
+    stability:
+        'Keep the infusion bag in its overwrap until ready to use, store at controlled room temperature, protect from freezing and protect from light. A yellow color may intensify over time without loss of potency.',
+    incompatibilities:
+        'The cited label reports Y-site physical incompatibility with amphotericin B, chlorpromazine, diazepam, pentamidine, erythromycin lactobionate, phenytoin and trimethoprim/sulfamethoxazole; ceftriaxone is chemically incompatible.',
+    criticalLocks: [
+      'Ready-to-use lock: do not add supplementary medication or routinely dilute the 2 mg/mL bag.',
+      'Line lock: if another drug uses the same line sequentially, flush before and after with a mutually compatible solution.',
+    ],
+    sourceLabel:
+        'DailyMed · Linezolid Injection 600 mg/300 mL · current ready-to-use infusion-bag labeling',
+  ),
+
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

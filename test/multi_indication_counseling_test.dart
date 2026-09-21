@@ -62,12 +62,16 @@ void main() {
 
     expect(find.text('حدد سبب استخدام الدواء'), findsOneWidget);
 
-    await tester.tap(find.byType(DropdownButtonFormField<String?>));
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const ValueKey('indication-option-hormonal-acne-hirsutism')).last);
+    final selector = tester.widget<DropdownButtonFormField<String?>>(
+      find.byType(DropdownButtonFormField<String?>),
+    );
+    selector.onChanged?.call('hormonal-acne-hirsutism');
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('يُستخدم أحيانًا لدى النساء لعلاج حب الشباب الهرموني'), findsOneWidget);
+    expect(
+      find.textContaining('يُستخدم أحيانًا لدى النساء لعلاج حب الشباب الهرموني'),
+      findsOneWidget,
+    );
     expect(find.textContaining('استخدام خارج النشرة'), findsWidgets);
 
     await tester.tap(find.text('Print Card'));

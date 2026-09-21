@@ -574,7 +574,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(29));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(34));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -793,6 +793,51 @@ void main() {
     expect(tafinlar.preparation, contains('30 minutes'));
     expect(tafinlar.feedPlan, contains('1 hour before'));
     expect(tafinlar.feedPlan, contains('2 hours after'));
+
+    final linzess = tubeDrug('LINZESS linaclotide capsules');
+    expect(linzess.preparation, contains('30 mL room-temperature bottled water'));
+    expect(linzess.preparation, contains('at least 20 seconds'));
+    expect(linzess.preparation, contains('10 mL per 10 seconds'));
+    expect(linzess.preparation, contains('at least 10 mL water'));
+    expect(linzess.feedPlan, contains('30 minutes before'));
+    expect(linzess.pediatricNicu, contains('younger than 2 years'));
+
+    final tagrisso = tubeDrug('TAGRISSO osimertinib tablets');
+    expect(tagrisso.tubeRoute, contains('Nasogastric'));
+    expect(tagrisso.preparation, contains('15 mL non-carbonated water'));
+    expect(tagrisso.preparation, contains('additional 15 mL'));
+    expect(tagrisso.preparation, contains('approximately 30 mL water'));
+    expect(tagrisso.preparation, contains('within 30 minutes'));
+    expect(tagrisso.doNot, contains('Do not crush'));
+
+    final lenvima = tubeDrug('LENVIMA lenvatinib capsules');
+    expect(lenvima.tubeRoute, contains('5 French'));
+    expect(lenvima.tubeRoute, contains('6 French'));
+    expect(lenvima.preparation, contains('20 mL syringe'));
+    expect(lenvima.preparation, contains('3 mL water'));
+    expect(lenvima.preparation, contains('Wait 10 minutes'));
+    expect(lenvima.preparation, contains('3 minutes'));
+    expect(lenvima.preparation, contains('another 2 mL water'));
+    expect(lenvima.doNot, contains('silicone'));
+
+    final mekinist = tubeDrug('MEKINIST trametinib oral solution');
+    expect(mekinist.tubeRoute, contains('4 French'));
+    expect(mekinist.preparation, contains('90 mL'));
+    expect(mekinist.preparation, contains('0.05 mg/mL'));
+    expect(mekinist.preparation, contains('35 days'));
+    expect(mekinist.preparation, contains('20 mL oral syringe'));
+    expect(mekinist.doNot, contains('manufacturer instructions'));
+    expect(mekinist.feedPlan, contains('1 hour before'));
+    expect(mekinist.feedPlan, contains('2 hours after'));
+
+    final glycerolPhenylbutyrate =
+        tubeDrug('Glycerol phenylbutyrate oral liquid 1.1 g/mL');
+    expect(glycerolPhenylbutyrate.preparation, contains('new dry oral syringe'));
+    expect(glycerolPhenylbutyrate.preparation, contains('10 mL water or formula'));
+    expect(glycerolPhenylbutyrate.preparation, contains('28 days'));
+    expect(glycerolPhenylbutyrate.doNot, contains('below 1 mL'));
+    expect(glycerolPhenylbutyrate.monitoring, contains('ammonia'));
+    expect(glycerolPhenylbutyrate.pediatricNicu, contains('younger than 2 months'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

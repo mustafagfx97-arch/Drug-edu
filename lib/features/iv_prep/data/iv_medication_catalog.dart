@@ -37,15 +37,15 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Clindamycin', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Linezolid', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Teicoplanin', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Colistimethate / Colistin', population: 'General', category: 'Antibiotics'),
-  IvCatalogEntry(name: 'Tigecycline', population: 'General', category: 'Antibiotics'),
+  IvCatalogEntry(name: 'Colistimethate / Colistin', population: 'General', category: 'Antibiotics', structured: true),
+  IvCatalogEntry(name: 'Tigecycline', population: 'General', category: 'Antibiotics', structured: true),
   IvCatalogEntry(name: 'Daptomycin', population: 'General', category: 'Antibiotics', structured: true),
 
   // General antifungals / antivirals
   IvCatalogEntry(name: 'Fluconazole', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Acyclovir', population: 'General', category: 'Antifungals & antivirals', structured: true),
-  IvCatalogEntry(name: 'Amphotericin B liposomal', population: 'General', category: 'Antifungals & antivirals'),
-  IvCatalogEntry(name: 'Amphotericin B conventional', population: 'General', category: 'Antifungals & antivirals'),
+  IvCatalogEntry(name: 'Amphotericin B liposomal', population: 'General', category: 'Antifungals & antivirals', structured: true),
+  IvCatalogEntry(name: 'Amphotericin B conventional', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Voriconazole', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Caspofungin', population: 'General', category: 'Antifungals & antivirals', structured: true),
   IvCatalogEntry(name: 'Micafungin', population: 'General', category: 'Antifungals & antivirals', structured: true),
@@ -85,8 +85,8 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Levetiracetam', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Valproate', population: 'General', category: 'Neurology & sedation', structured: true),
   IvCatalogEntry(name: 'Phenobarbital', population: 'General', category: 'Neurology & sedation', structured: true),
-  IvCatalogEntry(name: 'Dexamethasone', population: 'General', category: 'Other IV medicines'),
-  IvCatalogEntry(name: 'Hydrocortisone', population: 'General', category: 'Other IV medicines'),
+  IvCatalogEntry(name: 'Dexamethasone', population: 'General', category: 'Other IV medicines', structured: true),
+  IvCatalogEntry(name: 'Hydrocortisone', population: 'General', category: 'Other IV medicines', structured: true),
   IvCatalogEntry(name: 'Methylprednisolone', population: 'General', category: 'Other IV medicines'),
 
   // ICU / sedation

@@ -58,6 +58,12 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
         icon: Icons.child_friendly_outlined,
       ),
       _SupplementGroup(
+        title: 'Performance & specialty',
+        subtitle:
+            'Omega-3, creatine and other evidence-focused specialty supplements with product-specific counseling.',
+        icon: Icons.fitness_center_outlined,
+      ),
+      _SupplementGroup(
         title: 'Combination products',
         subtitle:
             'Multivitamins and multi-mineral products with duplication and total-intake checks.',

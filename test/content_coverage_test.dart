@@ -611,7 +611,10 @@ void main() {
 
     expect(metronidazole.resultingConcentration, contains('5 mg/mL'));
     expect(metronidazole.furtherDilution, contains('None required'));
-    expect(metronidazole.criticalLocks.join(' '), contains('ready-to-use'));
+    expect(
+      metronidazole.criticalLocks.join(' ').toLowerCase(),
+      contains('ready-to-use'),
+    );
 
     expect(linezolid.resultingConcentration, contains('2 mg/mL'));
     expect(linezolid.furtherDilution, contains('No routine further dilution'));

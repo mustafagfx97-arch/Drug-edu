@@ -527,7 +527,7 @@ void main() {
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {
-    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(6));
+    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(13));
 
     for (final entry in ivMedicationCatalog.where((item) => item.structured)) {
       expect(
@@ -568,11 +568,54 @@ void main() {
         findIvPreparationProfile('Piperacillin / Tazobactam', 'General')!;
     final ceftriaxone =
         findIvPreparationProfile('Ceftriaxone', 'General')!;
+    final levetiracetam =
+        findIvPreparationProfile('Levetiracetam', 'General')!;
+    final ampicillinSulbactam =
+        findIvPreparationProfile('Ampicillin / Sulbactam', 'General')!;
+    final cefazolin =
+        findIvPreparationProfile('Cefazolin', 'General')!;
+    final clindamycin =
+        findIvPreparationProfile('Clindamycin', 'General')!;
+    final pantoprazole =
+        findIvPreparationProfile('Pantoprazole', 'General')!;
+    final metronidazole =
+        findIvPreparationProfile('Metronidazole', 'General')!;
+    final linezolid =
+        findIvPreparationProfile('Linezolid', 'General')!;
 
     expect(vancomycin.stability, contains('14 days'));
     expect(meropenem.stability, contains('3 hours'));
     expect(piperacillinTazobactam.resultingConcentration, contains('202.5'));
     expect(ceftriaxone.reconstitution, contains('9.6 mL'));
+
+    expect(levetiracetam.withdrawalConcentration, 100);
+    expect(levetiracetam.furtherDilution, contains('15 mg/mL'));
+    expect(levetiracetam.administration, contains('15-minute'));
+
+    expect(ampicillinSulbactam.reconstitution, contains('3.2 mL'));
+    expect(ampicillinSulbactam.reconstitution, contains('6.4 mL'));
+    expect(ampicillinSulbactam.resultingConcentration, contains('375 mg/mL'));
+    expect(ampicillinSulbactam.incompatibilities, contains('Aminoglycosides'));
+
+    expect(cefazolin.reconstitution, contains('2.5 mL'));
+    expect(cefazolin.resultingConcentration, contains('330 mg/mL'));
+    expect(cefazolin.stability, contains('10 days'));
+
+    expect(clindamycin.withdrawalConcentration, 150);
+    expect(clindamycin.furtherDilution, contains('18 mg/mL'));
+    expect(clindamycin.administration, contains('30 mg/min'));
+
+    expect(pantoprazole.reconstitution, contains('10 mL'));
+    expect(pantoprazole.resultingConcentration, contains('4 mg/mL'));
+    expect(pantoprazole.furtherDilution, contains('0.4 mg/mL'));
+
+    expect(metronidazole.resultingConcentration, contains('5 mg/mL'));
+    expect(metronidazole.furtherDilution, contains('None required'));
+    expect(metronidazole.criticalLocks.join(' '), contains('ready-to-use'));
+
+    expect(linezolid.resultingConcentration, contains('2 mg/mL'));
+    expect(linezolid.furtherDilution, contains('No routine further dilution'));
+    expect(linezolid.administration, contains('30–120 minutes'));
 
     expect(
       findIvPreparationProfile('Sodium bicarbonate', 'NICU'),

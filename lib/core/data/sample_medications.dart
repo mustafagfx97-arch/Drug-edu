@@ -11,6 +11,7 @@ const sampleMedications = <Medication>[
     name: 'Losartan',
     subtitle: 'ARB antihypertensive',
     tags: ['Blood pressure', 'Oral', 'Chronic'],
+    sourceLabel: 'MedlinePlus Drug Information · Losartan',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -40,6 +41,7 @@ const sampleMedications = <Medication>[
     name: 'Metformin',
     subtitle: 'Biguanide',
     tags: ['Diabetes', 'Oral', 'Chronic'],
+    sourceLabel: 'MedlinePlus Drug Information · Metformin + DailyMed metformin formulation labeling',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -67,6 +69,7 @@ const sampleMedications = <Medication>[
     name: 'Salbutamol MDI',
     subtitle: 'Short-acting bronchodilator inhaler',
     tags: ['Asthma', 'Inhaler', 'Device'],
+    sourceLabel: 'DailyMed · Albuterol sulfate inhalation aerosol · updated May 2026',
     hasVisualGuide: true,
     sections: [
       MedicationSection(
@@ -95,6 +98,7 @@ const sampleMedications = <Medication>[
     name: 'Amoxicillin',
     subtitle: 'Penicillin antibiotic',
     tags: ['Antibiotic', 'Oral', 'Course'],
+    sourceLabel: 'MedlinePlus Drug Information · Amoxicillin + product-specific DailyMed labeling',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -117,6 +121,7 @@ const sampleMedications = <Medication>[
     name: 'Levetiracetam',
     subtitle: 'Antiseizure medicine',
     tags: ['Seizure', 'Oral', 'IV'],
+    sourceLabel: 'MedlinePlus Drug Information · Levetiracetam + DailyMed prescribing information',
     hasIvPreparation: true,
     sections: [
       MedicationSection(
@@ -139,6 +144,7 @@ const sampleMedications = <Medication>[
     name: 'Omeprazole',
     subtitle: 'Proton-pump inhibitor',
     tags: ['Acid suppression', 'Oral'],
+    sourceLabel: 'MedlinePlus Drug Information · Omeprazole + product-specific DailyMed labeling',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -159,6 +165,7 @@ const sampleMedications = <Medication>[
     name: 'Paracetamol',
     subtitle: 'Analgesic / antipyretic',
     tags: ['Pain', 'Fever', 'OTC'],
+    sourceLabel: 'DailyMed · Acetaminophen Drug Facts · updated Aug 2026 + MedlinePlus Acetaminophen',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -180,6 +187,7 @@ const sampleMedications = <Medication>[
     name: 'Apixaban',
     subtitle: 'Direct oral anticoagulant',
     tags: ['Anticoagulant', 'Bleeding risk', 'Oral'],
+    sourceLabel: 'FDA / DailyMed ELIQUIS (apixaban) prescribing information + MedlinePlus Apixaban',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
@@ -202,6 +210,7 @@ const sampleMedications = <Medication>[
     name: 'Cetirizine',
     subtitle: 'Second-generation antihistamine',
     tags: ['Allergy', 'Oral', 'OTC'],
+    sourceLabel: 'MedlinePlus Drug Information · Cetirizine',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',

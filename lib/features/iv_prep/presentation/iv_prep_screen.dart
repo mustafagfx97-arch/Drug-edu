@@ -179,8 +179,7 @@ class _IvPrepScreenState extends State<IvPrepScreen> {
                 final entry = categoryEntries[index];
 
                 final profile =
-                    findIvPreparationProfile(entry.name, entry.population);
-                assert(profile != null);
+                    findIvPreparationProfile(entry.name, entry.population)!;
 
                 return Card(
                   child: ListTile(

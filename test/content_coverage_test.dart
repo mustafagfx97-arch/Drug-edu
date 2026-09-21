@@ -574,7 +574,7 @@ void main() {
     expect(tubeFeedInteractions.length, greaterThanOrEqualTo(5));
     expect(tubeSafetyRules.length, greaterThanOrEqualTo(6));
     expect(injectableEnteralSafetyRules.length, greaterThanOrEqualTo(3));
-    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(24));
+    expect(tubeMedicationRecords.length, greaterThanOrEqualTo(29));
 
     for (final record in tubeFeedInteractions) {
       expect(record.medicine.trim(), isNotEmpty);
@@ -752,6 +752,47 @@ void main() {
     expect(phenytoinSuspension.feedPlan, contains('2 hours before'));
     expect(phenytoinSuspension.feedPlan, contains('2 hours after'));
     expect(phenytoinSuspension.monitoring, contains('serum phenytoin'));
+
+    final levetiracetamTube =
+        tubeDrug('Levetiracetam tablets for oral suspension');
+    expect(levetiracetamTube.tubeRoute, contains('10 to 14'));
+    expect(levetiracetamTube.preparation, contains('10 mL'));
+    expect(levetiracetamTube.preparation, contains('flush the feeding tube twice'));
+    expect(levetiracetamTube.doNot, contains('partial tablets'));
+
+    final baclofenSuspension = tubeDrug('Baclofen oral suspension 5 mg/mL');
+    expect(baclofenSuspension.tubeRoute, contains('8 French'));
+    expect(baclofenSuspension.preparation, contains('15 to 30 mL'));
+    expect(baclofenSuspension.preparation, contains('at least 25 mL'));
+    expect(baclofenSuspension.preparation, contains('up to 4 hours'));
+
+    final lyvispah = tubeDrug('LYVISPAH baclofen granules');
+    expect(lyvispah.tubeRoute, contains('NG tube 8 Fr'));
+    expect(lyvispah.tubeRoute, contains('G-tube 12 Fr'));
+    expect(lyvispah.tubeRoute, contains('PEG 14 Fr'));
+    expect(lyvispah.tubeRoute, contains('GJ tube 16 Fr'));
+    expect(lyvispah.preparation, contains('15 mL liquid'));
+    expect(lyvispah.preparation, contains('within 2 hours'));
+    expect(lyvispah.preparation, contains('invert it three times'));
+
+    final carglumic =
+        tubeDrug('Carglumic acid tablets for oral suspension');
+    expect(carglumic.preparation, contains('minimum of 2.5 mL'));
+    expect(carglumic.preparation, contains('1 to 2 mL'));
+    expect(carglumic.feedPlan, contains('immediately before meals or feedings'));
+    expect(carglumic.doNot, contains('do not crush'));
+    expect(carglumic.pediatricNicu, contains('from birth'));
+
+    final tafinlar =
+        tubeDrug('TAFINLAR dabrafenib tablets for oral suspension');
+    expect(tafinlar.tubeRoute, contains('10 Fr'));
+    expect(tafinlar.tubeRoute, contains('12 Fr'));
+    expect(tafinlar.preparation, contains('1 to 4 tablets'));
+    expect(tafinlar.preparation, contains('5 to 15 tablets'));
+    expect(tafinlar.preparation, contains('at least 3 minutes'));
+    expect(tafinlar.preparation, contains('30 minutes'));
+    expect(tafinlar.feedPlan, contains('1 hour before'));
+    expect(tafinlar.feedPlan, contains('2 hours after'));
   });
 
   test('IV structured catalog is locked to verified preparation profiles', () {

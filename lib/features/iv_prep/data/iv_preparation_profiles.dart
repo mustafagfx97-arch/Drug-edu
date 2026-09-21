@@ -1,3 +1,19 @@
+class IvWithdrawalVariant {
+  const IvWithdrawalVariant({
+    required this.id,
+    required this.label,
+    required this.unit,
+    required this.concentration,
+    required this.note,
+  });
+
+  final String id;
+  final String label;
+  final String unit;
+  final double concentration;
+  final String note;
+}
+
 class IvPreparationProfile {
   const IvPreparationProfile({
     required this.name,
@@ -14,6 +30,7 @@ class IvPreparationProfile {
     required this.sourceLabel,
     this.withdrawalUnit = '',
     this.withdrawalConcentration,
+    this.withdrawalVariants = const [],
   });
 
   final String name;
@@ -33,6 +50,24 @@ class IvPreparationProfile {
   /// to a withdrawal volume. It never selects a dose or target concentration.
   final String withdrawalUnit;
   final double? withdrawalConcentration;
+  final List<IvWithdrawalVariant> withdrawalVariants;
+
+  List<IvWithdrawalVariant> get calculatorVariants {
+    if (withdrawalVariants.isNotEmpty) return withdrawalVariants;
+    final concentration = withdrawalConcentration;
+    if (concentration == null || withdrawalUnit.trim().isEmpty) {
+      return const [];
+    }
+    return [
+      IvWithdrawalVariant(
+        id: 'default',
+        label: 'Verified product concentration',
+        unit: withdrawalUnit,
+        concentration: concentration,
+        note: resultingConcentration,
+      ),
+    ];
+  }
 }
 
 const ivPreparationProfiles = <IvPreparationProfile>[

@@ -702,4 +702,168 @@ void main() {
     );
   });
 
+
+  test('cefdinir plus oral iron creates separation alert', () {
+    final plan = engine.generate(
+      items: [
+        item('cefdinir-pediatric-suspension', 'Cefdinir Suspension'),
+        item(
+          'oral-iron-salts',
+          'Iron',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Cefdinir + iron' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('ibandronate plus calcium requires 60-minute mineral separation', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'ibandronate-monthly',
+          'Ibandronate',
+          frequency: RegimenFrequency.monthly,
+          preference: TimingPreference.breakfast,
+        ),
+        item(
+          'calcium-carbonate',
+          'Calcium Carbonate',
+          type: PlanItemType.supplement,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) => alert.title == 'Ibandronate + minerals' && alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('bismuth subsalicylate plus anticoagulant creates bleeding review', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'bismuth-subsalicylate',
+          'Bismuth Subsalicylate',
+          frequency: RegimenFrequency.asNeeded,
+        ),
+        item('apixaban', 'Apixaban'),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'Bismuth subsalicylate + bleeding-risk therapy' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+  test('JAK inhibitor plus biologic DMARD creates critical review', () {
+    final plan = engine.generate(
+      items: [
+        item('upadacitinib', 'Upadacitinib'),
+        item(
+          'etanercept',
+          'Etanercept',
+          preference: TimingPreference.breakfast,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title == 'JAK inhibitor + biologic immunomodulator' &&
+            alert.isCritical,
+      ),
+      isTrue,
+    );
+  });
+
+
+  test('monthly ibandronate is not converted into a daily dose', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'ibandronate-monthly',
+          'Ibandronate',
+          frequency: RegimenFrequency.monthly,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title.contains('Calendar regimen') &&
+            alert.message.contains('شهري'),
+      ),
+      isTrue,
+    );
+  });
+
+  test('DMPA every 13 weeks stays calendar based', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'medroxyprogesterone-im-contraception',
+          'DMPA',
+          frequency: RegimenFrequency.every13Weeks,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title.contains('Calendar regimen') &&
+            alert.message.contains('13 أسبوع'),
+      ),
+      isTrue,
+    );
+  });
+
+  test('Prolia every 6 months stays calendar based', () {
+    final plan = engine.generate(
+      items: [
+        item(
+          'denosumab-prolia',
+          'Prolia',
+          frequency: RegimenFrequency.every6Months,
+        ),
+      ],
+      routine: routine,
+    );
+
+    expect(plan.doses, isEmpty);
+    expect(
+      plan.alerts.any(
+        (alert) =>
+            alert.title.contains('Calendar regimen') &&
+            alert.message.contains('6 أشهر'),
+      ),
+      isTrue,
+    );
+  });
+
 }

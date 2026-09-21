@@ -11,6 +11,9 @@ enum RegimenFrequency {
   morning,
   bedtime,
   weekly,
+  monthly,
+  every13Weeks,
+  every6Months,
   asNeeded,
 }
 

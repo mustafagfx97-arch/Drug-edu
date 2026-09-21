@@ -8,6 +8,7 @@ import 'package:drug_edu/core/data/sample_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications.dart';
 import 'package:drug_edu/core/data/expanded_medications_2.dart';
 import 'package:drug_edu/core/data/expanded_medications_3.dart';
+import 'package:drug_edu/core/data/expanded_medications_4.dart';
 import 'package:drug_edu/features/supplements/data/supplement_profiles.dart';
 import 'package:drug_edu/features/medication_plan/domain/medication_timing_rules.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
@@ -35,7 +36,7 @@ void main() {
 
 
   test('medicine encyclopedia has substantial practical coverage', () {
-    expect(sampleMedications.length, greaterThanOrEqualTo(139));
+    expect(sampleMedications.length, greaterThanOrEqualTo(152));
 
     final ids = sampleMedications.map((medicine) => medicine.id).toList();
     expect(ids.toSet().length, ids.length, reason: 'Medication IDs must be unique');
@@ -369,6 +370,62 @@ void main() {
       (medicine) => medicine.id == 'oxymetazoline-nasal',
     );
     expect(oxymetazoline.patient.timingAr, contains('3 أيام'));
+  });
+
+  test('fourth expansion adds complete weak-section coverage records', () {
+    expect(expandedMedications4.length, 13);
+
+    final ids = expandedMedications4.map((medicine) => medicine.id).toList();
+    expect(ids.toSet().length, ids.length);
+
+    for (final medicine in expandedMedications4) {
+      expect(medicine.useProfile.isEmpty, isFalse,
+          reason: medicine.name + ' structured profile');
+      expect(medicine.sourceLabel.trim(), isNotEmpty,
+          reason: medicine.name + ' source');
+      expect(medicine.patient.purposeAr.trim(), isNotEmpty);
+      expect(medicine.patient.howToUseAr.trim(), isNotEmpty);
+      expect(medicine.patient.timingAr.trim(), isNotEmpty);
+      expect(medicine.patient.importantAr.trim(), isNotEmpty);
+      expect(medicine.patient.missedDoseAr.trim(), isNotEmpty);
+      expect(medicine.patient.seekHelpAr.trim(), isNotEmpty);
+      expect(medicine.patient.teachBackAr.trim(), isNotEmpty);
+    }
+
+    final amoxicillin = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'amoxicillin-pediatric-suspension',
+    );
+    expect(amoxicillin.patient.storageAr, contains('14'));
+
+    final cefdinir = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'cefdinir-pediatric-suspension',
+    );
+    expect(cefdinir.patient.storageAr, contains('10'));
+    expect(cefdinir.patient.timingAr, contains('ساعتين'));
+
+    final ibandronate = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'ibandronate-monthly',
+    );
+    expect(ibandronate.patient.timingAr, contains('60'));
+    expect(ibandronate.patient.missedDoseAr, contains('7 أيام'));
+
+    final dmpa = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'medroxyprogesterone-im-contraception',
+    );
+    expect(dmpa.patient.timingAr, contains('13'));
+    expect(dmpa.patient.timingAr, contains('15'));
+    expect(dmpa.patient.importantAr, contains('7 أيام'));
+    expect(dmpa.sourceLabel, contains('CDC'));
+
+    final predEye = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'prednisolone-acetate-ophthalmic',
+    );
+    expect(predEye.patient.howToUseAr, contains('رج'));
+
+    final bismuth = expandedMedications4.firstWhere(
+      (medicine) => medicine.id == 'bismuth-subsalicylate',
+    );
+    expect(bismuth.patient.seekHelpAr, contains('يومين'));
   });
 
   test('expanded medicines carry structured pharmacist and source content', () {

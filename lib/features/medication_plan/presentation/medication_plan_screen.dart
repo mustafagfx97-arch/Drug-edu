@@ -384,6 +384,12 @@ class _MedicationPlanScreenState extends State<MedicationPlanScreen> {
         return 'Bedtime';
       case RegimenFrequency.weekly:
         return 'Weekly';
+      case RegimenFrequency.monthly:
+        return 'Monthly';
+      case RegimenFrequency.every13Weeks:
+        return 'Every 13 weeks';
+      case RegimenFrequency.every6Months:
+        return 'Every 6 months';
       case RegimenFrequency.asNeeded:
         return 'As needed';
     }
@@ -1028,6 +1034,12 @@ class _MedicationConfigDialogState extends State<_MedicationConfigDialog> {
         return 'Bedtime';
       case RegimenFrequency.weekly:
         return 'Weekly';
+      case RegimenFrequency.monthly:
+        return 'Monthly';
+      case RegimenFrequency.every13Weeks:
+        return 'Every 13 weeks';
+      case RegimenFrequency.every6Months:
+        return 'Every 6 months';
       case RegimenFrequency.asNeeded:
         return 'As needed';
     }

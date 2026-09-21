@@ -262,6 +262,39 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr:
         'للاستخدام الذاتي القصير فقط: لا تستخدم oxymetazoline أكثر من 3 أيام متتالية لأن الاحتقان قد يعود أو يزداد مع الاستخدام المطول.',
   ),
+  'amoxicillin-pediatric-suspension':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cefdinir-pediatric-suspension':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'simethicone-infant-drops':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortSelfCare),
+  'ibandronate-monthly': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr:
+        'علاج طويل الأمد لهشاشة العظام مع إعادة تقييم دورية للحاجة للاستمرار. لا تحدد لنفسك موعد إيقاف أو drug holiday من دون الطبيب.',
+  ),
+  'medroxyprogesterone-im-contraception': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'يُعاد عادة كل 13 أسبوعًا. الملصق الحالي لا يوصي باستخدامه كوسيلة طويلة الأمد لأكثر من سنتين إلا إذا كانت البدائل غير مناسبة بسبب تأثيره على كثافة العظم.',
+  ),
+  'estradiol-transdermal-patch': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'مدة العلاج تُراجع دوريًا حسب سبب الاستخدام والأعراض والمخاطر؛ لا تمدد العلاج أو توقفه من نفسك.',
+  ),
+  'bismuth-subsalicylate':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortSelfCare),
+  'dorzolamide-ophthalmic':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'olopatadine-ophthalmic-otc':
+      TherapyDurationGuidance(kind: TherapyDurationKind.intermittent),
+  'prednisolone-acetate-ophthalmic':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'ofloxacin-otic':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'etanercept': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'secukinumab': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

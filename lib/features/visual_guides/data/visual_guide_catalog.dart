@@ -645,6 +645,50 @@ const visualGuideCatalog = <VisualGuideData>[
         'ZAVZPRET جهاز جرعة واحدة: لا تختبره. انفخ الأنف بلطف، أبقِ الرأس مستقيمًا، أغلق الفتحة الأخرى، خذ شهيقًا بطيئًا واضغط مرة واحدة في فتحة واحدة فقط، ثم أبقِ الرأس مستقيمًا 10–20 ثانية.',
   ),
 
+
+  VisualGuideData(
+    id: 'canasa-suppository',
+    title: 'CANASA mesalamine suppository',
+    subtitle: 'Pointed end first; bedtime use; retain for 1–3 hours or longer.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'If possible, empty the rectum before the bedtime dose.',
+      'Unwrap the suppository with minimal handling; do not cut or break it.',
+      'Insert the suppository completely into the rectum, pointed end first, using gentle pressure.',
+      'A small amount of lubricating gel may be used on the tip if needed.',
+      'Try to retain the suppository for 1–3 hours or longer if possible.',
+    ],
+    mistakes: [
+      'Cutting or breaking the suppository.',
+      'Handling it too long until it begins to melt.',
+      'Inserting it only partially.',
+      'Using two suppositories together after a missed dose.',
+    ],
+    patientSummaryAr:
+        'CANASA: أفرغ المستقيم إن أمكن، افتح الغلاف بأقل لمس، أدخل التحميلة كاملة بالطرف المدبب أولًا، ولا تقطعها. حاول الاحتفاظ بها 1–3 ساعات أو أكثر.',
+  ),
+  VisualGuideData(
+    id: 'rowasa-enema',
+    title: 'ROWASA mesalamine enema',
+    subtitle: 'Shake, left-side/knee-chest position, retain overnight.',
+    icon: Icons.medical_services_outlined,
+    steps: [
+      'Shake the bottle well and remove the protective sheath.',
+      'Lie on the left side with the lower leg extended and the upper right leg flexed, or use the knee-chest position.',
+      'Gently insert the applicator tip toward the umbilicus; never force it.',
+      'Steadily squeeze the bottle to discharge the suspension.',
+      'Remain in position for at least 30 minutes and aim to retain the dose overnight, approximately 8 hours.',
+    ],
+    mistakes: [
+      'Skipping the shaking step.',
+      'Forcing the applicator.',
+      'Standing immediately after administration.',
+      'Assuming standard ROWASA is sulfite-free.',
+    ],
+    patientSummaryAr:
+        'ROWASA: رج العبوة، استلقِ على الجانب الأيسر أو وضعية knee-chest، أدخل الطرف بلطف باتجاه السرة واضغط بثبات. ابقَ في الوضعية 30 دقيقة على الأقل وحاول الاحتفاظ بالدواء طوال الليل.',
+  ),
+
 ];
 
 
@@ -700,6 +744,8 @@ const medicationVisualGuideIds = <String, List<String>>{
   'rizatriptan-odt': ['rizatriptan-odt'],
   'rimegepant-nurtec-odt': ['nurtec-odt'],
   'zavegepant-zavzpret-nasal': ['zavzpret-device'],
+  'mesalamine-canasa-suppository': ['canasa-suppository'],
+  'mesalamine-rowasa-enema': ['rowasa-enema'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

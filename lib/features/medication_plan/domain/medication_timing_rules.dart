@@ -1527,6 +1527,36 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · FOSRENOL · Dec 2024',
   ),
 
+
+  'teriparatide-forteo': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'FORTEO حقنة تحت الجلد مرة يوميًا؛ لا يحتاج ربطًا بالطعام. أول عدة جرعات تُعطى حيث يمكن الجلوس/الاستلقاء إذا حدث دوار، والحفظ بالثلاجة جزء أساسي من الخطة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · FORTEO · Aug 2026',
+  ),
+  'abaloparatide-tymlos': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'TYMLOS مرة يوميًا تقريبًا في نفس الوقت، مع الطعام أو بدونه؛ بعد أول استخدام يتغير الحفظ إلى درجة الغرفة لمدة 30 يومًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TYMLOS · Aug 2026',
+  ),
+  'romosozumab-evenity': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'EVENITY جرعة عيادية شهرية من حقنتين متتاليتين، لمدة 12 شهرًا فقط؛ إذا فات الموعد يُعاد بناء الجدول من تاريخ الجرعة الجديدة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · EVENITY · Aug 2026',
+  ),
+  'zoledronic-acid-osteoporosis': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Zoledronic acid 5 mg/100 mL للـosteoporosis تسريب عيادي طويل الفاصل؛ لا يحدد Auto موعدًا قبل تأكيد الاستطباب، وظائف الكلى، الترطيب والكالسيوم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Zoledronic Acid Injection 5 mg/100 mL · Sep 2026',
+  ),
+
 };
 
 

@@ -469,6 +469,28 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'lanthanum-carbonate-fosrenol-chewable':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'teriparatide-forteo': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'غالبًا علاج بنّاء للعظم لمدة محددة؛ استخدام FORTEO لأكثر من سنتين خلال العمر يُنظر فيه فقط إذا بقي أو عاد خطر الكسور مرتفعًا.',
+  ),
+  'abaloparatide-tymlos': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'استخدام TYMLOS لأكثر من سنتين خلال العمر غير موصى به حسب الملصق الحالي.',
+  ),
+  'romosozumab-evenity': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'EVENITY محدد بـ12 جرعة شهرية فقط، ثم تُراجع الحاجة لعلاج antiresorptive لاحق.',
+  ),
+  'zoledronic-acid-osteoporosis': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'المدة الكلية تعتمد على خطر الكسور والاستطباب؛ العلاج قد يكون سنويًا مع إعادة تقييم دورية للحاجة للاستمرار.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

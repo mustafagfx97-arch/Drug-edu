@@ -109,6 +109,13 @@ const medicationFamilies = <MedicationFamily>[
     searchTerms: ['osteoporosis', 'bisphosphonate', 'bone', 'alendronate'],
   ),
   MedicationFamily(
+    id: 'kidney-electrolytes',
+    name: 'Kidney & Electrolytes',
+    subtitle: 'Potassium/phosphate binders, dialysis-related oral therapy and electrolyte-focused counseling.',
+    icon: Icons.water_drop_outlined,
+    searchTerms: ['kidney', 'renal', 'dialysis', 'potassium', 'phosphate', 'binder'],
+  ),
+  MedicationFamily(
     id: 'otc',
     name: 'OTC & Self-care',
     subtitle: 'Common self-care medicines with duration and referral limits.',

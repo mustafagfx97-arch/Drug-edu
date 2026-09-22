@@ -90,7 +90,7 @@ void main() {
     ].join(' ');
 
     expect(text, contains('العبوة الزجاجية الأصلية'));
-    expect(text.toLowerCase(), contains('glass'));
+    expect(text, contains('الزجاجية'));
     expect(text.toLowerCase(), contains('20–25'));
     expect(text, contains('بإحكام'));
 

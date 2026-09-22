@@ -1332,6 +1332,44 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · ZAVZPRET IFU · Aug 2025',
   ),
 
+
+  'aspirin-81-antiplatelet-dr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'إذا كان aspirin 81 mg جزءًا من خطة antiplatelet يومية فخذه في وقت ثابت حسب الوصفة؛ لا ينشئ التطبيق قرار بدء أو إيقاف aspirin للوقاية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Aspirin Low Dose 81 mg DR · Jul 2026',
+  ),
+  'ticagrelor-brilinta': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'BRILINTA يُؤخذ مرتين يوميًا لكن القوة والمدة تعتمد على الاستطباب؛ لا يستخدم Auto دون معرفة المسار والـstrength الموصوفين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · BRILINTA · 2026',
+  ),
+  'prasugrel': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'مرة يوميًا حسب خطة ACS/PCI والدعامة؛ لا ينشئ التطبيق loading dose أو مدة العلاج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Prasugrel / EFFIENT',
+  ),
+  'aspirin-er-dipyridamole': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'كبسولة صباحًا وكبسولة مساءً، مع الطعام أو بدونه؛ لا تستبدلها بمكونات منفصلة.',
+    autoScheduleSafe: true,
+    source: 'DailyMed · Aspirin 25 mg / ER Dipyridamole 200 mg · Jun 2026',
+  ),
+  'cilostazol': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'مرتين يوميًا: قبل الإفطار والعشاء بـ30 دقيقة على الأقل أو بعد كل منهما بساعتين.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cilostazol',
+  ),
+
 };
 
 

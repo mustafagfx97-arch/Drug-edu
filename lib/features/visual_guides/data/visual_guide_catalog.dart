@@ -325,6 +325,50 @@ const visualGuideCatalog = <VisualGuideData>[
         'الكبسولة هنا للاستنشاق وليست للبلع. ضعها في جهازها المخصص وافتح/اثقب الكبسولة بالطريقة الخاصة بالجهاز، ثم أخرج الهواء بعيدًا عنه واستنشق بعمق. اتبع تعليمات نفس جهازك لأن خطوات الفتح وعدد مرات الاستنشاق قد تختلف.',
   ),
   VisualGuideData(
+    id: 'forteo-pen',
+    title: 'FORTEO delivery device',
+    subtitle:
+        'Product-specific daily teriparatide pen technique · new needle each dose · 5-count hold · refrigerated after use.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Check the FORTEO label, expiry and that the solution is clear and colorless with no particles.',
+      'Attach a NEW compatible pen needle and remove the needle covers exactly as the User Manual shows.',
+      'Pull the black injection button out until it stops and confirm the red stripe is visible.',
+      'Insert into the prepared thigh or abdominal site, push the black injection button fully in, keep it pressed and slowly count to 5.',
+      'Remove the needle, confirm the black button is fully in and no yellow shaft is showing, then remove/discard the needle, recap the pen and return it to the refrigerator immediately.',
+    ],
+    mistakes: [
+      'Transferring FORTEO from the delivery device into a syringe.',
+      'Leaving the needle attached between injections or reusing a needle.',
+      'Giving a second injection the same day because the indicator looked uncertain.',
+      'Leaving the device unrefrigerated or using it after 28 days from first use.',
+    ],
+    patientSummaryAr:
+        'إبرة جديدة لكل جرعة. اسحب زر الحقن الأسود حتى يظهر الخط الأحمر، احقن في الفخذ أو البطن، اضغط الزر بالكامل واستمر ضاغطًا وأنت تعد ببطء إلى 5. بعد الجرعة انزع الإبرة، أعد الغطاء، وأرجع القلم للثلاجة مباشرة. لا تنقل الدواء إلى سرنجة.',
+  ),
+  VisualGuideData(
+    id: 'tymlos-pen',
+    title: 'TYMLOS pen',
+    subtitle:
+        'Product-specific abaloparatide pen · prime new pen Day 1 only · dose window 80 · 10-count hold.',
+    icon: Icons.colorize_outlined,
+    steps: [
+      'Attach a NEW pen needle. For each NEW pen only, perform the Day-1 priming steps; do not repeat priming on Days 2–30.',
+      'Turn the dose knob until 80 is aligned in the dose window.',
+      'Choose a rotating lower-abdominal site, avoiding the 2-inch area around the navel, and insert the needle straight into the skin.',
+      'Press the green injection button fully until 0 appears and keep pressing while counting to 10.',
+      'Remove the needle straight out, safely remove/discard the pen needle, recap the pen and store the opened pen at room temperature 20–25°C.',
+    ],
+    mistakes: [
+      'Priming on every dose instead of Day 1 of each new pen only.',
+      'Injecting within 2 inches of the navel or failing to rotate sites.',
+      'Releasing the green button before the full 10-count.',
+      'Keeping the opened pen refrigerated by habit, leaving the needle attached, or using the pen beyond 30 days after first use.',
+    ],
+    patientSummaryAr:
+        'اعمل priming مرة واحدة فقط في اليوم الأول لكل قلم جديد. اضبط الجرعة على 80، احقن أسفل البطن بعيدًا 2 إنش عن السرة، واضغط الزر الأخضر حتى يظهر 0 واستمر ضاغطًا وأنت تعد إلى 10. بعد أول استخدام يُحفظ القلم بدرجة الغرفة 20–25°C ويُرمى بعد 30 يومًا.',
+  ),
+  VisualGuideData(
     id: 'weekly-injection-device',
     title: 'Weekly injection device',
     subtitle:
@@ -700,6 +744,8 @@ VisualGuideData? visualGuideById(String id) {
 }
 
 const medicationVisualGuideIds = <String, List<String>>{
+  'teriparatide-forteo': ['forteo-pen'],
+  'abaloparatide-tymlos': ['tymlos-pen'],
   'salbutamol-mdi': ['mdi', 'spacer'],
   'insulin-glargine': ['insulin-pen'],
   'budesonide-formoterol': ['mdi', 'turbuhaler'],

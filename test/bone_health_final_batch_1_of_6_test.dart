@@ -119,7 +119,7 @@ void main() {
     expect(text, contains('5 mg/100 mL'));
     expect(text.toLowerCase(), contains('no less than 15 minutes'));
     expect(text, contains('35 mL/min'));
-    expect(text.toLowerCase(), contains('hydrated'));
+    expect(text.toLowerCase(), contains('dehydration'));
     expect(text.toLowerCase(), contains('serum creatinine'));
     expect(text.toLowerCase(), contains('acetaminophen'));
     expect(text.toLowerCase(), contains('first 3 days'));

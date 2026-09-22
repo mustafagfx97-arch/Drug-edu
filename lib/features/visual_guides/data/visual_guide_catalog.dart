@@ -325,6 +325,28 @@ const visualGuideCatalog = <VisualGuideData>[
         'الكبسولة هنا للاستنشاق وليست للبلع. ضعها في جهازها المخصص وافتح/اثقب الكبسولة بالطريقة الخاصة بالجهاز، ثم أخرج الهواء بعيدًا عنه واستنشق بعمق. اتبع تعليمات نفس جهازك لأن خطوات الفتح وعدد مرات الاستنشاق قد تختلف.',
   ),
   VisualGuideData(
+    id: 'permethrin-scabies-full-body',
+    title: 'Permethrin 5% scabies cream',
+    subtitle:
+        'Full-skin application · 8–14 hour contact time · wash off afterward.',
+    icon: Icons.accessibility_new_outlined,
+    steps: [
+      'Apply the prescribed 5% cream to the full skin surface as directed, not only visible scabies lesions.',
+      'Work systematically from the head/hairline as directed down to the soles, including commonly missed skin folds and spaces between fingers and toes.',
+      'In infants, include the scalp, temples and forehead while keeping the cream away from the eyes and mouth.',
+      'Leave the cream on for the full 8–14 hours without washing it off early.',
+      'After the contact period, wash the cream off in a shower or bath.',
+    ],
+    mistakes: [
+      'Spot-treating only the visible bumps.',
+      'Washing the cream off before 8 hours.',
+      'Automatically repeating treatment because itching continues for a few days.',
+      'Confusing 5% scabies cream instructions with a permethrin lice product.',
+    ],
+    patientSummaryAr:
+        'ضع Permethrin 5% على كامل الجلد حسب الوصفة وليس فقط على الحبوب، واتركه 8–14 ساعة ثم اغسله. لا تكرر العلاج مباشرة لمجرد استمرار الحكة، ولا تستخدم تعليمات منتج القمل بدل كريم الجرب.',
+  ),
+  VisualGuideData(
     id: 'forteo-pen',
     title: 'FORTEO delivery device',
     subtitle:
@@ -766,6 +788,7 @@ VisualGuideData? visualGuideById(String id) {
 }
 
 const medicationVisualGuideIds = <String, List<String>>{
+  'permethrin-5-cream-scabies': ['permethrin-scabies-full-body'],
   'glycerin-adult-suppository-2g': ['glycerin-adult-suppository'],
   'teriparatide-forteo': ['forteo-pen'],
   'abaloparatide-tymlos': ['tymlos-pen'],

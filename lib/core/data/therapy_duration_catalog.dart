@@ -501,6 +501,16 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'meclizine-25mg-motion-sickness-otc':
       TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
 
+
+  'permethrin-5-cream-scabies':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'clotrimazole-1-cream-otc':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'adapalene-0-1-gel-otc':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'mupirocin-2-ointment-impetigo':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

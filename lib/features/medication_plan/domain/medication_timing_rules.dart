@@ -1587,6 +1587,36 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Meclizine HCl 25 mg Motion Sickness · Aug 2026',
   ),
 
+
+  'permethrin-5-cream-scabies': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Permethrin 5% للجرب يحتاج تطبيقًا كاملًا وcontact time من 8–14 ساعة قبل الغسل؛ لا يستخدم Auto كتوقيت جرعة يومية متكررة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Permethrin Cream 5% · Mar 2026',
+  ),
+  'clotrimazole-1-cream-otc': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Clotrimazole 1% cream مرتان يوميًا صباحًا ومساءً؛ مدة العلاج تعتمد على الموقع: 4 أسابيع للقدم الرياضي/ringworm و2 أسبوع لـjock itch.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clotrimazole 1% Cream · Aug 2026',
+  ),
+  'adapalene-0-1-gel-otc': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Adapalene 0.1% يُستخدم مرة واحدة يوميًا على كامل المنطقة المعرضة للحبوب؛ الزيادة عن مرة يوميًا تزيد التهيج ولا تسرع النتيجة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Adapalene Gel USP 0.1% · Jul 2026',
+  ),
+  'mupirocin-2-ointment-impetigo': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Mupirocin 2% skin ointment يوضع 3 مرات يوميًا للمدة الموصوفة؛ إذا لا يوجد تحسن خلال 3–5 أيام يحتاج إعادة تقييم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Mupirocin Ointment USP 2% · Jul 2026',
+  ),
+
 };
 
 

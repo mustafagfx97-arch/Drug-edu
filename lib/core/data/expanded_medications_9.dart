@@ -146,7 +146,7 @@ const expandedMedications9 = <Medication>[
       duration:
           'Individualized by ACS/PCI/stent plan. Do not stop early without the prescriber because premature discontinuation increases stent thrombosis, myocardial infarction and death risk.',
       formulationHandling:
-          'Take exactly as prescribed. Patient labeling instructs not to split prasugrel tablets.',
+          'Take exactly as prescribed. Do not split prasugrel tablets.',
       monitoring:
           'Bleeding, bruising, hemoglobin when clinically indicated, falls/head injury, adherence after PCI and any history of stroke/TIA.',
       interactions:

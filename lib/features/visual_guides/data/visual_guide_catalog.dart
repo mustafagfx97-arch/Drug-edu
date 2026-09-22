@@ -691,6 +691,28 @@ const visualGuideCatalog = <VisualGuideData>[
 
 
   VisualGuideData(
+    id: 'glycerin-adult-suppository',
+    title: 'Adult glycerin suppository',
+    subtitle:
+        'Rectal use only · insert fully · retain 15 minutes · does not need to melt.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'Wash hands and remove the suppository from its wrapper.',
+      'Lie on your side or use another comfortable position that allows gentle rectal insertion.',
+      'Insert one adult suppository well into the rectum; do not swallow it.',
+      'Try to retain the suppository for 15 minutes. It does not need to melt completely to work.',
+      'Wash hands again and stay near a toilet; a bowel movement usually occurs within about 15–60 minutes.',
+    ],
+    mistakes: [
+      'Swallowing the suppository.',
+      'Inserting it only partially and immediately expelling it.',
+      'Repeating more than one adult suppository in a day for the cited product.',
+      'Continuing daily laxative self-treatment for more than 1 week without review.',
+    ],
+    patientSummaryAr:
+        'افتح الغلاف، أدخل تحميلة واحدة جيدًا داخل المستقيم، وحاول الاحتفاظ بها 15 دقيقة. لا تحتاج أن تذوب بالكامل حتى تعمل. لا تُبلع ولا تكرر أكثر من تحميلة واحدة يوميًا لنفس المنتج.',
+  ),
+  VisualGuideData(
     id: 'canasa-suppository',
     title: 'CANASA mesalamine suppository',
     subtitle: 'Pointed end first; bedtime use; retain for 1–3 hours or longer.',
@@ -744,6 +766,7 @@ VisualGuideData? visualGuideById(String id) {
 }
 
 const medicationVisualGuideIds = <String, List<String>>{
+  'glycerin-adult-suppository-2g': ['glycerin-adult-suppository'],
   'teriparatide-forteo': ['forteo-pen'],
   'abaloparatide-tymlos': ['tymlos-pen'],
   'salbutamol-mdi': ['mdi', 'spacer'],

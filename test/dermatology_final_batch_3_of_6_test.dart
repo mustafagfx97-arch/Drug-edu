@@ -84,6 +84,7 @@ void main() {
   test('adapalene locks whole-area once-daily use and realistic response time', () {
     final item = medicine('adapalene-0-1-gel-otc');
     final text = [
+      item.name,
       item.useProfile.route,
       item.useProfile.duration,
       item.useProfile.formulationHandling,

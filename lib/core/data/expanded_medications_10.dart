@@ -38,7 +38,7 @@ const expandedMedications10 = <Medication>[
       MedicationSection(
         title: 'Not interchangeable',
         body:
-            'Mesalamine products differ in release technology, indication and schedule. Do not substitute APRISO/PENTASA/other delayed-release products solely by matching total milligrams.',
+            'Mesalamine products differ in release technology, indication and schedule and are not automatically interchangeable. Do not substitute APRISO/PENTASA/other delayed-release products solely by matching total milligrams.',
         priority: ClinicalPriority.critical,
       ),
     ],

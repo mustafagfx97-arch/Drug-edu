@@ -119,6 +119,6 @@ void main() {
     final en = englishPatientCounseling['latanoprost']!;
     expect(en.storage.toLowerCase(), contains('2–8'));
     expect(en.storage.toLowerCase(), contains('6 weeks'));
-    expect(en.missed.toLowerCase(), contains('next dose'));
+    expect(en.missedDose.toLowerCase(), contains('next dose'));
   });
 }

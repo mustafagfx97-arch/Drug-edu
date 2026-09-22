@@ -1370,6 +1370,44 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Cilostazol',
   ),
 
+
+  'mesalamine-lialda': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'LIALDA مرة يوميًا مع الطعام؛ لا تستخدم Auto إذا كان المنتج mesalamine مختلفًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · LIALDA · Mar 2026',
+  ),
+  'mesalamine-apriso': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr:
+        'APRISO مرة يوميًا صباحًا مع الطعام أو بدونه، وتجنب antacids معه.',
+    autoScheduleSafe: true,
+    source: 'DailyMed · APRISO · Aug 2026',
+  ),
+  'mesalamine-pentasa': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'PENTASA له جدول متعدد الجرعات حسب الوصفة؛ لا يحوله التطبيق إلى once daily اعتمادًا على منتجات mesalamine أخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PENTASA',
+  ),
+  'mesalamine-canasa-suppository': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr:
+        'تحميلة CANASA مرة يوميًا عند النوم، مع محاولة الاحتفاظ بها 1–3 ساعات أو أكثر.',
+    autoScheduleSafe: true,
+    source: 'DailyMed · CANASA',
+  ),
+  'mesalamine-rowasa-enema': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr:
+        'ROWASA مرة يوميًا ويفضل عند النوم؛ ابقَ في الوضعية 30 دقيقة على الأقل وحاول الاحتفاظ بها طوال الليل.',
+    autoScheduleSafe: true,
+    source: 'DailyMed · ROWASA · Aug 2026',
+  ),
+
 };
 
 

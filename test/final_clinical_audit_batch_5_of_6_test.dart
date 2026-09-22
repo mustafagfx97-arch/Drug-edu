@@ -89,7 +89,7 @@ void main() {
       item.patient.storageAr ?? '',
     ].join(' ');
 
-    expect(text.toLowerCase(), contains('original'));
+    expect(text, contains('العبوة الزجاجية الأصلية'));
     expect(text.toLowerCase(), contains('glass'));
     expect(text.toLowerCase(), contains('20–25'));
     expect(text, contains('بإحكام'));

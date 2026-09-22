@@ -1408,6 +1408,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · ROWASA · Aug 2026',
   ),
 
+
+  'patiromer-veltassa': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'VELTASSA يحتاج عادةً فصل الأدوية الفموية الأخرى 3 ساعات على الأقل قبل أو بعد الجرعة، إلا إذا كان الدواء من الاستثناءات المثبتة في الملصق؛ لذلك لا يستخدم Auto دون مراجعة قائمة الأدوية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VELTASSA · Jan 2025',
+  ),
+  'sodium-zirconium-cyclosilicate-lokelma': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'LOKELMA يحتاج بصورة عامة فصل الأدوية الفموية الأخرى ساعتين قبل أو بعد الجرعة؛ جدول التصحيح/maintenance والغسيل يختلف، لذلك لا يستخدم Auto.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · LOKELMA · May 2023',
+  ),
+  'sevelamer-carbonate-renvela-tablet': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'RENVELA tablet يؤخذ مع الوجبات. بعض الأدوية تحتاج فواصل خاصة مثل ciprofloxacin وmycophenolate؛ لا يستخدم Auto قبل مراجعة التداخلات.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RENVELA · Mar 2023',
+  ),
+  'sevelamer-carbonate-renvela-powder': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'RENVELA powder يؤخذ مع الوجبة بعد تحضيره بالماء حسب قوة الـpacket، وبعض الأدوية تحتاج فواصل خاصة؛ لا يستخدم Auto.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RENVELA · Mar 2023',
+  ),
+  'sucroferric-oxyhydroxide-velphoro': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'VELPHORO يؤخذ مع الوجبات ويجب مضغه/سحقه. levothyroxine قبل الجرعة بـ4 ساعات على الأقل، وبعض الأدوية الأخرى قبلها بساعة؛ لا يستخدم Auto دون مراجعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VELPHORO · Mar 2026',
+  ),
+
 };
 
 

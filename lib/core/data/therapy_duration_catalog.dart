@@ -427,6 +427,24 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
         'المدة المعتادة 3–6 أسابيع حسب الأعراض ونتائج المتابعة؛ لا تحولها إلى علاج دائم دون خطة.',
   ),
 
+
+  'patiromer-veltassa': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يكون العلاج لفترة تصحيح أو يستمر للمحافظة على البوتاسيوم حسب السبب والتحاليل؛ لا توقفه أو تمدده من نفسك.',
+  ),
+  'sodium-zirconium-cyclosilicate-lokelma': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يستخدم لفترة تصحيح قصيرة أو كعلاج maintenance حسب البوتاسيوم؛ مرضى الغسيل لهم جدول خاص في أيام غير الغسيل.',
+  ),
+  'sevelamer-carbonate-renvela-tablet':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'sevelamer-carbonate-renvela-powder':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'sucroferric-oxyhydroxide-velphoro':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

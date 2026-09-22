@@ -382,6 +382,30 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
         'بخاخ لعلاج النوبة الحادة عند الحاجة؛ ليس علاج وقاية مجدولًا.',
   ),
 
+
+  'aspirin-81-antiplatelet-dr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يكون علاجًا طويل الأمد للوقاية الثانوية، لكن لا تبدأ أو توقف aspirin اليومي من نفسك لأن الفائدة مقابل النزف تعتمد على سبب الاستخدام.',
+  ),
+  'ticagrelor-brilinta': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'المدة تعتمد على الاستطباب: قد تكون طويلة في أمراض الشرايين/بعد MI، بينما مسار acute ischemic stroke/TIA الحالي يصل حتى 30 يومًا. لا توقفه مبكرًا بعد دعامة.',
+  ),
+  'prasugrel': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'تُحدد المدة حسب ACS/PCI والدعامة؛ لا توقف prasugrel مبكرًا من نفسك.',
+  ),
+  'aspirin-er-dipyridamole':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'cilostazol': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يحتاج التحسن 2–4 أسابيع وحتى 12 أسبوعًا. إذا لم تتحسن الأعراض بعد 3 أشهر فالملصق الحالي يوصي بإيقاف العلاج ومراجعة الخطة.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

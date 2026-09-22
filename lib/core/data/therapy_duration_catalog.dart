@@ -445,6 +445,18 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'sucroferric-oxyhydroxide-velphoro':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'amoxicillin-clavulanate-augmentin-es600-suspension':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'azithromycin-suspension-200mg5ml':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cephalexin-suspension-250mg5ml':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'trimethoprim-sulfamethoxazole-suspension-200-40mg5ml':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'nitrofurantoin-suspension-25mg5ml':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

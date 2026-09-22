@@ -406,6 +406,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
         'قد يحتاج التحسن 2–4 أسابيع وحتى 12 أسبوعًا. إذا لم تتحسن الأعراض بعد 3 أشهر فالملصق الحالي يوصي بإيقاف العلاج ومراجعة الخطة.',
   ),
 
+
+  'mesalamine-lialda': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr:
+        'قد يستخدم للتحريض ثم للمحافظة على الهدأة؛ جرعة ومدة induction تختلف عن maintenance ولا تُنقل من مرحلة لأخرى تلقائيًا.',
+  ),
+  'mesalamine-apriso':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'mesalamine-pentasa':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'mesalamine-canasa-suppository': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'المدة المعتادة حسب الملصق 3–6 أسابيع؛ لا تمدد العلاج تلقائيًا دون مراجعة الاستجابة.',
+  ),
+  'mesalamine-rowasa-enema': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'المدة المعتادة 3–6 أسابيع حسب الأعراض ونتائج المتابعة؛ لا تحولها إلى علاج دائم دون خطة.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

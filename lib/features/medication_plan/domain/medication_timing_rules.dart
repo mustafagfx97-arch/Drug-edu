@@ -1617,6 +1617,36 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Mupirocin Ointment USP 2% · Jul 2026',
   ),
 
+
+  'drospirenone-slynd-4mg': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'SLYND حبة يوميًا: 24 active ثم 4 inert. نسيان حبتين active أو أكثر يحتاج backup غير هرموني 7 أيام؛ لا يعتمد Auto جدولًا عاديًا للحبة المنسية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · SLYND drospirenone · Aug 2026',
+  ),
+  'medroxyprogesterone-depo-provera-ci-150mg-im': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Depo-Provera CI 150 mg IM موعده كل 13 أسبوعًا. إذا تجاوز الفاصل 13 أسبوعًا يجب استبعاد الحمل قبل الجرعة التالية؛ لا يستخدم Auto لتعويض موعد متأخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Medroxyprogesterone Acetate 150 mg/mL IM · Aug 2026',
+  ),
+  'etonogestrel-ethinyl-estradiol-vaginal-ring': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'الحلقة المهبلية: 3 أسابيع داخل المهبل ثم أسبوع واحد فقط بدون حلقة. خروجها >3 ساعات أو تمديد ring-free interval يحتاج قواعد backup خاصة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Etonogestrel/EE Vaginal Ring · Sep 2026',
+  ),
+  'norelgestromin-ethinyl-estradiol-patch': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لاصقة norelgestromin/EE: لصقة أسبوعية لثلاثة أسابيع ثم أسبوع رابع بدون لصقة. الانفصال >1 يوم أو التأخر ≥48 ساعة قد يبدأ دورة جديدة مع backup 7 أيام.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Norelgestromin/EE Transdermal System · Apr 2026',
+  ),
+
 };
 
 

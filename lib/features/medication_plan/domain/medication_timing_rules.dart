@@ -93,8 +93,8 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'empagliflozin': MedicationTimingRule(
     anchor: 'morning',
-    instructionAr: 'مرة يوميًا صباحًا تقريبًا، مع الطعام أو بدونه.',
-    source: 'MedlinePlus Empagliflozin',
+    instructionAr: 'مرة يوميًا صباحًا تقريبًا، مع الطعام أو بدونه. قبل عملية أو صيام مطول: يُوقف 3 أيام على الأقل إن أمكن ويُستأنف بعد الاستقرار وعودة الأكل والشرب.',
+    source: 'DailyMed JARDIANCE · Sep 2026',
   ),
   'semaglutide-injection': MedicationTimingRule(
     anchor: 'weekly',
@@ -135,15 +135,15 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'dapagliflozin': MedicationTimingRule(
     anchor: 'morning',
-    instructionAr: 'مرة يوميًا ويمكن مع الطعام أو بدونه؛ تنظيمها صباحًا يقلل نسيان الجرعة لدى كثير من المرضى.',
-    source: 'FDA / DailyMed Dapagliflozin',
+    instructionAr: 'مرة يوميًا ويمكن مع الطعام أو بدونه. قبل عملية أو صيام مطول: يُوقف 3 أيام على الأقل إن أمكن ويُستأنف بعد الاستقرار وعودة الأكل والشرب حسب الخطة.',
+    source: 'DailyMed Dapagliflozin · Sep 2026',
   ),
   'insulin-lispro': MedicationTimingRule(
     anchor: 'with-meal',
-    instructionAr: 'إنسولين وجبات؛ اختر الوجبة/الأوقات حسب الوصفة ولا تستخدم Auto إذا لم تكن علاقة الجرعة بالطعام محددة.',
+    instructionAr: 'HUMALOG/ADMELOG تحت الجلد: خلال 15 دقيقة قبل الوجبة أو مباشرة بعدها. لا يستخدم Auto إذا لم تكن الوجبة والجرعة محددتين.',
     requiresMealChoice: true,
     autoScheduleSafe: false,
-    source: 'FDA product IFU Insulin Lispro',
+    source: 'DailyMed HUMALOG Jan 2026 + ADMELOG May 2025',
   ),
   'prednisone': MedicationTimingRule(
     anchor: 'with-meal',
@@ -396,7 +396,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'عادة نقطة مرة يوميًا مساءً؛ لا تستخدم أكثر من مرة يوميًا.',
     requiresMealChoice: false,
     autoScheduleSafe: true,
-    source: 'DailyMed Latanoprost',
+    source: 'DailyMed XALATAN',
   ),
   'paracetamol-pediatric-liquid': MedicationTimingRule(
     anchor: 'any',
@@ -452,7 +452,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'دواء إسعافي عند ألم الذبحة وليس له وقت ثابت؛ استخدم خطة الألم الموصوفة واطلب المساعدة عند استمرار الألم.',
     requiresMealChoice: false,
     autoScheduleSafe: false,
-    source: 'FDA / DailyMed Nitroglycerin SL',
+    source: 'DailyMed Nitroglycerin SL · Aug 2026',
   ),
   'sitagliptin': MedicationTimingRule(
     anchor: 'any',

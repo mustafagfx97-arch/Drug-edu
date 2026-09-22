@@ -776,26 +776,29 @@ const sampleMedications = <Medication>[
     subtitle: 'Prostaglandin-analog glaucoma therapy',
     tags: ['Eye drops', 'Glaucoma', 'Device technique'],
     hasVisualGuide: true,
-    sourceLabel: 'MedlinePlus Drug Information · Latanoprost Ophthalmic',
+    sourceLabel: 'DailyMed · XALATAN latanoprost ophthalmic solution 0.005%',
     sections: [
       MedicationSection(
         title: 'Administration',
         body:
-            'Usually one drop in the affected eye(s) once daily in the evening. Separate other eye drops by at least 5 minutes. Contact lenses should be removed before dosing and can generally be reinserted after the interval specified by the product.',
+            'One drop in the affected eye(s) once daily in the evening. Separate other eye drops by at least 5 minutes. Remove contact lenses before dosing and wait at least 15 minutes before reinserting them.',
       ),
       MedicationSection(
         title: 'Technique',
         body:
-            'Avoid touching the dropper tip to the eye or other surfaces. Demonstrate lower-lid pocket technique and product-specific storage after opening.',
+            'Avoid touching the dropper tip to the eye or other surfaces. For XALATAN, refrigerate unopened bottles at 2–8°C; after opening, the bottle may be kept at up to 25°C for 6 weeks. Protect from light.',
         priority: ClinicalPriority.important,
       ),
     ],
     patient: PatientCounselingData(
       purposeAr: 'يُستخدم لخفض ضغط العين في الجلوكوما أو ارتفاع ضغط العين.',
       howToUseAr: 'ضع قطرة واحدة في العين المصابة مساءً حسب الوصفة، ولا تجعل فوهة العبوة تلمس العين.',
-      timingAr: 'إذا كنت تستخدم قطرات أخرى للعين، اترك بينها وبين latanoprost خمس دقائق على الأقل.',
-      importantAr: 'قد يغيّر لون القزحية أو يزيد طول وكثافة الرموش تدريجيًا.',
-      teachBackAr: 'أرني كيف ستضع القطرة من دون أن تلمس الفوهة العين أو الرموش.',
+      timingAr: 'استخدمها مساءً مرة واحدة يوميًا. إذا كنت تستخدم قطرات أخرى للعين فاترك بينها 5 دقائق على الأقل، وانزع العدسات اللاصقة وأعدها بعد 15 دقيقة على الأقل.',
+      importantAr: 'قد يغيّر لون القزحية أو يزيد طول وكثافة الرموش تدريجيًا. لا تستخدم جرعة إضافية إذا نسيت جرعة.',
+      missedDoseAr: 'إذا نسيت الجرعة، تجاوزها واستخدم الجرعة التالية في وقتها المعتاد؛ لا تستخدم جرعتين ولا تضاعف.',
+      storageAr: 'XALATAN غير المفتوح يُحفظ بالثلاجة 2–8°C. بعد الفتح يمكن حفظه حتى 25°C لمدة 6 أسابيع مع الحماية من الضوء.',
+      seekHelpAr: 'راجع طبيب العيون عند ألم شديد، تغير مفاجئ في الرؤية، التهاب/إصابة بالعين أو بعد جراحة العين قبل الاستمرار من نفس العبوة.',
+      teachBackAr: 'أرني كيف ستضع القطرة من دون أن تلمس الفوهة العين أو الرموش، ومتى تعيد العدسات، وكيف تحفظ العبوة قبل وبعد الفتح.',
     ),
   ),
   Medication(
@@ -914,12 +917,12 @@ const sampleMedications = <Medication>[
     name: 'Empagliflozin',
     subtitle: 'SGLT2 inhibitor',
     tags: ['Diabetes', 'Heart failure', 'Kidney protection', 'Oral'],
-    sourceLabel: 'MedlinePlus Drug Information · Empagliflozin',
+    sourceLabel: 'DailyMed · JARDIANCE empagliflozin · current Sep 2026 label',
     sections: [
       MedicationSection(
         title: 'Pharmacist essentials',
         body:
-            'Review renal function, volume status, genital/urinary infection history, ketoacidosis risk, ketogenic diet, sick-day plan and planned surgery. MedlinePlus notes withholding before surgery may be required.',
+            'Review renal function, volume status, genital/urinary infection history, ketoacidosis risk, ketogenic diet and sick-day plan. Current JARDIANCE labeling says to withhold for at least 3 days, if possible, before surgery or procedures associated with prolonged fasting and resume when clinically stable with oral intake resumed.',
         priority: ClinicalPriority.critical,
       ),
       MedicationSection(
@@ -931,8 +934,9 @@ const sampleMedications = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'يساعد على خفض السكر، وقد يفيد القلب أو الكلى في بعض الحالات.',
       howToUseAr: 'خذه مرة يوميًا صباحًا تقريبًا، مع الطعام أو بدونه.',
-      importantAr: 'اهتم بشرب السوائل حسب تعليمات الطبيب، وأخبر الفريق الطبي أنك تستخدمه قبل أي عملية.',
+      importantAr: 'قبل عملية أو إجراء يتضمن صيامًا مطولًا، النشرة الحالية توصي بإيقاف empagliflozin لمدة 3 أيام على الأقل إن أمكن، ثم إعادته عندما تكون حالتك مستقرة وتعود للأكل والشرب. اهتم بالسوائل حسب تعليمات الطبيب.',
       commonActionableAr: 'قد يزيد التبول وقد تحدث التهابات فطرية أو بولية عند بعض الأشخاص.',
+      missedDoseAr: 'إذا نسيت الجرعة خذها عند التذكر، ولا تضاعف الجرعة التالية.',
       seekHelpAr: 'أوقفه واطلب المساعدة إذا ظهر غثيان أو قيء أو ألم بطن مع تعب شديد أو صعوبة تنفس حتى لو لم يكن السكر مرتفعًا جدًا.',
     ),
   ),
@@ -1187,7 +1191,7 @@ const sampleMedications = <Medication>[
     name: 'Nitroglycerin Sublingual',
     subtitle: 'Rapid-relief nitrate for angina',
     tags: ['Angina', 'Sublingual', 'Emergency use'],
-    sourceLabel: 'MedlinePlus Drug Information · Nitroglycerin Sublingual',
+    sourceLabel: 'DailyMed · Nitroglycerin Sublingual Tablets · revised/current 2026 labeling',
     sections: [
       MedicationSection(
         title: 'Critical technique',
@@ -1205,6 +1209,7 @@ const sampleMedications = <Medication>[
       purposeAr: 'يخفف ألم الصدر الناتج عن الذبحة بسرعة.',
       howToUseAr: 'عند بداية ألم الصدر اجلس، وضع الحبة تحت اللسان واتركها تذوب. لا تمضغها ولا تبلعها مباشرة.',
       importantAr: 'اتبع خطة الطوارئ التي أعطاها لك الطبيب لعدد الجرعات والفاصل بينها. إذا لم يتحسن ألم الصدر أو أصبح أشد، اطلب المساعدة الطارئة.',
+      storageAr: 'احتفظ بحبوب nitroglycerin تحت اللسان في العبوة الزجاجية الأصلية، وأغلقها بإحكام بعد كل استخدام. تحفظ بدرجة 20–25°C للمحافظة على الفعالية.',
       seekHelpAr: 'ألم الصدر الذي لا يتحسن حسب خطة nitroglycerin يحتاج تقييمًا طارئًا.',
       teachBackAr: 'أرني أين ستضع الحبة، وماذا ستفعل إذا لم يتحسن ألم الصدر.',
     ),

@@ -325,6 +325,50 @@ const visualGuideCatalog = <VisualGuideData>[
         'الكبسولة هنا للاستنشاق وليست للبلع. ضعها في جهازها المخصص وافتح/اثقب الكبسولة بالطريقة الخاصة بالجهاز، ثم أخرج الهواء بعيدًا عنه واستنشق بعمق. اتبع تعليمات نفس جهازك لأن خطوات الفتح وعدد مرات الاستنشاق قد تختلف.',
   ),
   VisualGuideData(
+    id: 'contraceptive-vaginal-ring',
+    title: 'Etonogestrel/EE vaginal ring',
+    subtitle:
+        'Compress and insert · 3 weeks in + 1 week out · expelled-ring timing matters.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'Wash and dry your hands, then remove the ring from its foil pouch.',
+      'Choose a comfortable position, compress the ring between thumb and index finger, insert it into the vagina and gently push it farther up with a finger.',
+      'The exact position is not critical. Leave the ring continuously in place for 3 weeks and check periodically that it is still present.',
+      'Remove it after 3 weeks, keep the ring-free interval to exactly 1 week, then insert a new ring on the same weekday at about the same time.',
+      'If it comes out for less than 3 hours, rinse with cool-to-lukewarm—not hot—water and reinsert promptly. Longer than 3 hours requires the week-specific backup plan.',
+    ],
+    mistakes: [
+      'Trying to place the ring in one exact position instead of simply inserting it comfortably.',
+      'Leaving it out for more than 3 hours without following the backup rules.',
+      'Rinsing an expelled ring with hot water.',
+      'Extending the ring-free interval beyond 7 days.',
+    ],
+    patientSummaryAr:
+        'اضغطي الحلقة وأدخليها داخل المهبل؛ لا تحتاج مكانًا دقيقًا. اتركيها 3 أسابيع ثم أسبوعًا واحدًا فقط بدون حلقة. إذا خرجت أقل من 3 ساعات اغسليها بماء بارد إلى فاتر وأعيديها؛ إذا تجاوزت 3 ساعات اتبعي قواعد backup حسب أسبوع الدورة.',
+  ),
+  VisualGuideData(
+    id: 'contraceptive-patch',
+    title: 'Norelgestromin/EE contraceptive patch',
+    subtitle:
+        'Weekly ×3 · clean dry skin · 10-second press · check adhesion daily.',
+    icon: Icons.medication_outlined,
+    steps: [
+      'Choose clean, dry, intact skin on the upper outer arm, abdomen, buttock or back; do not use the breast or apply over creams, oils, powders or makeup.',
+      'Open the pouch only when ready to use, avoid touching the sticky surface more than necessary and apply the entire patch flat to the skin.',
+      'Press firmly with the palm for 10 seconds, then smooth the edges and check every day that the patch remains fully attached.',
+      'Replace on the same weekday for 3 consecutive weeks; Week 4 is patch-free. Never allow more than 7 consecutive patch-free days.',
+      'If detached for less than 1 day, reapply or replace immediately. If detached for more than 1 day or for an unknown time, start a new cycle and use non-hormonal backup for 7 days.',
+    ],
+    mistakes: [
+      'Applying to the breast, irritated skin, waistline or skin with lotion/oil.',
+      'Cutting the patch or taping/wrapping a loose patch onto the skin.',
+      'Forgetting to check the edges daily.',
+      'Allowing more than 7 consecutive patch-free days.',
+    ],
+    patientSummaryAr:
+        'ضعي اللاصقة على جلد نظيف وجاف في أعلى الذراع الخارجي أو البطن أو الأرداف أو الظهر، واضغطي 10 ثوانٍ. تُغيّر أسبوعيًا 3 أسابيع ثم أسبوع بدون لصقة. إذا انفصلت أكثر من يوم أو كانت المدة غير معروفة ابدئي دورة جديدة واستخدمي backup لمدة 7 أيام.',
+  ),
+  VisualGuideData(
     id: 'permethrin-scabies-full-body',
     title: 'Permethrin 5% scabies cream',
     subtitle:
@@ -788,6 +832,8 @@ VisualGuideData? visualGuideById(String id) {
 }
 
 const medicationVisualGuideIds = <String, List<String>>{
+  'etonogestrel-ethinyl-estradiol-vaginal-ring': ['contraceptive-vaginal-ring'],
+  'norelgestromin-ethinyl-estradiol-patch': ['contraceptive-patch'],
   'permethrin-5-cream-scabies': ['permethrin-scabies-full-body'],
   'glycerin-adult-suppository-2g': ['glycerin-adult-suppository'],
   'teriparatide-forteo': ['forteo-pen'],

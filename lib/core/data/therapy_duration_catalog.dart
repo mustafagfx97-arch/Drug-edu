@@ -511,6 +511,16 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'mupirocin-2-ointment-impetigo':
       TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
 
+
+  'drospirenone-slynd-4mg':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'medroxyprogesterone-depo-provera-ci-150mg-im':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'etonogestrel-ethinyl-estradiol-vaginal-ring':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'norelgestromin-ethinyl-estradiol-patch':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -171,7 +171,7 @@ const englishPatientCounseling = <String, EnglishPatientCounseling>{
     howToUse:
         'Inject the exact product and dose prescribed for the meal or correction. Confirm the insulin name and strength before every injection.',
     timing:
-        'Use it in the meal-time window specified for your product and plan. Do not inject and then unexpectedly skip or substantially delay the meal unless your diabetes plan tells you what to do.',
+        'For subcutaneous HUMALOG or ADMELOG, inject within 15 minutes before a meal or immediately after a meal. Do not inject and then unexpectedly skip or substantially delay the meal unless your diabetes plan tells you what to do.',
     duration:
         'Usually long term when meal-time insulin remains part of the diabetes plan.',
     important:
@@ -215,7 +215,7 @@ const englishPatientCounseling = <String, EnglishPatientCounseling>{
     duration:
         'Usually long term when used for diabetes, heart failure or kidney protection.',
     important:
-        'It can cause genital yeast infections and dehydration. Rarely, ketoacidosis can occur even when blood glucose is not extremely high.',
+        'It can cause genital yeast infections and dehydration. Rarely, ketoacidosis can occur even when blood glucose is not extremely high. Current JARDIANCE labeling says to withhold it for at least 3 days, if possible, before surgery or procedures associated with prolonged fasting and resume when clinically stable with oral intake resumed.',
     commonActionable:
         'You may urinate more. Maintain appropriate fluids unless you have a fluid restriction and report troublesome dizziness or recurrent infections.',
     missedDose:

@@ -491,6 +491,16 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
         'المدة الكلية تعتمد على خطر الكسور والاستطباب؛ العلاج قد يكون سنويًا مع إعادة تقييم دورية للحاجة للاستمرار.',
   ),
 
+
+  'calcium-carbonate-antacid-500mg-chewable':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'magnesium-hydroxide-milk-of-magnesia-2400mg30ml':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'glycerin-adult-suppository-2g':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'meclizine-25mg-motion-sickness-otc':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

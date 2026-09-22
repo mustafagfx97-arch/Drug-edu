@@ -1485,6 +1485,48 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Nitrofurantoin oral suspension · 2024-2026',
   ),
 
+
+  'potassium-chloride-klor-con-m': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'KLOR-CON M يؤخذ مع الوجبة وكوب كامل من الماء. تعليمات التقسيم/التفريق بالماء خاصة بهذا المنتج ولا تُعمم على potassium ER آخر.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · KLOR-CON M',
+  ),
+  'potassium-chloride-er-capsule-sprinkle': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'Potassium chloride ER capsule يؤخذ مع الوجبة وكوب كامل من السائل. عند فتح الكبسولة لا تُمضغ microcapsules ولا تُخلط بطعام ساخن.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Potassium Chloride ER Capsules · Apr 2024',
+  ),
+  'potassium-chloride-oral-solution': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'Potassium chloride oral solution يجب تخفيفه أولًا في 4 أونصات ماء بارد على الأقل ثم أخذه مع الوجبة أو بعدها مباشرة؛ لا يستخدم Auto قبل تأكيد التركيز والجرعة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Potassium Chloride Oral Solution',
+  ),
+  'calcium-acetate-667mg-capsule': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'Calcium acetate يؤخذ مع كل وجبة لربط الفوسفات. الأدوية الفموية المهمة قد تحتاج قبلها بساعة أو بعدها بثلاث ساعات حسب الخطة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Calcium Acetate 667 mg',
+  ),
+  'lanthanum-carbonate-fosrenol-chewable': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'FOSRENOL chewable يؤخذ مع الوجبة أو بعدها مباشرة ويجب مضغه/سحقه بالكامل. Quinolone قبلها بساعة أو بعدها 4 ساعات، وlevothyroxine قبل/بعدها بساعتين.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · FOSRENOL · Dec 2024',
+  ),
+
 };
 
 

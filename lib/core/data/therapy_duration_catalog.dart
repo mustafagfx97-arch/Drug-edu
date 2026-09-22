@@ -457,6 +457,18 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'nitrofurantoin-suspension-25mg5ml':
       TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
 
+
+  'potassium-chloride-klor-con-m':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'potassium-chloride-er-capsule-sprinkle':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'potassium-chloride-oral-solution':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'calcium-acetate-667mg-capsule':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'lanthanum-carbonate-fosrenol-chewable':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -125,7 +125,7 @@ void main() {
     expect(text.toLowerCase(), contains('not hot'));
     expect(text.toLowerCase(), contains('more than 3'));
     expect(text, contains('7 days'));
-    expect(text.toLowerCase(), contains('4 months'));
+    expect(text, contains('4 أشهر'));
     expect(text, contains('30°C'));
 
     final guides = visualGuidesForMedication(item.id);
@@ -152,7 +152,7 @@ void main() {
     expect(text, contains('BMI ≥30'));
     expect(text, contains('198 lb'));
     expect(text, contains('90 kg'));
-    expect(text.toLowerCase(), contains('more than 2 days'));
+    expect(text, contains('تجاوز التأخر يومين'));
 
     final guides = visualGuidesForMedication(item.id);
     expect(guides, hasLength(1));

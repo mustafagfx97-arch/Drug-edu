@@ -865,6 +865,24 @@ class MedicationPlanEngine {
       );
     }
 
+    final hasSlyndPotassiumPartner =
+        hasPotassiumRaisingMedicine ||
+        ids.contains('potassium-supplements') ||
+        ids.contains('potassium-chloride-klor-con-m') ||
+        ids.contains('potassium-chloride-er-capsule-sprinkle') ||
+        ids.contains('potassium-chloride-oral-solution');
+    if (ids.contains('drospirenone-slynd-4mg') &&
+        hasSlyndPotassiumPartner) {
+      alerts.add(
+        const PlanAlert(
+          title: 'SLYND + potassium-raising therapy',
+          message:
+              'drospirenone في SLYND قد يرفع potassium. مع علاج مزمن يرفع K⁺ مثل spironolactone أو ACEI/ARB/ARNI أو potassium products، النشرة الحالية توصي بفحص serum potassium قبل البدء وخلال أول دورة علاجية. فصل وقت الجرعات لا يمنع الخطر.',
+          isCritical: true,
+        ),
+      );
+    }
+
     final hasRasDrug = ids.contains('lisinopril') ||
         ids.contains('losartan') ||
         ids.contains('valsartan') ||
@@ -940,12 +958,16 @@ class MedicationPlanEngine {
 
     if (ids.contains('carbamazepine') &&
         (ids.contains('combined-oral-contraceptive') ||
-            ids.contains('norethindrone-pop'))) {
+            ids.contains('norethindrone-pop') ||
+            ids.contains('drospirenone-slynd-4mg') ||
+            ids.contains('medroxyprogesterone-depo-provera-ci-150mg-im') ||
+            ids.contains('etonogestrel-ethinyl-estradiol-vaginal-ring') ||
+            ids.contains('norelgestromin-ethinyl-estradiol-patch'))) {
       alerts.add(
         const PlanAlert(
           title: 'Carbamazepine + hormonal contraception',
           message:
-              'carbamazepine قد يقلل فعالية موانع الحمل الهرمونية. تغيير وقت الحبة لا يحل التداخل؛ راجع وسيلة مناسبة/إضافية حسب الإرشادات.',
+              'carbamazepine محفز إنزيمي وقد يقلل فعالية موانع الحمل الهرمونية. فصل وقت الجرعات لا يحل التداخل؛ راجع الحاجة إلى backup أو وسيلة بديلة وفق ملصق المنتج.',
           isCritical: true,
         ),
       );
@@ -1032,7 +1054,8 @@ class MedicationPlanEngine {
 
     if (ids.contains('tirzepatide-mounjaro') &&
         (ids.contains('combined-oral-contraceptive') ||
-            ids.contains('norethindrone-pop'))) {
+            ids.contains('norethindrone-pop') ||
+            ids.contains('drospirenone-slynd-4mg'))) {
       alerts.add(
         const PlanAlert(
           title: 'Tirzepatide + oral hormonal contraception',

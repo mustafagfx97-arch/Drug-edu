@@ -92,7 +92,7 @@ void main() {
       item.patient.storageAr,
     ].join(' ');
 
-    expect(text, contains('250 mg per 5 mL'));
+    expect(text, contains('250 mg/5 mL'));
     expect(text, contains('66'));
     expect(text, contains('67'));
     expect(text, contains('69'));

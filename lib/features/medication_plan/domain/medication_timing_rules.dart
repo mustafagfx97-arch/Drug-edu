@@ -1445,6 +1445,46 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · VELPHORO · Mar 2026',
   ),
 
+
+  'amoxicillin-clavulanate-augmentin-es600-suspension': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'AUGMENTIN ES-600 يُعطى في بداية الوجبة. لا يستخدم Auto إذا كانت عبوة amoxicillin/clavulanate بتركيز/نسبة مختلفة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · AUGMENTIN ES-600 · Jul 2026',
+  ),
+  'azithromycin-suspension-200mg5ml': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Azithromycin suspension 200 mg/5 mL يمكن مع الطعام أو بدونه؛ تجنب إعطاء antacid يحتوي aluminum/magnesium في نفس الوقت.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Azithromycin oral suspension · Aug 2026',
+  ),
+  'cephalexin-suspension-250mg5ml': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Cephalexin suspension يُعطى حسب الفاصل المكتوب في الوصفة؛ لا يختار التطبيق الجرعة أو المدة تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cephalexin oral suspension · 2025-2026',
+  ),
+  'trimethoprim-sulfamethoxazole-suspension-200-40mg5ml':
+      MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'TMP-SMX suspension يُعطى حسب الجدول الموصوف مع سوائل كافية إن لم توجد موانع؛ لا يستخدم Auto لأن العلاج والوقاية والتداخلات تختلف.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sulfamethoxazole/Trimethoprim suspension · Mar 2025',
+  ),
+  'nitrofurantoin-suspension-25mg5ml': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'Nitrofurantoin suspension 25 mg/5 mL يُعطى مع الطعام. لا يستخدم Auto لاختيار جرعة/مدة أو عند اشتباه pyelonephritis.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Nitrofurantoin oral suspension · 2024-2026',
+  ),
+
 };
 
 

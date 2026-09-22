@@ -498,6 +498,74 @@ const medicationIndicationOptions =
     ),
   ],
 
+  'ticagrelor-brilinta': [
+    MedicationIndicationOption(
+      id: 'acs-or-history-mi',
+      labelAr: 'ACS / جلطة قلبية سابقة',
+      labelEn: 'ACS / prior myocardial infarction',
+      purposeAr:
+          'يُستخدم لتقليل أحداث الخثار بعد ACS أو لدى مرضى مختارين لديهم تاريخ MI، وغالبًا يكون ضمن خطة تشمل PCI/دعامة أو وقاية ثانوية.',
+      purposeEn:
+          'Used to reduce thrombotic events after ACS or in selected patients with prior myocardial infarction, often within a PCI/stent or secondary-prevention plan.',
+      timingAr:
+          'الملصق الحالي يستخدم 90 mg مرتين يوميًا خلال السنة الأولى بعد ACS ثم 60 mg مرتين يوميًا بعد السنة الأولى؛ لا يغيّر التطبيق القوة تلقائيًا.',
+      timingEn:
+          'Current labeling uses 90 mg twice daily during the first year after ACS, then 60 mg twice daily after one year; the app must not switch strengths automatically.',
+      durationAr:
+          'المدة يحددها طبيب القلب حسب ACS/MI/PCI وخطر النزف والخثار.',
+      durationEn:
+          'Duration is cardiology-directed according to ACS/MI/PCI and evolving bleeding versus thrombotic risk.',
+      importantAr:
+          'غالبًا يكون aspirin 75–100 mg يوميًا جزءًا من الخطة، لكن بعض مرضى PCI قد يُحوّلون إلى ticagrelor وحده حسب قرار الطبيب.',
+      importantEn:
+          'Aspirin 75–100 mg/day is generally part of the regimen, although selected post-PCI patients may transition to ticagrelor monotherapy under clinician direction.',
+      source:
+          'DailyMed · BRILINTA · ACS/history of MI · current 2026 labeling',
+    ),
+    MedicationIndicationOption(
+      id: 'cad-no-prior-mi-stroke',
+      labelAr: 'CAD بدون MI أو stroke سابق',
+      labelEn: 'CAD without prior MI or stroke',
+      purposeAr:
+          'يُستخدم لدى بعض مرضى coronary artery disease عاليي الخطورة الذين لم يسبق لهم MI أو stroke لتقليل أول MI أو stroke.',
+      purposeEn:
+          'Used in selected high-risk coronary artery disease patients without prior MI or stroke to reduce a first MI or stroke.',
+      timingAr:
+          'الملصق الحالي يستخدم 60 mg مرتين يوميًا، وعادة مع aspirin 75–100 mg يوميًا ما لم يضع الطبيب خطة مختلفة.',
+      timingEn:
+          'Current labeling uses 60 mg twice daily, generally with aspirin 75–100 mg/day unless the clinician intentionally chooses another strategy.',
+      durationAr:
+          'علاج وقائي طويل نسبيًا لدى المرضى المختارين ويُعاد تقييمه حسب النزف والفائدة.',
+      durationEn:
+          'Usually longer-term preventive therapy in selected patients with periodic reassessment of bleeding risk and benefit.',
+      source:
+          'DailyMed · BRILINTA · CAD without prior MI/stroke · current 2026 labeling',
+    ),
+    MedicationIndicationOption(
+      id: 'acute-ischemic-stroke-tia',
+      labelAr: 'Acute ischemic stroke / TIA',
+      labelEn: 'Acute ischemic stroke / TIA',
+      purposeAr:
+          'يُستخدم لمدة قصيرة لدى مرضى مختارين بعد acute ischemic stroke أو high-risk TIA لتقليل خطر stroke لاحق.',
+      purposeEn:
+          'Used short term in selected patients after acute ischemic stroke or high-risk TIA to reduce subsequent stroke risk.',
+      timingAr:
+          'الملصق الحالي يبدأ loading dose 180 mg ثم 90 mg مرتين يوميًا حتى 30 يومًا، مع aspirin loading ثم 75–100 mg يوميًا؛ هذا مسار طبي محدد وليس جدولًا يختاره المريض.',
+      timingEn:
+          'Current labeling uses a 180 mg loading dose followed by 90 mg twice daily for up to 30 days, with an aspirin loading dose then 75–100 mg/day; this is a clinician-selected acute-care pathway.',
+      durationAr:
+          'حتى 30 يومًا حسب المسار الحالي، وليست خطة طويلة المدى تلقائيًا.',
+      durationEn:
+          'Up to 30 days under the current labeled pathway; it is not automatically a long-term ticagrelor regimen.',
+      importantAr:
+          'هذه الخطة لا تنطبق على كل stroke/TIA؛ شدة الحالة والعلاجات الأخرى تحدد الأهلية.',
+      importantEn:
+          'This pathway does not apply to every stroke/TIA patient; stroke severity and other acute treatments determine suitability.',
+      source:
+          'DailyMed · BRILINTA · acute ischemic stroke/TIA · current 2026 labeling',
+    ),
+  ],
+
 };
 
 List<MedicationIndicationOption> indicationOptionsFor(String medicationId) {

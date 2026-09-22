@@ -1557,6 +1557,36 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Zoledronic Acid Injection 5 mg/100 mL · Sep 2026',
   ),
 
+
+  'calcium-carbonate-antacid-500mg-chewable': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Calcium carbonate antacid يُستخدم عند الحاجة حسب نفس قوة المنتج. قد يحتاج فصلًا عن بعض الأدوية الفموية؛ لا يعتمد Auto على فاصل موحد لكل الأدوية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Calcium Carbonate 500 mg Chewable · Apr 2026',
+  ),
+  'magnesium-hydroxide-milk-of-magnesia-2400mg30ml': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Milk of Magnesia له تعليمات مختلفة للحموضة والإمساك. للملين يُرج جيدًا ويؤخذ مع كوب 8 oz من السوائل؛ لا يستخدم Auto قبل تحديد الغرض.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Milk of Magnesia 2400 mg/30 mL · 2026',
+  ),
+  'glycerin-adult-suppository-2g': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Glycerin adult suppository للاستخدام الشرجي عند الحاجة؛ احتفظ بها 15 دقيقة إن أمكن، ولا تتجاوز تحميلة واحدة يوميًا لنفس المنتج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Adult Glycerin Suppository 2 g · 2026',
+  ),
+  'meclizine-25mg-motion-sickness-otc': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Meclizine 25 mg لدوار الحركة: الجرعة الأولى قبل النشاط بـ30–60 دقيقة؛ قد يسبب نعاسًا، ولا يستخدم Auto لتكرار جرعات إضافية في اليوم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Meclizine HCl 25 mg Motion Sickness · Aug 2026',
+  ),
+
 };
 
 

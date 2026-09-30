@@ -80,11 +80,23 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
           sliver: SliverToBoxAdapter(
             child: _HomeModuleCard(
+              icon: Icons.science_outlined,
+              title: 'Mineral Clinical Toolkit',
+              subtitle:
+                  'Iron, calcium, magnesium and zinc: salts, elemental-dose conversion, treatment pathways, interactions and monitoring.',
+              onTap: () => onSelectDestination(3),
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          sliver: SliverToBoxAdapter(
+            child: _HomeModuleCard(
               icon: Icons.menu_book_outlined,
               title: 'Supplement Encyclopedia',
               subtitle:
                   'The verified Drug Edu supplement library is preserved and will expand by nutrient, salt, indication, dose, monitoring and counseling.',
-              onTap: () => onSelectDestination(3),
+              onTap: () => onSelectDestination(4),
             ),
           ),
         ),

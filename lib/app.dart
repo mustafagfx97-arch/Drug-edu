@@ -34,7 +34,3 @@ class _SupplementEduAppState extends State<SupplementEduApp> {
 }
 
 
-@Deprecated('Compatibility alias for the frozen Drug Edu regression suite.')
-class DrugEduApp extends SupplementEduApp {
-  const DrugEduApp({super.key});
-}

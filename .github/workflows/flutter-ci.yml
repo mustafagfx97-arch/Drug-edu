@@ -1,8 +1,8 @@
-name: Flutter CI
+name: Supplement Edu CI
 
 on:
   push:
-    branches: [main]
+    branches: [supplement-edu-main]
   pull_request:
   workflow_dispatch:
 
@@ -28,15 +28,15 @@ jobs:
       - name: Generate Android wrapper
         run: |
           rm -rf android
-          flutter create . --platforms=android --project-name drug_edu --org com.mustafagfx97
+          flutter create . --platforms=android --project-name supplement_edu --org com.mustafagfx97
           rm -f test/widget_test.dart
-          sed -i 's/android:label="drug_edu"/android:label="Drug Edu"/' android/app/src/main/AndroidManifest.xml
+          sed -i 's/android:label="supplement_edu"/android:label="Supplement Edu"/' android/app/src/main/AndroidManifest.xml
 
       - name: Verify Android identity
         run: |
-          grep -F 'namespace = "com.mustafagfx97.drug_edu"' android/app/build.gradle.kts
-          grep -F 'applicationId = "com.mustafagfx97.drug_edu"' android/app/build.gradle.kts
-          grep -F 'android:label="Drug Edu"' android/app/src/main/AndroidManifest.xml
+          grep -F 'namespace = "com.mustafagfx97.supplement_edu"' android/app/build.gradle.kts
+          grep -F 'applicationId = "com.mustafagfx97.supplement_edu"' android/app/build.gradle.kts
+          grep -F 'android:label="Supplement Edu"' android/app/src/main/AndroidManifest.xml
 
       - name: Configure production signing when secrets are present
         if: env.ANDROID_KEYSTORE_BASE64 != '' && env.ANDROID_KEYSTORE_PASSWORD != '' && env.ANDROID_KEY_ALIAS != '' && env.ANDROID_KEY_PASSWORD != ''
@@ -58,7 +58,7 @@ jobs:
             {
               echo "PRODUCTION_SIGNED=false"
               echo "This CI artifact uses the Flutter template fallback signing and is NOT for Google Play upload."
-              echo "Configure ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS and ANDROID_KEY_PASSWORD for production signing."
+              echo "Configure Android signing secrets for production distribution."
             } | tee build/release-signing-status.txt
           fi
 
@@ -83,14 +83,14 @@ jobs:
       - name: Upload Android debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: drug-edu-v1-debug-apk
+          name: supplement-edu-foundation-debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
           if-no-files-found: error
 
       - name: Upload Android release candidate
         uses: actions/upload-artifact@v4
         with:
-          name: drug-edu-v1-release-candidate
+          name: supplement-edu-foundation-release-candidate
           path: |
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab

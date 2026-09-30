@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'features/shell/presentation/app_shell.dart';
 
-class DrugEduApp extends StatefulWidget {
-  const DrugEduApp({super.key});
+class SupplementEduApp extends StatefulWidget {
+  const SupplementEduApp({super.key});
 
   @override
-  State<DrugEduApp> createState() => _DrugEduAppState();
+  State<SupplementEduApp> createState() => _SupplementEduAppState();
 }
 
-class _DrugEduAppState extends State<DrugEduApp> {
+class _SupplementEduAppState extends State<SupplementEduApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
   void _setThemeMode(ThemeMode value) {
@@ -20,7 +20,7 @@ class _DrugEduAppState extends State<DrugEduApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Drug Edu',
+      title: 'Supplement Edu',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,

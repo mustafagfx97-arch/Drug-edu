@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'app.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const DrugEduApp());
+  runApp(const SupplementEduApp());
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../calculators/presentation/calculators_screen.dart';
-import '../../encyclopedia/presentation/encyclopedia_screen.dart';
 import '../../home/presentation/home_screen.dart';
-import '../../iv_prep/presentation/iv_prep_screen.dart';
-import '../../more/presentation/more_screen.dart';
+import '../../supplements/decision/presentation/supplement_decision_screen.dart';
+import '../../supplements/presentation/supplements_screen.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({
@@ -31,13 +29,8 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     final screens = [
       HomeScreen(onSelectDestination: _select),
-      const EncyclopediaScreen(),
-      const IvPrepScreen(),
-      const CalculatorsScreen(),
-      MoreScreen(
-        themeMode: widget.themeMode,
-        onThemeModeChanged: widget.onThemeModeChanged,
-      ),
+      const SupplementDecisionScreen(),
+      const SupplementsScreen(),
     ];
 
     return Scaffold(
@@ -55,23 +48,14 @@ class _AppShellState extends State<AppShell> {
             label: 'Home',
           ),
           NavigationDestination(
+            icon: Icon(Icons.fact_check_outlined),
+            selectedIcon: Icon(Icons.fact_check_rounded),
+            label: 'Decision',
+          ),
+          NavigationDestination(
             icon: Icon(Icons.menu_book_outlined),
             selectedIcon: Icon(Icons.menu_book_rounded),
-            label: 'Encyclopedia',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.vaccines_outlined),
-            selectedIcon: Icon(Icons.vaccines_rounded),
-            label: 'IV Prep',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.calculate_outlined),
-            selectedIcon: Icon(Icons.calculate_rounded),
-            label: 'Calculators',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.more_horiz_rounded),
-            label: 'More',
+            label: 'Library',
           ),
         ],
       ),

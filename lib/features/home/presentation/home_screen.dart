@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/widgets/module_card.dart';
-import '../../patient_cards/presentation/patient_cards_screen.dart';
-import '../../medication_plan/presentation/medication_plan_screen.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
@@ -12,62 +8,14 @@ class HomeScreen extends StatelessWidget {
 
   final ValueChanged<int> onSelectDestination;
 
-  void _openModule(BuildContext context, String action) {
-    final routes = <String, WidgetBuilder>{
-      'patient_cards': (_) => const PatientCardsScreen(),
-      'medication_plan': (_) => const MedicationPlanScreen(),
-    };
-
-    final builder = routes[action];
-    if (builder != null) {
-      Navigator.of(context).push(MaterialPageRoute(builder: builder));
-      return;
-    }
-
-    onSelectDestination(int.parse(action));
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final width = MediaQuery.sizeOf(context).width;
-    final columns = width >= 900 ? 3 : width >= 620 ? 2 : 1;
-
-    final clinicalTools = [
-      (
-        'Medication Plan',
-        'Enter all patient medicines and supplements once to generate one organized daily schedule.',
-        Icons.event_note_outlined,
-        'medication_plan',
-        'Multi-drug'
-      ),
-      (
-        'IV Preparation',
-        'General, NICU and PICU preparation profiles with formulation-specific safety.',
-        Icons.vaccines_outlined,
-        '2',
-        'High safety'
-      ),
-      (
-        'Calculators',
-        'Preparation and infusion calculations from prescribed orders only.',
-        Icons.calculate_outlined,
-        '3',
-        'Dose not selected'
-      ),
-      (
-        'Patient Cards',
-        'Saved reusable take-home cards with focused Arabic instructions and QR.',
-        Icons.badge_outlined,
-        'patient_cards',
-        'Print'
-      ),
-    ];
 
     return CustomScrollView(
       slivers: [
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 22, 20, 10),
           sliver: SliverToBoxAdapter(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,14 +25,14 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Drug Edu',
+                        'Supplement Edu',
                         style: theme.textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w900,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 5),
                       Text(
-                        'Patient Education for Clinical Pharmacists',
+                        'Evidence-based supplement decisions for clinical pharmacists',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -93,10 +41,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 CircleAvatar(
-                  radius: 22,
+                  radius: 23,
                   backgroundColor: theme.colorScheme.primaryContainer,
                   child: Icon(
-                    Icons.local_pharmacy_outlined,
+                    Icons.science_outlined,
                     color: theme.colorScheme.onPrimaryContainer,
                   ),
                 ),
@@ -105,87 +53,53 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 14),
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
           sliver: SliverToBoxAdapter(
             child: Card(
               clipBehavior: Clip.antiAlias,
               child: InkWell(
                 onTap: () => onSelectDestination(1),
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
+                  padding: const EdgeInsets.all(19),
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 56,
-                            height: 56,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.primaryContainer,
-                              borderRadius: BorderRadius.circular(17),
-                            ),
-                            child: Icon(
-                              Icons.menu_book_outlined,
-                              color: theme.colorScheme.onPrimaryContainer,
-                              size: 30,
-                            ),
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Patient Education Encyclopedia',
-                                  style:
-                                      theme.textTheme.titleLarge?.copyWith(
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  'Medicines, supplements, devices and feeding-tube education in one organized encyclopedia.',
-                                  style:
-                                      theme.textTheme.bodyMedium?.copyWith(
-                                    color:
-                                        theme.colorScheme.onSurfaceVariant,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right_rounded),
-                        ],
+                      Container(
+                        width: 58,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Icon(
+                          Icons.fact_check_outlined,
+                          color: theme.colorScheme.onPrimaryContainer,
+                          size: 30,
+                        ),
                       ),
-                      const SizedBox(height: 18),
-                      Row(
-                        children: const [
-                          Expanded(
-                            child: _ThreeStep(
-                              number: '1',
-                              title: 'Pharmacist',
-                              detail: 'Clinical notes',
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Do I need a supplement?',
+                              style: theme.textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.w900,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: _ThreeStep(
-                              number: '2',
-                              title: 'Patient',
-                              detail: 'Simple Arabic',
+                            const SizedBox(height: 5),
+                            Text(
+                              'Start with the patient: need, risk, diet, medicines, labs and life stage — then decide whether to supplement, test, review or refer.',
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onSurfaceVariant,
+                                height: 1.45,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: _ThreeStep(
-                              number: '3',
-                              title: 'Print Card',
-                              detail: 'QR + PDF',
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                      const Icon(Icons.chevron_right_rounded),
                     ],
                   ),
                 ),
@@ -194,37 +108,106 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 4, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
           sliver: SliverToBoxAdapter(
-            child: Text(
-              'Clinical tools',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w900,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: InkWell(
+                onTap: () => onSelectDestination(2),
+                child: Padding(
+                  padding: const EdgeInsets.all(19),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 58,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.secondaryContainer,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Icon(
+                          Icons.menu_book_outlined,
+                          color: theme.colorScheme.onSecondaryContainer,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Supplement Encyclopedia',
+                              style: theme.textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'The 37 verified profiles from Drug Edu are preserved as the starting library. They will be expanded by nutrient, salt, indication, dose, monitoring and patient counseling.',
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onSurfaceVariant,
+                                height: 1.45,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(Icons.chevron_right_rounded),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
-          sliver: SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final item = clinicalTools[index];
-                return ModuleCard(
-                  title: item.$1,
-                  subtitle: item.$2,
-                  icon: item.$3,
-                  badge: item.$5,
-                  onTap: () => _openModule(context, item.$4),
-                );
-              },
-              childCount: clinicalTools.length,
-            ),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: columns,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              mainAxisExtent: 190,
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 28),
+          sliver: SliverToBoxAdapter(
+            child: Container(
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerLow,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: theme.colorScheme.outlineVariant),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'How this app will answer supplement questions',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const _RoadmapLine(
+                    icon: Icons.person_search_outlined,
+                    text: 'Does this patient actually need a supplement?',
+                  ),
+                  const _RoadmapLine(
+                    icon: Icons.biotech_outlined,
+                    text: 'What should be tested — and what should not be tested routinely?',
+                  ),
+                  const _RoadmapLine(
+                    icon: Icons.medication_outlined,
+                    text: 'Exact dose by indication, age, life stage and formulation.',
+                  ),
+                  const _RoadmapLine(
+                    icon: Icons.scale_outlined,
+                    text: 'Elemental dose, salts, combinations, ULs and duplicate intake.',
+                  ),
+                  const _RoadmapLine(
+                    icon: Icons.swap_horiz_rounded,
+                    text: 'Drug–supplement interactions and practical timing.',
+                  ),
+                  const _RoadmapLine(
+                    icon: Icons.record_voice_over_outlined,
+                    text: 'What the pharmacist needs to know vs what the patient actually needs to hear.',
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -233,57 +216,29 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _ThreeStep extends StatelessWidget {
-  const _ThreeStep({
-    required this.number,
-    required this.title,
-    required this.detail,
+class _RoadmapLine extends StatelessWidget {
+  const _RoadmapLine({
+    required this.icon,
+    required this.text,
   });
 
-  final String number;
-  final String title;
-  final String detail;
+  final IconData icon;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    return Container(
-      padding: const EdgeInsets.all(11),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Column(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 9),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 13,
-            backgroundColor: theme.colorScheme.primary,
+          Icon(icon, size: 20, color: theme.colorScheme.primary),
+          const SizedBox(width: 10),
+          Expanded(
             child: Text(
-              number,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.onPrimary,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.labelLarge?.copyWith(
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            detail,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
+              text,
+              style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
             ),
           ),
         ],

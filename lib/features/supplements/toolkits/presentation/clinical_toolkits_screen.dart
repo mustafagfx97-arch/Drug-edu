@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../minerals/presentation/mineral_toolkit_screen.dart';
 import '../../vitamins/presentation/vitamin_toolkit_screen.dart';
 import '../../probiotics/presentation/probiotic_atlas_screen.dart';
+import '../../specialty/presentation/specialty_toolkit_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -59,6 +60,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Strain-specific indications, exact CFU/mg doses, duration, product technique, safety, prebiotics and synbiotics.',
             onTap: () => _open(context, const ProbioticAtlasScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.medical_information_outlined,
+            title: 'GI & Specialty Supplements',
+            subtitle:
+                'Lactase, alpha-galactosidase, DAO, peppermint oil, liver and metabolic supplements with exact-use locks.',
+            onTap: () => _open(context, const SpecialtyToolkitScreen()),
           ),
         ],
       ),

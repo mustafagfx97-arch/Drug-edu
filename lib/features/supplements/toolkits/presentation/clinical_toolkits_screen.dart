@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../minerals/presentation/mineral_toolkit_screen.dart';
 import '../../vitamins/presentation/vitamin_toolkit_screen.dart';
+import '../../probiotics/presentation/probiotic_atlas_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -50,6 +51,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'A, B-complex, C, D, E and K: forms, prevention vs treatment, safety locks, and mitochondrial/neurometabolic bridge.',
             onTap: () => _open(context, const VitaminToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.biotech_outlined,
+            title: 'Probiotic Strain Atlas',
+            subtitle:
+                'Strain-specific indications, exact CFU/mg doses, duration, product technique, safety, prebiotics and synbiotics.',
+            onTap: () => _open(context, const ProbioticAtlasScreen()),
           ),
         ],
       ),

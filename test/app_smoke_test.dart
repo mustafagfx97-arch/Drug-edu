@@ -12,10 +12,10 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('Do I need a supplement?'), findsWidgets);
-    expect(find.text('Mineral Clinical Toolkit'), findsOneWidget);
+    expect(find.text('Clinical Toolkits'), findsOneWidget);
     expect(find.text('Decision'), findsOneWidget);
     expect(find.text('Needs'), findsOneWidget);
-    expect(find.text('Minerals'), findsOneWidget);
+    expect(find.text('Toolkits'), findsOneWidget);
     expect(find.text('Library'), findsOneWidget);
   });
 }

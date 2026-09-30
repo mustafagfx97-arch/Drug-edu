@@ -81,9 +81,9 @@ class HomeScreen extends StatelessWidget {
           sliver: SliverToBoxAdapter(
             child: _HomeModuleCard(
               icon: Icons.science_outlined,
-              title: 'Mineral Clinical Toolkit',
+              title: 'Clinical Toolkits',
               subtitle:
-                  'Iron, calcium, magnesium and zinc: salts, elemental-dose conversion, treatment pathways, interactions and monitoring.',
+                  'Minerals + vitamins: salts/forms, treatment pathways, interactions, safety, and mitochondrial/neurometabolic support.',
               onTap: () => onSelectDestination(3),
             ),
           ),

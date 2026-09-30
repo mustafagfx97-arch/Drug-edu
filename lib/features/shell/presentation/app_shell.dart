@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../home/presentation/home_screen.dart';
 import '../../supplements/daily_needs/presentation/daily_needs_screen.dart';
-import '../../supplements/minerals/presentation/mineral_toolkit_screen.dart';
+import '../../supplements/toolkits/presentation/clinical_toolkits_screen.dart';
 import '../../supplements/decision/presentation/supplement_decision_screen.dart';
 import '../../supplements/presentation/supplements_screen.dart';
 
@@ -33,7 +33,7 @@ class _AppShellState extends State<AppShell> {
       HomeScreen(onSelectDestination: _select),
       const SupplementDecisionScreen(),
       const DailyNeedsScreen(),
-      const MineralToolkitScreen(),
+      const ClinicalToolkitsScreen(),
       const SupplementsScreen(),
     ];
 
@@ -64,7 +64,7 @@ class _AppShellState extends State<AppShell> {
           NavigationDestination(
             icon: Icon(Icons.science_outlined),
             selectedIcon: Icon(Icons.science_rounded),
-            label: 'Minerals',
+            label: 'Toolkits',
           ),
           NavigationDestination(
             icon: Icon(Icons.menu_book_outlined),

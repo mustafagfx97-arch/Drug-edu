@@ -52,7 +52,7 @@ void main() {
     final use = item.uses.single;
 
     expect(use.dose, contains('200–1,000 mg'));
-    expect(use.frequency, contains('two to three times daily'));
+    expect(use.frequency, contains('Two to three times daily'));
     expect(item.safety.join(' '), contains('pregnancy'));
     expect(item.safety.join(' '), contains('cyclosporine'));
   });

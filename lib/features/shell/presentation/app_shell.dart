@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../home/presentation/home_screen.dart';
+import '../../supplements/daily_needs/presentation/daily_needs_screen.dart';
 import '../../supplements/decision/presentation/supplement_decision_screen.dart';
 import '../../supplements/presentation/supplements_screen.dart';
 
@@ -30,6 +31,7 @@ class _AppShellState extends State<AppShell> {
     final screens = [
       HomeScreen(onSelectDestination: _select),
       const SupplementDecisionScreen(),
+      const DailyNeedsScreen(),
       const SupplementsScreen(),
     ];
 
@@ -51,6 +53,11 @@ class _AppShellState extends State<AppShell> {
             icon: Icon(Icons.fact_check_outlined),
             selectedIcon: Icon(Icons.fact_check_rounded),
             label: 'Decision',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.monitor_heart_outlined),
+            selectedIcon: Icon(Icons.monitor_heart_rounded),
+            label: 'Needs',
           ),
           NavigationDestination(
             icon: Icon(Icons.menu_book_outlined),

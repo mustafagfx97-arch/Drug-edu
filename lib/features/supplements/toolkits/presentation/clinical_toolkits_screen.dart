@@ -4,6 +4,7 @@ import '../../minerals/presentation/mineral_toolkit_screen.dart';
 import '../../vitamins/presentation/vitamin_toolkit_screen.dart';
 import '../../probiotics/presentation/probiotic_atlas_screen.dart';
 import '../../specialty/presentation/specialty_toolkit_screen.dart';
+import '../../herbals/presentation/herbal_toolkit_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -68,6 +69,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Lactase, alpha-galactosidase, DAO, peppermint oil, liver and metabolic supplements with exact-use locks.',
             onTap: () => _open(context, const SpecialtyToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.spa_outlined,
+            title: 'Herbals, Menopause & Nerves',
+            subtitle:
+                'Black cohosh, phytoestrogens, stress/sleep herbs, mood and cognition supplements with extract-specific doses and safety locks.',
+            onTap: () => _open(context, const HerbalToolkitScreen()),
           ),
         ],
       ),

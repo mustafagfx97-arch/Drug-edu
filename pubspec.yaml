@@ -1,4 +1,4 @@
-name: supplement_edu
+name: drug_edu
 description: Evidence-based supplement decision support and patient counseling for clinical pharmacists.
 publish_to: "none"
 version: 0.1.0+1

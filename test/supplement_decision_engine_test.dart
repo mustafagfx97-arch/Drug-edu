@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:supplement_edu/features/supplements/decision/data/supplement_decision_pathways.dart';
-import 'package:supplement_edu/features/supplements/decision/domain/supplement_decision_models.dart';
+import 'package:drug_edu/features/supplements/decision/data/supplement_decision_pathways.dart';
+import 'package:drug_edu/features/supplements/decision/domain/supplement_decision_models.dart';
 
 void main() {
   test('healthy wellness pathway does not auto-order broad labs', () {

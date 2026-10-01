@@ -4,17 +4,32 @@ import '../data/probiotic_atlas_data.dart';
 import '../domain/probiotic_atlas_models.dart';
 
 class ProbioticAtlasScreen extends StatefulWidget {
-  const ProbioticAtlasScreen({super.key});
+  const ProbioticAtlasScreen({
+    super.key,
+    this.initialProfileId = 'lgg',
+  });
+
+  final String initialProfileId;
 
   @override
   State<ProbioticAtlasScreen> createState() => _ProbioticAtlasScreenState();
 }
 
 class _ProbioticAtlasScreenState extends State<ProbioticAtlasScreen> {
-  String _selectedId = 'lgg';
+  late String _selectedId;
   final _targetController = TextEditingController();
   final _servingController = TextEditingController();
   bool _perStrainVerified = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = probioticProfiles.any(
+      (profile) => profile.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'lgg';
+  }
 
   @override
   void dispose() {
@@ -58,9 +73,7 @@ class _ProbioticAtlasScreenState extends State<ProbioticAtlasScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'الـstrain أولًا، وليس اسم الجنس فقط',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Strain first — not just the species name',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

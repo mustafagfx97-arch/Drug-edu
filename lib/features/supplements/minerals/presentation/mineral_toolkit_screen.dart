@@ -4,17 +4,28 @@ import '../data/mineral_toolkit_data.dart';
 import '../domain/mineral_toolkit_models.dart';
 
 class MineralToolkitScreen extends StatefulWidget {
-  const MineralToolkitScreen({super.key});
+  const MineralToolkitScreen({
+    super.key,
+    this.initialId = MineralId.iron,
+  });
+
+  final MineralId initialId;
 
   @override
   State<MineralToolkitScreen> createState() => _MineralToolkitScreenState();
 }
 
 class _MineralToolkitScreenState extends State<MineralToolkitScreen> {
-  MineralId _selected = MineralId.iron;
+  late MineralId _selected;
   String? _presetId;
   bool _saltToElemental = true;
   final _amountController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _selected = widget.initialId;
+  }
 
   @override
   void dispose() {
@@ -58,9 +69,7 @@ class _MineralToolkitScreenState extends State<MineralToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'من الملح إلى الجرعة الفعلية',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'From salt amount to elemental dose',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),
@@ -101,7 +110,7 @@ class _MineralToolkitScreenState extends State<MineralToolkitScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  entry.name + ' — ' + entry.nameAr,
+                  entry.name,
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w900,
                   ),

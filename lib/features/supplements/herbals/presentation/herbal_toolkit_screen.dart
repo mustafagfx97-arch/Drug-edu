@@ -4,14 +4,29 @@ import '../data/herbal_toolkit_data.dart';
 import '../domain/herbal_toolkit_models.dart';
 
 class HerbalToolkitScreen extends StatefulWidget {
-  const HerbalToolkitScreen({super.key});
+  const HerbalToolkitScreen({
+    super.key,
+    this.initialProfileId = 'black-cohosh',
+  });
+
+  final String initialProfileId;
 
   @override
   State<HerbalToolkitScreen> createState() => _HerbalToolkitScreenState();
 }
 
 class _HerbalToolkitScreenState extends State<HerbalToolkitScreen> {
-  String _selectedId = 'black-cohosh';
+  late String _selectedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = herbalProfiles.any(
+      (profile) => profile.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'black-cohosh';
+  }
 
   String _evidence(HerbalEvidence value) => switch (value) {
         HerbalEvidence.moderate => 'Moderate',
@@ -34,9 +49,7 @@ class _HerbalToolkitScreenState extends State<HerbalToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'الدليل أولًا، وليس اسم العشبة',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Evidence first — not just the herb name',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

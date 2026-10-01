@@ -4,14 +4,29 @@ import '../data/nerve_hair_data.dart';
 import '../domain/nerve_hair_models.dart';
 
 class NerveHairScreen extends StatefulWidget {
-  const NerveHairScreen({super.key});
+  const NerveHairScreen({
+    super.key,
+    this.initialProfileId = 'biotin',
+  });
+
+  final String initialProfileId;
 
   @override
   State<NerveHairScreen> createState() => _NerveHairScreenState();
 }
 
 class _NerveHairScreenState extends State<NerveHairScreen> {
-  String _selectedId = 'biotin';
+  late String _selectedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = nerveHairProfiles.any(
+      (profile) => profile.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'biotin';
+  }
 
   String _evidence(NerveHairEvidence value) => switch (value) {
         NerveHairEvidence.nutritional => 'Nutritional / daily intake',
@@ -33,9 +48,7 @@ class _NerveHairScreenState extends State<NerveHairScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'الأعصاب والشعر: الجرعة تغيّر معنى المكمل',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Nerves and hair: dose changes the meaning',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

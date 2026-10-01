@@ -4,14 +4,29 @@ import '../data/specialty_toolkit_data.dart';
 import '../domain/specialty_toolkit_models.dart';
 
 class SpecialtyToolkitScreen extends StatefulWidget {
-  const SpecialtyToolkitScreen({super.key});
+  const SpecialtyToolkitScreen({
+    super.key,
+    this.initialProfileId = 'lactase',
+  });
+
+  final String initialProfileId;
 
   @override
   State<SpecialtyToolkitScreen> createState() => _SpecialtyToolkitScreenState();
 }
 
 class _SpecialtyToolkitScreenState extends State<SpecialtyToolkitScreen> {
-  String _selectedId = 'lactase';
+  late String _selectedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = specialtyIngredients.any(
+      (item) => item.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'lactase';
+  }
 
   String _evidenceLabel(SpecialtyEvidence value) => switch (value) {
         SpecialtyEvidence.establishedUse => 'Established targeted use',
@@ -34,9 +49,7 @@ class _SpecialtyToolkitScreenState extends State<SpecialtyToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'متى تستخدم؟ وكم؟ وكيف بالضبط؟',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'When to use it, how much, and exactly how',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

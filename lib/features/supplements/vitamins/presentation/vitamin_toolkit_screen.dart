@@ -4,14 +4,25 @@ import '../data/vitamin_toolkit_data.dart';
 import '../domain/vitamin_toolkit_models.dart';
 
 class VitaminToolkitScreen extends StatefulWidget {
-  const VitaminToolkitScreen({super.key});
+  const VitaminToolkitScreen({
+    super.key,
+    this.initialId = VitaminId.vitaminB12,
+  });
+
+  final VitaminId initialId;
 
   @override
   State<VitaminToolkitScreen> createState() => _VitaminToolkitScreenState();
 }
 
 class _VitaminToolkitScreenState extends State<VitaminToolkitScreen> {
-  VitaminId _selected = VitaminId.vitaminB12;
+  late VitaminId _selected;
+
+  @override
+  void initState() {
+    super.initState();
+    _selected = widget.initialId;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +35,7 @@ class _VitaminToolkitScreenState extends State<VitaminToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'الفيتامين ليس جرعة واحدة لكل استخدام',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'One vitamin does not have one dose for every use',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),
@@ -47,7 +56,7 @@ class _VitaminToolkitScreenState extends State<VitaminToolkitScreen> {
                 .map(
                   (item) => DropdownMenuItem(
                     value: item.id,
-                    child: Text(item.name + ' — ' + item.nameAr),
+                    child: Text(item.name),
                   ),
                 )
                 .toList(),
@@ -66,7 +75,7 @@ class _VitaminToolkitScreenState extends State<VitaminToolkitScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  entry.name + ' — ' + entry.nameAr,
+                  entry.name,
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w900,
                   ),

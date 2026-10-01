@@ -4,14 +4,29 @@ import '../data/joint_toolkit_data.dart';
 import '../domain/joint_toolkit_models.dart';
 
 class JointToolkitScreen extends StatefulWidget {
-  const JointToolkitScreen({super.key});
+  const JointToolkitScreen({
+    super.key,
+    this.initialProfileId = 'glucosamine',
+  });
+
+  final String initialProfileId;
 
   @override
   State<JointToolkitScreen> createState() => _JointToolkitScreenState();
 }
 
 class _JointToolkitScreenState extends State<JointToolkitScreen> {
-  String _selectedId = 'glucosamine';
+  late String _selectedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = jointSupplementProfiles.any(
+      (profile) => profile.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'glucosamine';
+  }
 
   String _evidence(JointEvidence value) => switch (value) {
         JointEvidence.moderate => 'Moderate / context-specific',
@@ -32,9 +47,7 @@ class _JointToolkitScreenState extends State<JointToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'المفاصل والكولاجين: الشكل أهم من الاسم',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Joint supplements: formulation matters',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

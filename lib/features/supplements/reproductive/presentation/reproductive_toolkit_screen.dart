@@ -4,7 +4,12 @@ import '../data/reproductive_toolkit_data.dart';
 import '../domain/reproductive_toolkit_models.dart';
 
 class ReproductiveToolkitScreen extends StatefulWidget {
-  const ReproductiveToolkitScreen({super.key});
+  const ReproductiveToolkitScreen({
+    super.key,
+    this.initialProfileId = 'l-citrulline',
+  });
+
+  final String initialProfileId;
 
   @override
   State<ReproductiveToolkitScreen> createState() =>
@@ -12,7 +17,17 @@ class ReproductiveToolkitScreen extends StatefulWidget {
 }
 
 class _ReproductiveToolkitScreenState extends State<ReproductiveToolkitScreen> {
-  String _selectedId = 'l-citrulline';
+  late String _selectedId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedId = reproductiveProfiles.any(
+      (profile) => profile.id == widget.initialProfileId,
+    )
+        ? widget.initialProfileId
+        : 'l-citrulline';
+  }
 
   String _evidence(ReproEvidence value) => switch (value) {
         ReproEvidence.guidelineRecommended => 'Guideline recommended',
@@ -35,9 +50,7 @@ class _ReproductiveToolkitScreenState extends State<ReproductiveToolkitScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'الجنس والخصوبة: لا نبيع وعدًا بدل التشخيص',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Sexual health and fertility: diagnose before supplementing',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

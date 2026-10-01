@@ -7,6 +7,7 @@ import '../../specialty/presentation/specialty_toolkit_screen.dart';
 import '../../hair_loss/presentation/hair_loss_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
 import '../../products/presentation/product_analyzer_screen.dart';
+import '../../scanner/presentation/product_scanner_screen.dart';
 import '../../joints/presentation/joint_toolkit_screen.dart';
 import '../../stack/presentation/stack_safety_screen.dart';
 import '../../reproductive/presentation/reproductive_toolkit_screen.dart';
@@ -132,6 +133,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Patient-facing stack safety: what can be combined, what should be separated, GI burden and high-value medicine/condition flags.',
             onTap: () => _open(context, const StackSafetyScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.document_scanner_outlined,
+            title: 'Scan a Supplement',
+            subtitle:
+                'Photograph front label + Supplement Facts. On-device OCR/barcode → local product confidence → ingredient doses → clinical encyclopedia evidence.',
+            onTap: () => _open(context, const ProductScannerScreen()),
           ),
           const SizedBox(height: 12),
           _ToolkitCard(

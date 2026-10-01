@@ -4,7 +4,12 @@ import '../data/product_analyzer_data.dart';
 import '../domain/product_analyzer_models.dart';
 
 class ProductAnalyzerScreen extends StatefulWidget {
-  const ProductAnalyzerScreen({super.key});
+  const ProductAnalyzerScreen({
+    super.key,
+    this.initialLines = const [],
+  });
+
+  final List<AnalyzerLine> initialLines;
 
   @override
   State<ProductAnalyzerScreen> createState() => _ProductAnalyzerScreenState();
@@ -17,8 +22,14 @@ class _ProductAnalyzerScreenState extends State<ProductAnalyzerScreen> {
 
   String _ingredientId = 'magnesium';
   bool _amountKnown = true;
-  final List<AnalyzerLine> _lines = [];
+  late final List<AnalyzerLine> _lines;
   final Set<PatientMedicationFlag> _flags = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _lines = List<AnalyzerLine>.from(widget.initialLines);
+  }
 
   @override
   void dispose() {
@@ -90,9 +101,7 @@ class _ProductAnalyzerScreenState extends State<ProductAnalyzerScreen> {
         padding: const EdgeInsets.fromLTRB(18, 16, 18, 32),
         children: [
           Text(
-            'افتح Supplement Facts بدل الاعتماد على اسم المنتج',
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.right,
+            'Read the Supplement Facts — not just the product name',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.w900,
             ),

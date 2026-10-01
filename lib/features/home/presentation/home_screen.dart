@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../supplements/scanner/presentation/product_scanner_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
@@ -54,6 +56,24 @@ class HomeScreen extends StatelessWidget {
         ),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
+          sliver: SliverToBoxAdapter(
+            child: _HomeModuleCard(
+              icon: Icons.document_scanner_outlined,
+              title: 'Scan a Supplement',
+              subtitle:
+                  'Photograph the product and Supplement Facts. On-device OCR + barcode recognition feed a local clinical matching and ingredient-analysis engine.',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const ProductScannerScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
           sliver: SliverToBoxAdapter(
             child: _HomeModuleCard(
               icon: Icons.fact_check_outlined,

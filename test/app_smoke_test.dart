@@ -21,8 +21,12 @@ void main() {
     await tester.tap(find.text('Toolkits'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Product & Combination Analyzer'), findsOneWidget);
     expect(find.text('Probiotic Strain Atlas'), findsOneWidget);
+
+    await tester.drag(find.byType(ListView), const Offset(0, -700));
+    await tester.pumpAndSettle();
+
     expect(find.text('Herbals, Menopause & Nerves'), findsOneWidget);
+    expect(find.text('Product & Combination Analyzer'), findsOneWidget);
   });
 }

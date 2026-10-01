@@ -1,5 +1,6 @@
 import '../../data/supplement_profiles.dart';
 import '../../expanded_catalog/data/expanded_catalog_data.dart';
+import '../../expanded_catalog/domain/expanded_supplement_models.dart';
 import '../../hair_loss/data/hair_loss_data.dart';
 import '../../herbals/data/herbal_toolkit_data.dart';
 import '../../joints/data/joint_toolkit_data.dart';

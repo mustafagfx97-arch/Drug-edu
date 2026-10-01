@@ -1,0 +1,737 @@
+import '../domain/expanded_supplement_models.dart';
+
+const sportsGrowthExpandedProfiles = <ExpandedSupplementProfile>[
+  ExpandedSupplementProfile(
+    id: 'sport-creatine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Creatine Monohydrate — Performance Protocol',
+    subtitle: 'AIS Group A / strong evidence in specific sport settings',
+    coreRule:
+        'Use creatine monohydrate. Loading is optional; the benefit comes from sustained muscle saturation, not from taking it immediately before every workout.',
+    whyUsed:
+        'Improves repeated high-intensity performance and supports strength/lean-mass gains with resistance training.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Rapid loading',
+        population: 'Healthy adult athletes',
+        dose: '~0.3 g/kg/day, commonly ~20 g/day as 4 × 5 g doses.',
+        timing: 'Divide across the day, preferably with meals.',
+        duration: 'About 5 days, then maintenance.',
+        note: 'A practical fixed-dose protocol is 5 g four times daily for ~5 days.',
+      ),
+      ExpandedDosePathway(
+        title: 'Maintenance / no-load',
+        population: 'Healthy adult athletes',
+        dose: '3–5 g/day creatine monohydrate, or ~0.03 g/kg/day.',
+        timing: 'Any consistent daily time.',
+        duration: 'Ongoing while the performance goal remains relevant.',
+        note: 'Without loading, saturation takes roughly 3–4 weeks.',
+      ),
+    ],
+    administration: [
+      'Mix with water or food and take daily, including rest days.',
+      'Do not pay extra for creatine forms claiming superiority without evidence.',
+    ],
+    commonActionable: [
+      'Expect early water-related body-mass increase.',
+      'Split large doses if GI upset occurs.',
+    ],
+    interactions: [],
+    monitoring: ['Body mass, GI tolerance and training outcomes.'],
+    avoidOrRefer: ['Kidney disease, pregnancy/breastfeeding or pediatric use requires clinician/sports-dietitian review.'],
+    labelChecks: ['creatine MONOHYDRATE', 'grams per serve', 'batch testing for competitive athletes'],
+    sourceLabel: 'Australian Institute of Sport Creatine guidance + NIH ODS Exercise Performance',
+    searchTerms: ['gym', 'strength', 'loading', 'monohydrate'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-caffeine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Caffeine',
+    subtitle: 'AIS Group A ergogenic aid',
+    coreRule:
+        'More caffeine is not more performance. Many athletes achieve benefit around ~1–3 mg/kg; higher doses add adverse effects and sleep cost.',
+    whyUsed:
+        'Can improve endurance, vigilance, perceived effort and selected high-intensity performance.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Practical performance range',
+        population: 'Healthy adult athletes',
+        dose: '~1–3 mg/kg caffeine; research commonly studies ~2–6 mg/kg.',
+        timing:
+            'Often ~30–60 minutes pre-exercise for drinks/capsules; gum and other formulations have faster kinetics.',
+        duration: 'Use strategically, not automatically before every session.',
+        note:
+            'AIS notes that benefits often plateau around ~3 mg/kg (~200 mg for many adults).',
+      ),
+    ],
+    administration: [
+      'Calculate TOTAL caffeine from coffee, energy drinks, pre-workout, gels and tablets.',
+      'Trial in training before competition.',
+    ],
+    commonActionable: [
+      'Tremor, palpitations, anxiety, GI upset and urinary urgency can occur.',
+      'Sleep impairment can offset training benefit even when the workout feels better.',
+    ],
+    interactions: ['Other stimulants increase cardiovascular/CNS burden.'],
+    monitoring: ['Total mg/day, sleep quality, heart rate symptoms and anxiety.'],
+    avoidOrRefer: ['Arrhythmia, uncontrolled hypertension, pregnancy, severe anxiety or stimulant-sensitive patients need individualized advice.'],
+    labelChecks: ['mg caffeine per serving', 'number of scoops', 'hidden guarana/tea caffeine'],
+    sourceLabel: 'AIS Caffeine guidance + NIH ODS Exercise and Athletic Performance',
+    searchTerms: ['preworkout', 'coffee', 'energy drink', 'ergogenic'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-beta-alanine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Beta-Alanine',
+    subtitle: 'AIS Group A — chronic loading, not an acute pre-workout dose',
+    coreRule:
+        'Beta-alanine works by raising muscle carnosine over weeks. A single pre-workout dose is not the evidence-based mechanism.',
+    whyUsed:
+        'Most useful for high-intensity efforts lasting roughly 30 seconds to 10 minutes and repeated hard efforts.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Loading protocol',
+        population: 'Adult athletes in relevant high-intensity sports',
+        dose: '3.2–6.4 g/day in divided doses.',
+        timing:
+            'Divide into small doses with meals; a practical AIS approach is 1.6 g four times daily for 6.4 g/day.',
+        duration: 'At least 4 weeks at 6.4 g/day or ~8 weeks at 3.2 g/day.',
+        note: 'Sustained-release or divided doses reduce paresthesia.',
+      ),
+      ExpandedDosePathway(
+        title: 'Maintenance after loading',
+        population: 'Athletes continuing a beta-alanine program',
+        dose: 'Around 1.2 g/day may help maintain elevated carnosine after loading.',
+        timing: 'Daily.',
+        duration: 'As needed for the training block.',
+        note: 'Not required by every athlete.',
+      ),
+    ],
+    administration: ['Do not take the full daily amount in one dose.'],
+    commonActionable: ['Paresthesia/tingling is dose-related and usually benign but uncomfortable.'],
+    interactions: [],
+    monitoring: ['Tolerance and event-specific performance.'],
+    avoidOrRefer: ['Pregnancy/breastfeeding and pediatric use lack routine performance-supplement indications.'],
+    labelChecks: ['beta-alanine grams', 'avoid underdosed proprietary pre-workout blends'],
+    sourceLabel: 'Australian Institute of Sport Beta-Alanine guidance',
+    searchTerms: ['carnosine', 'tingling', 'HIIT'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-nitrate',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Dietary Nitrate / Beetroot Juice',
+    subtitle: 'AIS Group A performance supplement',
+    coreRule:
+        'Dose by nitrate content, not “beetroot powder” grams. Products with undeclared nitrate cannot be assumed equivalent to validated shots.',
+    whyUsed:
+        'Can improve exercise efficiency and selected endurance/intermittent performance, especially in some recreational/moderately trained athletes.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Acute performance protocol',
+        population: 'Adult athletes in relevant endurance/intermittent events',
+        dose: 'About 6–8 mmol nitrate (~350–500 mg nitrate).',
+        timing: 'Take ~2–3 hours before exercise.',
+        duration: 'Acute use or short loading blocks depending on event plan.',
+        note: 'Doses >10–12 mmol do not appear to add consistent benefit.',
+      ),
+    ],
+    administration: [
+      'Avoid antibacterial mouthwash around nitrate use because oral bacteria help convert nitrate to nitrite.',
+      'Use standardized nitrate content; ordinary beet juice varies.',
+    ],
+    commonActionable: ['Red/pink urine or stool (beeturia) can occur and is usually harmless.'],
+    interactions: ['Review hypotension-prone patients and nitrate/PDE5 medication context individually.'],
+    monitoring: ['Blood-pressure symptoms and GI tolerance.'],
+    avoidOrRefer: ['Clinically significant hypotension or complex cardiovascular therapy requires review.'],
+    labelChecks: ['nitrate mg or mmol', 'not just beetroot grams', 'batch testing'],
+    sourceLabel: 'Australian Institute of Sport Dietary Nitrate / Beetroot Juice guidance',
+    searchTerms: ['beet root', 'beet shot', 'nitrate'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-bicarbonate',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Sodium Bicarbonate',
+    subtitle: 'AIS Group A extracellular buffer',
+    coreRule:
+        'Effective doses are large and sodium-heavy; GI tolerance is the main barrier. This should be trialled in training, never first used on race day.',
+    whyUsed:
+        'Can improve performance in high-intensity efforts around ~30 seconds to 10 minutes and repeated intense bouts.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Acute buffering protocol',
+        population: 'Adult athletes in relevant high-intensity events',
+        dose: '~200–300 mg/kg body mass sodium bicarbonate.',
+        timing: 'Often ~2–3 hours before the target event; individual timing varies with GI tolerance.',
+        duration: 'Acute/event-specific.',
+        note: '300 mg/kg equals 0.3 g/kg and creates a large sodium load.',
+      ),
+    ],
+    administration: [
+      'Take with a standardized meal/fluid plan and test the protocol repeatedly in training.',
+      'Split/capsule strategies can improve tolerance but do not eliminate sodium exposure.',
+    ],
+    commonActionable: ['Bloating, nausea, cramping, diarrhea and urgent bowel movements are common.'],
+    interactions: ['High sodium matters in hypertension/heart/kidney disease; gastric pH changes may affect some medicines.'],
+    monitoring: ['GI response, body mass and event performance.'],
+    avoidOrRefer: ['Hypertension, heart failure, kidney disease, sodium restriction or major GI disease requires clinician/sports-dietitian review.'],
+    labelChecks: ['mg/g sodium bicarbonate', 'total sodium burden', 'no hidden stimulant blend'],
+    sourceLabel: 'Australian Institute of Sport Sodium Bicarbonate guidance',
+    searchTerms: ['baking soda', 'buffer', 'lactate'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-glycerol',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Glycerol',
+    subtitle: 'AIS Group A — specialist hydration tool',
+    coreRule:
+        'Glycerol is for selected hyperhydration/rehydration scenarios, not a routine workout supplement.',
+    whyUsed:
+        'Can improve fluid retention where replacing large fluid losses is difficult or rapid rehydration is required.',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Post-exercise rehydration context',
+        population: 'Adult athletes with large fluid deficits under sports-nutrition supervision',
+        dose:
+            'AIS protocols use about 1.0 g/kg glycerol with a large planned rehydration volume, often aiming to replace up to ~150% of fluid deficit.',
+        timing: 'During the structured post-exercise rehydration window.',
+        duration: 'Single-session protocol.',
+        note: 'Exact fluid volume and sodium plan are individualized; this is not a casual gym dose.',
+      ),
+    ],
+    administration: ['Use only with a deliberate fluid/electrolyte plan.'],
+    commonActionable: ['Headache, GI discomfort and temporary body-mass increase from retained fluid.'],
+    interactions: [],
+    monitoring: ['Body-mass change, urine/fluid balance and GI tolerance.'],
+    avoidOrRefer: ['Kidney/heart disease, hyponatremia risk or fluid restriction requires medical oversight.'],
+    labelChecks: ['g glycerol per serving', 'added carbohydrate/electrolytes'],
+    sourceLabel: 'Australian Institute of Sport Glycerol guidance',
+    searchTerms: ['hyperhydration', 'rehydration'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-protein',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Protein Powder',
+    subtitle: 'Whey, casein, soy, pea/rice blends',
+    coreRule:
+        'Protein powder is a convenient food substitute, not a magic anabolic product. Daily protein target and distribution matter more than brand.',
+    whyUsed:
+        'Useful when food protein is impractical, appetite is low, or training/energy restriction raises protein needs.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Heavy training daily target',
+        population: 'Adult athletes',
+        dose: 'About 1.2–1.6 g/kg/day TOTAL protein for many heavily training athletes.',
+        timing: 'Spread over the day at meals/snacks every ~3–4 hours.',
+        duration: 'According to training block.',
+        note: 'Food + supplements combined.',
+      ),
+      ExpandedDosePathway(
+        title: 'Per-meal target',
+        population: 'Adult athletes',
+        dose: 'About 0.3 g/kg protein per meal; many protein supplements provide ~20–30 g/serve.',
+        timing: 'Around meals/training as convenient.',
+        duration: 'Ongoing nutrition strategy.',
+        note: 'AIS finds no clear benefit to simply exceeding this at each meal.',
+      ),
+      ExpandedDosePathway(
+        title: 'Energy restriction / muscle retention',
+        population: 'Athletes reducing fat mass',
+        dose: 'Total protein may rise to ~1.6–2.4 g/kg/day in selected contexts.',
+        timing: 'Distribute across the day.',
+        duration: 'During supervised energy-restriction phase.',
+        note: 'Needs vary with lean mass, calorie deficit and training.',
+      ),
+    ],
+    administration: ['Use 1–2 supplement servings/day only when needed; food remains the base.'],
+    commonActionable: ['Lactose/GI symptoms occur with some whey concentrates; isolate may contain less lactose.'],
+    interactions: [],
+    monitoring: ['Total protein intake, energy intake, GI tolerance and training recovery.'],
+    avoidOrRefer: ['Kidney disease or medically prescribed protein restriction requires clinician/dietitian guidance.'],
+    labelChecks: ['protein g/serve', 'leucine profile', 'sugar/calories', 'batch testing', 'hidden stimulants'],
+    sourceLabel: 'Australian Institute of Sport Isolated Protein Supplements guidance',
+    searchTerms: ['whey', 'casein', 'pea protein', 'protein shake'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-carbohydrate',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Sports Drinks / Gels / Carbohydrate Fuel',
+    subtitle: 'Fuel for prolonged or high-demand exercise',
+    coreRule:
+        'Use sports carbohydrate to meet a measured fuel need; routine gym sessions do not automatically require gels or sugary sports drinks.',
+    whyUsed:
+        'Provides rapidly available carbohydrate during prolonged/intense exercise and can combine fuel with fluid/electrolytes.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'During prolonged strenuous exercise',
+        population: 'Adult endurance/intermittent athletes',
+        dose:
+            'Carbohydrate intake is event-specific; when rates exceed ~60 g/hour, products using multiple transportable carbohydrates (e.g., glucose + fructose) are better tolerated/oxidized than glucose alone.',
+        timing: 'Spread across the exercise period; practice the exact race plan in training.',
+        duration: 'During the session/event.',
+        note: 'Short/easy sessions may need only water and normal meals.',
+      ),
+    ],
+    administration: [
+      'Take gels with the fluid amount specified by the product unless they are designed as isotonic gels.',
+      'Match carbohydrate concentration to fluid needs and GI tolerance.',
+    ],
+    commonActionable: ['GI cramping, nausea and diarrhea occur when carbohydrate delivery exceeds trained gut tolerance.'],
+    interactions: [],
+    monitoring: ['g carbohydrate/hour, fluid intake, body-mass loss and GI tolerance.'],
+    avoidOrRefer: ['Diabetes requires individualized carbohydrate planning.'],
+    labelChecks: ['carbohydrate g/serve', 'glucose/fructose mix', 'caffeine', 'sodium'],
+    sourceLabel: 'Australian Institute of Sport Sports Drinks / Sports Foods guidance',
+    searchTerms: ['gel', 'sports drink', 'carbs per hour', 'endurance'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-electrolyte',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Electrolyte Replacement Products',
+    subtitle: 'Main target is usually sodium, not magnesium',
+    coreRule:
+        'Electrolytes are useful when sweat/fluid losses are meaningful. Magnesium in a sports drink is not proven to prevent ordinary exercise cramps.',
+    whyUsed:
+        'Supports fluid retention and replaces sodium/potassium losses in prolonged exercise, heat, heavy sweating or rapid rehydration.',
+    evidence: ExpandedEvidence.strong,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Exercise hydration',
+        population: 'Athletes with meaningful sweat losses',
+        dose:
+            'No universal sachet dose. Match fluid and sodium intake to individual sweat rate, event duration and product sodium concentration.',
+        timing: 'Before/during/after exercise according to the hydration plan.',
+        duration: 'Event/training specific.',
+        note:
+            'Typical sports drinks contain roughly 20–40 mmol/L sodium (~46–92 mg/100 mL), while dedicated electrolyte products can be much higher.',
+      ),
+    ],
+    administration: ['Mix powders/tablets in the exact water volume on the label; over-concentration can worsen GI symptoms.'],
+    commonActionable: ['Excess fluid without adequate sodium can contribute to exercise-associated hyponatremia.'],
+    interactions: [],
+    monitoring: ['Pre/post exercise body mass, thirst, urine and known sweat rate when practical.'],
+    avoidOrRefer: ['Heart/kidney disease, salt restriction or history of hyponatremia requires professional guidance.'],
+    labelChecks: ['sodium mg/L or per serve', 'carbohydrate', 'potassium', 'caffeine'],
+    sourceLabel: 'Australian Institute of Sport Electrolyte Replacement + Sports Drinks guidance',
+    searchTerms: ['electrolytes', 'sodium', 'hydration', 'sweat'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-weight-gainer',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Mass Gainer / Mixed Macronutrient Supplement',
+    subtitle: 'High-calorie convenience — not a muscle-specific drug',
+    coreRule:
+        'Mass gainers add calories. Weight gain comes from energy surplus; the product does not direct all gained weight into muscle.',
+    whyUsed:
+        'Useful when an athlete with high energy needs cannot meet calorie/protein targets with ordinary food.',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Energy-gap use',
+        population: 'Adult athlete with documented difficulty meeting energy needs',
+        dose:
+            'No universal scoop dose. Use the smallest serving that fills the measured energy/protein gap.',
+        timing: 'Between meals or after training so it does not displace core meals.',
+        duration: 'During the planned mass-gain phase with body-composition monitoring.',
+        note: 'Many full servings exceed 500–1,000 kcal; half-servings may be more appropriate.',
+      ),
+    ],
+    administration: ['Start with a partial serving to assess GI tolerance.'],
+    commonActionable: ['Bloating, excessive calorie intake, unwanted fat gain and diarrhea.'],
+    interactions: [],
+    monitoring: ['Weekly body-mass trend, waist/body composition, training performance and GI tolerance.'],
+    avoidOrRefer: ['Unexplained weight loss, diabetes or GI disease requires clinical evaluation.'],
+    labelChecks: ['kcal/serve', 'protein g', 'added sugar', 'creatine/stimulant add-ons', 'serving scoop size'],
+    sourceLabel: 'Australian Institute of Sport Mixed Macronutrient / sports-food framework',
+    searchTerms: ['mass gainer', 'weight gainer', 'bulking shake'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-collagen',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Collagen / Gelatin for Connective Tissue',
+    subtitle: 'Emerging sport-specific adjunct',
+    coreRule:
+        'Collagen is not a complete muscle-building protein. Its sports role is connective-tissue support, not replacing high-quality dietary protein.',
+    whyUsed:
+        'Studied around tendon/ligament/connective-tissue support and rehabilitation.',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Exercise/rehab research context',
+        population: 'Adult athletes in connective-tissue loading programs',
+        dose:
+            'Research often uses ~10–15 g gelatin/collagen with vitamin C before loading exercise, but no universal clinical treatment dose is established.',
+        timing: 'Often ~30–60 minutes before targeted rehab/loading in studies.',
+        duration: 'Several weeks within a structured rehab/training plan.',
+        note: 'Evidence is emerging; do not replace rehabilitation or adequate total protein.',
+      ),
+    ],
+    administration: ['Choose hydrolyzed collagen/gelatin with declared grams; normal dietary vitamin C usually avoids need for megadose vitamin C.'],
+    commonActionable: ['GI fullness/taste issues.'],
+    interactions: [],
+    monitoring: ['Pain/function and rehab outcomes.'],
+    avoidOrRefer: ['Persistent tendon/joint pain or suspected structural injury requires assessment.'],
+    labelChecks: ['collagen grams', 'type/source', 'added sugar'],
+    sourceLabel: 'AIS Group B collagen support + sports-nutrition literature',
+    searchTerms: ['gelatin', 'tendon', 'ligament'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-bcaa',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'BCAA / Leucine Supplements',
+    subtitle: 'Low priority when total high-quality protein is adequate',
+    coreRule:
+        'BCAAs are generally unnecessary when the athlete already meets protein needs with high-quality protein.',
+    whyUsed:
+        'Marketed for muscle protein synthesis, recovery and reduced soreness.',
+    evidence: ExpandedEvidence.limited,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Adequate protein intake',
+        population: 'Athletes meeting protein targets',
+        dose: 'No established routine BCAA dose; generally not needed.',
+        timing: 'Prefer a complete protein meal/serve.',
+        duration: 'Not routinely recommended.',
+        note:
+            'AIS places BCAA/leucine in Group C because evidence is not supportive for routine performance use.',
+      ),
+      ExpandedDosePathway(
+        title: 'Leucine “top-up” concept',
+        population: 'Occasional low-leucine meal or plant-protein context',
+        dose:
+            'A meal leucine target around ~2.5–3 g is sometimes used conceptually, but complete protein is usually preferable.',
+        timing: 'With the low-leucine meal.',
+        duration: 'As needed, not a default chronic BCAA regimen.',
+        note: 'Long-term superiority over adequate total protein is not established.',
+      ),
+    ],
+    administration: ['Use complete protein rather than sipping BCAA all day.'],
+    commonActionable: ['Cost and flavored-product sweeteners/GI issues are common practical downsides.'],
+    interactions: [],
+    monitoring: ['Total protein and diet quality.'],
+    avoidOrRefer: [],
+    labelChecks: ['actual leucine/isoleucine/valine grams', 'avoid hidden stimulant blends'],
+    sourceLabel: 'Australian Institute of Sport BCAA/Leucine Group C guidance',
+    searchTerms: ['BCAA', 'leucine', '2:1:1'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-hmb',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'HMB',
+    subtitle: 'β-hydroxy-β-methylbutyrate',
+    coreRule:
+        'HMB is heavily marketed for muscle growth, but routine performance benefit in trained athletes is inconsistent.',
+    whyUsed:
+        'Marketed for muscle preservation, recovery and strength.',
+    evidence: ExpandedEvidence.limited,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Research dose',
+        population: 'Adult exercise studies',
+        dose: 'About 3 g/day is commonly studied.',
+        timing: 'Usually divided across the day.',
+        duration: 'Study-specific.',
+        note:
+            'AIS classifies HMB in Group C: evidence is not supportive for routine athlete supplementation.',
+      ),
+    ],
+    administration: ['Do not add HMB before fixing inadequate protein/energy intake.'],
+    commonActionable: [],
+    interactions: [],
+    monitoring: ['Training outcomes; discontinue if no measurable benefit.'],
+    avoidOrRefer: [],
+    labelChecks: ['HMB-Ca vs free-acid form', 'grams/day', 'proprietary blends'],
+    sourceLabel: 'NIH ODS Exercise Performance + AIS Group C',
+    searchTerms: ['beta hydroxy beta methylbutyrate', 'muscle'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-citrulline',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'L-Citrulline / Citrulline Malate',
+    subtitle: 'Common “pump” ingredient with limited performance certainty',
+    coreRule:
+        'Citrulline is not in the top evidence tier. Product doses and citrulline-malate ratios vary, so “8 g citrulline malate” does not always mean 8 g citrulline.',
+    whyUsed:
+        'Marketed for nitric-oxide production, blood flow, high-intensity performance and reduced soreness.',
+    evidence: ExpandedEvidence.limited,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Performance research context',
+        population: 'Healthy adult athletes',
+        dose:
+            'Studies include single doses up to ~9 g citrulline or ~6 g/day for short periods; no universal performance dose is established.',
+        timing: 'Acute protocols are usually pre-exercise.',
+        duration: 'Study-specific.',
+        note: 'NIH ODS describes the performance evidence as limited/conflicting.',
+      ),
+    ],
+    administration: ['Verify whether the label states pure L-citrulline or citrulline malate and the actual ratio.'],
+    commonActionable: ['GI upset can occur at larger doses.'],
+    interactions: ['Potential additive blood-pressure lowering with antihypertensives/nitrates/PDE5 inhibitors.'],
+    monitoring: ['BP symptoms and performance goal.'],
+    avoidOrRefer: ['Cardiovascular medication combinations require review.'],
+    labelChecks: ['L-citrulline grams', 'malate ratio', 'hidden caffeine'],
+    sourceLabel: 'NIH ODS Exercise and Athletic Performance',
+    searchTerms: ['pump', 'citrulline malate', 'NO booster'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-arginine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'L-Arginine',
+    subtitle: 'Weak performance supplement despite “nitric oxide” marketing',
+    coreRule:
+        'Oral arginine is less reliable than marketing suggests for sport performance; it is not a proven muscle-growth or height-growth supplement.',
+    whyUsed:
+        'Marketed for “pump,” growth hormone release and performance.',
+    evidence: ExpandedEvidence.insufficient,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Routine sports use',
+        population: 'Healthy athletes',
+        dose: 'No established routine performance dose.',
+        timing: 'No evidence-based requirement to take pre-workout.',
+        duration: 'Not routinely recommended for performance.',
+        note:
+            'Do not translate transient hormone changes from amino-acid studies into proven muscle or height gain.',
+      ),
+    ],
+    administration: [],
+    commonActionable: ['GI upset and diarrhea can occur at higher doses.'],
+    interactions: ['Can add to blood-pressure lowering and interact with nitrate/PDE5 therapy.'],
+    monitoring: [],
+    avoidOrRefer: ['Recent myocardial infarction/cardiovascular disease requires clinician review.'],
+    labelChecks: ['arginine grams', 'arginine AKG vs L-arginine', 'other stimulants'],
+    sourceLabel: 'NIH ODS Exercise Performance + clinical arginine evidence',
+    searchTerms: ['NO booster', 'pump', 'growth hormone'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-carnitine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'L-Carnitine / L-Carnitine L-Tartrate',
+    subtitle: 'Emerging/conditional rather than routine ergogenic aid',
+    coreRule:
+        'Carnitine is not a reliable “fat burner.” Muscle carnitine loading is biologically complex and performance outcomes are inconsistent.',
+    whyUsed:
+        'Marketed for fat oxidation, endurance and recovery.',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'General athlete use',
+        population: 'Healthy adult athletes',
+        dose: 'No established routine performance dose.',
+        timing: 'Not a priority supplement.',
+        duration: 'Do not continue automatically without a measurable goal.',
+        note: 'AIS classifies carnitine in Group B (emerging evidence), not Group A.',
+      ),
+    ],
+    administration: ['Do not confuse acetyl-L-carnitine neuropathy research with sports dosing.'],
+    commonActionable: ['GI upset and fishy body odor can occur.'],
+    interactions: ['Warfarin interaction/INR changes have been reported with some carnitine use.'],
+    monitoring: [],
+    avoidOrRefer: ['Seizure disorders and complex anticoagulation require review.'],
+    labelChecks: ['carnitine form', 'grams per dose'],
+    sourceLabel: 'Australian Institute of Sport Group B + NIH ODS Carnitine',
+    searchTerms: ['L-carnitine', 'fat burner', 'LCLT'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-ketones',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Exogenous Ketones',
+    subtitle: 'Ketone esters/salts — emerging, expensive, context-specific',
+    coreRule:
+        'Raising blood ketones does not automatically improve performance or fat loss.',
+    whyUsed:
+        'Marketed for endurance fuel, recovery and “ketosis without dieting.”',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Performance use',
+        population: 'Adult athletes',
+        dose: 'No established routine supplemental dose.',
+        timing: 'Research protocols are product-specific.',
+        duration: 'Research/elite-sport context only.',
+        note: 'AIS places ketone supplements in Group B; performance findings are mixed.',
+      ),
+    ],
+    administration: ['Ketone salts can deliver a large mineral load; ketone esters can have strong taste/GI effects.'],
+    commonActionable: ['Nausea, GI distress and poor palatability are common.'],
+    interactions: [],
+    monitoring: ['Performance outcome and GI tolerance; blood ketone level alone is not proof of benefit.'],
+    avoidOrRefer: ['Diabetes, SGLT2 inhibitor use or ketoacidosis risk requires clinician review.'],
+    labelChecks: ['ester vs salt', 'beta-hydroxybutyrate grams', 'sodium/potassium load'],
+    sourceLabel: 'Australian Institute of Sport Group B ketone supplements',
+    searchTerms: ['BHB', 'ketone ester', 'ketone salts'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-ribose',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'D-Ribose',
+    subtitle: 'No convincing routine performance benefit',
+    coreRule:
+        'D-ribose is marketed as “ATP fuel,” but current evidence does not support routine exercise-performance use.',
+    whyUsed: 'Marketed for energy, ATP replenishment and recovery.',
+    evidence: ExpandedEvidence.insufficient,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Athletic performance',
+        population: 'Healthy athletes',
+        dose: 'No established routine performance dose.',
+        timing: 'Not a priority ergogenic aid.',
+        duration: 'Not routinely recommended.',
+        note: 'NIH ODS notes that ribose does not appear to improve exercise performance.',
+      ),
+    ],
+    administration: [],
+    commonActionable: ['GI upset and reductions in blood glucose can occur.'],
+    interactions: ['Glucose-lowering therapy requires caution.'],
+    monitoring: [],
+    avoidOrRefer: [],
+    labelChecks: ['grams ribose', 'added sugars'],
+    sourceLabel: 'NIH ODS Exercise and Athletic Performance',
+    searchTerms: ['ATP', 'D ribose', 'energy'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-tyrosine',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'L-Tyrosine',
+    subtitle: 'Not a routine performance enhancer',
+    coreRule:
+        'Tyrosine may be researched for cognitive performance under severe stress, but AIS does not support routine sport supplementation.',
+    whyUsed:
+        'Marketed for focus, stress resilience and pre-workout cognition.',
+    evidence: ExpandedEvidence.limited,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Routine sports use',
+        population: 'Healthy athletes',
+        dose: 'No established routine supplemental dose.',
+        timing: 'Not a standard pre-workout recommendation.',
+        duration: 'Not routinely recommended.',
+        note: 'AIS places tyrosine in Group C.',
+      ),
+    ],
+    administration: [],
+    commonActionable: ['Nausea/headache can occur.'],
+    interactions: ['MAO inhibitors and thyroid/levodopa contexts require review.'],
+    monitoring: [],
+    avoidOrRefer: ['Complex psychiatric or thyroid therapy requires clinician review.'],
+    labelChecks: ['tyrosine mg', 'stimulant co-ingredients'],
+    sourceLabel: 'Australian Institute of Sport Group C',
+    searchTerms: ['focus', 'preworkout tyrosine'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-magnesium',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Magnesium for Performance / Cramps',
+    subtitle: 'Correct deficiency; do not promise cramp prevention in replete athletes',
+    coreRule:
+        'Magnesium is an essential nutrient, but extra magnesium is not a proven performance or ordinary exercise-cramp solution when intake/status is adequate.',
+    whyUsed: 'Often requested for muscle cramps, recovery and sleep.',
+    evidence: ExpandedEvidence.limited,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Athlete with adequate magnesium intake',
+        population: 'Healthy athlete',
+        dose: 'No established routine performance dose.',
+        timing: 'Food first.',
+        duration: 'Not needed solely for performance.',
+        note: 'AIS places magnesium in Group C for performance supplementation.',
+      ),
+      ExpandedDosePathway(
+        title: 'Documented/inadequate intake',
+        population: 'Athlete with true nutritional gap',
+        dose: 'Supplement to correct the gap; use elemental magnesium and standard nutrient guidance.',
+        timing: 'Product/form dependent.',
+        duration: 'Until intake/status is corrected.',
+        note: 'Deficiency correction is different from ergogenic use.',
+      ),
+    ],
+    administration: ['Counsel by elemental magnesium and exact salt.'],
+    commonActionable: ['Diarrhea/cramping is common with higher supplemental doses.'],
+    interactions: ['Chelates tetracyclines/quinolones and interferes with bisphosphonate absorption.'],
+    monitoring: ['Dietary intake; renal function in higher-risk patients.'],
+    avoidOrRefer: ['Renal impairment increases magnesium toxicity risk.'],
+    labelChecks: ['elemental magnesium', 'salt form'],
+    sourceLabel: 'AIS Group C + NIH ODS Magnesium',
+    searchTerms: ['cramps', 'magnesium sport', 'recovery'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-preworkout',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: 'Multi-Ingredient Pre-Workout',
+    subtitle: 'Analyze each ingredient — do not dose by scoop hype',
+    coreRule:
+        'A “pre-workout” is not one supplement. Evaluate caffeine, creatine, beta-alanine, citrulline, sodium and proprietary blends separately.',
+    whyUsed:
+        'Convenience product marketed for energy, focus, pump and performance.',
+    evidence: ExpandedEvidence.contextSpecific,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Product use',
+        population: 'Healthy adult athletes',
+        dose: 'No universal pre-workout dose.',
+        timing: 'Follow the evidence-based timing of each disclosed active ingredient.',
+        duration: 'Use selectively.',
+        note:
+            'Many blends underdose evidence-based ingredients while adding unnecessary stimulants.',
+      ),
+    ],
+    administration: ['Never “dry scoop.” Mix exactly as labeled and start with a partial serving when stimulant tolerance is unknown.'],
+    commonActionable: ['Palpitations, anxiety, paresthesia, insomnia, GI upset and headache.'],
+    interactions: ['Avoid stimulant stacking with energy drinks, decongestants or other pre-workouts.'],
+    monitoring: ['Total caffeine and stimulant exposure.'],
+    avoidOrRefer: ['Cardiovascular disease, pregnancy, adolescents or competitive athletes need stricter review.'],
+    labelChecks: ['fully disclosed doses', 'caffeine mg', 'proprietary blend', 'batch testing', 'DMAA/DMHA/yohimbe-like stimulants'],
+    sourceLabel: 'AIS Sports Supplement Framework + FDA stimulant-supplement warnings',
+    searchTerms: ['pre workout', 'proprietary blend', 'dry scoop'],
+  ),
+  ExpandedSupplementProfile(
+    id: 'sport-growth-amino',
+    section: ExpandedSupplementSection.sportsGrowth,
+    name: '“Growth” Amino-Acid Blends',
+    subtitle: 'Arginine / ornithine / lysine / GABA products marketed for height or GH',
+    coreRule:
+        'No amino-acid blend has an established dose that increases final height in a healthy child/adolescent with normal growth.',
+    whyUsed:
+        'Marketed as “GH releasers,” height boosters or growth support.',
+    evidence: ExpandedEvidence.notRecommended,
+    dosePathways: [
+      ExpandedDosePathway(
+        title: 'Healthy child/adolescent height growth',
+        population: 'Normally growing child/adolescent',
+        dose: 'No established height-increasing supplemental dose.',
+        timing: 'Not recommended as a height treatment.',
+        duration: 'Not recommended.',
+        note:
+            'Transient changes in growth hormone after amino acids are not evidence of increased final height.',
+      ),
+      ExpandedDosePathway(
+        title: 'Poor growth / short stature',
+        population: 'Child with crossing percentiles or suspected growth disorder',
+        dose: 'Do not self-treat with amino acids.',
+        timing: 'Refer for pediatric growth evaluation.',
+        duration: 'Diagnosis-directed.',
+        note:
+            'Calorie/protein deficiency should be corrected when present, but endocrine/celiac/systemic causes must not be delayed.',
+      ),
+    ],
+    administration: [],
+    commonActionable: ['GI upset and unnecessary supplement burden.'],
+    interactions: [],
+    monitoring: ['Height velocity and growth chart, not “GH booster” response.'],
+    avoidOrRefer: ['Poor height velocity, delayed puberty, weight loss or chronic symptoms need pediatric evaluation.'],
+    labelChecks: ['avoid proprietary “GH blend” claims', 'amino-acid amounts', 'stimulant/herbal add-ons'],
+    sourceLabel: 'Pediatric growth guidance + NIH ODS exercise supplement evidence',
+    searchTerms: ['height booster', 'GHR', 'GH releaser', 'arginine ornithine'],
+  ),
+];
+
+ExpandedSupplementProfile sportsGrowthExpandedProfile(String id) =>
+    sportsGrowthExpandedProfiles.singleWhere((item) => item.id == id);

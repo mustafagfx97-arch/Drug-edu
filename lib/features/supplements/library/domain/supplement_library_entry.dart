@@ -10,6 +10,7 @@ enum SupplementLibraryDestination {
   reproductiveToolkit,
   nerveHairToolkit,
   hairLossToolkit,
+  expandedCatalog,
 }
 
 class SupplementLibraryEntry {

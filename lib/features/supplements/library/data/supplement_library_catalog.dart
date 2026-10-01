@@ -1,4 +1,5 @@
 import '../../data/supplement_profiles.dart';
+import '../../expanded_catalog/data/expanded_catalog_data.dart';
 import '../../hair_loss/data/hair_loss_data.dart';
 import '../../herbals/data/herbal_toolkit_data.dart';
 import '../../joints/data/joint_toolkit_data.dart';
@@ -69,31 +70,31 @@ const supplementLibraryCategories = <SupplementLibraryCategory>[
     id: 'general',
     title: 'General & Performance Supplements',
     subtitle:
-        'Omega-3, creatine, CoQ10, choline, melatonin and other common non-vitamin/mineral supplements.',
+        'Omega-3, creatine, CoQ10, choline, melatonin, psyllium, urinary/eye-support supplements and practical dose pathways.',
   ),
   SupplementLibraryCategory(
     id: 'pediatric',
     title: 'Pediatric Supplements',
     subtitle:
-        'Infant and child supplement profiles with age/product-specific safety checks.',
+        'Infant vitamin D/iron, preterm iron, diarrhea zinc, fluoride, vegan B12, calcium gaps, nutrition drinks and pediatric safety.',
   ),
   SupplementLibraryCategory(
     id: 'combinations',
     title: 'Combination Products',
     subtitle:
-        'Multivitamin, multimineral and prenatal combinations with duplication and total-intake checks.',
+        'Prenatal, multivitamin, AREDS2, B-complex, bone, iron-vitamin C, vegan, older-adult and bariatric formula audits.',
   ),
   SupplementLibraryCategory(
     id: 'sports-growth',
     title: 'Sports, Amino Acids & Growth Products',
     subtitle:
-        'Products marketed for performance or growth, with evidence and safety separated from marketing claims.',
+        'Evidence-ranked creatine, caffeine, beta-alanine, nitrate, bicarbonate, protein, fuel, electrolytes, amino acids and growth claims.',
   ),
   SupplementLibraryCategory(
     id: 'safety',
     title: 'Safety & High-Risk Products',
     subtitle:
-        'Weight-loss, misleading, high-risk or inappropriate supplement products and common safety traps.',
+        'Stimulants, adulterated weight-loss/sexual products, SARMs, prohormones, unlawful ingredients and high-risk “natural” products.',
   ),
 ];
 
@@ -107,6 +108,11 @@ const _deepMineralIds = <String>{
 bool _includeLegacyProfile(String id, String group) {
   if (group == 'Vitamins') return false;
   if (group == 'Minerals' && _deepMineralIds.contains(id)) return false;
+  if (group == 'Other supplements') return false;
+  if (group == 'Pediatric supplements') return false;
+  if (group == 'Combination products') return false;
+  if (group == 'Growth / amino-acid products') return false;
+  if (group == 'Safety review') return false;
   if (id == 'probiotics') return false;
   return true;
 }
@@ -271,6 +277,33 @@ final supplementLibraryEntries = <SupplementLibraryEntry>[
         product.evidenceNote,
         product.productLock,
         product.sourceLabel,
+      ].join(' '),
+    ),
+  for (final profile in expandedSupplementProfiles)
+    SupplementLibraryEntry(
+      id: 'expanded:' + profile.id,
+      categoryId: expandedSectionId(profile.section),
+      title: profile.name,
+      subtitle: profile.subtitle + ' · ' + profile.coreRule,
+      destination: SupplementLibraryDestination.expandedCatalog,
+      targetId: profile.id,
+      searchText: [
+        profile.whyUsed,
+        profile.sourceLabel,
+        for (final term in profile.searchTerms) term,
+        for (final pathway in profile.dosePathways)
+          [
+            pathway.title,
+            pathway.population,
+            pathway.dose,
+            pathway.timing,
+            pathway.duration,
+            pathway.note,
+          ].join(' '),
+        for (final item in profile.administration) item,
+        for (final item in profile.interactions) item,
+        for (final item in profile.avoidOrRefer) item,
+        for (final item in profile.labelChecks) item,
       ].join(' '),
     ),
   for (final profile in supplementProfiles)

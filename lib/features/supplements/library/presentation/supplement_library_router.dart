@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/supplement_profiles.dart';
+import '../../expanded_catalog/presentation/expanded_supplement_detail_screen.dart';
 import '../../hair_loss/presentation/hair_loss_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
 import '../../joints/presentation/joint_toolkit_screen.dart';
@@ -58,6 +59,8 @@ void openSupplementLibraryEntry(
     SupplementLibraryDestination.hairLossToolkit => HairLossToolkitScreen(
         initialProductId: entry.targetId,
       ),
+    SupplementLibraryDestination.expandedCatalog =>
+      ExpandedSupplementDetailScreen(profileId: entry.targetId),
   };
 
   Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));

@@ -169,7 +169,7 @@ void main() {
   });
 
   test('elective dose table gives usual daily doses without implying need', () {
-    expect(electiveDailyDoseRules.length, 16);
+    expect(electiveDailyDoseRules.length, 17);
 
     final biotin =
         electiveDailyDoseRules.singleWhere((item) => item.nutrient == 'Biotin (B7)');

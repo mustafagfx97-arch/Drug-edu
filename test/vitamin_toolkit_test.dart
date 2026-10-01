@@ -42,9 +42,13 @@ void main() {
     final pathway =
         biotin.pathways.singleWhere((item) => item.id == 'hair-nails');
 
-    expect(pathway.dose, contains('2,500–5,000 mcg/day'));
+    expect(pathway.dose, contains('1 mg'));
+    expect(pathway.dose, contains('2.5 mg'));
+    expect(pathway.dose, contains('5 mg'));
+    expect(pathway.dose, contains('10 mg'));
     expect(biotin.safety.join(' '), contains('10 mg'));
     expect(biotin.safety.join(' '), contains('troponin'));
+    expect(biotin.safety.join(' '), contains('assay/platform'));
   });
 
   test('vitamin D older adult prevention avoids routine testing', () {

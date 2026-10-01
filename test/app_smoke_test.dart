@@ -24,10 +24,15 @@ void main() {
 
     expect(find.text('Probiotic Strain Atlas'), findsOneWidget);
 
-    await tester.drag(find.byType(ListView), const Offset(0, -700));
+    await tester.scrollUntilVisible(
+      find.text('Product & Combination Analyzer'),
+      300,
+      scrollable: find.byType(Scrollable).last,
+    );
     await tester.pumpAndSettle();
 
-    expect(find.text('Herbals, Menopause & Nerves'), findsOneWidget);
+    expect(find.text('Joint & Collagen Toolkit'), findsOneWidget);
+    expect(find.text('Can I Take These Together?'), findsOneWidget);
     expect(find.text('Product & Combination Analyzer'), findsOneWidget);
   });
 }

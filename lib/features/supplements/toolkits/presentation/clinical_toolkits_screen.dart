@@ -6,6 +6,8 @@ import '../../probiotics/presentation/probiotic_atlas_screen.dart';
 import '../../specialty/presentation/specialty_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
 import '../../products/presentation/product_analyzer_screen.dart';
+import '../../joints/presentation/joint_toolkit_screen.dart';
+import '../../stack/presentation/stack_safety_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -78,6 +80,22 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Black cohosh, phytoestrogens, stress/sleep herbs, mood and cognition supplements with extract-specific doses and safety locks.',
             onTap: () => _open(context, const HerbalToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.accessibility_new_outlined,
+            title: 'Joint & Collagen Toolkit',
+            subtitle:
+                'Glucosamine, chondroitin, native type II vs collagen peptides, MSM, oral HA and SAMe with dose/evidence locks.',
+            onTap: () => _open(context, const JointToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.compare_arrows_rounded,
+            title: 'Can I Take These Together?',
+            subtitle:
+                'Patient-facing stack safety: what can be combined, what should be separated, GI burden and high-value medicine/condition flags.',
+            onTap: () => _open(context, const StackSafetyScreen()),
           ),
           const SizedBox(height: 12),
           _ToolkitCard(

@@ -2,7 +2,7 @@ name: Supplement Edu CI
 
 on:
   push:
-    branches: [supplement-edu-main]
+    branches: [supplement-edu-main, supplement-edu-v1.1]
   pull_request:
   workflow_dispatch:
 

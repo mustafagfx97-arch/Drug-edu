@@ -5,6 +5,11 @@ enum PatientMedicationFlag {
   tetracyclineOrQuinolone,
   warfarin,
   upcomingBiotinSensitiveLabs,
+  levodopa,
+  penicillamine,
+  dolutegravir,
+  renalImpairment,
+  pregnantOrCouldBecomePregnant,
 }
 
 class AnalyzerIngredientRule {

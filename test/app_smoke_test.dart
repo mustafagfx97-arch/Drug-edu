@@ -17,5 +17,12 @@ void main() {
     expect(find.text('Needs'), findsOneWidget);
     expect(find.text('Toolkits'), findsOneWidget);
     expect(find.text('Library'), findsOneWidget);
+
+    await tester.tap(find.text('Toolkits'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Product & Combination Analyzer'), findsOneWidget);
+    expect(find.text('Probiotic Strain Atlas'), findsOneWidget);
+    expect(find.text('Herbals, Menopause & Nerves'), findsOneWidget);
   });
 }

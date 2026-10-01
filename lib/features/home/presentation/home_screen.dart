@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.monitor_heart_outlined,
               title: 'My Daily Needs & Labs',
               subtitle:
-                  'Personalized adult RDA/AI targets, upper limits, food-first guidance and a targeted lab navigator.',
+                  'Personalized adult + pediatric RDA/AI targets, upper limits, food-first gap guidance and a targeted lab navigator.',
               onTap: () => onSelectDestination(2),
             ),
           ),
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.science_outlined,
               title: 'Clinical Toolkits',
               subtitle:
-                  'Minerals + vitamins: salts/forms, treatment pathways, interactions, safety, and mitochondrial/neurometabolic support.',
+                  'Minerals, vitamins, probiotics, GI/specialty supplements, herbals, mitochondrial support and product-combination analysis.',
               onTap: () => onSelectDestination(3),
             ),
           ),
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.menu_book_outlined,
               title: 'Supplement Encyclopedia',
               subtitle:
-                  'The verified Drug Edu supplement library is preserved and will expand by nutrient, salt, indication, dose, monitoring and counseling.',
+                  'The verified supplement library is preserved alongside the deeper clinical toolkits for salts, doses, indications, monitoring and counseling.',
               onTap: () => onSelectDestination(4),
             ),
           ),

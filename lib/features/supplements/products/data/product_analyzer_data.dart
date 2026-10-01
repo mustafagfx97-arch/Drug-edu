@@ -17,6 +17,8 @@ const analyzerIngredientRules = <AnalyzerIngredientRule>[
     interactions: {
       PatientMedicationFlag.tetracyclineOrQuinolone:
           'Magnesium can chelate tetracycline/quinolone antibiotics. Use the antibiotic at least 2 hours before or 4–6 hours after magnesium.',
+      PatientMedicationFlag.renalImpairment:
+          'Impaired renal function increases the risk of magnesium accumulation and toxicity. Review kidney function, total magnesium exposure and the clinical indication before supplementing.',
     },
   ),
   AnalyzerIngredientRule(
@@ -30,7 +32,9 @@ const analyzerIngredientRules = <AnalyzerIngredientRule>[
       PatientMedicationFlag.levothyroxine:
           'Keep calcium carbonate at least 4 hours from levothyroxine.',
       PatientMedicationFlag.tetracyclineOrQuinolone:
-          'Calcium can reduce quinolone absorption; separate according to the antibiotic-specific instructions.',
+          'Calcium can reduce quinolone absorption; the NIH ODS reference uses 2 hours before or 2 hours after calcium for quinolones.',
+      PatientMedicationFlag.dolutegravir:
+          'Take dolutegravir 2 hours before or 6 hours after calcium supplements unless an exact product/food instruction provides a different approved strategy.',
     },
   ),
   AnalyzerIngredientRule(
@@ -49,6 +53,8 @@ const analyzerIngredientRules = <AnalyzerIngredientRule>[
     interactions: {
       PatientMedicationFlag.levothyroxine:
           'Avoid levothyroxine within 4 hours of iron.',
+      PatientMedicationFlag.levodopa:
+          'Iron supplements can reduce levodopa absorption and clinical effect. Review the levodopa product instructions and avoid casual coadministration.',
     },
   ),
   AnalyzerIngredientRule(
@@ -67,6 +73,8 @@ const analyzerIngredientRules = <AnalyzerIngredientRule>[
     interactions: {
       PatientMedicationFlag.tetracyclineOrQuinolone:
           'Take tetracycline/quinolone antibiotics at least 2 hours before or 4–6 hours after zinc.',
+      PatientMedicationFlag.penicillamine:
+          'Separate zinc and penicillamine by at least 1 hour because zinc can reduce penicillamine absorption and action.',
     },
   ),
   AnalyzerIngredientRule(
@@ -148,7 +156,10 @@ const analyzerIngredientRules = <AnalyzerIngredientRule>[
         scope: 'Applies to preformed vitamin A, not ordinary food carotenoids.',
       ),
     ],
-    interactions: {},
+    interactions: {
+      PatientMedicationFlag.pregnantOrCouldBecomePregnant:
+          'Excess preformed vitamin A can cause birth defects. If pregnant or pregnancy is possible, review the PRE-formed retinol/retinyl-ester amount across prenatal and other products; beta-carotene is a different exposure.',
+    },
   ),
   AnalyzerIngredientRule(
     id: 'selenium',

@@ -248,6 +248,36 @@ class _ProductAnalyzerScreenState extends State<ProductAnalyzerScreen> {
             selected: _flags,
             onChanged: () => setState(() {}),
           ),
+          _FlagTile(
+            title: 'Levodopa',
+            flag: PatientMedicationFlag.levodopa,
+            selected: _flags,
+            onChanged: () => setState(() {}),
+          ),
+          _FlagTile(
+            title: 'Penicillamine',
+            flag: PatientMedicationFlag.penicillamine,
+            selected: _flags,
+            onChanged: () => setState(() {}),
+          ),
+          _FlagTile(
+            title: 'Dolutegravir',
+            flag: PatientMedicationFlag.dolutegravir,
+            selected: _flags,
+            onChanged: () => setState(() {}),
+          ),
+          _FlagTile(
+            title: 'Renal impairment / reduced kidney function',
+            flag: PatientMedicationFlag.renalImpairment,
+            selected: _flags,
+            onChanged: () => setState(() {}),
+          ),
+          _FlagTile(
+            title: 'Pregnant or could become pregnant',
+            flag: PatientMedicationFlag.pregnantOrCouldBecomePregnant,
+            selected: _flags,
+            onChanged: () => setState(() {}),
+          ),
           const SizedBox(height: 22),
           Text(
             '3. Analysis',

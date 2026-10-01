@@ -83,3 +83,24 @@ class UsualSupplementDoseRule {
   final String practicalUse;
   final String sourceLabel;
 }
+
+
+class ElectiveDailyDoseRule {
+  const ElectiveDailyDoseRule({
+    required this.nutrient,
+    required this.nutritionalTarget,
+    required this.usualNonTreatmentUse,
+    required this.notAStandardDose,
+    required this.safetyCeiling,
+    required this.practicalRule,
+    required this.sourceLabel,
+  });
+
+  final String nutrient;
+  final String nutritionalTarget;
+  final String usualNonTreatmentUse;
+  final String notAStandardDose;
+  final String safetyCeiling;
+  final String practicalRule;
+  final String sourceLabel;
+}

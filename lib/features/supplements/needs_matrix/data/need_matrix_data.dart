@@ -642,3 +642,236 @@ const needMatrixGlobalRules = <String>[
   'Do not use a multivitamin to hide unexplained anemia, neuropathy, weight loss, malabsorption, bleeding or other symptoms that need diagnosis.',
   'If a patient chooses a supplement despite no clear indication, still show the ordinary daily intake target, the product dose, how many times above the target it is, the UL when one exists, and a clear evidence/safety label.',
 ];
+
+
+const electiveDailyDoseRules = <ElectiveDailyDoseRule>[
+  ElectiveDailyDoseRule(
+    nutrient: 'Basic multivitamin/mineral',
+    nutritionalTarget: 'No single universal MVM requirement.',
+    usualNonTreatmentUse:
+        'If a healthy adult chooses one anyway: 1 labeled serving/day of a BASIC product with most nutrients near ~100% Daily Value rather than a high-potency formula.',
+    notAStandardDose:
+        'There is no standardized multivitamin formula, and a multivitamin is not a substitute for food or a treatment for a specific deficiency.',
+    safetyCeiling:
+        'Avoid stacking another multivitamin/B-complex/mineral blend on top; duplication commonly raises vitamin A, iron, zinc, niacin and folic acid.',
+    practicalRule:
+        'Choose age/sex/life-stage appropriate products and prefer “boring” once-daily formulas over megadose packs when there is no specific indication.',
+    sourceLabel: 'NIH ODS Multivitamin/Mineral Supplements',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin A',
+    nutritionalTarget:
+        'Adult RDA: 900 mcg RAE/day men; 700 mcg RAE/day women — TOTAL intake.',
+    usualNonTreatmentUse:
+        'If taken electively, stay near the age/sex RDA rather than adding high-dose preformed retinol.',
+    notAStandardDose:
+        'No universal stand-alone vitamin A supplement dose is needed for a healthy person with an adequate diet.',
+    safetyCeiling:
+        'Adult UL for PREFORMED vitamin A: 3,000 mcg RAE/day. Pregnancy/pregnancy potential makes excess preformed retinol especially important to avoid.',
+    practicalRule:
+        'Do not count beta-carotene and preformed retinol as the same safety exposure.',
+    sourceLabel: 'NIH ODS Vitamin A',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin C',
+    nutritionalTarget:
+        'Adult RDA: 90 mg/day men; 75 mg/day women. Smokers need 35 mg/day more.',
+    usualNonTreatmentUse:
+        'If a person insists on a simple daily supplement despite adequate diet, about 75–100 mg/day is a nutritional-dose range rather than a megadose.',
+    notAStandardDose:
+        'This is not required when food intake is adequate and is not a treatment dose for infection or other disease.',
+    safetyCeiling:
+        'Adult UL: 2,000 mg/day; GI upset/diarrhea becomes more likely at high doses.',
+    practicalRule:
+        'A 500–1,000 mg tablet is far above the nutritional requirement and should not be described as “the daily need.”',
+    sourceLabel: 'NIH ODS Vitamin C',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin D',
+    nutritionalTarget:
+        'RDA: 600 IU/day age 19–70; 800 IU/day age 71+ — TOTAL intake.',
+    usualNonTreatmentUse:
+        'If used electively without a disease/deficiency indication, choose enough to bring TOTAL daily intake near the age-based RDA; do not treat 2,000–5,000 IU/day as the default healthy dose.',
+    notAStandardDose:
+        'There is no evidence-based universal pill dose for every healthy adult under 75 beyond meeting the DRI.',
+    safetyCeiling:
+        'Adult UL: 4,000 IU/day (100 mcg/day) for routine intake; treatment regimens can differ under monitoring.',
+    practicalRule:
+        'Routine 25-OH vitamin D screening is not required in healthy adults just to decide whether to meet the RDA.',
+    sourceLabel: 'NIH ODS Vitamin D + Endocrine Society 2024',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin E',
+    nutritionalTarget: 'Adult RDA: 15 mg/day alpha-tocopherol.',
+    usualNonTreatmentUse:
+        'If taken electively, a dose near 15 mg/day is a nutritional dose; do not use 400 IU/day as a routine “wellness” default.',
+    notAStandardDose:
+        'No routine stand-alone vitamin E supplement is required with an adequate diet.',
+    safetyCeiling:
+        'High-dose vitamin E can increase bleeding risk and has not shown broad preventive benefit in healthy people.',
+    practicalRule:
+        'Check anticoagulants/antiplatelets before high-dose products.',
+    sourceLabel: 'NIH ODS Vitamin E',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin K',
+    nutritionalTarget:
+        'Adult AI: 120 mcg/day men; 90 mcg/day women — TOTAL intake.',
+    usualNonTreatmentUse:
+        'If supplemented without a specific indication, stay near the nutritional AI rather than using high-dose K products.',
+    notAStandardDose:
+        'No universal stand-alone vitamin K supplement is required for healthy adults.',
+    safetyCeiling:
+        'No UL is established, but warfarin management depends on CONSISTENT vitamin K intake.',
+    practicalRule:
+        'Do not tell warfarin patients to eliminate vitamin K; coordinate meaningful intake changes with INR management.',
+    sourceLabel: 'NIH ODS Vitamin K',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin B6',
+    nutritionalTarget:
+        'Most adults age 19–50: 1.3 mg/day; requirements rise with age and life stage.',
+    usualNonTreatmentUse:
+        'If taken electively, use a low nutritional dose around 1.3–2 mg/day rather than a “nerve support” megadose.',
+    notAStandardDose:
+        '10–100 mg/day is not a routine daily need for a healthy person.',
+    safetyCeiling:
+        'Chronic excess can cause sensory neuropathy. EFSA adult UL is 12 mg/day; U.S. FNB UL is 100 mg/day.',
+    practicalRule:
+        'Add B6 from multivitamins, B-complex and nerve products before judging the total dose.',
+    sourceLabel: 'NIH ODS Vitamin B6 + EFSA 2023',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Biotin (B7)',
+    nutritionalTarget:
+        'Adult AI: 30 mcg/day; pregnancy 30 mcg/day; lactation 35 mcg/day.',
+    usualNonTreatmentUse:
+        'For ordinary nutritional use, ~30 mcg/day is enough to match the adult AI. Hair/nail products commonly contain 2,500–5,000 mcg (2.5–5 mg)/day, but these are HIGH doses and are not proven to improve hair in people without deficiency.',
+    notAStandardDose:
+        'There is no evidence-based “hair growth” biotin dose for a biotin-replete adult.',
+    safetyCeiling:
+        'No UL is established for toxicity, but even 10 mg can interfere with susceptible lab tests; troponin and thyroid testing are high-value examples.',
+    practicalRule:
+        'Ask about biotin before labs. A beauty product dose in milligrams is hundreds of times higher than the 30 mcg nutritional AI.',
+    sourceLabel: 'NIH ODS Biotin + FDA biotin lab-interference warning',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Folate / folic acid',
+    nutritionalTarget: 'Adult RDA: 400 mcg DFE/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'Healthy adults without pregnancy potential do not need a separate folic-acid pill if diet is adequate. Pregnancy-capable persons should receive 400 mcg/day folic acid for NTD prevention.',
+    notAStandardDose:
+        'The 400 mcg folic-acid preventive dose is a life-stage exception, not a universal “everyone” supplement dose.',
+    safetyCeiling:
+        'Adult UL: 1,000 mcg/day synthetic folic acid from supplements/fortified foods.',
+    practicalRule:
+        'Do not use folate alone to mask macrocytosis/neurologic symptoms without considering B12.',
+    sourceLabel: 'NIH ODS Folate + CDC Folic Acid',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Vitamin B12',
+    nutritionalTarget: 'Adult RDA: 2.4 mcg/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'For a healthy omnivore, a basic multivitamin near the RDA is enough if one is used. 500–1,000 mcg/day products are common but are not the daily requirement.',
+    notAStandardDose:
+        'High-dose oral B12 is useful in selected deficiency/malabsorption pathways, not because every healthy person needs hundreds of micrograms.',
+    safetyCeiling:
+        'No UL is established, but unnecessary megadoses add cost and can confuse the difference between nutrition and treatment.',
+    practicalRule:
+        'Vegans and some older adults need a reliable fortified-food/supplement source; deficiency uses a separate treatment dose.',
+    sourceLabel: 'NIH ODS Vitamin B12 + NIH ODS FAQ',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Calcium',
+    nutritionalTarget:
+        'Typical adult target: 1,000 mg/day; women 51–70 and adults 71+ generally 1,200 mg/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'If diet is short, supplement ONLY the gap. Practical supplemental amounts are commonly 200–500 mg ELEMENTAL per dose rather than automatically 1,000–1,200 mg in tablets.',
+    notAStandardDose:
+        'A healthy person who already reaches the target from food has a supplement dose of 0 mg.',
+    safetyCeiling:
+        'Absorption is best at doses of 500 mg elemental calcium or less at one time; total-intake UL depends on age.',
+    practicalRule:
+        'Read ELEMENTAL calcium, not calcium-carbonate/citrate salt weight.',
+    sourceLabel: 'NIH ODS Calcium',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Magnesium',
+    nutritionalTarget:
+        'Adults: about 400–420 mg/day men and 310–320 mg/day women TOTAL intake.',
+    usualNonTreatmentUse:
+        'There is NO standardized routine supplement dose for a healthy person. If someone takes it electively, use the smallest dose needed to close the dietary gap rather than automatically taking the 350 mg ceiling.',
+    notAStandardDose:
+        '350 mg/day is a supplemental UL, NOT the required daily supplement dose.',
+    safetyCeiling:
+        'Adult UL: 350 mg/day from supplements/medications only; food magnesium is excluded. Kidney impairment increases toxicity risk.',
+    practicalRule:
+        'Elemental amount and salt form matter; diarrhea is dose/form related.',
+    sourceLabel: 'NIH ODS Magnesium',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Iron',
+    nutritionalTarget:
+        'Adult men and adults 51+: 8 mg/day; women 19–50: 18 mg/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'No routine stand-alone iron supplement for an iron-replete healthy adult. If a multivitamin is used, choose an age/sex-appropriate amount rather than a 65 mg elemental treatment tablet.',
+    notAStandardDose:
+        '65 mg elemental iron is a therapeutic-type amount from a 325 mg ferrous sulfate tablet, NOT a wellness dose.',
+    safetyCeiling:
+        'Adult UL: 45 mg/day for general intake; clinically supervised iron-deficiency treatment can exceed this.',
+    practicalRule:
+        'Unexplained iron deficiency requires a cause; do not mask GI/menstrual blood loss with indefinite self-treatment.',
+    sourceLabel: 'NIH ODS Iron',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Zinc',
+    nutritionalTarget: 'Adult RDA: 11 mg/day men; 8 mg/day women.',
+    usualNonTreatmentUse:
+        'If taken electively, stay near the nutritional requirement (roughly 8–11 mg/day) rather than chronic 25–50 mg/day products.',
+    notAStandardDose:
+        'High-dose zinc is not a general immune or hair maintenance requirement.',
+    safetyCeiling:
+        'Adult UL: 40 mg/day. Chronic excess can cause copper deficiency.',
+    practicalRule:
+        'Count zinc from multivitamins, lozenges and immune blends.',
+    sourceLabel: 'NIH ODS Zinc',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Iodine',
+    nutritionalTarget: 'Adult RDA: 150 mcg/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'If dietary iodine is uncertain and a supplement is used, a declared dose near 150 mcg/day is a nutritional amount; pregnancy/lactation has a separate 150 mcg supplemental recommendation from major groups.',
+    notAStandardDose:
+        'Kelp/seaweed capsules are not a precise substitute for a declared iodine dose.',
+    safetyCeiling:
+        'Adult UL: 1,100 mcg/day; thyroid disease requires individualized review.',
+    practicalRule:
+        'Count iodized salt, prenatal/multivitamin and separate iodine products together.',
+    sourceLabel: 'NIH ODS Iodine',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Selenium',
+    nutritionalTarget: 'Adult RDA: 55 mcg/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'If a healthy person chooses a supplement, a nutritional amount near 55 mcg/day is enough to match the RDA; 200 mcg/day is NOT a routine wellness requirement.',
+    notAStandardDose:
+        'Higher fertility/thyroid-study doses are indication-specific and should not become the general daily dose.',
+    safetyCeiling:
+        'U.S. adult UL: 400 mcg/day. Chronic excess causes selenosis.',
+    practicalRule:
+        'Count selenium from multivitamins, fertility formulas and Brazil-nut/food intake when relevant.',
+    sourceLabel: 'NIH ODS Selenium',
+  ),
+  ElectiveDailyDoseRule(
+    nutrient: 'Copper',
+    nutritionalTarget: 'Adult RDA: 900 mcg (0.9 mg)/day TOTAL intake.',
+    usualNonTreatmentUse:
+        'No routine stand-alone copper is needed for a healthy person. If present in a basic multivitamin, an amount near 0.9 mg/day is nutritional.',
+    notAStandardDose:
+        'Copper is added therapeutically mainly when a specific deficiency/risk exists, including some high-zinc contexts.',
+    safetyCeiling: 'Adult UL: 10 mg/day.',
+    practicalRule:
+        'High-dose zinc without copper review can create copper deficiency.',
+    sourceLabel: 'NIH ODS Copper',
+  ),
+];

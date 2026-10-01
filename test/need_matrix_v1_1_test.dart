@@ -168,6 +168,25 @@ void main() {
     expect(calcium.routineHealthyUse, contains('NO for checking dietary calcium adequacy'));
   });
 
+  test('elective dose table gives usual daily doses without implying need', () {
+    expect(electiveDailyDoseRules.length, 16);
+
+    final biotin =
+        electiveDailyDoseRules.singleWhere((item) => item.nutrient == 'Biotin (B7)');
+    expect(biotin.nutritionalTarget, contains('30 mcg/day'));
+    expect(biotin.usualNonTreatmentUse, contains('2,500–5,000 mcg'));
+    expect(biotin.notAStandardDose, contains('no evidence-based'));
+
+    final iron =
+        electiveDailyDoseRules.singleWhere((item) => item.nutrient == 'Iron');
+    expect(iron.usualNonTreatmentUse, contains('No routine stand-alone'));
+    expect(iron.notAStandardDose, contains('65 mg elemental iron'));
+
+    final magnesium =
+        electiveDailyDoseRules.singleWhere((item) => item.nutrient == 'Magnesium');
+    expect(magnesium.notAStandardDose, contains('350 mg/day is a supplemental UL'));
+  });
+
   test('global rule locks requirement vs supplement vs treatment vs DV', () {
     expect(
       needMatrixGlobalRules.first,

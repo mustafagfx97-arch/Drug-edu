@@ -253,34 +253,97 @@ const vitaminToolkitEntries = <VitaminToolkitEntry>[
     name: 'Biotin (B7)',
     nameAr: 'بيوتين B7',
     coreRule:
-        'Biotin deficiency is rare. Hair/skin/nail marketing is much stronger than the clinical evidence.',
+        'Biotin has four very different dose worlds: nutritional micrograms, beauty-product milligrams, rare genetic-disease pharmacologic doses, and historical very-high-dose neurologic research. Never mix them.',
     forms: [
       VitaminForm(
         name: 'Biotin',
         practicalDifference:
-            'Common single-ingredient and hair/nail supplement form; many products contain thousands of micrograms.',
+            'Same vitamin, but the dose can range from 30 mcg nutritional intake to hundreds of milligrams in specialist/research settings.',
       ),
     ],
     pathways: [
       VitaminPathway(
-        id: 'hair-nails',
-        title: 'Hair / nail / skin products',
-        population: 'People considering biotin for cosmetic reasons',
-        dose:
-            'Do not auto-recommend megadoses. Evidence for routine use in people without deficiency is limited.',
+        id: 'nutritional',
+        title: 'Ordinary nutritional use',
+        population: 'Healthy adults without biotin deficiency',
+        dose: 'Adult AI: 30 mcg/day; lactation: 35 mcg/day.',
         whenToUse:
-            'Consider true deficiency risk or a specific specialist-directed inherited metabolic indication rather than cosmetic marketing alone.',
-        duration: 'Avoid indefinite high-dose self-treatment without a reason.',
-        monitoring:
-            'Ask about upcoming laboratory tests because biotin can distort immunoassay results.',
+            'Usually met from food. If a person takes a basic multivitamin, a dose around the AI is nutritionally sufficient.',
+        duration: 'As part of normal nutrition; no megadose is needed.',
+        monitoring: 'No routine biotin blood test for healthy adults.',
         caveat:
-            'Even one 10 mg dose has interfered with thyroid tests within 24 hours in a study; some assays including troponin can be dangerously affected.',
-        sourceLabel: 'NIH ODS Biotin + FDA biotin lab-interference warning',
+            '30 mcg is a nutritional target, not a hair-loss treatment dose.',
+        sourceLabel: 'NIH ODS Biotin',
+      ),
+      VitaminPathway(
+        id: 'hair-nails',
+        title: 'Hair / nails / skin marketing',
+        population: 'People considering biotin for cosmetic reasons without proven deficiency',
+        dose:
+            'Products commonly contain 2,500–5,000 mcg/day (2.5–5 mg/day), but NIH ODS considers these VERY HIGH doses and evidence is insufficient to recommend biotin for routine hair/nail improvement.',
+        whenToUse:
+            'Do not use automatically. Evaluate causes of hair loss and nutritional deficiency first; if biotin status is normal, benefit is unproven.',
+        duration:
+            'No evidence-based cosmetic duration. Avoid indefinite high-dose self-treatment.',
+        monitoring:
+            'Ask about upcoming laboratory tests before every high-dose beauty product refill.',
+        caveat:
+            '“Commonly sold” is not the same as “clinically recommended.” A 5 mg tablet is about 167 times the 30 mcg adult AI.',
+        sourceLabel: 'NIH ODS Biotin FAQ + American Academy of Dermatology',
+      ),
+      VitaminPathway(
+        id: 'biotinidase-deficiency',
+        title: 'Biotinidase deficiency — genetic treatment',
+        population:
+            'Confirmed profound or partial biotinidase deficiency under metabolic/genetic specialist care',
+        dose:
+            'Profound deficiency: oral biotin 5–10 mg/day. Partial deficiency: 2.5–10 mg/day.',
+        whenToUse:
+            'Only after diagnosis by enzyme activity/genetic evaluation. This is targeted lifelong treatment, not a beauty supplement regimen.',
+        duration: 'Lifelong for profound disease; specialist-directed for partial disease.',
+        monitoring:
+            'Clinical response, adherence and specialist follow-up; alert laboratories to pharmacologic biotin exposure.',
+        caveat:
+            'Do not extrapolate these milligram doses to ordinary hair loss or wellness.',
+        sourceLabel: 'GeneReviews Biotinidase Deficiency 2026',
+      ),
+      VitaminPathway(
+        id: 'btbgd',
+        title: 'Biotin-thiamine-responsive basal ganglia disease (BTBGD)',
+        population:
+            'Genetically confirmed SLC19A3-related neurologic disease under specialist care',
+        dose:
+            'Biotin 5–10 mg/kg/day with thiamine up to 40 mg/kg/day (max 1,500 mg/day). GeneReviews notes adult maintenance often uses biotin 600 mg/day + thiamine 1,500 mg/day.',
+        whenToUse:
+            'This is urgent targeted treatment for a rare neurogenetic disorder, not general “nerve support.”',
+        duration: 'Lifelong.',
+        monitoring:
+            'Neurology/metabolic follow-up and explicit laboratory notification because biotin doses are massive relative to nutritional intake.',
+        caveat:
+            'Do not use these doses for neuropathy, fatigue, hair loss or multiple sclerosis without the specific diagnosis.',
+        sourceLabel: 'GeneReviews Biotin-Thiamine-Responsive Basal Ganglia Disease 2025/2026',
+      ),
+      VitaminPathway(
+        id: 'progressive-ms',
+        title: 'Progressive multiple sclerosis — high-dose biotin research',
+        population: 'Adults with progressive MS',
+        dose: 'MD1003: biotin 100 mg three times daily = 300 mg/day.',
+        whenToUse:
+            'DO NOT recommend as routine MS treatment.',
+        duration:
+            'Studied for 12–15+ months in randomized trials; this is research history, not a current supplement regimen.',
+        monitoring:
+            'High risk of clinically important immunoassay interference despite mitigation strategies.',
+        caveat:
+            'The larger SPI2 phase 3 trial did not significantly improve disability or walking speed and concluded MD1003 cannot be recommended for progressive MS.',
+        sourceLabel: 'Lancet Neurology SPI2 trial 2020 + NIH ODS Biotin',
       ),
     ],
     safety: [
-      'No UL is established, but high doses can cause falsely high or falsely low laboratory results.',
-      'Always document biotin before thyroid, cardiac troponin, vitamin D and other susceptible immunoassays.',
+      'No UL is established for direct toxicity, but laboratory interference is the major practical hazard.',
+      'Even a single 10 mg dose has interfered with thyroid tests within 24 hours in a study.',
+      'Biotin can cause falsely low troponin and other dangerous false laboratory results; FDA continues to warn about susceptible assays.',
+      'Always document biotin in mcg or mg before thyroid, troponin, vitamin D and other susceptible immunoassays.',
     ],
   ),
   VitaminToolkitEntry(

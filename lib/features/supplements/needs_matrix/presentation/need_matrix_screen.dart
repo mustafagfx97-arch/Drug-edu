@@ -186,6 +186,60 @@ class _NeedMatrixScreenState extends State<NeedMatrixScreen> {
             ),
           const SizedBox(height: 24),
           Text(
+            'If they take supplements anyway: usual NON-treatment daily doses',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 7),
+          const Text(
+            'This section does NOT mean the supplement is needed. It gives a practical nutritional/elective dose or clearly states when no standard supplement dose exists.',
+          ),
+          const SizedBox(height: 8),
+          for (final item in electiveDailyDoseRules)
+            Card(
+              margin: const EdgeInsets.only(bottom: 9),
+              child: ExpansionTile(
+                title: Text(
+                  item.nutrient,
+                  style: const TextStyle(fontWeight: FontWeight.w900),
+                ),
+                subtitle: Text(item.usualNonTreatmentUse),
+                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                children: [
+                  _Fact(
+                    label: 'Nutritional target',
+                    body: item.nutritionalTarget,
+                  ),
+                  _Fact(
+                    label: 'Usual non-treatment use',
+                    body: item.usualNonTreatmentUse,
+                  ),
+                  _Fact(
+                    label: 'What this is NOT',
+                    body: item.notAStandardDose,
+                    critical: true,
+                  ),
+                  _Fact(
+                    label: 'Safety ceiling / caution',
+                    body: item.safetyCeiling,
+                    critical: true,
+                  ),
+                  _Fact(
+                    label: 'Practical rule',
+                    body: item.practicalRule,
+                  ),
+                  Text(
+                    'Source: ' + item.sourceLabel,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 24),
+          Text(
             'Healthy person: what should actually be tested?',
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w900,

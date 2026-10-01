@@ -12,7 +12,14 @@ void main() {
       find.text('Evidence-based supplement decisions for clinical pharmacists'),
       findsOneWidget,
     );
+    expect(find.text('Scan a Supplement'), findsOneWidget);
     expect(find.text('Do I need a supplement?'), findsWidgets);
+    await tester.scrollUntilVisible(
+      find.text('Clinical Toolkits'),
+      220,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pumpAndSettle();
     expect(find.text('Clinical Toolkits'), findsOneWidget);
     expect(find.text('Decision'), findsOneWidget);
     expect(find.text('Needs'), findsOneWidget);

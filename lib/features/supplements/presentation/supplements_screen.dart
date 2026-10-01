@@ -31,6 +31,7 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
         'joints' => Icons.accessibility_new_outlined,
         'reproductive' => Icons.favorite_outline_rounded,
         'nerve-hair' => Icons.psychology_alt_outlined,
+        'hair-loss' => Icons.content_cut_rounded,
         'general' => Icons.science_outlined,
         'pediatric' => Icons.child_friendly_outlined,
         'combinations' => Icons.grid_view_outlined,
@@ -127,7 +128,7 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            'Search vitamins, mineral salts, probiotic strains, herbs, collagen, joint products, GI supplements, fertility adjuncts, nerve/hair products and common performance supplements from one place.',
+            'Search vitamins, mineral salts, probiotic strains, herbs, collagen, joint products, GI supplements, fertility adjuncts, hair-loss brands/ampoules/shampoos and common performance supplements from one place.',
             style: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
               height: 1.45,

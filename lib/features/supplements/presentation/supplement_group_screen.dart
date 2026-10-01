@@ -20,6 +20,7 @@ class SupplementGroupScreen extends StatelessWidget {
         'joints' => Icons.accessibility_new_outlined,
         'reproductive' => Icons.favorite_outline_rounded,
         'nerve-hair' => Icons.psychology_alt_outlined,
+        'hair-loss' => Icons.content_cut_rounded,
         'general' => Icons.science_outlined,
         'pediatric' => Icons.child_friendly_outlined,
         'combinations' => Icons.grid_view_outlined,

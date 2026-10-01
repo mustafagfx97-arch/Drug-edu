@@ -1,3 +1,4 @@
+import 'package:drug_edu/features/supplements/hair_loss/data/hair_loss_data.dart';
 import 'package:drug_edu/features/supplements/herbals/data/herbal_toolkit_data.dart';
 import 'package:drug_edu/features/supplements/joints/data/joint_toolkit_data.dart';
 import 'package:drug_edu/features/supplements/library/data/supplement_library_catalog.dart';
@@ -46,6 +47,10 @@ void main() {
       supplementLibraryEntriesFor('nerve-hair').length,
       nerveHairProfiles.length,
     );
+    expect(
+      supplementLibraryEntriesFor('hair-loss').length,
+      hairLossProducts.length,
+    );
   });
 
   test('probiotic strains are searchable as encyclopedia entries', () {
@@ -82,6 +87,12 @@ void main() {
       'creatine',
       'omega-3',
       'CoQ10',
+      'Priorin Extra',
+      'Crescina',
+      'Foltène',
+      'Cystiphane',
+      'Neofollics',
+      'Aminexil',
     ]) {
       expect(
         searchSupplementLibrary(query),
@@ -104,6 +115,7 @@ void main() {
         'joints',
         'reproductive',
         'nerve-hair',
+        'hair-loss',
         'general',
         'pediatric',
         'combinations',

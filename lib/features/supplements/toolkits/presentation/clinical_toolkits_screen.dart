@@ -4,6 +4,7 @@ import '../../minerals/presentation/mineral_toolkit_screen.dart';
 import '../../vitamins/presentation/vitamin_toolkit_screen.dart';
 import '../../probiotics/presentation/probiotic_atlas_screen.dart';
 import '../../specialty/presentation/specialty_toolkit_screen.dart';
+import '../../hair_loss/presentation/hair_loss_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
 import '../../products/presentation/product_analyzer_screen.dart';
 import '../../joints/presentation/joint_toolkit_screen.dart';
@@ -83,6 +84,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Biotin low vs cosmetic vs megadose, B1/benfotiamine, B6 toxicity, B12, ALA, acetyl-L-carnitine and high-potency B-complex safety.',
             onTap: () => _open(context, const NerveHairScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.content_cut_rounded,
+            title: 'Hair Loss & Scalp Support',
+            subtitle:
+                'Diagnosis-first guide to Priorin, Cystiphane, Neofollics, Viviscal, Nutrafol, Crescina, Foltène, Ducray, Vichy, René Furterer, Nioxin and supportive shampoos — with exact use and evidence limits.',
+            onTap: () => _open(context, const HairLossToolkitScreen()),
           ),
           const SizedBox(height: 12),
           _ToolkitCard(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/supplement_profiles.dart';
+import '../../hair_loss/presentation/hair_loss_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
 import '../../joints/presentation/joint_toolkit_screen.dart';
 import '../../minerals/domain/mineral_toolkit_models.dart';
@@ -53,6 +54,9 @@ void openSupplementLibraryEntry(
       ReproductiveToolkitScreen(initialProfileId: entry.targetId),
     SupplementLibraryDestination.nerveHairToolkit => NerveHairScreen(
         initialProfileId: entry.targetId,
+      ),
+    SupplementLibraryDestination.hairLossToolkit => HairLossToolkitScreen(
+        initialProductId: entry.targetId,
       ),
   };
 

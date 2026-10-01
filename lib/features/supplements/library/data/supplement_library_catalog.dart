@@ -1,4 +1,5 @@
 import '../../data/supplement_profiles.dart';
+import '../../hair_loss/data/hair_loss_data.dart';
 import '../../herbals/data/herbal_toolkit_data.dart';
 import '../../joints/data/joint_toolkit_data.dart';
 import '../../minerals/data/mineral_toolkit_data.dart';
@@ -57,6 +58,12 @@ const supplementLibraryCategories = <SupplementLibraryCategory>[
     title: 'Nerves, Hair, Skin & Nails',
     subtitle:
         'Biotin, B vitamins, alpha-lipoic acid, acetyl-L-carnitine and high-potency B-complex safety.',
+  ),
+  SupplementLibraryCategory(
+    id: 'hair-loss',
+    title: 'Hair Loss & Scalp Support',
+    subtitle:
+        'Diagnosis-first guide to hair nutraceuticals, ampoules, lotions, serums and supportive shampoos with exact brand directions and evidence limits.',
   ),
   SupplementLibraryCategory(
     id: 'general',
@@ -247,6 +254,23 @@ final supplementLibraryEntries = <SupplementLibraryEntry>[
       searchText: [
         for (final use in profile.uses)
           [use.indication, use.dose, use.duration, use.sourceLabel].join(' '),
+      ].join(' '),
+    ),
+  for (final product in hairLossProducts)
+    SupplementLibraryEntry(
+      id: 'hair-loss:' + product.id,
+      categoryId: 'hair-loss',
+      title: product.brand + ' — ' + product.name,
+      subtitle: product.bestFor,
+      destination: SupplementLibraryDestination.hairLossToolkit,
+      targetId: product.id,
+      searchText: [
+        product.keyIngredients,
+        product.regimen,
+        product.duration,
+        product.evidenceNote,
+        product.productLock,
+        product.sourceLabel,
       ].join(' '),
     ),
   for (final profile in supplementProfiles)

@@ -15,7 +15,10 @@ void main() {
     expect(nutritional.dose, contains('30 mcg/day'));
 
     final hair = item.pathways.singleWhere((path) => path.id == 'hair-nails');
-    expect(hair.dose, contains('2,500–5,000 mcg/day'));
+    expect(hair.dose, contains('1 mg'));
+    expect(hair.dose, contains('2.5 mg'));
+    expect(hair.dose, contains('5 mg'));
+    expect(hair.dose, contains('10 mg'));
     expect(hair.caveat, contains('Commonly sold'));
 
     final genetic =
@@ -44,5 +47,6 @@ void main() {
     expect(safety, contains('10 mg'));
     expect(safety, contains('troponin'));
     expect(safety, contains('thyroid'));
+    expect(safety, contains('assay/platform'));
   });
 }

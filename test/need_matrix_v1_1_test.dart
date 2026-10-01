@@ -64,7 +64,10 @@ void main() {
     final biotin =
         usualSupplementDoseRules.singleWhere((item) => item.name == 'Biotin');
     expect(biotin.normalNeed, contains('30 mcg/day'));
-    expect(biotin.usualIfTakingAnyway, contains('2.5 mg/day'));
+    expect(biotin.usualIfTakingAnyway, contains('1 mg'));
+    expect(biotin.usualIfTakingAnyway, contains('2.5 mg'));
+    expect(biotin.usualIfTakingAnyway, contains('5 mg'));
+    expect(biotin.usualIfTakingAnyway, contains('10 mg'));
     expect(biotin.highDoseBoundary, contains('300 mg/day'));
 
     final b6 =
@@ -174,7 +177,10 @@ void main() {
     final biotin =
         electiveDailyDoseRules.singleWhere((item) => item.nutrient == 'Biotin (B7)');
     expect(biotin.nutritionalTarget, contains('30 mcg/day'));
-    expect(biotin.usualNonTreatmentUse, contains('2,500–5,000 mcg'));
+    expect(biotin.usualNonTreatmentUse, contains('1 mg'));
+    expect(biotin.usualNonTreatmentUse, contains('2.5 mg'));
+    expect(biotin.usualNonTreatmentUse, contains('5 mg'));
+    expect(biotin.usualNonTreatmentUse, contains('10 mg'));
     expect(biotin.notAStandardDose, contains('no evidence-based'));
 
     final iron =
@@ -190,7 +196,11 @@ void main() {
   test('global rule locks requirement vs supplement vs treatment vs DV', () {
     expect(
       needMatrixGlobalRules.first,
-      'Daily requirement ≠ supplement dose ≠ deficiency-treatment dose ≠ %DV.',
+      'Daily requirement (RDA/AI) ≠ routine supplement dose ≠ preventive dose ≠ therapeutic/deficiency dose ≠ study/condition-specific dose ≠ %DV.',
+    );
+    expect(
+      needMatrixGlobalRules.join(' '),
+      contains('No established routine supplemental dose'),
     );
   });
 }

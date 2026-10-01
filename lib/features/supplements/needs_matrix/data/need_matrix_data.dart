@@ -181,11 +181,11 @@ const usualSupplementDoseRules = <UsualSupplementDoseRule>[
     name: 'Biotin',
     normalNeed: 'Adult AI 30 mcg/day; lactation 35 mcg/day.',
     usualIfTakingAnyway:
-        'Low-dose B-complex products can provide 50–100 mcg/day. Cosmetic products often move into milligram territory; 2.5 mg/day has only small brittle-nail studies, and a verified retail example provides 5 mg/day.',
+        'Low-dose products may provide tens of micrograms. Current commercial cosmetic strengths include 1 mg, 2.5 mg, 5 mg and 10 mg/day examples; these are MARKET doses, not established hair-loss treatment doses. The 2.5 mg/day amount also appears in small brittle-nail studies.',
     highDoseBoundary:
         'Very high doses can interfere with laboratory tests. Pharmaceutical 300 mg/day was studied in progressive MS but failed phase 3 efficacy and is not recommended.',
     practicalUse:
-        'For healthy hair there is no established evidence-based biotin dose. Record exact dose before thyroid, troponin or other susceptible immunoassays.',
+        'No established routine supplemental dose exists for hair growth in a biotin-replete person. Record the exact dose before thyroid, troponin or other susceptible immunoassays; there is no universal 24/48-hour stop rule, so follow the specific laboratory/assay instructions.',
     sourceLabel: 'NIH ODS Biotin + FDA biotin interference + SPI2 + current retail labels',
   ),
   UsualSupplementDoseRule(
@@ -635,7 +635,8 @@ const healthyLabRules = <HealthyLabRule>[
 ];
 
 const needMatrixGlobalRules = <String>[
-  'Daily requirement ≠ supplement dose ≠ deficiency-treatment dose ≠ %DV.',
+  'Daily requirement (RDA/AI) ≠ routine supplement dose ≠ preventive dose ≠ therapeutic/deficiency dose ≠ study/condition-specific dose ≠ %DV.',
+  'When no evidence-based routine supplement dose exists, say “No established routine supplemental dose” rather than inventing one; a conservative nutrition-like example is not the same as a recommendation.',
   'For a healthy person, supplement dose is usually the uncovered dietary gap — and the gap can be zero.',
   'Routine prevention is reserved for defined evidence-based situations such as folic acid with pregnancy potential and vitamin D for breastfed infants.',
   'A disease, surgery or medication can create a testing/protocol question without automatically creating a supplement prescription.',
@@ -746,13 +747,13 @@ const electiveDailyDoseRules = <ElectiveDailyDoseRule>[
     nutritionalTarget:
         'Adult AI: 30 mcg/day; pregnancy 30 mcg/day; lactation 35 mcg/day.',
     usualNonTreatmentUse:
-        'For ordinary nutritional use, ~30 mcg/day is enough to match the adult AI. Hair/nail products commonly contain 2,500–5,000 mcg (2.5–5 mg)/day, but these are HIGH doses and are not proven to improve hair in people without deficiency.',
+        'For ordinary nutrition, ~30 mcg/day matches the adult AI. Current cosmetic products are sold in strengths such as 1 mg, 2.5 mg, 5 mg and 10 mg/day; these are HIGH market doses, not evidence-based hair-growth doses for people without deficiency.',
     notAStandardDose:
-        'There is no evidence-based “hair growth” biotin dose for a biotin-replete adult.',
+        'No established routine supplemental dose: there is no evidence-based “hair growth” biotin dose for a biotin-replete adult.',
     safetyCeiling:
         'No UL is established for toxicity, but even 10 mg can interfere with susceptible lab tests; troponin and thyroid testing are high-value examples.',
     practicalRule:
-        'Ask about biotin before labs. A beauty product dose in milligrams is hundreds of times higher than the 30 mcg nutritional AI.',
+        'Ask about biotin before labs. Tell the clinician and laboratory the exact product and dose, and follow assay/laboratory-specific instructions; do not impose one universal 24/48-hour washout rule. A beauty-product dose in milligrams is hundreds of times higher than the 30 mcg nutritional AI.',
     sourceLabel: 'NIH ODS Biotin + FDA biotin lab-interference warning',
   ),
   ElectiveDailyDoseRule(

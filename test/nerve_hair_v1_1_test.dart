@@ -24,7 +24,10 @@ void main() {
     expect(item.uses.length, 4);
     expect(item.uses[0].dose, contains('30 mcg/day'));
     expect(item.uses[1].dose, contains('2.5 mg/day'));
+    expect(item.uses[2].dose, contains('1 mg'));
+    expect(item.uses[2].dose, contains('2.5 mg'));
     expect(item.uses[2].dose, contains('5 mg'));
+    expect(item.uses[2].dose, contains('10 mg'));
     expect(item.uses[3].dose, contains('300 mg/day'));
     expect(item.uses[3].evidence, NerveHairEvidence.againstRoutineUse);
     expect(item.uses[3].caveat, contains('cannot be recommended'));
@@ -35,6 +38,8 @@ void main() {
     expect(safety, contains('troponin'));
     expect(safety, contains('10 mg'));
     expect(safety, contains('no UL'));
+    expect(safety, contains('assay-'));
+    expect(safety, contains('24/48-hour'));
   });
 
   test('thiamin nutrition is separated from benfotiamine neuropathy dose', () {

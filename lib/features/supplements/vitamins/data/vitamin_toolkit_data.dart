@@ -280,16 +280,16 @@ const vitaminToolkitEntries = <VitaminToolkitEntry>[
         title: 'Hair / nails / skin marketing',
         population: 'People considering biotin for cosmetic reasons without proven deficiency',
         dose:
-            'Products commonly contain 2,500–5,000 mcg/day (2.5–5 mg/day), but NIH ODS considers these VERY HIGH doses and evidence is insufficient to recommend biotin for routine hair/nail improvement.',
+            'Current commercial cosmetic strengths include 1 mg, 2.5 mg, 5 mg and 10 mg/day. These are MARKET strengths, hundreds of times above the 30 mcg adult AI, and are not established treatment doses for ordinary hair loss.',
         whenToUse:
             'Do not use automatically. Evaluate causes of hair loss and nutritional deficiency first; if biotin status is normal, benefit is unproven.',
         duration:
             'No evidence-based cosmetic duration. Avoid indefinite high-dose self-treatment.',
         monitoring:
-            'Ask about upcoming laboratory tests before every high-dose beauty product refill.',
+            'Ask about upcoming laboratory tests before every high-dose beauty product refill. Tell the clinician/laboratory the exact product and dose and follow the specific assay/lab instructions; do not apply a universal 24/48-hour stop interval.',
         caveat:
             '“Commonly sold” is not the same as “clinically recommended.” A 5 mg tablet is about 167 times the 30 mcg adult AI.',
-        sourceLabel: 'NIH ODS Biotin FAQ + American Academy of Dermatology',
+        sourceLabel: 'NIH ODS Biotin + current NOW and Nature Made product labels',
       ),
       VitaminPathway(
         id: 'biotinidase-deficiency',
@@ -343,7 +343,7 @@ const vitaminToolkitEntries = <VitaminToolkitEntry>[
       'No UL is established for direct toxicity, but laboratory interference is the major practical hazard.',
       'Even a single 10 mg dose has interfered with thyroid tests within 24 hours in a study.',
       'Biotin can cause falsely low troponin and other dangerous false laboratory results; FDA continues to warn about susceptible assays.',
-      'Always document biotin in mcg or mg before thyroid, troponin, vitamin D and other susceptible immunoassays.',
+      'Always document biotin in mcg or mg before thyroid, troponin, vitamin D and other susceptible immunoassays; washout instructions vary by assay/platform, dose and laboratory.',
     ],
   ),
   VitaminToolkitEntry(

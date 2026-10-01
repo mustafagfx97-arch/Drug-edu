@@ -35,15 +35,15 @@ const nerveHairProfiles = <NerveHairProfile>[
       NerveHairUse(
         indication: 'Hair growth in otherwise healthy adults',
         dose:
-            'NO evidence-based hair-growth dose. Market products commonly reach milligram doses; a verified NOW example provides 5 mg (5,000 mcg) once daily.',
+            'NO evidence-based hair-growth dose. Current commercial examples include 1 mg, 2.5 mg, 5 mg and 10 mg/day; these are market strengths, not a treatment recommendation.',
         frequency: 'Product-specific.',
         duration: 'Do not auto-generate.',
         evidence: NerveHairEvidence.insufficient,
         exactUse:
-            'If the patient takes a cosmetic biotin product anyway, record the exact mcg/mg dose and flag it before laboratory testing.',
+            'If the patient takes a cosmetic biotin product anyway, record the exact mcg/mg dose, flag it before laboratory testing, and do not market biotin as a general neuropathy treatment.',
         caveat:
             'NIH ODS states evidence supporting biotin for hair/skin/nails in healthy people is limited; case reports for hair benefit largely involve rare disorders/deficiency.',
-        sourceLabel: 'NIH ODS Biotin + NOW Biotin 5,000 mcg label',
+        sourceLabel: 'NIH ODS Biotin + current NOW 1/5/10 mg and Nature Made 2.5 mg labels',
       ),
       NerveHairUse(
         indication: 'Progressive multiple sclerosis — historical high-dose trial',
@@ -59,7 +59,7 @@ const nerveHairProfiles = <NerveHairProfile>[
       ),
     ],
     safety: [
-      'Biotin can cause clinically important interference with susceptible immunoassays, including some thyroid and troponin tests. The laboratory/clinician must know the exact dose.',
+      'Biotin can cause clinically important interference with susceptible immunoassays, including some thyroid and troponin tests. Tell the clinician and laboratory the exact product and dose; the washout interval is assay-, dose- and laboratory-specific, so do not use one universal 24/48-hour rule.',
       'A single 10 mg dose has been reported to interfere with thyroid tests; high-dose products create greater concern.',
       'No UL is established because classic toxicity is low, but “no UL” does NOT mean no risk because assay interference can cause harmful misdiagnosis.',
       'Long-term anticonvulsant therapy can lower biotin status, but this is a risk-assessment question rather than an automatic megadose indication.',

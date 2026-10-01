@@ -10,6 +10,7 @@ import '../../joints/presentation/joint_toolkit_screen.dart';
 import '../../stack/presentation/stack_safety_screen.dart';
 import '../../reproductive/presentation/reproductive_toolkit_screen.dart';
 import '../../needs_matrix/presentation/need_matrix_screen.dart';
+import '../../nerve_hair/presentation/nerve_hair_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -74,6 +75,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Lactase, alpha-galactosidase, DAO, peppermint oil, liver and metabolic supplements with exact-use locks.',
             onTap: () => _open(context, const SpecialtyToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.psychology_alt_outlined,
+            title: 'Nerves, Biotin & Hair/Nails',
+            subtitle:
+                'Biotin low vs cosmetic vs megadose, B1/benfotiamine, B6 toxicity, B12, ALA, acetyl-L-carnitine and high-potency B-complex safety.',
+            onTap: () => _open(context, const NerveHairScreen()),
           ),
           const SizedBox(height: 12),
           _ToolkitCard(

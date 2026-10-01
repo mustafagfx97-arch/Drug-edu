@@ -64,3 +64,22 @@ class HealthySupplementRule {
   final String defaultSupplementDose;
   final String practicalRule;
 }
+
+
+class UsualSupplementDoseRule {
+  const UsualSupplementDoseRule({
+    required this.name,
+    required this.normalNeed,
+    required this.usualIfTakingAnyway,
+    required this.highDoseBoundary,
+    required this.practicalUse,
+    required this.sourceLabel,
+  });
+
+  final String name;
+  final String normalNeed;
+  final String usualIfTakingAnyway;
+  final String highDoseBoundary;
+  final String practicalUse;
+  final String sourceLabel;
+}

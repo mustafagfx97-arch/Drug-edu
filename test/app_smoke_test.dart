@@ -25,6 +25,7 @@ void main() {
     expect(find.text('Probiotic Strain Atlas'), findsOneWidget);
 
     for (final title in [
+      'Nerves, Biotin & Hair/Nails',
       'Joint & Collagen Toolkit',
       'Sexual Health & Fertility',
       'Can I Take These Together?',

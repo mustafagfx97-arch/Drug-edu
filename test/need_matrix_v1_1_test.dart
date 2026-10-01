@@ -48,6 +48,31 @@ void main() {
     expect(calcium.defaultSupplementDose, contains('uncovered dietary gap'));
   });
 
+  test('usual dose reference preserves ordinary doses despite no proven need', () {
+    expect(usualSupplementDoseRules.length, 15);
+
+    final iron =
+        usualSupplementDoseRules.singleWhere((item) => item.name == 'Iron');
+    expect(iron.usualIfTakingAnyway, contains('18 mg/day'));
+    expect(iron.highDoseBoundary, contains('65 mg'));
+
+    final b12 =
+        usualSupplementDoseRules.singleWhere((item) => item.name == 'Vitamin B12');
+    expect(b12.usualIfTakingAnyway, contains('5–25 mcg'));
+    expect(b12.usualIfTakingAnyway, contains('500–1,000 mcg'));
+
+    final biotin =
+        usualSupplementDoseRules.singleWhere((item) => item.name == 'Biotin');
+    expect(biotin.normalNeed, contains('30 mcg/day'));
+    expect(biotin.usualIfTakingAnyway, contains('2.5 mg/day'));
+    expect(biotin.highDoseBoundary, contains('300 mg/day'));
+
+    final b6 =
+        usualSupplementDoseRules.singleWhere((item) => item.name == 'Vitamin B6');
+    expect(b6.usualIfTakingAnyway, contains('1.7–2 mg/day'));
+    expect(b6.highDoseBoundary, contains('12 mg/day'));
+  });
+
   test('preconception folic acid remains 400 mcg preventive exception', () {
     final item = needPathway('pregnancy-capable');
     expect(item.tier, NeedActionTier.preventive);

@@ -77,6 +77,177 @@ const healthySupplementRules = <HealthySupplementRule>[
   ),
 ];
 
+
+const usualSupplementDoseRules = <UsualSupplementDoseRule>[
+  UsualSupplementDoseRule(
+    name: 'Multivitamin/mineral',
+    normalNeed: 'No universal requirement for a multivitamin.',
+    usualIfTakingAnyway:
+        '1 labeled serving/day of a basic product near daily values rather than a “mega-dose” formula.',
+    highDoseBoundary:
+        'Do not take two multivitamins or add overlapping single nutrients without totaling vitamin A, folic acid, iron, zinc, B6 and other ingredients.',
+    practicalUse:
+        'For a healthy person who simply wants a daily product, choose low-potency and avoid using it as a substitute for diet.',
+    sourceLabel: 'NIH ODS Multivitamin/Mineral Supplements',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Vitamin D',
+    normalNeed: '600 IU/day age 19–70; 800 IU/day over age 70 TOTAL intake.',
+    usualIfTakingAnyway:
+        'Use a low daily amount that brings total intake toward about 600–800 IU/day rather than routine high-dose boluses.',
+    highDoseBoundary:
+        'Adult UL is 4,000 IU/day for routine intake; deficiency treatment can differ under monitoring.',
+    practicalUse:
+        'Healthy adults 19–74 do not automatically need extra vitamin D above the RDA.',
+    sourceLabel: 'NIH ODS Vitamin D + Endocrine Society 2024',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Calcium',
+    normalNeed: 'Usually 1,000–1,200 mg/day TOTAL intake depending on age/sex.',
+    usualIfTakingAnyway:
+        'Common standalone supplement servings are 500–600 mg ELEMENTAL calcium. Use only the amount not supplied by food.',
+    highDoseBoundary:
+        'Do not add 1,000–1,200 mg as a pill on top of an adequate diet. Divide larger supplemental needs because absorption falls as single doses rise.',
+    practicalUse:
+        'Carbonate is meal-dependent; citrate is less dependent on stomach acid. Count elemental calcium, not salt weight.',
+    sourceLabel: 'NIH ODS Calcium',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Iron',
+    normalNeed:
+        'Men/adults 51+: 8 mg/day; women 19–50: 18 mg/day TOTAL intake.',
+    usualIfTakingAnyway:
+        'Typical multivitamin with iron: 18 mg/day. Healthy men/seniors often use products with little or no iron.',
+    highDoseBoundary:
+        'Iron-only products commonly provide about 65 mg elemental iron; that is high/treatment-like, above the 45 mg adult UL, and is not a routine wellness dose.',
+    practicalUse:
+        'Do not take standalone iron “just in case.” Heavy bleeding, anemia symptoms or pregnancy risk should drive assessment.',
+    sourceLabel: 'NIH ODS Iron',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Folic acid / folate',
+    normalNeed: '400 mcg DFE/day adults TOTAL intake.',
+    usualIfTakingAnyway:
+        'Adult supplements commonly provide 400–800 mcg folic acid (about 680–1,360 mcg DFE).',
+    highDoseBoundary:
+        'The adult UL is 1,000 mcg/day of synthetic folic acid from supplements/fortified foods, except clinician-directed high-risk plans.',
+    practicalUse:
+        'Pregnancy-capable persons have a defined 400 mcg/day folic-acid preventive indication; others should avoid unnecessary duplication.',
+    sourceLabel: 'NIH ODS Folate',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Vitamin B12',
+    normalNeed: '2.4 mcg/day adults TOTAL intake.',
+    usualIfTakingAnyway:
+        'MVMs typically contain 5–25 mcg; B-complex products 50–500 mcg; B12-only products commonly 500–1,000 mcg.',
+    highDoseBoundary:
+        'No UL is established, but high dose is not automatically more useful in a replete person.',
+    practicalUse:
+        'Vegans, older adults and selected medication/malabsorption risks are the main reasons for deliberate B12 supplementation.',
+    sourceLabel: 'NIH ODS Vitamin B12',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Thiamin (B1)',
+    normalNeed: 'Men 1.2 mg/day; women 1.1 mg/day TOTAL intake.',
+    usualIfTakingAnyway:
+        'Typical multivitamins provide about 1.5 mg/day. B-complex/standalone products may contain 50–250 mg, but this is far above nutritional need.',
+    highDoseBoundary:
+        'High milligram doses are not automatically “better for nerves.” Benfotiamine neuropathy regimens are disease-study doses, not ordinary nutrition.',
+    practicalUse:
+        'For a healthy person taking B1 anyway, a dose near the daily requirement is sufficient.',
+    sourceLabel: 'NIH ODS Thiamin',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Vitamin B6',
+    normalNeed: 'About 1.3–1.7 mg/day for most adults depending on age/sex.',
+    usualIfTakingAnyway:
+        'Use a low-potency dose near the daily requirement/DV, roughly 1.7–2 mg/day, rather than 50–100 mg nerve/B-complex products.',
+    highDoseBoundary:
+        'Chronic excess can cause neuropathy. U.S. UL: 100 mg/day; EFSA 2023 adult UL: 12 mg/day.',
+    practicalUse:
+        'Always total B6 across multivitamin, B-complex, magnesium/nerve and specialty products.',
+    sourceLabel: 'NIH ODS Vitamin B6 + EFSA 2023',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Biotin',
+    normalNeed: 'Adult AI 30 mcg/day; lactation 35 mcg/day.',
+    usualIfTakingAnyway:
+        'Low-dose B-complex products can provide 50–100 mcg/day. Cosmetic products often move into milligram territory; 2.5 mg/day has only small brittle-nail studies, and a verified retail example provides 5 mg/day.',
+    highDoseBoundary:
+        'Very high doses can interfere with laboratory tests. Pharmaceutical 300 mg/day was studied in progressive MS but failed phase 3 efficacy and is not recommended.',
+    practicalUse:
+        'For healthy hair there is no established evidence-based biotin dose. Record exact dose before thyroid, troponin or other susceptible immunoassays.',
+    sourceLabel: 'NIH ODS Biotin + FDA biotin interference + SPI2 + current retail labels',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Vitamin C',
+    normalNeed: 'Men 90 mg/day; women 75 mg/day TOTAL intake; smokers need 35 mg/day more.',
+    usualIfTakingAnyway:
+        'A nutrition-like supplement around 90–100 mg/day is already close to the adult daily requirement.',
+    highDoseBoundary:
+        'Adult UL: 2,000 mg/day. High doses commonly cause GI upset and are not required for routine “immune support.”',
+    practicalUse:
+        'If diet supplies fruits/vegetables adequately, extra vitamin C can be zero.',
+    sourceLabel: 'NIH ODS Vitamin C',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Magnesium',
+    normalNeed: 'About 310–320 mg/day women and 400–420 mg/day men TOTAL intake.',
+    usualIfTakingAnyway:
+        'A low-to-moderate supplemental example is about 100–200 mg ELEMENTAL magnesium/day; a verified magnesium glycinate serving provides 200 mg.',
+    highDoseBoundary:
+        'Adult supplemental/medication UL: 350 mg/day; food magnesium is excluded. Kidney impairment increases accumulation risk.',
+    practicalUse:
+        'Read ELEMENTAL magnesium, not glycinate/citrate/oxide salt weight. Higher doses often increase diarrhea/cramping.',
+    sourceLabel: 'NIH ODS Magnesium + verified product-label example',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Zinc',
+    normalNeed: 'Men 11 mg/day; women 8 mg/day TOTAL intake.',
+    usualIfTakingAnyway:
+        'A low nutritional supplement around 10–11 mg elemental zinc/day is close to the adult daily target.',
+    highDoseBoundary:
+        'Adult UL: 40 mg/day. Chronic high-dose zinc can cause copper deficiency.',
+    practicalUse:
+        'Avoid stacking immune lozenges + multivitamin + standalone zinc chronically.',
+    sourceLabel: 'NIH ODS Zinc',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Iodine',
+    normalNeed: '150 mcg/day adults TOTAL intake; higher in pregnancy/lactation.',
+    usualIfTakingAnyway:
+        'A nutrition-like adult supplemental amount is about 150 mcg/day when diet/iodized salt intake is uncertain.',
+    highDoseBoundary:
+        'Adult UL: 1,100 mcg/day. Thyroid disease requires individualized review.',
+    practicalUse:
+        'Use a declared iodine dose rather than kelp/seaweed products with unpredictable content.',
+    sourceLabel: 'NIH ODS Iodine',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Selenium',
+    normalNeed: '55 mcg/day adults TOTAL intake.',
+    usualIfTakingAnyway:
+        'A nutrition-like supplemental amount around 50–55 mcg/day is usually enough if someone elects to take selenium without a treatment indication.',
+    highDoseBoundary:
+        'U.S. adult UL: 400 mcg/day. Chronic excess can cause selenosis.',
+    practicalUse:
+        'Count selenium in multivitamins, thyroid products and fertility blends before adding a standalone product.',
+    sourceLabel: 'NIH ODS Selenium',
+  ),
+  UsualSupplementDoseRule(
+    name: 'Omega-3 fish oil',
+    normalNeed:
+        'No U.S. RDA is established for EPA+DHA; ALA has an AI of 1.6 g/day men and 1.1 g/day women.',
+    usualIfTakingAnyway:
+        'A typical fish-oil supplement provides about 1,000 mg fish oil with roughly 180 mg EPA + 120 mg DHA, although products vary widely.',
+    highDoseBoundary:
+        'Count EPA+DHA, not “fish oil mg.” Higher therapeutic doses belong to indication-specific pathways and require interaction review.',
+    practicalUse:
+        'A person already eating fatty fish regularly may not need a fish-oil supplement.',
+    sourceLabel: 'NIH ODS Omega-3 Fatty Acids',
+  ),
+];
+
 const needPathways = <NeedPathway>[
   NeedPathway(
     id: 'healthy-balanced-adult',

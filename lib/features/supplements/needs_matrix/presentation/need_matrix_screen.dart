@@ -143,6 +143,49 @@ class _NeedMatrixScreenState extends State<NeedMatrixScreen> {
             ),
           const SizedBox(height: 24),
           Text(
+            'If the patient takes it anyway: usual daily supplement doses',
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 7),
+          const Text(
+            'These are practical nutritional/common label doses, NOT proof of need. The purpose is to prevent a healthy person from jumping directly to megadoses.',
+          ),
+          const SizedBox(height: 8),
+          for (final item in usualSupplementDoseRules)
+            Card(
+              margin: const EdgeInsets.only(bottom: 9),
+              child: ExpansionTile(
+                title: Text(
+                  item.name,
+                  style: const TextStyle(fontWeight: FontWeight.w900),
+                ),
+                subtitle: Text(item.usualIfTakingAnyway),
+                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                children: [
+                  _Fact(label: 'Normal daily need', body: item.normalNeed),
+                  _Fact(
+                    label: 'Usual dose if taking anyway',
+                    body: item.usualIfTakingAnyway,
+                  ),
+                  _Fact(
+                    label: 'High-dose boundary',
+                    body: item.highDoseBoundary,
+                    critical: true,
+                  ),
+                  _Fact(label: 'Practical use', body: item.practicalUse),
+                  Text(
+                    'Source: ' + item.sourceLabel,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 24),
+          Text(
             'Healthy person: what should actually be tested?',
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w900,

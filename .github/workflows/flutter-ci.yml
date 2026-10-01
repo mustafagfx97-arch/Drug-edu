@@ -31,6 +31,28 @@ jobs:
           flutter create . --platforms=android --project-name supplement_edu --org com.mustafagfx97
           rm -f test/widget_test.dart
           sed -i 's/android:label="supplement_edu"/android:label="Supplement Edu"/' android/app/src/main/AndroidManifest.xml
+          cat > android/app/proguard-rules.pro <<'EOF'
+          # google_mlkit_text_recognition exposes optional recognizer branches for
+          # scripts that are not bundled in this app. We instantiate Latin only.
+          -dontwarn com.google.mlkit.vision.text.chinese.**
+          -dontwarn com.google.mlkit.vision.text.devanagari.**
+          -dontwarn com.google.mlkit.vision.text.japanese.**
+          -dontwarn com.google.mlkit.vision.text.korean.**
+          EOF
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("android/app/build.gradle.kts")
+          text = path.read_text()
+          needle = 'signingConfig = signingConfigs.getByName("debug")'
+          replacement = needle + '''
+                      proguardFiles(
+                          getDefaultProguardFile("proguard-android-optimize.txt"),
+                          "proguard-rules.pro",
+                      )'''
+          if needle not in text:
+              raise SystemExit("Flutter release signing line not found; refusing an unsafe Gradle rewrite.")
+          path.write_text(text.replace(needle, replacement, 1))
+          PY
 
       - name: Verify Android identity
         run: |

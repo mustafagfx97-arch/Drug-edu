@@ -4,7 +4,7 @@ import 'package:drug_edu/features/supplements/needs_matrix/domain/need_matrix_mo
 
 void main() {
   test('need matrix covers healthy prevention medication disease and deficiency paths', () {
-    expect(needPathways.length, 15);
+    expect(needPathways.length, 16);
     expect(
       needPathways.map((item) => item.id).toSet(),
       containsAll({

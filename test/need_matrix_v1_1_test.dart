@@ -115,9 +115,12 @@ void main() {
     expect(item.duration, contains('as long as the strict vegan diet continues'));
   });
 
-  test('age 75 vitamin D does not require routine screening', () {
+  test('age 75 vitamin D separates RDA from guideline trial dose context', () {
     final item = needPathway('age75plus-vitd');
     expect(item.dailyTarget, contains('800 IU/day'));
+    expect(item.dailyTarget, contains('400–3,333 IU/day'));
+    expect(item.dailyTarget, contains('weighted average around 900 IU/day'));
+    expect(item.supplementPlan, contains('does not specify one exact preventive supplement dose'));
     expect(item.labPlan, contains('Routine 25-OH vitamin D testing is NOT required'));
   });
 

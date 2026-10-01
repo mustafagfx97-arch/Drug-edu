@@ -175,15 +175,15 @@ void main() {
     );
   });
 
-  test('v1 release metadata and artifact names are frozen', () {
+  test('v1.1 release metadata and artifact names are frozen', () {
     final pubspec = File('pubspec.yaml').readAsStringSync();
     final workflow =
         File('.github/workflows/flutter-ci.yml').readAsStringSync();
 
-    expect(pubspec, contains('version: 1.0.0+1'));
+    expect(pubspec, contains('version: 1.1.0+2'));
     expect(workflow, contains('name: Supplement Edu CI'));
-    expect(workflow, contains('supplement-edu-v1-debug-apk'));
-    expect(workflow, contains('supplement-edu-v1-release-candidate'));
+    expect(workflow, contains('supplement-edu-v1.1-debug-apk'));
+    expect(workflow, contains('supplement-edu-v1.1-release-candidate'));
     expect(workflow, isNot(contains('supplement-edu-foundation-')));
   });
 

@@ -418,9 +418,9 @@ const needPathways = <NeedPathway>[
     coreDecision:
         'Endocrine Society 2024 suggests empiric vitamin D in adults 75+ and prefers daily lower-dose use over intermittent high doses.',
     supplementPlan:
-        'Aim to meet the age-appropriate daily intake; age >70 RDA is 800 IU/day total. Empiric intake can include fortified foods, a multivitamin and/or a daily supplement.',
+        'Use daily, lower-dose vitamin D rather than intermittent high-dose boluses. The Endocrine Society does not specify one exact preventive supplement dose for age 75+; empiric intake can include fortified foods, a multivitamin and/or a daily supplement.',
     dailyTarget:
-        '800 IU/day vitamin D total for adults over 70; do not convert this into repeated high-dose boluses.',
+        'Nutrition target: age >70 RDA = 800 IU/day TOTAL intake. In the guideline trials informing the age-75+ recommendation, daily-equivalent vitamin D ranged about 400–3,333 IU/day with a weighted average around 900 IU/day; this trial range is NOT a titration ladder or a single prescribed preventive dose.',
     labPlan:
         'Routine 25-OH vitamin D testing is NOT required solely to start this preventive pathway in healthy adults 75+.',
     duration:

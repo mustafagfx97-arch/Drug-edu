@@ -267,7 +267,7 @@ const reproductiveProfiles = <ReproProfile>[
         evidence: ReproEvidence.limited,
         caveat:
             'The RCT improved sperm kinetic features, but AUA/ASRM says antioxidant/vitamin supplements have questionable clinical utility and cannot recommend a specific agent.',
-        sourceLabel: 'CoQ10 asthenozoospermia RCT + AUA/ASRM male infertility guideline',
+        sourceLabel: 'CoQ10 asthenozoospermia RCT + AUA/ASRM Male Infertility Guideline (2020; amended 2024)',
       ),
     ],
     safety: [
@@ -294,7 +294,7 @@ const reproductiveProfiles = <ReproProfile>[
         evidence: ReproEvidence.limited,
         caveat:
             'Some RCTs improved motility, especially in men with poorer baseline motility, but AUA/ASRM still does not recommend a specific supplement regimen.',
-        sourceLabel: 'L-carnitine/acetyl-L-carnitine RCTs + AUA/ASRM',
+        sourceLabel: 'L-carnitine/acetyl-L-carnitine RCTs + AUA/ASRM Male Infertility Guideline (2020; amended 2024)',
       ),
     ],
     safety: [
@@ -321,7 +321,7 @@ const reproductiveProfiles = <ReproProfile>[
         evidence: ReproEvidence.limited,
         caveat:
             'Individual studies improved semen parameters, while guideline-level evidence remains insufficient to recommend NAC routinely.',
-        sourceLabel: 'NAC male-infertility RCTs + AUA/ASRM',
+        sourceLabel: 'NAC male-infertility RCTs + AUA/ASRM Male Infertility Guideline (2020; amended 2024)',
       ),
     ],
     safety: [
@@ -348,7 +348,7 @@ const reproductiveProfiles = <ReproProfile>[
         evidence: ReproEvidence.limited,
         caveat:
             'The trial improved semen parameters, but AUA/ASRM does not recommend a specific antioxidant regimen and MOXI raises concern about assuming antioxidant stacks improve live birth.',
-        sourceLabel: 'Selenium/NAC RCT + AUA/ASRM + MOXI',
+        sourceLabel: 'Selenium/NAC RCT + AUA/ASRM Male Infertility Guideline (2020; amended 2024) + MOXI',
       ),
     ],
     safety: [
@@ -403,7 +403,7 @@ const reproductiveProfiles = <ReproProfile>[
         evidence: ReproEvidence.againstRoutineUse,
         caveat:
             'MOXI did not improve sperm morphology, motility, DNA fragmentation or cumulative live birth versus placebo.',
-        sourceLabel: 'NIH-funded MOXI randomized clinical trial + AUA/ASRM',
+        sourceLabel: 'NIH-funded MOXI randomized clinical trial + AUA/ASRM Male Infertility Guideline (2020; amended 2024)',
       ),
     ],
     safety: [
@@ -422,15 +422,15 @@ const reproductiveProfiles = <ReproProfile>[
         indication: 'Preconception neural-tube-defect prevention',
         population: 'Women attempting or planning pregnancy without a separate high-risk folate plan',
         form: 'Folic acid-containing supplement/prenatal',
-        dose: 'At least 400 mcg/day.',
+        dose: '400 mcg/day folic acid for standard preconception neural-tube-defect prevention.',
         frequency: 'Once daily total preventive dose.',
         duration: 'Start before conception and continue into pregnancy according to the prenatal plan.',
         exactUse:
-            'Choose a prenatal/supplement that actually provides at least 400 mcg folic acid. Higher-risk situations require a separate clinician-directed folate regimen.',
+            'Choose a prenatal/supplement that actually provides 400 mcg folic acid for the standard pathway. Higher-risk situations, such as a prior neural-tube-defect-affected pregnancy, require a separate clinician-directed regimen.',
         evidence: ReproEvidence.guidelineRecommended,
         caveat:
             'This prevents neural tube defects; it does not treat infertility.',
-        sourceLabel: 'ASRM Optimizing Natural Fertility',
+        sourceLabel: 'CDC Folic Acid 2026 + ASRM Optimizing Natural Fertility',
       ),
     ],
     safety: [
@@ -535,7 +535,7 @@ const reproductiveAssessmentRules = <ReproAssessmentRule>[
       'FSH + testosterone are NOT blanket first-line tests for every man; they are indicated in selected men such as oligospermia below 10 million/mL. Add LH when testosterone is low and prolactin when hypogonadotropic hypogonadism or decreased libido suggests it.',
       'Azoospermia, severe abnormalities, failed ART/recurrent pregnancy loss, varicocele concerns, obstruction or endocrine abnormalities need specialist evaluation rather than supplements.',
     ],
-    sourceLabel: 'AUA/ASRM Male Infertility Guideline Part I',
+    sourceLabel: 'AUA/ASRM Male Infertility Guideline (2020; amended 2024)',
   ),
   ReproAssessmentRule(
     title: 'Female fertility: know when to refer',
@@ -572,7 +572,7 @@ const reproductiveAssessmentRules = <ReproAssessmentRule>[
 ];
 
 const reproductiveGlobalLocks = <String>[
-  'AUA/ASRM: antioxidants/vitamins for male infertility have questionable clinical utility; evidence is inadequate to recommend a specific agent.',
+  'AUA/ASRM Male Infertility Guideline (2020; amended 2024): antioxidants/vitamins for male infertility have questionable clinical utility; evidence is inadequate to recommend a specific agent.',
   'Testosterone monotherapy should NOT be prescribed to a man who wants current or future fertility because exogenous testosterone can suppress spermatogenesis.',
   'Do not use AMH/ovarian-reserve tests as a “fertility score” in a healthy woman with no infertility indication; age and the clinical fertility context matter more.',
   'Supplement improvement in semen parameters, ovulation markers or embryo quality is NOT the same as proven improvement in pregnancy or live birth.',

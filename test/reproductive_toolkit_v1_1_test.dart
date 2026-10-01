@@ -104,8 +104,9 @@ void main() {
 
   test('preconception folic acid is preventive not a fertility booster', () {
     final use = reproductiveProfile('preconception-folate').uses.single;
-    expect(use.dose, contains('400 mcg/day'));
+    expect(use.dose, contains('400 mcg/day folic acid'));
     expect(use.evidence, ReproEvidence.guidelineRecommended);
+    expect(use.sourceLabel, contains('CDC Folic Acid 2026'));
     expect(use.caveat, contains('does not treat infertility'));
   });
 
@@ -149,6 +150,8 @@ void main() {
 
   test('global locks prevent testosterone monotherapy and outcome overclaiming', () {
     final text = reproductiveGlobalLocks.join(' ');
+    expect(text, contains('amended 2024'));
+    expect(text, contains('questionable clinical utility'));
     expect(text, contains('Testosterone monotherapy should NOT'));
     expect(text, contains('live birth'));
   });

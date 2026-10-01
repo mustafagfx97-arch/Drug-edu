@@ -58,7 +58,7 @@ void main() {
     expect(item.uses[0].dose, contains('2.4 mcg/day'));
     expect(item.uses[1].dose, contains('5–25 mcg'));
     expect(item.uses[1].dose, contains('500–1,000 mcg'));
-    expect(item.uses[1].caveat, contains('not automatically more useful'));
+    expect(item.uses[1].caveat, contains('does not prove greater benefit'));
   });
 
   test('ALA keeps 600 mg neuropathy adjunct dose and evidence boundary', () {

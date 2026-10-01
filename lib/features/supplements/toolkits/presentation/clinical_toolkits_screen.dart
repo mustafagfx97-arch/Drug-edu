@@ -5,6 +5,7 @@ import '../../vitamins/presentation/vitamin_toolkit_screen.dart';
 import '../../probiotics/presentation/probiotic_atlas_screen.dart';
 import '../../specialty/presentation/specialty_toolkit_screen.dart';
 import '../../herbals/presentation/herbal_toolkit_screen.dart';
+import '../../products/presentation/product_analyzer_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -77,6 +78,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Black cohosh, phytoestrogens, stress/sleep herbs, mood and cognition supplements with extract-specific doses and safety locks.',
             onTap: () => _open(context, const HerbalToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.fact_check_outlined,
+            title: 'Product & Combination Analyzer',
+            subtitle:
+                'Read Supplement Facts, aggregate daily doses, detect duplicates, review ULs/interactions, and inspect verified real-product examples.',
+            onTap: () => _open(context, const ProductAnalyzerScreen()),
           ),
         ],
       ),

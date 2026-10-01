@@ -73,6 +73,16 @@ void main() {
     expect(b6.highDoseBoundary, contains('12 mg/day'));
   });
 
+  test('biotin separates ordinary intake from high-dose hair products', () {
+    final item =
+        healthySupplementRules.singleWhere((item) => item.nutrient == 'Biotin (B7)');
+    expect(item.dailyNeed, contains('adults 30 mcg/day'));
+    expect(item.defaultSupplementDose, contains('2,500–5,000 mcg/day'));
+    expect(item.practicalRule, contains('2.5 mg/day'));
+    expect(item.practicalRule, contains('troponin'));
+    expect(item.practicalRule, contains('NOT an established routine hair/nail dose'));
+  });
+
   test('preconception folic acid remains 400 mcg preventive exception', () {
     final item = needPathway('pregnancy-capable');
     expect(item.tier, NeedActionTier.preventive);

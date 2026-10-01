@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.science_outlined,
               title: 'Clinical Toolkits',
               subtitle:
-                  'Minerals, vitamins, probiotics, GI/specialty supplements, herbals, mitochondrial support and product-combination analysis.',
+                  'Need/indication matrix, minerals, vitamins, probiotics, joints, sexual/fertility, herbals, specialty supplements and product-combination analysis.',
               onTap: () => onSelectDestination(3),
             ),
           ),

@@ -9,6 +9,7 @@ import '../../products/presentation/product_analyzer_screen.dart';
 import '../../joints/presentation/joint_toolkit_screen.dart';
 import '../../stack/presentation/stack_safety_screen.dart';
 import '../../reproductive/presentation/reproductive_toolkit_screen.dart';
+import '../../needs_matrix/presentation/need_matrix_screen.dart';
 
 class ClinicalToolkitsScreen extends StatelessWidget {
   const ClinicalToolkitsScreen({super.key});
@@ -89,6 +90,14 @@ class ClinicalToolkitsScreen extends StatelessWidget {
             subtitle:
                 'Glucosamine, chondroitin, native type II vs collagen peptides, MSM, oral HA and SAMe with dose/evidence locks.',
             onTap: () => _open(context, const JointToolkitScreen()),
+          ),
+          const SizedBox(height: 12),
+          _ToolkitCard(
+            icon: Icons.assignment_ind_outlined,
+            title: 'Who Actually Needs What?',
+            subtitle:
+                'Healthy vs prevention vs testing vs deficiency treatment vs disease/surgery protocols — with daily-dose and lab logic.',
+            onTap: () => _open(context, const NeedMatrixScreen()),
           ),
           const SizedBox(height: 12),
           _ToolkitCard(

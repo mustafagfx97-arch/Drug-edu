@@ -43,6 +43,15 @@ const healthySupplementRules = <HealthySupplementRule>[
         'Vegans need a reliable fortified-food or supplement source. Adults over 50 are advised to obtain recommended B12 mainly from fortified foods or supplements because food-bound absorption can decline.',
   ),
   HealthySupplementRule(
+    nutrient: 'Biotin (B7)',
+    dailyNeed:
+        'AI: adults 30 mcg/day; pregnancy 30 mcg/day; lactation 35 mcg/day — TOTAL intake.',
+    defaultSupplementDose:
+        'No routine biotin pill is needed for a healthy adult with adequate intake. Common “hair/skin/nails” products often contain 2,500–5,000 mcg/day, far above the 30 mcg adult AI.',
+    practicalRule:
+        'Biotin deficiency is rare. Evidence for improving ordinary hair loss in biotin-replete people is poor. Small uncontrolled brittle-nail studies used 2.5 mg/day (2,500 mcg/day) for about 6–15 months, but this is NOT an established routine hair/nail dose. High-dose biotin can cause falsely high or falsely low lab results, including thyroid/hormone assays and some troponin tests; always tell the laboratory/clinician the exact dose before blood testing.',
+  ),
+  HealthySupplementRule(
     nutrient: 'Folate / folic acid',
     dailyNeed: 'Adults: 400 mcg DFE/day TOTAL intake.',
     defaultSupplementDose:
@@ -631,4 +640,5 @@ const needMatrixGlobalRules = <String>[
   'Routine prevention is reserved for defined evidence-based situations such as folic acid with pregnancy potential and vitamin D for breastfed infants.',
   'A disease, surgery or medication can create a testing/protocol question without automatically creating a supplement prescription.',
   'Do not use a multivitamin to hide unexplained anemia, neuropathy, weight loss, malabsorption, bleeding or other symptoms that need diagnosis.',
+  'If a patient chooses a supplement despite no clear indication, still show the ordinary daily intake target, the product dose, how many times above the target it is, the UL when one exists, and a clear evidence/safety label.',
 ];

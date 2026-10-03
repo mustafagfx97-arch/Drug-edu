@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../feeding_tubes/presentation/feeding_tubes_screen.dart';
+import '../../medication_timing/presentation/medication_timing_screen.dart';
 import '../../supplements/presentation/supplements_screen.dart';
 import '../../visual_guides/presentation/visual_guides_screen.dart';
 import 'medicines_encyclopedia_screen.dart';
@@ -19,6 +20,13 @@ class EncyclopediaScreen extends StatelessWidget {
             'Drug families, chronic medicines, OTC, pediatric therapy and patient counseling.',
         icon: Icons.medication_outlined,
         builder: _medicines,
+      ),
+      const _EncyclopediaBranch(
+        title: 'Medication Timing',
+        subtitle:
+            'Before food, with or after food, morning, bedtime, flexible timing and prescription-specific timing.',
+        icon: Icons.schedule_outlined,
+        builder: _timing,
       ),
       const _EncyclopediaBranch(
         title: 'Supplements',
@@ -180,6 +188,9 @@ class EncyclopediaScreen extends StatelessWidget {
 
   static Widget _medicines(BuildContext context) =>
       const MedicinesEncyclopediaScreen();
+
+  static Widget _timing(BuildContext context) =>
+      const MedicationTimingScreen();
 
   static Widget _supplements(BuildContext context) =>
       const SupplementsScreen();

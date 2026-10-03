@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../shared/widgets/module_card.dart';
 import '../../patient_cards/presentation/patient_cards_screen.dart';
 import '../../medication_plan/presentation/medication_plan_screen.dart';
+import '../../medication_timing/presentation/medication_timing_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     final routes = <String, WidgetBuilder>{
       'patient_cards': (_) => const PatientCardsScreen(),
       'medication_plan': (_) => const MedicationPlanScreen(),
+      'medication_timing': (_) => const MedicationTimingScreen(),
     };
 
     final builder = routes[action];
@@ -40,6 +42,13 @@ class HomeScreen extends StatelessWidget {
         Icons.event_note_outlined,
         'medication_plan',
         'Multi-drug'
+      ),
+      (
+        'Medication Timing',
+        'Browse medicines by food relationship and time of day, then open the exact counseling record.',
+        Icons.schedule_outlined,
+        'medication_timing',
+        'Food + time'
       ),
       (
         'IV Preparation',

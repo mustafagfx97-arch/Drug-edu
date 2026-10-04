@@ -14,10 +14,10 @@ void main() {
       'netupitant-palonosetron-akynzeo-oral',
     ];
 
-    test('adds five complete unique records and raises census to 340', () {
+    test('adds five complete unique records and raises census to 350', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 340);
-      expect(allIds.toSet().length, 340);
+      expect(sampleMedications.length, 350);
+      expect(allIds.toSet().length, 350);
 
       for (final id in ids) {
         expect(allIds, contains(id));

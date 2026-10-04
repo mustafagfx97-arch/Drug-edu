@@ -685,6 +685,28 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'rabeprazole-dr-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'scopolamine-transdermal': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse, patientOverrideAr: 'Motion sickness: patch واحدة حتى 3 أيام؛ PONV له توقيت إزالة مختلف.'),
   'granisetron-oral-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+
+  'amoxicillin-clavulanate-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'AUGMENTIN XR: مدة الكورس حسب الاستطباب؛ في الملصق الحالي acute bacterial sinusitis = 10 أيام وcommunity-acquired pneumonia = 7–10 أيام.',
+  ),
+  'sulfasalazine-dr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاجًا طويل الأمد للـUC أو RA، لكن جرعة induction/maintenance والمدة تختلف حسب الاستطباب والاستجابة والمتابعة.',
+  ),
+  'dicyclomine-oral': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'الفعالية والتحمل يجب أن يُعاد تقييمهما؛ الملصق الحالي ينص على إيقاف العلاج إذا لم تتحقق الفائدة أو لم تُحتمل الجرعة المطلوبة بعد نحو أسبوعين.',
+  ),
+  'hyoscyamine-sl': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون مجدولًا أو عند الحاجة حسب الاستطباب؛ لا تحول استخدامًا PRN إلى علاج يومي مستمر من نفسك.',
+  ),
+  'promethazine-oral-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'غالبًا استخدام قصير أو عند الحاجة حسب السبب مثل nausea أو motion sickness؛ ليس علاجًا مزمنًا يوميًا عامًا.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -919,6 +919,48 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'PRN للنوبة الحادة فقط؛ لا يستخدم chronic daily، والحد الأقصى 2 doses/24 h و3 doses/7 days.',
   ),
 
+
+  'naratriptan-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine فقط؛ ليست وقاية يومية، وكثرة الاستخدام الحاد تستلزم مراجعة medication-overuse headache.',
+  ),
+  'frovatriptan-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine الحادة فقط؛ ليست preventive therapy.',
+  ),
+  'almotriptan-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine فقط؛ لا يستخدم للوقاية اليومية.',
+  ),
+  'sumatriptan-naproxen-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN للنوبة الحادة فقط؛ لا يستخدم كوقاية، ويُستخدم بأقل جرعة/أقصر مدة مناسبة بسبب مكون NSAID.',
+  ),
+  'dihydroergotamine-brekiya': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine أو cluster headache؛ حدوده 3 doses/24 h و6 doses/7 days، وليس chronic daily treatment.',
+  ),
+  'dihydroergotamine-nasal-legacy': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine؛ لا يستخدم chronic daily، وتعليماته تختلف عن TRUDHESA.',
+  ),
+  'acetaminophen-otc-500mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'استخدام OTC قصير المدى للصداع/الألم؛ لا تستخدم للألم أكثر من 10 أيام دون مراجعة طبية.',
+  ),
+  'ibuprofen-otc-200mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'استخدام OTC قصير المدى؛ إذا استمر الألم >10 أيام أو ساء فراجع الطبيب بدل الاستمرار المتكرر.',
+  ),
+  'naproxen-sodium-otc-220mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'استخدام OTC قصير المدى؛ استمرار الصداع/الألم >10 أيام يستلزم تقييمًا بدل الاستمرار.',
+  ),
+  'acetaminophen-aspirin-caffeine-migraine': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine فقط؛ persistent/worsening أو frequent headaches تحتاج تقييمًا بدل تكرار المنتج.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -109,7 +109,7 @@ const expandedMedications30 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'SNRI لعلاج major depressive disorder عند البالغين.',
       howToUseAr:
-          'ابتلع حبة ER كاملة مع سائل. لا تقسّمها أو تسحقها أو تمضغها أو تذيبها.',
+          'ابتلع حبة ER كاملة مع سائل. لا تقسّمها. لا تسحقها أو تمضغها أو تذيبها.',
       timingAr:
           'مرة يوميًا في وقت متقارب كل يوم، مع الطعام أو بدونه.',
       importantAr:
@@ -355,7 +355,7 @@ const expandedMedications30 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'dopamine agonist لعلاج Parkinson disease.',
       howToUseAr:
-          'خذ حبة ER مرة يوميًا وابتلعها كاملة. لا تمضغها أو تسحقها أو تقسّمها.',
+          'خذ حبة ER مرة يوميًا وابتلعها كاملة. لا تمضغها. لا تسحقها. لا تقسّمها.',
       timingAr: 'مرة يوميًا، مع الطعام أو بدونه.',
       importantAr:
           'قد يحدث نوم مفاجئ أو اندفاعات جديدة مثل القمار/الشراء. إذا انقطع العلاج فترة مهمة لا ترجع لنفس الجرعة من نفسك.',
@@ -546,7 +546,7 @@ const expandedMedications30 = <Medication>[
       commonActionableAr:
           'قد يحدث صداع أو ارتفاع ضغط، ويزداد خطر العدوى. أخبر الطبيب عن تغير الرؤية أو أعراض كبدية.',
       missedDoseAr:
-          'أول 14 يومًا: restart titration بعد أي يوم مفقود حسب الفريق. بعد ذلك: خذ الجرعة التالية في موعدها المعتاد دون double.',
+          'أول 14 يومًا: restart titration بعد أي يوم مفقود حسب الفريق. بعد ذلك: خذ الجرعة التالية في موعدها المعتاد. لا تضاعف الجرعة.',
       seekHelpAr:
           'راجع عند عدوى شديدة، إغماء/بطء نبض شديد، تغير مفاجئ بالرؤية أو اصفرار/بول غامق.',
       teachBackAr:

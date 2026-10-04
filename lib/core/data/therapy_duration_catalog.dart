@@ -549,6 +549,35 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   ),
   'micronized-progesterone-oral':
       TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+
+  'canagliflozin-invokana': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'ertugliflozin-steglatro': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'acarbose': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'repaglinide': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'nateglinide': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'glyburide': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'saxagliptin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-aspart-fiasp': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-glulisine-apidra': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'etonogestrel-implant-nexplanon': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'وسيلة طويلة المفعول: NEXPLANON معتمد حاليًا لمنع الحمل حتى 5 سنوات، ويمكن إزالته قبل ذلك عند الرغبة/الحاجة.',
+  ),
+  'levonorgestrel-ius-mirena': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'MIRENA: منع الحمل حتى 8 سنوات، لكن علاج غزارة الدورة حتى 5 سنوات؛ مدة الاستخدام تعتمد على الاستطباب.',
+  ),
+  'copper-iud-paragard': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PARAGARD يمنع الحمل حتى 10 سنوات ويُزال قبل/عند نهاية هذه المدة أو أبكر عند الحاجة.',
+  ),
+  'testosterone-gel-1-62': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'desmopressin-nocdurna': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'cabergoline-hyperprolactinemia': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'enalapril': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'telmisartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'nebivolol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'candesartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

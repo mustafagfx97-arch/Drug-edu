@@ -2230,6 +2230,14 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Prochlorperazine tablets · 2026',
   ),
+
+  'minocycline-capsules': MedicationTimingRule(anchor: 'any', instructionAr: 'Minocycline IR capsules يمكن مع الطعام أو بدونه؛ افصل mineral antacids ومكملات الحديد/الكالسيوم/المغنيسيوم.', autoScheduleSafe: false, source: 'DailyMed · Minocycline capsules'),
+  'moxifloxacin-tablets': MedicationTimingRule(anchor: 'any', instructionAr: 'Moxifloxacin يمكن مع الطعام أو بدونه؛ افصل Mg/Al/iron/zinc/sucralfate: 4 ساعات قبل أو 8 ساعات بعد.', autoScheduleSafe: false, source: 'DailyMed · Moxifloxacin tablets'),
+  'fidaxomicin-tablets': MedicationTimingRule(anchor: 'any', instructionAr: 'Fidaxomicin tablets يمكن مع الطعام أو بدونه؛ للبالغين current label 200 mg مرتين يوميًا 10 أيام لـC. difficile.', autoScheduleSafe: false, source: 'DailyMed · Fidaxomicin tablets · 2026'),
+  'vancomycin-oral-capsules': MedicationTimingRule(anchor: 'any', instructionAr: 'Oral vancomycin لا يحتاج meal anchor؛ وزّع الجرعات حسب وصفة C. difficile/enterocolitis ولا تخلطه مع IV indication.', autoScheduleSafe: false, source: 'DailyMed · Vancomycin oral capsules · 2026'),
+  'rabeprazole-dr-tablets': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Rabeprazole يعتمد على الاستطباب: duodenal ulcer بعد الوجبة، H. pylori مع الطعام، ومعظم الاستطبابات الأخرى food-flexible.', autoScheduleSafe: false, source: 'DailyMed · Rabeprazole DR · 2026'),
+  'scopolamine-transdermal': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Motion sickness: patch خلف الأذن قبل الحاجة بـ4 ساعات على الأقل وتبقى حتى 3 أيام؛ PONV له جدول مختلف.', autoScheduleSafe: false, source: 'DailyMed · Scopolamine transdermal IFU'),
+  'granisetron-oral-tablets': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Granisetron مرتبط بالchemotherapy/radiation وليس الطعام؛ adult chemotherapy dose تبدأ حتى ساعة قبل العلاج.', autoScheduleSafe: false, source: 'DailyMed · Granisetron tablets'),
 };
 
 

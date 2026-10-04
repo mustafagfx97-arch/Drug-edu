@@ -610,23 +610,23 @@ const englishPatientCounseling = <String, EnglishPatientCounseling>{
         'What will you do if you miss several doses, and why should you not stop it suddenly?',
   ),
   'methotrexate-rheumatology': EnglishPatientCounseling(
-    purpose: 'Controls inflammation in conditions such as rheumatoid arthritis or psoriasis.',
+    purpose: 'Controls inflammation in selected NON-ONCOLOGY conditions such as rheumatoid arthritis or psoriasis.',
     howToUse:
-        'For rheumatology/dermatology use, take methotrexate ONCE A WEEK on the prescribed day—not every day. Take folic acid exactly as your treatment plan directs.',
+        'For this non-oncology rheumatology/dermatology record, take methotrexate ONCE A WEEK on the prescribed day—not every day. Oncology protocols use different schedules and must never inherit this weekly rule.',
     timing:
-        'Choose one fixed weekly day. Keep the methotrexate day clearly marked and separate from any daily medicines.',
+        'Choose one fixed weekly day for the non-oncology regimen. Keep the methotrexate day clearly marked and separate from daily medicines.',
     duration:
         'Usually long term while effective and tolerated, with regular laboratory monitoring.',
     important:
-        'Weekly-versus-daily errors can be fatal. Blood counts, liver and kidney monitoring are important, and pregnancy must be avoided according to the treatment plan.',
+        'Weekly-versus-daily errors in non-oncology use can be fatal. The weekly rule is indication-specific and does not describe cancer protocols. Blood counts, liver/kidney monitoring and pregnancy precautions are critical.',
     commonActionable:
-        'Nausea, fatigue or mouth soreness can occur. Report persistent mouth ulcers rather than simply taking extra doses or supplements.',
+        'Nausea, fatigue or mouth soreness can occur. Persistent mouth ulcers need review rather than self-adjusting folic acid or methotrexate.',
     missedDose:
         'Do not take extra doses or switch to daily dosing. If you miss the weekly dose, contact the pharmacist/clinical team for the correct next dose date.',
     seekHelp:
         'Seek prompt medical advice for fever/infection, severe mouth ulcers, unusual bruising/bleeding, shortness of breath or jaundice.',
     teachBack:
-        'What day of the week will you take methotrexate? Tell me how often—not how many tablets—you take it.',
+        'What day of the week will you take this non-oncology methotrexate? Does the once-weekly rule apply to oncology protocols?',
   ),
   'prednisone': EnglishPatientCounseling(
     purpose: 'Reduces inflammation and immune activity for many different conditions.',

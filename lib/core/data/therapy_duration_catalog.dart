@@ -660,6 +660,23 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.shortCourse,
     patientOverrideAr: 'مدة قصيرة مرتبطة بدورة chemotherapy أو جرعة/خطة perioperative؛ ليست antiemetic مزمنة عامة.',
   ),
+
+  'azithromycin-zmax': TherapyDurationGuidance(kind: TherapyDurationKind.singleUse),
+  'penicillin-v': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'dicloxacillin': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'tetracycline-capsules': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'fosfomycin-tromethamine': TherapyDurationGuidance(kind: TherapyDurationKind.singleUse),
+  'rifampin': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'المدة تعتمد على الاستطباب؛ في TB يكون ضمن regimen متعدد الأدوية وقد يستمر أشهرًا، بينما بعض prophylaxis courses أقصر.',
+  ),
+  'lansoprazole-odt': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'dexlansoprazole-dr': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'cholestyramine': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'plecanatide-trulance': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'prucalopride-motegrity': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'meclizine-motion-sickness': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'prochlorperazine-severe-nausea': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -111,7 +111,7 @@ void main() {
         allOf(contains('أسبوعين'), contains('مرتين أسبوعيًا')),
       );
       expect(byId['progesterone-endometrin']!.patient.howToUseAr, contains('لا تبلعه'));
-      expect(byId['liothyronine-cytomel']!.patient.importantAr, contains('التنحيف'));
+      expect(byId['liothyronine-cytomel']!.patient.importantAr, contains('إنقاص الوزن'));
       expect(
         byId['medroxyprogesterone-oral']!.patient.importantAr,
         allOf(contains('Depo-Provera'), contains('3–7 أيام')),

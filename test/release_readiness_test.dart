@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('release readiness clinical content is internally complete', () {
-    expect(sampleMedications.length, 340);
+    expect(sampleMedications.length, 350);
 
     final medicationIds = sampleMedications.map((item) => item.id).toList();
     expect(medicationIds.toSet().length, medicationIds.length);

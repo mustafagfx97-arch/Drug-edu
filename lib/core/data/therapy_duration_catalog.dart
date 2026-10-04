@@ -793,6 +793,48 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'دواء disease-modifying مزمن للـMS ما دام فعالًا وآمنًا، مع CBC/lymphocytes وفحوصات الكبد حسب المتابعة.',
   ),
 
+
+  'vilazodone-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر إذا كان فعالًا؛ يحتاج titration عند البدء وtaper عند الإيقاف.',
+  ),
+  'asenapine-sublingual': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج طويل الأمد للـschizophrenia أو bipolar I حسب الاستجابة والمتابعة.',
+  ),
+  'phenytoin-extended-capsules': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء صرع مزمن عادةً؛ لا يوقف فجأة، وأي تبديل formulation يحتاج متابعة مستوى/جرعة.',
+  ),
+  'pramipexole-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يحتاج re-titration.',
+  ),
+  'opicapone-ongentys': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مساعد مزمن مع levodopa/carbidopa إذا كان يقلل off episodes ويظل محتملًا.',
+  ),
+  'donepezil-odt': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج عرضي مزمن لـAlzheimer ما دامت الفائدة موجودة والتحمل مناسبًا.',
+  ),
+  'memantine-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج عرضي مزمن لـmoderate-to-severe Alzheimer؛ الانقطاع عدة أيام قد يحتاج إعادة titration.',
+  ),
+  'dimethyl-fumarate-dr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن للـMS مع CBC/lymphocytes وفحوصات كبد ومراجعة العدوى.',
+  ),
+  'teriflunomide-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ يبقى في الجسم مدة طويلة بعد الإيقاف وقد يحتاج accelerated elimination عند الضرورة.',
+  ),
+  'fingolimod-capsules': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ بعض الانقطاعات تستلزم إعادة first-dose cardiac monitoring قبل الاستئناف.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

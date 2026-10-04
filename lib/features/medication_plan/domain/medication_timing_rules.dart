@@ -2395,6 +2395,68 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · VUMERITY',
   ),
+
+  'vilazodone-tablets': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Vilazodone: مرة يوميًا مع الطعام؛ لا تعتبر الطعام اختياريًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Vilazodone hydrochloride tablets',
+  ),
+  'asenapine-sublingual': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Asenapine SL: تحت اللسان حتى تذوب، ثم لا أكل ولا شرب 10 دقائق؛ لا تُبتلع أو تُمضغ.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · SAPHRIS / asenapine sublingual tablets',
+  ),
+  'phenytoin-extended-capsules': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Phenytoin extended capsules: لا يوجد meal anchor عام مثبت؛ حافظ على نفس formulation والروتين ولا تبدل suspension/chewable mg-for-mg.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Extended phenytoin sodium capsules · 2026',
+  ),
+  'pramipexole-er': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Pramipexole ER: مرة يوميًا في وقت ثابت، مع الطعام أو بدونه؛ whole tablet.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Pramipexole ER',
+  ),
+  'opicapone-ongentys': MedicationTimingRule(
+    anchor: 'bedtime-empty-stomach',
+    instructionAr: 'ONGENTYS: عند النوم؛ لا طعام ساعة قبل الجرعة ولا ساعة على الأقل بعدها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ONGENTYS opicapone',
+  ),
+  'donepezil-odt': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'Donepezil ODT: مساءً قبل النوم مباشرة، مع أو بدون الطعام؛ تذوب على اللسان ثم ماء.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ARICEPT ODT',
+  ),
+  'memantine-xr': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Memantine XR: مرة يوميًا مع/بدون الطعام؛ إذا فُتحت تنثر كل المحتويات على applesauce ولا تُقسّم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Memantine XR capsules',
+  ),
+  'dimethyl-fumarate-dr': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Dimethyl fumarate DR: BID مع/بدون الطعام؛ الطعام قد يقلل flushing، والكبسولة تُبتلع كاملة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Dimethyl fumarate delayed-release capsules',
+  ),
+  'teriflunomide-tablets': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Teriflunomide: مرة يوميًا مع/بدون الطعام؛ المتابعة والحمل/الكبد أهم من meal anchor.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Teriflunomide tablets · revised Aug 2026',
+  ),
+  'fingolimod-capsules': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Fingolimod: مرة يوميًا مع/بدون الطعام؛ الجرعة الأولى وبعض حالات restart تحتاج مراقبة قلبية ≥6 ساعات.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Fingolimod capsules · 2025-2026',
+  ),
 };
 
 

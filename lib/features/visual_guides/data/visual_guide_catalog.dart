@@ -1196,6 +1196,51 @@ const visualGuideCatalog = <VisualGuideData>[
     ],
   ),
 
+  VisualGuideData(
+    id: 'kesimpta-injection',
+    title: 'KESIMPTA subcutaneous injection',
+    subtitle: 'Single-use MS injection with loading weeks 0, 1, 2 then monthly from week 4.',
+    icon: Icons.vaccines_outlined,
+    firstUseSteps: [
+      'The first injection should be performed under the guidance of a healthcare professional.',
+      'Keep the pen or prefilled syringe refrigerated in the original carton until needed.',
+      'Before use, remove the device from the refrigerator and allow it to reach room temperature for about 15–30 minutes.',
+    ],
+    steps: [
+      'Inspect the solution; do not use it if it is cloudy or contains visible particles.',
+      'Choose the abdomen, thigh, or outer upper arm. Avoid moles, scars, stretch marks, and tender, bruised, red, scaly, or hard skin.',
+      'Use only one single-dose pen or prefilled syringe for the prescribed injection.',
+      'Follow the exact device Instructions for Use for cap/needle handling and injection completion.',
+      'Dispose of the used device immediately in an appropriate sharps container; do not reuse it.',
+    ],
+    afterUseSteps: [
+      'Continue the loading calendar exactly: Weeks 0, 1 and 2, skip Week 3, then monthly from Week 4.',
+      'If a dose is missed, administer it as soon as possible and then continue subsequent doses at the recommended intervals.',
+    ],
+    mistakes: [
+      'Shaking or freezing the device.',
+      'Injecting while the device is still very cold instead of allowing 15–30 minutes to warm naturally.',
+      'Injecting into abnormal, bruised, scarred or irritated skin.',
+      'Reusing the single-dose pen or syringe.',
+      'Giving a Week 3 dose or starting monthly dosing before Week 4.',
+      'Waiting until the next monthly date after a missed dose instead of giving it as soon as possible.',
+    ],
+    patientSummaryAr:
+        'أول حقنة KESIMPTA تكون تحت إشراف مختص. أخرج القلم/السرنجة من الثلاجة واتركها 15–30 دقيقة لتصل لحرارة الغرفة دون رجّها أو تسخينها. احقن تحت الجلد في البطن أو الفخذ أو خارج أعلى الذراع وتجنب الجلد المتأذي. الجرعات Week 0 و1 و2، لا جرعة Week 3، ثم شهريًا من Week 4.',
+    teachBackAr:
+        'أرني أين يمكن الحقن، كم تنتظر بعد إخراج الجهاز من الثلاجة، وما جدول الأسابيع 0–4؟ وهل يجوز رج الجهاز أو إعادة استخدامه؟',
+    scopeNote:
+        'Product-specific guide for KESIMPTA Sensoready Pen/prefilled syringe. Device-specific cap/needle steps must follow the exact Instructions for Use supplied with the dispensed presentation.',
+    sourceLabel:
+        'DailyMed · KESIMPTA ofatumumab injection · revised Apr 2026',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed KESIMPTA label and Instructions for Use',
+        url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6a8a3f53-2062-48ff-9dbe-b939df133ca3',
+      ),
+    ],
+  ),
+
 ];
 
 
@@ -1266,6 +1311,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'mesalamine-rowasa-enema': ['rowasa-enema'],
   'granisetron-sancuso-patch': ['sancuso-patch'],
   'rivastigmine-transdermal': ['rivastigmine-patch'],
+  'ofatumumab-kesimpta': ['kesimpta-injection'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

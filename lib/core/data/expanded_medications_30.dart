@@ -109,7 +109,7 @@ const expandedMedications30 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'SNRI لعلاج major depressive disorder عند البالغين.',
       howToUseAr:
-          'ابتلع حبة ER كاملة مع سائل. لا تقسّمها. لا تسحقها أو تمضغها أو تذيبها.',
+          'ابتلع حبة ER كاملة مع سائل. لا تقسّمها. لا تسحقها. لا تمضغها. لا تذيبها.',
       timingAr:
           'مرة يوميًا في وقت متقارب كل يوم، مع الطعام أو بدونه.',
       importantAr:

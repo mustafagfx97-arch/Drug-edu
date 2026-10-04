@@ -1285,6 +1285,53 @@ const visualGuideCatalog = <VisualGuideData>[
     ],
   ),
 
+  VisualGuideData(
+    id: 'brekiya-autoinjector',
+    title: 'BREKIYA autoinjector',
+    subtitle: 'Single-dose SC DHE autoinjector for migraine/cluster headache.',
+    icon: Icons.vaccines_outlined,
+    firstUseSteps: [
+      'Use one new single-dose autoinjector for each 1 mg dose.',
+      'Inspect the device and viewing window. The liquid should be clear and colorless; do not use a damaged, expired, cloudy, discolored or particle-containing device.',
+    ],
+    steps: [
+      'Choose the middle of the thigh. Do not inject through clothing, into scars, moles, birthmarks, bruised/red/hard/tender skin, or the same spot twice in a row.',
+      'Keep the new site at least 2 inches away from the previous injection site.',
+      'Clean with an alcohol swab and allow the skin to air-dry.',
+      'Pull the red needle cap straight off only when ready to inject.',
+      'Place the autoinjector straight against the skin and push down until the white safety guard is no longer visible.',
+      'Press and release the gray activation button. Keep firm downward pressure for at least 10 seconds; do not lift after the first click.',
+      'The dose is complete when the viewing window is fully blocked/blue.',
+    ],
+    afterUseSteps: [
+      'Place the used autoinjector in an appropriate sharps container. Do not reuse it.',
+      'If another dose is needed, wait at least 1 hour and use a new autoinjector.',
+    ],
+    mistakes: [
+      'Injecting IM or IV instead of subcutaneously.',
+      'Injecting anywhere other than the middle thigh.',
+      'Using the same exact spot twice in a row.',
+      'Removing the red cap early or touching the white safety guard after cap removal.',
+      'Lifting the device before about 10 seconds or before the viewing window is fully blue.',
+      'Reusing a single-dose device.',
+      'Exceeding 3 doses in 24 hours or 6 doses in 7 days.',
+    ],
+    patientSummaryAr:
+        'BREKIYA حقنة تحت الجلد في منتصف الفخذ فقط. اختر نقطة تبعد نحو 2 inch عن الحقنة السابقة. اسحب الغطاء الأحمر مستقيمًا، ضع الجهاز عموديًا واضغطه على الجلد، ثم فعّل الزر الرمادي واستمر بالضغط 10 ثوانٍ على الأقل حتى تصبح النافذة زرقاء بالكامل. كل جهاز لجرعة واحدة فقط.',
+    teachBackAr:
+        'أرني أين ستضع BREKIYA، كم تبعد عن الحقنة السابقة، ومتى تعرف أن الجرعة اكتملت؟',
+    scopeNote:
+        'Product-specific guide for the BREKIYA single-dose autoinjector. Do not generalize its thigh-only site, activation button, viewing-window endpoint or timing to other DHE injectors.',
+    sourceLabel:
+        'DailyMed · BREKIYA dihydroergotamine autoinjector · current IFU',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed BREKIYA label and Instructions for Use',
+        url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cdbf5619-767f-4165-aec2-17bdd92d9ca2',
+      ),
+    ],
+  ),
+
 ];
 
 
@@ -1357,6 +1404,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'rivastigmine-transdermal': ['rivastigmine-patch'],
   'ofatumumab-kesimpta': ['kesimpta-injection'],
   'dihydroergotamine-trudhesa': ['trudhesa-nasal-device'],
+  'dihydroergotamine-brekiya': ['brekiya-autoinjector'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

@@ -1965,6 +1965,103 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Labetalol hydrochloride tablets · Mar 2026',
   ),
 
+
+  'insulin-lispro-humalog': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'HUMALOG يُحقن خلال 15 دقيقة قبل الوجبة أو مباشرة بعد تناولها.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMALOG insulin lispro',
+  ),
+  'insulin-lispro-lyumjev': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'LYUMJEV يُحقن عند بدء الوجبة أو خلال 20 دقيقة بعد بدء الأكل.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · LYUMJEV insulin lispro-aabc',
+  ),
+  'insulin-glargine-toujeo': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'TOUJEO U-300 مرة يوميًا في نفس الوقت كل يوم؛ لا يرتبط بوجبة.',
+    source: 'DailyMed · TOUJEO U-300',
+  ),
+  'insulin-glargine-basaglar': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'BASAGLAR مرة يوميًا في نفس الوقت كل يوم؛ لا يرتبط بوجبة.',
+    source: 'DailyMed · BASAGLAR',
+  ),
+  'semaglutide-rybelsus': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'RYBELSUS صباحًا على معدة فارغة مع ماء عادي فقط ≤4 oz، ثم انتظر 30 دقيقة قبل الطعام/الشراب/الأدوية الفموية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RYBELSUS · 2026',
+  ),
+  'semaglutide-ozempic': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'OZEMPIC مرة أسبوعيًا في نفس اليوم؛ missed dose تؤخذ خلال 5 أيام فقط، وتغيير اليوم يتطلب ≥48 ساعة بين الجرعتين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · OZEMPIC',
+  ),
+  'exenatide-byetta': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'BYETTA خلال 60 دقيقة قبل وجبتين رئيسيتين متباعدتين نحو 6 ساعات أو أكثر؛ لا تؤخذ بعد الوجبة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · BYETTA',
+  ),
+  'exenatide-bydureon-bcise': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'BYDUREON BCISE مرة كل 7 أيام؛ missed dose فقط إذا بقي ≥3 أيام للجرعة التالية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · BYDUREON BCISE',
+  ),
+  'verelan-pm': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'VERELAN PM مرة يوميًا عند النوم؛ لا تنقل توقيت verapamil ER آخر إليه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VERELAN PM',
+  ),
+  'eplerenone': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Eplerenone حسب الوصفة مرة أو مرتين يوميًا؛ التوقيت أقل أهمية من potassium/renal monitoring.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Eplerenone · 2026',
+  ),
+  'amiloride': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Amiloride يُؤخذ مع الطعام، ولا تُضاف مكملات potassium من نفسك.',
+    source: 'DailyMed · Amiloride hydrochloride',
+  ),
+  'methyldopa': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Methyldopa حسب عدد الجرعات المكتوب؛ قد يسبب نعاسًا خاصة بالبداية/بعد زيادة الجرعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Methyldopa',
+  ),
+  'bromocriptine-hyperprolactinemia': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Bromocriptine للـhyperprolactinemia يؤخذ مع الطعام؛ titration والجرعة حسب خطة الغدد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Bromocriptine mesylate · Jul 2026',
+  ),
+  'levothyroxine-tirosint-sol': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr: 'TIROSINT-SOL على معدة فارغة قبل الفطور بـ15 دقيقة؛ افصل calcium/iron 4 ساعات على الأقل.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TIROSINT-SOL · 2026',
+  ),
+  'depo-provera-ci': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'DEPO-PROVERA CI حقنة IM كل 13 أسبوعًا؛ احفظ تاريخ الحقنة التالية بدقة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · DEPO-PROVERA CI',
+  ),
+  'nuvaring': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'NuvaRing: 3 أسابيع داخل المهبل ثم أسبوع واحد بدون حلقة؛ الخروج >3 ساعات يحتاج قواعد backup حسب الأسبوع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NuvaRing',
+  ),
 };
 
 

@@ -26,8 +26,8 @@ void main() {
     test('adds 13 distinct complete records', () {
       final ids = sampleMedications.map((m) => m.id).toList();
 
-      expect(sampleMedications.length, 308);
-      expect(ids.toSet().length, 308);
+      expect(sampleMedications.length, 315);
+      expect(ids.toSet().length, 315);
 
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);

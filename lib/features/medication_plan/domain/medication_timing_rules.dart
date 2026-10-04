@@ -2301,6 +2301,37 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · AKYNZEO capsules · current 2026 label',
   ),
+
+  'cefuroxime-axetil-suspension': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Cefuroxime suspension: مع الطعام، رجّ العبوة قبل كل جرعة، ولا تبدله mg-for-mg مع tablets.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cefuroxime axetil oral suspension',
+  ),
+  'cefpodoxime-suspension': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Cefpodoxime suspension يمكن مع الطعام أو بدونه؛ لا تطبق عليه قاعدة tablet التي يتحسن امتصاصها مع الطعام.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cefpodoxime proxetil oral suspension',
+  ),
+  'clarithromycin-suspension': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Clarithromycin suspension يمكن مع الطعام أو بدونه ويمكن مع الحليب؛ لا تُبرّد بعد التحضير.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clarithromycin oral suspension',
+  ),
+  'budesonide-dr-capsules-crohns': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Budesonide DR capsules للـCrohn: مرة صباحًا؛ الملصق لا يفرض meal anchor، وتجنب grapefruit juice.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Budesonide delayed-release capsules · 2026',
+  ),
+  'granisetron-sancuso-patch': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'SANCUSO: ضع patch قبل chemotherapy بـ24–48 ساعة، واتركها حتى ≥24 ساعة بعد انتهاء العلاج؛ لا تقصها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · SANCUSO granisetron transdermal system',
+  ),
 };
 
 

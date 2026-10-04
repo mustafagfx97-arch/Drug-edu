@@ -2457,6 +2457,67 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Fingolimod capsules · 2025-2026',
   ),
+
+  'paroxetine-paxil-cr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'PAXIL CR: مرة صباحًا، مع أو بدون الطعام؛ ابتلعها كاملة ولا تسحقها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PAXIL CR · effective Sep 2026',
+  ),
+  'desvenlafaxine-er': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Desvenlafaxine ER: مرة يوميًا في وقت متقارب، مع/بدون الطعام؛ whole tablet.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Desvenlafaxine ER · 2026',
+  ),
+  'lumateperone-caplyta': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'CAPLYTA: مرة يوميًا مع/بدون الطعام؛ الجرعة المعتادة لا تحتاج titration.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · CAPLYTA · 2026',
+  ),
+  'selegiline-zelapar-odt': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr: 'ZELAPAR: صباحًا قبل الفطور، بدون سائل؛ لا أكل/شرب 5 دقائق قبل و5 دقائق بعد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ZELAPAR · 2026',
+  ),
+  'entacapone-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Entacapone 200 mg: مع كل جرعة levodopa/carbidopa، حتى 8 مرات/يوم؛ مع/بدون الطعام.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Entacapone tablets',
+  ),
+  'ropinirole-er': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Ropinirole ER: مرة يوميًا مع/بدون الطعام؛ whole tablet؛ الانقطاع المهم قد يحتاج re-titration.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Ropinirole ER · revised May 2026',
+  ),
+  'amantadine-gocovri': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'GOCOVRI: مرة عند النوم، مع/بدون الطعام؛ تجنب الكحول؛ غير interchangeable مع amantadine الآخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · GOCOVRI · revised Feb 2026',
+  ),
+  'siponimod-mayzent': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'MAYZENT: مرة يوميًا مع/بدون الطعام بعد CYP2C9-guided titration؛ missed titration أو ≥4 maintenance doses = restart Day 1.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · MAYZENT',
+  ),
+  'ozanimod-zeposia': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'ZEPOSIA: مرة يوميًا مع/بدون الطعام بعد 7-day starter titration؛ missed dose خلال أول 14 يومًا = restart titration.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ZEPOSIA · 2026',
+  ),
+  'ofatumumab-kesimpta': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'KESIMPTA: Week 0,1,2 ثم لا جرعة Week 3، ثم monthly من Week 4؛ لا meal anchor.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · KESIMPTA · revised Apr 2026',
+  ),
 };
 
 

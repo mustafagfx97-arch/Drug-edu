@@ -9,9 +9,6 @@ void main() {
   group('Patient education medication expansion batch 3C', () {
     const newIds = <String>[
       'alogliptin',
-      'linagliptin',
-      'pioglitazone',
-      'insulin-degludec-tresiba',
       'insulin-human-regular-humulin-r',
       'insulin-nph-humulin-n',
       'ramipril',
@@ -27,7 +24,10 @@ void main() {
       'drospirenone-pop-slynd',
       'xulane-contraceptive-patch',
       'annovera-vaginal-ring',
-      'ulipristal-ec',
+      'liothyronine-cytomel',
+      'medroxyprogesterone-oral',
+      'hydralazine-oral',
+      'labetalol-oral',
     ];
 
     test('adds 20 complete distinct records', () {
@@ -60,13 +60,9 @@ void main() {
       expect(nph.patient.importantAr, contains('أبيض'));
       expect(nph.patient.importantAr, contains('عكر'));
 
-      final tresiba = byId['insulin-degludec-tresiba']!;
-      expect(tresiba.patient.missedDoseAr, contains('8 ساعات'));
-      expect(tresiba.patient.importantAr, contains('للطفل'));
-
       expect(
-        byId['pioglitazone']!.patient.importantAr,
-        allOf(contains('تورم'), contains('زيادة وزن'), contains('ضيق نفس')),
+        byId['alogliptin']!.patient.importantAr,
+        contains('الكلى'),
       );
     });
 
@@ -77,6 +73,8 @@ void main() {
       expect(byId['atenolol']!.patient.importantAr, contains('لا توقف'));
       expect(byId['doxazosin']!.patient.missedDoseAr, contains('عدة أيام'));
       expect(byId['ramipril']!.patient.seekHelpAr, contains('تورم'));
+      expect(byId['hydralazine-oral']!.patient.importantAr, contains('lupus'));
+      expect(byId['labetalol-oral']!.patient.importantAr, contains('لا توقف'));
     });
 
     test('adrenal replacement never degrades into generic steroid counseling', () {
@@ -113,6 +111,11 @@ void main() {
         allOf(contains('أسبوعين'), contains('مرتين أسبوعيًا')),
       );
       expect(byId['progesterone-endometrin']!.patient.howToUseAr, contains('لا تبلعه'));
+      expect(byId['liothyronine-cytomel']!.patient.importantAr, contains('التنحيف'));
+      expect(
+        byId['medroxyprogesterone-oral']!.patient.importantAr,
+        allOf(contains('Depo-Provera'), contains('3–7 أيام')),
+      );
     });
 
     test('contraceptive products keep exact schedules and emergency separation', () {
@@ -136,13 +139,7 @@ void main() {
         allOf(contains('21'), contains('7'), contains('13')),
       );
 
-      final ella = byId['ulipristal-ec']!;
-      expect(ella.patient.howToUseAr, contains('120 ساعة'));
-      expect(ella.patient.timingAr, contains('5 أيام'));
-      expect(
-        medicationTimingRules['ulipristal-ec']!.autoScheduleSafe,
-        isFalse,
-      );
+
     });
   });
 }

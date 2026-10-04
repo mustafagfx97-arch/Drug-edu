@@ -104,7 +104,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   'methotrexate-rheumatology': MedicationTimingRule(
     anchor: 'weekly',
     instructionAr:
-        'للروماتيزم/الالتهاب: يوم واحد محدد في الأسبوع حسب الوصفة، وليس يوميًا.',
+        'هذا السجل خاص بالاستخدام غير الأورامي للروماتيزم/الجلدية: يوم واحد محدد في الأسبوع—not يوميًا. لا تطبق قاعدة الأسبوعي على بروتوكولات الأورام.',
     source: 'DailyMed / MedlinePlus Methotrexate',
   ),
   'carvedilol': MedicationTimingRule(
@@ -1734,6 +1734,118 @@ const medicationTimingRules = <String, MedicationTimingRule>{
         'Progesterone micronized oral capsule يؤخذ كجرعة يومية عند النوم في الأيام المحددة بالخطة بسبب الدوخة/النعاس.',
     autoScheduleSafe: false,
     source: 'DailyMed · PROMETRIUM/progesterone capsules · Jan 2026',
+  ),
+
+  'canagliflozin-invokana': MedicationTimingRule(
+    anchor: 'before-breakfast',
+    instructionAr: 'INVOKANA لتحسين السكر يؤخذ مرة يوميًا قبل أول وجبة؛ أوقفه 3 أيام على الأقل قبل الجراحة/الصيام الطويل إذا أمكن وفق الخطة.',
+    source: 'DailyMed · INVOKANA · Jun 2026',
+  ),
+  'ertugliflozin-steglatro': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'STEGLATRO مرة يوميًا صباحًا مع الطعام أو بدونه؛ قبل الجراحة/الصيام الطويل يحتاج hold لمدة 4 أيام على الأقل إذا أمكن.',
+    source: 'DailyMed · STEGLATRO · Jun 2026',
+  ),
+  'acarbose': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'خذ acarbose مع أول لقمة من كل وجبة رئيسية؛ إذا لم توجد وجبة فلا توجد جرعة مرتبطة بها.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Acarbose tablets',
+  ),
+  'repaglinide': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'خذ repaglinide خلال 30 دقيقة قبل الوجبة؛ إذا تخطيت الوجبة فتخطَّ الجرعة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Repaglinide tablets',
+  ),
+  'nateglinide': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'خذ nateglinide قبل الوجبة بـ1–30 دقيقة؛ إذا لم تأكل الوجبة فلا تأخذ الجرعة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Nateglinide · Feb 2025',
+  ),
+  'glyburide': MedicationTimingRule(
+    anchor: 'breakfast',
+    instructionAr: 'Glyburide يؤخذ مع الفطور أو أول وجبة رئيسية حسب الوصفة؛ لا تأخذه ثم تتجاوز الوجبة.',
+    source: 'DailyMed · Glyburide tablets',
+  ),
+  'saxagliptin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Saxagliptin مرة يوميًا مع الطعام أو بدونه؛ ثبّت وقتًا مناسبًا.',
+    source: 'DailyMed · Saxagliptin · Jan 2026',
+  ),
+  'insulin-aspart-fiasp': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'FIASP يُحقن عند بدء الوجبة أو خلال 20 دقيقة بعد بدء الأكل؛ لا تستخدم توقيت NOVOLOG تلقائيًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · FIASP insulin aspart',
+  ),
+  'insulin-glulisine-apidra': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'APIDRA تحت الجلد خلال 15 دقيقة قبل الوجبة أو خلال 20 دقيقة بعد بدء الأكل.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · APIDRA · May 2025',
+  ),
+  'etonogestrel-implant-nexplanon': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'NEXPLANON لا يملك جرعة يومية؛ الموافقة الأمريكية الحالية تسمح بمنع الحمل حتى 5 سنوات من الإدخال.',
+    autoScheduleSafe: false,
+    source: 'FDA/Organon · NEXPLANON duration update · Jan 2026',
+  ),
+  'levonorgestrel-ius-mirena': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'MIRENA: لمنع الحمل حتى 8 سنوات، ولعلاج غزارة الدورة حتى 5 سنوات؛ احفظ تاريخ الإدخال حسب الاستطباب.',
+    autoScheduleSafe: false,
+    source: 'Bayer official MIRENA Prescribing Information',
+  ),
+  'copper-iud-paragard': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'PARAGARD لا يملك جرعة يومية؛ يُزال بحد أقصى 10 سنوات من تاريخ الإدخال.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PARAGARD · Jun 2024',
+  ),
+  'testosterone-gel-1-62': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Testosterone gel 1.62% يُستخدم صباحًا على الكتفين/أعلى الذراعين فقط؛ لا تُعمم تعليمات gel 1% عليه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Testosterone Gel 1.62% · Feb 2026',
+  ),
+  'desmopressin-nocdurna': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'NOCDURNA تحت اللسان بدون ماء قبل النوم بساعة؛ قلل السوائل من ساعة قبل الجرعة حتى 8 ساعات بعدها.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NOCDURNA',
+  ),
+  'cabergoline-hyperprolactinemia': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'Cabergoline للـhyperprolactinemia عادة يومان محددان بالأسبوع حسب الوصفة—not يوميًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cabergoline · Jun 2026',
+  ),
+  'enalapril': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Enalapril يؤخذ في وقت ثابت مع الطعام أو بدونه؛ راقب potassium/الكلى ولا يستخدم بالحمل.',
+    source: 'DailyMed · Enalapril · Jul 2026',
+  ),
+  'telmisartan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Telmisartan مرة يوميًا في وقت ثابت مع الطعام أو بدونه؛ راقب potassium/الكلى ولا يستخدم بالحمل.',
+    source: 'DailyMed · Telmisartan · May 2026',
+  ),
+  'nebivolol': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Nebivolol مرة يوميًا مع الطعام أو بدونه؛ لا توقف beta blocker فجأة.',
+    source: 'DailyMed · Nebivolol · Jun 2026',
+  ),
+  'candesartan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Candesartan يمكن مع الطعام أو بدونه؛ الجرعة/titration تختلف بين الضغط وفشل القلب.',
+    source: 'DailyMed · Candesartan · 2026',
   ),
 };
 

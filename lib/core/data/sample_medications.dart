@@ -17,6 +17,7 @@ import 'expanded_medications_15.dart';
 import 'expanded_medications_16.dart';
 import 'expanded_medications_17.dart';
 import 'expanded_medications_18.dart';
+import 'expanded_medications_19.dart';
 
 const sampleMedications = <Medication>[
   Medication(
@@ -509,29 +510,33 @@ const sampleMedications = <Medication>[
   Medication(
     id: 'methotrexate-rheumatology',
     familyId: 'rheumatology-immunology',
-    name: 'Methotrexate',
-    subtitle: 'Conventional DMARD',
-    tags: ['Rheumatology', 'Weekly', 'High alert'],
+    name: 'Methotrexate — Non-oncology Weekly Use',
+    subtitle: 'High-alert weekly DMARD · oncology schedules are different',
+    tags: ['Rheumatology', 'Weekly', 'High alert', 'Indication-specific'],
     sourceLabel: 'DailyMed + MedlinePlus Drug Information · Methotrexate',
     sections: [
       MedicationSection(
-        title: 'Critical schedule',
+        title: 'CRITICAL — weekly rule is indication-specific',
         body:
-            'For many non-oncology inflammatory indications, oral methotrexate is taken once weekly, not daily. Daily administration errors have caused fatal toxicity.',
+            'For many non-oncology inflammatory indications such as rheumatoid arthritis/psoriasis, oral methotrexate is taken once weekly, not daily. This weekly rule must NOT be copied to oncology protocols, which use disease- and protocol-specific schedules. Daily administration errors in non-oncology use have caused fatal toxicity.',
         priority: ClinicalPriority.critical,
       ),
       MedicationSection(
-        title: 'Monitoring',
+        title: 'Monitoring + folate plan',
         body:
-            'Review pregnancy status, CBC, liver and renal monitoring, interacting medicines, infection, mouth ulcers and pulmonary symptoms. Folic acid co-therapy is common but should follow the prescribed plan.',
+            'Review pregnancy status, CBC, liver and renal monitoring, interacting medicines, infection, mouth ulcers and pulmonary symptoms. Folic acid/folinic acid timing belongs to the exact treatment plan and should not be improvised.',
+        priority: ClinicalPriority.important,
       ),
     ],
     patient: PatientCounselingData(
-      purposeAr: 'يقلل نشاط الالتهاب في أمراض مثل الروماتويد والصدفية حسب حالتك.',
-      howToUseAr: 'إذا وُصف لك للالتهاب أو الروماتيزم فعادة يؤخذ في يوم محدد من الأسبوع؛ اتبع اليوم المكتوب لك بدقة.',
-      importantAr: 'لا تأخذه يوميًا إلا إذا كانت لديك خطة علاج مختلفة ومؤكدة من الطبيب. لا تستخدمه أثناء الحمل.',
-      seekHelpAr: 'تواصل مع الطبيب إذا ظهرت حرارة أو التهاب شديد، تقرحات فم كثيرة، ضيق نفس جديد، أو نزف وكدمات غير معتادة.',
-      teachBackAr: 'ما هو يوم الميثوتركسيت عندك؟ وكم مرة في الأسبوع ستأخذه؟',
+      purposeAr: 'هذا السجل خاص باستخدام methotrexate غير الأورامي مثل الروماتويد/الصدفية حسب وصف الطبيب.',
+      howToUseAr: 'في هذا الاستخدام يؤخذ عادةً في يوم واحد محدد من الأسبوع—not يوميًا. اكتب اسم يوم الأسبوع على العلبة والتقويم.',
+      timingAr: 'مرة واحدة في الأسبوع في اليوم المحدد. لا تنقل هذه القاعدة لأي بروتوكول أورام؛ جداول الأورام مختلفة تمامًا.',
+      importantAr: 'الخطأ بين أسبوعي ويومي قد يكون قاتلًا. لا تستخدمه أثناء الحمل، ولا تغيّر folic acid أو توقيته من نفسك.',
+      commonActionableAr: 'قد يحدث غثيان أو تعب أو تقرحات فم؛ التقرحات المتكررة أو الشديدة تحتاج مراجعة.',
+      missedDoseAr: 'إذا نسيت الجرعة الأسبوعية لا تأخذ جرعات إضافية ولا تحولها إلى يومية؛ اسأل الصيدلي/الفريق عن تاريخ الجرعة التالية.',
+      seekHelpAr: 'تواصل بسرعة عند حرارة/عدوى، تقرحات فم شديدة، ضيق نفس جديد، نزف/كدمات غير معتادة أو اصفرار.',
+      teachBackAr: 'ما اسم يوم جرعتك؟ هل القاعدة الأسبوعية تخص علاجك غير الأورامي أم كل استعمالات methotrexate؟',
     ),
   ),
   Medication(
@@ -1693,4 +1698,5 @@ const sampleMedications = <Medication>[
   ...expandedMedications16,
   ...expandedMedications17,
   ...expandedMedications18,
+  ...expandedMedications19,
 ];

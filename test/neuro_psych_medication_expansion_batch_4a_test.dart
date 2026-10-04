@@ -52,7 +52,7 @@ void main() {
 
       expect(
         byId['lurasidone-tablets']!.patient.timingAr,
-        allOf(contains('360'), contains('على الأقل')),
+        allOf(contains('350'), contains('على الأقل')),
       );
       expect(
         medicationTimingRules['lurasidone-tablets']!.requiresMealChoice,

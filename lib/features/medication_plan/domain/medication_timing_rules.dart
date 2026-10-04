@@ -2153,6 +2153,83 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Aprepitant capsules · Jan 2026',
   ),
+
+  'azithromycin-zmax': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'ZMAX جرعة واحدة على معدة فارغة: قبل الطعام بساعة أو بعده بساعتين؛ بعد التحضير تُستخدم خلال 12 ساعة ولا تُبرّد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ZMAX',
+  ),
+  'penicillin-v': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Penicillin V يمكن مع الطعام، لكن الامتصاص أعلى قليلًا على معدة فارغة؛ الأفضل بعيدًا عن الوجبة إذا كان ذلك عمليًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Penicillin V potassium',
+  ),
+  'dicloxacillin': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Dicloxacillin قبل الطعام بساعة أو بعده بساعتين، مع 120 mL ماء على الأقل، ولا يؤخذ مستلقيًا أو مباشرة قبل النوم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Dicloxacillin',
+  ),
+  'tetracycline-capsules': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Tetracycline يُفضّل بعيدًا عن الطعام؛ food/dairy والمعادن والـantacids تقلل الامتصاص، ويؤخذ مع ماء كافٍ.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tetracycline HCl capsules · 2026',
+  ),
+  'fosfomycin-tromethamine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Fosfomycin sachet جرعة واحدة، مع الطعام أو بدونه؛ يُذاب كامل الكيس في 3–4 oz ماء غير ساخن ويُشرب فورًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Fosfomycin tromethamine · 2025',
+  ),
+  'rifampin': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Rifampin قبل الطعام بساعة أو بعده بساعتين مع كوب ماء كامل؛ راجع كل الأدوية بسبب التداخلات القوية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Rifampin capsules',
+  ),
+  'lansoprazole-odt': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'Lansoprazole ODT قبل الوجبات؛ لا تمضغ microgranules، وافصله عن sucralfate 30 دقيقة على الأقل.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lansoprazole ODT',
+  ),
+  'dexlansoprazole-dr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Dexlansoprazole DR يمكن مع الطعام أو بدونه؛ لا يحتاج meal anchor مثل بعض PPIs الأخرى.',
+    source: 'DailyMed · Dexlansoprazole DR · Dec 2025',
+  ),
+  'cholestyramine': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Cholestyramine لا يؤخذ جافًا؛ اخلطه بـ2–6 oz سائل غير غازي، وافصل باقي الأدوية ساعة قبله أو 4–6 ساعات بعده.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cholestyramine · Jun 2026',
+  ),
+  'plecanatide-trulance': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'TRULANCE مرة يوميًا مع الطعام أو بدونه؛ missed dose تُتجاوز ولا تُضاعف.',
+    source: 'DailyMed · TRULANCE',
+  ),
+  'prucalopride-motegrity': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'MOTEGRITY مرة يوميًا مع الطعام أو بدونه؛ severe renal impairment يحتاج جرعة أقل.',
+    source: 'DailyMed · MOTEGRITY · Jul 2025',
+  ),
+  'meclizine-motion-sickness': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Meclizine للـmotion sickness يُؤخذ قبل بدء السفر بساعة؛ product-specific chew/swallow instructions مهمة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Meclizine motion-sickness labeling · 2026',
+  ),
+  'prochlorperazine-severe-nausea': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Prochlorperazine للغثيان الشديد لا يملك meal anchor مهم؛ اتبع الفاصل الموصوف وراقب النعاس/EPS.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Prochlorperazine tablets · 2026',
+  ),
 };
 
 

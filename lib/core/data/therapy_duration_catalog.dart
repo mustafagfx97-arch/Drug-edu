@@ -616,6 +616,26 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'hydralazine-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'labetalol-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'insulin-lispro-humalog': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-lispro-lyumjev': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-glargine-toujeo': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-glargine-basaglar': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'semaglutide-rybelsus': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'semaglutide-ozempic': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'exenatide-byetta': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'exenatide-bydureon-bcise': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'verelan-pm': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'eplerenone': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'amiloride': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'methyldopa': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'bromocriptine-hyperprolactinemia': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'levothyroxine-tirosint-sol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'depo-provera-ci': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'كل 13 أسبوعًا ما دامت الوسيلة مناسبة؛ الاستخدام لأكثر من سنتين يحتاج مراجعة فائدة/خطر إذا كانت البدائل مناسبة.',
+  ),
+  'nuvaring': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

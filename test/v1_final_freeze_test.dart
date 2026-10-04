@@ -18,10 +18,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('current medication census and counseling coverage stay internally aligned', () {
-    expect(sampleMedications.length, 226);
+    expect(sampleMedications.length, 245);
 
     final medicationIds = sampleMedications.map((item) => item.id).toList();
-    expect(medicationIds.toSet().length, 226,
+    expect(medicationIds.toSet().length, 245,
         reason: 'Medication IDs must remain unique');
 
     final familyIds = medicationFamilies.map((item) => item.id).toSet();
@@ -56,11 +56,11 @@ void main() {
       }
     }
 
-    expect(arabicCoverage, 226,
+    expect(arabicCoverage, 245,
         reason:
             'Every medication must resolve to practical Arabic counseling');
 
-    expect(englishPatientCounseling.length, 226);
+    expect(englishPatientCounseling.length, 245);
     expect(englishPatientCounseling.keys.toSet(), medicationIds.toSet());
     for (final entry in englishPatientCounseling.entries) {
       final patient = entry.value;
@@ -74,7 +74,7 @@ void main() {
       expect(patient.teachBack.trim(), isNotEmpty, reason: entry.key);
     }
 
-    expect(medicationTherapyDurations.length, 226);
+    expect(medicationTherapyDurations.length, 245);
     expect(medicationTherapyDurations.keys.toSet(), medicationIds.toSet());
   });
 

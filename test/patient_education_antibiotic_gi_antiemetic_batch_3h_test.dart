@@ -14,10 +14,10 @@ void main() {
       'promethazine-oral-tablets',
     ];
 
-    test('adds five complete unique records and raises census to 325', () {
+    test('adds five complete unique records and raises census to 330', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 325);
-      expect(allIds.toSet().length, 325);
+      expect(sampleMedications.length, 330);
+      expect(allIds.toSet().length, 330);
 
       for (final id in ids) {
         expect(allIds, contains(id));

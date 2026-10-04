@@ -729,6 +729,28 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'عادة كبسولة واحدة قبل كل chemotherapy cycle حسب الخطة؛ ليست دواءً يوميًا تستمر عليه بين الدورات.',
   ),
 
+
+  'cefuroxime-axetil-suspension': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'كورس قصير حسب نوع العدوى؛ كثير من الاستطبابات الموثقة للمعلق 10 أيام، لكن اتبع المدة المكتوبة للوصفة.',
+  ),
+  'cefpodoxime-suspension': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'مدة العلاج تختلف حسب الاستطباب؛ قد تتراوح من جرعة واحدة إلى 5–14 يومًا حسب العدوى.',
+  ),
+  'clarithromycin-suspension': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا كورس قصير للعدوى المعتادة، لكن mycobacterial regimens استثناء وقد تكون طويلة جدًا؛ لا تعمم مدة واحدة.',
+  ),
+  'budesonide-dr-capsules-crohns': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'Active Crohn عند البالغ: 9 mg صباحًا حتى 8 أسابيع؛ maintenance: 6 mg صباحًا حتى 3 أشهر ثم taper/إيقاف حسب الخطة.',
+  ),
+  'granisetron-sancuso-patch': TherapyDurationGuidance(
+    kind: TherapyDurationKind.singleUse,
+    patientOverrideAr: 'Patch واحدة لكل chemotherapy course حسب الخطة؛ تُلبس خلال العلاج وحتى ≥24 ساعة بعده، وبحد أقصى 7 أيام.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

@@ -1108,6 +1108,50 @@ const visualGuideCatalog = <VisualGuideData>[
         'ROWASA: رج العبوة، استلقِ على الجانب الأيسر أو وضعية knee-chest، أدخل الطرف بلطف باتجاه السرة واضغط بثبات. ابقَ في الوضعية 30 دقيقة على الأقل وحاول الاحتفاظ بالدواء طوال الليل.',
   ),
 
+  VisualGuideData(
+    id: 'sancuso-patch',
+    title: 'SANCUSO granisetron patch',
+    subtitle: 'Chemotherapy-linked antiemetic patch with exact timing, heat and sunlight precautions.',
+    icon: Icons.layers_outlined,
+    firstUseSteps: [
+      'Keep the patch sealed in its pouch until you are ready to apply it.',
+      'Plan application for 24–48 hours before chemotherapy begins.',
+    ],
+    steps: [
+      'Choose clean, dry, nearly hairless, intact healthy skin on the upper outer arm.',
+      'Open the pouch, remove the liners without touching the adhesive more than necessary, and apply one whole patch only.',
+      'Press the patch firmly in place, especially around the edges, then wash your hands.',
+      'Keep the patch on throughout chemotherapy and for at least 24 hours after chemotherapy is finished.',
+      'Remove the patch by peeling it off gently; total wear may be up to 7 days depending on the chemotherapy regimen.',
+    ],
+    afterUseSteps: [
+      'Fold the used patch in half with the sticky sides together and dispose of it safely away from children and pets.',
+      'Keep the application site covered from direct natural or artificial sunlight for 10 days after removal.',
+    ],
+    mistakes: [
+      'Cutting the patch.',
+      'Applying more than one patch.',
+      'Putting it on red, irritated or damaged skin.',
+      'Using a heating pad or heat lamp over or near the patch.',
+      'Exposing the patch site to direct sunlight or artificial UV without covering it.',
+      'Removing it before at least 24 hours have passed after chemotherapy is finished.',
+    ],
+    patientSummaryAr:
+        'ضع SANCUSO patch واحدة كاملة غير مقصوصة على جلد سليم ونظيف وجاف وقليل الشعر في أعلى الذراع من الخارج قبل chemotherapy بـ24–48 ساعة. اتركها أثناء العلاج وحتى 24 ساعة على الأقل بعد انتهائه، وبحد أقصى 7 أيام. تجنب heating pad/heat lamp والحرارة الطويلة، وغطِّ مكانها من أشعة الشمس أو UV أثناء الاستخدام ولمدة 10 أيام بعد نزعها.',
+    teachBackAr:
+        'أرني أين ستضع patch ومتى قبل chemotherapy. هل يجوز قصها؟ وماذا ستفعل مع الحرارة والشمس؟ ومتى تنزعها بعد انتهاء العلاج؟',
+    scopeNote:
+        'Use only for SANCUSO granisetron transdermal system. Do not generalize its timing, heat, UV or duration instructions to other medicated patches.',
+    sourceLabel:
+        'DailyMed · SANCUSO granisetron transdermal system · updated Nov 4, 2024',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed SANCUSO label and Instructions for Use',
+        url: 'https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=7379369a-03df-4ec3-8f2e-66645cc736d8',
+      ),
+    ],
+  ),
+
 ];
 
 
@@ -1176,6 +1220,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'zavegepant-zavzpret-nasal': ['zavzpret-device'],
   'mesalamine-canasa-suppository': ['canasa-suppository'],
   'mesalamine-rowasa-enema': ['rowasa-enema'],
+  'granisetron-sancuso-patch': ['sancuso-patch'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

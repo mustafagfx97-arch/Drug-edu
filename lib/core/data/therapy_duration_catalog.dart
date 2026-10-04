@@ -877,6 +877,48 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج disease-modifying مزمن: Weeks 0,1,2 ثم monthly من Week 4 إذا استمر العلاج آمنًا وفعالًا.',
   ),
 
+
+  'sumatriptan-nasal-spray': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN فقط لنوبة migraine؛ لا يستخدم يوميًا للوقاية، وكثرة أيام الاستخدام تستلزم مراجعة medication-overuse headache.',
+  ),
+  'sumatriptan-injection-autoinjector': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN فقط لنوبة migraine أو cluster headache؛ ليس علاجًا وقائيًا يوميًا.',
+  ),
+  'zolmitriptan-nasal-spray': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine فقط؛ كثرة أيام العلاج الحاد تحتاج مراجعة خطة الوقاية وmedication-overuse.',
+  ),
+  'eletriptan-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN لنوبة migraine؛ لا يستخدم كوقاية يومية.',
+  ),
+  'lasmiditan-reyvow': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'جرعة PRN للنوبة الحادة فقط، وبحد أقصى جرعة واحدة خلال 24 ساعة.',
+  ),
+  'atogepant-qulipta': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج وقائي يومي مزمن ما دام يقلل migraine days ويظل محتملًا.',
+  ),
+  'erenumab-aimovig': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'وقاية شهرية مزمنة مع تقييم الفعالية والتحمل دوريًا.',
+  ),
+  'fremanezumab-ajovy': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'وقاية مزمنة بنظام monthly أو quarterly ثابت حسب الخطة.',
+  ),
+  'galcanezumab-emgality': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'للـmigraine وقاية شهرية مزمنة؛ للـepisodic cluster يُعطى شهريًا فقط خلال cluster period.',
+  ),
+  'dihydroergotamine-trudhesa': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'PRN للنوبة الحادة فقط؛ لا يستخدم chronic daily، والحد الأقصى 2 doses/24 h و3 doses/7 days.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

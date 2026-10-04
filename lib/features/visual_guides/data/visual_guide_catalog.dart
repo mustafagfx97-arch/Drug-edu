@@ -1241,6 +1241,50 @@ const visualGuideCatalog = <VisualGuideData>[
     ],
   ),
 
+  VisualGuideData(
+    id: 'trudhesa-nasal-device',
+    title: 'TRUDHESA nasal device',
+    subtitle: 'Single-use dihydroergotamine device: assemble, prime exactly 4 times, then 1 spray in each nostril.',
+    icon: Icons.air,
+    firstUseSteps: [
+      'Use a new vial and a new nasal spray device for each complete dose.',
+      'Assemble the vial and spray device exactly as shown in the supplied Instructions for Use.',
+    ],
+    steps: [
+      'Hold the assembled device upright and point the nozzle away from your face.',
+      'Prime exactly 4 times. This step is required to bring medicine to the nozzle; do not skip it to “save” medicine.',
+      'Use immediately after priming.',
+      'Keep your head straight and the device upright. Insert the nozzle comfortably into the first nostril and deliver 1 spray.',
+      'Move the nozzle to the other nostril and deliver 1 spray there. One spray in each nostril is one complete 1.45 mg dose.',
+    ],
+    afterUseSteps: [
+      'Discard the entire device with the vial still attached. Do not separate, refill or reuse it.',
+      'If another complete dose is needed, wait at least 1 hour and use a brand-new device.',
+    ],
+    mistakes: [
+      'Skipping or doing fewer/more than the 4 priming pumps.',
+      'Using both treatment sprays in the same nostril.',
+      'Saving the device or leftover vial solution for later.',
+      'Repeating in less than 1 hour.',
+      'Using more than 2 doses in 24 hours or more than 3 doses in 7 days.',
+      'Using a triptan or another ergot within 24 hours.',
+    ],
+    patientSummaryAr:
+        'ركّب TRUDHESA ثم اعمل priming أربع مرات بالضبط بعيدًا عن الوجه. استخدمه فورًا: بخة واحدة في كل فتحة أنف. بعد الجرعة ارمِ الجهاز كاملًا مع الـvial ولا تعِد استخدامه. إذا احتجت جرعة ثانية انتظر ساعة على الأقل واستخدم جهازًا جديدًا.',
+    teachBackAr:
+        'أرني عدد مرات الـpriming، وكم بخة تعطي في كل فتحة أنف، وماذا تفعل بالجهاز بعد الجرعة؟',
+    scopeNote:
+        'Product-specific guide for TRUDHESA. Do not generalize its four-pump priming, dose limits or device assembly to other nasal migraine products.',
+    sourceLabel:
+        'DailyMed · TRUDHESA dihydroergotamine nasal spray · effective Sep 3, 2026',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed TRUDHESA label and Instructions for Use',
+        url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b81397b0-910d-4eb4-8fee-a9a3c9d94d63',
+      ),
+    ],
+  ),
+
 ];
 
 
@@ -1312,6 +1356,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'granisetron-sancuso-patch': ['sancuso-patch'],
   'rivastigmine-transdermal': ['rivastigmine-patch'],
   'ofatumumab-kesimpta': ['kesimpta-injection'],
+  'dihydroergotamine-trudhesa': ['trudhesa-nasal-device'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

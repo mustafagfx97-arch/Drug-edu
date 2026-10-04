@@ -2518,6 +2518,67 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · KESIMPTA · revised Apr 2026',
   ),
+
+  'sumatriptan-nasal-spray': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Sumatriptan nasal: مع بداية النوبة؛ repeat بعد ≥2 h فقط، max 40 mg/24 h؛ لا meal anchor.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sumatriptan nasal spray · current 2026 labeling',
+  ),
+  'sumatriptan-injection-autoinjector': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Sumatriptan SC: مع migraine/cluster attack؛ repeat 6 mg بعد ≥1 h فقط، max 12 mg/24 h.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sumatriptan injection · updated 2026',
+  ),
+  'zolmitriptan-nasal-spray': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Zolmitriptan nasal: مع النوبة؛ repeat بعد ≥2 h فقط، max 10 mg/24 h.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Zolmitriptan nasal spray',
+  ),
+  'eletriptan-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Eletriptan: 20–40 mg مع النوبة؛ repeat بعد ≥2 h، max 80 mg/24 h؛ راجع CYP3A4 72-hour lock.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Eletriptan tablets · revised May 2026',
+  ),
+  'lasmiditan-reyvow': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'REYVOW: جرعة واحدة فقط/24 h عند النوبة، مع/بدون الطعام؛ لا قيادة ≥8 ساعات بعد الجرعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · REYVOW lasmiditan',
+  ),
+  'atogepant-qulipta': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'QULIPTA: مرة يوميًا للوقاية، مع/بدون الطعام؛ ليست rescue PRN.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · QULIPTA atogepant',
+  ),
+  'erenumab-aimovig': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'AIMOVIG: SC مرة كل شهر؛ 70 أو 140 mg حسب الوصفة؛ لا meal anchor.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · AIMOVIG erenumab-aooe',
+  ),
+  'fremanezumab-ajovy': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'AJOVY: 225 mg monthly أو 675 mg كل 3 أشهر (3 injections)؛ لا تخلط الجدولين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · AJOVY fremanezumab-vfrm · Jun 2026',
+  ),
+  'galcanezumab-emgality': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'EMGALITY: migraine regimen ≠ episodic cluster regimen؛ الجدول يعتمد على indication.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · EMGALITY galcanezumab-gnlm · Jun 2026',
+  ),
+  'dihydroergotamine-trudhesa': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'TRUDHESA: عند migraine attack؛ prime 4 pumps ثم spray بكل nostril؛ repeat بعد ≥1 h، max 2 doses/24 h و3/7 days.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TRUDHESA · effective Sep 2026',
+  ),
 };
 
 

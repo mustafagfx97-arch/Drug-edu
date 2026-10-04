@@ -19,10 +19,10 @@ void main() {
       'fingolimod-capsules',
     ];
 
-    test('adds ten complete unique records and raises census to 360', () {
+    test('adds ten complete unique records and raises census to 370', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 360);
-      expect(allIds.toSet().length, 360);
+      expect(sampleMedications.length, 370);
+      expect(allIds.toSet().length, 370);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

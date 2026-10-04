@@ -579,10 +579,8 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'nebivolol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'candesartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
   'alogliptin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
-  'linagliptin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
-  'pioglitazone': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
-  'insulin-degludec-tresiba': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'insulin-human-regular-humulin-r': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'insulin-nph-humulin-n': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'ramipril': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
@@ -610,10 +608,14 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.individualized,
     patientOverrideAr: 'حلقة ANNOVERA واحدة قابلة لإعادة الاستخدام حتى 13 دورة (حوالي سنة) مع نمط 21 يومًا داخل + 7 أيام خارج.',
   ),
-  'ulipristal-ec': TherapyDurationGuidance(
-    kind: TherapyDurationKind.singleUse,
-    patientOverrideAr: 'جرعة واحدة كمنع حمل طارئ لهذا الحدث؛ ليست وسيلة منع حمل يومية.',
+  'liothyronine-cytomel': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'medroxyprogesterone-oral': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'لـsecondary amenorrhea أو بعض abnormal uterine bleeding يكون الكورس الفموي غالبًا 5–10 أيام حسب الاستطباب ويوم الدورة؛ لا تمددي الكورس من نفسك.',
   ),
+  'hydralazine-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'labetalol-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

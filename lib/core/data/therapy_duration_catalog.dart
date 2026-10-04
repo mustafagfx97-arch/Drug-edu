@@ -835,6 +835,48 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ بعض الانقطاعات تستلزم إعادة first-dose cardiac monitoring قبل الاستئناف.',
   ),
 
+
+  'paroxetine-paxil-cr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر إذا كان فعالًا؛ PMDD قد يكون continuous أو luteal-phase-only حسب الخطة، والإيقاف تدريجي.',
+  ),
+  'desvenlafaxine-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج طويل الأمد للاكتئاب عند الاستجابة؛ الإيقاف تدريجي لتقليل discontinuation symptoms.',
+  ),
+  'lumateperone-caplyta': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مستمر للـschizophrenia/bipolar depression أو adjunctive MDD حسب الاستجابة والمتابعة.',
+  ),
+  'selegiline-zelapar-odt': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مساعد مزمن لـParkinson عند الاستفادة والتحمل؛ لا تُرفع الجرعة خارج الخطة بسبب تداخلات MAO-B/MAO.',
+  ),
+  'entacapone-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مساعد مزمن مرتبط بكل جرعة levodopa/carbidopa ما دام يقلل wearing-off ويظل محتملًا.',
+  ),
+  'ropinirole-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يتطلب re-titration.',
+  ),
+  'amantadine-gocovri': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن لـdyskinesia/off episodes عند الاستفادة؛ لا يوقف فجأة بعد الاستخدام المنتظم.',
+  ),
+  'siponimod-mayzent': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ الانقطاع المهم يعيدك إلى titration حسب القاعدة وليس مباشرة للـmaintenance.',
+  ),
+  'ozanimod-zeposia': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن؛ يبدأ ب7-day titration وأي missed dose خلال أول 14 يومًا يحتاج restart titration.',
+  ),
+  'ofatumumab-kesimpta': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج disease-modifying مزمن: Weeks 0,1,2 ثم monthly من Week 4 إذا استمر العلاج آمنًا وفعالًا.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

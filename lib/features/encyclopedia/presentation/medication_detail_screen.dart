@@ -315,12 +315,7 @@ class _PharmacistTab extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) => VisualGuideDetailScreen(
-                            title: guide.title,
-                            subtitle: guide.subtitle,
-                            steps: guide.steps,
-                            mistakes: guide.mistakes,
-                            patientSummaryAr: guide.patientSummaryAr,
-                            icon: guide.icon,
+                            guide: guide,
                           ),
                         ),
                       );
@@ -809,12 +804,7 @@ class _PatientTabState extends State<_PatientTab> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) => VisualGuideDetailScreen(
-                            title: guide.title,
-                            subtitle: guide.subtitle,
-                            steps: guide.steps,
-                            mistakes: guide.mistakes,
-                            patientSummaryAr: guide.patientSummaryAr,
-                            icon: guide.icon,
+                            guide: guide,
                           ),
                         ),
                       );

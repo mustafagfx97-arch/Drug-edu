@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+class VisualGuideMediaLink {
+  const VisualGuideMediaLink({
+    required this.label,
+    required this.url,
+    this.isVideo = false,
+  });
+
+  final String label;
+  final String url;
+  final bool isVideo;
+}
+
 class VisualGuideData {
   const VisualGuideData({
     required this.id,
@@ -9,6 +21,13 @@ class VisualGuideData {
     required this.steps,
     required this.mistakes,
     required this.patientSummaryAr,
+    this.firstUseSteps = const [],
+    this.afterUseSteps = const [],
+    this.cleaningSteps = const [],
+    this.teachBackAr = '',
+    this.scopeNote = '',
+    this.sourceLabel = '',
+    this.mediaLinks = const [],
   });
 
   final String id;
@@ -18,88 +37,189 @@ class VisualGuideData {
   final List<String> steps;
   final List<String> mistakes;
   final String patientSummaryAr;
+  final List<String> firstUseSteps;
+  final List<String> afterUseSteps;
+  final List<String> cleaningSteps;
+  final String teachBackAr;
+  final String scopeNote;
+  final String sourceLabel;
+  final List<VisualGuideMediaLink> mediaLinks;
 }
 
 const visualGuideCatalog = <VisualGuideData>[
   VisualGuideData(
     id: 'mdi',
-    title: 'Metered-dose inhaler',
-    subtitle: 'Core MDI technique with room for spacer-specific guidance.',
+    title: 'Metered-dose inhaler (pMDI)',
+    subtitle: 'Slow coordinated inhalation; priming, shaking and cleaning remain product-specific.',
     icon: Icons.air_outlined,
     steps: [
-      'Prepare the device as required by its product instructions.',
-      'Breathe out fully away from the mouthpiece.',
-      'Seal lips around the mouthpiece and begin a slow inhalation.',
-      'Actuate once while continuing the slow deep breath.',
-      'Hold the breath as long as comfortably possible.',
+      'Remove the cap, inspect the mouthpiece and prepare the inhaler exactly as its label requires.',
+      'Sit or stand upright and breathe out fully away from the mouthpiece.',
+      'Seal your lips around the mouthpiece and start a slow, deep breath through the mouth.',
+      'Press the canister once as inhalation begins, then continue the slow deep breath for about 3–5 seconds when possible.',
+      'Remove the inhaler and hold your breath for up to 10 seconds, then breathe out slowly.',
+    ],
+    afterUseSteps: [
+      'If another puff is prescribed, follow the product-specific wait/shake instructions before the next puff.',
+      'After an inhaled corticosteroid, rinse the mouth with water and spit it out.',
+      'Replace the cap and check the dose counter if the inhaler has one.',
+    ],
+    cleaningSteps: [
+      'Clean the actuator/mouthpiece only as the exact product instructions describe; different pMDIs are not cleaned the same way.',
     ],
     mistakes: [
-      'Inhaling too fast for a standard MDI.',
-      'Actuating before or long after inhalation begins.',
-      'Skipping product-specific priming or shaking instructions.',
+      'Inhaling too fast.',
+      'Pressing the canister well before or after inhalation begins.',
+      'Skipping product-specific priming or shaking.',
+      'Continuing to use an inhaler after its labeled actuation count is exhausted.',
     ],
     patientSummaryAr:
-        'جهّز البخاخ حسب تعليمات جهازك، أخرج الهواء أولًا، ثم ضع الفوهة بين الشفتين وابدأ شهيقًا بطيئًا واضغط بخة واحدة مع استمرار الشهيق. اتبع تعليمات الصيدلي الخاصة بجهازك لأن التحضير قد يختلف بين الأنواع.',
+        'أخرج الهواء أولًا، ثم ابدأ شهيقًا بطيئًا وعميقًا واضغط بخة واحدة مع بداية الشهيق واستمر بالشهيق. احبس النفس حتى 10 ثوانٍ إن استطعت. التحضير والرج والتنظيف يختلف حسب المنتج فلا تنسخ تعليمات بخاخ آخر.',
+    teachBackAr:
+        'أرني كيف ستنسق بين بداية الشهيق والضغط على البخاخ، ثم أخبرني متى تتمضمض بعد الجرعة.',
+    scopeNote:
+        'Core pMDI breathing technique only. Exact priming, shaking, cleaning and spacer compatibility must come from the exact inhaler label.',
+    sourceLabel:
+        'CDC Asthma inhaler education · reviewed Aug 28, 2026; American Lung Association MDI technique · Jan 2026',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'CDC inhaler videos',
+        url: 'https://www.cdc.gov/asthma/caring/',
+        isVideo: true,
+      ),
+      VisualGuideMediaLink(
+        label: 'American Lung Association MDI video',
+        url: 'https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma/treatment/devices/metered-dose-inhaler',
+        isVideo: true,
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'spacer',
-    title: 'Spacer with inhaler',
-    subtitle: 'Visual workflow for coordinating an MDI with a spacer.',
+    title: 'pMDI + valved holding chamber (spacer)',
+    subtitle: 'One puff at a time with slow inhalation; chamber and mask cleaning are device-specific.',
     icon: Icons.device_hub_outlined,
     steps: [
-      'Attach the compatible inhaler to the spacer.',
-      'Prepare the inhaler according to the device instructions.',
-      'Exhale away from the spacer.',
-      'Deliver one puff into the spacer.',
-      'Inhale using the spacer technique taught for that device.',
+      'Remove caps, check the inhaler and chamber, and attach a compatible pMDI firmly to the chamber.',
+      'Prepare or shake the inhaler according to its own label, then breathe out fully away from the chamber.',
+      'Seal lips around the chamber mouthpiece. If a mask is used, make a tight seal over the nose and mouth.',
+      'Press the inhaler once only, then inhale slowly and deeply through the chamber. If the chamber whistles, slow the breath down.',
+      'Hold the breath for up to 10 seconds when possible. With a mask, keep a good seal for the breathing sequence taught for that chamber.',
+    ],
+    afterUseSteps: [
+      'Give only one puff into the chamber at a time; repeat the full sequence for another prescribed puff.',
+      'After an inhaled corticosteroid, rinse the mouth and spit. After a steroid delivered through a mask, wipe the face as well.',
+    ],
+    cleaningSteps: [
+      'Clean and dry the chamber exactly as its manufacturer instructs; washing method, drying and antistatic handling differ by chamber.',
     ],
     mistakes: [
-      'Putting multiple puffs into the chamber at the same time.',
-      'Waiting too long before inhaling after actuation.',
-      'Using a spacer that is not compatible with the inhaler.',
+      'Spraying several puffs into the chamber at once.',
+      'Delaying inhalation after actuating the puff.',
+      'Breathing in so fast that a whistle sounds.',
+      'Using an incompatible chamber or a mask that does not seal.',
     ],
     patientSummaryAr:
-        'ركّب البخاخ على السبيسر، حضّر البخاخ حسب تعليماته، أخرج الهواء ثم أعطِ بخة واحدة داخل السبيسر واستنشق بالطريقة التي شرحها لك الصيدلي. لا تضع عدة بخات داخل الحجرة دفعة واحدة.',
+        'ركّب البخاخ على السبيسر وأعطِ بخة واحدة فقط داخل الحجرة ثم استنشق ببطء وعمق. إذا أصدر السبيسر صفيرًا فأنت تسحب الهواء بسرعة أكثر من اللازم. لا تضع عدة بخات معًا.',
+    teachBackAr:
+        'أرني كيف تركّب البخاخ، أعطني بخة واحدة داخل الحجرة، ثم أرني سرعة الشهيق. ماذا يعني صوت الصفير؟',
+    scopeNote:
+        'Use a chamber compatible with the exact inhaler. Mask breathing pattern and cleaning instructions vary by chamber.',
+    sourceLabel:
+        'CDC Asthma spacer education · reviewed Aug 28, 2026; American Lung Association spacer technique · Feb 2026',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'CDC MDI + spacer video',
+        url: 'https://www.cdc.gov/asthma/caring/',
+        isVideo: true,
+      ),
+      VisualGuideMediaLink(
+        label: 'American Lung Association spacer video',
+        url: 'https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma/treatment/devices/metered-dose-inhaler-chamber-spacer',
+        isVideo: true,
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'nasal-spray',
     title: 'Nasal spray',
-    subtitle: 'Positioning and aiming guide.',
+    subtitle: 'Prime the exact product, aim away from the septum and use only a gentle sniff.',
     icon: Icons.water_drop_outlined,
+    firstUseSteps: [
+      'Check the exact product leaflet for first-use priming and re-priming after nonuse; the number of pumps is not universal.',
+    ],
     steps: [
-      'Prepare or prime the spray according to the product instructions.',
-      'Clear the nose gently if needed.',
-      'Keep the head in the recommended neutral or slightly forward position.',
-      'Aim away from the nasal septum.',
-      'Spray while breathing in gently, not forcefully.',
+      'Shake or prepare the bottle only if the exact product instructs you to do so.',
+      'Blow the nose gently if needed.',
+      'Keep the head neutral or slightly forward. Close one nostril and place only the tip into the other nostril.',
+      'Aim the nozzle slightly outward, away from the nasal septum in the center of the nose.',
+      'While sniffing gently, press the spray. Breathe out through the mouth and repeat on the other side if prescribed.',
+    ],
+    afterUseSteps: [
+      'Wipe the nozzle and replace the cap according to the product directions.',
+      'Avoid forceful sniffing that pulls the medicine straight into the throat.',
+    ],
+    cleaningSteps: [
+      'Follow the exact nozzle-cleaning instructions. Do not enlarge a blocked spray hole with a pin unless the product specifically instructs it.',
     ],
     mistakes: [
-      'Aiming directly toward the septum.',
-      'Sniffing too hard after spraying.',
-      'Using the same priming rule for every brand.',
+      'Aiming directly at the septum.',
+      'Sniffing forcefully.',
+      'Using the same priming count for every brand.',
+      'Sharing the nasal spray bottle.',
     ],
     patientSummaryAr:
-        'حضّر البخاخ حسب تعليمات المنتج، وجّه الفوهة بعيدًا عن الحاجز الأوسط للأنف، وخذ شهيقًا خفيفًا أثناء الرش. لا تسحب الهواء بقوة ولا تفترض أن كل البخاخات لها نفس طريقة التحضير.',
+        'نظف الأنف بلطف، أدخل طرف البخاخ قليلًا ووجّهه إلى الخارج بعيدًا عن الحاجز الأوسط، ثم رش مع شهيق خفيف فقط. عدد بخات الـpriming يختلف من منتج لآخر.',
+    teachBackAr:
+        'أشر لي أين الحاجز الأوسط، ثم أرني إلى أي جهة ستوجه الفوهة وكيف سيكون الشهيق.',
+    scopeNote:
+        'Positioning is general; priming, shaking, cleaning and re-priming intervals must be checked on the exact nasal spray.',
+    sourceLabel:
+        'DailyMed · Fluticasone propionate nasal spray · updated 2026; intranasal product labeling',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed fluticasone visual instructions',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0107ad1c-1d8e-434c-a91f-dd2caf4fa5e5',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'eye-drops',
     title: 'Eye drops',
-    subtitle: 'Simple drop placement and contamination prevention.',
+    subtitle: 'One drop into the lower conjunctival pocket with contamination prevention and product-specific spacing.',
     icon: Icons.remove_red_eye_outlined,
     steps: [
-      'Wash and dry hands.',
-      'Tilt the head back and pull down the lower eyelid.',
-      'Place one prescribed drop into the lower conjunctival pocket.',
-      'Avoid touching the eye, lashes or skin with the dropper tip.',
-      'Close the eye gently after the drop.',
+      'Wash and dry hands. Remove contact lenses first when the exact product requires it.',
+      'Tilt the head back and gently pull down the lower eyelid to make a pocket.',
+      'Hold the bottle above the eye without touching the eye, lashes, eyelid or skin with the tip.',
+      'Instill one prescribed drop into the lower pocket; extra drops usually run out rather than adding benefit.',
+      'Close the eye gently after the drop. Use punctal/nasolacrimal pressure when taught or when clinically appropriate for the product.',
+    ],
+    afterUseSteps: [
+      'If using more than one ophthalmic medicine, follow the spacing rule for the exact products; XALATAN labeling specifies at least 5 minutes between topical eye medicines.',
+      'For XALATAN, remove contact lenses before dosing and wait at least 15 minutes before reinserting them.',
+      'Replace the cap without touching or wiping the dropper tip against surfaces.',
     ],
     mistakes: [
-      'Touching the dropper tip to the eye.',
-      'Adding extra drops because the first drop felt small.',
-      'Mixing different eye products without spacing instructions.',
+      'Touching the dropper tip to the eye or lashes.',
+      'Squeezing several drops because the first drop felt small.',
+      'Putting multiple eye medicines one immediately after another.',
+      'Reinserting contact lenses too soon for a product that contains a preservative such as benzalkonium chloride.',
     ],
     patientSummaryAr:
-        'اغسل يديك، اسحب الجفن السفلي بلطف وضع القطرة في الجيب أسفل العين دون أن تلمس الفوهة العين أو الرموش. بعد القطرة أغلق العين بلطف واتبع المدة المطلوبة بين القطرات إذا كنت تستخدم أكثر من نوع.',
+        'اغسل يديك، اسحب الجفن السفلي وضع قطرة واحدة في الجيب من دون أن تلمس الفوهة العين أو الرموش. أغلق العين بلطف. إذا لديك أكثر من قطرة أو عدسات فالتزم بالفاصل الخاص بالمنتج.',
+    teachBackAr:
+        'أرني أين ستضع القطرة وكيف تمنع الفوهة من لمس العين، ثم أخبرني ماذا تفعل إذا كان لديك نوعان من القطرات.',
+    scopeNote:
+        'Core drop-placement technique is general. Contact-lens removal, inter-drop spacing, punctal occlusion and shaking differ by product.',
+    sourceLabel:
+        'DailyMed · XALATAN latanoprost ophthalmic solution current labeling',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed XALATAN instructions',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a98595b3-9f47-48e0-b18d-550a2095f264',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'insulin-pen',
@@ -143,84 +263,232 @@ const visualGuideCatalog = <VisualGuideData>[
         'حضّر الجرعة حسب جهازك، أخرج الهواء بعيدًا عن الجهاز، ثم استنشق بقوة وعمق من الفوهة. لا تزفر داخل الجهاز لأن الرطوبة قد تؤثر على البودرة.',
   ),
   VisualGuideData(
-    id: 'turbuhaler',
-    title: 'Turbuhaler',
-    subtitle: 'Dose-loading and inhalation framework for Turbuhaler-type devices.',
-    icon: Icons.rotate_right_outlined,
+    id: 'symbicort-pmdi',
+    title: 'SYMBICORT pressurized MDI',
+    subtitle: 'Exact aerosol technique: shake, slow coordinated inhalation, repeat correctly, then rinse.',
+    icon: Icons.medication_liquid_outlined,
+    firstUseSteps: [
+      'Before first use, shake well for 5 seconds and release 2 test sprays into the air away from the face, shaking for 5 seconds before each spray.',
+      'Re-prime with 2 test sprays if the inhaler has not been used for more than 7 days or if it has been dropped.',
+    ],
     steps: [
-      'Keep the device upright while loading the dose.',
-      'Load one dose using the exact twist sequence for the product.',
-      'Breathe out fully away from the mouthpiece.',
-      'Inhale quickly and deeply through the mouthpiece.',
-      'Hold the breath, then close the device and check the dose indicator.',
+      'Shake well for 5 seconds, remove the mouthpiece cover and check the mouthpiece.',
+      'Breathe out fully. Hold the inhaler upright and seal lips around the mouthpiece.',
+      'Begin a slow deep breath through the mouth and press the top fully once to release the medicine.',
+      'Continue breathing in and hold the breath for about 10 seconds or as long as comfortable.',
+      'For the second prescribed puff, shake again for 5 seconds and repeat the inhalation sequence.',
+    ],
+    afterUseSteps: [
+      'Close the mouthpiece cover.',
+      'After the prescribed dose, rinse the mouth with water and spit it out; do not swallow the rinse water.',
+      'Use the dose counter to plan the refill rather than estimating by canister feel.',
     ],
     mistakes: [
-      'Holding the device sideways while loading.',
-      'Exhaling into the mouthpiece.',
-      'Repeating the loading twist unnecessarily after a dose is already prepared.',
+      'Using Turbohaler loading steps on the pMDI version.',
+      'Skipping the 5-second shake.',
+      'Inhaling rapidly instead of slowly while actuating.',
+      'Forgetting to re-prime after more than 7 days without use or after the inhaler is dropped.',
     ],
     patientSummaryAr:
-        'أمسك الجهاز بشكل مستقيم عند تحضير الجرعة، حمّل جرعة واحدة بالطريقة الخاصة بنوعك، ثم أخرج الهواء بعيدًا عنه واستنشق بقوة وعمق. لا تنفخ داخل الفوهة.',
+        'إذا كان جهازك SYMBICORT البخاخ المضغوط: رجّه 5 ثوانٍ، أخرج النفس، ثم خذ شهيقًا بطيئًا وعميقًا واضغط بخة واحدة مع بداية الشهيق. إذا كانت الجرعة بختين رجّه مرة أخرى قبل البخة الثانية، وبعد الانتهاء تمضمض وابصق الماء.',
+    teachBackAr:
+        'أرني الفرق بين تحضير أول استخدام وبين الجرعة اليومية، ثم أرني كيف ستأخذ البخة الثانية.',
+    scopeNote:
+        'Use this guide only for the pressurized SYMBICORT aerosol/MDI. SYMBICORT Turbohaler uses a different first-use and dose-loading technique.',
+    sourceLabel:
+        'DailyMed · SYMBICORT budesonide/formoterol aerosol · current IFU; AstraZeneca official technique video',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'Official SYMBICORT technique video',
+        url: 'https://www.symbicorttouchpoints.com/professional-resources/how-to-use-symbicort-inhaler',
+        isVideo: true,
+      ),
+      VisualGuideMediaLink(
+        label: 'DailyMed SYMBICORT IFU',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fafa4cf1-99c2-43d5-73ad-51f256de3be0',
+      ),
+    ],
+  ),
+  VisualGuideData(
+    id: 'turbuhaler',
+    title: 'SYMBICORT Turbohaler',
+    subtitle: 'Upright twist-load device; first-use preparation is not the same as daily dose loading.',
+    icon: Icons.rotate_right_outlined,
+    firstUseSteps: [
+      'Unscrew and remove the cover, then hold the Turbohaler upright with the colored grip at the bottom.',
+      'Turn the grip fully in one direction and fully back in the other direction until a click is heard.',
+      'Repeat that full back-and-forth preparation once more. The new Turbohaler is then prepared for use.',
+    ],
+    steps: [
+      'Remove the cover and keep the Turbohaler upright with the grip at the bottom.',
+      'Without holding the mouthpiece, turn the grip fully one way and fully back until it clicks to load one dose.',
+      'Breathe out gently and fully away from the mouthpiece; never breathe out through the Turbohaler.',
+      'Seal lips around the mouthpiece and breathe in as deeply and forcefully as you can through the mouth.',
+      'Remove the device before breathing out. If another inhalation is prescribed, load the next dose and repeat.',
+    ],
+    afterUseSteps: [
+      'Replace the cover tightly.',
+      'Rinse the mouth with water after the maintenance dose and spit it out.',
+      'Do not take another dose just because you did not taste or feel the powder.',
+    ],
+    mistakes: [
+      'Repeating the two-cycle first-use preparation every day.',
+      'Holding the device sideways while loading.',
+      'Exhaling into the mouthpiece.',
+      'Taking an extra inhalation because the powder was not tasted or felt.',
+    ],
+    patientSummaryAr:
+        'إذا كان جهازك SYMBICORT Turbohaler: أول جهاز جديد يحتاج دورة اللف ذهابًا وإيابًا مرتين للتحضير. بعد ذلك كل جرعة تحتاج دورة واحدة فقط حتى تسمع click، ثم أخرج النفس بعيدًا عن الجهاز واستنشق بقوة وعمق.',
+    teachBackAr:
+        'أرني ماذا تفعل أول مرة مع جهاز جديد، ثم أرني كم دورة لف تحتاج عند الجرعة اليومية العادية.',
+    scopeNote:
+        'This is for SYMBICORT Turbohaler. Other twist-loaded DPIs can look similar but may have different priming, dose counters or strengths.',
+    sourceLabel:
+        'AstraZeneca UK · SYMBICORT Turbohaler patient leaflet · updated Sep 2025',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'Official patient leaflet',
+        url: 'https://www.medicines.org.uk/emc/product/1326/pil',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'diskus',
     title: 'Diskus / Accuhaler',
-    subtitle: 'Lever-loaded dry-powder inhaler technique.',
+    subtitle: 'Open → click lever once → exhale away → quick deep inhalation → close.',
     icon: Icons.horizontal_rule_rounded,
     steps: [
-      'Open the device until it is ready.',
-      'Move the dose lever only when you are ready to take the dose.',
-      'Breathe out away from the mouthpiece.',
-      'Inhale quickly and deeply through the mouthpiece.',
-      'Hold the breath and close the device.',
+      'Open the DISKUS until the mouthpiece is fully exposed.',
+      'Keep it level and flat. Slide the lever once until it clicks; the dose counter decreases by 1.',
+      'Breathe out as fully as possible while holding the device level and away from the mouth. Never exhale into the mouthpiece.',
+      'Seal lips around the mouthpiece and breathe in quickly and deeply through the device.',
+      'Remove the DISKUS, hold the breath for about 10 seconds or as long as comfortable, then breathe out slowly and close it.',
+    ],
+    afterUseSteps: [
+      'For an inhaled corticosteroid-containing Diskus, rinse the mouth with water and spit it out.',
+      'Use the dose counter to identify when only a few doses remain.',
+    ],
+    cleaningSteps: [
+      'Keep the DISKUS dry. Do not wash it or take it apart.',
     ],
     mistakes: [
-      'Moving the lever repeatedly and wasting doses.',
+      'Tilting the device after loading the dose.',
+      'Moving the lever more than once before inhaling and wasting doses.',
       'Exhaling into the device.',
-      'Using the device when the dose counter shows empty.',
+      'Using a spacer with a DISKUS.',
+      'Taking an extra dose because no powder was tasted or felt.',
     ],
     patientSummaryAr:
-        'افتح الجهاز وحضّر جرعة واحدة بالرافعة عندما تكون مستعدًا، أخرج الهواء بعيدًا عن الجهاز ثم استنشق بقوة وعمق. لا تحرك الرافعة أكثر من مرة للجرعة نفسها.',
+        'افتح الـDiskus، أبقه أفقيًا، حرّك الرافعة مرة واحدة حتى تسمع click، ثم أخرج النفس بعيدًا عنه واستنشق بسرعة وعمق. لا تنفخ داخل الجهاز، لا تستخدم spacer معه، ولا تأخذ جرعة إضافية لأنك لم تشعر بطعم البودرة.',
+    teachBackAr:
+        'أرني كيف تحافظ على الجهاز أفقيًا، ومتى تحرك الرافعة، وأين ستخرج النفس قبل الجرعة.',
+    scopeNote:
+        'Diskus/Accuhaler is a dry-powder device and does not use pMDI or spacer technique.',
+    sourceLabel:
+        'DailyMed · ADVAIR DISKUS / fluticasone-salmeterol DISKUS current IFU',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'Official ADVAIR site / patient IFU',
+        url: 'https://www.advair.com/',
+      ),
+      VisualGuideMediaLink(
+        label: 'DailyMed ADVAIR DISKUS IFU',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=17dd0a86-8161-4aa9-9b90-a23d81b38164&type=display',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'ellipta',
-    title: 'Ellipta',
-    subtitle: 'Open-and-inhale DPI workflow.',
+    title: 'ELLIPTA',
+    subtitle: 'Opening the cover loads a dose; inhale long, steady and deep without blocking the air vent.',
     icon: Icons.view_sidebar_outlined,
     steps: [
-      'Open the cover only when you are ready to inhale the dose.',
-      'Breathe out away from the device.',
-      'Seal lips around the mouthpiece without blocking the air vent.',
-      'Take one long, steady, deep breath in.',
-      'Hold the breath and close the cover.',
+      'Wait until you are ready to inhale, then slide the cover fully down until it clicks. Opening the cover loads one dose and the counter moves down by 1.',
+      'Hold the inhaler away from the mouth and breathe out fully; never breathe out into the mouthpiece.',
+      'Seal lips around the curved mouthpiece without blocking the air vent with fingers or lips.',
+      'Take one long, steady, deep breath in through the mouth.',
+      'Remove the inhaler and hold the breath for about 3–4 seconds or as long as comfortable, then breathe out slowly and close the cover.',
+    ],
+    afterUseSteps: [
+      'Do not repeat the dose simply because you did not taste or feel the medicine.',
+      'For an inhaled corticosteroid-containing ELLIPTA product, rinse the mouth and spit after the dose.',
+    ],
+    cleaningSteps: [
+      'Routine cleaning is not required for many ELLIPTA products; if needed, wipe the mouthpiece with a dry tissue before closing the cover.',
     ],
     mistakes: [
-      'Opening and closing the cover without inhaling, which may waste a dose.',
-      'Blocking the air vent with the fingers or lips.',
-      'Breathing out into the mouthpiece.',
+      'Opening and closing the cover without inhaling, which prepares and can waste a dose.',
+      'Blocking the air vent.',
+      'Exhaling into the mouthpiece.',
+      'Shaking the inhaler as if it were a pMDI.',
     ],
     patientSummaryAr:
-        'افتح الغطاء فقط عندما تكون مستعدًا للجرعة، أخرج الهواء بعيدًا عن الجهاز، ثم خذ شهيقًا طويلًا وعميقًا من الفوهة من دون سد فتحة الهواء.',
+        'افتح غطاء ELLIPTA فقط عندما تكون جاهزًا لأن فتحه يجهز جرعة. أخرج النفس بعيدًا عن الجهاز، لا تسد فتحة الهواء، ثم خذ شهيقًا طويلًا وثابتًا وعميقًا. لا تأخذ جرعة إضافية إذا لم تشعر بطعم الدواء.',
+    teachBackAr:
+        'ماذا يحدث للجرعة عندما تفتح الغطاء؟ أرني أين توجد فتحة الهواء وكيف ستمنع إغلاقها بأصابعك.',
+    scopeNote:
+        'The ELLIPTA loading mechanism is shared across several products, but dose frequency and discard date must come from the exact medicine label.',
+    sourceLabel:
+        'DailyMed · ELLIPTA device IFU · current umeclidinium/umeclidinium-vilanterol labeling',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed ELLIPTA visual IFU',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=6de414b1-f707-4b98-9e4b-742032ec90af&type=display',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'respimat',
-    title: 'Respimat-type soft mist inhaler',
-    subtitle: 'Slow-inhalation soft-mist technique; setup is product-specific.',
+    title: 'SPIRIVA RESPIMAT',
+    subtitle: 'First-use cartridge preparation plus daily T-O-P: Turn, Open, Press.',
     icon: Icons.blur_on_outlined,
+    firstUseSteps: [
+      'With the cap closed, remove the clear base, insert the narrow end of the cartridge and push the inhaler down on a firm surface until the cartridge clicks into place.',
+      'Replace the clear base until it clicks and write the discard-by date: 3 months from cartridge insertion for current SPIRIVA RESPIMAT labeling.',
+      'With cap closed, Turn the clear base half a turn until it clicks; Open the cap fully; point toward the ground and Press the dose-release button.',
+      'Repeat Turn–Open–Press until a mist is visible, then repeat the sequence 3 more times. The inhaler is then primed for daily use.',
+    ],
     steps: [
-      'Prepare and prime the device exactly as required for the product.',
-      'Breathe out slowly and fully away from the device.',
-      'Seal lips around the mouthpiece without covering the air vents.',
-      'Press the dose-release button while taking a slow deep breath.',
-      'Hold the breath comfortably, then close the cap.',
+      'TURN: keep the cap closed and turn the clear base half a turn until it clicks.',
+      'OPEN: open the cap until it snaps fully open.',
+      'Breathe out slowly and fully away from the inhaler.',
+      'PRESS: seal lips around the mouthpiece without covering the air vents. Begin a slow deep breath, press the dose-release button and continue inhaling.',
+      'Hold the breath for about 10 seconds or as long as comfortable. For SPIRIVA RESPIMAT, repeat Turn–Open–Press for the second puff that completes the daily dose.',
+    ],
+    afterUseSteps: [
+      'Close the cap after the prescribed puffs.',
+      'If not used for more than 3 days, current SPIRIVA RESPIMAT IFU directs releasing 1 puff toward the ground before use.',
+      'If not used for more than 21 days, re-prime until a mist is visible, then repeat 3 more times.',
+    ],
+    cleaningSteps: [
+      'At least once weekly, wipe the mouthpiece including the metal part inside with a damp cloth or tissue only.',
+      'Replace the inhaler when it locks at empty, expires, or 3 months after cartridge insertion—whichever comes first.',
     ],
     mistakes: [
-      'Skipping first-use priming.',
-      'Inhaling too quickly.',
+      'Taking only one puff when the prescribed SPIRIVA daily dose is two puffs.',
+      'Inhaling quickly instead of slowly and deeply.',
       'Covering the air vents.',
+      'Skipping cartridge priming or confusing RESPIMAT with HandiHaler capsule technique.',
     ],
     patientSummaryAr:
-        'حضّر الجهاز أول مرة حسب تعليماته، ثم أخرج الهواء وابدأ شهيقًا بطيئًا وعميقًا مع الضغط على زر الجرعة. لا تسد فتحات الهواء.',
+        'RESPIMAT له تحضير أول مرة مختلف عن الاستخدام اليومي. بعد التحضير يصبح الاستخدام اليومي TOP: لف القاعدة حتى click، افتح الغطاء، ثم مع شهيق بطيء وعميق اضغط زر الجرعة. في SPIRIVA تكرر TOP مرة ثانية لإكمال البختين.',
+    teachBackAr:
+        'أرني خطوات TOP بالترتيب، وقل لي ماذا تفعل إذا لم يُستخدم الجهاز أكثر من 21 يومًا.',
+    scopeNote:
+        'This guide follows current SPIRIVA RESPIMAT IFU. Other RESPIMAT medicines use the same core device concept but can differ in labeled puff count and replacement details.',
+    sourceLabel:
+        'DailyMed · SPIRIVA RESPIMAT current IFU · 2026; Boehringer Ingelheim RESPIMAT Quick Start',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'Official RESPIMAT instruction videos',
+        url: 'https://www.boehringer-ingelheim.com/nl/instructievideos-respimat-inhalator',
+        isVideo: true,
+      ),
+      VisualGuideMediaLink(
+        label: 'Official RESPIMAT Quick Start PDF',
+        url: 'https://docs.boehringer-ingelheim.com/RESPIMAT-Quick-Start-Guide.pdf',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'nebulizer',
@@ -245,22 +513,41 @@ const visualGuideCatalog = <VisualGuideData>[
   VisualGuideData(
     id: 'ear-drops',
     title: 'Ear drops',
-    subtitle: 'Positioning and drop technique.',
+    subtitle: 'Warm when allowed, position the affected ear upward, and follow the exact product penetration step.',
     icon: Icons.hearing_outlined,
     steps: [
-      'Wash hands and warm the bottle in the hands if allowed by the product.',
-      'Position the affected ear upward.',
-      'Pull the ear as appropriate for the patient age and product instructions.',
-      'Instill the prescribed drops without touching the dropper tip.',
-      'Keep the ear upward for the recommended period.',
+      'Wash hands. If the product instructions allow it, warm the bottle or container in the hands to reduce dizziness from cold drops.',
+      'Lie or tilt the head so the affected ear faces upward.',
+      'Use the age- and product-appropriate ear-positioning technique and instill the prescribed number of drops without touching the dropper tip.',
+      'Use the product-specific penetration step if required—for example, some ciprofloxacin/dexamethasone products instruct pumping the tragus.',
+      'Keep the affected ear upward for the labeled period before sitting up; many current otic labels specify about 30–60 seconds or 60 seconds.',
+    ],
+    afterUseSteps: [
+      'Repeat for the opposite ear only if it was prescribed for both ears.',
+      'Do not use an ear product in the eye.',
+      'Discard leftover suspension when the exact product label or course instructs you to do so.',
     ],
     mistakes: [
-      'Touching the dropper to the ear.',
-      'Using drops in a perforated eardrum unless the product is appropriate.',
-      'Immediately standing up so the drops drain out.',
+      'Using eye and ear products interchangeably.',
+      'Skipping shaking for a suspension that specifically requires it.',
+      'Instilling a very cold suspension and provoking dizziness.',
+      'Standing up immediately so the dose drains out.',
+      'Assuming every otic product is appropriate for a perforated eardrum or tympanostomy tube.',
     ],
     patientSummaryAr:
-        'اجعل الأذن المصابة للأعلى وضع القطرات من دون أن تلمس الفوهة الأذن. ابقَ على هذا الوضع للمدة التي شرحها لك الصيدلي حتى لا تخرج القطرات مباشرة.',
+        'اجعل الأذن المصابة للأعلى، وضع العدد الموصوف من القطرات من دون لمس الفوهة. بعض المنتجات تحتاج رجًا أو تدفئة باليد أو ضغط الـtragus، لذلك اتبع نفس المنتج ولا تنقل طريقة قطرة أخرى.',
+    teachBackAr:
+        'أرني وضعية الرأس وقل لي كم ستبقى والأذن للأعلى، وهل منتجك يحتاج رجًا أو ضغط الـtragus؟',
+    scopeNote:
+        'Ear-drop formulation and indication matter: solution vs suspension, swimmer’s ear vs tympanostomy tube, and eardrum status can change instructions.',
+    sourceLabel:
+        'DailyMed · ciprofloxacin/dexamethasone otic suspension current labeling · 2026',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed ciprofloxacin/dexamethasone otic instructions',
+        url: 'https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=355fa56f-d7a8-444e-9dec-8ba1fa4ab0d8',
+      ),
+    ],
   ),
   VisualGuideData(
     id: 'prefilled-syringe',
@@ -840,7 +1127,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'abaloparatide-tymlos': ['tymlos-pen'],
   'salbutamol-mdi': ['mdi', 'spacer'],
   'insulin-glargine': ['insulin-pen'],
-  'budesonide-formoterol': ['mdi', 'turbuhaler'],
+  'budesonide-formoterol': ['symbicort-pmdi', 'turbuhaler'],
   'latanoprost': ['eye-drops'],
   'semaglutide-injection': ['weekly-injection-device'],
   'tiotropium-capsule-inhalation': ['handihaler-capsule-dpi'],

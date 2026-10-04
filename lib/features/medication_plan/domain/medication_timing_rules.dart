@@ -2579,6 +2579,67 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · TRUDHESA · effective Sep 2026',
   ),
+
+  'naratriptan-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Naratriptan: مع migraine attack؛ repeat بعد ≥4 h فقط، max 5 mg/24 h عادةً.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Naratriptan tablets · Jun 2026',
+  ),
+  'frovatriptan-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Frovatriptan 2.5 mg: مع النوبة؛ second dose فقط إذا عاد الصداع بعد initial relief وبعد ≥2 h؛ max 7.5 mg/24 h.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Frovatriptan succinate tablets · Jan 2026',
+  ),
+  'almotriptan-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Almotriptan: 6.25–12.5 mg مع النوبة؛ repeat بعد ≥2 h إذا عاد الصداع؛ max 25 mg/24 h عادةً.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Almotriptan tablets · Dec 2025',
+  ),
+  'sumatriptan-naproxen-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Sumatriptan/naproxen 85/500: مع/بدون الطعام؛ whole tablet؛ adult repeat بعد ≥2 h، max 2 tablets/24 h.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sumatriptan/naproxen 85/500 mg',
+  ),
+  'dihydroergotamine-brekiya': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'BREKIYA: 1 mg SC مع migraine/cluster attack؛ repeat كل ≥1 h، max 3 doses/24 h و6/7 days.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · BREKIYA autoinjector',
+  ),
+  'dihydroergotamine-nasal-legacy': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Legacy DHE nasal: prime 4؛ spray بكل nostril ثم repeat كلاهما بعد 15 min؛ total 2 mg/attack.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Dihydroergotamine nasal spray 4 mg/mL',
+  ),
+  'acetaminophen-otc-500mg': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Acetaminophen OTC 500 mg: PRN headache؛ common label 1000 mg q6h، max 3000 mg/24 h؛ with/without food.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Acetaminophen 500 mg OTC',
+  ),
+  'ibuprofen-otc-200mg': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Ibuprofen OTC 200 mg: q4–6h PRN؛ max 1200 mg/24 h OTC؛ food/milk only if stomach upset.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Ibuprofen 200 mg OTC · 2026',
+  ),
+  'naproxen-sodium-otc-220mg': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Naproxen sodium OTC 220 mg: q8–12h PRN؛ first dose may be 2 tablets؛ max 660 mg/24 h؛ full glass water.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Naproxen sodium 220 mg OTC · 2026',
+  ),
+  'acetaminophen-aspirin-caffeine-migraine': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Migraine relief 250/250/65: adults 2 caplets once with water؛ max 2 caplets/24 h unless doctor directs otherwise.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Excedrin Migraine / equivalent · 2026',
+  ),
 };
 
 

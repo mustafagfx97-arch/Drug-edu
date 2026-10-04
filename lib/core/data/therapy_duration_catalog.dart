@@ -751,6 +751,48 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'Patch واحدة لكل chemotherapy course حسب الخطة؛ تُلبس خلال العلاج وحتى ≥24 ساعة بعده، وبحد أقصى 7 أيام.',
   ),
 
+
+  'trazodone-ir-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر إذا كان فعالًا؛ لا توقفه فجأة بعد الاستخدام المنتظم بل حسب خطة taper.',
+  ),
+  'lurasidone-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج طويل الأمد للـschizophrenia أو bipolar depression، مع مراجعة الاستجابة والآثار الجانبية دوريًا.',
+  ),
+  'ziprasidone-capsules': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج طويل الأمد عند الاستجابة؛ مدة الاستمرار تعتمد على schizophrenia/bipolar maintenance وخطة الطبيب.',
+  ),
+  'quetiapine-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مستمر للـschizophrenia/bipolar أو adjunctive depression حسب الاستطباب؛ لا توقفه فجأة.',
+  ),
+  'oxcarbazepine-oxtellar-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء صرع مزمن عادةً؛ لا يوقف فجأة لأن ذلك قد يسبب تدهور النوبات أو status epilepticus.',
+  ),
+  'carbidopa-levodopa-rytary': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن لـParkinson مع تعديل الجرعات حسب الأعراض وwearing-off/dyskinesia؛ لا توقفه فجأة.',
+  ),
+  'rivastigmine-transdermal': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن ما دامت الفائدة موجودة والتحمل مناسبًا؛ الانقطاع >3 أيام يحتاج restart بجرعة 4.6 mg/24 h وإعادة titration.',
+  ),
+  'galantamine-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن لأعراض Alzheimer إذا بقي مفيدًا ومحتملًا؛ الزيادة بين الجرعات تكون بفواصل لا تقل عن 4 أسابيع.',
+  ),
+  'cladribine-mavenclad': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'ليس علاجًا يوميًا مستمرًا: مجموع العلاج موزع على دورتين سنويتين، وكل سنة فيها treatment cycles قصيرة محددة حسب الوزن والخطة.',
+  ),
+  'diroximel-fumarate-vumerity': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'دواء disease-modifying مزمن للـMS ما دام فعالًا وآمنًا، مع CBC/lymphocytes وفحوصات الكبد حسب المتابعة.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

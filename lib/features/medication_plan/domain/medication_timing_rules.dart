@@ -2238,6 +2238,37 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   'rabeprazole-dr-tablets': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Rabeprazole يعتمد على الاستطباب: duodenal ulcer بعد الوجبة، H. pylori مع الطعام، ومعظم الاستطبابات الأخرى food-flexible.', autoScheduleSafe: false, source: 'DailyMed · Rabeprazole DR · 2026'),
   'scopolamine-transdermal': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Motion sickness: patch خلف الأذن قبل الحاجة بـ4 ساعات على الأقل وتبقى حتى 3 أيام؛ PONV له جدول مختلف.', autoScheduleSafe: false, source: 'DailyMed · Scopolamine transdermal IFU'),
   'granisetron-oral-tablets': MedicationTimingRule(anchor: 'prescription-specific', instructionAr: 'Granisetron مرتبط بالchemotherapy/radiation وليس الطعام؛ adult chemotherapy dose تبدأ حتى ساعة قبل العلاج.', autoScheduleSafe: false, source: 'DailyMed · Granisetron tablets'),
+
+  'amoxicillin-clavulanate-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'AUGMENTIN XR في بداية الوجبة؛ تجنب الوجبة عالية الدهون، ولا تبدله mg-for-mg مع Augmentin العادي.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Amoxicillin/clavulanate extended-release · revised Dec 2025',
+  ),
+  'sulfasalazine-dr': MedicationTimingRule(
+    anchor: 'after-meal',
+    instructionAr: 'Sulfasalazine DR بجرعات مقسمة بالتساوي، ويفضل بعد الوجبات؛ ابتلع الحبة كاملة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Sulfasalazine delayed-release tablets',
+  ),
+  'dicyclomine-oral': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Dicyclomine: الملصق الحالي لا يثبت meal anchor؛ اتبع جدول الوصفة وتجنب أخذ antacid في نفس الوقت.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Dicyclomine capsules/tablets · revised Aug 2026',
+  ),
+  'hyoscyamine-sl': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'Hyoscyamine SL 0.125 mg: قبل الوجبة بـ30–60 دقيقة وعند النوم حسب الوصفة؛ لا تعمم ذلك على ER.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Hyoscyamine sulfate sublingual 0.125 mg',
+  ),
+  'promethazine-oral-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Promethazine oral: التوقيت حسب الاستطباب؛ للـmotion sickness تؤخذ أول جرعة للبالغ قبل السفر بـ30–60 دقيقة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Promethazine hydrochloride tablets',
+  ),
 };
 
 

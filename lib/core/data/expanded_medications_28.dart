@@ -3,7 +3,7 @@ import '../models/medication.dart';
 const expandedMedications28 = <Medication>[
   Medication(
     id: 'trazodone-ir-tablets',
-    familyId: 'psychiatry',
+    familyId: 'cns',
     name: 'Trazodone Immediate-Release Tablets',
     subtitle: 'Depression · shortly after meal/light snack · sedation/orthostasis',
     tags: ['Depression', 'Antidepressant', 'Trazodone', 'Food timing'],
@@ -65,7 +65,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'lurasidone-tablets',
-    familyId: 'psychiatry',
+    familyId: 'cns',
     name: 'Lurasidone Tablets',
     subtitle: 'Schizophrenia/bipolar depression · ≥350 kcal meal',
     tags: ['Schizophrenia', 'Bipolar depression', 'Antipsychotic', 'Food calories'],
@@ -127,7 +127,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'ziprasidone-capsules',
-    familyId: 'psychiatry',
+    familyId: 'cns',
     name: 'Ziprasidone Capsules',
     subtitle: 'Schizophrenia/bipolar I · twice daily with food · QT lock',
     tags: ['Schizophrenia', 'Bipolar I', 'Antipsychotic', 'With food', 'QT'],
@@ -189,7 +189,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'quetiapine-xr',
-    familyId: 'psychiatry',
+    familyId: 'cns',
     name: 'Quetiapine Extended-Release (XR)',
     subtitle: 'XR · evening · fasting or light meal ≈300 kcal · swallow whole',
     tags: ['Schizophrenia', 'Bipolar', 'Depression adjunct', 'XR', 'Evening'],
@@ -251,7 +251,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'oxcarbazepine-oxtellar-xr',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Oxcarbazepine Extended-Release (OXTELLAR XR)',
     subtitle: 'Seizures · once daily empty stomach · whole tablet',
     tags: ['Epilepsy', 'Seizures', 'Oxcarbazepine', 'XR', 'Empty stomach'],
@@ -312,7 +312,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'carbidopa-levodopa-rytary',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Carbidopa / Levodopa Extended-Release (RYTARY)',
     subtitle: 'Parkinson · formulation-specific · high-fat meal delays onset',
     tags: ['Parkinson', 'Levodopa', 'RYTARY', 'Extended release', 'Food timing'],
@@ -374,7 +374,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'rivastigmine-transdermal',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Rivastigmine Transdermal System',
     subtitle: 'Alzheimer/Parkinson dementia · one patch every 24 h · rotate sites',
     tags: ['Alzheimer', 'Parkinson dementia', 'Rivastigmine', 'Patch', 'Device'],
@@ -437,7 +437,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'galantamine-er',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Galantamine Extended-Release Capsules',
     subtitle: 'Alzheimer · morning with food · hydration · restart after interruption',
     tags: ['Alzheimer', 'Galantamine', 'Extended release', 'Morning', 'With food'],
@@ -499,7 +499,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'cladribine-mavenclad',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Cladribine Tablets (MAVENCLAD)',
     subtitle: 'Relapsing MS · treatment cycles · cytotoxic handling · separate oral drugs 3 h',
     tags: ['Multiple sclerosis', 'MS', 'Cladribine', 'MAVENCLAD', 'High risk'],
@@ -561,7 +561,7 @@ const expandedMedications28 = <Medication>[
   ),
   Medication(
     id: 'diroximel-fumarate-vumerity',
-    familyId: 'neurology',
+    familyId: 'cns',
     name: 'Diroximel Fumarate (VUMERITY)',
     subtitle: 'Relapsing MS · DR capsules · food limits · no alcohol with dose',
     tags: ['Multiple sclerosis', 'MS', 'VUMERITY', 'Delayed release', 'Food limits'],
@@ -606,7 +606,7 @@ const expandedMedications28 = <Medication>[
       purposeAr:
           'دواء disease-modifying لبعض حالات relapsing multiple sclerosis.',
       howToUseAr:
-          'ابتلع الكبسولات كاملة. لا تفتحها أو تسحقها أو تمضغها أو تنثر محتواها على الطعام.',
+          'ابتلع الكبسولات كاملة. لا تفتحها. لا تسحقها أو تمضغها أو تنثر محتواها على الطعام.',
       timingAr:
           'يمكن مع الطعام أو بدونه. إذا أخذتها مع الطعام فليكن ≤700 سعرة و≤30 g دهون، وتجنب الكحول وقت الجرعة.',
       importantAr:

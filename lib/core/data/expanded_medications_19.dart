@@ -15,6 +15,7 @@ const expandedMedications19 = <Medication>[
       route: 'Oral SGLT2 inhibitor for type 2 diabetes and selected cardiorenal indications.',
       foodTiming: 'For glycemic control, take once daily before the first meal of the day.',
       duration: 'Usually long term while the indication remains and renal function/risk-benefit remain appropriate.',
+      formulationHandling: 'Swallow the tablet as supplied. This record is for single-ingredient INVOKANA; combination products require their own formulation and timing review.',
       monitoring: 'Renal function, volume status, genital/urinary symptoms, ketoacidosis risk and glucose according to indication.',
       interactions: 'Diuretics can increase volume-depletion risk; insulin or secretagogues can increase hypoglycemia risk.',
       commonMistakes: 'Taking it through prolonged fasting or surgery, ignoring genital infection symptoms, or assuming normal glucose excludes ketoacidosis.',
@@ -52,6 +53,7 @@ const expandedMedications19 = <Medication>[
       route: 'Oral SGLT2 inhibitor for type 2 diabetes.',
       foodTiming: 'Take once daily in the morning, with or without food.',
       duration: 'Usually long term while effective and appropriate.',
+      formulationHandling: 'Swallow the tablet as supplied. Do not substitute timing or perioperative instructions from another SGLT2 inhibitor or a combination product.',
       monitoring: 'Renal function, volume status, genital/urinary infection symptoms and ketoacidosis risk.',
       interactions: 'Diuretics can increase volume depletion; insulin/secretagogues can increase hypoglycemia risk.',
       commonMistakes: 'Using the 3-day hold from another SGLT2 product instead of the current STEGLATRO 4-day hold.',
@@ -89,9 +91,11 @@ const expandedMedications19 = <Medication>[
       route: 'Oral alpha-glucosidase inhibitor for type 2 diabetes.',
       foodTiming: 'Take at the start, with the first bite, of each main meal.',
       duration: 'Usually long term if effective and tolerated.',
+      formulationHandling: 'Use the prescribed tablet strength with meals; this is a meal-linked tablet and should not be crushed into or mixed through a meal as a substitute for taking it with the first bite.',
       monitoring: 'Post-meal glucose/A1c; GI tolerance and liver tests when clinically indicated.',
       interactions: 'When hypoglycemia occurs with insulin or a secretagogue, use glucose/dextrose rather than sucrose because acarbose delays sucrose breakdown.',
       commonMistakes: 'Taking it after the meal is finished, taking a dose without eating, or treating combination-therapy hypoglycemia with table sugar alone.',
+      specialPopulations: 'Use is not appropriate in significant inflammatory bowel/intestinal obstruction-type conditions or advanced renal dysfunction according to product labeling; review GI and renal history before use.',
     ),
     sections: [
       MedicationSection(
@@ -130,9 +134,11 @@ const expandedMedications19 = <Medication>[
       route: 'Short-acting oral insulin secretagogue for type 2 diabetes.',
       foodTiming: 'Take within 30 minutes before each meal. Dosing frequency follows the meal pattern.',
       duration: 'Usually long term while appropriate.',
+      formulationHandling: 'Use the prescribed tablet strength immediately before meals; the dose belongs to that meal and is not a delayed-release or catch-up formulation.',
       monitoring: 'Glucose/A1c and hypoglycemia.',
       interactions: 'Gemfibrozil is contraindicated with repaglinide; several CYP interactions can require adjustment.',
       commonMistakes: 'Taking the tablet despite skipping the meal or taking a catch-up dose after the meal.',
+      specialPopulations: 'Hepatic impairment and older/frail patients may have greater hypoglycemia risk and require individualized dose selection and monitoring.',
     ),
     sections: [
       MedicationSection(
@@ -166,8 +172,11 @@ const expandedMedications19 = <Medication>[
       route: 'Short-acting oral insulin secretagogue for type 2 diabetes.',
       foodTiming: 'Administer 1 to 30 minutes before meals; skip the scheduled dose when a meal is skipped.',
       duration: 'Usually long term while appropriate.',
+      formulationHandling: 'Use the prescribed immediate-release tablet before meals; it is a meal-triggered dose rather than a fixed clock dose.',
       monitoring: 'Glucose/A1c and hypoglycemia.',
+      interactions: 'Other glucose-lowering medicines can increase hypoglycemia risk; medication changes that alter glucose control should be reviewed.',
       commonMistakes: 'Taking it when the meal is skipped or treating meal-linked doses like fixed clock doses.',
+      specialPopulations: 'Hepatic impairment, older age and irregular food intake warrant extra caution because hypoglycemia risk becomes less predictable.',
     ),
     sections: [
       MedicationSection(
@@ -201,9 +210,11 @@ const expandedMedications19 = <Medication>[
       route: 'Oral sulfonylurea for type 2 diabetes.',
       foodTiming: 'Usual once-daily dosing is with breakfast or the first main meal.',
       duration: 'Usually long term while effective and appropriate.',
+      formulationHandling: 'This record is for standard oral glyburide tablets; micronized glyburide products are not dose-for-dose interchangeable and require exact-product verification.',
       monitoring: 'Glucose/A1c and prolonged hypoglycemia risk, especially in older adults or renal impairment.',
       interactions: 'Other glucose-lowering medicines, alcohol and several interacting medicines can increase hypoglycemia risk.',
       commonMistakes: 'Taking it and then skipping the meal or underestimating the duration/severity of hypoglycemia.',
+      specialPopulations: 'Older adults and patients with renal impairment are particularly vulnerable to prolonged hypoglycemia; glyburide is often avoided when safer alternatives are available.',
     ),
     sections: [
       MedicationSection(
@@ -237,9 +248,11 @@ const expandedMedications19 = <Medication>[
       route: 'Oral DPP-4 inhibitor for type 2 diabetes.',
       foodTiming: 'Take once daily regardless of meals.',
       duration: 'Usually long term while effective and appropriate.',
+      formulationHandling: 'Swallow the tablet on the prescribed once-daily schedule; this record is for single-ingredient saxagliptin rather than saxagliptin-containing combination products.',
       monitoring: 'Renal function for dose selection, glucose/A1c, heart-failure symptoms and pancreatitis symptoms.',
       interactions: 'Strong CYP3A4/5 inhibitors can require dose reduction.',
       commonMistakes: 'Ignoring new dyspnea/edema in patients at heart-failure risk or failing to adjust dose for renal impairment.',
+      specialPopulations: 'Renal impairment can require dose adjustment; patients with current or prior heart failure need individualized benefit-risk review.',
     ),
     sections: [
       MedicationSection(
@@ -275,7 +288,9 @@ const expandedMedications19 = <Medication>[
       duration: 'Usually long term as part of an individualized insulin regimen.',
       formulationHandling: 'Check the insulin name every time. Rotate sites; do not share pens/cartridges/needles.',
       monitoring: 'Glucose/CGM, hypoglycemia and injection-site quality.',
+      interactions: 'Other glucose-lowering drugs increase hypoglycemia risk; medicines that alter glucose or potassium can change insulin requirements.',
       commonMistakes: 'Using the NOVOLOG 5–10 minute premeal rule for FIASP or assuming all insulin aspart products have the same timing.',
+      specialPopulations: 'Renal/hepatic impairment, pregnancy, pediatrics, illness and highly variable food intake require individualized insulin adjustment and hypoglycemia planning.',
     ),
     sections: [
       MedicationSection(
@@ -312,7 +327,9 @@ const expandedMedications19 = <Medication>[
       duration: 'Usually long term as part of an individualized insulin regimen.',
       formulationHandling: 'Check insulin name/strength; rotate sites and never share pens or needles.',
       monitoring: 'Glucose/CGM and hypoglycemia.',
+      interactions: 'Other glucose-lowering drugs can increase hypoglycemia risk; beta blockers may mask some adrenergic warning symptoms.',
       commonMistakes: 'Using timing from another rapid insulin without checking the exact brand.',
+      specialPopulations: 'Renal/hepatic impairment, pregnancy, pediatrics, illness and variable meal intake require individualized insulin adjustment.',
     ),
     sections: [
       MedicationSection(
@@ -351,6 +368,7 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Bleeding pattern, pregnancy concern, insertion-site issues and drug interactions.',
       interactions: 'Enzyme-inducing medicines can reduce contraceptive effectiveness and may require backup/alternative contraception.',
       commonMistakes: 'Using the outdated 3-year duration, ignoring inability to feel the implant, or forgetting interacting enzyme inducers.',
+      specialPopulations: 'Pregnancy must be excluded when clinically indicated before insertion; active significant liver disease, hormone-sensitive malignancy risk and thrombotic history require product-specific eligibility review.',
     ),
     sections: [
       MedicationSection(
@@ -386,7 +404,9 @@ const expandedMedications19 = <Medication>[
       duration: 'Contraception up to 8 years; treatment of heavy menstrual bleeding up to 5 years. These indication durations are not interchangeable.',
       formulationHandling: 'Not self-inserted. Evaluate suspected expulsion, perforation or pregnancy.',
       monitoring: 'Bleeding pattern, string/position concerns, pelvic pain/infection symptoms and pregnancy risk.',
+      interactions: 'Systemic drug interactions are much less prominent than with oral hormonal contraception, but medication history and pregnancy/uterine eligibility still require review.',
       commonMistakes: 'Telling every patient 8 years regardless of indication; the heavy-menstrual-bleeding indication has a 5-year replacement limit in current labeling.',
+      specialPopulations: 'Current pregnancy, selected uterine abnormalities, active pelvic infection and selected hormone-sensitive malignancy/liver conditions can make insertion inappropriate; use the exact eligibility criteria.',
     ),
     sections: [
       MedicationSection(
@@ -422,6 +442,7 @@ const expandedMedications19 = <Medication>[
       duration: 'Prevent pregnancy for up to 10 years; remove no later than 10 years from insertion.',
       formulationHandling: 'Not self-inserted. Position, expulsion and perforation concerns require clinical assessment.',
       monitoring: 'Bleeding/cramping pattern, pelvic infection symptoms and device position concerns.',
+      interactions: 'No routine systemic drug interaction is expected from copper itself; the important review is uterine/pelvic eligibility and concurrent anticoagulation or bleeding risk when clinically relevant.',
       commonMistakes: 'Calling it hormonal, forgetting the 10-year removal date, or dismissing very heavy/painful bleeding as normal.',
       specialPopulations: 'Copper/Wilson disease and uterine/pelvic contraindications require product-specific assessment.',
     ),
@@ -461,6 +482,7 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Morning testosterone for dose titration plus hematocrit/hemoglobin, PSA/prostate risk, blood pressure and adverse effects as clinically appropriate.',
       interactions: 'Secondary skin transfer to women/children is a major safety issue; wash the site before expected skin-to-skin contact.',
       commonMistakes: 'Applying to abdomen/genitals, skipping hand washing, leaving the site uncovered, or assuming 1% and 1.62% products are interchangeable.',
+      specialPopulations: 'Not for use in women or children; prostate/breast cancer risk, fertility goals, erythrocytosis, cardiovascular risk and untreated severe sleep apnea require individualized assessment.',
     ),
     sections: [
       MedicationSection(
@@ -504,6 +526,7 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Serum sodium before starting/resuming, within about 1 week, at about 1 month, and periodically; higher-risk patients need closer monitoring.',
       interactions: 'Loop diuretics and systemic/inhaled glucocorticoids are contraindicated; many medicines can increase hyponatremia risk.',
       commonMistakes: 'Drinking normally after the dose, taking it with water, or using it during acute illnesses with fluid/electrolyte imbalance.',
+      specialPopulations: 'Older adults and patients with renal impairment or conditions predisposing to hyponatremia need stricter selection/monitoring; current labeling has renal-function and age-related restrictions.',
     ),
     sections: [
       MedicationSection(
@@ -538,6 +561,7 @@ const expandedMedications19 = <Medication>[
       route: 'Oral dopamine agonist for hyperprolactinemic disorders in adults.',
       foodTiming: 'Take with or without food on the exact twice-weekly days prescribed.',
       duration: 'Individualized to prolactin response and specialist plan.',
+      formulationHandling: 'Swallow the tablet on the prescribed twice-weekly schedule; do not repurpose a daily medicine organizer slot that could make a weekly schedule look daily.',
       monitoring: 'Baseline evaluation for valvular disease including echocardiogram; prolactin response and symptoms of valvular/fibrotic disease.',
       interactions: 'Dopamine antagonists can reduce effect. Blood-pressure-lowering medicines can increase orthostatic symptoms.',
       commonMistakes: 'Taking it daily instead of twice weekly or using it to suppress normal postpartum lactation despite current labeling warning against that use.',
@@ -583,6 +607,8 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Blood pressure, renal function and potassium; pregnancy status when relevant.',
       interactions: 'Potassium supplements/salt substitutes, potassium-sparing therapy, NSAIDs and dual RAS blockade require review.',
       commonMistakes: 'Stopping because blood pressure improves, using potassium salt substitutes freely, or ignoring facial/tongue swelling.',
+      formulationHandling: 'This record covers oral enalapril tablets; pediatric liquid/concentrated formulations require exact-product measurement and storage instructions.',
+      specialPopulations: 'Pregnancy is contraindicated because of fetal toxicity; renal impairment, volume depletion and bilateral renal-artery disease risk require individualized monitoring.',
     ),
     sections: [
       MedicationSection(
@@ -619,6 +645,8 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Blood pressure, renal function and potassium.',
       interactions: 'Potassium products, potassium-sparing medicines, NSAIDs and dual RAS blockade require review.',
       commonMistakes: 'Stopping once home blood pressure improves or freely using potassium salt substitutes.',
+      formulationHandling: 'Swallow the tablet on the prescribed once-daily schedule; keep tablets in the original product packaging when the label specifically requires moisture protection.',
+      specialPopulations: 'Pregnancy is contraindicated because of fetal toxicity; renal impairment, volume depletion and significant hepatic impairment require individualized review.',
     ),
     sections: [
       MedicationSection(
@@ -655,6 +683,8 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Blood pressure, pulse, dizziness/bradycardia and glucose awareness in diabetes.',
       interactions: 'Other rate-slowing drugs such as verapamil/diltiazem, digoxin and clonidine can increase bradycardia/hypotension risk.',
       commonMistakes: 'Abruptly stopping it, or assuming absence of palpitations means hypoglycemia is absent in a patient with diabetes.',
+      formulationHandling: 'Use the prescribed oral tablet strength once daily; dose adjustment should be gradual rather than achieved by unsupervised tablet manipulation or abrupt discontinuation.',
+      specialPopulations: 'Severe bradycardia/heart block, decompensated heart failure, significant hepatic impairment and bronchospastic disease require individualized assessment.',
     ),
     sections: [
       MedicationSection(
@@ -696,6 +726,8 @@ const expandedMedications19 = <Medication>[
       monitoring: 'Blood pressure, renal function and potassium; heart-failure status when applicable.',
       interactions: 'Potassium products, NSAIDs and other renin-angiotensin system blockers require review.',
       commonMistakes: 'Assuming the dose/frequency is identical for hypertension and heart failure or using potassium salt substitutes without review.',
+      formulationHandling: 'Use the prescribed tablet strength and indication-specific titration; pediatric suspension or extemporaneous preparations require separate product-specific instructions.',
+      specialPopulations: 'Pregnancy is contraindicated because of fetal toxicity; renal impairment, volume depletion and hyperkalemia risk require individualized monitoring.',
     ),
     sections: [
       MedicationSection(

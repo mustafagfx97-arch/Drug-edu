@@ -707,6 +707,28 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'غالبًا استخدام قصير أو عند الحاجة حسب السبب مثل nausea أو motion sickness؛ ليس علاجًا مزمنًا يوميًا عامًا.',
   ),
 
+
+  'erythromycin-erytab-dr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'كورس مضاد حيوي محدد حسب نوع العدوى والجرعة؛ أكمل المدة التي حددها الطبيب ولا تعيد استخدامه من نفسك.',
+  ),
+  'doxycycline-doryx-mpc': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'المدة تختلف حسب الاستطباب: بعض العدوى 7–10 أيام، بينما malaria prophylaxis أو anthrax exposure قد تحتاج أسابيع؛ اتبع regimen المنتج نفسه.',
+  ),
+  'tenapanor-ibsrela': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'قد يُستمر عليه للـIBS-C إذا كان فعالًا ومحتملًا، مع إيقافه ومراجعة الطبيب إذا حدث إسهال شديد.',
+  ),
+  'eluxadoline-viberzi': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاجًا مستمرًا للـIBS-D عند مريض مختار، لكن يُوقف عند severe constipation أو أعراض pancreatitis/sphincter-of-Oddi.',
+  ),
+  'netupitant-palonosetron-akynzeo-oral': TherapyDurationGuidance(
+    kind: TherapyDurationKind.singleUse,
+    patientOverrideAr: 'عادة كبسولة واحدة قبل كل chemotherapy cycle حسب الخطة؛ ليست دواءً يوميًا تستمر عليه بين الدورات.',
+  ),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

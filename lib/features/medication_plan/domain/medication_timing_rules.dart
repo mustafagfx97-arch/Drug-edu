@@ -2269,6 +2269,38 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Promethazine hydrochloride tablets',
   ),
+
+  'erythromycin-erytab-dr': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'ERY-TAB يمكن دون ارتباط صارم بالطعام، لكن للحصول على أفضل مستويات: قبل الوجبة بـ30 دقيقة على الأقل ويفضل ساعتين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ERY-TAB delayed-release tablets',
+  ),
+  'doxycycline-doryx-mpc': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'DORYX MPC: يمكن مع الطعام أو الحليب إذا أزعج المعدة، لكن افصل Al/Ca/Mg antacids والحديد وbismuth؛ لا تستبدله mg-for-mg.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · DORYX MPC · updated Feb 2026',
+  ),
+  'tenapanor-ibsrela': MedicationTimingRule(
+    anchor: 'before-selected-meals',
+    instructionAr: 'IBSRELA: مباشرة قبل الفطور/أول وجبة ومباشرة قبل العشاء؛ الجرعة المنسية تُتجاوز ولا تُضاعف.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · IBSRELA tenapanor',
+  ),
+  'eluxadoline-viberzi': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'VIBERZI: مرتين يوميًا مع الطعام؛ لا تستخدمه إذا لم تكن لديك مرارة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VIBERZI eluxadoline',
+  ),
+  'netupitant-palonosetron-akynzeo-oral': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'AKYNZEO oral: كبسولة واحدة قبل chemotherapy بحوالي ساعة، مع أو بدون الطعام؛ ليست PRN يومية عامة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · AKYNZEO capsules · current 2026 label',
+  ),
 };
 
 

@@ -107,7 +107,7 @@ const expandedMedications29 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'يستخدم لعلاج schizophrenia وبعض حالات bipolar I.',
       howToUseAr:
-          'ضع الحبة تحت اللسان واتركها تذوب بالكامل. لا تقسّمها أو تسحقها أو تمضغها أو تبتلعها مباشرة.',
+          'ضع الحبة تحت اللسان واتركها تذوب بالكامل. لا تقسّمها. لا تسحقها أو تمضغها. لا تبتلعها مباشرة.',
       timingAr:
           'بعد وضع الحبة لا تأكل ولا تشرب أي شيء لمدة 10 دقائق.',
       importantAr:
@@ -229,7 +229,7 @@ const expandedMedications29 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'dopamine agonist لعلاج أعراض Parkinson disease.',
       howToUseAr:
-          'خذ حبة ER مرة يوميًا وابتلعها كاملة؛ لا تمضغها أو تسحقها أو تقسّمها.',
+          'خذ حبة ER مرة يوميًا وابتلعها كاملة؛ لا تمضغها. لا تسحقها. لا تقسّمها.',
       timingAr: 'يمكن أخذها مع الطعام أو بدونه وفي وقت ثابت يوميًا.',
       importantAr:
           'قد تسبب نومًا مفاجئًا حتى دون إنذار. أخبر الطبيب إذا ظهرت رغبات اندفاعية جديدة مثل القمار أو الشراء أو زيادة النشاط الجنسي.',
@@ -472,7 +472,7 @@ const expandedMedications29 = <Medication>[
       purposeAr:
           'دواء disease-modifying لبعض حالات relapsing multiple sclerosis.',
       howToUseAr:
-          'ابتلع الكبسولة كاملة. لا تفتحها أو تسحقها أو تمضغها أو تنثر محتواها على الطعام.',
+          'ابتلع الكبسولة كاملة. لا تفتحها. لا تسحقها أو تمضغها أو تنثر محتواها على الطعام.',
       timingAr:
           'مرتين يوميًا حسب الخطة، ويمكن مع الطعام أو بدونه. الطعام قد يساعد على تقليل flushing.',
       importantAr:

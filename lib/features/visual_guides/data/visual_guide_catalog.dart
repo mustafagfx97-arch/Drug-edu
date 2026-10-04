@@ -1152,6 +1152,50 @@ const visualGuideCatalog = <VisualGuideData>[
     ],
   ),
 
+  VisualGuideData(
+    id: 'rivastigmine-patch',
+    title: 'Rivastigmine transdermal patch',
+    subtitle: 'One patch every 24 hours; remove the old patch first and rotate sites.',
+    icon: Icons.layers_outlined,
+    firstUseSteps: [
+      'Confirm the prescribed patch strength and choose a consistent daily replacement time.',
+      'Keep the patch in its sealed pouch until ready to apply.',
+    ],
+    steps: [
+      'Remove yesterday’s patch before opening the new one. Only one patch should be worn at a time.',
+      'Choose clean, dry, hairless, intact skin on the upper or lower back. If the back is not accessible, use the upper arm or chest.',
+      'Do not apply over cream, lotion, powder, redness, cuts or irritated skin.',
+      'Apply one patch and press firmly for about 30 seconds, especially around the edges.',
+      'Replace every 24 hours at about the same time. Rotate sites and do not use the exact same spot again for at least 14 days.',
+    ],
+    afterUseSteps: [
+      'Fold the used patch with adhesive sides together and discard safely away from children and pets.',
+      'Wash hands with soap and water after removing the patch.',
+    ],
+    mistakes: [
+      'Forgetting to remove yesterday’s patch.',
+      'Wearing two patches at once.',
+      'Applying over lotion, irritated skin or a cut.',
+      'Using the exact same skin spot again within 14 days.',
+      'Restarting the old higher strength after more than 3 days off treatment.',
+      'Prolonged exposure to external heat such as excessive sunlight or sauna.',
+    ],
+    patientSummaryAr:
+        'انزع patch القديمة أولًا ثم ضع واحدة جديدة فقط كل 24 ساعة. اختر جلدًا سليمًا ونظيفًا وجافًا في الظهر، أو أعلى الذراع/الصدر عند الحاجة. غيّر النقطة يوميًا ولا تستخدم نفس النقطة بالضبط قبل 14 يومًا. إذا توقفت أكثر من 3 أيام فلا ترجع لنفس القوة من نفسك.',
+    teachBackAr:
+        'أرني ماذا تفعل بالpatch القديمة قبل وضع الجديدة، وأين ستضع الجديدة، ومتى يمكن استخدام نفس النقطة مرة أخرى؟',
+    scopeNote:
+        'Product-specific guide for rivastigmine transdermal systems. Strength titration and restart after interruptions must follow the rivastigmine label.',
+    sourceLabel:
+        'DailyMed · Rivastigmine transdermal system / EXELON PATCH · current labeling',
+    mediaLinks: [
+      VisualGuideMediaLink(
+        label: 'DailyMed rivastigmine transdermal instructions',
+        url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4ab335d1-19ee-4cd9-9776-8086645d19e4',
+      ),
+    ],
+  ),
+
 ];
 
 
@@ -1221,6 +1265,7 @@ const medicationVisualGuideIds = <String, List<String>>{
   'mesalamine-canasa-suppository': ['canasa-suppository'],
   'mesalamine-rowasa-enema': ['rowasa-enema'],
   'granisetron-sancuso-patch': ['sancuso-patch'],
+  'rivastigmine-transdermal': ['rivastigmine-patch'],
 };
 
 List<VisualGuideData> visualGuidesForMedication(String medicationId) {

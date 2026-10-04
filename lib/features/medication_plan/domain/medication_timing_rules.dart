@@ -2332,6 +2332,69 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · SANCUSO granisetron transdermal system',
   ),
+
+  'trazodone-ir-tablets': MedicationTimingRule(
+    anchor: 'after-meal',
+    instructionAr: 'Trazodone IR: بعد الوجبة أو snack خفيف بقليل؛ وقت اليوم/تقسيم الجرعات حسب الخطة بسبب النعاس.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Trazodone hydrochloride tablets · current 2026 labeling',
+  ),
+  'lurasidone-tablets': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Lurasidone: مع طعام يحتوي ≥350 kcal؛ snack صغير جدًا لا يكفي.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lurasidone hydrochloride tablets · current 2026 labeling',
+  ),
+  'ziprasidone-capsules': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Ziprasidone capsules: كل جرعة مع الطعام؛ لا تفتح أو تسحق أو تمضغ.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Ziprasidone hydrochloride capsules · current 2026 labeling',
+  ),
+  'quetiapine-xr': MedicationTimingRule(
+    anchor: 'evening',
+    instructionAr: 'Quetiapine XR: مرة يوميًا ويفضل مساءً، بدون طعام أو مع وجبة خفيفة ~300 kcal؛ ابتلعها كاملة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · SEROQUEL XR / quetiapine XR',
+  ),
+  'oxcarbazepine-oxtellar-xr': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'OXTELLAR XR: مرة يوميًا على معدة فارغة، ≥1 ساعة قبل الطعام أو ≥2 ساعات بعده؛ whole tablet.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · OXTELLAR XR',
+  ),
+  'carbidopa-levodopa-rytary': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'RYTARY: يمكن مع/بدون الطعام لكن high-fat/high-calorie meal قد تؤخر المفعول ~2 ساعة؛ أول جرعة قد تُؤخذ 1–2 ساعة قبل الأكل حسب الخطة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RYTARY · current 2026 labeling',
+  ),
+  'rivastigmine-transdermal': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Rivastigmine patch: patch واحدة كل 24 ساعة في وقت ثابت تقريبًا؛ انزع القديمة أولًا وغيّر الموقع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Rivastigmine transdermal system',
+  ),
+  'galantamine-er': MedicationTimingRule(
+    anchor: 'morning-with-meal',
+    instructionAr: 'Galantamine ER: مرة صباحًا ويفضل مع الطعام مع سوائل كافية؛ الانقطاع >3 أيام يحتاج restart/titration.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Galantamine extended-release capsules',
+  ),
+  'cladribine-mavenclad': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'MAVENCLAD: خلال treatment cycle المحددة؛ مع/بدون الطعام لكن افصل كل دواء فموي آخر ≥3 ساعات.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · MAVENCLAD · revised May 2026',
+  ),
+  'diroximel-fumarate-vumerity': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'VUMERITY: BID؛ مع/بدون الطعام. إذا مع الطعام ≤700 kcal و≤30 g fat، وتجنب الكحول وقت الجرعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VUMERITY',
+  ),
 };
 
 

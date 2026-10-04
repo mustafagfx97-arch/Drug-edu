@@ -1647,6 +1647,94 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Norelgestromin/EE Transdermal System · Apr 2026',
   ),
 
+
+  'glipizide-ir': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'Glipizide العادي يؤخذ تقريبًا قبل الوجبة بـ30 دقيقة. لا تستخدم نفس القاعدة للنوع ER.',
+    requiresMealChoice: true,
+    source: 'DailyMed · Glipizide IR · Feb 2026',
+  ),
+  'glipizide-er': MedicationTimingRule(
+    anchor: 'breakfast',
+    instructionAr:
+        'Glipizide ER مرة يوميًا مع الفطور أو أول وجبة رئيسية في اليوم؛ ابتلع الحبة كاملة.',
+    source: 'DailyMed · Glipizide ER · Aug 2026',
+  ),
+  'insulin-aspart-novolog': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr:
+        'NOVOLOG-type insulin aspart تحت الجلد خلال 5–10 دقائق قبل الوجبة. يجب أن تكون الوجبة جاهزة؛ بعض منتجات aspart الأسرع لها توقيت مختلف.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · NOVOLOG insulin aspart',
+  ),
+  'isosorbide-mononitrate-er': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr:
+        'الجرعة اليومية من isosorbide mononitrate ER تؤخذ صباحًا عند الاستيقاظ حسب الملصق.',
+    source: 'DailyMed · Isosorbide Mononitrate ER · Mar 2025',
+  ),
+  'clonidine-transdermal': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr:
+        'لاصقة clonidine تُستبدل كل 7 أيام في نفس يوم الأسبوع تقريبًا وعلى موضع جلدي جديد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clonidine Transdermal System · Mar 2026',
+  ),
+  'esomeprazole-dr-capsule': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr:
+        'Esomeprazole delayed-release capsule قبل الطعام بساعة على الأقل. عدد الجرعات والوجبات المستهدفة يعتمد على الاستطباب.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Esomeprazole Magnesium DR capsules',
+  ),
+  'fosfomycin-tromethamine-sachet': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Fosfomycin 3 g sachet لالتهاب المثانة غير المعقد: جرعة واحدة فقط، تذاب بالماء وتشرب فورًا؛ ليست جرعة يومية متكررة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Fosfomycin Tromethamine granules · 2026',
+  ),
+  'levofloxacin-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام أو بدونه؛ افصل ساعتين على الأقل قبل/بعد مضادات الحموضة Mg/Al وsucralfate والحديد والزنك.',
+    source: 'DailyMed · Levofloxacin tablets',
+  ),
+  'topiramate-tablets': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'يمكن مع الطعام أو بدونه وفي أوقات ثابتة؛ حافظ على سوائل كافية ولا توقفه فجأة.',
+    source: 'DailyMed · Topiramate tablets · 2026',
+  ),
+  'aripiprazole-tablets': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Aripiprazole tablets مرة يوميًا مع الطعام أو بدونه؛ اختر وقتًا ثابتًا حسب التحمل والخطة.',
+    source: 'DailyMed · Aripiprazole tablets · Aug 2026',
+  ),
+  'olanzapine-tablets': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'Olanzapine tablet مرة يوميًا مع الطعام أو بدونه؛ توقيت اليوم يحدد حسب الخطة والتحمل وليس الطعام.',
+    source: 'DailyMed · ZYPREXA · Jan 2026',
+  ),
+  'tranexamic-acid-hmb-650mg': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr:
+        'لـheavy menstrual bleeding يبدأ فقط بعد بدء الدورة ولمدة أقصاها 5 أيام في الدورة؛ لا ينشئ Auto جدولًا مستمرًا طوال الشهر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tranexamic Acid 650 mg tablets · 2026',
+  ),
+  'micronized-progesterone-oral': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr:
+        'Progesterone micronized oral capsule يؤخذ كجرعة يومية عند النوم في الأيام المحددة بالخطة بسبب الدوخة/النعاس.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PROMETRIUM/progesterone capsules · Jan 2026',
+  ),
 };
 
 

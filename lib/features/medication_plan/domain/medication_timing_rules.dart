@@ -1848,26 +1848,11 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Candesartan · 2026',
   ),
 
+
   'alogliptin': MedicationTimingRule(
     anchor: 'any',
     instructionAr: 'Alogliptin مرة يوميًا مع الطعام أو بدونه؛ الجرعة تعتمد على وظيفة الكلى.',
     source: 'DailyMed · Alogliptin tablets',
-  ),
-  'linagliptin': MedicationTimingRule(
-    anchor: 'any',
-    instructionAr: 'Linagliptin مرة يوميًا مع الطعام أو بدونه؛ الدواء المفرد لا يحتاج عادة تعديل جرعة بسبب الكلى.',
-    source: 'DailyMed · Linagliptin tablets',
-  ),
-  'pioglitazone': MedicationTimingRule(
-    anchor: 'any',
-    instructionAr: 'Pioglitazone مرة يوميًا مع الطعام أو بدونه؛ راقب تورم/زيادة وزن سريعة أو ضيق نفس.',
-    source: 'DailyMed · Pioglitazone · Jan 2026',
-  ),
-  'insulin-degludec-tresiba': MedicationTimingRule(
-    anchor: 'any',
-    instructionAr: 'TRESIBA للبالغ مرة يوميًا بوقت مرن؛ عند missed dose يجب أن يكون بين الحقنتين 8 ساعات على الأقل. الأطفال نفس الوقت يوميًا.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · TRESIBA insulin degludec',
   ),
   'insulin-human-regular-humulin-r': MedicationTimingRule(
     anchor: 'before-meal',
@@ -1956,12 +1941,30 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · ANNOVERA · Sep 2026',
   ),
-  'ulipristal-ec': MedicationTimingRule(
+  'liothyronine-cytomel': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'ella جرعة واحدة بأسرع وقت خلال 120 ساعة؛ لا تبدأ/تستأنف hormonal contraception قبل 5 أيام.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · ella · Jul 2026 + CDC U.S. SPR 2024',
+    instructionAr: 'CYTOMEL مرة يوميًا وبنفس ظروف الاستخدام تقريبًا؛ افصل bile-acid sequestrants/ion-exchange resins 4 ساعات حسب الملصق.',
+    source: 'DailyMed · CYTOMEL · May 2026',
   ),
+  'medroxyprogesterone-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Medroxyprogesterone tablets غالبًا كورس 5–10 أيام؛ بداية الكورس تعتمد على الاستطباب ويوم الدورة، لذلك لا auto-schedule دون معرفة الخطة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Medroxyprogesterone acetate tablets · Jun 2026',
+  ),
+  'hydralazine-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Hydralazine قد يحتاج عدة جرعات يوميًا؛ خذه بنفس العلاقة مع الطعام كل مرة لأن الطعام يرفع مستواه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Hydralazine hydrochloride tablets',
+  ),
+  'labetalol-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Labetalol oral غالبًا جرعات متعددة/مرتين يوميًا حسب الوصفة؛ خذه بنفس العلاقة مع الطعام كل مرة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Labetalol hydrochloride tablets · Mar 2026',
+  ),
+
 };
 
 

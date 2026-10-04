@@ -677,6 +677,14 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'prucalopride-motegrity': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'meclizine-motion-sickness': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'prochlorperazine-severe-nausea': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+
+  'minocycline-capsules': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'moxifloxacin-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'fidaxomicin-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse, patientOverrideAr: 'للـadult C. difficile في current tablet label: 200 mg مرتين يوميًا لمدة 10 أيام.'),
+  'vancomycin-oral-capsules': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse, patientOverrideAr: 'للـadult C. difficile في current capsule label: 125 mg أربع مرات يوميًا لمدة 10 أيام؛ الاستطبابات الأخرى تختلف.'),
+  'rabeprazole-dr-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'scopolamine-transdermal': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse, patientOverrideAr: 'Motion sickness: patch واحدة حتى 3 أيام؛ PONV له توقيت إزالة مختلف.'),
+  'granisetron-oral-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

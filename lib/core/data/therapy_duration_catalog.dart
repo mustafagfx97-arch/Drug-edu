@@ -521,6 +521,34 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'norelgestromin-ethinyl-estradiol-patch':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
 
+
+  'glipizide-ir': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'glipizide-er': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-aspart-novolog':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'isosorbide-mononitrate-er':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'clonidine-transdermal':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'esomeprazole-dr-capsule':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'fosfomycin-tromethamine-sachet':
+      TherapyDurationGuidance(kind: TherapyDurationKind.singleUse),
+  'levofloxacin-oral':
+      TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'topiramate-tablets':
+      TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'aripiprazole-tablets':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'olanzapine-tablets':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'tranexamic-acid-hmb-650mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr:
+        'يستخدم فقط خلال الدورة الشهرية ولمدة لا تتجاوز 5 أيام في كل دورة حسب الملصق؛ ليس علاجًا يوميًا بين الدورات.',
+  ),
+  'micronized-progesterone-oral':
+      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

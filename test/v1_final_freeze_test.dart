@@ -17,11 +17,11 @@ import 'package:drug_edu/features/visual_guides/data/visual_guide_catalog.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('v1.0 medication census and counseling coverage are frozen', () {
-    expect(sampleMedications.length, 213);
+  test('current medication census and counseling coverage stay internally aligned', () {
+    expect(sampleMedications.length, 226);
 
     final medicationIds = sampleMedications.map((item) => item.id).toList();
-    expect(medicationIds.toSet().length, 213,
+    expect(medicationIds.toSet().length, 226,
         reason: 'Medication IDs must remain unique');
 
     final familyIds = medicationFamilies.map((item) => item.id).toSet();
@@ -56,11 +56,11 @@ void main() {
       }
     }
 
-    expect(arabicCoverage, 213,
+    expect(arabicCoverage, 226,
         reason:
             'Every medication must resolve to practical Arabic counseling');
 
-    expect(englishPatientCounseling.length, 213);
+    expect(englishPatientCounseling.length, 226);
     expect(englishPatientCounseling.keys.toSet(), medicationIds.toSet());
     for (final entry in englishPatientCounseling.entries) {
       final patient = entry.value;
@@ -74,7 +74,7 @@ void main() {
       expect(patient.teachBack.trim(), isNotEmpty, reason: entry.key);
     }
 
-    expect(medicationTherapyDurations.length, 213);
+    expect(medicationTherapyDurations.length, 226);
     expect(medicationTherapyDurations.keys.toSet(), medicationIds.toSet());
   });
 

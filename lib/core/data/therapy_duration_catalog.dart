@@ -636,6 +636,30 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'كل 13 أسبوعًا ما دامت الوسيلة مناسبة؛ الاستخدام لأكثر من سنتين يحتاج مراجعة فائدة/خطر إذا كانت البدائل مناسبة.',
   ),
   'nuvaring': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
+  'clarithromycin-er': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cefuroxime-axetil-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cefpodoxime-tablets': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'cefdinir-capsules': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'levofloxacin-oral-solution': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'linezolid-oral': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'metronidazole-er': TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
+  'rifaximin-xifaxan': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'المدة تعتمد على الاستطباب: travelers diarrhea عادة 3 أيام، IBS-D 14 يومًا مع إمكان retreatment محدود، وHE قد يكون علاجًا مزمنًا للوقاية من الانتكاس.',
+  ),
+  'pantoprazole-dr-granules': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'budesonide-uceris': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'UCERIS للـulcerative colitis هو induction course يصل عادةً إلى 8 أسابيع حسب الملصق؛ لا تمدده من نفسك.',
+  ),
+  'linaclotide-linzess': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'lubiprostone': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'doxylamine-pyridoxine-dr': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'aprepitant': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'مدة قصيرة مرتبطة بدورة chemotherapy أو جرعة/خطة perioperative؛ ليست antiemetic مزمنة عامة.',
+  ),
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

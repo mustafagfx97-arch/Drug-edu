@@ -59,8 +59,8 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'nitrofurantoin': MedicationTimingRule(
     anchor: 'with-meal',
-    instructionAr: 'مع الطعام وفي مواعيد متباعدة حسب الوصفة.',
-    source: 'MedlinePlus Nitrofurantoin',
+    instructionAr: 'Nitrofurantoin monohydrate/macrocrystals يؤخذ مع الطعام (عمليًا غالبًا مع الفطور والعشاء) لتحسين التحمل والامتصاص.',
+    source: 'DailyMed · Nitrofurantoin monohydrate/macrocrystals · 2026',
   ),
   'valproic-acid': MedicationTimingRule(
     anchor: 'with-meal',
@@ -158,8 +158,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'ciprofloxacin-oral': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'يحتاج فصلًا عن مضادات الحموضة والحديد والزنك والكالسيوم حسب ملصق المنتج.',
-    source: 'FDA Medication Guide Ciprofloxacin',
+    instructionAr: 'Ciprofloxacin tablet يمكن مع الطعام أو بدونه، لكن لا تأخذه مع الحليب/اللبن أو calcium-fortified juice وحدها. افصل Mg/Al antacids وsucralfate والحديد والزنك والكالسيوم ساعتين قبل أو 6 ساعات بعد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Ciprofloxacin tablets · 2026',
   ),
   'carbamazepine': MedicationTimingRule(
     anchor: 'any',
@@ -179,9 +180,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'pantoprazole': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'الحبوب المتأخرة التحرر تختلف عن الحبيبات في تعليمات الطعام؛ اتبع نوع المنتج.',
+    instructionAr: 'Pantoprazole DR tablets تُبتلع كاملة ويمكن مع الطعام أو بدونه. الـgranules مختلفة: تؤخذ نحو 30 دقيقة قبل الوجبة وبـapple juice/applesauce فقط.',
     autoScheduleSafe: false,
-    source: 'DailyMed Pantoprazole',
+    source: 'DailyMed · Pantoprazole tablets / granules · 2026',
   ),
   'metoclopramide': MedicationTimingRule(
     anchor: 'any',
@@ -379,10 +380,10 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'ondansetron-oral': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'التوقيت يعتمد على سبب الاستخدام (غثيان/علاج كيماوي/عملية)؛ اختر توقيت الوصفة إذا كان محددًا.',
+    instructionAr: 'Ondansetron لا يملك قاعدة طعام عامة؛ التوقيت يعتمد على السبب. إذا كان ODT: بيدين جافتين peel back foil ولا تدفع الحبة عبره، وضعها على اللسان لتذوب.',
     requiresMealChoice: false,
     autoScheduleSafe: false,
-    source: 'FDA / DailyMed Ondansetron',
+    source: 'DailyMed · Ondansetron ODT · 2025-2026',
   ),
   'levonorgestrel-ec': MedicationTimingRule(
     anchor: 'any',
@@ -435,10 +436,10 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'clindamycin-oral': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'في أوقات متباعدة حسب الوصفة، مع كوب ماء كامل؛ الطعام اختياري.',
+    instructionAr: 'Clindamycin capsules يمكن مع الطعام أو بدونه، لكن تُبتلع مع كوب ماء كامل 200–250 mL وعدم الاستلقاء لمدة 30 دقيقة لتقليل تهيج المريء.',
     requiresMealChoice: false,
     autoScheduleSafe: true,
-    source: 'DailyMed Clindamycin',
+    source: 'DailyMed · Clindamycin hydrochloride capsules · Sep 2026',
   ),
   'clopidogrel': MedicationTimingRule(
     anchor: 'any',
@@ -736,9 +737,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'clarithromycin-oral': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'النوع العادي وER يختلفان: ER يؤخذ مع الطعام ويُبتلع كاملًا؛ إذا لم يتحدد المنتج فلا تستخدم توقيتًا تلقائيًا.',
+    instructionAr: 'Clarithromycin immediate-release يمكن مع الطعام أو بدونه، بينما ER يجب مع الطعام ويُبتلع كاملًا. إذا لم يتحدد formulation فلا تستخدم Auto.',
     autoScheduleSafe: false,
-    source: 'DailyMed Clarithromycin IR/ER',
+    source: 'DailyMed · Clarithromycin IR/ER',
   ),
   'venlafaxine-xr': MedicationTimingRule(
     anchor: 'with-meal',
@@ -2061,6 +2062,96 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'NuvaRing: 3 أسابيع داخل المهبل ثم أسبوع واحد بدون حلقة؛ الخروج >3 ساعات يحتاج قواعد backup حسب الأسبوع.',
     autoScheduleSafe: false,
     source: 'DailyMed · NuvaRing',
+  ),
+
+  'clarithromycin-er': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Clarithromycin ER يؤخذ مع الطعام ويُبتلع كاملًا؛ لا تُعمم تعليمات IR عليه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clarithromycin ER',
+  ),
+  'cefuroxime-axetil-tablets': MedicationTimingRule(
+    anchor: 'after-selected-meal',
+    instructionAr: 'Cefuroxime axetil tablet يفضّل بعد الطعام لأن الامتصاص أفضل؛ tablet وsuspension غير متبادلين mg-for-mg.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cefuroxime axetil tablets',
+  ),
+  'cefpodoxime-tablets': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Cefpodoxime proxetil tablets تؤخذ مع الطعام لتحسين الامتصاص.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cefpodoxime proxetil tablets',
+  ),
+  'cefdinir-capsules': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Cefdinir يمكن مع الطعام أو بدونه؛ افصل iron وMg/Al antacids ساعتين قبل أو بعد الجرعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Cefdinir capsules',
+  ),
+  'levofloxacin-oral-solution': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Levofloxacin oral solution قبل الطعام بساعة أو بعده بساعتين؛ افصل Mg/Al antacids وsucralfate والحديد والزنك ساعتين قبل أو بعد.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Levofloxacin oral solution',
+  ),
+  'linezolid-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Linezolid يمكن مع الطعام أو بدونه؛ الأهم مراجعة serotonergic drugs وتجنب كميات كبيرة من الأطعمة العالية بالـtyramine.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Linezolid tablets · 2026',
+  ),
+  'metronidazole-er': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Metronidazole ER 750 mg قبل الطعام بساعة على الأقل أو بعده بساعتين، ويُبتلع كاملًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Metronidazole ER',
+  ),
+  'rifaximin-xifaxan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Rifaximin يمكن مع الطعام أو بدونه، لكن الجرعة/المدة تعتمد تمامًا على الاستطباب: TD أو HE أو IBS-D.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · XIFAXAN',
+  ),
+  'pantoprazole-dr-granules': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'Pantoprazole granules نحو 30 دقيقة قبل الوجبة، وتُحضّر فقط بـapple juice أو applesauce حسب IFU.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Pantoprazole DR granules',
+  ),
+  'budesonide-uceris': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'UCERIS 9 mg مرة صباحًا مع الطعام أو بدونه، تُبتلع كاملة، وعادة كورس induction حتى 8 أسابيع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · UCERIS',
+  ),
+  'linaclotide-linzess': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'LINZESS على معدة فارغة قبل الوجبة بـ30 دقيقة على الأقل وفي وقت ثابت يوميًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · LINZESS · May 2026',
+  ),
+  'lubiprostone': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Lubiprostone يُؤخذ مع الطعام والماء ويُبتلع كاملًا.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lubiprostone · 2026',
+  ),
+  'doxylamine-pyridoxine-dr': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Doxylamine/pyridoxine DR على معدة فارغة مع الماء، علاج مجدول يوميًا وليس PRN فقط، والحبة تُبتلع كاملة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Doxylamine/Pyridoxine DR',
+  ),
+  'aprepitant': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Aprepitant يمكن مع الطعام أو بدونه لكن جدوله يعتمد على CINV/PONV regimen؛ لا يُعامل كـPRN عام.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Aprepitant capsules · Jan 2026',
   ),
 };
 

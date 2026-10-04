@@ -578,6 +578,44 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'telmisartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'nebivolol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'candesartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
+
+  'alogliptin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-human-regular-humulin-r': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'insulin-nph-humulin-n': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'ramipril': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'irbesartan': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'atenolol': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'clonidine-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'doxazosin': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'hydrocortisone-adrenal-replacement': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'إذا كان adrenal insufficiency دائمًا فغالبًا hydrocortisone replacement علاج مدى الحياة، مع stress-dose plan أثناء المرض/الجراحة.',
+  ),
+  'fludrocortisone-adrenal-replacement': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج طويل الأمد/مدى الحياة عند نقص aldosterone الدائم، مع متابعة الضغط والـelectrolytes.',
+  ),
+  'estradiol-patch-twice-weekly': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'estradiol-vagifem': TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
+  'progesterone-endometrin': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'جزء من بروتوكول ART؛ ملصق ENDOMETRIN يسمح بالاستمرار حتى 10 أسابيع إجمالًا حسب خطة مركز الخصوبة.',
+  ),
+  'drospirenone-pop-slynd': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'xulane-contraceptive-patch': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'annovera-vaginal-ring': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'حلقة ANNOVERA واحدة قابلة لإعادة الاستخدام حتى 13 دورة (حوالي سنة) مع نمط 21 يومًا داخل + 7 أيام خارج.',
+  ),
+  'liothyronine-cytomel': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'medroxyprogesterone-oral': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'لـsecondary amenorrhea أو بعض abnormal uterine bleeding يكون الكورس الفموي غالبًا 5–10 أيام حسب الاستطباب ويوم الدورة؛ لا تمددي الكورس من نفسك.',
+  ),
+  'hydralazine-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+  'labetalol-oral': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
+
 };
 
 TherapyDurationGuidance? therapyDurationFor(String medicationId) {

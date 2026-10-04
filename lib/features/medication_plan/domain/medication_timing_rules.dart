@@ -1847,6 +1847,124 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Candesartan يمكن مع الطعام أو بدونه؛ الجرعة/titration تختلف بين الضغط وفشل القلب.',
     source: 'DailyMed · Candesartan · 2026',
   ),
+
+
+  'alogliptin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Alogliptin مرة يوميًا مع الطعام أو بدونه؛ الجرعة تعتمد على وظيفة الكلى.',
+    source: 'DailyMed · Alogliptin tablets',
+  ),
+  'insulin-human-regular-humulin-r': MedicationTimingRule(
+    anchor: 'before-meal',
+    instructionAr: 'HUMULIN R U-100 تحت الجلد يُحقن تقريبًا قبل الوجبة بـ30 دقيقة.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN R U-100',
+  ),
+  'insulin-nph-humulin-n': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'HUMULIN N توقيته يعتمد على خطة الإنسولين والوجبات؛ لا تفترض أنه دائمًا قبل النوم.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · HUMULIN N',
+  ),
+  'ramipril': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Ramipril يؤخذ في مواعيد ثابتة حسب الوصفة؛ الطعام ليس العامل الأساسي.',
+    source: 'DailyMed · Ramipril · Aug 2026',
+  ),
+  'irbesartan': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Irbesartan مرة يوميًا مع الطعام أو بدونه وفي وقت ثابت تقريبًا.',
+    source: 'DailyMed · Irbesartan',
+  ),
+  'atenolol': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Atenolol في وقت ثابت حسب الوصفة؛ لا توقفه فجأة.',
+    source: 'DailyMed · Atenolol · 2026',
+  ),
+  'clonidine-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Clonidine tablets تُؤخذ في المواعيد المكتوبة بدقة؛ لا توقفها فجأة ولا تعاملها كلصقة أسبوعية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clonidine tablets · 2026',
+  ),
+  'doxazosin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Doxazosin IR مرة يوميًا صباحًا أو مساءً؛ بعد انقطاع عدة أيام قد يلزم الرجوع لجرعة البداية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Doxazosin · Sep 2026',
+  ),
+  'hydrocortisone-adrenal-replacement': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Adrenal replacement: أكبر جرعة hydrocortisone عند الاستيقاظ عادةً ثم جرعات أصغر لاحقًا حسب خطة الغدد؛ المرض يحتاج sick-day plan.',
+    autoScheduleSafe: false,
+    source: 'Endocrine Society · Primary Adrenal Insufficiency guideline',
+  ),
+  'fludrocortisone-adrenal-replacement': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Fludrocortisone replacement عادة مرة يوميًا في وقت ثابت؛ راقب الضغط والتورم وpotassium حسب الخطة.',
+    source: 'DailyMed + Endocrine Society adrenal insufficiency guideline',
+  ),
+  'estradiol-patch-twice-weekly': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'Estradiol patch twice-weekly تُغيّر مرتين بالأسبوع كل 3–4 أيام تقريبًا؛ لا تعاملها كلصقة أسبوعية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Estradiol transdermal system twice-weekly',
+  ),
+  'estradiol-vagifem': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'VAGIFEM: يوميًا لمدة أسبوعين ثم مرتين أسبوعيًا؛ هذا جدول ذو مرحلتين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · VAGIFEM',
+  ),
+  'progesterone-endometrin': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'ENDOMETRIN ضمن ART: مهبليًا مرتين أو ثلاث مرات يوميًا حسب بروتوكول مركز الخصوبة؛ لا auto-schedule.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ENDOMETRIN · Jul 2026',
+  ),
+  'drospirenone-pop-slynd': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'SLYND: حبة كل 24 ساعة تقريبًا؛ 24 active ثم 4 inert، وقواعد missed pills خاصة بالمنتج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · SLYND + CDC U.S. SPR 2024',
+  ),
+  'xulane-contraceptive-patch': MedicationTimingRule(
+    anchor: 'weekly',
+    instructionAr: 'XULANE: لصقة جديدة أسبوعيًا لمدة 3 أسابيع ثم أسبوع رابع بدون لصقة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · XULANE',
+  ),
+  'annovera-vaginal-ring': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'ANNOVERA: 21 يومًا داخل المهبل ثم 7 أيام خارج؛ نفس الحلقة تُعاد حتى 13 دورة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ANNOVERA · Sep 2026',
+  ),
+  'liothyronine-cytomel': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'CYTOMEL مرة يوميًا وبنفس ظروف الاستخدام تقريبًا؛ افصل bile-acid sequestrants/ion-exchange resins 4 ساعات حسب الملصق.',
+    source: 'DailyMed · CYTOMEL · May 2026',
+  ),
+  'medroxyprogesterone-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Medroxyprogesterone tablets غالبًا كورس 5–10 أيام؛ بداية الكورس تعتمد على الاستطباب ويوم الدورة، لذلك لا auto-schedule دون معرفة الخطة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Medroxyprogesterone acetate tablets · Jun 2026',
+  ),
+  'hydralazine-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Hydralazine قد يحتاج عدة جرعات يوميًا؛ خذه بنفس العلاقة مع الطعام كل مرة لأن الطعام يرفع مستواه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Hydralazine hydrochloride tablets',
+  ),
+  'labetalol-oral': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Labetalol oral غالبًا جرعات متعددة/مرتين يوميًا حسب الوصفة؛ خذه بنفس العلاقة مع الطعام كل مرة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Labetalol hydrochloride tablets · Mar 2026',
+  ),
+
 };
 
 

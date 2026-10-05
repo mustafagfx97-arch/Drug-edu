@@ -207,6 +207,8 @@ const expandedMedications2B = <Medication>[
       foodTiming: 'May be taken with or without food, once daily at approximately the same time.',
       duration: 'Usually weeks to months or longer if benefit outweighs anticholinergic burden.',
       formulationHandling: 'Swallow whole with liquid; do not chew, divide or crush. The nonabsorbable tablet shell may appear in stool.',
+      releaseConversion:
+          'The reviewed oxybutynin ER label provides its own once-daily starting regimen (5 or 10 mg once daily in adults, titrated in 5-mg increments up to 30 mg/day) but does not publish a direct immediate-release → ER conversion rule. Therefore do not auto-convert by copying the IR total daily milligrams; choose and titrate the ER regimen clinically.',
       monitoring: 'Urinary retention, constipation, dry mouth, cognition, blurred vision and heat intolerance/decreased sweating.',
       interactions: 'Other anticholinergic medicines increase adverse effects; alcohol/CNS depressants can increase drowsiness.',
       commonMistakes: 'Crushing ER, worrying that a shell in stool means treatment failed, or overlooking reduced sweating in hot weather.',
@@ -214,6 +216,12 @@ const expandedMedications2B = <Medication>[
     ),
     sourceLabel: 'DailyMed oxybutynin chloride extended-release labeling · updated 2025-2026',
     sections: [
+      MedicationSection(
+        title: 'No automatic IR → ER conversion',
+        body:
+            'Current reviewed ER labeling gives a product-specific once-daily starting/titration regimen rather than a direct IR-to-ER conversion table. Do not create a 1:1 auto-conversion from immediate-release oxybutynin.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Heat and tablet shell',
         body: 'Anticholinergic reduced sweating can contribute to heat illness. The controlled-release shell can be visible in stool and is not treatment failure.',
@@ -224,7 +232,7 @@ const expandedMedications2B = <Medication>[
       purposeAr: 'يقلل الإلحاح وكثرة التبول وتسرب البول في فرط نشاط المثانة.',
       howToUseAr: 'ابتلع ER كاملة مع الماء ولا تسحقها أو تقسمها أو تمضغها.',
       timingAr: 'مرة يوميًا تقريبًا في نفس الوقت، مع الطعام أو بدونه.',
-      importantAr: 'قد ترى غلاف الحبة في البراز وهذا قد يكون طبيعيًا. انتبه للحر الشديد لأن الدواء قد يقلل التعرق.',
+      importantAr: 'لا تحول oxybutynin العادي إلى ER بنفس مجموع الـmg من نفسك؛ الملصق المراجع للـER يعطي جرعة بدء وتدرج خاصين ولا يضع جدول تحويل مباشر. وقد ترى غلاف الحبة في البراز وهذا قد يكون طبيعيًا؛ انتبه أيضًا للحر لأن الدواء يقلل التعرق.'
       commonActionableAr: 'جفاف الفم والإمساك وتشوش الرؤية قد تحدث؛ راقب أيضًا صعوبة التبول.',
       missedDoseAr: 'خذ الجرعة عند التذكر إذا لم يقترب موعد التالية؛ لا تضاعف.',
       seekHelpAr: 'اطلب تقييمًا عند عدم القدرة على التبول، ألم عين/هالات مع تشوش رؤية، أو حرارة شديدة مع قلة تعرق وتشوش.',

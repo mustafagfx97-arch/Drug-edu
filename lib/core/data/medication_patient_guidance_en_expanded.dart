@@ -476,11 +476,11 @@ const reviewedEnglishPatientCounselingExpansion =
     how: "Use the exact extended-release product prescribed. Swallow ER tablets whole; some ER capsule products have specific sprinkle instructions, so do not open a product unless its label permits it.",
     timing: "Take at the same time each day; food instructions can differ by brand/formulation.",
     duration: "Usually long term while indicated.",
-    important: "Extended-release diltiazem products are not automatically interchangeable. It can slow heart rate and interact with other rate-slowing medicines.",
+    important: "For the reviewed once-daily ER tablet label, switch to the nearest equivalent total daily diltiazem dose; some patients may need a higher ER dose according to response. Different ER release systems are not automatically interchangeable.",
     common: "Dizziness, headache, ankle swelling or slow pulse can occur.",
     missed: "Take it when remembered unless the next dose is close; do not double.",
     help: "Seek care for fainting, symptomatic very slow heartbeat, severe swelling or worsening chest pain.",
-    teach: "What exact ER brand/formulation do you have, and can that product be opened?",
+    teach: "What exact ER product do you have, and does its label use the nearest equivalent total daily diltiazem dose?",
   ),
   'dapagliflozin': _ReviewedEn(
     purpose: "Lowers blood glucose and may provide heart-failure or kidney benefits in selected patients.",
@@ -999,11 +999,11 @@ const reviewedEnglishPatientCounselingExpansion =
     how: "Swallow the extended-release tablet whole with water; do not crush, chew or split it.",
     timing: "Take once daily at about the same time, with or without food.",
     duration: "Usually continued while symptoms improve and anticholinergic effects remain acceptable.",
-    important: "It can reduce sweating and increase risk of overheating, especially in hot weather. Anticholinergic effects can worsen constipation, urinary retention, glaucoma and cognitive symptoms.",
+    important: "The reviewed ER label provides its own once-daily starting/titration regimen rather than a direct IR-to-ER conversion table. Do not auto-convert from immediate-release oxybutynin by copying the daily milligrams.",
     common: "Dry mouth, constipation, blurred vision, dizziness or drowsiness can occur.",
     missed: "Take the next dose at the usual time if the missed dose is close to it; do not double.",
     help: "Seek care for inability to urinate, severe constipation/abdominal swelling, eye pain/halos, confusion or signs of heat illness.",
-    teach: "Can you crush the ER tablet, and what anticholinergic effects will you watch for?",
+    teach: "Can you crush the ER tablet, and does the label provide a direct automatic IR-to-ER conversion?",
   ),
 
   'solifenacin': _ReviewedEn(

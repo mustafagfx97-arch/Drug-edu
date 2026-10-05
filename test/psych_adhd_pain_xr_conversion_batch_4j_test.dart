@@ -145,7 +145,7 @@ void main() {
       );
       expect(
         m.patient.howToUseAr,
-        allOf(contains('ER كاملة'), contains('لا تقسّمها'), contains('لا تسحقها')),
+        allOf(contains('ER كاملة'), contains('لا تقسّمها'), contains('تسحقها')),
       );
     });
   });

@@ -129,7 +129,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'diltiazem-er': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'تعليمات الطعام تختلف حسب منتج ER؛ اختر توقيت الوصفة ولا تعتمد Auto.',
+    instructionAr: 'Diltiazem ER: exact product required؛ reviewed once-daily tablet may switch to nearest equivalent total daily dose، وقد تحتاج جرعة أعلى حسب الاستجابة.',
     autoScheduleSafe: false,
     source: 'Product-specific DailyMed Diltiazem ER',
   ),
@@ -759,7 +759,8 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'oxybutynin-er': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'مرة يوميًا تقريبًا في نفس الوقت؛ يمكن مع الطعام أو بدونه وابتلع ER كاملة.',
+    instructionAr: 'Oxybutynin ER: مرة يوميًا مع/بدون الطعام؛ لا يوجد direct IR→ER conversion table في الملصق المراجع، لذلك لا auto-convert بالـmg.',
+    autoScheduleSafe: false,
     source: 'DailyMed Oxybutynin ER',
   ),
   'solifenacin': MedicationTimingRule(

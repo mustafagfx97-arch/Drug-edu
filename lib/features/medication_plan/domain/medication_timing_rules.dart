@@ -2443,12 +2443,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Fingolimod capsules · 2025-2026',
   ),
 
-  'paroxetine-paxil-cr': MedicationTimingRule(
-    anchor: 'morning',
-    instructionAr: 'PAXIL CR: مرة صباحًا، مع أو بدون الطعام؛ ابتلعها كاملة ولا تسحقها.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · PAXIL CR · effective Sep 2026',
-  ),
   'desvenlafaxine-er': MedicationTimingRule(
     anchor: 'same-time-daily',
     instructionAr: 'Desvenlafaxine ER: مرة يوميًا في وقت متقارب، مع/بدون الطعام؛ whole tablet.',
@@ -2478,12 +2472,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Ropinirole ER: مرة يوميًا مع/بدون الطعام؛ whole tablet؛ الانقطاع المهم قد يحتاج re-titration.',
     autoScheduleSafe: false,
     source: 'DailyMed · Ropinirole ER · revised May 2026',
-  ),
-  'amantadine-gocovri': MedicationTimingRule(
-    anchor: 'bedtime',
-    instructionAr: 'GOCOVRI: مرة عند النوم، مع/بدون الطعام؛ تجنب الكحول؛ غير interchangeable مع amantadine الآخر.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · GOCOVRI · revised Feb 2026',
   ),
   'siponimod-mayzent': MedicationTimingRule(
     anchor: 'same-time-daily',

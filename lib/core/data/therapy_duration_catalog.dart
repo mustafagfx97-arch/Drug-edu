@@ -1030,6 +1030,23 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج مزمن للسكري النوع الثاني مع متابعة glucose/A1c ووظيفة الكلى وأعراض heart failure عند المعرضين.',
   ),
 
+  'metoprolol-succinate-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج قلبي مزمن؛ لا يوقف فجأة والتحويل من IR إلى ER يتبعه تقييم النبض/الضغط والاستطباب.',
+  ),
+  'verapamil-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن عند استخدامه للضغط/القلب؛ راجع الاستجابة والنبض ولا تبدل بين ER products من نفسك.',
+  ),
+  'propranolol-er-capsules': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون مزمنًا حسب الاستطباب؛ لا يوقف فجأة والتحويل من النوع العادي إلى ER يحتاج إعادة تقييم الجرعة.',
+  ),
+  'tolterodine-la': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'عادةً يستمر ما دام يحسن أعراض المثانة وتبقى الأعراض المضادة للكولين مقبولة.',
+  ),
+
 
 };
 

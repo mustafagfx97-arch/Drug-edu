@@ -4221,5 +4221,39 @@ const reviewedEnglishPatientCounselingExpansion =
     teach: "If the IR total is 250 mg/day, does the conversion round to 300 mg ER or 200 mg ER?",
   ),
 
+  'tapentadol-er': _ReviewedEn(
+    purpose: "Extended-release tapentadol for severe persistent pain requiring around-the-clock opioid therapy when alternatives are inadequate.",
+    how: "Swallow ER tablets whole with water. Do not cut, break, chew, crush or dissolve.",
+    timing: "About every 12 hours, with or without food, according to the prescribed ER schedule.",
+    duration: "Individualized long-term opioid therapy only while benefits outweigh risks; reassess regularly.",
+    important: "Tapentadol IR can be converted to ER using the equivalent total daily tapentadol dose divided into two equal doses about 12 hours apart. Example: IR 50 mg four times daily = 200 mg/day → ER 100 mg twice daily. Do not apply this same-dose rule to a different opioid.",
+    common: "Sleepiness, dizziness, nausea and constipation can occur.",
+    missed: "Do not double or add an extra opioid dose without instructions.",
+    help: "Call emergency services for slowed breathing or profound unresponsiveness.",
+    teach: "If the IR total is 200 mg/day, how is it divided when switching to tapentadol ER?",
+  ),
+  'theophylline-er-once-daily': _ReviewedEn(
+    purpose: "Once-daily extended-release theophylline for appropriately selected patients; serum-level monitoring remains important.",
+    how: "Do not chew or crush. The reviewed scored tablet may be split.",
+    timing: "Once daily morning or evening. Take consistently either with food or fasting rather than switching back and forth.",
+    duration: "Usually chronic/individualized while benefit outweighs toxicity risk.",
+    important: "In stabilized patients age 12 years or older, current labeling allows mg-for-mg transfer from immediate-release or controlled-release theophylline to 400 or 600 mg once-daily ER when the intended daily dose matches an available strength. Peaks and troughs can still differ, so follow serum concentrations and symptoms.",
+    common: "Nausea, tremor, insomnia or palpitations can signal excessive exposure.",
+    missed: "Do not double the next dose.",
+    help: "Seek urgent care for severe repeated vomiting, marked arrhythmia symptoms, confusion or seizure.",
+    teach: "Does mg-for-mg transfer guarantee identical peak and trough levels after switching?",
+  ),
+  'mesalamine-dr-800mg': _ReviewedEn(
+    purpose: "Delayed-release mesalamine 800 mg for moderately active ulcerative colitis in adults according to the reviewed product label.",
+    how: "Swallow whole; do not cut, break or chew. Drink adequate fluids.",
+    timing: "For the reviewed 800 mg DR product, take on an empty stomach at least 1 hour before and 2 hours after food.",
+    duration: "The reviewed label supports a 6-week course for moderately active ulcerative colitis; longer-term regimens depend on the exact product and indication.",
+    important: "Do not substitute one 800 mg delayed-release tablet for two 400 mg mesalamine oral products. Release characteristics and site of delivery matter, so equal total milligrams do not prove interchangeability.",
+    common: "Worsening abdominal pain or diarrhea after starting a new product should be reviewed rather than assuming treatment failure.",
+    missed: "Do not double the next dose.",
+    help: "Seek care for reduced urine, new swelling, severe rash or marked worsening of colitis symptoms.",
+    teach: "Can one 800 mg mesalamine DR tablet automatically be replaced by two 400 mg products?",
+  ),
+
 
 };

@@ -2479,12 +2479,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Ropinirole ER · revised May 2026',
   ),
-  'amantadine-gocovri': MedicationTimingRule(
-    anchor: 'bedtime',
-    instructionAr: 'GOCOVRI: مرة عند النوم، مع/بدون الطعام؛ تجنب الكحول؛ غير interchangeable مع amantadine الآخر.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · GOCOVRI · revised Feb 2026',
-  ),
   'siponimod-mayzent': MedicationTimingRule(
     anchor: 'same-time-daily',
     instructionAr: 'MAYZENT: مرة يوميًا مع/بدون الطعام بعد CYP2C9-guided titration؛ missed titration أو ≥4 maintenance doses = restart Day 1.',

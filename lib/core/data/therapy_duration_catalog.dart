@@ -205,10 +205,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   ),
   'clarithromycin-oral':
       TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
-  'venlafaxine-xr':
-      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
-  'bupropion-xl':
-      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'mirtazapine':
       TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'lithium': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),

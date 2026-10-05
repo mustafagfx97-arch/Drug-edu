@@ -2804,6 +2804,30 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Tramadol hydrochloride ER · current',
   ),
 
+  'tapentadol-nucynta-er': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Tapentadol ER: تقريبًا كل 12 ساعة؛ IR→ER = نفس total daily tapentadol مقسوم إلى جرعتين متساويتين، وليس قاعدة لبقية opioids.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · NUCYNTA ER · 2026',
+  ),
+  'morphine-sulfate-er-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Morphine ER: عند التحويل من oral morphine نستخدم 1/2 من 24-hour dose q12h أو 1/3 q8h؛ لا تطبق على opioid آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Morphine sulfate ER tablets · 2026',
+  ),
+  'mesalamine-delayed-release-800mg': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Mesalamine DR 800 mg reviewed product: قبل الطعام ≥1 ساعة أو بعده ≥2 ساعة؛ لا تبدل بين mesalamine products بالـmg فقط.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Mesalamine DR 800 mg · Jul 2026',
+  ),
+
+
+};
+
+
+const medicationPatientTimingOverrides = <String, String>{
 
 };
 

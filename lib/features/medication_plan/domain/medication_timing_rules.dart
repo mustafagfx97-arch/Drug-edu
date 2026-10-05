@@ -691,7 +691,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'nifedipine-er': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'تعليمات الطعام تختلف بين منتجات nifedipine ER؛ استخدم وقت وتعليمات المنتج المصروف لك.',
+    instructionAr: 'Nifedipine ER: exact product required؛ في angina المستقرة يمكن IR→ER بأقرب total daily dose (مثال 30 mg TID → 90 mg QD)، ولا تعمم القاعدة على كل الاستطبابات.',
     autoScheduleSafe: false,
     source: 'Product-specific DailyMed Nifedipine ER',
   ),
@@ -1365,8 +1365,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
 
   'mesalamine-lialda': MedicationTimingRule(
     anchor: 'with-meal',
-    instructionAr:
-        'LIALDA مرة يوميًا مع الطعام؛ لا تستخدم Auto إذا كان المنتج mesalamine مختلفًا.',
+    instructionAr: 'LIALDA مرة يوميًا مع الطعام؛ لا mg-for-mg conversion إلى/من mesalamine modified-release أخرى.',
     requiresMealChoice: true,
     autoScheduleSafe: false,
     source: 'DailyMed · LIALDA · Mar 2026',
@@ -2089,7 +2088,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'metronidazole-er': MedicationTimingRule(
     anchor: 'empty-stomach',
-    instructionAr: 'Metronidazole ER 750 mg قبل الطعام بساعة على الأقل أو بعده بساعتين، ويُبتلع كاملًا.',
+    instructionAr: 'Metronidazole ER 750 mg: للـBV في المنتج المراجع مرة يوميًا 7 أيام، صائمًا 1 h قبل أو 2 h بعد الطعام؛ لا IR→ER auto-conversion.',
     autoScheduleSafe: false,
     source: 'DailyMed · Metronidazole ER',
   ),
@@ -2802,6 +2801,20 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Tramadol ER: مرة يوميًا؛ IR→ER = 24-hour IR total ثم round DOWN إلى أقرب 100 mg أقل، max 300 mg/day للمنتج المراجع.',
     autoScheduleSafe: false,
     source: 'DailyMed · Tramadol hydrochloride ER · current',
+  ),
+
+  'theophylline-er-tablets': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Theophylline ER once-daily: فقط بعد استقرار q12h ومستوى علاجي؛ once-daily = ضعف جرعة q12h مع level قبل/بعد التحويل، ولا يوصى بها ليلًا في الملصق المراجع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Theophylline ER tablets · 2025-2026',
+  ),
+  'mesalamine-dr-800mg': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Mesalamine DR 800 mg: قبل الطعام بساعة أو بعده بساعتين؛ لا تستبدل 800 mg واحدة بحبتين 400 mg delayed-release.',
+    requiresMealChoice: true,
+    autoScheduleSafe: false,
+    source: 'DailyMed · Mesalamine DR 800 mg · Jul 2026',
   ),
 
 

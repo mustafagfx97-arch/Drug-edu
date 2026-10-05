@@ -20,10 +20,10 @@ void main() {
       'ofatumumab-kesimpta',
     ];
 
-    test('adds ten complete unique records and raises census to 388', () {
+    test('adds ten complete unique records and raises census to 395', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 388);
-      expect(allIds.toSet().length, 388);
+      expect(sampleMedications.length, 395);
+      expect(allIds.toSet().length, 395);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

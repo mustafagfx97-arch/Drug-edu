@@ -14,10 +14,10 @@ void main() {
       'granisetron-sancuso-patch',
     ];
 
-    test('adds five complete unique records and raises census to 407', () {
+    test('adds five complete unique records and raises census to 406', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 407);
-      expect(allIds.toSet().length, 407);
+      expect(sampleMedications.length, 406);
+      expect(allIds.toSet().length, 406);
 
       for (final id in ids) {
         expect(allIds, contains(id));

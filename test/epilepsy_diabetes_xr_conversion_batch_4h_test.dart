@@ -89,7 +89,7 @@ void main() {
       expect(m.useProfile.route,
           allOf(contains('postherpetic neuralgia'), contains('epilepsy')));
       expect(m.patient.importantAr,
-          allOf(contains('ليس interchangeable'), contains('الصرع')));
+          allOf(contains('ليس interchangeable'), contains('للصرع')));
     });
 
     test('HORIZANT blocks gabapentin mg-for-mg substitution', () {

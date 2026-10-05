@@ -2760,6 +2760,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Tolterodine LA · Jun 2026',
   ),
 
+  'lithium-carbonate-er-450': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Lithium ER 450 mg: غالبًا q12h حسب الوصفة؛ IR→ER same total daily dose when possible، وإذا لم تكن الجرعة multiple of 450 نبدأ بأقرب جرعة أقل مع level follow-up.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lithium carbonate ER 450 mg · 2026',
+  ),
+  'paroxetine-paxil-cr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'PAXIL CR: مرة صباحًا مع/بدون الطعام؛ لا يوجد direct IR→CR conversion table في الملصق الحالي.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PAXIL CR',
+  ),
+  'amantadine-gocovri': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'GOCOVRI: مرة عند النوم؛ غير interchangeable مع amantadine IR أو OSMOLEX ER.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · GOCOVRI',
+  ),
+  'amantadine-osmolex-er': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'OSMOLEX ER: صباحًا؛ renal impairment قد يجعل الجرعة كل 48 أو 96 ساعة. غير interchangeable مع amantadine products.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · OSMOLEX ER',
+  ),
+  'methylphenidate-concerta': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'CONCERTA: مرة صباحًا؛ استخدم جدول التحويل الخاص بالمنتج من IR methylphenidate ولا تنقله إلى XR brand آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · CONCERTA · 2026',
+  ),
+  'mixed-amphetamine-salts-adderall-xr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'ADDERALL XR: مرة صباحًا؛ divided-dose IR ADDERALL → XR same total daily dose once daily، ولا تعمم على amphetamine product آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ADDERALL XR',
+  ),
+
 
 };
 

@@ -203,6 +203,8 @@ const expandedMedications29 = <Medication>[
           'Chronic individualized therapy; titration is gradual and discontinuation should also be gradual.',
       formulationHandling:
           'Swallow ER tablets whole. Do not chew, crush or divide.',
+      releaseConversion:
+          'Patients treated with immediate-release pramipexole for Parkinson disease may be switched overnight to pramipexole ER at the same total daily dose. Monitor clinical response and tolerability and adjust if needed.',
       monitoring:
           'Sudden sleep episodes, orthostatic hypotension, impulse-control disorders, hallucinations, dyskinesia and renal function for dosing.',
       interactions:
@@ -213,6 +215,12 @@ const expandedMedications29 = <Medication>[
           'Significant interruption may require re-titration. Renal impairment requires product-specific adjustment.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'The labeled conversion is an overnight switch from immediate-release pramipexole to the same total daily dose of ER once daily. Reassess response, adverse effects and renal dosing after conversion.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'ER administration',
         body:
@@ -385,6 +393,8 @@ const expandedMedications29 = <Medication>[
           'Chronic symptomatic therapy while benefit persists.',
       formulationHandling:
           'Swallow whole or open and sprinkle the entire capsule contents on applesauce and swallow. Do not divide the contents, chew or crush.',
+      releaseConversion:
+          'A patient on memantine immediate-release 10 mg twice daily may switch to memantine XR 28 mg once daily the day after the last IR dose. In severe renal impairment, IR 5 mg twice daily converts to XR 14 mg once daily the next day. The label notes that comparative efficacy of these regimens has not been studied.',
       monitoring:
           'Cognition/function, dizziness, constipation, blood pressure and renal function for dose selection.',
       interactions:
@@ -395,6 +405,12 @@ const expandedMedications29 = <Medication>[
           'Severe renal impairment requires a lower maximum dose.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'IR 10 mg twice daily → XR 28 mg once daily starting the next day. Severe renal impairment: IR 5 mg twice daily → XR 14 mg once daily the next day. Do not extrapolate beyond these labeled regimens.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Applesauce technique',
         body:

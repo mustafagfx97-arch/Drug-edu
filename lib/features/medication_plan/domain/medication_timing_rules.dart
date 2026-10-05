@@ -2828,11 +2828,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
 
 
 const medicationPatientTimingOverrides = <String, String>{
-
-};
-
-
-const medicationPatientTimingOverrides = <String, String>{
   'insulin-lispro':
       'اربط الجرعة بالوجبة تمامًا حسب خطة الإنسولين الخاصة بك؛ لا تحقن ثم تؤخر أو تتجاوز الوجبة من دون خطة واضحة.',
   'prednisone':

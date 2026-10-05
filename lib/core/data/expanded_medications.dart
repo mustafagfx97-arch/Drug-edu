@@ -168,6 +168,8 @@ const expandedMedications = <Medication>[
       foodTiming: 'Food instructions can differ by ER product; use the exact label.',
       duration: 'Usually chronic when used for hypertension, angina or rate control.',
       formulationHandling: 'Do not crush or chew ER products. Some capsules may permit sprinkling but only when the exact product label allows it.',
+      releaseConversion:
+          'For the reviewed once-daily diltiazem extended-release tablet label, patients controlled on diltiazem may be switched to the nearest equivalent total daily diltiazem dose once daily; some patients may need a higher ER dose based on clinical response. Because ER diltiazem products use different release systems, this rule must not be generalized across every ER brand without checking the exact label.',
       monitoring: 'Blood pressure, heart rate and symptoms of bradycardia or edema.',
       interactions: 'Additive bradycardia with beta-blockers or other rate-slowing agents; CYP3A interactions may be important.',
       commonMistakes: 'Assuming all diltiazem ER products are interchangeable or can be opened.',
@@ -175,6 +177,12 @@ const expandedMedications = <Medication>[
     ),
     sourceLabel: 'DailyMed product labeling · diltiazem extended-release; exact product must be verified',
     sections: [
+      MedicationSection(
+        title: 'IR / other diltiazem → ER conversion',
+        body:
+            'The reviewed once-daily ER tablet label allows switching to the nearest equivalent total daily diltiazem dose, with higher doses sometimes needed according to response. Verify the exact ER product because release systems are not automatically interchangeable.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Formulation warning',
         body: 'Multiple ER diltiazem products use different release systems and food/opening instructions. Counsel from the dispensed product label, not from generic memory.',
@@ -185,7 +193,7 @@ const expandedMedications = <Medication>[
       purposeAr: 'يُستخدم للضغط أو الذبحة أو تنظيم سرعة القلب حسب حالتك.',
       howToUseAr: 'ابتلع المنتج ممتد المفعول كما هو إلا إذا كانت نشرة منتجك تسمح بفتحه.',
       timingAr: 'التزم بنفس الوقت يوميًا، وتعليمات الطعام تعتمد على نوع المنتج.',
-      importantAr: 'لا تسحق أو تمضغ المنتج ممتد المفعول.',
+      importantAr: 'في منتج ER اليومي الذي تمت مراجعته يمكن التحويل إلى أقرب مجموع جرعة يومية مكافئ من diltiazem، وقد تحتاج الجرعة للتعديل حسب الاستجابة. لا تطبق هذه القاعدة على كل براندات ER تلقائيًا لأن أنظمة الإطلاق تختلف.'
       commonActionableAr: 'قد يسبب دوخة أو بطء نبض أو تورم القدمين.',
       seekHelpAr: 'راجع الطبيب عند إغماء أو بطء شديد في النبض مع أعراض.',
       teachBackAr: 'هل منتجك يسمح بفتح الكبسولة أم يجب ابتلاعها كاملة؟',

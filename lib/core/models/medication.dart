@@ -18,6 +18,7 @@ class MedicationUseProfile {
     this.foodTiming = '',
     this.duration = '',
     this.formulationHandling = '',
+    this.releaseConversion = '',
     this.monitoring = '',
     this.interactions = '',
     this.commonMistakes = '',
@@ -28,6 +29,7 @@ class MedicationUseProfile {
   final String foodTiming;
   final String duration;
   final String formulationHandling;
+  final String releaseConversion;
   final String monitoring;
   final String interactions;
   final String commonMistakes;
@@ -38,6 +40,7 @@ class MedicationUseProfile {
       foodTiming.trim().isEmpty &&
       duration.trim().isEmpty &&
       formulationHandling.trim().isEmpty &&
+      releaseConversion.trim().isEmpty &&
       monitoring.trim().isEmpty &&
       interactions.trim().isEmpty &&
       commonMistakes.trim().isEmpty &&
@@ -56,6 +59,7 @@ class MedicationUseProfile {
     add('Food & timing', foodTiming);
     add('Therapy duration', duration);
     add('Crush / split / dosage-form handling', formulationHandling);
+    add('IR / XR-ER conversion', releaseConversion);
     add('Monitoring', monitoring);
     add('Important interactions', interactions);
     add('Common counseling mistakes', commonMistakes);

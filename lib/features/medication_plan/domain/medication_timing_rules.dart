@@ -748,9 +748,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'lithium': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'التوقيت وعدد الجرعات يختلفان حسب IR/ER والخطة؛ حافظ على نمط ثابت للملح والسوائل ولا تعتمد توقيتًا تلقائيًا دون معرفة المنتج.',
+    instructionAr: 'Lithium IR/ER: لا auto-convert؛ ER 450 mg يحافظ على same total daily dose عندما يمكن، وإذا لم تكن جرعة IR من مضاعفات 450 mg يستخدم أقرب مضاعف أقل مع level monitoring.',
     autoScheduleSafe: false,
-    source: 'DailyMed Lithium Carbonate',
+    source: 'DailyMed · Lithium carbonate ER · 2025-2026',
   ),
   'risperidone': MedicationTimingRule(
     anchor: 'any',
@@ -2445,9 +2445,9 @@ const medicationTimingRules = <String, MedicationTimingRule>{
 
   'paroxetine-paxil-cr': MedicationTimingRule(
     anchor: 'morning',
-    instructionAr: 'PAXIL CR: مرة صباحًا، مع أو بدون الطعام؛ ابتلعها كاملة ولا تسحقها.',
+    instructionAr: 'PAXIL CR: صباحًا مع/بدون الطعام؛ لا يوجد universal IR→CR mg-for-mg conversion، واستخدم جرعة CR حسب الاستطباب.',
     autoScheduleSafe: false,
-    source: 'DailyMed · PAXIL CR · effective Sep 2026',
+    source: 'DailyMed · Paroxetine CR · 2026',
   ),
   'desvenlafaxine-er': MedicationTimingRule(
     anchor: 'same-time-daily',
@@ -2758,6 +2758,25 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Tolterodine LA: مرة يوميًا؛ usual IR 2 mg BID وLA 4 mg QD لا يعنيان auto-conversion، وLA قد تنخفض إلى 2 mg/day حسب الكبد/الكلى/CYP3A4.',
     autoScheduleSafe: false,
     source: 'DailyMed · Tolterodine LA · Jun 2026',
+  ),
+
+  'amphetamine-mixed-salts-adderall-xr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'ADDERALL XR: مرة صباحًا؛ divided IR ADDERALL → XR بنفس total daily dose مرة واحدة، ولا تعممها على amphetamine products أخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ADDERALL XR',
+  ),
+  'dexmethylphenidate-focalin-xr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'FOCALIN XR: صباحًا؛ Focalin IR → نفس total daily dose، لكن methylphenidate العادي → نصف total daily dose.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · FOCALIN XR · Sep 2025',
+  ),
+  'methylphenidate-concerta-er': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'CONCERTA: صباحًا؛ استخدم جدول التحويل الخاص بالمنتج من IR methylphenidate ولا تعمل mg-for-mg conversion.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · CONCERTA · 2026',
   ),
 
 

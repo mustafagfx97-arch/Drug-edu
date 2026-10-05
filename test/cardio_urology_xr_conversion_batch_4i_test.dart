@@ -13,10 +13,10 @@ void main() {
       'tolterodine-la',
     ];
 
-    test('adds four unique records and raises census to 399', () {
+    test('adds four unique records and raises census to 400', () {
       final ids = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 399);
-      expect(ids.toSet().length, 399);
+      expect(sampleMedications.length, 400);
+      expect(ids.toSet().length, 400);
 
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);

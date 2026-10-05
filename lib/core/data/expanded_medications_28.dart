@@ -207,6 +207,8 @@ const expandedMedications28 = <Medication>[
           'Usually long-term when effective; indication-specific dose and duration require follow-up.',
       formulationHandling:
           'Swallow XR tablets whole. Do not split, chew or crush.',
+      releaseConversion:
+          'Patients already taking immediate-release quetiapine may be switched to quetiapine XR at the equivalent total daily dose taken once daily. Individual dose adjustment may still be necessary.',
       monitoring:
           'Sedation, orthostasis/falls, weight, glucose/lipids and abnormal movements.',
       interactions:
@@ -217,6 +219,12 @@ const expandedMedications28 = <Medication>[
           'Older adults and hepatic impairment require lower/slower titration. Not approved for dementia-related psychosis.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'Current labeling allows a direct IR → XR switch using the same total daily quetiapine dose, given once daily as XR; reassess tolerability and clinical response after the switch.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'XR ≠ immediate release',
         body:
@@ -269,6 +277,8 @@ const expandedMedications28 = <Medication>[
           'Chronic antiseizure therapy when effective; do not stop abruptly.',
       formulationHandling:
           'Swallow whole. Do not cut, crush or chew.',
+      releaseConversion:
+          'When converting immediate-release oxcarbazepine to OXTELLAR XR, higher OXTELLAR XR doses may be necessary. The label does not provide a universal fixed mg-for-mg conversion ratio.',
       monitoring:
           'Serum sodium when clinically indicated, seizure control, dizziness/somnolence, serious skin reactions and hypersensitivity.',
       interactions:
@@ -279,6 +289,12 @@ const expandedMedications28 = <Medication>[
           'Renal impairment and conversion from immediate-release oxcarbazepine require product-specific dosing.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'Do not force a 1:1 rule. The OXTELLAR XR label specifically warns that a higher XR dose may be required after conversion from immediate-release oxcarbazepine; titrate from the product-specific regimen and monitor seizure control/tolerability.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Empty-stomach XR lock',
         body:
@@ -330,6 +346,8 @@ const expandedMedications28 = <Medication>[
           'Chronic therapy with individualized dosing; avoid sudden discontinuation or rapid dose reduction.',
       formulationHandling:
           'Do not chew, divide or crush. If swallowing is difficult, open the capsule and sprinkle all contents on 1–2 tablespoons applesauce; consume immediately and do not store.',
+      releaseConversion:
+          'RYTARY is not 1:1 with immediate-release carbidopa/levodopa. Convert by current total daily levodopa: IR 400–549 mg/day → RYTARY 855 mg levodopa/day (23.75/95 ×3 capsules TID); 550–749 → 1,140 mg/day (23.75/95 ×4 TID); 750–949 → 1,305 mg/day (36.25/145 ×3 TID); 950–1,249 → 1,755 mg/day (48.75/195 ×3 TID); ≥1,250 → 2,340 mg/day (48.75/195 ×4 TID) OR 2,205 mg/day (61.25/245 ×3 TID). Patients also taking a COMT inhibitor may need a higher initial RYTARY levodopa dose.',
       monitoring:
           'Motor response, dyskinesia, hallucinations, orthostasis, sudden sleep episodes and impulse-control symptoms.',
       interactions:
@@ -340,6 +358,12 @@ const expandedMedications28 = <Medication>[
           'Conversion from other carbidopa/levodopa products uses a product-specific table; doses are not interchangeable.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'Use the label conversion table, not milligram matching. Calculate the current total daily IR levodopa first, then choose the corresponding RYTARY starting regimen; doses are subsequently individualized. Concomitant COMT inhibitor therapy can increase the initial RYTARY requirement.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'RYTARY is not interchangeable',
         body:

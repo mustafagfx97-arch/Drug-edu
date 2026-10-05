@@ -741,16 +741,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Clarithromycin IR/ER',
   ),
-  'venlafaxine-xr': MedicationTimingRule(
-    anchor: 'with-meal',
-    instructionAr: 'مرة يوميًا مع الطعام وفي نفس الوقت تقريبًا صباحًا أو مساءً.',
-    source: 'DailyMed Venlafaxine Extended-Release',
-  ),
-  'bupropion-xl': MedicationTimingRule(
-    anchor: 'morning',
-    instructionAr: 'مرة يوميًا صباحًا غالبًا؛ يمكن مع الطعام أو بدونه ولا تسحق XL.',
-    source: 'DailyMed Bupropion XL Medication Guide',
-  ),
   'mirtazapine': MedicationTimingRule(
     anchor: 'bedtime',
     instructionAr: 'غالبًا مساءً/قبل النوم بسبب النعاس؛ يمكن مع الطعام أو بدونه.',

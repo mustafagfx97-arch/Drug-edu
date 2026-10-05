@@ -21,6 +21,8 @@ const expandedMedications30 = <Medication>[
           'Usually months or longer when effective. PMDD may be continuous or luteal-phase-only; duration/regimen is indication-specific.',
       formulationHandling:
           'Swallow controlled-release tablets whole. Do not chew or crush.',
+      releaseConversion:
+          'Do not encode a universal IR paroxetine → PAXIL CR milligram-for-milligram conversion. Current labeling provides formulation-specific starting and titration doses rather than a direct switch table (for example, MDD starts at 20 mg/day with IR tablets versus 25 mg/day with CR; panic disorder starts at 10 mg/day IR versus 12.5 mg/day CR). Select the CR regimen by indication, prior dose, tolerability and renal/hepatic status rather than simply copying milligrams.',
       monitoring:
           'Mood/suicidality after initiation or dose changes, serotonin-syndrome symptoms, sexual adverse effects, hyponatremia in susceptible patients and bleeding risk when relevant.',
       interactions:
@@ -31,6 +33,12 @@ const expandedMedications30 = <Medication>[
           'Lower starting/max doses apply in severe renal or hepatic impairment and in older adults.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → CR conversion lock',
+        body:
+            'Current IR and CR labels use different dose strengths and do not provide a direct conversion table. Do not auto-convert by copying the same milligram number; use the indication-specific CR regimen and tapering plan.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'CR administration lock',
         body:
@@ -52,7 +60,7 @@ const expandedMedications30 = <Medication>[
       timingAr:
           'تؤخذ صباحًا، مع الطعام أو بدونه.',
       importantAr:
-          'لا توقفها فجأة بعد الاستخدام المنتظم. إذا كان الاستخدام للـPMDD فقد تكون الخطة يومية طوال الشهر أو فقط خلال luteal phase حسب الطبيب.',
+          'لا تحول paroxetine العادي إلى CR بنفس رقم الـmg من نفسك؛ الـIR والـCR لهما قوى وجرعات بدء مختلفة ولا يوجد جدول تحويل مباشر عام. لا توقف paroxetine فجأة. وإذا كان الاستخدام للـPMDD فقد تكون الخطة continuous طوال الشهر أو luteal phase فقط حسب وصف الطبيب.',
       commonActionableAr:
           'قد يحدث غثيان أو نعاس/أرق أو آثار جنسية. إذا أثرت الأعراض على الالتزام راجع الطبيب بدل إيقاف الدواء بنفسك.',
       missedDoseAr:

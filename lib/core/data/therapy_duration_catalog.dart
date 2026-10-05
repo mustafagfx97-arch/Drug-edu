@@ -1047,6 +1047,19 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'عادةً يستمر ما دام يحسن أعراض المثانة وتبقى الأعراض المضادة للكولين مقبولة.',
   ),
 
+  'amphetamine-mixed-salts-adderall-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع إعادة تقييم دورية للفائدة، الشهية/الوزن، النوم، القلب وخطر misuse.',
+  ),
+  'dexmethylphenidate-focalin-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع إعادة تقييم دورية للفائدة والآثار الجانبية والحاجة للاستمرار.',
+  ),
+  'methylphenidate-concerta-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع مراجعة الاستجابة والنمو/الوزن والنوم والضغط/النبض دوريًا.',
+  ),
+
 
 };
 

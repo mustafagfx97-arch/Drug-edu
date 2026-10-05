@@ -973,6 +973,35 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'قد يكون علاجًا مزمنًا للصرع/bipolar أو للوقاية من migraine حسب الحالة؛ المدة تعتمد على الفائدة والمخاطر والمتابعة.',
   ),
 
+  'carbamazepine-xr-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن للصرع/الاستطباب العصبي؛ لا يوقف فجأة والتحويل بين الصيغ يحتاج متابعة.',
+  ),
+  'levetiracetam-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج صرع مزمن عادةً؛ لا يوقف فجأة، وXR يحتاج renal-dose review ومتابعة السيطرة على النوبات.',
+  ),
+  'topiramate-qudexy-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن للصرع أو وقاية migraine؛ لا يوقف فجأة وتراجع الفائدة والتحمل دوريًا.',
+  ),
+  'topiramate-trokendi-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن للصرع أو وقاية migraine؛ لا يوقف فجأة وتراجع الفائدة والتحمل دوريًا.',
+  ),
+  'metformin-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن للسكري النوع الثاني ما دام فعالًا والتحمل ووظيفة الكلى مناسبين.',
+  ),
+  'glipizide-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن للسكري النوع الثاني مع مراجعة A1c وخطر hypoglycemia دوريًا.',
+  ),
+  'gliclazide-mr-30mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن للسكري النوع الثاني مع مراقبة glucose/A1c وخطر هبوط السكر.',
+  ),
+
 
 };
 

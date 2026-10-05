@@ -1047,6 +1047,11 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'عادةً يستمر ما دام يحسن أعراض المثانة وتبقى الأعراض المضادة للكولين مقبولة.',
   ),
 
+  'tramadol-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'Opioid ممتد للآلام الشديدة والمستمرة؛ استخدم أقل جرعة فعالة لأقصر مدة تحقق الهدف، مع إعادة تقييم الحاجة دوريًا وعدم الإيقاف المفاجئ بعد الاستخدام المنتظم.',
+  ),
+
 
 };
 

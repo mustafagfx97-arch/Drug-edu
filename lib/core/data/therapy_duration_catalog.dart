@@ -1060,6 +1060,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع مراجعة الاستجابة والنمو/الوزن والنوم والضغط/النبض دوريًا.',
   ),
 
+  'guanfacine-intuniv-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد؛ عند الإيقاف يجب taper لتجنب rebound hypertension.',
+  ),
+  'clonidine-er-adhd': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد؛ لا يوقف فجأة ويُخفض تدريجيًا لتجنب rebound hypertension.',
+  ),
+  'amantadine-gocovri': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن/فردي في باركنسون؛ لا يوقف فجأة وتراجع الاستجابة والهلوسة/السقوط دوريًا.',
+  ),
+  'amantadine-osmolex-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن/فردي لباركنسون أو EPS؛ لا يوقف فجأة والجدول يعتمد على renal function.',
+  ),
+  'tramadol-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يراجع دوريًا ولا يوقف فجأة بعد حدوث dependence.',
+  ),
+
 
 };
 

@@ -21,6 +21,8 @@ const expandedMedications30 = <Medication>[
           'Usually months or longer when effective. PMDD may be continuous or luteal-phase-only; duration/regimen is indication-specific.',
       formulationHandling:
           'Swallow controlled-release tablets whole. Do not chew or crush.',
+      releaseConversion:
+          'Current PAXIL CR labeling provides controlled-release starting doses and titration ranges by indication but does not publish a formal immediate-release paroxetine → CR conversion table. Comparative MDD trials used CR 25–62.5 mg/day alongside IR paroxetine 20–50 mg/day, but these trial ranges are not a label-endorsed milligram conversion rule. Do not auto-convert by a fixed ratio; choose the CR dose by indication, prior response, tolerability and patient factors.',
       monitoring:
           'Mood/suicidality after initiation or dose changes, serotonin-syndrome symptoms, sexual adverse effects, hyponatremia in susceptible patients and bleeding risk when relevant.',
       interactions:
@@ -31,6 +33,12 @@ const expandedMedications30 = <Medication>[
           'Lower starting/max doses apply in severe renal or hepatic impairment and in older adults.',
     ),
     sections: [
+      MedicationSection(
+        title: 'No automatic IR → CR conversion',
+        body:
+            'Current labeling gives PAXIL CR indication-specific starting doses and titration rather than a formal IR-to-CR conversion table. Do not infer a fixed conversion ratio from comparative trial dose ranges.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'CR administration lock',
         body:
@@ -52,7 +60,7 @@ const expandedMedications30 = <Medication>[
       timingAr:
           'تؤخذ صباحًا، مع الطعام أو بدونه.',
       importantAr:
-          'لا توقفها فجأة بعد الاستخدام المنتظم. إذا كان الاستخدام للـPMDD فقد تكون الخطة يومية طوال الشهر أو فقط خلال luteal phase حسب الطبيب.',
+          'لا تحول paroxetine العادي إلى PAXIL CR بنسبة ثابتة من نفسك؛ الـlabel الحالي يعطي جرعات بدء وتدرج خاصة بالـCR حسب التشخيص ولا يضع جدول تحويل مباشر. لا توقف paroxetine فجأة لأن أعراض الانقطاع قد تكون مزعجة.',
       commonActionableAr:
           'قد يحدث غثيان أو نعاس/أرق أو آثار جنسية. إذا أثرت الأعراض على الالتزام راجع الطبيب بدل إيقاف الدواء بنفسك.',
       missedDoseAr:

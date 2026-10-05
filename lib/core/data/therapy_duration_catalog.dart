@@ -1060,6 +1060,19 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع مراجعة الاستجابة والنمو/الوزن والنوم والضغط/النبض دوريًا.',
   ),
 
+  'tapentadol-nucynta-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'Opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يحتاج reassessment دوري ولا يوقف فجأة بعد dependence.',
+  ),
+  'morphine-sulfate-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid طويل الأمد فقط عند الحاجة المستمرة؛ يراجع دوريًا ويخفض تدريجيًا عند الإيقاف بعد dependence.',
+  ),
+  'mesalamine-delayed-release-800mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.limited,
+    patientOverrideAr: 'المنتج 800 mg المراجع لعلاج moderately active UC مدته المعلّمة 6 أسابيع؛ لا تعممها على mesalamine products أو maintenance regimens الأخرى.',
+  ),
+
 
 };
 

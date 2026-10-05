@@ -1077,6 +1077,19 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يراجع دوريًا ولا يوقف فجأة بعد حدوث dependence.',
   ),
 
+  'tapentadol-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid طويل الأمد فقط إذا استمرت الفائدة فوق المخاطر؛ يراجع دوريًا ويُخفض تدريجيًا عند الإيقاف إذا وُجد dependence.',
+  ),
+  'theophylline-er-once-daily': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاجًا مزمنًا في حالات مختارة؛ الاستمرار يعتمد على الفائدة، serum level، التداخلات وعلامات السمية.',
+  ),
+  'mesalamine-dr-800mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'المنتج DR 800 mg المراجع له كورس 6 أسابيع لعلاج moderately active ulcerative colitis؛ لا تعمم هذه المدة على كل منتجات mesalamine.',
+  ),
+
 
 };
 

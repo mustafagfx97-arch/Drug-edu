@@ -15,10 +15,10 @@ void main() {
       'mixed-amphetamine-salts-adderall-xr',
     ];
 
-    test('adds six unique formulation-specific records and raises census to 405', () {
+    test('covers six formulation targets, adds four new records, and raises census to 403', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 405);
-      expect(allIds.toSet().length, 405);
+      expect(sampleMedications.length, 403);
+      expect(allIds.toSet().length, 403);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

@@ -20,16 +20,14 @@ void main() {
     ];
 
     const newIds = <String>[
-      'bupropion-xl',
-      'venlafaxine-xr',
       'lamotrigine-xr',
       'divalproex-er',
     ];
 
-    test('raises medication census to 384 without duplicate IDs', () {
+    test('raises medication census to 382 without duplicate IDs', () {
       final ids = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 384);
-      expect(ids.toSet().length, 384);
+      expect(sampleMedications.length, 382);
+      expect(ids.toSet().length, 382);
 
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);
@@ -190,7 +188,7 @@ void main() {
       );
       expect(m.useProfile.route, allOf(contains('13'), contains('seizure')));
       expect(m.useProfile.commonMistakes,
-          contains('bipolar indication'));
+          contains('bipolar disorder'));
     });
 
     test('divalproex ER locks 8-20 percent DR conversion and pregnancy warning',

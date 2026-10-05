@@ -3621,17 +3621,6 @@ const reviewedEnglishPatientCounselingExpansion =
     help: "Seek review for dangerous sleep attacks, severe hallucinations, fainting or risky impulse-control behavior.",
     teach: "Can the ER tablet be split, and what do you do after a significant interruption?",
   ),
-  'amantadine-gocovri': _ReviewedEn(
-    purpose: "Treats Parkinson dyskinesia and selected off episodes with a product-specific extended-release amantadine formulation.",
-    how: "Swallow whole, or open the capsule and sprinkle the entire contents on about a teaspoon of soft food such as applesauce; swallow immediately without chewing and do not store.",
-    timing: "Take once daily at bedtime, with or without food. Avoid alcohol with the dose.",
-    duration: "Chronic therapy when effective; avoid sudden discontinuation.",
-    important: "GOCOVRI is not interchangeable milligram-for-milligram with other amantadine products.",
-    common: "Dizziness, hallucinations or sleepiness can occur.",
-    missed: "Skip a missed dose and take the usual dose the next day at bedtime.",
-    help: "Seek review for severe hallucinations, suicidal thoughts, dangerous sleep attacks or new eye pain/visual change.",
-    teach: "When do you take GOCOVRI, and can it be substituted mg-for-mg with regular amantadine?",
-  ),
   'siponimod-mayzent': _ReviewedEn(
     purpose: "Disease-modifying treatment for selected relapsing forms of multiple sclerosis.",
     how: "Start with the prescribed titration regimen after CYP2C9 genotyping; do not start directly at the maintenance dose.",

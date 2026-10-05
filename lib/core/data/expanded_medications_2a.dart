@@ -85,6 +85,7 @@ const expandedMedications2A = <Medication>[
       foodTiming: 'Food instructions are product-specific; counsel from the exact ER product label.',
       duration: 'Usually chronic for hypertension or angina.',
       formulationHandling: 'Swallow ER tablets whole. Do not crush, chew or split unless the exact product label explicitly permits it. Some osmotic tablets may leave an empty shell in stool.',
+      releaseConversion: 'The reviewed nifedipine extended-release labeling does not provide a direct immediate-release capsule → ER conversion table. Once-daily ER produces a different concentration profile from immediate-release nifedipine, so do not auto-convert solely by matching milligrams. Even within the reviewed ER product, two 30-mg ER tablets may be interchanged with one 60-mg ER tablet, but three 30-mg ER tablets produce a higher Cmax than one 90-mg ER tablet and are not considered interchangeable.',
       monitoring: 'Blood pressure, ankle edema, headache and dizziness.',
       interactions: 'Strong CYP3A inhibitors/inducers can change exposure; grapefruit can increase nifedipine exposure and should be reviewed against the exact product label.',
       commonMistakes: 'Treating all nifedipine ER brands as interchangeable or crushing the tablet.',
@@ -92,6 +93,11 @@ const expandedMedications2A = <Medication>[
     ),
     sourceLabel: 'DailyMed nifedipine extended-release product labeling · exact ER product required',
     sections: [
+      MedicationSection(
+        title: 'No automatic IR → ER conversion',
+        body: 'Do not build a milligram-for-milligram IR nifedipine → ER rule. The release profile differs, and even some ER strength combinations are not interchangeable: 2×30 mg may substitute for 60 mg, but 3×30 mg should not be treated as equivalent to one 90-mg ER tablet.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Formulation lock',
         body: 'Different nifedipine ER technologies are not assumed to share identical food or manipulation instructions. Verify the dispensed product.',
@@ -102,7 +108,7 @@ const expandedMedications2A = <Medication>[
       purposeAr: 'يُستخدم للضغط أو الذبحة حسب وصف الطبيب.',
       howToUseAr: 'ابتلع الحبة ممتدة المفعول كاملة ولا تسحقها أو تمضغها.',
       timingAr: 'خذها في وقت ثابت، وتعليمات الطعام تعتمد على نفس الماركة/المنتج.',
-      importantAr: 'إذا رأيت غلاف حبة فارغًا في البراز مع بعض المنتجات فهذا قد يكون طبيعيًا؛ لا يعني أن الجرعة لم تُمتص.',
+      importantAr: 'لا تحول nifedipine العادي إلى ER بنفس عدد الـmg من نفسك. وحتى داخل بعض منتجات ER، حبتان 30 mg قد تعادلان 60 mg، لكن ثلاث حبات 30 mg ليست دائمًا بديلًا عن حبة 90 mg بسبب اختلاف ذروة الدواء. إذا رأيت غلاف حبة فارغًا في البراز مع بعض المنتجات فهذا قد يكون طبيعيًا.',
       commonActionableAr: 'قد يحدث صداع أو احمرار أو تورم الكاحلين.',
       missedDoseAr: 'خذ الجرعة عند التذكر إذا لم يقترب موعد التالية؛ وإلا تجاوزها ولا تضاعف.',
       seekHelpAr: 'اطلب تقييمًا عند إغماء، ألم صدر يزداد أو تورم شديد/ضيق نفس.',

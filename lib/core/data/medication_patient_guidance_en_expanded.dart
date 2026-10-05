@@ -4221,5 +4221,40 @@ const reviewedEnglishPatientCounselingExpansion =
     teach: "If the IR total is 250 mg/day, does the conversion round to 300 mg ER or 200 mg ER?",
   ),
 
+  'tapentadol-nucynta-er': _ReviewedEn(
+    purpose: "Extended-release tapentadol for severe persistent pain requiring daily long-term opioid treatment when alternatives are inadequate.",
+    how: "Take about every 12 hours as prescribed. Swallow each ER tablet whole with enough water; never split, break, chew, crush or dissolve it.",
+    timing: "Two equal ER doses approximately 12 hours apart after a labeled IR-to-ER conversion.",
+    duration: "Long-term only while benefits outweigh risks; reassess pain, function and opioid safety regularly.",
+    important: "Tapentadol IR to ER: add the full 24-hour IR tapentadol dose and divide it into two equal ER doses. Example: IR 50 mg four times daily = 200 mg/day → ER 100 mg every 12 hours. Do not use this rule for another opioid.",
+    common: "Sleepiness, dizziness, nausea and constipation can occur. Avoid alcohol and unprescribed sedatives.",
+    missed: "Do not double an ER dose or add IR tapentadol on your own.",
+    help: "Get emergency help for slow/difficult breathing or extreme sleepiness with difficulty waking.",
+    teach: "If IR tapentadol is 50 mg four times daily, what ER dose follows the labeled conversion?",
+  ),
+  'morphine-sulfate-er-tablets': _ReviewedEn(
+    purpose: "Extended-release oral morphine for severe persistent pain requiring around-the-clock long-term opioid therapy.",
+    how: "Swallow ER tablets whole. Never crush, chew or dissolve them because rapid release can cause a fatal overdose.",
+    timing: "Product-specific fixed schedule, commonly every 12 or every 8 hours after clinician-directed conversion.",
+    duration: "Long-term only while benefit outweighs risk; taper rather than abruptly stopping after dependence develops.",
+    important: "For conversion from other oral morphine, use the established 24-hour oral morphine requirement: one-half every 12 hours or one-third every 8 hours. Do not apply this rule to a different opioid.",
+    common: "Sleepiness, constipation and nausea are common actionable effects. Avoid alcohol and unprescribed sedatives.",
+    missed: "Do not double the next ER dose or self-add extra opioid doses.",
+    help: "Get emergency help for slow/difficult breathing or inability to wake normally.",
+    teach: "If total oral morphine is 60 mg/day, what is the q12h ER amount, and can you use the same rule for oxycodone?",
+  ),
+  'mesalamine-delayed-release-800mg': _ReviewedEn(
+    purpose: "Delayed-release mesalamine 800 mg for moderately active ulcerative colitis under the reviewed product label.",
+    how: "Swallow whole; do not cut, break or chew. Take on an empty stomach at least 1 hour before or 2 hours after food and drink adequate fluids.",
+    timing: "Use the exact 800-mg product schedule; do not copy another mesalamine brand's food or dosing instructions.",
+    duration: "The reviewed 800-mg label uses 1600 mg three times daily for 6 weeks; other mesalamine products and maintenance regimens differ.",
+    important: "Mesalamine products are not automatically interchangeable by milligrams. The reviewed label specifically says not to substitute one 800-mg delayed-release tablet for two 400-mg delayed-release oral products.",
+    common: "Headache, abdominal discomfort or nausea can occur; maintain hydration unless fluid restriction applies.",
+    missed: "Do not double the next dose.",
+    help: "Seek review for reduced urine, swelling, severe rash, new chest pain or clearly worsening colitis symptoms.",
+    teach: "Can one 800-mg mesalamine tablet automatically replace two 400-mg tablets just because the total milligrams match?",
+  ),
+
+
 
 };

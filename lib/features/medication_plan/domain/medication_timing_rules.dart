@@ -2734,6 +2734,31 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · KOMBIGLYZE XR',
   ),
 
+  'metoprolol-succinate-er': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Metoprolol succinate ER: مرة يوميًا ويفضل مع الوجبة أو بعدها مباشرة؛ IR→ER يحافظ على نفس total daily dose.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Metoprolol succinate ER · 2026',
+  ),
+  'verapamil-er-tablets': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Verapamil ER reviewed tablet: مع الطعام؛ IR→ER قد يحافظ على نفس total daily mg لكن schedule/brand-specific instructions مهمة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Verapamil ER tablets · 2026',
+  ),
+  'propranolol-er-capsules': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Propranolol ER: مرة يوميًا؛ ليس simple mg-for-mg substitute من النوع العادي وقد يحتاج retitration.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Propranolol ER capsules · 2026',
+  ),
+  'tolterodine-la': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Tolterodine LA: مرة يوميًا؛ usual IR 2 mg BID وLA 4 mg QD لا يعنيان auto-conversion، وLA قد تنخفض إلى 2 mg/day حسب الكبد/الكلى/CYP3A4.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tolterodine LA · Jun 2026',
+  ),
+
 
 };
 

@@ -2092,17 +2092,6 @@ const reviewedEnglishPatientCounselingExpansion =
     help: "Get urgent help for severe hypoglycemia, seizure or loss of consciousness.",
     teach: "Is your glipizide immediate-release or ER, and how long before the meal will you take this form?",
   ),
-  'glipizide-er': _ReviewedEn(
-    purpose: "Lowers blood glucose in type 2 diabetes.",
-    how: "Take the extended-release tablet once daily with breakfast or the first main meal and swallow it whole.",
-    timing: "With breakfast or the first main meal of the day.",
-    duration: "Usually long term while effective and appropriate.",
-    important: "Do not crush or chew an ER tablet. Do not use the immediate-release 30-minute pre-meal rule for this formulation.",
-    common: "Hypoglycemia can occur, especially if food intake is reduced or other glucose-lowering medicines are used.",
-    missed: "Do not double the next dose; follow your diabetes plan.",
-    help: "Get urgent help for severe hypoglycemia, seizure or loss of consciousness.",
-    teach: "Show me where the package says ER/XL and tell me how its meal timing differs from regular glipizide.",
-  ),
   'insulin-aspart-novolog': _ReviewedEn(
     purpose: "Rapidly lowers meal-related blood glucose.",
     how: "For NOVOLOG-type insulin aspart, inject subcutaneously within 5–10 minutes before the meal and rotate injection sites.",

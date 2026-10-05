@@ -79,7 +79,7 @@ void main() {
           contains('274 mg once daily'),
         ),
       );
-      expect(m.patient.timingAr, contains('وقت النوم'));
+      expect(m.patient.timingAr, contains('عند النوم'));
       expect(m.patient.howToUseAr,
           allOf(contains('applesauce'), contains('دون مضغ')));
     });

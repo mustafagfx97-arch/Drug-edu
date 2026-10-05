@@ -519,7 +519,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
 
 
   'glipizide-ir': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
-  'glipizide-er': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'insulin-aspart-novolog':
       TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
   'isosorbide-mononitrate-er':

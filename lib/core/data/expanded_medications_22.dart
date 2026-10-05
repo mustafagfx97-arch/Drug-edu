@@ -244,12 +244,20 @@ const expandedMedications22 = <Medication>[
       foodTiming: 'Take fasting, at least 1 hour before or 2 hours after meals.',
       duration: 'Indication-specific short course; current ER 750 mg labeling includes once-daily bacterial-vaginosis therapy.',
       formulationHandling: 'Swallow ER tablets whole; do not split, chew or crush.',
+      releaseConversion:
+          'The reviewed metronidazole ER 750 mg product has its own indication-specific regimen (750 mg once daily for 7 days for bacterial vaginosis) and fasting administration requirements. The label does not provide a general immediate-release → ER conversion rule. Do not convert metronidazole IR regimens to ER by matching milligrams or frequency.',
       monitoring: 'Clinical response, neurologic symptoms, hepatic risk and interacting medicines.',
       interactions: 'Alcohol/propylene-glycol exposure and interacting medicines should be reviewed according to current product labeling.',
       commonMistakes: 'Taking ER with food, crushing ER tablets or applying immediate-release metronidazole instructions.',
       specialPopulations: 'Severe hepatic impairment and hemodialysis can alter dosing/management.',
     ),
     sections: [
+      MedicationSection(
+        title: 'No automatic IR → ER conversion',
+        body:
+            'Metronidazole ER 750 mg is a product-specific regimen and must not inherit immediate-release schedules. For the reviewed BV regimen it is 750 mg once daily for 7 days, fasting, swallowed whole.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'ER fasting lock',
         body: 'Metronidazole ER 750 mg should be taken at least 1 hour before or 2 hours after meals and swallowed whole.',
@@ -260,7 +268,7 @@ const expandedMedications22 = <Medication>[
       purposeAr: 'صيغة ممتدة المفعول من metronidazole لاستطبابات محددة مثل بعض حالات bacterial vaginosis.',
       howToUseAr: 'ابتلع قرص ER كاملًا ولا تسحقه أو تمضغه أو تقسمه.',
       timingAr: 'على معدة فارغة: قبل الطعام بساعة على الأقل أو بعده بساعتين.',
-      importantAr: 'لا تستخدم تعليمات metronidazole العادي تلقائيًا مع ER.',
+      importantAr: 'لا تحول metronidazole العادي إلى ER بنفس مجموع الـmg أو نفس عدد الجرعات. منتج ER 750 mg له نظام خاص للاستطباب المراجع: مرة يوميًا لمدة 7 أيام وعلى معدة فارغة.',
       commonActionableAr: 'قد يحدث غثيان أو طعم معدني.',
       missedDoseAr: 'خذ الجرعة عند التذكر إذا لم يقترب موعد التالية ولا تضاعف.',
       seekHelpAr: 'راجع عند خدر/وخز مستمر، تشنجات أو أعراض عصبية شديدة.',

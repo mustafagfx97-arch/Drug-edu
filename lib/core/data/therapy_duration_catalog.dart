@@ -831,10 +831,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   ),
 
 
-  'paroxetine-paxil-cr': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر إذا كان فعالًا؛ PMDD قد يكون continuous أو luteal-phase-only حسب الخطة، والإيقاف تدريجي.',
-  ),
   'desvenlafaxine-er': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'غالبًا علاج طويل الأمد للاكتئاب عند الاستجابة؛ الإيقاف تدريجي لتقليل discontinuation symptoms.',
@@ -854,10 +850,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'ropinirole-er': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يتطلب re-titration.',
-  ),
-  'amantadine-gocovri': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'علاج مزمن لـdyskinesia/off episodes عند الاستفادة؛ لا يوقف فجأة بعد الاستخدام المنتظم.',
   ),
   'siponimod-mayzent': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
@@ -1045,6 +1037,31 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'tolterodine-la': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'عادةً يستمر ما دام يحسن أعراض المثانة وتبقى الأعراض المضادة للكولين مقبولة.',
+  ),
+
+  'lithium-carbonate-er-450': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن لاضطراب bipolar؛ الجرعة والمتابعة تعتمد على مستوى lithium والحالة السريرية.',
+  ),
+  'paroxetine-paxil-cr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا يستمر لأشهر أو أكثر حسب الاستطباب وخطر الانتكاس؛ الإيقاف تدريجي.',
+  ),
+  'amantadine-gocovri': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'يستمر حسب فائدة dyskinesia/OFF والتحمل؛ لا يوقف فجأة.',
+  ),
+  'amantadine-osmolex-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن/مفصل حسب Parkinson أو drug-induced EPS والتحمل؛ لا يوقف فجأة.',
+  ),
+  'methylphenidate-concerta': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج ADHD طويل الأمد حسب الفائدة والنمو والقلب وخطر misuse؛ يعاد تقييم الحاجة دوريًا.',
+  ),
+  'mixed-amphetamine-salts-adderall-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج ADHD طويل الأمد حسب الفائدة والنمو والقلب وخطر misuse؛ يعاد تقييم الحاجة دوريًا.',
   ),
 
 

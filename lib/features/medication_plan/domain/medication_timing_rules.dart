@@ -2443,12 +2443,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Fingolimod capsules · 2025-2026',
   ),
 
-  'paroxetine-paxil-cr': MedicationTimingRule(
-    anchor: 'morning',
-    instructionAr: 'PAXIL CR: مرة صباحًا، مع أو بدون الطعام؛ ابتلعها كاملة ولا تسحقها.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · PAXIL CR · effective Sep 2026',
-  ),
   'desvenlafaxine-er': MedicationTimingRule(
     anchor: 'same-time-daily',
     instructionAr: 'Desvenlafaxine ER: مرة يوميًا في وقت متقارب، مع/بدون الطعام؛ whole tablet.',
@@ -2478,12 +2472,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Ropinirole ER: مرة يوميًا مع/بدون الطعام؛ whole tablet؛ الانقطاع المهم قد يحتاج re-titration.',
     autoScheduleSafe: false,
     source: 'DailyMed · Ropinirole ER · revised May 2026',
-  ),
-  'amantadine-gocovri': MedicationTimingRule(
-    anchor: 'bedtime',
-    instructionAr: 'GOCOVRI: مرة عند النوم، مع/بدون الطعام؛ تجنب الكحول؛ غير interchangeable مع amantadine الآخر.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · GOCOVRI · revised Feb 2026',
   ),
   'siponimod-mayzent': MedicationTimingRule(
     anchor: 'same-time-daily',
@@ -2758,6 +2746,43 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Tolterodine LA: مرة يوميًا؛ usual IR 2 mg BID وLA 4 mg QD لا يعنيان auto-conversion، وLA قد تنخفض إلى 2 mg/day حسب الكبد/الكلى/CYP3A4.',
     autoScheduleSafe: false,
     source: 'DailyMed · Tolterodine LA · Jun 2026',
+  ),
+
+  'lithium-carbonate-er-450': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Lithium ER 450 mg: غالبًا q12h حسب الوصفة؛ IR→ER same total daily dose when possible، وإذا لم تكن الجرعة multiple of 450 نبدأ بأقرب جرعة أقل مع level follow-up.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lithium carbonate ER 450 mg · 2026',
+  ),
+  'paroxetine-paxil-cr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'PAXIL CR: مرة صباحًا مع/بدون الطعام؛ لا يوجد direct IR→CR conversion table في الملصق الحالي.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · PAXIL CR',
+  ),
+  'amantadine-gocovri': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'GOCOVRI: مرة عند النوم؛ غير interchangeable مع amantadine IR أو OSMOLEX ER.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · GOCOVRI',
+  ),
+  'amantadine-osmolex-er': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'OSMOLEX ER: صباحًا؛ renal impairment قد يجعل الجرعة كل 48 أو 96 ساعة. غير interchangeable مع amantadine products.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · OSMOLEX ER',
+  ),
+  'methylphenidate-concerta': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'CONCERTA: مرة صباحًا؛ استخدم جدول التحويل الخاص بالمنتج من IR methylphenidate ولا تنقله إلى XR brand آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · CONCERTA · 2026',
+  ),
+  'mixed-amphetamine-salts-adderall-xr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'ADDERALL XR: مرة صباحًا؛ divided-dose IR ADDERALL → XR same total daily dose once daily، ولا تعمم على amphetamine product آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ADDERALL XR',
   ),
 
 

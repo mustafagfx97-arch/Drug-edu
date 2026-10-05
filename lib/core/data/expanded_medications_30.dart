@@ -21,6 +21,8 @@ const expandedMedications30 = <Medication>[
           'Usually months or longer when effective. PMDD may be continuous or luteal-phase-only; duration/regimen is indication-specific.',
       formulationHandling:
           'Swallow controlled-release tablets whole. Do not chew or crush.',
+      releaseConversion:
+          'Current PAXIL CR labeling does not provide a direct immediate-release paroxetine → CR conversion table or an automatic mg-for-mg switch instruction. Do not infer a universal 20 mg IR → 25 mg CR rule solely from historical relative-bioavailability or trial dose ranges. Select the CR dose by indication, prior clinical response, age, renal/hepatic status and tolerability, then reassess after the switch.',
       monitoring:
           'Mood/suicidality after initiation or dose changes, serotonin-syndrome symptoms, sexual adverse effects, hyponatremia in susceptible patients and bleeding risk when relevant.',
       interactions:
@@ -31,6 +33,12 @@ const expandedMedications30 = <Medication>[
           'Lower starting/max doses apply in severe renal or hepatic impairment and in older adults.',
     ),
     sections: [
+      MedicationSection(
+        title: 'No automatic IR → CR conversion',
+        body:
+            'The current label provides indication-specific CR starting/titration doses, not a formal IR-to-CR conversion table. Do not encode a blanket 20→25 mg conversion.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'CR administration lock',
         body:
@@ -52,6 +60,7 @@ const expandedMedications30 = <Medication>[
       timingAr:
           'تؤخذ صباحًا، مع الطعام أو بدونه.',
       importantAr:
+          'لا تحول من paroxetine العادي إلى CR بنفسك بنسبة ثابتة؛ الملصق الحالي لا يعطي جدول تحويل IR→CR مباشر. لا توقف الدواء فجأة، وإذا كان الاستخدام للـPMDD فقد تكون الخطة يومية أو خلال luteal phase حسب الطبيب.',
           'لا توقفها فجأة بعد الاستخدام المنتظم. إذا كان الاستخدام للـPMDD فقد تكون الخطة يومية طوال الشهر أو فقط خلال luteal phase حسب الطبيب.',
       commonActionableAr:
           'قد يحدث غثيان أو نعاس/أرق أو آثار جنسية. إذا أثرت الأعراض على الالتزام راجع الطبيب بدل إيقاف الدواء بنفسك.',
@@ -397,6 +406,8 @@ const expandedMedications30 = <Medication>[
           'Chronic therapy when effective; avoid sudden discontinuation.',
       formulationHandling:
           'Not substitutable with other immediate- or extended-release amantadine products. Swallow whole, or open and sprinkle the entire contents on about a teaspoon of soft food such as applesauce; swallow immediately without chewing and do not store.',
+      releaseConversion:
+          'GOCOVRI is not substitutable with other amantadine immediate- or extended-release products. Do not calculate a mg-for-mg conversion from amantadine IR or OSMOLEX ER. The labeled regimen begins at 137 mg once nightly for 1 week, then increases to 274 mg once nightly in patients with appropriate renal function.',
       monitoring:
           'Hallucinations, suicidality/depression, sudden sleep, orthostasis, renal function and corneal/vision symptoms.',
       interactions:
@@ -407,6 +418,12 @@ const expandedMedications30 = <Medication>[
           'Renal function is critical for dosing because amantadine is renally eliminated.',
     ),
     sections: [
+      MedicationSection(
+        title: 'No amantadine mg-for-mg conversion',
+        body:
+            'GOCOVRI is explicitly not substitutable with other amantadine IR or ER products. Its bedtime regimen and exposure profile are product-specific.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Bedtime + noninterchangeability lock',
         body:
@@ -428,6 +445,7 @@ const expandedMedications30 = <Medication>[
       timingAr:
           'مرة واحدة عند النوم، مع الطعام أو بدونه. تجنب الكحول وقت الجرعة.',
       importantAr:
+          'GOCOVRI ليست interchangeable مع amantadine العادي أو OSMOLEX ER؛ لا تحسب الجرعة بنفس عدد الـmg. تؤخذ مرة عند النوم ولا توقف فجأة.',
           'GOCOVRI ليست بديلًا mg-for-mg لأي amantadine آخر. لا توقفها فجأة.',
       commonActionableAr:
           'قد يحدث دوار أو hallucinations أو نعاس؛ أخبر الطبيب عن تغير المزاج أو النوم المفاجئ.',

@@ -405,6 +405,8 @@ const expandedMedications30 = <Medication>[
           'Chronic therapy when effective; avoid sudden discontinuation.',
       formulationHandling:
           'Not substitutable with other immediate- or extended-release amantadine products. Swallow whole, or open and sprinkle the entire contents on about a teaspoon of soft food such as applesauce; swallow immediately without chewing and do not store.',
+      releaseConversion:
+          'GOCOVRI is not substitutable with other immediate-release or extended-release amantadine products. Do not calculate an IR→GOCOVRI dose by matching milligrams. The reviewed GOCOVRI regimen starts at 137 mg once daily at bedtime and increases after 1 week to 274 mg once daily, with renal-dose modification when indicated.',
       monitoring:
           'Hallucinations, suicidality/depression, sudden sleep, orthostasis, renal function and corneal/vision symptoms.',
       interactions:
@@ -415,6 +417,12 @@ const expandedMedications30 = <Medication>[
           'Renal function is critical for dosing because amantadine is renally eliminated.',
     ),
     sections: [
+      MedicationSection(
+        title: 'No amantadine auto-conversion',
+        body:
+            'GOCOVRI has its own bedtime regimen and is not substitutable with immediate-release amantadine or other amantadine ER products; do not convert by matching milligrams.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Bedtime + noninterchangeability lock',
         body:
@@ -436,7 +444,7 @@ const expandedMedications30 = <Medication>[
       timingAr:
           'مرة واحدة عند النوم، مع الطعام أو بدونه. تجنب الكحول وقت الجرعة.',
       importantAr:
-          'GOCOVRI ليست بديلًا mg-for-mg لأي amantadine آخر. لا توقفها فجأة.',
+          'GOCOVRI ليست بديلًا mg-for-mg لأي amantadine آخر؛ لا تحول من العادي أو OSMOLEX بنفس رقم الـmg. يبدأ المنتج المراجع 137 mg وقت النوم ثم 274 mg بعد أسبوع إذا سمحت وظيفة الكلى. لا توقفها فجأة.',
       commonActionableAr:
           'قد يحدث دوار أو hallucinations أو نعاس؛ أخبر الطبيب عن تغير المزاج أو النوم المفاجئ.',
       missedDoseAr:

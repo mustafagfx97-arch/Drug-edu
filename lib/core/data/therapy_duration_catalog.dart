@@ -1086,7 +1086,7 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'قد يكون علاجًا مزمنًا في حالات مختارة؛ الاستمرار يعتمد على الفائدة، serum level، التداخلات وعلامات السمية.',
   ),
   'mesalamine-dr-800mg': TherapyDurationGuidance(
-    kind: TherapyDurationKind.finite,
+    kind: TherapyDurationKind.shortCourse,
     patientOverrideAr: 'المنتج DR 800 mg المراجع له كورس 6 أسابيع لعلاج moderately active ulcerative colitis؛ لا تعمم هذه المدة على كل منتجات mesalamine.',
   ),
 

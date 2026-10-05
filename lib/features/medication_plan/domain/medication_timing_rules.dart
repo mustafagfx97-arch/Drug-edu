@@ -1646,12 +1646,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     requiresMealChoice: true,
     source: 'DailyMed · Glipizide IR · Feb 2026',
   ),
-  'glipizide-er': MedicationTimingRule(
-    anchor: 'breakfast',
-    instructionAr:
-        'Glipizide ER مرة يوميًا مع الفطور أو أول وجبة رئيسية في اليوم؛ ابتلع الحبة كاملة.',
-    source: 'DailyMed · Glipizide ER · Aug 2026',
-  ),
   'insulin-aspart-novolog': MedicationTimingRule(
     anchor: 'with-meal',
     instructionAr:
@@ -2652,6 +2646,49 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Divalproex ER: مرة يوميًا؛ في labeled epilepsy DR→ER conversion تكون ER أعلى 8–20% من total daily DR dose حسب جدول المنتج.',
     autoScheduleSafe: false,
     source: 'DailyMed · Divalproex sodium ER · 2026',
+  ),
+
+  'carbamazepine-xr-tablets': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Carbamazepine XR tablets: عادةً BID مع الوجبات؛ conventional tablets → XR يبقى نفس total daily mg لكن يتغير الجدول.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Carbamazepine XR tablets · 2026',
+  ),
+  'levetiracetam-xr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Levetiracetam XR: مرة يوميًا مع أو بدون الطعام؛ لا تعمل auto-conversion من IR اعتمادًا على نفس total mg فقط.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · KEPPRA XR · 2024/current',
+  ),
+  'topiramate-qudexy-xr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'QUDEXY XR: مرة يوميًا مع/بدون الطعام؛ same-total-daily-dose PK switch evidence من IR q12h، مع متابعة سريرية.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · QUDEXY XR · Aug 2026',
+  ),
+  'topiramate-trokendi-xr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'TROKENDI XR: مرة يوميًا مع/بدون الطعام؛ swallow whole؛ لا alcohol خلال 6 h قبل و6 h بعد الجرعة.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · TROKENDI XR · Mar 2026',
+  ),
+  'metformin-er-tablets': MedicationTimingRule(
+    anchor: 'dinner',
+    instructionAr: 'Metformin ER standard tablets: مرة يوميًا مع وجبة المساء؛ IR→ER نفس total daily dose حتى 2000 mg QD للمنتج المراجع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Metformin ER tablets · Jul 2026',
+  ),
+  'glipizide-er': MedicationTimingRule(
+    anchor: 'breakfast',
+    instructionAr: 'Glipizide ER: مرة يوميًا مع الفطور أو أول وجبة رئيسية؛ IR→ER إلى أقرب equivalent total daily dose.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Glipizide ER tablets',
+  ),
+  'gliclazide-mr-30mg': MedicationTimingRule(
+    anchor: 'breakfast',
+    instructionAr: 'Gliclazide MR 30 mg: مرة يوميًا مع الفطور؛ 80 mg IR ≈ 30 mg MR للمنتج المراجع مع glucose monitoring.',
+    autoScheduleSafe: false,
+    source: 'emc SmPC · Diamicron MR 30 mg',
   ),
 
 

@@ -81,7 +81,9 @@ const expandedMedications18 = <Medication>[
       duration:
           'Usually long-term glucose-lowering therapy while effective and appropriate.',
       formulationHandling:
-          'Swallow the ER tablet whole. Do not chew, crush or split an extended-release tablet unless the exact product label explicitly permits a specific manipulation.',
+          'Swallow the ER tablet whole. Do not chew, crush or divide. The inactive tablet shell may appear in stool after the medicine has been released.',
+      releaseConversion:
+          'Patients receiving immediate-release glipizide may be switched to glipizide extended-release tablets once daily at the nearest equivalent total daily dose. The reviewed ER product has a maximum recommended dose of 20 mg once daily. Example: IR 5 mg twice daily = 10 mg/day; an ER conversion near 10 mg once daily may be selected, but available strengths and hypoglycemia risk still require clinical review.',
       monitoring:
           'Blood glucose and A1c; monitor for hypoglycemia, especially with low intake, older age, renal/hepatic impairment or combination therapy.',
       interactions:
@@ -93,6 +95,12 @@ const expandedMedications18 = <Medication>[
     ),
     sections: [
       MedicationSection(
+        title: 'IR → ER conversion',
+        body:
+            'Convert immediate-release glipizide to once-daily ER at the nearest equivalent total daily dose. This is not a reason to keep the old IR dosing frequency; reassess glucose and hypoglycemia after the switch.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
         title: 'ER administration lock',
         body:
             'Current ER labeling directs once-daily administration with breakfast or the first main meal. This differs from immediate-release glipizide, which is generally given about 30 minutes before a meal.',
@@ -102,11 +110,11 @@ const expandedMedications18 = <Medication>[
     patient: PatientCounselingData(
       purposeAr: 'يساعد على خفض سكر الدم في السكري النوع الثاني.',
       howToUseAr:
-          'إذا كانت العبوة مكتوب عليها ER/XL فخذها مرة يوميًا مع الفطور أو أول وجبة رئيسية، وابتلع الحبة كاملة.',
+          'إذا كانت العبوة مكتوب عليها ER/XL فخذها مرة يوميًا مع الفطور أو أول وجبة رئيسية، وابتلع الحبة كاملة. قد ترى غلافًا يشبه الحبة في البراز وهذا قد يكون طبيعيًا.',
       timingAr:
           'مع الفطور أو أول وجبة رئيسية في اليوم، وليس 30 دقيقة قبل الطعام مثل النوع العادي.',
       importantAr:
-          'لا تسحق أو تمضغ حبة ER. قد تسبب هبوط السكر، لذلك لا تتجاوز الوجبة بعد أخذها.',
+          'عند التحويل من glipizide العادي إلى ER نختار أقرب مجموع جرعة يومية مكافئ مرة واحدة يوميًا، مع الانتباه لهبوط السكر. لا تسحق حبة ER ولا تغيّر القوة من نفسك.',
       commonActionableAr:
           'انتبه لأعراض هبوط السكر مثل التعرق، الرجفة، الجوع، الدوخة أو الخفقان واتبع خطة علاج الهبوط.',
       missedDoseAr:

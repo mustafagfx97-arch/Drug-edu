@@ -40,11 +40,15 @@ void main() {
           contains('50 mg four times daily'),
           contains('200 mg/day'),
           contains('100 mg every 12 hours'),
-          contains('no established clinical-trial conversion ratio'),
+          contains('500 mg/day'),
+          contains('50 mg every 12 hours'),
         ),
       );
+      expect(m.useProfile.releaseConversion,
+          contains('no established clinical-trial conversion ratio'));
+      expect(m.useProfile.commonMistakes, contains('500-mg/day ER maximum'));
       expect(m.patient.importantAr,
-          allOf(contains('200 mg/day'), contains('100 mg ER كل 12 ساعة')));
+          allOf(contains('200 mg/day'), contains('100 mg ER كل 12 ساعة'), contains('500 mg/day')));
     });
 
     test('oral morphine to ER uses half q12h or one-third q8h', () {
@@ -60,11 +64,18 @@ void main() {
           contains('60 mg/day'),
           contains('30 mg q12h'),
           contains('20 mg q8h'),
-          contains('no clinical-trial conversion ratio'),
+          contains('single dose greater than 60 mg'),
+          contains('total daily dose greater than 120 mg'),
         ),
       );
+      expect(m.useProfile.releaseConversion,
+          contains('no clinical-trial conversion ratio'));
+      expect(m.useProfile.specialPopulations,
+          allOf(contains('60 mg oral morphine/day'), contains('1 week or longer')));
       expect(m.patient.howToUseAr,
           allOf(contains('لا تسحقها'), contains('overdose قاتل')));
+      expect(m.patient.importantAr,
+          allOf(contains('single dose >60 mg'), contains('total >120 mg/day')));
     });
 
     test('mesalamine products are locked against milligram substitution', () {
@@ -83,6 +94,8 @@ void main() {
           allOf(contains('قبل الطعام بساعة'), contains('بعده بساعتين')));
       expect(m.patient.importantAr,
           allOf(contains('800 mg'), contains('400 mg')));
+      expect(m.patient.seekHelpAr,
+          allOf(contains('صداع غير معتاد'), contains('تشوش أو ازدواج بالرؤية')));
     });
   });
 }

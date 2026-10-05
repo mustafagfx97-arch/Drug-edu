@@ -977,11 +977,11 @@ const reviewedEnglishPatientCounselingExpansion =
     how: "Take the exact immediate-release or extended-release product prescribed and keep regular lithium-level, kidney and thyroid monitoring.",
     timing: "Take at consistent times and maintain a reasonably consistent salt and fluid intake. Dehydration can raise lithium levels.",
     duration: "Often long term when effective for relapse prevention.",
-    important: "Lithium has a narrow safety margin. NSAIDs, ACE inhibitors/ARBs, thiazide diuretics and dehydration can increase levels. Do not start or stop interacting medicines without review.",
+    important: "Lithium has a narrow safety margin. For the reviewed 450 mg ER tablet, keep the same total daily dose when possible; if the IR total is not a multiple of 450 mg, start with the nearest lower 450-mg total and recheck serum lithium. Example: 1500 mg/day IR→1350 mg/day ER. NSAIDs, ACE inhibitors/ARBs, thiazides and dehydration can raise levels.",
     common: "Fine tremor, thirst, increased urination, nausea or mild cognitive slowing can occur.",
     missed: "Do not double a missed dose. If doses have been interrupted or you are dehydrated/ill, contact the treatment team for advice.",
     help: "Seek urgent care for worsening coarse tremor, repeated vomiting/diarrhea, severe unsteadiness, slurred speech, confusion, extreme drowsiness or seizure.",
-    teach: "What changes in fluid/salt intake or medicines can raise lithium, and what toxicity symptoms require urgent care?",
+    teach: "If your IR lithium total is 1500 mg/day and the reviewed ER product comes in 450-mg increments, what starting ER total is used and why must the serum level be rechecked?",
   ),
   'risperidone': _ReviewedEn(
     purpose: "Treats schizophrenia, bipolar disorder and selected irritability/autism-related symptoms depending on age and indication.",

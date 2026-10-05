@@ -748,7 +748,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'lithium': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'التوقيت وعدد الجرعات يختلفان حسب IR/ER والخطة؛ حافظ على نمط ثابت للملح والسوائل ولا تعتمد توقيتًا تلقائيًا دون معرفة المنتج.',
+    instructionAr: 'Lithium IR/ER: exact product required؛ reviewed 450 mg ER uses same total daily dose when possible، وإذا لم تكن من مضاعفات 450 mg استخدم nearest lower 450-mg total مع serum-level follow-up.',
     autoScheduleSafe: false,
     source: 'DailyMed Lithium Carbonate',
   ),
@@ -2758,6 +2758,37 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Tolterodine LA: مرة يوميًا؛ usual IR 2 mg BID وLA 4 mg QD لا يعنيان auto-conversion، وLA قد تنخفض إلى 2 mg/day حسب الكبد/الكلى/CYP3A4.',
     autoScheduleSafe: false,
     source: 'DailyMed · Tolterodine LA · Jun 2026',
+  ),
+
+  'guanfacine-er-adhd': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Guanfacine ER: مرة يوميًا صباحًا أو مساءً؛ لا mg-for-mg conversion من IR، ويبدأ ER من تدرجه الخاص. تجنب high-fat meal.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Guanfacine ER · 2026',
+  ),
+  'clonidine-er-adhd': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Clonidine ER ADHD: لا mg-for-mg conversion من clonidine الآخر؛ يبدأ عادة 0.1 mg عند النوم ثم weekly titration، وقد يصبح BID مع جرعة النوم مساوية أو أكبر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clonidine ER ADHD',
+  ),
+  'methylphenidate-ritalin-la': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'RITALIN LA: مرة صباحًا؛ استخدم جدول Ritalin IR BID→LA الموثق فقط ولا تطبقه على methylphenidate products أخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · RITALIN LA · 2025-current',
+  ),
+  'amphetamine-adderall-xr': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'ADDERALL XR: مرة صباحًا؛ divided ADDERALL IR→XR يحافظ على same total daily dose، لكن لا تعمم القاعدة على amphetamine products أخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · ADDERALL XR · Apr 2026',
+  ),
+  'tramadol-er-tablets': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Tramadol ER: مرة يوميًا حسب الوصفة؛ IR 24-hour total يُقرب DOWN إلى أقل 100 mg ER، وليس PRN rescue ولا يُجمع مع tramadol آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tramadol ER tablets · 2026',
   ),
 
 

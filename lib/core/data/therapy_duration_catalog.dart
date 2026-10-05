@@ -1077,6 +1077,15 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يراجع دوريًا ولا يوقف فجأة بعد حدوث dependence.',
   ),
 
+  'theophylline-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن/فردي عند الحاجة؛ يجب متابعة serum level والتداخلات وتغير التدخين/المرض دوريًا.',
+  ),
+  'mesalamine-dr-800mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'المنتج 800 mg المراجع لعلاج moderately active UC: 1600 mg ثلاث مرات يوميًا لمدة 6 أسابيع؛ لا تنقل مدة هذا المنتج إلى mesalamine أخرى.',
+  ),
+
 
 };
 

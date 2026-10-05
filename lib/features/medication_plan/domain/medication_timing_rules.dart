@@ -691,7 +691,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'nifedipine-er': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'تعليمات الطعام تختلف بين منتجات nifedipine ER؛ استخدم وقت وتعليمات المنتج المصروف لك.',
+    instructionAr: 'Nifedipine ER: exact product required؛ لا IR→ER mg matching تلقائي، وحتى بعض ER strength combinations ليست interchangeable.',
     autoScheduleSafe: false,
     source: 'Product-specific DailyMed Nifedipine ER',
   ),
@@ -748,7 +748,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   ),
   'lithium': MedicationTimingRule(
     anchor: 'any',
-    instructionAr: 'التوقيت وعدد الجرعات يختلفان حسب IR/ER والخطة؛ حافظ على نمط ثابت للملح والسوائل ولا تعتمد توقيتًا تلقائيًا دون معرفة المنتج.',
+    instructionAr: 'Lithium IR/ER: لا Auto؛ عند التحويل إلى ER 450 mg حافظ على نفس total daily dose إن أمكن، وإلا استخدم أقرب multiple أقل من 450 mg حسب label مع serum-level follow-up.',
     autoScheduleSafe: false,
     source: 'DailyMed Lithium Carbonate',
   ),
@@ -2445,7 +2445,7 @@ const medicationTimingRules = <String, MedicationTimingRule>{
 
   'paroxetine-paxil-cr': MedicationTimingRule(
     anchor: 'morning',
-    instructionAr: 'PAXIL CR: مرة صباحًا، مع أو بدون الطعام؛ ابتلعها كاملة ولا تسحقها.',
+    instructionAr: 'PAXIL CR: مرة صباحًا مع/بدون الطعام؛ لا يوجد formal IR→CR conversion table، لذلك لا auto-convert بنسبة mg ثابتة.',
     autoScheduleSafe: false,
     source: 'DailyMed · PAXIL CR · effective Sep 2026',
   ),
@@ -2758,6 +2758,13 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Tolterodine LA: مرة يوميًا؛ usual IR 2 mg BID وLA 4 mg QD لا يعنيان auto-conversion، وLA قد تنخفض إلى 2 mg/day حسب الكبد/الكلى/CYP3A4.',
     autoScheduleSafe: false,
     source: 'DailyMed · Tolterodine LA · Jun 2026',
+  ),
+
+  'tramadol-er-tablets': MedicationTimingRule(
+    anchor: 'same-time-daily',
+    instructionAr: 'Tramadol ER: مرة يوميًا وفي وقت ثابت تقريبًا؛ ليس PRN. IR→ER = total 24-hour IR dose rounded DOWN to next lower 100 mg، max 300 mg/day.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tramadol ER · Jun 2026',
   ),
 
 

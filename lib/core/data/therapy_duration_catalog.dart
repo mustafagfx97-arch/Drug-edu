@@ -1001,6 +1001,35 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'غالبًا علاج مزمن للسكري النوع الثاني مع مراقبة glucose/A1c وخطر هبوط السكر.',
   ),
 
+  'pregabalin-lyrica-cr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج مزمن لألم الأعصاب عندما يكون فعالًا؛ الإيقاف تدريجيًا خلال أسبوع على الأقل.',
+  ),
+  'gabapentin-gralise': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'لعلاج PHN حسب الاستجابة؛ عند الإيقاف أو الاستبدال خفّض تدريجيًا خلال أسبوع على الأقل.',
+  ),
+  'gabapentin-enacarbil-horizant': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاجًا مزمنًا للـRLS أو PHN حسب الاستجابة والتحمل؛ لا يوقف فجأة.',
+  ),
+  'lacosamide-motpoly-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج صرع مزمن عادةً؛ لا يوقف فجأة ويحتاج متابعة السيطرة على النوبات.',
+  ),
+  'sitagliptin-metformin-janumet-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن للسكري النوع الثاني ما دام فعالًا ووظيفة الكلى تسمح.',
+  ),
+  'linagliptin-metformin-jentadueto-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن للسكري النوع الثاني مع متابعة A1c ووظيفة الكلى والتحمل.',
+  ),
+  'saxagliptin-metformin-kombiglyze-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج مزمن للسكري النوع الثاني مع متابعة glucose/A1c ووظيفة الكلى وأعراض heart failure عند المعرضين.',
+  ),
+
 
 };
 

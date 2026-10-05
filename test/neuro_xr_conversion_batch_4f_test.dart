@@ -24,10 +24,10 @@ void main() {
       'divalproex-er',
     ];
 
-    test('raises medication census to 388 without duplicate IDs', () {
+    test('raises medication census to 395 without duplicate IDs', () {
       final ids = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 388);
-      expect(ids.toSet().length, 388);
+      expect(sampleMedications.length, 395);
+      expect(ids.toSet().length, 395);
 
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);

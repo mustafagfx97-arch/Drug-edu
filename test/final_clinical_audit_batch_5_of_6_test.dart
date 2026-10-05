@@ -7,8 +7,8 @@ void main() {
   dynamic medicine(String id) =>
       sampleMedications.firstWhere((item) => item.id == id);
 
-  test('final clinical audit 5 of 6 preserves the expanded 388-record baseline', () {
-    expect(sampleMedications.length, 388);
+  test('final clinical audit 5 of 6 preserves the expanded 395-record baseline', () {
+    expect(sampleMedications.length, 395);
     expect(
       sampleMedications.map((item) => item.id).toSet().length,
       sampleMedications.length,

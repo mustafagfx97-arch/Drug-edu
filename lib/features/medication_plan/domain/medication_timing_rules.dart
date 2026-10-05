@@ -2691,6 +2691,49 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'emc SmPC · Diamicron MR 30 mg',
   ),
 
+  'pregabalin-lyrica-cr': MedicationTimingRule(
+    anchor: 'dinner',
+    instructionAr: 'LYRICA CR: مرة يوميًا بعد وجبة المساء؛ استخدم جدول التحويل الرسمي من pregabalin IR ولا تعمل mg-for-mg conversion.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · LYRICA CR · Mar 2026',
+  ),
+  'gabapentin-gralise': MedicationTimingRule(
+    anchor: 'dinner',
+    instructionAr: 'GRALISE: مرة يوميًا مع وجبة المساء؛ غير interchangeable مع gabapentin العادي أو HORIZANT.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · GRALISE · Jun 2026',
+  ),
+  'gabapentin-enacarbil-horizant': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'HORIZANT: مع الطعام؛ RLS عادةً 600 mg حوالي 5 PM، أما PHN فله جدول مختلف. لا يُحوّل من gabapentin mg-for-mg.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · HORIZANT · Apr 2025',
+  ),
+  'lacosamide-motpoly-xr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'MOTPOLY XR: مرة يوميًا مع أو بدون الطعام؛ لا يوجد label conversion table مباشر من lacosamide IR، لذلك لا auto-convert بالـmg.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · MOTPOLY XR · Jul 2025',
+  ),
+  'sitagliptin-metformin-janumet-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'JANUMET XR: مرة يوميًا مع وجبة؛ عند التحويل من JANUMET IR نحافظ على نفس total daily doses للمكونين.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · JANUMET XR · Aug 2026',
+  ),
+  'linagliptin-metformin-jentadueto-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'JENTADUETO XR: مرة يوميًا مع وجبة؛ الهدف 5 mg linagliptin/day مع similar total daily metformin dose.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · JENTADUETO XR · Aug 2026',
+  ),
+  'saxagliptin-metformin-kombiglyze-xr': MedicationTimingRule(
+    anchor: 'dinner',
+    instructionAr: 'KOMBIGLYZE XR: مرة يوميًا مع وجبة المساء؛ metformin component يطابق الجرعة السابقة أو أقرب جرعة مناسبة مع متابعة glucose.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · KOMBIGLYZE XR',
+  ),
+
 
 };
 

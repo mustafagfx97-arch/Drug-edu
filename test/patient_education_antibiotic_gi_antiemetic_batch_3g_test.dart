@@ -16,10 +16,10 @@ void main() {
       'granisetron-oral-tablets',
     ];
 
-    test('adds seven complete records and raises census to 380', () {
+    test('adds seven complete records and raises census to 384', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 380);
-      expect(allIds.toSet().length, 380);
+      expect(sampleMedications.length, 384);
+      expect(allIds.toSet().length, 384);
       for (final id in ids) {
         expect(allIds, contains(id));
         expect(medicationTimingRules[id], isNotNull);

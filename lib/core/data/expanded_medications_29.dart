@@ -142,6 +142,8 @@ const expandedMedications29 = <Medication>[
           'Usually chronic antiseizure therapy; abrupt withdrawal should be avoided.',
       formulationHandling:
           'Extended capsules contain phenytoin sodium, whereas oral suspension and chewable tablets use phenytoin free acid. These forms differ by about 8% in drug content and may require dose adjustment and level monitoring when switching.',
+      releaseConversion:
+          'Extended phenytoin sodium capsules use the sodium salt, while suspension and chewable tablets use phenytoin free acid. The free-acid forms contain approximately 8% more active phenytoin than the sodium salt on a milligram basis, so switching between these formulations is not a simple 1:1 clinical conversion: dose adjustment and serum-level monitoring may be required. Prompt phenytoin sodium capsules also require serum concentration monitoring when switching from extended capsules.',
       monitoring:
           'Serum phenytoin concentration, seizure control, neurologic toxicity, oral health, skin reactions and unbound concentration in renal/hepatic disease or hypoalbuminemia.',
       interactions:
@@ -152,6 +154,12 @@ const expandedMedications29 = <Medication>[
           'Renal/hepatic disease and low albumin require interpretation of unbound rather than total concentrations when clinically appropriate.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR / salt-form conversion',
+        body:
+            'Do not convert suspension/chewable free-acid phenytoin to extended phenytoin sodium by blindly copying the milligram dose. The free-acid products contain about 8% more active phenytoin; check levels and clinical response after a formulation switch.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Formulation conversion lock',
         body:

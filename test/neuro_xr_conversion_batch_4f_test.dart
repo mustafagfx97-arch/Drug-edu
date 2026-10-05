@@ -153,7 +153,7 @@ void main() {
       );
       expect(m.patient.timingAr, contains('صباحًا'));
       expect(m.patient.missedDoseAr,
-          allOf(contains('تجاوزها'), contains('التشنجات')));
+          allOf(contains('تجاوز الجرعة'), contains('التشنجات')));
     });
 
     test('venlafaxine XR locks nearest-equivalent dose food and capsule method',

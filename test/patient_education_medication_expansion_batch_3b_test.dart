@@ -31,8 +31,8 @@ void main() {
 
     test('adds 19 distinct records and keeps full counseling coverage', () {
       final ids = sampleMedications.map((medicine) => medicine.id).toList();
-      expect(sampleMedications.length, 388);
-      expect(ids.toSet().length, 388);
+      expect(sampleMedications.length, 395);
+      expect(ids.toSet().length, 395);
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);
         expect(medicationTimingRules[id], isNotNull, reason: 'timing: ' + id);

@@ -20,10 +20,10 @@ void main() {
       'diroximel-fumarate-vumerity',
     ];
 
-    test('adds ten complete unique records and raises census to 402', () {
+    test('adds ten complete unique records and raises census to 406', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 402);
-      expect(allIds.toSet().length, 402);
+      expect(sampleMedications.length, 406);
+      expect(allIds.toSet().length, 406);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

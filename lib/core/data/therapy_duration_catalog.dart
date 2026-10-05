@@ -855,10 +855,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يتطلب re-titration.',
   ),
-  'amantadine-gocovri': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'علاج مزمن لـdyskinesia/off episodes عند الاستفادة؛ لا يوقف فجأة بعد الاستخدام المنتظم.',
-  ),
   'siponimod-mayzent': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ الانقطاع المهم يعيدك إلى titration حسب القاعدة وليس مباشرة للـmaintenance.',
@@ -1058,6 +1054,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'methylphenidate-concerta-er': TherapyDurationGuidance(
     kind: TherapyDurationKind.individualized,
     patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع مراجعة الاستجابة والنمو/الوزن والنوم والضغط/النبض دوريًا.',
+  ),
+
+  'guanfacine-intuniv-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد؛ عند الإيقاف يجب taper لتجنب rebound hypertension.',
+  ),
+  'clonidine-er-adhd': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد؛ لا يوقف فجأة ويُخفض تدريجيًا لتجنب rebound hypertension.',
+  ),
+  'amantadine-gocovri': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن/فردي في باركنسون؛ لا يوقف فجأة وتراجع الاستجابة والهلوسة/السقوط دوريًا.',
+  ),
+  'amantadine-osmolex-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'غالبًا علاج مزمن/فردي لباركنسون أو EPS؛ لا يوقف فجأة والجدول يعتمد على renal function.',
+  ),
+  'tramadol-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يراجع دوريًا ولا يوقف فجأة بعد حدوث dependence.',
   ),
 
 

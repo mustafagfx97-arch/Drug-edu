@@ -2479,12 +2479,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Ropinirole ER · revised May 2026',
   ),
-  'amantadine-gocovri': MedicationTimingRule(
-    anchor: 'bedtime',
-    instructionAr: 'GOCOVRI: مرة عند النوم، مع/بدون الطعام؛ تجنب الكحول؛ غير interchangeable مع amantadine الآخر.',
-    autoScheduleSafe: false,
-    source: 'DailyMed · GOCOVRI · revised Feb 2026',
-  ),
   'siponimod-mayzent': MedicationTimingRule(
     anchor: 'same-time-daily',
     instructionAr: 'MAYZENT: مرة يوميًا مع/بدون الطعام بعد CYP2C9-guided titration؛ missed titration أو ≥4 maintenance doses = restart Day 1.',
@@ -2777,6 +2771,37 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'CONCERTA: صباحًا؛ استخدم جدول التحويل الخاص بالمنتج من IR methylphenidate ولا تعمل mg-for-mg conversion.',
     autoScheduleSafe: false,
     source: 'DailyMed · CONCERTA · 2026',
+  ),
+
+  'guanfacine-intuniv-er': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'INTUNIV ER: مرة يوميًا صباحًا أو مساءً؛ لا mg-for-mg conversion من guanfacine IR، وتجنب high-fat meal.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · INTUNIV guanfacine ER · current',
+  ),
+  'clonidine-er-adhd': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'Clonidine ER ADHD: يبدأ عادةً 0.1 mg وقت النوم ثم titration أسبوعي؛ لا mg-for-mg substitution من clonidine IR.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Clonidine hydrochloride ER tablets · current',
+  ),
+  'amantadine-gocovri': MedicationTimingRule(
+    anchor: 'bedtime',
+    instructionAr: 'GOCOVRI: مرة يوميًا وقت النوم؛ غير substitutable مع amantadine IR أو ER أخرى.',
+    autoScheduleSafe: false,
+    source: 'DailyMed / GOCOVRI PI · current 2026',
+  ),
+  'amantadine-osmolex-er': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'OSMOLEX ER: صباحًا؛ غير interchangeable مع amantadine IR/ER الأخرى، وقد يتغير frequency حسب renal function.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · OSMOLEX ER · current',
+  ),
+  'tramadol-er': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Tramadol ER: مرة يوميًا؛ IR→ER = 24-hour IR total ثم round DOWN إلى أقرب 100 mg أقل، max 300 mg/day للمنتج المراجع.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tramadol hydrochloride ER · current',
   ),
 
 

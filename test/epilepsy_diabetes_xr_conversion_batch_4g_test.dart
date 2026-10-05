@@ -16,10 +16,10 @@ void main() {
       'gliclazide-mr-30mg',
     ];
 
-    test('covers seven XR/MR targets, adds six new records, and raises census to 405', () {
+    test('covers seven XR/MR targets, adds six new records, and raises census to 403', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 405);
-      expect(allIds.toSet().length, 405);
+      expect(sampleMedications.length, 403);
+      expect(allIds.toSet().length, 403);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

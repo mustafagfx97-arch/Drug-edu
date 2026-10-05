@@ -136,6 +136,8 @@ const expandedMedications2B = <Medication>[
       foodTiming: 'Take consistently; food may improve GI tolerance. Maintain a normal, reasonably consistent salt intake and adequate hydration according to the clinical plan.',
       duration: 'Often long-term maintenance therapy.',
       formulationHandling: 'Do not crush extended-release tablets. Dose changes should be guided by serum concentration and clinical status, not symptoms alone.',
+      releaseConversion:
+          'When switching from immediate-release lithium capsules to the reviewed 450 mg extended-release tablets, use the same total daily lithium dose when possible. If the prior daily dose is not a multiple of 450 mg, start with the nearest lower 450-mg multiple; example: IR 1500 mg/day → ER 1350 mg/day (commonly 450 mg AM + 900 mg PM), then monitor serum lithium and clinical response every 1–2 weeks until stable. If closer titration than 450-mg increments is needed, immediate-release capsules may be preferable. Do not generalize this exact rounding rule to every lithium ER strength/product without checking the label.',
       monitoring: 'Lithium level, renal function, thyroid function, calcium, hydration/sodium status and interacting medicines.',
       interactions: 'NSAIDs, ACE inhibitors/ARBs and many diuretics can raise lithium concentrations. Dehydration, prolonged diarrhea, fever or heavy sweating can precipitate toxicity.',
       commonMistakes: 'Suddenly restricting salt, becoming dehydrated, starting ibuprofen/naproxen without review or changing brands/formulations without monitoring.',
@@ -143,6 +145,12 @@ const expandedMedications2B = <Medication>[
     ),
     sourceLabel: 'DailyMed lithium carbonate prescribing information · current 2025-2026 labels',
     sections: [
+      MedicationSection(
+        title: 'IR → lithium ER conversion',
+        body:
+            'For the reviewed 450 mg ER tablet label: keep the same total daily dose when possible. If the IR total is not a multiple of 450 mg, use the nearest lower 450-mg total and recheck serum lithium/clinical response; e.g. 1500 mg/day IR → 1350 mg/day ER.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Toxicity prevention',
         body: 'Hydration, stable salt intake and interaction screening are central counseling points. Acute illness with fluid/salt loss can rapidly change lithium exposure.',
@@ -153,7 +161,7 @@ const expandedMedications2B = <Medication>[
       purposeAr: 'مثبت للمزاج يُستخدم خصوصًا في اضطراب ثنائي القطب وحالات محددة أخرى.',
       howToUseAr: 'خذه بانتظام وبنفس الطريقة يوميًا، والتزم بتحاليل مستوى lithium ووظائف الكلى والغدة.',
       timingAr: 'اتبع عدد الجرعات المكتوب، وحافظ على نمط ثابت للطعام والملح والسوائل.',
-      importantAr: 'لا تبدأ NSAID مثل ibuprofen/naproxen أو دواء ضغط/مدر جديد من دون مراجعة؛ الجفاف والإسهال والحرارة قد ترفع lithium.',
+      importantAr: 'التحويل إلى lithium ER ليس مجرد تغيير عدد الجرعات: في منتج ER 450 mg المراجع نحافظ على نفس total daily dose إن أمكن، وإذا لم تكن الجرعة من مضاعفات 450 mg نبدأ بأقرب مجموع أقل ثم نعيد فحص المستوى. مثال: 1500 mg/day من IR → 1350 mg/day ER. ولا تبدأ NSAID أو دواء ضغط/مدر جديد دون مراجعة لأن مستوى lithium قد يرتفع.',
       commonActionableAr: 'قد يحدث عطش أو تبول أكثر أو رجفة خفيفة؛ إذا ازدادت الأعراض لا تعدل الجرعة بنفسك.',
       missedDoseAr: 'لا تضاعف جرعة lithium. إذا اقترب موعد التالية فتجاوز المنسية، وإذا كان نظامك غير اعتيادي فاتصل بالصيدلي.',
       seekHelpAr: 'اطلب تقييمًا عاجلًا عند رجفة شديدة، ترنح، تشوش، قيء/إسهال شديد، نعاس غير طبيعي أو تدهور الوعي.',

@@ -1047,6 +1047,27 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'عادةً يستمر ما دام يحسن أعراض المثانة وتبقى الأعراض المضادة للكولين مقبولة.',
   ),
 
+  'guanfacine-er-adhd': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'قد يكون علاج ADHD طويل الأمد مع إعادة تقييم دورية؛ لا يوقف فجأة ويحتاج taper لتجنب rebound hypertension.',
+  ),
+  'clonidine-er-adhd': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'قد يستمر طويلًا إذا كان مفيدًا؛ عند الإيقاف تُخفّض الجرعة تدريجيًا لتجنب rebound hypertension.',
+  ),
+  'methylphenidate-ritalin-la': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج ADHD طويل/متوسط المدى حسب الاستجابة مع متابعة الشهية والوزن والنوم والنبض والضغط.',
+  ),
+  'amphetamine-adderall-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج ADHD حسب الاستجابة مع متابعة دورية للفائدة، الشهية/الوزن، النوم، القلب وخطر misuse.',
+  ),
+  'tramadol-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'مدة opioid ER فردية وتحتاج إعادة تقييم متكرر للفائدة والمخاطر؛ لا يوقف فجأة إذا حدث physical dependence.',
+  ),
+
 
 };
 

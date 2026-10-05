@@ -20,10 +20,10 @@ void main() {
       'acetaminophen-aspirin-caffeine-migraine',
     ];
 
-    test('adds ten complete unique records and raises census to 399', () {
+    test('adds ten complete unique records and raises census to 404', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 399);
-      expect(allIds.toSet().length, 399);
+      expect(sampleMedications.length, 404);
+      expect(allIds.toSet().length, 404);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

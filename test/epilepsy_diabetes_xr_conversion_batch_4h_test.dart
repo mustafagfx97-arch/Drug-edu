@@ -66,8 +66,7 @@ void main() {
           contains('300 → 330 mg'),
           contains('450 → 495 mg'),
           contains('600 → 660 mg'),
-          contains('morning dose'),
-          contains('evening meal'),
+          allOf(contains('morning dose'), contains('evening meal')),
         ),
       );
       expect(m.useProfile.route,

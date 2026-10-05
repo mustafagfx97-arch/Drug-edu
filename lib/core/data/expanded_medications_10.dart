@@ -17,6 +17,8 @@ const expandedMedications10 = <Medication>[
           'Induction and maintenance schedules differ; maintenance may be long term while clinically appropriate.',
       formulationHandling:
           'Swallow tablets whole. Do not split or crush. Do not substitute other mesalamine formulations by milligram-for-milligram assumption because release characteristics and labeled schedules differ.',
+      releaseConversion:
+          'Do not auto-convert LIALDA to or from another mesalamine delayed/extended-release product by matching total daily milligrams. Mesalamine products differ in release site, technology, food instructions, approved indications and schedules. A product-specific switch must be verified rather than treated as mg-for-mg interchangeable.',
       monitoring:
           'Renal function before treatment and periodically; response, hydration, kidney-stone symptoms, and mesalamine intolerance syndrome.',
       interactions:
@@ -29,6 +31,12 @@ const expandedMedications10 = <Medication>[
     sourceLabel:
         'DailyMed · LIALDA mesalamine delayed-release tablets · updated Mar 2026',
     sections: [
+      MedicationSection(
+        title: 'Mesalamine conversion lock',
+        body:
+            'LIALDA is not a universal milligram-for-milligram substitute for APRISO, PENTASA, 400-mg delayed-release capsules/tablets or 800-mg delayed-release tablets. Verify the exact product, indication and regimen before switching.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Food + formulation lock',
         body:
@@ -49,7 +57,7 @@ const expandedMedications10 = <Medication>[
           'ابتلع حبة LIALDA كاملة ولا تقسّمها أو تسحقها. خذها مع الطعام واشرب سوائل كافية.',
       timingAr:
           'تُؤخذ مرة يوميًا حسب الجرعة الموصوفة، مع الطعام.',
-      importantAr:
+      importantAr: 'لا تبدّل LIALDA مع mesalamine آخر بمجرد مساواة مجموع الـmg؛ مكان وطريقة التحرر وتعليمات الطعام والجرعة تختلف بين المنتجات، لذلك يجب التحقق من المنتج المحدد قبل أي تحويل.',
           'لا تبدّلها مع mesalamine آخر من نفسك حتى لو كان مجموع الـmg متشابهًا؛ طريقة التحرر والجدول قد تختلف.',
       commonActionableAr:
           'قد يحدث صداع أو ألم بطن. إذا زاد الإسهال/ألم البطن فجأة مع حرارة أو صداع بعد بدء الدواء تواصل مع الطبيب لاحتمال عدم تحمل mesalamine.',

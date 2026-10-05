@@ -855,10 +855,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يتطلب re-titration.',
   ),
-  'amantadine-gocovri': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'علاج مزمن لـdyskinesia/off episodes عند الاستفادة؛ لا يوقف فجأة بعد الاستخدام المنتظم.',
-  ),
   'siponimod-mayzent': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'دواء disease-modifying مزمن للـMS؛ الانقطاع المهم يعيدك إلى titration حسب القاعدة وليس مباشرة للـmaintenance.',

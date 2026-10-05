@@ -1646,12 +1646,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     requiresMealChoice: true,
     source: 'DailyMed · Glipizide IR · Feb 2026',
   ),
-  'glipizide-er': MedicationTimingRule(
-    anchor: 'breakfast',
-    instructionAr:
-        'Glipizide ER مرة يوميًا مع الفطور أو أول وجبة رئيسية في اليوم؛ ابتلع الحبة كاملة.',
-    source: 'DailyMed · Glipizide ER · Aug 2026',
-  ),
   'insulin-aspart-novolog': MedicationTimingRule(
     anchor: 'with-meal',
     instructionAr:

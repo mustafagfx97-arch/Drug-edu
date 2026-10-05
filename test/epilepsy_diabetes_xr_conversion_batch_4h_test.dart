@@ -16,10 +16,10 @@ void main() {
       'saxagliptin-metformin-kombiglyze-xr',
     ];
 
-    test('adds seven unique records and raises census to 402', () {
+    test('adds seven unique records and raises census to 407', () {
       final ids = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 402);
-      expect(ids.toSet().length, 402);
+      expect(sampleMedications.length, 407);
+      expect(ids.toSet().length, 407);
 
       for (final id in newIds) {
         expect(ids, contains(id), reason: id);

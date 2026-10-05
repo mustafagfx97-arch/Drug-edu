@@ -2804,6 +2804,25 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     source: 'DailyMed · Tramadol hydrochloride ER · current',
   ),
 
+  'tapentadol-er': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Tapentadol ER: كل نحو 12 ساعة؛ IR→ER = نفس total daily tapentadol dose مقسمة إلى جرعتين متساويتين، ولا تُعمم القاعدة على opioid آخر.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Tapentadol / NUCYNTA ER · current 2026',
+  ),
+  'theophylline-er-once-daily': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Theophylline ER 400/600 mg: مرة يوميًا صباحًا أو مساءً مع ثبات حالة الطعام؛ stabilized age ≥12 قد يتحول mg-for-mg مع متابعة serum level.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Theophylline ER 400/600 mg · Sep 2026',
+  ),
+  'mesalamine-dr-800mg': MedicationTimingRule(
+    anchor: 'empty-stomach',
+    instructionAr: 'Mesalamine DR 800 mg: على معدة فارغة ≥1 h قبل و≥2 h بعد الطعام؛ لا تستبدل 800 mg بمنتجين 400 mg تلقائيًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Mesalamine DR 800 mg · Jul 2026',
+  ),
+
 
 };
 

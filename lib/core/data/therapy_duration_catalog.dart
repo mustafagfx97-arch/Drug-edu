@@ -1069,7 +1069,7 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج opioid طويل الأمد فقط عند الحاجة المستمرة؛ يراجع دوريًا ويخفض تدريجيًا عند الإيقاف بعد dependence.',
   ),
   'mesalamine-delayed-release-800mg': TherapyDurationGuidance(
-    kind: TherapyDurationKind.limited,
+    kind: TherapyDurationKind.shortCourse,
     patientOverrideAr: 'المنتج 800 mg المراجع لعلاج moderately active UC مدته المعلّمة 6 أسابيع؛ لا تعممها على mesalamine products أو maintenance regimens الأخرى.',
   ),
 

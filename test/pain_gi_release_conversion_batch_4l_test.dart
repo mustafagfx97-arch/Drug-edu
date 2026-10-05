@@ -12,7 +12,7 @@ void main() {
       'mesalamine-delayed-release-800mg',
     ];
 
-    test('adds three unique records and raises census to 409', () {
+    test('adds three unique release-conversion records and raises census to 409', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
       expect(sampleMedications.length, 409);
       expect(allIds.toSet().length, 409);

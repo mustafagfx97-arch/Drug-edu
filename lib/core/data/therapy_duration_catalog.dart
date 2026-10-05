@@ -1077,6 +1077,20 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     patientOverrideAr: 'علاج opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يراجع دوريًا ولا يوقف فجأة بعد حدوث dependence.',
   ),
 
+  'tapentadol-nucynta-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'Opioid طويل الأمد فقط عند استمرار الفائدة فوق المخاطر؛ يحتاج reassessment دوري ولا يوقف فجأة بعد dependence.',
+  ),
+  'morphine-sulfate-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid طويل الأمد فقط عند الحاجة المستمرة؛ يراجع دوريًا ويخفض تدريجيًا عند الإيقاف بعد dependence.',
+  ),
+  'mesalamine-delayed-release-800mg': TherapyDurationGuidance(
+    kind: TherapyDurationKind.shortCourse,
+    patientOverrideAr: 'المنتج 800 mg المراجع لعلاج moderately active UC مدته المعلّمة 6 أسابيع؛ لا تعممها على mesalamine products أو maintenance regimens الأخرى.',
+  ),
+
+
 
 };
 

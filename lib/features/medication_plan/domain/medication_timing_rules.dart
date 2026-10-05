@@ -741,16 +741,6 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     autoScheduleSafe: false,
     source: 'DailyMed · Clarithromycin IR/ER',
   ),
-  'venlafaxine-xr': MedicationTimingRule(
-    anchor: 'with-meal',
-    instructionAr: 'مرة يوميًا مع الطعام وفي نفس الوقت تقريبًا صباحًا أو مساءً.',
-    source: 'DailyMed Venlafaxine Extended-Release',
-  ),
-  'bupropion-xl': MedicationTimingRule(
-    anchor: 'morning',
-    instructionAr: 'مرة يوميًا صباحًا غالبًا؛ يمكن مع الطعام أو بدونه ولا تسحق XL.',
-    source: 'DailyMed Bupropion XL Medication Guide',
-  ),
   'mirtazapine': MedicationTimingRule(
     anchor: 'bedtime',
     instructionAr: 'غالبًا مساءً/قبل النوم بسبب النعاس؛ يمكن مع الطعام أو بدونه.',
@@ -2639,7 +2629,32 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Migraine relief 250/250/65: adults 2 caplets once with water؛ max 2 caplets/24 h unless doctor directs otherwise.',
     autoScheduleSafe: false,
     source: 'DailyMed · Excedrin Migraine / equivalent · 2026',
+  ),  'bupropion-xl': MedicationTimingRule(
+    anchor: 'morning',
+    instructionAr: 'Bupropion XL: مرة يوميًا صباحًا، مع الطعام أو بدونه؛ swallow whole. التحويل من IR/SR يحافظ على total daily dose عندما يكون ذلك ممكنًا.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Bupropion XL · Jan 2026',
   ),
+  'venlafaxine-xr': MedicationTimingRule(
+    anchor: 'with-meal',
+    instructionAr: 'Venlafaxine XR: جرعة واحدة يوميًا مع الطعام، صباحًا أو مساءً في وقت متقارب؛ IR يحول إلى أقرب equivalent total mg/day.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Venlafaxine XR capsules · 2026',
+  ),
+  'lamotrigine-xr': MedicationTimingRule(
+    anchor: 'any',
+    instructionAr: 'Lamotrigine XR: مرة يوميًا مع أو بدون الطعام؛ initial XR dose = total daily IR dose عند التحويل مع مراقبة seizure control.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Lamotrigine XR · Aug 2026',
+  ),
+  'divalproex-er': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Divalproex ER: مرة يوميًا؛ في labeled epilepsy DR→ER conversion تكون ER أعلى 8–20% من total daily DR dose حسب جدول المنتج.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Divalproex sodium ER · 2026',
+  ),
+
+
 };
 
 

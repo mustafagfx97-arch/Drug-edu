@@ -205,10 +205,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   ),
   'clarithromycin-oral':
       TherapyDurationGuidance(kind: TherapyDurationKind.shortCourse),
-  'venlafaxine-xr':
-      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
-  'bupropion-xl':
-      TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'mirtazapine':
       TherapyDurationGuidance(kind: TherapyDurationKind.individualized),
   'lithium': TherapyDurationGuidance(kind: TherapyDurationKind.chronic),
@@ -960,6 +956,23 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.individualized,
     patientOverrideAr: 'PRN لنوبة migraine فقط؛ persistent/worsening أو frequent headaches تحتاج تقييمًا بدل تكرار المنتج.',
   ),
+  'bupropion-xl': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر للاكتئاب؛ الاستخدام الموسمي يتبع خطة المريض وتاريخ النوبات الموسمية.',
+  ),
+  'venlafaxine-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر عند الاستجابة؛ الإيقاف تدريجي لتقليل discontinuation symptoms.',
+  ),
+  'lamotrigine-xr': TherapyDurationGuidance(
+    kind: TherapyDurationKind.chronic,
+    patientOverrideAr: 'علاج صرع مزمن عادةً؛ الانقطاع المهم قد يحتاج re-titration ولا يوقف فجأة.',
+  ),
+  'divalproex-er': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'قد يكون علاجًا مزمنًا للصرع/bipolar أو للوقاية من migraine حسب الحالة؛ المدة تعتمد على الفائدة والمخاطر والمتابعة.',
+  ),
+
 
 };
 

@@ -31,6 +31,7 @@ import 'expanded_medications_29.dart';
 import 'expanded_medications_30.dart';
 import 'expanded_medications_31.dart';
 import 'expanded_medications_32.dart';
+import 'expanded_medications_33.dart';
 
 const sampleMedications = <Medication>[
   Medication(
@@ -1725,4 +1726,5 @@ const sampleMedications = <Medication>[
   ...expandedMedications30,
   ...expandedMedications31,
   ...expandedMedications32,
+  ...expandedMedications33,
 ];

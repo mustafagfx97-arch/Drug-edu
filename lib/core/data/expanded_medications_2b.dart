@@ -13,6 +13,8 @@ const expandedMedications2B = <Medication>[
       foodTiming: 'Take once daily with food, in the morning or evening at approximately the same time.',
       duration: 'Usually months or longer depending diagnosis, response and recurrence risk.',
       formulationHandling: 'Do not crush or chew XR. Some capsules may be opened and sprinkled on applesauce when the exact label permits; XR tablets are swallowed whole.',
+      releaseConversion:
+          'For the verified venlafaxine XR capsule labeling, a patient receiving therapeutic immediate-release venlafaxine may switch to XR at the nearest equivalent total mg/day. Label example: IR 37.5 mg twice daily (75 mg/day) → XR 75 mg once daily. Individual dose adjustment may be necessary; verify the exact XR product before applying capsule-opening instructions.',
       monitoring: 'Mood/suicidality, blood pressure, discontinuation symptoms, sodium in at-risk patients and sexual adverse effects.',
       interactions: 'MAO inhibitors are contraindicated within defined washouts. Other serotonergic drugs increase serotonin-syndrome risk.',
       commonMistakes: 'Stopping abruptly, taking without food despite XR labeling, or applying capsule-opening instructions to an XR tablet.',
@@ -21,6 +23,12 @@ const expandedMedications2B = <Medication>[
     sourceLabel: 'DailyMed venlafaxine extended-release labeling · updated 2026',
     sections: [
       MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'For the verified XR capsule label, switch therapeutic IR venlafaxine to the nearest equivalent total daily dose as XR. Example: IR 37.5 mg twice daily → XR 75 mg once daily. Do not carry capsule-opening instructions over to an XR tablet unless that exact product permits it.',
+        priority: ClinicalPriority.critical,
+      ),
+      MedicationSection(
         title: 'XR product distinction',
         body: 'Current labels instruct once-daily administration with food. Capsules and XR tablets are not manipulated the same way.',
         priority: ClinicalPriority.important,
@@ -28,9 +36,9 @@ const expandedMedications2B = <Medication>[
     ],
     patient: PatientCounselingData(
       purposeAr: 'يُستخدم للاكتئاب والقلق وحالات أخرى حسب التشخيص.',
-      howToUseAr: 'خذ المنتج XR مرة يوميًا مع الطعام وفي نفس الوقت تقريبًا كل يوم.',
+      howToUseAr: 'خذ XR مرة يوميًا مع الطعام. إذا كان منتجك كبسولة ويسمح ملصقها بالفتح، يمكن وضع كل محتواها على ملعقة applesauce وابتلاعها فورًا دون مضغ ثم شرب الماء؛ لا تطبق هذه الطريقة على XR tablet إلا إذا سمح ملصق المنتج نفسه.',
       timingAr: 'مع الطعام، صباحًا أو مساءً حسب ما يناسبك وخطة الطبيب.',
-      importantAr: 'لا توقفه فجأة بعد الاستخدام المنتظم؛ أعراض الانقطاع قد تكون مزعجة ويحتاج الإيقاف إلى خطة تخفيف.',
+      importantAr: 'عند التحويل من venlafaxine العادي إلى XR نستخدم أقرب مجموع جرعة يومية مكافئ؛ مثال: 37.5 mg مرتين يوميًا من العادي → 75 mg XR مرة يوميًا. لا توقفه فجأة، وتحقق من نوع XR بالضبط قبل فتح الكبسولة أو تغيير طريقة الاستخدام.',
       commonActionableAr: 'قد يحدث غثيان أو دوخة أو تعرق أو تأثيرات جنسية، وقد يرتفع الضغط عند بعض المرضى.',
       missedDoseAr: 'خذ الجرعة عند التذكر إذا لم يقترب موعد التالية؛ لا تضاعف ولا تأخذ جرعتين متقاربتين.',
       seekHelpAr: 'اطلب مساعدة عند أفكار إيذاء النفس، هياج شديد مع حرارة/رجفة أو ارتفاع ضغط شديد مع أعراض.',
@@ -49,6 +57,8 @@ const expandedMedications2B = <Medication>[
       foodTiming: 'May be taken with or without food; XL is commonly administered in the morning.',
       duration: 'Usually months or longer for depression; smoking-cessation products/regimens are separate.',
       formulationHandling: 'Swallow XL whole. Do not chew, cut or crush because rapid release increases adverse effects including seizure risk.',
+      releaseConversion:
+          'When switching from bupropion immediate-release tablets or sustained-release (SR) tablets to XL, use the same total daily bupropion dose when possible, then give XL once daily according to the prescribed strength. Do not overlap IR/SR/XL products unless specifically directed.',
       monitoring: 'Mood/suicidality, blood pressure, insomnia/agitation and seizure-risk factors.',
       interactions: 'MAO inhibitors are contraindicated within defined washouts. Drugs that lower seizure threshold and CYP2D6 substrates require review.',
       commonMistakes: 'Doubling a missed dose, crushing XL or taking a late dose that worsens insomnia.',
@@ -56,6 +66,12 @@ const expandedMedications2B = <Medication>[
     ),
     sourceLabel: 'DailyMed Medication Guide · bupropion hydrochloride XL',
     sections: [
+      MedicationSection(
+        title: 'IR/SR → XL conversion',
+        body:
+            'Current labeling directs the same total daily bupropion dose when possible when switching from IR or SR to XL. The schedule changes to once-daily XL; do not overlap formulations unless a prescriber explicitly designs a transition.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'Missed dose is different',
         body: 'Do not take an extra tablet after a missed XL dose. Wait for the next regular dose because excessive exposure increases seizure risk.',
@@ -66,9 +82,9 @@ const expandedMedications2B = <Medication>[
       purposeAr: 'يُستخدم للاكتئاب، وتوجد منتجات أخرى من bupropion لاستطبابات مختلفة.',
       howToUseAr: 'ابتلع XL كاملة ولا تسحقها أو تقسمها أو تمضغها.',
       timingAr: 'غالبًا صباحًا، ويمكن مع الطعام أو بدونه.',
-      importantAr: 'لا تأخذ جرعة إضافية لتعويض جرعة فاتت لأن ذلك يزيد خطر التشنج.',
+      importantAr: 'إذا كنت تتحول من bupropion العادي أو SR إلى XL فلا تجمع الأنواع من نفسك؛ التحويل غالبًا يحافظ على نفس مجموع الجرعة اليومية عندما تسمح القوة المتوفرة، لكن الجدول يصبح XL مرة يوميًا. الجرعة الزائدة ترفع خطر التشنجات.',
       commonActionableAr: 'قد يسبب أرقًا أو جفاف فم أو قلقًا في البداية؛ تجنب أخذه متأخرًا إذا كان يزيد الأرق.',
-      missedDoseAr: 'تجاوز الجرعة المنسية وخذ الجرعة التالية في وقتها المعتاد. لا تضاعف.',
+      missedDoseAr: 'تجاوز الجرعة المنسية وخذ الجرعة التالية في وقتها المعتاد. لا تضاعف ولا تأخذ حبة إضافية لأن زيادة التعرض ترفع خطر التشنجات.',
       seekHelpAr: 'اطلب مساعدة عاجلة عند تشنج، أفكار إيذاء النفس أو تحسس شديد.',
       teachBackAr: 'إذا نسيت جرعة XL، هل ستعوضها بحبة إضافية؟',
     ),

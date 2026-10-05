@@ -329,6 +329,8 @@ const expandedMedications30 = <Medication>[
           'Chronic therapy; titrate gradually and taper rather than stop abruptly.',
       formulationHandling:
           'Swallow whole. Do not chew, crush or divide. Significant interruption may require re-titration.',
+      releaseConversion:
+          'Direct Parkinson conversion table from ropinirole IR total daily dose to ER once daily: 0.75–2.25 mg → 2 mg; 3–4.5 → 4 mg; 6 → 6 mg; 7.5–9 → 8 mg; 12 → 12 mg; 15 → 16 mg; 18 → 18 mg; 21 → 20 mg; 24 → 24 mg. Adjust afterward for response and tolerability.',
       monitoring:
           'Sudden sleep episodes, orthostasis, hallucinations, dyskinesia and impulse-control behaviors.',
       interactions:
@@ -339,6 +341,12 @@ const expandedMedications30 = <Medication>[
           'ER formulation is indicated for Parkinson disease; do not generalize dosing from immediate-release restless-legs regimens.',
     ),
     sections: [
+      MedicationSection(
+        title: 'IR → XR conversion',
+        body:
+            'Use the product conversion table rather than assuming every IR dose is exactly 1:1. Examples: IR 7.5–9 mg/day → ER 8 mg/day; IR 15 mg/day → ER 16 mg/day; IR 21 mg/day → ER 20 mg/day.',
+        priority: ClinicalPriority.critical,
+      ),
       MedicationSection(
         title: 'ER handling',
         body:

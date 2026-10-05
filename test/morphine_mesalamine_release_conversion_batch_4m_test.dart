@@ -73,7 +73,7 @@ void main() {
       );
       expect(
         m.patient.missedDoseAr,
-        allOf(contains('وقتـها'.replaceAll('ـ', '')), isNotEmpty),
+        contains('وقتها المعتاد'),
       );
     });
 

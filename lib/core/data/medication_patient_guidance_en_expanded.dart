@@ -3555,17 +3555,6 @@ const reviewedEnglishPatientCounselingExpansion =
   ),
 
 
-  'paroxetine-paxil-cr': _ReviewedEn(
-    purpose: "Treats major depression, panic disorder, social anxiety disorder and PMDD in labeled adults.",
-    how: "Take once daily and swallow the controlled-release tablet whole. Do not chew or crush.",
-    timing: "Take in the morning, with or without food.",
-    duration: "Usually months or longer when effective. PMDD may use continuous or luteal-phase-only dosing.",
-    important: "Do not stop suddenly after regular use. Review MAOIs, other serotonergic medicines and tamoxifen.",
-    common: "Nausea, sleep changes and sexual adverse effects can affect adherence.",
-    missed: "Do not double; resume the usual schedule.",
-    help: "Seek help for new/worsening suicidal thoughts, serotonin-syndrome symptoms, severe bleeding or marked confusion/seizures.",
-    teach: "When do you take PAXIL CR, can it be crushed, and is PMDD always treated every day of the month?",
-  ),
   'desvenlafaxine-er': _ReviewedEn(
     purpose: "Treats major depressive disorder in adults.",
     how: "Swallow the ER tablet whole with fluid. Do not divide, crush, chew or dissolve.",
@@ -3620,17 +3609,6 @@ const reviewedEnglishPatientCounselingExpansion =
     missed: "Do not double; after a significant interruption ask whether re-titration is needed.",
     help: "Seek review for dangerous sleep attacks, severe hallucinations, fainting or risky impulse-control behavior.",
     teach: "Can the ER tablet be split, and what do you do after a significant interruption?",
-  ),
-  'amantadine-gocovri': _ReviewedEn(
-    purpose: "Treats Parkinson dyskinesia and selected off episodes with a product-specific extended-release amantadine formulation.",
-    how: "Swallow whole, or open the capsule and sprinkle the entire contents on about a teaspoon of soft food such as applesauce; swallow immediately without chewing and do not store.",
-    timing: "Take once daily at bedtime, with or without food. Avoid alcohol with the dose.",
-    duration: "Chronic therapy when effective; avoid sudden discontinuation.",
-    important: "GOCOVRI is not interchangeable milligram-for-milligram with other amantadine products.",
-    common: "Dizziness, hallucinations or sleepiness can occur.",
-    missed: "Skip a missed dose and take the usual dose the next day at bedtime.",
-    help: "Seek review for severe hallucinations, suicidal thoughts, dangerous sleep attacks or new eye pain/visual change.",
-    teach: "When do you take GOCOVRI, and can it be substituted mg-for-mg with regular amantadine?",
   ),
   'siponimod-mayzent': _ReviewedEn(
     purpose: "Disease-modifying treatment for selected relapsing forms of multiple sclerosis.",

@@ -831,10 +831,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   ),
 
 
-  'paroxetine-paxil-cr': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'غالبًا علاج يمتد لأشهر أو أكثر إذا كان فعالًا؛ PMDD قد يكون continuous أو luteal-phase-only حسب الخطة، والإيقاف تدريجي.',
-  ),
   'desvenlafaxine-er': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'غالبًا علاج طويل الأمد للاكتئاب عند الاستجابة؛ الإيقاف تدريجي لتقليل discontinuation symptoms.',
@@ -854,10 +850,6 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
   'ropinirole-er': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,
     patientOverrideAr: 'علاج مزمن لـParkinson؛ الزيادة والتقليل تدريجيان، والانقطاع المهم قد يتطلب re-titration.',
-  ),
-  'amantadine-gocovri': TherapyDurationGuidance(
-    kind: TherapyDurationKind.chronic,
-    patientOverrideAr: 'علاج مزمن لـdyskinesia/off episodes عند الاستفادة؛ لا يوقف فجأة بعد الاستخدام المنتظم.',
   ),
   'siponimod-mayzent': TherapyDurationGuidance(
     kind: TherapyDurationKind.chronic,

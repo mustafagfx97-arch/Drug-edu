@@ -1374,8 +1374,8 @@ const medicationTimingRules = <String, MedicationTimingRule>{
   'mesalamine-apriso': MedicationTimingRule(
     anchor: 'morning',
     instructionAr:
-        'APRISO مرة يوميًا صباحًا مع الطعام أو بدونه، وتجنب antacids معه.',
-    autoScheduleSafe: true,
+        'APRISO مرة يوميًا صباحًا مع الطعام أو بدونه، وتجنب antacids معه؛ لا تعمل auto-conversion من منتج mesalamine آخر.',
+    autoScheduleSafe: false,
     source: 'DailyMed · APRISO · Aug 2026',
   ),
   'mesalamine-pentasa': MedicationTimingRule(
@@ -2821,6 +2821,12 @@ const medicationTimingRules = <String, MedicationTimingRule>{
     instructionAr: 'Mesalamine DR 800 mg: على معدة فارغة ≥1 h قبل و≥2 h بعد الطعام؛ لا تستبدل 800 mg بمنتجين 400 mg تلقائيًا.',
     autoScheduleSafe: false,
     source: 'DailyMed · Mesalamine DR 800 mg · Jul 2026',
+  ),
+  'morphine-sulfate-er-tablets': MedicationTimingRule(
+    anchor: 'prescription-specific',
+    instructionAr: 'Morphine ER: كل 8 أو 12 ساعة حسب الوصفة؛ oral morphine→ER يحافظ على total daily oral morphine ويعيد توزيعه، لكن التحويل من opioid آخر ليس له ratio تلقائي ويجب ألا يقوم التطبيق بحسابه.',
+    autoScheduleSafe: false,
+    source: 'DailyMed · Morphine sulfate extended-release tablets · Aug 2026',
   ),
 
 

@@ -20,10 +20,10 @@ void main() {
       'dihydroergotamine-trudhesa',
     ];
 
-    test('adds ten complete unique records and raises census to 409', () {
+    test('adds ten complete unique records and raises census to 410', () {
       final allIds = sampleMedications.map((m) => m.id).toList();
-      expect(sampleMedications.length, 409);
-      expect(allIds.toSet().length, 409);
+      expect(sampleMedications.length, 410);
+      expect(allIds.toSet().length, 410);
 
       for (final id in ids) {
         expect(allIds, contains(id), reason: id);

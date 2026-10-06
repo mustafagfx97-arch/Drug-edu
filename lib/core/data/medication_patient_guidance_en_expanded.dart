@@ -4256,4 +4256,17 @@ const reviewedEnglishPatientCounselingExpansion =
   ),
 
 
+  'morphine-sulfate-er-tablets': _ReviewedEn(
+    purpose: "Extended-release morphine for severe and persistent pain requiring scheduled opioid therapy when alternatives are inadequate; it is not a PRN analgesic.",
+    how: "Swallow each ER tablet intact. Do not cut, break, chew, crush or dissolve it because dose dumping can cause fatal overdose.",
+    timing: "Take on the prescribed every-8-hour or every-12-hour schedule. Do not carry an old immediate-release frequency forward without a clinician-defined conversion.",
+    duration: "Individualized opioid therapy only while benefit outweighs risk; reassess regularly and taper rather than abruptly stopping after physical dependence develops.",
+    important: "For other ORAL morphine formulations, keep the same 24-hour oral morphine total and redistribute it as one-half every 12 hours or one-third every 8 hours. This same-substance rule must not be used for a different opioid. No clinical-trial-defined cross-opioid conversion ratio is established. High ER doses require established opioid tolerance.",
+    common: "Constipation, nausea and sleepiness are common; discuss constipation prevention and avoid driving until the effect is known.",
+    missed: "If a dose is missed, take the next dose at the usual time. Do not double or add an extra opioid dose.",
+    storage: "Store securely away from children, visitors and anyone for whom it was not prescribed.",
+    help: "Call emergency services for slow or difficult breathing, blue lips, or profound unresponsiveness.",
+    teach: "What is the difference between converting oral morphine to morphine ER and converting from a different opioid? Can an ER tablet be crushed?",
+  ),
+
 };

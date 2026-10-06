@@ -15,6 +15,8 @@ const expandedMedications10 = <Medication>[
           'Take once daily with food. Drink adequate fluids during treatment.',
       duration:
           'Induction and maintenance schedules differ; maintenance may be long term while clinically appropriate.',
+      releaseConversion:
+          'No labeled direct conversion / do not auto-convert. LIALDA has its own delayed/extended-release system, approved dosing and food instructions; do not derive a LIALDA dose by matching total milligrams from APRISO, PENTASA or another oral mesalamine product.',
       formulationHandling:
           'Swallow tablets whole. Do not split or crush. Do not substitute other mesalamine formulations by milligram-for-milligram assumption because release characteristics and labeled schedules differ.',
       monitoring:
@@ -77,6 +79,8 @@ const expandedMedications10 = <Medication>[
           'Take once daily in the morning without regard to meals. Drink adequate fluids.',
       duration:
           'Maintenance therapy; typically continued while remission-maintenance benefit remains appropriate.',
+      releaseConversion:
+          'No labeled direct conversion / do not auto-convert. APRISO is a product-specific 0.375 g extended-release capsule regimen for maintenance; do not convert from LIALDA, PENTASA or another mesalamine product by matching total daily milligrams.',
       formulationHandling:
           'Swallow capsules whole. Do not cut, break, crush or chew. Avoid co-administration with antacids.',
       monitoring:
@@ -139,6 +143,8 @@ const expandedMedications10 = <Medication>[
           'Use on the prescribed four-times-daily schedule; drink adequate fluids.',
       duration:
           'Induction/active-treatment course is clinician-directed and differs from maintenance-only mesalamine products.',
+      releaseConversion:
+          'No labeled direct conversion / do not auto-convert. PENTASA has its own extended-release capsule system and labeled multi-dose regimen; do not convert to or from LIALDA, APRISO or another mesalamine product solely by matching milligrams.',
       formulationHandling:
           'Swallow capsules whole without crushing or chewing. Alternatively, the capsule may be opened and the entire contents sprinkled onto applesauce or yogurt and consumed immediately. Do not crush or chew the beads.',
       monitoring:

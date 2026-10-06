@@ -1089,6 +1089,10 @@ const medicationTherapyDurations = <String, TherapyDurationGuidance>{
     kind: TherapyDurationKind.shortCourse,
     patientOverrideAr: 'المنتج DR 800 mg المراجع له كورس 6 أسابيع لعلاج moderately active ulcerative colitis؛ لا تعمم هذه المدة على كل منتجات mesalamine.',
   ),
+  'morphine-sulfate-er-tablets': TherapyDurationGuidance(
+    kind: TherapyDurationKind.individualized,
+    patientOverrideAr: 'علاج opioid فردي فقط ما دامت الفائدة فوق المخاطر؛ يراجع الألم/الوظيفة والنعاس والتنفس والإمساك بانتظام، ولا يوقف فجأة بعد حدوث dependence.',
+  ),
 
 
 };

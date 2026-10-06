@@ -80,6 +80,27 @@ jobs:
       - name: Build Android release AAB
         run: flutter build appbundle --release
 
+      - name: Build standalone Patient Edu debug APK
+        run: |
+          sed -i 's/applicationId = "com.mustafagfx97.drug_edu"/applicationId = "com.mustafagfx97.patient_edu"/' android/app/build.gradle.kts
+          sed -i 's/android:label="Drug Edu"/android:label="Patient Edu"/' android/app/src/main/AndroidManifest.xml
+          flutter build apk --debug -t lib/main_patient_edu.dart
+          cp build/app/outputs/flutter-apk/app-debug.apk build/patient-edu-debug.apk
+
+      - name: Build standalone Patient Edu release APK
+        run: |
+          flutter build apk --release -t lib/main_patient_edu.dart
+          cp build/app/outputs/flutter-apk/app-release.apk build/patient-edu-release.apk
+
+      - name: Upload standalone Patient Edu APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: patient-edu-standalone-apks
+          path: |
+            build/patient-edu-debug.apk
+            build/patient-edu-release.apk
+          if-no-files-found: error
+
       - name: Upload Android debug APK
         uses: actions/upload-artifact@v4
         with:

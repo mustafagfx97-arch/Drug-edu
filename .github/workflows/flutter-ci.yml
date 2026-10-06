@@ -80,10 +80,19 @@ jobs:
       - name: Build Android release AAB
         run: flutter build appbundle --release
 
-      - name: Build standalone Patient Edu debug APK
+      - name: Configure standalone Patient Edu Android identity
         run: |
+          sed -i 's/namespace = "com.mustafagfx97.drug_edu"/namespace = "com.mustafagfx97.patient_edu"/' android/app/build.gradle.kts
           sed -i 's/applicationId = "com.mustafagfx97.drug_edu"/applicationId = "com.mustafagfx97.patient_edu"/' android/app/build.gradle.kts
           sed -i 's/android:label="Drug Edu"/android:label="Patient Edu"/' android/app/src/main/AndroidManifest.xml
+          sed -i 's/package com.mustafagfx97.drug_edu/package com.mustafagfx97.patient_edu/' android/app/src/main/kotlin/com/mustafagfx97/drug_edu/MainActivity.kt
+          grep -F 'namespace = "com.mustafagfx97.patient_edu"' android/app/build.gradle.kts
+          grep -F 'applicationId = "com.mustafagfx97.patient_edu"' android/app/build.gradle.kts
+          grep -F 'package com.mustafagfx97.patient_edu' android/app/src/main/kotlin/com/mustafagfx97/drug_edu/MainActivity.kt
+          grep -F 'android:label="Patient Edu"' android/app/src/main/AndroidManifest.xml
+
+      - name: Build standalone Patient Edu debug APK
+        run: |
           flutter build apk --debug -t lib/main_patient_edu.dart
           cp build/app/outputs/flutter-apk/app-debug.apk build/patient-edu-debug.apk
 

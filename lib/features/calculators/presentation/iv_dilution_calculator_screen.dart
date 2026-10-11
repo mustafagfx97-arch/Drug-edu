@@ -105,6 +105,29 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           finalVolumeMl: plan.finalVolumeMl,
         ) &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
+    final nitroglycerin = profile.population == 'General' &&
+        profile.name == 'Nitroglycerin';
+    final exactNitroglycerin = nitroglycerin && plan != null &&
+        stockAmount != null && stockVolume != null &&
+        doseAmount != null &&
+        matchesNitroglycerinLabelRecipe(
+          ampouleAmountMg: stockAmount,
+          ampouleVolumeMl: stockVolume,
+          orderedAmountMg: doseAmount,
+          addedFluidMl: plan.addedFluidMl,
+          finalVolumeMl: plan.finalVolumeMl,
+        ) &&
+        evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
+    // These regimens are continuous, titrated, bolus, or procedure-specific:
+    // a user-entered bag duration must NEVER be silently treated as
+    // a drug-specific administration instruction.
+    const noGenericInfusionTime = <String>{
+      'Norepinephrine', 'Epinephrine', 'Dopamine', 'Dobutamine',
+      'Sodium nitroprusside', 'Heparin', 'Regular insulin infusion',
+      'Insulin', 'Adenosine', 'Tenecteplase', 'Alteplase',
+      'Dexmedetomidine', 'Propofol',
+    };
+    final mustUseProtocolRate = noGenericInfusionTime.contains(profile.name);
     final orderedRate = double.tryParse(prescribedRate.text.trim());
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
@@ -112,12 +135,17 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             ? orderedRate.isFinite && orderedRate > 0
                 ? orderedRate / plan.finalStrengthPerMl
                 : null
-            : !cardene
-                ? calculateOrderedDurationPumpRate(
-                    finalVolumeMl: plan.finalVolumeMl,
-                    orderedDurationMinutes: orderedRate,
+            : exactNitroglycerin
+                ? calculateOrderedMcgPerMinutePump(
+                    orderedMcgPerMin: orderedRate,
+                    finalMgPerMl: plan.finalStrengthPerMl,
                   )
-                : null;
+                : !cardene && !nitroglycerin && !mustUseProtocolRate
+                    ? calculateOrderedDurationPumpRate(
+                        finalVolumeMl: plan.finalVolumeMl,
+                        orderedDurationMinutes: orderedRate,
+                      )
+                    : null;
     final titleStyle = Theme.of(context).textTheme.titleMedium
         ?.copyWith(fontWeight: FontWeight.w900);
     return Scaffold(
@@ -349,14 +377,31 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 '25 mg/10 mL + 240 mL compatible fluid = '
                 '250 mL FINAL at 0.1 mg/mL. Pump rate disabled.',
               )
+            else if (nitroglycerin && !exactNitroglycerin)
+              const _Alert(
+                'NITROGLYCERIN 5 mg/mL concentrate lock: 50 mg '
+                'in 500 mL FINAL (q.s.) with D5W or 0.9% NaCl gives '
+                '100 mcg/mL. No pump rate for other preparations here.',
+              )
+            else if (mustUseProtocolRate)
+              const _Alert(
+                'NO GENERIC DURATION RATE: this high-alert medication '
+                'requires a validated drug/route-specific ordered infusion '
+                'protocol. Use the dedicated infusion calculator where '
+                'an exact final concentration is available.',
+              )
             else ...[
               Text('3 · ريت إعطاء الجرعة الموصوفة', style: titleStyle),
               const SizedBox(height: 7),
               _Alert(
                 exactCardene
-                    ? 'CARDENE IV exact validated final concentration: '
+                    ? 'CARDENE IV exact final concentration: '
                       'enter already PRESCRIBED mg/hour (NOT dose selection).'
-                    : 'Only enter minutes if an INTERMITTENT infusion '
+                    : exactNitroglycerin
+                        ? 'NITROGLYCERIN exact 100 mcg/mL final '
+                          'preparation: enter already PRESCRIBED mcg/min. '
+                          'Use the specified nonabsorbing tubing/set.'
+                        : 'Only enter minutes if an INTERMITTENT infusion '
                       'duration was ordered and independently approved '
                       'for THIS exact medicine. No calculation authorizes '
                       'IV push, continuous titration or unknown infusion time.',
@@ -365,7 +410,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 key: const ValueKey('dilution-prescribed-rate'),
                 label: exactCardene
                     ? 'Already PRESCRIBED rate (mg/hr)'
-                    : 'Already PRESCRIBED infusion duration (minutes)',
+                    : exactNitroglycerin
+                        ? 'Already PRESCRIBED rate (mcg/min)'
+                        : 'Already PRESCRIBED infusion duration (minutes)',
                 controller: prescribedRate,
                 changed: () =>
                     setState(() => rateConfirmed = false),

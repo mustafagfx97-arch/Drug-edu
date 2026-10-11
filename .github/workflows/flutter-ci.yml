@@ -65,11 +65,40 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Validate PWA source assets
+        run: |
+          test -f web/index.html
+          test -f web/manifest.json
+          test -f web/sw.js
+          test -f web/icons/Icon-192.png
+          test -f web/icons/Icon-512.png
+          python3 -c "import json; x=json.load(open('web/manifest.json')); assert x['display']=='standalone'; assert len(x['icons'])>=2"
+
       - name: Analyze
         run: flutter analyze
 
       - name: Test
         run: flutter test
+
+      - name: Build installable PWA web release
+        run: flutter build web --release --base-href "/Drug-edu/" --pwa-strategy=none
+
+      - name: Validate generated PWA release
+        run: |
+          test -s build/web/index.html
+          test -s build/web/main.dart.js
+          test -s build/web/manifest.json
+          test -s build/web/sw.js
+          test -s build/web/icons/Icon-192.png
+          test -s build/web/icons/Icon-512.png
+          grep -F '/Drug-edu/' build/web/index.html
+
+      - name: Upload installable PWA web release
+        uses: actions/upload-artifact@v4
+        with:
+          name: drug-edu-pwa-web-release
+          path: build/web/
+          if-no-files-found: error
 
       - name: Build Android debug APK
         run: flutter build apk --debug

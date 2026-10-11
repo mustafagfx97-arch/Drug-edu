@@ -58,7 +58,7 @@ const ivInfusionRateProfiles = <IvInfusionRateProfile>[
     presentation: 'Ready-to-use BREVIBLOC 100 mg/10 mL vial or 2500 mg/250 mL bag; NOT double-strength 20 mg/mL.',
     preparationLock: 'Different premix strengths exist. Only select this if FINAL strength is exactly 10 mg/mL.',
     compatibilityLock: 'Not compatible with 5% sodium bicarbonate or furosemide. Check other medicine Y-site compatibility separately.',
-    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=BREVIBLOC',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=220a07b8-5c68-41a3-8705-fd91f14c50b4',
   ),
   IvInfusionRateProfile(
     id: 'norepinephrine-concentrate-final-4mcg-ml',
@@ -69,7 +69,7 @@ const ivInfusionRateProfiles = <IvInfusionRateProfile>[
     presentation: '4 mg/4 mL stock diluted as labeled in 1000 mL D5-containing fluid = labeled 4 mcg/mL.',
     preparationLock: 'NOT stock 1 mg/mL, a ready-made premix, or an institutionally prepared higher concentration.',
     compatibilityLock: 'Labeled concentrate fluid: D5W or dextrose-containing saline, NOT plain saline.',
-    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=norepinephrine%20bitartrate',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4b054c27-ed64-40e2-8eba-b7f2ec780a82',
   ),
   IvInfusionRateProfile(
     id: 'nitroglycerin-final-100mcg-ml',
@@ -80,6 +80,6 @@ const ivInfusionRateProfiles = <IvInfusionRateProfile>[
     presentation: 'Diluted 50 mg q.s. to 500 mL FINAL = 100 mcg/mL.',
     preparationLock: 'Not for direct IV injection from stock 5 mg/mL. Use appropriate low-adsorption/non-PVC IV administration system.',
     compatibilityLock: 'Do not mix with other medicines or blood. PVC may adsorb drug; product-specific set matters.',
-    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=nitroglycerin%20injection',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=578d8159-5ec6-457f-b4a8-9add624d43a8',
   ),
 ];

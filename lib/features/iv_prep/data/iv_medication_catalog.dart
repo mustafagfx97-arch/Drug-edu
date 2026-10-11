@@ -62,6 +62,9 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Nitroglycerin', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Labetalol', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Esmolol', population: 'General', category: 'Cardiovascular', structured: true),
+  IvCatalogEntry(name: 'Nicardipine', population: 'General', category: 'Hypertensive emergency / CCU', structured: true),
+  IvCatalogEntry(name: 'Clevidipine', population: 'General', category: 'Hypertensive emergency / CCU', structured: true),
+  IvCatalogEntry(name: 'Sodium nitroprusside', population: 'General', category: 'Hypertensive emergency / CCU', structured: true),
 
   // Electrolytes / metabolic
   IvCatalogEntry(name: 'Potassium chloride', population: 'General', category: 'Electrolytes & metabolic', structured: true),

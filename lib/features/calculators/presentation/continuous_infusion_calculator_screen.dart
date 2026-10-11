@@ -213,18 +213,14 @@ class _ContinuousInfusionCalculatorScreenState
   }
 
   static String _format(double value) {
-    // Never render a small positive infusion rate as misleading "0".
+    // Avoid displaying a small positive pump rate as zero.
     if (value > 0 && value < 0.000001) {
       return value.toStringAsExponential(3);
     }
     final precision = value < 0.01 ? 6 : (value < 1 ? 4 : 3);
     final output = value.toStringAsFixed(precision);
     return output
-        .replaceFirst(RegExp(r'0+
-}
-), '')
-        .replaceFirst(RegExp(r'\.
-}
-), '');
+        .replaceFirst(RegExp(r'0+$'), '')
+        .replaceFirst(RegExp(r'\\.$'), '');
   }
 }

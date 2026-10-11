@@ -53,6 +53,8 @@ const _cardeneUrl =
     'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5749599d-ff2a-42e4-aa72-cd25013feee8';
 const _cleviprexUrl =
     'https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=f9290625-b723-4eda-bab8-a97bef6041f6';
+const _labetalolUrl =
+    'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=502bb655-9ad8-481b-9e26-1dec8adef471';
 const _nitroglycerinUrl =
     'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=578d8159-5ec6-457f-b4a8-9add624d43a8';
 const _nitroprussideUrl =
@@ -64,6 +66,42 @@ IvFluidEvidence reviewedIvFluidEvidence({
   required IvFluid fluid,
 }) {
   if (population != 'General') return _unverified;
+  if (name == 'Labetalol') {
+    if (fluid == IvFluid.sodiumBicarbonate5) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.incompatibleDiluent,
+        explanation:
+            'Current label: labetalol is NOT compatible with 5% '
+            'sodium bicarbonate. Alkaline medicines such as furosemide '
+            'may precipitate in the same IV line.',
+        source: _labetalolUrl,
+      );
+    }
+    if (fluid == IvFluid.normalSaline ||
+        fluid == IvFluid.dextrose5 ||
+        fluid == IvFluid.dextrose5NormalSaline ||
+        fluid == IvFluid.lactatedRingers) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.verifiedDiluent,
+        explanation:
+            'Manufacturer lists this dilution fluid for labetalol. '
+            'The adult CONTINUOUS infusion example adds 40 mL '
+            'of 5 mg/mL stock (200 mg) to 160 mL compatible fluid, '
+            'FINAL 200 mL at 1 mg/mL. The separate label-tested '
+            '24-hour stability range does not validate every new '
+            'concentration; follow sterile-compounding BUD.',
+        source: _labetalolUrl,
+      );
+    }
+    return const IvFluidEvidence(
+      status: IvFluidEvidenceStatus.unknown,
+      explanation:
+          'This exact fluid is not included in the current reviewed '
+          'Labetalol dilution-fluid choices. Check the manufacturer '
+          'table for other exact fluids before preparation.',
+      source: _labetalolUrl,
+    );
+  }
   if (name == 'Nicardipine') {
     if (fluid == IvFluid.normalSaline ||
         fluid == IvFluid.halfNormalSaline ||

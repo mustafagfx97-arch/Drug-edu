@@ -1,5 +1,5 @@
 /* Network-first cache: online clinical updates take priority over offline content. */
-const CACHE = 'drug-edu-pwa-v1';
+const CACHE = 'drug-edu-pwa-v2-iv-only';
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });

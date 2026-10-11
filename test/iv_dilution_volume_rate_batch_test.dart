@@ -113,9 +113,9 @@ void main() {
       ), isNull);
     }
     expect(dilution(
-      vialAmount: double.maxFinite, vialMl: 10,
-      stock: double.maxFinite / 10,
-      ordered: double.maxFinite, fluid: 1e-15,
+      vialAmount: 1, vialMl: 1,
+      stock: 1, ordered: double.maxFinite,
+      fluid: double.maxFinite,
     ), isNull);
   });
 

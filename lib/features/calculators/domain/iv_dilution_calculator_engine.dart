@@ -129,3 +129,35 @@ bool matchesCardeneIvLabelRecipe({
       near(addedFluidMl, 240) &&
       near(finalVolumeMl, 250);
 }
+
+ 
+/// Labeled nitroglycerin concentrate preparation: entire 50 mg/10 mL
+/// vial q.s. to 500 mL FINAL with D5W or 0.9% saline = 100 mcg/mL.
+/// Do not reuse for a premixed product or an alternate concentration.
+bool matchesNitroglycerinLabelRecipe({
+  required double ampouleAmountMg,
+  required double ampouleVolumeMl,
+  required double orderedAmountMg,
+  required double finalVolumeMl,
+  required double addedFluidMl,
+}) {
+  bool near(double actual, double expected) =>
+      actual.isFinite && (actual - expected).abs() < 0.00001;
+  return near(ampouleAmountMg, 50) &&
+      near(ampouleVolumeMl, 10) &&
+      near(orderedAmountMg, 50) &&
+      near(finalVolumeMl, 500) &&
+      near(addedFluidMl, 490);
+}
+
+/// An ordered micrograms/minute rate for an exact verified final strength
+/// in mg/mL; avoids silently mixing mg and micrograms.
+double? calculateOrderedMcgPerMinutePump({
+  required double orderedMcgPerMin,
+  required double finalMgPerMl,
+}) {
+  if (!orderedMcgPerMin.isFinite || orderedMcgPerMin <= 0 ||
+      !finalMgPerMl.isFinite || finalMgPerMl <= 0) return null;
+  final result = orderedMcgPerMin * 60 / (finalMgPerMl * 1000);
+  return result.isFinite && result > 0 ? result : null;
+}

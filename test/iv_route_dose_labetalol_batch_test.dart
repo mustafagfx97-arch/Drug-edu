@@ -153,6 +153,42 @@ void main() {
     }
   });
 
+  test('Nonstandard concentration: rate math requires local verification', () {
+    // Screenshot scenario: 100 mg at 5 mg/mL + 100 mL NS = 120 mL final.
+    // Actual concentration 5/6 mg/mL, different from labelled 1 mg/mL.
+    const actualConcentration = 100 / 120;
+    expect(calculateLocallyVerifiedLabetalolRateMathOnly(
+      prescribedMgPerMinute: 2,
+      calculatedFinalMgPerMl: actualConcentration,
+      localPreparationVerified: false,
+    ), isNull);
+    expect(calculateLocallyVerifiedLabetalolRateMathOnly(
+      prescribedMgPerMinute: 2,
+      calculatedFinalMgPerMl: actualConcentration,
+      localPreparationVerified: true,
+    ), closeTo(144, 0.000001));
+    // The mathematical conversion does not itself certify this formulation.
+    expect(matchesLabetalolLabelInfusion(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 100,
+      withdrawnMl: 20,
+      addedDiluentMl: 100,
+      finalVolumeMl: 120,
+    ), isFalse);
+    for (final bad in [0.0, -1.0, double.infinity, double.nan]) {
+      expect(calculateLocallyVerifiedLabetalolRateMathOnly(
+        prescribedMgPerMinute: bad,
+        calculatedFinalMgPerMl: actualConcentration,
+        localPreparationVerified: true,
+      ), isNull);
+      expect(calculateLocallyVerifiedLabetalolRateMathOnly(
+        prescribedMgPerMinute: 2,
+        calculatedFinalMgPerMl: bad,
+        localPreparationVerified: true,
+      ), isNull);
+    }
+  });
+
   test('Labetalol fluid: NS/D5 supported, bicarbonate incompatible', () {
     for (final fluid in [IvFluid.normalSaline, IvFluid.dextrose5]) {
       expect(reviewedIvFluidEvidence(

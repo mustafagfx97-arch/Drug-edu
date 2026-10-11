@@ -1,7 +1,7 @@
 {
-  "name": "Drug Edu · Clinical Pharmacist",
-  "short_name": "Drug Edu",
-  "description": "IV preparation, critical-care calculations and evidence-based patient counseling.",
+  "name": "Drug IV · Intravenous Medicines",
+  "short_name": "Drug IV",
+  "description": "IV medicines, preparation, fluid compatibility and ordered-dose calculators for clinical pharmacists.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",

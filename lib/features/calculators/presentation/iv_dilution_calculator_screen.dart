@@ -3,6 +3,8 @@ import '../../iv_prep/data/iv_preparation_profiles.dart';
 import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
 import '../domain/iv_labetalol_route_engine.dart';
+import '../domain/iv_norepinephrine_stock_engine.dart';
+import '../../iv_prep/domain/iv_infusion_rate_engine.dart';
 import '../../iv_prep/data/iv_adult_dose_regimens.dart';
 import '../../iv_prep/presentation/iv_adult_dose_guide_panel.dart';
 import 'iv_labetalol_injection_calculator.dart';
@@ -21,6 +23,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   final prescribedQuantity = TextEditingController();
   final fluidMl = TextEditingController();
   final prescribedRate = TextEditingController();
+  final norepinephrineBaseEquivalent = TextEditingController();
+  final norepinephrineWeight = TextEditingController();
   int selected = ivPreparationProfiles.indexWhere(
     (p) => p.population == 'General' && p.name == 'Nicardipine',
   );
@@ -30,6 +34,13 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   bool confirmed = false;
   bool rateConfirmed = false;
   bool localPreparationVerified = false;
+  bool norepinephrineProductLabelVerified = false;
+  bool norepinephrineInfusionVerified = false;
+  NorepinephrineStockMode norepinephrineStockMode =
+      NorepinephrineStockMode.reviewedOneMgBasePerMl;
+  NorepinephrinePrintedMassBasis norepinephrineMassBasis =
+      NorepinephrinePrintedMassBasis.norepinephrineBase;
+  IvOrderedRateUnit norepinephrineRateUnit = IvOrderedRateUnit.mcgPerKgMin;
   String? selectedDoseRegimen;
 
   @override
@@ -48,6 +59,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   void dispose() {
     for (final c in [
       vialQuantity, vialMl, prescribedQuantity, fluidMl, prescribedRate,
+      norepinephrineBaseEquivalent, norepinephrineWeight,
     ]) {
       c.dispose();
     }
@@ -57,12 +69,18 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   void reset() {
     for (final c in [
       vialQuantity, vialMl, prescribedQuantity, fluidMl, prescribedRate,
+      norepinephrineBaseEquivalent, norepinephrineWeight,
     ]) {
       c.clear();
     }
     confirmed = false;
     rateConfirmed = false;
     localPreparationVerified = false;
+    norepinephrineProductLabelVerified = false;
+    norepinephrineInfusionVerified = false;
+    norepinephrineStockMode = NorepinephrineStockMode.reviewedOneMgBasePerMl;
+    norepinephrineMassBasis = NorepinephrinePrintedMassBasis.norepinephrineBase;
+    norepinephrineRateUnit = IvOrderedRateUnit.mcgPerKgMin;
     selectedDoseRegimen = null;
   }
 
@@ -70,11 +88,15 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         confirmed = false;
         rateConfirmed = false;
         localPreparationVerified = false;
+        norepinephrineProductLabelVerified = false;
+        norepinephrineInfusionVerified = false;
       });
 
   @override
   Widget build(BuildContext context) {
     final profile = ivPreparationProfiles[selected];
+    final norepinephrine = profile.population == 'General' &&
+        profile.name == 'Norepinephrine';
     final labetalol = profile.population == 'General' &&
         profile.name == 'Labetalol';
     final selectedRegimens = reviewedAdultIvDoseRegimens(
@@ -99,16 +121,35 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             (profile.name == 'Clevidipine' || profile.name == 'Esmolol'));
     final stockAmount = double.tryParse(vialQuantity.text.trim());
     final stockVolume = double.tryParse(vialMl.text.trim());
+    final norepinephrineStock = norepinephrine &&
+            stockAmount != null && stockVolume != null
+        ? resolveNorepinephrineBaseStock(
+            mode: norepinephrineStockMode,
+            printedBasis: norepinephrineMassBasis,
+            printedVialMg: stockAmount,
+            vialMl: stockVolume,
+            statedBaseEquivalentMg: double.tryParse(
+              norepinephrineBaseEquivalent.text.trim(),
+            ),
+            productLabelVerified: norepinephrineProductLabelVerified,
+          )
+        : null;
+    final effectiveStockConcentration = norepinephrine
+        ? norepinephrineStock?.baseConcentrationMgPerMl
+        : variant?.concentration;
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
-    final plan = confirmed && !hardLock && variant != null &&
+    final plan = confirmed && !hardLock &&
+            effectiveStockConcentration != null &&
             stockAmount != null && stockVolume != null &&
             doseAmount != null && requestedFluid != null
         ? calculateVerifiedIvDilution(
-            ampouleAmount: stockAmount,
+            ampouleAmount: norepinephrine
+                ? norepinephrineStock!.baseAmountMgPerVial
+                : stockAmount,
             ampouleVolumeMl: stockVolume,
             orderedTotalAmount: doseAmount,
-            verifiedStrengthPerMl: variant.concentration,
+            verifiedStrengthPerMl: effectiveStockConcentration,
             volumeMl: requestedFluid,
             volumeMode: volumeMode,
           )
@@ -167,6 +208,17 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         !labelLabetalol && plan != null &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
     final orderedRate = double.tryParse(prescribedRate.text.trim());
+    final norepinephrinePump = norepinephrine && plan != null &&
+            rateConfirmed && norepinephrineInfusionVerified &&
+            orderedRate != null
+        ? calculateOrderedIvInfusion(
+            prescribedRate: orderedRate,
+            rateUnit: norepinephrineRateUnit,
+            finalMicrogramsPerMilliliter:
+                plan.finalStrengthPerMl * 1000,
+            weightKg: double.tryParse(norepinephrineWeight.text.trim()),
+          )
+        : null;
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
         : labelLabetalol

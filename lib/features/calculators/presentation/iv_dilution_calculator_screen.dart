@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../../iv_prep/data/iv_preparation_profiles.dart';
 import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
+import '../domain/iv_labetalol_route_engine.dart';
+import '../../iv_prep/data/iv_adult_dose_regimens.dart';
+import '../../iv_prep/presentation/iv_adult_dose_guide_panel.dart';
+import 'iv_labetalol_injection_calculator.dart';
 
 class IvDilutionCalculatorScreen extends StatefulWidget {
   const IvDilutionCalculatorScreen({super.key, this.initialProfile});
@@ -25,6 +29,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   IvVolumeEntryMode volumeMode = IvVolumeEntryMode.addFluidToDrug;
   bool confirmed = false;
   bool rateConfirmed = false;
+  String? selectedDoseRegimen;
 
   @override
   void initState() {
@@ -56,6 +61,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     }
     confirmed = false;
     rateConfirmed = false;
+    selectedDoseRegimen = null;
   }
 
   void invalidate() => setState(() {
@@ -66,6 +72,18 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     final profile = ivPreparationProfiles[selected];
+    final labetalol = profile.population == 'General' &&
+        profile.name == 'Labetalol';
+    final selectedRegimens = reviewedAdultIvDoseRegimens(
+      name: profile.name, population: profile.population,
+    ).where((r) => r.id == selectedDoseRegimen).toList();
+    final currentDoseRegimen = selectedRegimens.isEmpty
+        ? null
+        : selectedRegimens.first;
+    final slowLabetalol = labetalol &&
+        currentDoseRegimen?.method == IvAdministrationMethod.slowInjection;
+    final labetalolInfusion = labetalol &&
+        currentDoseRegimen?.id == 'labetalol-continuous-infusion';
     final variants = profile.calculatorVariants;
     final variant = variants.isEmpty ? null : variants[presentation];
     final evidence = reviewedIvFluidEvidence(
@@ -126,11 +144,27 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
       'Sodium nitroprusside', 'Heparin', 'Regular insulin infusion',
       'Insulin', 'Adenosine', 'Tenecteplase', 'Alteplase',
       'Dexmedetomidine', 'Propofol',
+      'Labetalol', 'Esmolol', 'Clevidipine',
     };
     final mustUseProtocolRate = noGenericInfusionTime.contains(profile.name);
+    final exactLabetalol = labetalolInfusion && plan != null &&
+        variant != null && doseAmount != null &&
+        evidence.status == IvFluidEvidenceStatus.verifiedDiluent &&
+        matchesLabetalolLabelInfusion(
+          stockConcentrationMgPerMl: variant.concentration,
+          selectedAmountMg: doseAmount,
+          withdrawnMl: plan.withdrawalMl,
+          addedDiluentMl: plan.addedFluidMl,
+          finalVolumeMl: plan.finalVolumeMl,
+        );
     final orderedRate = double.tryParse(prescribedRate.text.trim());
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
+        : exactLabetalol
+            ? labetalolOrderedInfusionMlPerHour(
+                prescribedMgPerMinute: orderedRate,
+                verifiedFinalMgPerMl: plan.finalStrengthPerMl,
+              )
         : exactCardene
             ? orderedRate.isFinite && orderedRate > 0
                 ? orderedRate / plan.finalStrengthPerMl
@@ -223,6 +257,38 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           _Info('Reconstitution', profile.reconstitution),
           _Info('Specific dilution / formulation rules', profile.furtherDilution),
           _Info('Administration rules', profile.administration),
+          IvAdultDoseGuidePanel(
+            drugName: profile.name,
+            population: profile.population,
+            selectedId: selectedDoseRegimen,
+            onChanged: (id) => setState(() {
+              selectedDoseRegimen = id;
+              for (final c in [
+                vialQuantity, vialMl, prescribedQuantity,
+                fluidMl, prescribedRate,
+              ]) {
+                c.clear();
+              }
+              confirmed = false;
+              rateConfirmed = false;
+            }),
+          ),
+          if (labetalol && currentDoseRegimen == null)
+            const _Alert(
+              'Choose adult Labetalol INITIAL slow IV injection, '
+              'REPEATED slow IV injection, or continuous infusion '
+              'above. Injection and infusion calculations '
+              'MUST NOT share a preparation pathway.',
+            ),
+          if (slowLabetalol)
+            IvLabetalolInjectionCalculator(
+              key: ValueKey(selectedDoseRegimen),
+              stage: currentDoseRegimen!.id ==
+                      'labetalol-initial-injection'
+                  ? LabetalolInjectionStage.initial
+                  : LabetalolInjectionStage.additional,
+            ),
+          if (!labetalol || labetalolInfusion) ...[
           if (variant == null)
             const _Alert(
               'Calculation LOCKED: exact verified stock concentration '
@@ -371,7 +437,14 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            if (cardene && !exactCardene)
+            if (labetalol && !exactLabetalol)
+              const _Alert(
+                'LABETALOL INFUSION recipe lock: 200 mg '
+                '(40 mL of 5 mg/mL stock) + 160 mL label-approved '
+                'fluid = 200 mL FINAL at 1 mg/mL. '
+                'No pump-rate calculation for other preparations.',
+              )
+            else if (cardene && !exactCardene)
               const _Alert(
                 'CARDENE IV product-specific lock: label recipe is '
                 '25 mg/10 mL + 240 mL compatible fluid = '
@@ -394,7 +467,13 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               Text('3 · ريت إعطاء الجرعة الموصوفة', style: titleStyle),
               const SizedBox(height: 7),
               _Alert(
-                exactCardene
+                exactLabetalol
+                    ? 'LABETALOL continuous infusion: exact label '
+                      'preparation 200 mg in 200 mL final (1 mg/mL). '
+                      'Label example is 2 mg/min = 120 mL/hr; '
+                      'ENTER the actual ordered mg/min, do not '
+                      'select a rate automatically.'
+                    : exactCardene
                     ? 'CARDENE IV exact final concentration: '
                       'enter already PRESCRIBED mg/hour (NOT dose selection).'
                     : exactNitroglycerin
@@ -408,7 +487,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               ),
               _Numeric(
                 key: const ValueKey('dilution-prescribed-rate'),
-                label: exactCardene
+                label: exactLabetalol
+                    ? 'Already PRESCRIBED infusion rate (mg/min)'
+                    : exactCardene
                     ? 'Already PRESCRIBED rate (mg/hr)'
                     : exactNitroglycerin
                         ? 'Already PRESCRIBED rate (mcg/min)'
@@ -451,6 +532,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                   ),
                 ),
             ],
+          ],
           ],
           for (final lock in profile.criticalLocks) _Alert(lock),
           _Info('Fluid details', profile.allowedDiluents),

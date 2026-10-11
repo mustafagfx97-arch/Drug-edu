@@ -275,6 +275,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             selectedId: selectedDoseRegimen,
             onChanged: (id) => setState(() {
               selectedDoseRegimen = id;
+              localPreparationVerified = false;
               for (final c in [
                 vialQuantity, vialMl, prescribedQuantity,
                 fluidMl, prescribedRate,
@@ -349,6 +350,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 fluid = f;
                 confirmed = false;
                 rateConfirmed = false;
+                localPreparationVerified = false;
               });
             },
           ),
@@ -384,6 +386,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               volumeMode = s.first;
               confirmed = false;
               rateConfirmed = false;
+              localPreparationVerified = false;
             }),
           ),
           const SizedBox(height: 7),
@@ -406,6 +409,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 : (v) => setState(() {
                       confirmed = v ?? false;
                       rateConfirmed = false;
+                      localPreparationVerified = false;
                     }),
             title: const Text(
               'Verified prescribed dose, unit, exact vial identity '

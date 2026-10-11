@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:drug_edu/features/calculators/domain/iv_dilution_calculator_engine.dart';
 import 'package:drug_edu/features/calculators/presentation/iv_dilution_calculator_screen.dart';
+import 'package:drug_edu/features/iv_prep/data/iv_fluid_evidence.dart';
 
 void main() {
   IvDilutionResult? dilution({
@@ -136,6 +137,35 @@ void main() {
       ampouleAmountMg: 25, ampouleVolumeMl: 10,
       orderedAmountMg: 20, addedFluidMl: 240, finalVolumeMl: 250,
     ), isFalse);
+  });
+
+  test('IV fluid evidence distinguishes official fluids from unknown fluids', () {
+    for (final f in [
+      IvFluid.normalSaline, IvFluid.halfNormalSaline,
+      IvFluid.dextrose5, IvFluid.dextrose5NormalSaline,
+      IvFluid.dextrose5HalfNormalSaline,
+    ]) {
+      expect(reviewedIvFluidEvidence(
+        name: 'Nicardipine', population: 'General', fluid: f,
+      ).status, IvFluidEvidenceStatus.verifiedDiluent);
+    }
+    for (final f in [IvFluid.dextrose10, IvFluid.sterileWaterForInjection]) {
+      expect(reviewedIvFluidEvidence(
+        name: 'Nicardipine', population: 'General', fluid: f,
+      ).status, IvFluidEvidenceStatus.unknown);
+    }
+    expect(reviewedIvFluidEvidence(
+      name: 'Nitroglycerin', population: 'General',
+      fluid: IvFluid.normalSaline,
+    ).status, IvFluidEvidenceStatus.verifiedDiluent);
+    expect(reviewedIvFluidEvidence(
+      name: 'Nitroglycerin', population: 'General',
+      fluid: IvFluid.lactatedRingers,
+    ).status, IvFluidEvidenceStatus.unknown);
+    expect(reviewedIvFluidEvidence(
+      name: 'Clevidipine', population: 'General',
+      fluid: IvFluid.sterileWaterForInjection,
+    ).status, IvFluidEvidenceStatus.coadministrationOnly);
   });
 
   test('nitroglycerin 50mg/10mL to 500mL final is 100 mcg/mL', () {

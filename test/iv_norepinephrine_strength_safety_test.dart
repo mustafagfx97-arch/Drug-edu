@@ -36,6 +36,26 @@ void main() {
     ), isNull);
   });
 
+  test('base concentration depends on explicit printed mass basis', () {
+    final base = resolveNorepinephrineBaseStock(
+      mode: NorepinephrineStockMode.otherProduct,
+      printedBasis: NorepinephrinePrintedMassBasis.norepinephrineBase,
+      printedVialMg: 16, vialMl: 4,
+      productLabelVerified: true,
+    )!;
+    expect(base.baseConcentrationMgPerMl, 4);
+
+    final salt = resolveNorepinephrineBaseStock(
+      mode: NorepinephrineStockMode.otherProduct,
+      printedBasis: NorepinephrinePrintedMassBasis.norepinephrineSalt,
+      printedVialMg: 16, vialMl: 4,
+      statedBaseEquivalentMg: 8,
+      productLabelVerified: true,
+    )!;
+    expect(salt.baseConcentrationMgPerMl, 2);
+    expect(salt.baseAmountMgPerVial, 8);
+  });
+
   test('saline alone is unverified, D5 source-supported for cited product', () {
     expect(reviewedIvFluidEvidence(
       name: 'Norepinephrine', population: 'General',

@@ -70,6 +70,59 @@ bool matchesLabetalolLabelInfusion({
       close(finalVolumeMl, 200);
 }
 
+/// Keep labeled example and clinical evidence levels separate.
+/// Both recipes use 200 mg from 40 mL stock at 5 mg/mL.
+/// "Other" can still have mathematical output after independent local review,
+/// but it must NOT inherit the label example's validation.
+enum LabetalolInfusionRecipeStatus {
+  labelFinal200Ml,
+  labelAdded250Ml,
+  localProtocolOnly,
+}
+
+LabetalolInfusionRecipeStatus classifyLabetalolInfusionRecipe({
+  required double stockConcentrationMgPerMl,
+  required double selectedAmountMg,
+  required double withdrawnMl,
+  required double addedDiluentMl,
+  required double finalVolumeMl,
+}) {
+  bool same(double actual, double target) =>
+      actual.isFinite && (actual - target).abs() < 0.000001;
+  final stockMatches = same(stockConcentrationMgPerMl, 5) &&
+      same(selectedAmountMg, 200) &&
+      same(withdrawnMl, 40);
+  if (stockMatches &&
+      same(addedDiluentMl, 160) &&
+      same(finalVolumeMl, 200)) {
+    return LabetalolInfusionRecipeStatus.labelFinal200Ml;
+  }
+  if (stockMatches &&
+      same(addedDiluentMl, 250) &&
+      same(finalVolumeMl, 290)) {
+    return LabetalolInfusionRecipeStatus.labelAdded250Ml;
+  }
+  return LabetalolInfusionRecipeStatus.localProtocolOnly;
+}
+
+/// Second formulation specifically listed in the manufacturer's label:
+/// ADD 40 mL of 5 mg/mL labetalol to 250 mL IV fluid.
+/// The FINAL solution is 290 mL (not 250 mL).
+bool matchesLabetalolSecondLabelInfusion({
+  required double stockConcentrationMgPerMl,
+  required double selectedAmountMg,
+  required double withdrawnMl,
+  required double addedDiluentMl,
+  required double finalVolumeMl,
+}) =>
+    classifyLabetalolInfusionRecipe(
+      stockConcentrationMgPerMl: stockConcentrationMgPerMl,
+      selectedAmountMg: selectedAmountMg,
+      withdrawnMl: withdrawnMl,
+      addedDiluentMl: addedDiluentMl,
+      finalVolumeMl: finalVolumeMl,
+    ) == LabetalolInfusionRecipeStatus.labelAdded250Ml;
+
 /// Physician-ordered mg/min at the exact source-locked final mg/mL.
 /// No auto-populated rate and no indication-independent preset.
 double? labetalolOrderedInfusionMlPerHour({

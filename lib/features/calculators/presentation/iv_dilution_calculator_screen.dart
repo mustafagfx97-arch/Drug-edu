@@ -544,6 +544,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 confirmed = false;
                 rateConfirmed = false;
                 localPreparationVerified = false;
+                norepinephrineInfusionVerified = false;
               });
             },
           ),
@@ -580,6 +581,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               confirmed = false;
               rateConfirmed = false;
               localPreparationVerified = false;
+              norepinephrineInfusionVerified = false;
             }),
           ),
           const SizedBox(height: 7),
@@ -603,6 +605,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                       confirmed = v ?? false;
                       rateConfirmed = false;
                       localPreparationVerified = false;
+                      norepinephrineInfusionVerified = false;
                     }),
             title: const Text(
               'Verified prescribed dose, unit, exact vial identity '
@@ -693,7 +696,13 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                         _fmt(plan.finalStrengthPerMl * 1000) + ' mcg/mL',
                       ),
                     const SizedBox(height: 5),
-                    const Text('Mathematical output, NOT approved dilution.'),
+                    const Text(
+                      'Arithmetic only. Norepinephrine stock must be '
+                      'verified as BASE equivalents. Nominal IV fluid '
+                      'bag sizes can have overfill, so actual mixing '
+                      'volume must be confirmed; do not assume '
+                      'nominal bag content equals measured volume.',
+                    ),
                   ],
                 ),
               ),
@@ -802,6 +811,124 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 'in 500 mL FINAL (q.s.) with D5W or 0.9% NaCl gives '
                 '100 mcg/mL. No pump rate for other preparations here.',
               )
+            else if (norepinephrine) ...[
+              Text(
+                '3 · Norepinephrine · حساب معدل التسريب',
+                style: titleStyle,
+              ),
+              const _Alert(
+                'PUMP REQUIRED: this is a continuously titrated '
+                'high-alert vasopressor. The calculation below requires '
+                'an actual infusion/syringe pump, a documented '
+                'prescriber order and close BP/perfusion monitoring. '
+                'NO gtt/min or uncontrolled gravity infusion '
+                'is authorized by this screen.',
+              ),
+              const SizedBox(height: 9),
+              DropdownButtonFormField<IvOrderedRateUnit>(
+                key: ValueKey('norepinephrine-rate-unit-${norepinephrineRateUnit.name}'),
+                initialValue: norepinephrineRateUnit,
+                isExpanded: true,
+                decoration: const InputDecoration(
+                  labelText: 'Already ordered dose unit',
+                  border: OutlineInputBorder(),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: IvOrderedRateUnit.mcgPerKgMin,
+                    child: Text('mcg norepinephrine BASE/kg/min'),
+                  ),
+                  DropdownMenuItem(
+                    value: IvOrderedRateUnit.mcgPerMin,
+                    child: Text('mcg norepinephrine BASE/min'),
+                  ),
+                ],
+                onChanged: (value) {
+                  if (value == null) return;
+                  setState(() {
+                    norepinephrineRateUnit = value;
+                    rateConfirmed = false;
+                    norepinephrineInfusionVerified = false;
+                  });
+                },
+              ),
+              if (norepinephrineRateUnit == IvOrderedRateUnit.mcgPerKgMin)
+                _Numeric(
+                  key: const ValueKey('norepinephrine-weight-kg'),
+                  label: 'Ordered dosing weight (kg)',
+                  controller: norepinephrineWeight,
+                  changed: () => setState(() {
+                    rateConfirmed = false;
+                    norepinephrineInfusionVerified = false;
+                  }),
+                ),
+              _Numeric(
+                key: const ValueKey('norepinephrine-ordered-rate'),
+                label: 'ACTUAL prescribed rate (' +
+                    norepinephrineRateUnit.display + ')',
+                controller: prescribedRate,
+                changed: () => setState(() {
+                  rateConfirmed = false;
+                  norepinephrineInfusionVerified = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('norepinephrine-verify-infusion'),
+                value: norepinephrineInfusionVerified,
+                controlAffinity: ListTileControlAffinity.leading,
+                title: const Text(
+                  'A pharmacist validated THIS exact product, BASE '
+                  'strength, dilution fluid, final concentration '
+                  'and stability; a working calibrated infusion '
+                  'or syringe pump and clinical monitoring are available.',
+                ),
+                onChanged: (value) => setState(() {
+                  norepinephrineInfusionVerified = value ?? false;
+                  rateConfirmed = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('norepinephrine-verify-order'),
+                value: rateConfirmed,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: !norepinephrineInfusionVerified
+                    ? null
+                    : (value) =>
+                        setState(() => rateConfirmed = value ?? false),
+                title: const Text(
+                  'I verified the actual patient-specific prescribed '
+                  'dose in mcg of NOREPINEPHRINE BASE, weight if '
+                  'ordered per kg, route and hemodynamic targets.',
+                ),
+              ),
+              if (norepinephrinePump != null)
+                Card(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Mathematical PUMP rate only · لا تستخدم بالتنقيط',
+                          style: TextStyle(fontWeight: FontWeight.w900),
+                        ),
+                        Text(
+                          _fmt(norepinephrinePump.millilitersPerHour) +
+                              ' mL/hr',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w900),
+                        ),
+                        const Text(
+                          'NOT a pump order, clinical dose recommendation '
+                          'or permission to use a gravity drip. Verify '
+                          'product, delivered volume and monitoring.',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ]
             else if (mustUseProtocolRate)
               const _Alert(
                 'NO GENERIC DURATION RATE: this high-alert medication '

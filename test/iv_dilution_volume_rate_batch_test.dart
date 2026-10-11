@@ -138,6 +138,50 @@ void main() {
     ), isFalse);
   });
 
+  test('nitroglycerin 50mg/10mL to 500mL final is 100 mcg/mL', () {
+    final prep = dilution(
+      vialAmount: 50, vialMl: 10, ordered: 50,
+      stock: 5, fluid: 500,
+      mode: IvVolumeEntryMode.finalVolumeTarget,
+    )!;
+    expect(prep.addedFluidMl, 490);
+    expect(prep.withdrawalMl, 10);
+    expect(prep.finalStrengthPerMl, 0.1);
+    expect(matchesNitroglycerinLabelRecipe(
+      ampouleAmountMg: 50,
+      ampouleVolumeMl: 10,
+      orderedAmountMg: 50,
+      finalVolumeMl: prep.finalVolumeMl,
+      addedFluidMl: prep.addedFluidMl,
+    ), isTrue);
+    expect(calculateOrderedMcgPerMinutePump(
+      orderedMcgPerMin: 10,
+      finalMgPerMl: prep.finalStrengthPerMl,
+    ), closeTo(6, 0.00001));
+  });
+
+  test('nitroglycerin blocks nonlabelled 50mg final volume 250mL', () {
+    expect(matchesNitroglycerinLabelRecipe(
+      ampouleAmountMg: 50,
+      ampouleVolumeMl: 10,
+      orderedAmountMg: 50,
+      finalVolumeMl: 250,
+      addedFluidMl: 240,
+    ), isFalse);
+    for (final bad in [
+      0.0, -1.0, double.nan, double.infinity,
+    ]) {
+      expect(calculateOrderedMcgPerMinutePump(
+        orderedMcgPerMin: bad,
+        finalMgPerMl: 0.1,
+      ), isNull);
+      expect(calculateOrderedMcgPerMinutePump(
+        orderedMcgPerMin: 10,
+        finalMgPerMl: bad,
+      ), isNull);
+    }
+  });
+
   testWidgets('Drug IV dilution screen includes specific fluid-volume inputs', (
     tester,
   ) async {

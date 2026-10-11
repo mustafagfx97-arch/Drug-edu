@@ -144,6 +144,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
       'Sodium nitroprusside', 'Heparin', 'Regular insulin infusion',
       'Insulin', 'Adenosine', 'Tenecteplase', 'Alteplase',
       'Dexmedetomidine', 'Propofol',
+      'Labetalol', 'Esmolol', 'Clevidipine',
     };
     final mustUseProtocolRate = noGenericInfusionTime.contains(profile.name);
     final exactLabetalol = labetalolInfusion && plan != null &&

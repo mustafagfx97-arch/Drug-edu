@@ -4,6 +4,7 @@ import '../../calculators/presentation/dextrose_mixing_calculator_screen.dart';
 import '../../calculators/presentation/electrolyte_payload_calculator_screen.dart';
 import '../../calculators/presentation/iv_preparation_calculator_screen.dart';
 import '../../calculators/presentation/iv_weight_based_dose_screen.dart';
+import '../../calculators/presentation/iv_dilution_calculator_screen.dart';
 
 class IvCalculatorsHubScreen extends StatelessWidget {
   const IvCalculatorsHubScreen({super.key});
@@ -11,6 +12,12 @@ class IvCalculatorsHubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = <(String, String, IconData, Widget)>[
+      (
+        'IV Dilution + Fluid + Rate · حاسبة التخفيف',
+        'Enter exact vial strength, prescribed drug amount, fluid to add OR final volume; calculate withdrawal, final concentration and rate from an already ordered infusion.',
+        Icons.science_outlined,
+        const IvDilutionCalculatorScreen(),
+      ),
       (
         'Weight-based IV dose → withdrawal',
         'Prescribed amount/kg × dosing weight → ordered amount and volume at a selected VERIFIED product concentration.',

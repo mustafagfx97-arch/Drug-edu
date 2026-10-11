@@ -1,8 +1,9 @@
-name: Publish Drug Edu PWA to GitHub Pages
+name: Publish Drug IV PWA to GitHub Pages
 
-# Intentionally manual until GitHub Pages > Source: GitHub Actions is enabled
-# and the PWA release has passed Flutter CI.
+# Auto-deploy the IV-only PWA after merge; run full Analyze + Tests before publish.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -33,7 +34,7 @@ jobs:
       - name: Test
         run: flutter test
       - name: Compile PWA for repository subpath
-        run: flutter build web --release --base-href "/Drug-edu/" --pwa-strategy=none
+        run: flutter build web --release -t lib/main_iv.dart --base-href "/Drug-edu/" --pwa-strategy=none
       - name: Check installable PWA files
         run: |
           test -s build/web/index.html

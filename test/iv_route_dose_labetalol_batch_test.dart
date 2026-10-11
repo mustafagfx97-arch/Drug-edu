@@ -1,0 +1,174 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:drug_edu/features/calculators/domain/iv_labetalol_route_engine.dart';
+import 'package:drug_edu/features/iv_prep/data/iv_adult_dose_regimens.dart';
+import 'package:drug_edu/features/iv_prep/data/iv_fluid_evidence.dart';
+import 'package:drug_edu/features/calculators/presentation/iv_dilution_calculator_screen.dart';
+
+void main() {
+  test('Labetalol label distinguishes initial, repeat and infusion', () {
+    final r = reviewedAdultIvDoseRegimens(
+      name: 'Labetalol', population: 'General',
+    );
+    expect(r, hasLength(3));
+    expect(r[0].method, IvAdministrationMethod.slowInjection);
+    expect(r[0].doseDirections, contains('20 mg'));
+    expect(r[0].doseDirections, contains('2 minutes'));
+    expect(r[1].method, IvAdministrationMethod.slowInjection);
+    expect(r[1].doseDirections, contains('40 mg OR 80 mg'));
+    expect(r[1].doseDirections, contains('300 mg'));
+    expect(r[2].method, IvAdministrationMethod.continuousInfusion);
+    expect(r[2].doseDirections, contains('2 mg/min'));
+    expect(r[2].sourceUrl, contains('dailymed.nlm.nih.gov'));
+    expect(r[0].safety, contains('asthma'));
+  });
+
+  test('No pediatric / unreviewed regimen is silently generated', () {
+    for (final name in ['Labetalol', 'Nicardipine', 'Esmolol']) {
+      expect(reviewedAdultIvDoseRegimens(
+        name: name, population: 'NICU',
+      ), isEmpty);
+      expect(reviewedAdultIvDoseRegimens(
+        name: name, population: 'PICU',
+      ), isEmpty);
+    }
+    expect(reviewedAdultIvDoseRegimens(
+      name: 'Vancomycin', population: 'General',
+    ), isEmpty);
+  });
+
+  test('Adult route-specific sources exist only for verified set', () {
+    for (final name in [
+      'Labetalol', 'Nicardipine', 'Clevidipine',
+      'Esmolol', 'Nitroglycerin',
+    ]) {
+      final r = reviewedAdultIvDoseRegimens(
+        name: name, population: 'General',
+      );
+      expect(r, isNotEmpty);
+      for (final item in r) {
+        expect(item.doseDirections, isNotEmpty);
+        expect(item.monitoring, isNotEmpty);
+        expect(item.safety, isNotEmpty);
+        expect(item.sourceUrl, contains('dailymed.nlm.nih.gov'));
+      }
+    }
+    expect(reviewedAdultIvDoseRegimens(
+      name: 'Nicardipine', population: 'General',
+    ).any((e) => e.method == IvAdministrationMethod.slowInjection), isFalse);
+    expect(reviewedAdultIvDoseRegimens(
+      name: 'Clevidipine', population: 'General',
+    ).any((e) => e.method == IvAdministrationMethod.slowInjection), isFalse);
+    expect(reviewedAdultIvDoseRegimens(
+      name: 'Nitroglycerin', population: 'General',
+    ).any((e) => e.method == IvAdministrationMethod.slowInjection), isFalse);
+  });
+
+  test('Initial slow IV injection: 20 mg at 5 mg/mL = 4 mL', () {
+    final result = calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 20, previousCumulativeMg: 0,
+      stage: LabetalolInjectionStage.initial,
+    )!;
+    expect(result.withdrawalMl, 4);
+    expect(result.cumulativeMg, 20);
+  });
+
+  test('Subsequent slow IV injection 40 or 80 mg; 300 mg cumulative', () {
+    final result = calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 80, previousCumulativeMg: 180,
+      stage: LabetalolInjectionStage.additional,
+    )!;
+    expect(result.withdrawalMl, 16);
+    expect(result.cumulativeMg, 260);
+    expect(calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 80, previousCumulativeMg: 240,
+      stage: LabetalolInjectionStage.additional,
+    ), isNull);
+    expect(calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 40, previousCumulativeMg: 20,
+      stage: LabetalolInjectionStage.additional,
+    )!.withdrawalMl, 8);
+  });
+
+  test('Bolus route rejects invalid stage, wrong vial, wrong or excessive dose', () {
+    for (final bad in [0.0, -1.0, double.nan, double.infinity]) {
+      expect(calculateOrderedLabetalolInjection(
+        vialAmountMg: 100, vialVolumeMl: 20,
+        prescribedDoseMg: bad, previousCumulativeMg: 0,
+        stage: LabetalolInjectionStage.initial,
+      ), isNull);
+      expect(calculateOrderedLabetalolInjection(
+        vialAmountMg: 100, vialVolumeMl: 20,
+        prescribedDoseMg: 20, previousCumulativeMg: bad,
+        stage: LabetalolInjectionStage.initial,
+      ), isNull);
+    }
+    expect(calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 10,
+      prescribedDoseMg: 20, previousCumulativeMg: 0,
+      stage: LabetalolInjectionStage.initial,
+    ), isNull);
+    expect(calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 80, previousCumulativeMg: 0,
+      stage: LabetalolInjectionStage.initial,
+    ), isNull);
+    expect(calculateOrderedLabetalolInjection(
+      vialAmountMg: 100, vialVolumeMl: 20,
+      prescribedDoseMg: 20, previousCumulativeMg: 20,
+      stage: LabetalolInjectionStage.additional,
+    ), isNull);
+  });
+
+  test('Labetalol infusion matches exactly 200mg + 160mL = 200mL', () {
+    expect(matchesLabetalolLabelInfusion(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 160,
+      finalVolumeMl: 200,
+    ), isTrue);
+    expect(matchesLabetalolLabelInfusion(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 250,
+      finalVolumeMl: 290,
+    ), isFalse);
+    expect(labetalolOrderedInfusionMlPerHour(
+      prescribedMgPerMinute: 2,
+      verifiedFinalMgPerMl: 1,
+    ), 120);
+    for (final invalid in [0.0, -1.0, double.nan, double.infinity]) {
+      expect(labetalolOrderedInfusionMlPerHour(
+        prescribedMgPerMinute: invalid,
+        verifiedFinalMgPerMl: 1,
+      ), isNull);
+    }
+  });
+
+  test('Labetalol fluid: NS/D5 supported, bicarbonate incompatible', () {
+    for (final fluid in [IvFluid.normalSaline, IvFluid.dextrose5]) {
+      expect(reviewedIvFluidEvidence(
+        name: 'Labetalol', population: 'General', fluid: fluid,
+      ).status, IvFluidEvidenceStatus.verifiedDiluent);
+    }
+    expect(reviewedIvFluidEvidence(
+      name: 'Labetalol', population: 'General',
+      fluid: IvFluid.sodiumBicarbonate5,
+    ).status, IvFluidEvidenceStatus.incompatibleDiluent);
+  });
+
+  testWidgets('Labetalol calculator shows adult method chooser', (tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: IvDilutionCalculatorScreen(),
+    ));
+    await tester.pump();
+    expect(find.text('IV dilution · حاسبة التخفيف'), findsOneWidget);
+    expect(find.byType(DropdownButtonFormField<int>), findsWidgets);
+  });
+}

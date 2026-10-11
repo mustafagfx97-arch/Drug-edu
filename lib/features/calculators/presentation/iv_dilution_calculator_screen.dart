@@ -4,7 +4,9 @@ import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
 
 class IvDilutionCalculatorScreen extends StatefulWidget {
-  const IvDilutionCalculatorScreen({super.key});
+  const IvDilutionCalculatorScreen({super.key, this.initialProfile});
+  final IvPreparationProfile? initialProfile;
+
   @override
   State<IvDilutionCalculatorScreen> createState() => _IvDilutionState();
 }
@@ -23,6 +25,18 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   IvVolumeEntryMode volumeMode = IvVolumeEntryMode.addFluidToDrug;
   bool confirmed = false;
   bool rateConfirmed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    final initial = widget.initialProfile;
+    if (initial != null) {
+      final matched = ivPreparationProfiles.indexWhere(
+        (p) => p.name == initial.name && p.population == initial.population,
+      );
+      if (matched >= 0) selected = matched;
+    }
+  }
 
   @override
   void dispose() {

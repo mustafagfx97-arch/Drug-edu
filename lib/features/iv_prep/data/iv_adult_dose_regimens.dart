@@ -56,9 +56,9 @@ const _labetalolRegimens = <IvLabelDoseRegimen>[
     indication: 'Adult severe hypertension · continuous infusion',
     method: IvAdministrationMethod.continuousInfusion,
     heading: 'Slow continuous IV infusion (not IV bolus)',
-    doseDirections: 'Manufacturer preparation example: 200 mg (40 mL of 5 mg/mL stock) + 160 mL compatible fluid = 200 mL FINAL at 1 mg/mL. Labeled example rate 2 mg/min (2 mL/min = 120 mL/hr at this concentration); adjust/stop based on ordered goal and BP response. Commonly effective total IV dose 50–200 mg; up to 300 mg sometimes needed.',
+    doseDirections: 'Two distinct adult manufacturer examples: (A) 200 mg from 40 mL of 5 mg/mL stock + 160 mL IV fluid = 200 mL FINAL, 1 mg/mL. (B) 200 mg in 40 mL stock + 250 mL IV fluid = 290 mL FINAL, approximately 0.69 mg/mL (described as ~2 mg/3 mL). Labeled illustrative rate is about 2 mg/min with physician-directed BP titration. Do not treat illustrative rate as a new patient order.',
     monitoring: 'Continuous/close BP and HR monitoring. Stop after satisfactory response as directed; consider oral transition.',
-    safety: 'Never use stock 5 mg/mL as infusion pump concentration. Label also describes a DIFFERENT 40 mL + 250 mL fluid method (about 0.69 mg/mL); do not mix recipes. Dose rate is physician-directed, not automatically selected.',
+    safety: 'The label describes rate control with a graduated burette or a mechanically driven infusion pump. This does not justify uncontrolled gravity drips or drops/min estimates. Exact 290 mL final volume is NOT 250 mL. Stability at one concentration cannot be assumed for all concentrations; dose rate is physician-directed.',
     sourceUrl: _labetalol,
   ),
 ];

@@ -53,6 +53,8 @@ const _cardeneUrl =
     'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5749599d-ff2a-42e4-aa72-cd25013feee8';
 const _cleviprexUrl =
     'https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=f9290625-b723-4eda-bab8-a97bef6041f6';
+const _nitroglycerinUrl =
+    'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=578d8159-5ec6-457f-b4a8-9add624d43a8';
 const _nitroprussideUrl =
     'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fbfb86c-da8d-4741-b1e0-7000e2bbad5f';
 
@@ -116,6 +118,25 @@ IvFluidEvidence reviewedIvFluidEvidence({
           'This fluid is not in the cited Cleviprex co-administration list. '
           'Do NOT dilute Cleviprex with any fluid.',
       source: _cleviprexUrl,
+    );
+  }
+  if (name == 'Nitroglycerin') {
+    if (fluid == IvFluid.normalSaline || fluid == IvFluid.dextrose5) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.verifiedDiluent,
+        explanation: 'For the selected nitroglycerin 5 mg/mL '
+            'CONCENTRATE ONLY: D5W or 0.9% NaCl is listed for mandatory '
+            'dilution. Exact final volume, glass/nonadsorbing set and '
+            'no other drugs in the same solution are critical.',
+        source: _nitroglycerinUrl,
+      );
+    }
+    return const IvFluidEvidence(
+      status: IvFluidEvidenceStatus.unknown,
+      explanation:
+          'This fluid is not listed for dilution of the cited '
+          'nitroglycerin concentrate. Do not assume compatibility.',
+      source: _nitroglycerinUrl,
     );
   }
   if (name == 'Sodium nitroprusside') {

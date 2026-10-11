@@ -67,6 +67,7 @@ jobs:
 
       - name: Validate PWA source assets
         run: |
+          test -f lib/main_iv.dart
           test -f web/index.html
           test -f web/manifest.json
           test -f web/sw.js
@@ -81,7 +82,7 @@ jobs:
         run: flutter test
 
       - name: Build installable PWA web release
-        run: flutter build web --release --base-href "/Drug-edu/" --pwa-strategy=none
+        run: flutter build web --release -t lib/main_iv.dart --base-href "/Drug-edu/" --pwa-strategy=none
 
       - name: Validate generated PWA release
         run: |

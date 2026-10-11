@@ -5,8 +5,7 @@ from `lib/main.dart`, not a new or separate medication database.
 
 ## Build status
 
-- CI: `Flutter CI` runs Analyze, Tests, **PWA web release** and existing
-  mobile regression builds. Web artifact: `drug-edu-pwa-web-release`.
+- CI: `Flutter CI` runs Analyze, Tests and the **PWA web release**.\n  Web artifact: `drug-edu-pwa-web-release`. Native Android APK/AAB builds are\n  intentionally not required for this PWA delivery.
 - All IV calculations remain **arithmetic on existing prescribed orders**;
   the PWA is not a verified medical device or a substitute for hospital protocols.
 - Browser offline cache is **network-first**, meaning available updates win

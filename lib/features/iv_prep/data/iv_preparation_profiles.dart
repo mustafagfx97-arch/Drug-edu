@@ -1,3 +1,5 @@
+part 'iv_hypertensive_emergency_profiles.dart';
+
 class IvWithdrawalVariant {
   const IvWithdrawalVariant({
     required this.id,
@@ -5247,7 +5249,7 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     ],
   ),
 
-
+  ...ivHypertensiveEmergencyProfiles,
 ];
 
 IvPreparationProfile? findIvPreparationProfile(

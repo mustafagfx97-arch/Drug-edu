@@ -3,6 +3,8 @@ import '../../iv_prep/data/iv_preparation_profiles.dart';
 import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
 import '../domain/iv_labetalol_route_engine.dart';
+import '../domain/iv_norepinephrine_stock_engine.dart';
+import '../../iv_prep/domain/iv_infusion_rate_engine.dart';
 import '../../iv_prep/data/iv_adult_dose_regimens.dart';
 import '../../iv_prep/presentation/iv_adult_dose_guide_panel.dart';
 import 'iv_labetalol_injection_calculator.dart';
@@ -21,6 +23,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   final prescribedQuantity = TextEditingController();
   final fluidMl = TextEditingController();
   final prescribedRate = TextEditingController();
+  final norepinephrineBaseEquivalent = TextEditingController();
+  final norepinephrineWeight = TextEditingController();
   int selected = ivPreparationProfiles.indexWhere(
     (p) => p.population == 'General' && p.name == 'Nicardipine',
   );
@@ -30,6 +34,13 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   bool confirmed = false;
   bool rateConfirmed = false;
   bool localPreparationVerified = false;
+  bool norepinephrineProductLabelVerified = false;
+  bool norepinephrineInfusionVerified = false;
+  NorepinephrineStockMode norepinephrineStockMode =
+      NorepinephrineStockMode.reviewedOneMgBasePerMl;
+  NorepinephrinePrintedMassBasis norepinephrineMassBasis =
+      NorepinephrinePrintedMassBasis.norepinephrineBase;
+  IvOrderedRateUnit norepinephrineRateUnit = IvOrderedRateUnit.mcgPerKgMin;
   String? selectedDoseRegimen;
 
   @override
@@ -48,6 +59,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   void dispose() {
     for (final c in [
       vialQuantity, vialMl, prescribedQuantity, fluidMl, prescribedRate,
+      norepinephrineBaseEquivalent, norepinephrineWeight,
     ]) {
       c.dispose();
     }
@@ -57,12 +69,18 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   void reset() {
     for (final c in [
       vialQuantity, vialMl, prescribedQuantity, fluidMl, prescribedRate,
+      norepinephrineBaseEquivalent, norepinephrineWeight,
     ]) {
       c.clear();
     }
     confirmed = false;
     rateConfirmed = false;
     localPreparationVerified = false;
+    norepinephrineProductLabelVerified = false;
+    norepinephrineInfusionVerified = false;
+    norepinephrineStockMode = NorepinephrineStockMode.reviewedOneMgBasePerMl;
+    norepinephrineMassBasis = NorepinephrinePrintedMassBasis.norepinephrineBase;
+    norepinephrineRateUnit = IvOrderedRateUnit.mcgPerKgMin;
     selectedDoseRegimen = null;
   }
 
@@ -70,11 +88,15 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         confirmed = false;
         rateConfirmed = false;
         localPreparationVerified = false;
+        norepinephrineProductLabelVerified = false;
+        norepinephrineInfusionVerified = false;
       });
 
   @override
   Widget build(BuildContext context) {
     final profile = ivPreparationProfiles[selected];
+    final norepinephrine = profile.population == 'General' &&
+        profile.name == 'Norepinephrine';
     final labetalol = profile.population == 'General' &&
         profile.name == 'Labetalol';
     final selectedRegimens = reviewedAdultIvDoseRegimens(
@@ -99,16 +121,35 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             (profile.name == 'Clevidipine' || profile.name == 'Esmolol'));
     final stockAmount = double.tryParse(vialQuantity.text.trim());
     final stockVolume = double.tryParse(vialMl.text.trim());
+    final norepinephrineStock = norepinephrine &&
+            stockAmount != null && stockVolume != null
+        ? resolveNorepinephrineBaseStock(
+            mode: norepinephrineStockMode,
+            printedBasis: norepinephrineMassBasis,
+            printedVialMg: stockAmount,
+            vialMl: stockVolume,
+            statedBaseEquivalentMg: double.tryParse(
+              norepinephrineBaseEquivalent.text.trim(),
+            ),
+            productLabelVerified: norepinephrineProductLabelVerified,
+          )
+        : null;
+    final effectiveStockConcentration = norepinephrine
+        ? norepinephrineStock?.baseConcentrationMgPerMl
+        : variant?.concentration;
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
-    final plan = confirmed && !hardLock && variant != null &&
+    final plan = confirmed && !hardLock &&
+            effectiveStockConcentration != null &&
             stockAmount != null && stockVolume != null &&
             doseAmount != null && requestedFluid != null
         ? calculateVerifiedIvDilution(
-            ampouleAmount: stockAmount,
+            ampouleAmount: norepinephrine
+                ? norepinephrineStock!.baseAmountMgPerVial
+                : stockAmount,
             ampouleVolumeMl: stockVolume,
             orderedTotalAmount: doseAmount,
-            verifiedStrengthPerMl: variant.concentration,
+            verifiedStrengthPerMl: effectiveStockConcentration,
             volumeMl: requestedFluid,
             volumeMode: volumeMode,
           )
@@ -167,6 +208,17 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         !labelLabetalol && plan != null &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
     final orderedRate = double.tryParse(prescribedRate.text.trim());
+    final norepinephrinePump = norepinephrine && plan != null &&
+            rateConfirmed && norepinephrineInfusionVerified &&
+            orderedRate != null
+        ? calculateOrderedIvInfusion(
+            prescribedRate: orderedRate,
+            rateUnit: norepinephrineRateUnit,
+            finalMicrogramsPerMilliliter:
+                plan.finalStrengthPerMl * 1000,
+            weightKg: double.tryParse(norepinephrineWeight.text.trim()),
+          )
+        : null;
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
         : labelLabetalol
@@ -268,6 +320,95 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               },
             ),
           ],
+          if (norepinephrine) ...[
+            const SizedBox(height: 12),
+            DropdownButtonFormField<NorepinephrineStockMode>(
+              key: ValueKey('norepinephrine-source-${norepinephrineStockMode.name}'),
+              initialValue: norepinephrineStockMode,
+              isExpanded: true,
+              decoration: const InputDecoration(
+                labelText: 'Ampoule concentration · تركيز الأمبولة',
+                border: OutlineInputBorder(),
+              ),
+              items: const [
+                DropdownMenuItem(
+                  value: NorepinephrineStockMode.reviewedOneMgBasePerMl,
+                  child: Text('Reviewed 4 mg BASE / 4 mL (1 mg/mL)'),
+                ),
+                DropdownMenuItem(
+                  value: NorepinephrineStockMode.otherProduct,
+                  child: Text('Other strength / manufacturer · تركيز آخر'),
+                ),
+              ],
+              onChanged: (value) {
+                if (value == null) return;
+                setState(() {
+                  norepinephrineStockMode = value;
+                  norepinephrineMassBasis =
+                      NorepinephrinePrintedMassBasis.norepinephrineBase;
+                  norepinephrineBaseEquivalent.clear();
+                  vialQuantity.clear();
+                  vialMl.clear();
+                  prescribedQuantity.clear();
+                  fluidMl.clear();
+                  prescribedRate.clear();
+                  norepinephrineWeight.clear();
+                  confirmed = false;
+                  rateConfirmed = false;
+                  norepinephrineProductLabelVerified = false;
+                  norepinephrineInfusionVerified = false;
+                });
+              },
+            ),
+            if (norepinephrineStockMode ==
+                NorepinephrineStockMode.otherProduct) ...[
+              const SizedBox(height: 9),
+              DropdownButtonFormField<NorepinephrinePrintedMassBasis>(
+                key: ValueKey('norepinephrine-basis-${norepinephrineMassBasis.name}'),
+                initialValue: norepinephrineMassBasis,
+                isExpanded: true,
+                decoration: const InputDecoration(
+                  labelText: 'What does the vial mg number mean?',
+                  border: OutlineInputBorder(),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: NorepinephrinePrintedMassBasis.norepinephrineBase,
+                    child: Text('mg norepinephrine BASE / base equivalent'),
+                  ),
+                  DropdownMenuItem(
+                    value: NorepinephrinePrintedMassBasis.norepinephrineSalt,
+                    child: Text('mg tartrate / bitartrate SALT (not base)'),
+                  ),
+                ],
+                onChanged: (value) {
+                  if (value == null) return;
+                  setState(() {
+                    norepinephrineMassBasis = value;
+                    norepinephrineBaseEquivalent.clear();
+                    confirmed = false;
+                    rateConfirmed = false;
+                    norepinephrineProductLabelVerified = false;
+                    norepinephrineInfusionVerified = false;
+                  });
+                },
+              ),
+              const _Alert(
+                'OTHER PRODUCT: this screen has NOT independently '
+                'verified its strength, base/salt equivalence, fluid, '
+                'BUD or infusion concentration. Use the actual package '
+                'insert and independent pharmacy check. NO automatic '
+                'salt-to-base conversion is assumed.',
+              ),
+            ],
+            const _Info(
+              'Important for Norepinephrine',
+              '4 mg norepinephrine BASE is NOT necessarily 4 mg '
+              'norepinephrine tartrate SALT. The mg prescribed below '
+              'must ALWAYS be entered as NOREPINEPHRINE BASE equivalents. '
+              'Do not infer the BASE amount solely from salt mass.',
+            ),
+          ],
           _Info('Verified formulation', profile.formulation),
           _Info('Reconstitution', profile.reconstitution),
           _Info('Specific dilution / formulation rules', profile.furtherDilution),
@@ -307,8 +448,23 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           if (!labetalol || labetalolInfusion) ...[
           if (variant == null)
             const _Alert(
-              'Calculation LOCKED: exact verified stock concentration '
+              'Calculation LOCKED: exact reviewed stock concentration '
               'is unavailable for this presentation.',
+            )
+          else if (norepinephrine)
+            _Info(
+              'Stock concentration status',
+              norepinephrineStockMode ==
+                      NorepinephrineStockMode.reviewedOneMgBasePerMl
+                  ? 'Reviewed source: 4 mg BASE/4 mL = 1 mg BASE/mL. '
+                    'If your ampoule is DIFFERENT, select Other strength.'
+                  : norepinephrineStock == null
+                      ? 'Awaiting complete manufacturer-verified BASE '
+                        'equivalence. NO stock concentration accepted yet.'
+                      : 'USER-VERIFIED product, NOT reviewed for this brand: ' +
+                          _fmt(norepinephrineStock.baseConcentrationMgPerMl) +
+                          ' mg BASE/mL. Review the exact manufacturer '
+                          'before any IV preparation.',
             )
           else
             _Info(
@@ -320,7 +476,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           Text('2 · أدخل كمية الدواء والفلود', style: titleStyle),
           _Numeric(
             key: const ValueKey('dilution-vial-quantity'),
-            label: 'Amount per vial (' + (variant?.unit ?? 'unit') + ')',
+            label: norepinephrine
+                ? 'Amount PRINTED on ampoule (mg BASE or SALT)'
+                : 'Amount per vial (' + (variant?.unit ?? 'unit') + ')',
             controller: vialQuantity, changed: invalidate,
           ),
           _Numeric(
@@ -328,10 +486,42 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             label: 'Stock vial / reconstituted volume (mL)',
             controller: vialMl, changed: invalidate,
           ),
+          if (norepinephrine &&
+              norepinephrineStockMode ==
+                  NorepinephrineStockMode.otherProduct &&
+              norepinephrineMassBasis ==
+                  NorepinephrinePrintedMassBasis.norepinephrineSalt)
+            _Numeric(
+              key: const ValueKey('norepinephrine-base-equivalent'),
+              label: 'Manufacturer-stated BASE equivalent (mg per vial)',
+              controller: norepinephrineBaseEquivalent,
+              changed: invalidate,
+            ),
+          if (norepinephrine &&
+              norepinephrineStockMode ==
+                  NorepinephrineStockMode.otherProduct)
+            CheckboxListTile(
+              key: const ValueKey('norepinephrine-verify-label'),
+              value: norepinephrineProductLabelVerified,
+              controlAffinity: ListTileControlAffinity.leading,
+              title: const Text(
+                'I personally checked the exact manufacturer/ampoule '
+                'and its NOREPINEPHRINE BASE mg (not guessed salt '
+                'equivalence). This is not a compatibility approval.',
+              ),
+              onChanged: (value) => setState(() {
+                norepinephrineProductLabelVerified = value ?? false;
+                confirmed = false;
+                rateConfirmed = false;
+                norepinephrineInfusionVerified = false;
+              }),
+            ),
           _Numeric(
             key: const ValueKey('dilution-ordered-quantity'),
-            label: 'Already ORDERED drug amount (' +
-                (variant?.unit ?? 'unit') + ')',
+            label: norepinephrine
+                ? 'Already ordered drug to mix (mg NOREPINEPHRINE BASE)'
+                : 'Already ORDERED drug amount (' +
+                    (variant?.unit ?? 'unit') + ')',
             controller: prescribedQuantity, changed: invalidate,
           ),
           const SizedBox(height: 10),
@@ -354,6 +544,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 confirmed = false;
                 rateConfirmed = false;
                 localPreparationVerified = false;
+                norepinephrineInfusionVerified = false;
               });
             },
           ),
@@ -390,6 +581,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               confirmed = false;
               rateConfirmed = false;
               localPreparationVerified = false;
+              norepinephrineInfusionVerified = false;
             }),
           ),
           const SizedBox(height: 7),
@@ -413,6 +605,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                       confirmed = v ?? false;
                       rateConfirmed = false;
                       localPreparationVerified = false;
+                      norepinephrineInfusionVerified = false;
                     }),
             title: const Text(
               'Verified prescribed dose, unit, exact vial identity '
@@ -425,10 +618,16 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               'fluid cannot be diluted by this calculator.',
             ),
           if (confirmed && plan == null && !hardLock)
-            const _Alert(
-              'No result: entered amount ÷ vial mL must match '
-              'VERIFIED stock concentration; volume/quantity must '
-              'be positive and final volume large enough.',
+            _Alert(
+              norepinephrine
+                  ? 'NO RESULT: if using 4mg BASE/4mL reference, '
+                    'enter 4 and 4 only. For 16mg/4mL or other strengths, '
+                    'choose OTHER PRODUCT and verify the BASE-equivalent '
+                    'mg on the exact ampoule. Do not substitute '
+                    'tartrate SALT mg for norepinephrine BASE mg.'
+                  : 'No result: entered vial mg / vial mL must match '
+                    'the source-locked concentration, and quantities '
+                    'and volumes must be valid.',
             ),
           if (plan != null && variant != null) ...[
             if (labetalolInfusion &&
@@ -491,8 +690,19 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                     _Result('التركيز النهائي',
                         _fmt(plan.finalStrengthPerMl) +
                             ' ' + variant.unit + '/mL'),
+                    if (norepinephrine)
+                      _Result(
+                        'Norepinephrine BASE final concentration',
+                        _fmt(plan.finalStrengthPerMl * 1000) + ' mcg/mL',
+                      ),
                     const SizedBox(height: 5),
-                    const Text('Mathematical output, NOT approved dilution.'),
+                    const Text(
+                      'Arithmetic only. Norepinephrine stock must be '
+                      'verified as BASE equivalents. Nominal IV fluid '
+                      'bag sizes can have overfill, so actual mixing '
+                      'volume must be confirmed; do not assume '
+                      'nominal bag content equals measured volume.',
+                    ),
                   ],
                 ),
               ),
@@ -601,6 +811,124 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 'in 500 mL FINAL (q.s.) with D5W or 0.9% NaCl gives '
                 '100 mcg/mL. No pump rate for other preparations here.',
               )
+            else if (norepinephrine) ...[
+              Text(
+                '3 · Norepinephrine · حساب معدل التسريب',
+                style: titleStyle,
+              ),
+              const _Alert(
+                'PUMP REQUIRED: this is a continuously titrated '
+                'high-alert vasopressor. The calculation below requires '
+                'an actual infusion/syringe pump, a documented '
+                'prescriber order and close BP/perfusion monitoring. '
+                'NO gtt/min or uncontrolled gravity infusion '
+                'is authorized by this screen.',
+              ),
+              const SizedBox(height: 9),
+              DropdownButtonFormField<IvOrderedRateUnit>(
+                key: ValueKey('norepinephrine-rate-unit-${norepinephrineRateUnit.name}'),
+                initialValue: norepinephrineRateUnit,
+                isExpanded: true,
+                decoration: const InputDecoration(
+                  labelText: 'Already ordered dose unit',
+                  border: OutlineInputBorder(),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: IvOrderedRateUnit.mcgPerKgMin,
+                    child: Text('mcg norepinephrine BASE/kg/min'),
+                  ),
+                  DropdownMenuItem(
+                    value: IvOrderedRateUnit.mcgPerMin,
+                    child: Text('mcg norepinephrine BASE/min'),
+                  ),
+                ],
+                onChanged: (value) {
+                  if (value == null) return;
+                  setState(() {
+                    norepinephrineRateUnit = value;
+                    rateConfirmed = false;
+                    norepinephrineInfusionVerified = false;
+                  });
+                },
+              ),
+              if (norepinephrineRateUnit == IvOrderedRateUnit.mcgPerKgMin)
+                _Numeric(
+                  key: const ValueKey('norepinephrine-weight-kg'),
+                  label: 'Ordered dosing weight (kg)',
+                  controller: norepinephrineWeight,
+                  changed: () => setState(() {
+                    rateConfirmed = false;
+                    norepinephrineInfusionVerified = false;
+                  }),
+                ),
+              _Numeric(
+                key: const ValueKey('norepinephrine-ordered-rate'),
+                label: 'ACTUAL prescribed rate (' +
+                    norepinephrineRateUnit.display + ')',
+                controller: prescribedRate,
+                changed: () => setState(() {
+                  rateConfirmed = false;
+                  norepinephrineInfusionVerified = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('norepinephrine-verify-infusion'),
+                value: norepinephrineInfusionVerified,
+                controlAffinity: ListTileControlAffinity.leading,
+                title: const Text(
+                  'A pharmacist validated THIS exact product, BASE '
+                  'strength, dilution fluid, final concentration '
+                  'and stability; a working calibrated infusion '
+                  'or syringe pump and clinical monitoring are available.',
+                ),
+                onChanged: (value) => setState(() {
+                  norepinephrineInfusionVerified = value ?? false;
+                  rateConfirmed = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('norepinephrine-verify-order'),
+                value: rateConfirmed,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: !norepinephrineInfusionVerified
+                    ? null
+                    : (value) =>
+                        setState(() => rateConfirmed = value ?? false),
+                title: const Text(
+                  'I verified the actual patient-specific prescribed '
+                  'dose in mcg of NOREPINEPHRINE BASE, weight if '
+                  'ordered per kg, route and hemodynamic targets.',
+                ),
+              ),
+              if (norepinephrinePump != null)
+                Card(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Mathematical PUMP rate only · لا تستخدم بالتنقيط',
+                          style: TextStyle(fontWeight: FontWeight.w900),
+                        ),
+                        Text(
+                          _fmt(norepinephrinePump.millilitersPerHour) +
+                              ' mL/hr',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w900),
+                        ),
+                        const Text(
+                          'NOT a pump order, clinical dose recommendation '
+                          'or permission to use a gravity drip. Verify '
+                          'product, delivered volume and monitoring.',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ]
             else if (mustUseProtocolRate)
               const _Alert(
                 'NO GENERIC DURATION RATE: this high-alert medication '

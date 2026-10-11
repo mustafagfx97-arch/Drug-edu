@@ -66,6 +66,46 @@ IvFluidEvidence reviewedIvFluidEvidence({
   required IvFluid fluid,
 }) {
   if (population != 'General') return _unverified;
+  if (name == 'Norepinephrine') {
+    // This applies ONLY to the source-locked 4mg/4mL norepinephrine
+    // BASE-equivalent concentrate; not to a custom salt/base presentation.
+    if (fluid == IvFluid.dextrose5 ||
+        fluid == IvFluid.dextrose5NormalSaline ||
+        fluid == IvFluid.dextrose5HalfNormalSaline) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.verifiedDiluent,
+        explanation:
+            'For the specific 4 mg/4 mL (norepinephrine BASE) concentrate '
+            'label: D5W or 5%-dextrose-containing sodium chloride is '
+            'listed for dilution. The label describes 4 mg added to '
+            '1000 mL carrier (approximately 4 mcg/mL), with protection '
+            'from light. This does NOT validate every alternate final '
+            'concentration or a DIFFERENT manufacturer.',
+        source: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52e22892-4fc3-4f53-9f39-0b5c66da3040',
+      );
+    }
+    if (fluid == IvFluid.normalSaline ||
+        fluid == IvFluid.halfNormalSaline) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.unknown,
+        explanation:
+            'The cited 4mg/4mL concentrate label explicitly says '
+            'saline ALONE is not recommended (oxidation/potency concern). '
+            'Some OTHER formulations/protocols differ; check the '
+            'EXACT manufacturer and local pharmacy evidence. Not an '
+            'incompatibility claim for every norepinephrine product.',
+        source: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52e22892-4fc3-4f53-9f39-0b5c66da3040',
+      );
+    }
+    return const IvFluidEvidence(
+      status: IvFluidEvidenceStatus.unknown,
+      explanation:
+          'No verified diluent evidence for this 4mg/4mL '
+          'concentrate-fluid combination. Do not extrapolate '
+          'from a different norepinephrine brand or premix.',
+      source: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=52e22892-4fc3-4f53-9f39-0b5c66da3040',
+    );
+  }
   if (name == 'Labetalol') {
     if (fluid == IvFluid.sodiumBicarbonate5) {
       return const IvFluidEvidence(

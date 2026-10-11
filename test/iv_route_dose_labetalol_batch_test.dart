@@ -101,6 +101,8 @@ void main() {
         prescribedDoseMg: bad, previousCumulativeMg: 0,
         stage: LabetalolInjectionStage.initial,
       ), isNull);
+    }
+    for (final bad in [-1.0, double.nan, double.infinity]) {
       expect(calculateOrderedLabetalolInjection(
         vialAmountMg: 100, vialVolumeMl: 20,
         prescribedDoseMg: 20, previousCumulativeMg: bad,

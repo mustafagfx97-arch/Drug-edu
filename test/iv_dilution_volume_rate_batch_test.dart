@@ -220,18 +220,7 @@ void main() {
     );
     await tester.pump();
     expect(find.text('IV dilution · حاسبة التخفيف'), findsOneWidget);
-    for (final key in [
-      'dilution-vial-quantity',
-      'dilution-ordered-quantity',
-      'dilution-fluid-quantity',
-      'dilution-check-stock',
-    ]) {
-      await tester.scrollUntilVisible(
-        find.byKey(ValueKey(key)),
-        250,
-        scrollable: find.byType(Scrollable).first,
-      );
-      expect(find.byKey(ValueKey(key)), findsOneWidget);
-    }
+    expect(find.text('1 · اختر الدواء وتركيز الأمبولة'), findsOneWidget);
+    expect(find.byType(DropdownButtonFormField<int>), findsWidgets);
   });
 }

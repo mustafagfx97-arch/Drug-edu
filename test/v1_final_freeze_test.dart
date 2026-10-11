@@ -137,9 +137,9 @@ void main() {
     }
   });
 
-  test('v1.0 IV preparation catalog and profiles match exactly', () {
-    expect(ivMedicationCatalog.length, 133);
-    expect(ivPreparationProfiles.length, 133);
+  test('IV catalog includes three verified CCU additions and remains unique', () {
+    expect(ivMedicationCatalog.length, 136);
+    expect(ivPreparationProfiles.length, 136);
 
     final catalogKeys = ivMedicationCatalog
         .map((item) => '${item.name}|${item.population}')
@@ -148,9 +148,9 @@ void main() {
         .map((item) => '${item.name}|${item.population}')
         .toList();
 
-    expect(catalogKeys.toSet().length, 133,
+    expect(catalogKeys.toSet().length, 136,
         reason: 'IV catalog keys must be unique');
-    expect(profileKeys.toSet().length, 133,
+    expect(profileKeys.toSet().length, 136,
         reason: 'IV profile keys must be unique');
     expect(catalogKeys.toSet(), profileKeys.toSet(),
         reason: 'Every IV catalog entry must have exactly one profile');

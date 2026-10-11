@@ -1,0 +1,24 @@
+{
+  "name": "Drug Edu · Clinical Pharmacist",
+  "short_name": "Drug Edu",
+  "description": "IV preparation, critical-care calculations and evidence-based patient counseling.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0b1a30",
+  "theme_color": "#0b1a30",
+  "icons": [
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

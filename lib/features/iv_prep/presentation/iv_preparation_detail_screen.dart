@@ -115,6 +115,11 @@ class _IvPreparationDetailScreenState
             icon: Icons.water_drop_outlined,
           ),
           _PrepCard(
+            title: 'Fluid versus Y-site compatibility',
+            text: 'Dilution-fluid compatibility does NOT establish compatibility with another IV medication through a shared line or Y-site. The exact concentrations, formulation and line conditions need separate evidence. If absent, treat the combination as UNKNOWN, not compatible by default.',
+            icon: Icons.shield_outlined,
+          ),
+          _PrepCard(
             title: 'Allowed / relevant diluents',
             text: profile.allowedDiluents,
             icon: Icons.opacity_rounded,

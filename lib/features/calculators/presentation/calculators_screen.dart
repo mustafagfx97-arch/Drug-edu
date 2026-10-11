@@ -35,7 +35,7 @@ class CalculatorsScreen extends StatelessWidget {
       ),
       (
         'Continuous Infusion',
-        'Convert an entered prescribed rate to pump mL/hr.',
+        'CCU and ICU source-locked pump rates from an already prescribed order, including weight-based infusions.',
         Icons.speed_outlined,
         'infusion'
       ),

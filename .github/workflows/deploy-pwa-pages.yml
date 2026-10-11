@@ -1,0 +1,51 @@
+name: Publish Drug Edu PWA to GitHub Pages
+
+# Intentionally manual until GitHub Pages > Source: GitHub Actions is enabled
+# and the PWA release has passed Flutter CI.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: drug-edu-pwa-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test
+      - name: Compile PWA for repository subpath
+        run: flutter build web --release --base-href "/Drug-edu/" --pwa-strategy=none
+      - name: Check installable PWA files
+        run: |
+          test -s build/web/index.html
+          test -s build/web/main.dart.js
+          test -s build/web/manifest.json
+          test -s build/web/sw.js
+          test -s build/web/icons/Icon-192.png
+          test -s build/web/icons/Icon-512.png
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+      - name: Deploy to HTTPS
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -3,7 +3,12 @@
 /// free-text monographs. Unknown is not compatible.
 enum IvFluid {
   normalSaline,
+  halfNormalSaline,
   dextrose5,
+  dextrose5NormalSaline,
+  dextrose5HalfNormalSaline,
+  dextrose10,
+  sterileWaterForInjection,
   lactatedRingers,
   sodiumBicarbonate5,
 }
@@ -11,7 +16,12 @@ enum IvFluid {
 extension IvFluidLabel on IvFluid {
   String get label => switch (this) {
         IvFluid.normalSaline => '0.9% NaCl',
+        IvFluid.halfNormalSaline => '0.45% NaCl',
         IvFluid.dextrose5 => 'D5W (5% Dextrose)',
+        IvFluid.dextrose5NormalSaline => 'D5 in 0.9% NaCl',
+        IvFluid.dextrose5HalfNormalSaline => 'D5 in 0.45% NaCl',
+        IvFluid.dextrose10 => 'D10W (10% Dextrose)',
+        IvFluid.sterileWaterForInjection => 'Sterile Water for Injection',
         IvFluid.lactatedRingers => 'Lactated Ringer’s',
         IvFluid.sodiumBicarbonate5 => '5% Sodium Bicarbonate',
       };
@@ -53,7 +63,11 @@ IvFluidEvidence reviewedIvFluidEvidence({
 }) {
   if (population != 'General') return _unverified;
   if (name == 'Nicardipine') {
-    if (fluid == IvFluid.normalSaline || fluid == IvFluid.dextrose5) {
+    if (fluid == IvFluid.normalSaline ||
+        fluid == IvFluid.halfNormalSaline ||
+        fluid == IvFluid.dextrose5 ||
+        fluid == IvFluid.dextrose5NormalSaline ||
+        fluid == IvFluid.dextrose5HalfNormalSaline) {
       return const IvFluidEvidence(
         status: IvFluidEvidenceStatus.verifiedDiluent,
         explanation:
@@ -63,17 +77,29 @@ IvFluidEvidence reviewedIvFluidEvidence({
         source: _cardeneUrl,
       );
     }
+    if (fluid == IvFluid.lactatedRingers ||
+        fluid == IvFluid.sodiumBicarbonate5) {
+      return const IvFluidEvidence(
+        status: IvFluidEvidenceStatus.incompatibleDiluent,
+        explanation:
+            'CARDENE IV 25 mg/10 mL labeling explicitly reports this '
+            'fluid as NOT compatible. Do not use it for dilution.',
+        source: _cardeneUrl,
+      );
+    }
     return const IvFluidEvidence(
-      status: IvFluidEvidenceStatus.incompatibleDiluent,
+      status: IvFluidEvidenceStatus.unknown,
       explanation:
-          'CARDENE IV 25 mg/10 mL vial labeling explicitly reports this '
-          'fluid as NOT compatible. Do not use it for dilution.',
+          'This fluid is not listed in the exact CARDENE IV concentrate '
+          'label dilution compatibility list. Do not assume compatibility.',
       source: _cardeneUrl,
     );
   }
   if (name == 'Clevidipine') {
     if (fluid == IvFluid.normalSaline ||
         fluid == IvFluid.dextrose5 ||
+        fluid == IvFluid.dextrose5NormalSaline ||
+        fluid == IvFluid.sterileWaterForInjection ||
         fluid == IvFluid.lactatedRingers) {
       return const IvFluidEvidence(
         status: IvFluidEvidenceStatus.coadministrationOnly,
@@ -87,8 +113,7 @@ IvFluidEvidence reviewedIvFluidEvidence({
     return const IvFluidEvidence(
       status: IvFluidEvidenceStatus.unknown,
       explanation:
-          '5% sodium bicarbonate is not an established preparation or '
-          'co-administration fluid in the cited Cleviprex label. '
+          'This fluid is not in the cited Cleviprex co-administration list. '
           'Do NOT dilute Cleviprex with any fluid.',
       source: _cleviprexUrl,
     );

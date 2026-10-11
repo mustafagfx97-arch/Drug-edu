@@ -29,6 +29,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
   IvVolumeEntryMode volumeMode = IvVolumeEntryMode.addFluidToDrug;
   bool confirmed = false;
   bool rateConfirmed = false;
+  bool localPreparationVerified = false;
   String? selectedDoseRegimen;
 
   @override
@@ -61,12 +62,14 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     }
     confirmed = false;
     rateConfirmed = false;
+    localPreparationVerified = false;
     selectedDoseRegimen = null;
   }
 
   void invalidate() => setState(() {
         confirmed = false;
         rateConfirmed = false;
+        localPreparationVerified = false;
       });
 
   @override
@@ -157,6 +160,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           addedDiluentMl: plan.addedFluidMl,
           finalVolumeMl: plan.finalVolumeMl,
         );
+    final labetalolNonstandardMathEligible = labetalolInfusion &&
+        !exactLabetalol && plan != null &&
+        evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
     final orderedRate = double.tryParse(prescribedRate.text.trim());
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
@@ -164,6 +170,12 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             ? labetalolOrderedInfusionMlPerHour(
                 prescribedMgPerMinute: orderedRate,
                 verifiedFinalMgPerMl: plan.finalStrengthPerMl,
+              )
+        : labetalolNonstandardMathEligible
+            ? calculateLocallyVerifiedLabetalolRateMathOnly(
+                prescribedMgPerMinute: orderedRate,
+                calculatedFinalMgPerMl: plan.finalStrengthPerMl,
+                localPreparationVerified: localPreparationVerified,
               )
         : exactCardene
             ? orderedRate.isFinite && orderedRate > 0
@@ -263,6 +275,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             selectedId: selectedDoseRegimen,
             onChanged: (id) => setState(() {
               selectedDoseRegimen = id;
+              localPreparationVerified = false;
               for (final c in [
                 vialQuantity, vialMl, prescribedQuantity,
                 fluidMl, prescribedRate,
@@ -337,6 +350,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 fluid = f;
                 confirmed = false;
                 rateConfirmed = false;
+                localPreparationVerified = false;
               });
             },
           ),
@@ -372,6 +386,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               volumeMode = s.first;
               confirmed = false;
               rateConfirmed = false;
+              localPreparationVerified = false;
             }),
           ),
           const SizedBox(height: 7),
@@ -394,6 +409,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 : (v) => setState(() {
                       confirmed = v ?? false;
                       rateConfirmed = false;
+                      localPreparationVerified = false;
                     }),
             title: const Text(
               'Verified prescribed dose, unit, exact vial identity '
@@ -437,12 +453,96 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            if (labetalol && !exactLabetalol)
+            if (labetalolNonstandardMathEligible) ...[
               const _Alert(
-                'LABETALOL INFUSION recipe lock: 200 mg '
-                '(40 mL of 5 mg/mL stock) + 160 mL label-approved '
-                'fluid = 200 mL FINAL at 1 mg/mL. '
-                'No pump-rate calculation for other preparations.',
+                'UNVALIDATED LABETALOL PREPARATION: This mixture does NOT '
+                'match the labeled 200 mg (40 mL stock) + 160 mL fluid = '
+                '200 mL FINAL, 1 mg/mL example. Label stability testing '
+                'does not establish safety of every other concentration. '
+                'Do NOT prepare or administer until an independent '
+                'pharmacist confirms this exact formulation and '
+                'institutional compounding/infusion protocol.',
+              ),
+              const SizedBox(height: 8),
+              Text(
+                '3 · حساب معدل المضخة · mL/hr (رياضيات فقط)',
+                style: titleStyle,
+              ),
+              const SizedBox(height: 7),
+              const Text(
+                'Only enter the actual physician-ORDERED continuous '
+                'infusion rate in mg/min. The calculated mL/hr is '
+                'NOT a verified or authorized pump setting.',
+              ),
+              _Numeric(
+                key: const ValueKey('dilution-prescribed-rate'),
+                label: 'Physician-ordered continuous infusion (mg/min)',
+                controller: prescribedRate,
+                changed: () => setState(() {
+                  rateConfirmed = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('labetalol-local-preparation-verified'),
+                value: localPreparationVerified,
+                controlAffinity: ListTileControlAffinity.leading,
+                title: const Text(
+                  'A pharmacist independently validated this EXACT '
+                  'non-label-standard preparation, final concentration, '
+                  'compatible fluid and stability under local protocol.',
+                ),
+                onChanged: (value) => setState(() {
+                  localPreparationVerified = value ?? false;
+                  rateConfirmed = false;
+                }),
+              ),
+              CheckboxListTile(
+                key: const ValueKey('dilution-check-rate'),
+                value: rateConfirmed,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: !localPreparationVerified
+                    ? null
+                    : (value) => setState(
+                        () => rateConfirmed = value ?? false,
+                      ),
+                title: const Text(
+                  'I checked the actual prescribed mg/min rate, '
+                  'continuous infusion route, final mixed volume '
+                  'and hospital pump protocol.',
+                ),
+              ),
+              if (pump != null && pump.isFinite && pump > 0)
+                Card(
+                  color: Theme.of(context).colorScheme.errorContainer,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'ARITHMETIC ONLY · حساب رياضي وليس موافقة سريرية',
+                          style: TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                        Text(
+                          _fmt(pump) + ' mL/hr',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w900),
+                        ),
+                        const Text(
+                          'NOT an approved dilution or pump instruction. '
+                          'Independent hospital verification is required.',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ] else if (labetalol && !exactLabetalol)
+              const _Alert(
+                'LABETALOL INFUSION label recipe: 200 mg (40 mL stock) '
+                '+ 160 mL compatible fluid = 200 mL FINAL at 1 mg/mL. '
+                'For other preparations, an mL/hr figure is NOT shown '
+                'without verified fluid, authorized stock preparation '
+                'and a matching physician order.',
               )
             else if (cardene && !exactCardene)
               const _Alert(

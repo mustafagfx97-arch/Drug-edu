@@ -85,3 +85,20 @@ double? labetalolOrderedInfusionMlPerHour({
   final mlPerHour = prescribedMgPerMinute * 60 / verifiedFinalMgPerMl;
   return mlPerHour.isFinite && mlPerHour > 0 ? mlPerHour : null;
 }
+
+/// For a NON-LABEL STANDARD labetalol admixture, return ARITHMETIC only
+/// AFTER the exact prepared final concentration and local protocol have
+/// independently been confirmed. This function NEVER approves the mixture.
+double? calculateLocallyVerifiedLabetalolRateMathOnly({
+  required double prescribedMgPerMinute,
+  required double calculatedFinalMgPerMl,
+  required bool localPreparationVerified,
+}) {
+  if (!localPreparationVerified) {
+    return null;
+  }
+  return labetalolOrderedInfusionMlPerHour(
+    prescribedMgPerMinute: prescribedMgPerMinute,
+    verifiedFinalMgPerMl: calculatedFinalMgPerMl,
+  );
+}

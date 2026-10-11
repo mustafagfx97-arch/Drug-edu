@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/iv_preparation_profiles.dart';
+import '../../calculators/presentation/iv_dilution_calculator_screen.dart';
 
 class IvPreparationDetailScreen extends StatefulWidget {
   const IvPreparationDetailScreen({
@@ -64,6 +65,18 @@ class _IvPreparationDetailScreenState
               ],
             ),
           ),
+          const SizedBox(height: 12),
+          FilledButton.icon(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) =>
+                    IvDilutionCalculatorScreen(initialProfile: profile),
+              ),
+            ),
+            icon: const Icon(Icons.calculate_outlined),
+            label: const Text('Dilution + fluid volume + IV rate calculator'),
+          ),
+          const SizedBox(height: 9),
           if (profile.criticalLocks.isNotEmpty) ...[
             const SizedBox(height: 12),
             for (final lock in profile.criticalLocks) ...[

@@ -625,7 +625,6 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                           'Enter prescribed mg/min; do not assume '
                           '3 mL/min delivers EXACTLY 2 mg/min.'
                     : exactCardene
-                    : exactCardene
                     ? 'CARDENE IV exact final concentration: '
                       'enter already PRESCRIBED mg/hour (NOT dose selection).'
                     : exactNitroglycerin
@@ -658,7 +657,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 title: const Text(
                   'Verified prescription, IV infusion route, '
                   'label/local rate instructions, final preparation '
-                  'and pump library independently.',
+                  'and controlled delivery method / pump protocol independently.',
                 ),
               ),
               if (pump != null && pump.isFinite && pump > 0)

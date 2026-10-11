@@ -1,7 +1,8 @@
-# Drug Edu Progressive Web App (PWA)
+# Drug IV-only Progressive Web App (PWA)
 
 The **original Flutter Drug Edu source remains intact**. The PWA is compiled
-from `lib/main.dart`, not a new or separate medication database.
+from `lib/main_iv.dart` and reuses the 136 existing source-locked IV profiles.
+The original complete Drug Edu entry point (`lib/main.dart`) is NOT removed.
 
 ## Build status
 
@@ -22,7 +23,8 @@ from `lib/main.dart`, not a new or separate medication database.
 1. First ensure the latest `main` release has a **green Flutter CI**, including
    Analyze, Tests and the PWA artifact.
 2. In repository **Settings → Pages**, select **GitHub Actions** for the Source.
-3. Open **Actions → Publish Drug Edu PWA to GitHub Pages → Run workflow** on `main`.
+3. After a green merge to `main`, GitHub Pages **deploys automatically**.
+   You may also use Actions → Publish Drug IV PWA → Run workflow.
 4. Only after its deployment succeeds, open the URL in that workflow's
    `github-pages` environment. The expected GitHub Pages project URL is
    `https://mustafagfx97-arch.github.io/Drug-edu/`; it is **not active until published**.
@@ -42,7 +44,7 @@ building/releasing web assets. Never deploy directly from a failing PR.
 ```bash
 flutter pub get
 flutter run -d chrome
-flutter build web --release --base-href "/Drug-edu/" --pwa-strategy=none
+flutter build web --release -t lib/main_iv.dart --base-href "/Drug-edu/" --pwa-strategy=none
 ```
 
 For hosting on a custom domain at the root, compile with `--base-href "/"`

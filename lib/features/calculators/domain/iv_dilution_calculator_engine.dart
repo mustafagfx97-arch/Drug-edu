@@ -77,7 +77,9 @@ IvDilutionResult? calculateVerifiedIvDilution({
   if (!finalStrength.isFinite ||
       finalStrength <= 0 ||
       containerCount <= 0 ||
-      containerCount > 1000000) return null;
+      containerCount > 1000000) {
+    return null;
+  }
   return IvDilutionResult(
     stockStrengthPerMl: enteredStrength,
     withdrawalMl: withdrawal,
@@ -97,7 +99,9 @@ double? calculateOrderedDurationPumpRate({
   if (!finalVolumeMl.isFinite ||
       finalVolumeMl <= 0 ||
       !orderedDurationMinutes.isFinite ||
-      orderedDurationMinutes <= 0) return null;
+      orderedDurationMinutes <= 0) {
+    return null;
+  }
   final mlPerHour = finalVolumeMl * 60 / orderedDurationMinutes;
   return mlPerHour.isFinite && mlPerHour > 0 ? mlPerHour : null;
 }
@@ -157,7 +161,9 @@ double? calculateOrderedMcgPerMinutePump({
   required double finalMgPerMl,
 }) {
   if (!orderedMcgPerMin.isFinite || orderedMcgPerMin <= 0 ||
-      !finalMgPerMl.isFinite || finalMgPerMl <= 0) return null;
+      !finalMgPerMl.isFinite || finalMgPerMl <= 0) {
+    return null;
+  }
   final result = orderedMcgPerMin * 60 / (finalMgPerMl * 1000);
   return result.isFinite && result > 0 ? result : null;
 }

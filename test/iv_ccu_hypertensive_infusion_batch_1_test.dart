@@ -47,7 +47,7 @@ void main() {
     final p = general('Clevidipine');
     expect(p.calculatorVariants.single.concentration, 0.5);
     expect(p.furtherDilution, contains('DO NOT DILUTE'));
-    expect(p.incompatibilities, contains('SAME LINE'));
+    expect(p.incompatibilities, contains('same line'));
     expect(p.stability, contains('12 hours'));
     expect(p.criticalLocks.join(' '), contains('soybean/egg'));
   });

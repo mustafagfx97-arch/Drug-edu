@@ -150,23 +150,26 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
       'Labetalol', 'Esmolol', 'Clevidipine',
     };
     final mustUseProtocolRate = noGenericInfusionTime.contains(profile.name);
-    final exactLabetalol = labetalolInfusion && plan != null &&
-        variant != null && doseAmount != null &&
+    final labetalolRecipe = labetalolInfusion && plan != null &&
+            variant != null && doseAmount != null
+        ? classifyLabetalolInfusionRecipe(
+            stockConcentrationMgPerMl: variant.concentration,
+            selectedAmountMg: doseAmount,
+            withdrawnMl: plan.withdrawalMl,
+            addedDiluentMl: plan.addedFluidMl,
+            finalVolumeMl: plan.finalVolumeMl,
+          )
+        : LabetalolInfusionRecipeStatus.localProtocolOnly;
+    final labelLabetalol = labetalolInfusion && plan != null &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent &&
-        matchesLabetalolLabelInfusion(
-          stockConcentrationMgPerMl: variant.concentration,
-          selectedAmountMg: doseAmount,
-          withdrawnMl: plan.withdrawalMl,
-          addedDiluentMl: plan.addedFluidMl,
-          finalVolumeMl: plan.finalVolumeMl,
-        );
+        labetalolRecipe != LabetalolInfusionRecipeStatus.localProtocolOnly;
     final labetalolNonstandardMathEligible = labetalolInfusion &&
-        !exactLabetalol && plan != null &&
+        !labelLabetalol && plan != null &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
     final orderedRate = double.tryParse(prescribedRate.text.trim());
     final pump = !rateConfirmed || plan == null || orderedRate == null
         ? null
-        : exactLabetalol
+        : labelLabetalol
             ? labetalolOrderedInfusionMlPerHour(
                 prescribedMgPerMinute: orderedRate,
                 verifiedFinalMgPerMl: plan.finalStrengthPerMl,
@@ -428,6 +431,48 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               'be positive and final volume large enough.',
             ),
           if (plan != null && variant != null) ...[
+            if (labetalolInfusion &&
+                evidence.status == IvFluidEvidenceStatus.verifiedDiluent)
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        labelLabetalol
+                            ? 'LABEL-SUPPORTED EXAMPLE · وصفة مذكورة بالنشرة'
+                            : 'NON-LABEL RECIPE · يحتاج تحقق محلي',
+                        style: const TextStyle(fontWeight: FontWeight.w900),
+                      ),
+                      const SizedBox(height: 7),
+                      Text(
+                        labelLabetalol
+                            ? labetalolRecipe ==
+                                    LabetalolInfusionRecipeStatus.labelFinal200Ml
+                                ? 'Example A: 200 mg / 200 mL final '
+                                  '= 1 mg/mL.'
+                                : 'Example B: 200 mg / 290 mL final '
+                                  '= 0.689655 mg/mL (calculated).'
+                            : 'Your numbers are mathematically valid, '
+                              'but final concentration, fluid and '
+                              'beyond-use time require local pharmacist '
+                              'validation before clinical use.',
+                      ),
+                      const SizedBox(height: 7),
+                      const Text(
+                        'If a pump is unavailable: the labetalol label '
+                        'describes a controlled graduated burette OR '
+                        'mechanical infusion pump. This is NOT approval '
+                        'for uncontrolled gravity drip, estimated '
+                        'drops/min or other high-alert medications. '
+                        'Use only an institutional approved method with '
+                        'BP/heart-rate monitoring.',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             Card(
               color: Theme.of(context).colorScheme.primaryContainer,
               child: Padding(
@@ -536,13 +581,13 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                     ),
                   ),
                 ),
-            ] else if (labetalol && !exactLabetalol)
+            ] else if (labetalol && !labelLabetalol)
               const _Alert(
-                'LABETALOL INFUSION label recipe: 200 mg (40 mL stock) '
-                '+ 160 mL compatible fluid = 200 mL FINAL at 1 mg/mL. '
-                'For other preparations, an mL/hr figure is NOT shown '
-                'without verified fluid, authorized stock preparation '
-                'and a matching physician order.',
+                'LABETALOL: two different label examples are available: '
+                '200 mg + 160 mL fluid = 200 mL FINAL, or '
+                '200 mg + 250 mL fluid = 290 mL FINAL. '
+                'Other volumes require product-specific independent review '
+                'before infusion rate arithmetic is permitted.',
               )
             else if (cardene && !exactCardene)
               const _Alert(
@@ -567,12 +612,18 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               Text('3 · ريت إعطاء الجرعة الموصوفة', style: titleStyle),
               const SizedBox(height: 7),
               _Alert(
-                exactLabetalol
-                    ? 'LABETALOL continuous infusion: exact label '
-                      'preparation 200 mg in 200 mL final (1 mg/mL). '
-                      'Label example is 2 mg/min = 120 mL/hr; '
-                      'ENTER the actual ordered mg/min, do not '
-                      'select a rate automatically.'
+                labelLabetalol
+                    ? labetalolRecipe ==
+                            LabetalolInfusionRecipeStatus.labelFinal200Ml
+                        ? 'LABEL EXAMPLE A: 200 mg labetalol + 160 mL '
+                          'compatible IV fluid = 200 mL FINAL '
+                          'at 1 mg/mL. Enter prescribed mg/min; '
+                          'the app does not select a therapeutic rate.'
+                        : 'LABEL EXAMPLE B: 200 mg labetalol + 250 mL '
+                          'compatible IV fluid = 290 mL FINAL '
+                          '(exact 0.689655 mg/mL, approximately 2 mg/3 mL). '
+                          'Enter prescribed mg/min; do not assume '
+                          '3 mL/min delivers EXACTLY 2 mg/min.'
                     : exactCardene
                     ? 'CARDENE IV exact final concentration: '
                       'enter already PRESCRIBED mg/hour (NOT dose selection).'
@@ -587,7 +638,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               ),
               _Numeric(
                 key: const ValueKey('dilution-prescribed-rate'),
-                label: exactLabetalol
+                label: labelLabetalol
                     ? 'Already PRESCRIBED infusion rate (mg/min)'
                     : exactCardene
                     ? 'Already PRESCRIBED rate (mg/hr)'
@@ -606,7 +657,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 title: const Text(
                   'Verified prescription, IV infusion route, '
                   'label/local rate instructions, final preparation '
-                  'and pump library independently.',
+                  'and controlled delivery method / pump protocol independently.',
                 ),
               ),
               if (pump != null && pump.isFinite && pump > 0)

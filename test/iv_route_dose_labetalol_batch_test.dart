@@ -153,6 +153,67 @@ void main() {
     }
   });
 
+  test('second labetalol label example: 40 mL stock + 250 mL IV fluid', () {
+    final second = classifyLabetalolInfusionRecipe(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 250,
+      finalVolumeMl: 290,
+    );
+    expect(second, LabetalolInfusionRecipeStatus.labelAdded250Ml);
+    expect(matchesLabetalolSecondLabelInfusion(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 250,
+      finalVolumeMl: 290,
+    ), isTrue);
+    expect(200 / 290, closeTo(0.6896551724, 0.0000001));
+    final orderedRate = labetalolOrderedInfusionMlPerHour(
+      prescribedMgPerMinute: 2,
+      verifiedFinalMgPerMl: 200 / 290,
+    );
+    expect(orderedRate, closeTo(174, 0.000001));
+    // Label's illustrative 3mL/min = 180mL/hr would actually deliver
+    // ~2.069 mg/min at exact 200mg/290mL; it is rounded in the label.
+    expect((180 / 60) * (200 / 290), closeTo(2.0689655, 0.000001));
+  });
+
+  test('label examples require exact vial and added vs final volume', () {
+    expect(classifyLabetalolInfusionRecipe(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 160,
+      finalVolumeMl: 200,
+    ), LabetalolInfusionRecipeStatus.labelFinal200Ml);
+    // 250 mL here means ADDED fluid, not FINAL volume.
+    expect(classifyLabetalolInfusionRecipe(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 200,
+      withdrawnMl: 40,
+      addedDiluentMl: 210,
+      finalVolumeMl: 250,
+    ), LabetalolInfusionRecipeStatus.localProtocolOnly);
+    expect(classifyLabetalolInfusionRecipe(
+      stockConcentrationMgPerMl: 5,
+      selectedAmountMg: 100,
+      withdrawnMl: 20,
+      addedDiluentMl: 100,
+      finalVolumeMl: 120,
+    ), LabetalolInfusionRecipeStatus.localProtocolOnly);
+    for (final wrongStrength in [0.0, -5.0, double.nan, double.infinity]) {
+      expect(classifyLabetalolInfusionRecipe(
+        stockConcentrationMgPerMl: wrongStrength,
+        selectedAmountMg: 200,
+        withdrawnMl: 40,
+        addedDiluentMl: 250,
+        finalVolumeMl: 290,
+      ), LabetalolInfusionRecipeStatus.localProtocolOnly);
+    }
+  });
+
   test('Nonstandard concentration: rate math requires local verification', () {
     // Screenshot scenario: 100 mg at 5 mg/mL + 100 mL NS = 120 mL final.
     // Actual concentration 5/6 mg/mL, different from labelled 1 mg/mL.

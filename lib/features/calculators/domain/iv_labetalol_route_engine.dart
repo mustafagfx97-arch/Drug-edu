@@ -94,7 +94,9 @@ double? calculateLocallyVerifiedLabetalolRateMathOnly({
   required double calculatedFinalMgPerMl,
   required bool localPreparationVerified,
 }) {
-  if (!localPreparationVerified) return null;
+  if (!localPreparationVerified) {
+    return null;
+  }
   return labetalolOrderedInfusionMlPerHour(
     prescribedMgPerMinute: prescribedMgPerMinute,
     verifiedFinalMgPerMl: calculatedFinalMgPerMl,

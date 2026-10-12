@@ -416,7 +416,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 variant == null
                     ? 'NO verified dose unit in this profile yet. '
                       'Other strength is visible, but IV arithmetic '
-                      'is LOCKED until its dose basis is reviewed.'
+                      'is unavailable pending a verified dose-unit reference.'
                     : 'The app will calculate ONLY in: ' +
                         variant.unit + '. If your ampoule states a '
                         'different unit, salt, base, PE, CBA, percent '

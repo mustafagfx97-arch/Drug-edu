@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/iv_preparation_profiles.dart';
 import '../../calculators/presentation/iv_dilution_calculator_screen.dart';
+import 'iv_dose_time_quick_panel.dart';
 
 class IvPreparationDetailScreen extends StatefulWidget {
   const IvPreparationDetailScreen({
@@ -18,24 +19,10 @@ class IvPreparationDetailScreen extends StatefulWidget {
 
 class _IvPreparationDetailScreenState
     extends State<IvPreparationDetailScreen> {
-  final _doseController = TextEditingController();
-
-  @override
-  void dispose() {
-    _doseController.dispose();
-    super.dispose();
-  }
-
-  double? get _dose => double.tryParse(_doseController.text.trim());
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final profile = widget.profile;
-    final withdrawalVolume =
-        _dose == null || profile.withdrawalConcentration == null
-            ? null
-            : _dose! / profile.withdrawalConcentration!;
 
     return Scaffold(
       appBar: AppBar(title: Text(profile.name)),
@@ -66,17 +53,23 @@ class _IvPreparationDetailScreenState
             ),
           ),
           const SizedBox(height: 12),
-          FilledButton.icon(
-            onPressed: () => Navigator.of(context).push(
+          IvDoseTimeQuickPanel(
+            key: ValueKey('iv-dose-time-${profile.name}-${profile.population}'),
+            profile: profile,
+            onOpenFullCalculator: () => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) =>
                     IvDilutionCalculatorScreen(initialProfile: profile),
               ),
             ),
-            icon: const Icon(Icons.calculate_outlined),
-            label: const Text('Dilution + fluid volume + IV rate calculator'),
           ),
-          const SizedBox(height: 9),
+          const SizedBox(height: 8),
+          if (profile.criticalLocks.isNotEmpty)
+            Text(
+              'Essential safety checks · تحذيرات مهمة',
+              style: theme.textTheme.titleMedium
+                  ?.copyWith(fontWeight: FontWeight.w900),
+            ),
           if (profile.criticalLocks.isNotEmpty) ...[
             const SizedBox(height: 12),
             for (final lock in profile.criticalLocks) ...[
@@ -106,114 +99,69 @@ class _IvPreparationDetailScreenState
               ),
             ],
           ],
-          const SizedBox(height: 4),
-          _PrepCard(
-            title: 'Presentation / formulation',
-            text: profile.formulation,
-            icon: Icons.inventory_2_outlined,
-          ),
-          _PrepCard(
-            title: 'Reconstitution',
-            text: profile.reconstitution,
-            icon: Icons.science_outlined,
-          ),
-          _PrepCard(
-            title: 'Resulting concentration',
-            text: profile.resultingConcentration,
-            icon: Icons.functions_rounded,
-          ),
-          _PrepCard(
-            title: 'Further dilution',
-            text: profile.furtherDilution,
-            icon: Icons.water_drop_outlined,
-          ),
-          _PrepCard(
-            title: 'Fluid versus Y-site compatibility',
-            text: 'Dilution-fluid compatibility does NOT establish compatibility with another IV medication through a shared line or Y-site. The exact concentrations, formulation and line conditions need separate evidence. If absent, treat the combination as UNKNOWN, not compatible by default.',
-            icon: Icons.shield_outlined,
-          ),
-          _PrepCard(
-            title: 'Allowed / relevant diluents',
-            text: profile.allowedDiluents,
-            icon: Icons.opacity_rounded,
-          ),
-          _PrepCard(
-            title: 'Administration',
-            text: profile.administration,
-            icon: Icons.route_outlined,
-          ),
-          _PrepCard(
-            title: 'Stability / BUD',
-            text: profile.stability,
-            icon: Icons.schedule_outlined,
-          ),
-          _PrepCard(
-            title: 'Important incompatibilities',
-            text: profile.incompatibilities,
-            icon: Icons.warning_amber_rounded,
-          ),
-          if (profile.withdrawalConcentration != null) ...[
-            const SizedBox(height: 6),
-            Text(
-              'Prescribed-dose → withdrawal volume',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w900,
+          const SizedBox(height: 8),
+          Card(
+            child: ExpansionTile(
+              key: const ValueKey('iv-expand-preparation-details'),
+              initiallyExpanded: false,
+              title: const Text(
+                'Preparation, fluids & stability · تفاصيل التخفيف',
+                style: TextStyle(fontWeight: FontWeight.w800),
               ),
-            ),
-            const SizedBox(height: 7),
-            Text(
-              'This calculator only converts a dose already prescribed to volume using the verified concentration shown above. It does not choose the dose, final concentration or infusion rate.',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
-                height: 1.4,
+              subtitle: const Text(
+                'Review before administration when dilution, '
+                'compatibility or storage matters.',
               ),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: _doseController,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(
-                labelText: 'Prescribed dose (${profile.withdrawalUnit})',
-                suffixText: profile.withdrawalUnit,
+              childrenPadding: const EdgeInsets.symmetric(
+                horizontal: 8, vertical: 4,
               ),
-              onChanged: (_) => setState(() {}),
-            ),
-            if (withdrawalVolume != null) ...[
-              const SizedBox(height: 10),
-              Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.secondaryContainer,
-                  borderRadius: BorderRadius.circular(16),
+              children: [
+                _PrepCard(
+                  title: 'Presentation / formulation',
+                  text: profile.formulation,
+                  icon: Icons.inventory_2_outlined,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Volume to withdraw',
-                      style: theme.textTheme.labelLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      '${_fmt(withdrawalVolume)} mL',
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      '${_fmt(_dose!)} ${profile.withdrawalUnit} ÷ '
-                      '${_fmt(profile.withdrawalConcentration!)} ${profile.withdrawalUnit}/mL',
-                      style: theme.textTheme.bodySmall,
-                    ),
-                  ],
+                _PrepCard(
+                  title: 'Reconstitution',
+                  text: profile.reconstitution,
+                  icon: Icons.science_outlined,
                 ),
-              ),
-            ],
-          ],
+                _PrepCard(
+                  title: 'Resulting concentration',
+                  text: profile.resultingConcentration,
+                  icon: Icons.functions_rounded,
+                ),
+                _PrepCard(
+                  title: 'Further dilution',
+                  text: profile.furtherDilution,
+                  icon: Icons.water_drop_outlined,
+                ),
+                const _PrepCard(
+                  title: 'Fluid versus Y-site compatibility',
+                  text: 'Dilution-fluid compatibility does NOT establish '
+                      'compatibility with another IV medication through '
+                      'a shared line. If evidence is absent, treat it '
+                      'as UNKNOWN.',
+                  icon: Icons.shield_outlined,
+                ),
+                _PrepCard(
+                  title: 'Allowed / relevant diluents',
+                  text: profile.allowedDiluents,
+                  icon: Icons.opacity_rounded,
+                ),
+                _PrepCard(
+                  title: 'Stability / BUD',
+                  text: profile.stability,
+                  icon: Icons.schedule_outlined,
+                ),
+                _PrepCard(
+                  title: 'Important incompatibilities',
+                  text: profile.incompatibilities,
+                  icon: Icons.warning_amber_rounded,
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.all(13),
@@ -234,12 +182,7 @@ class _IvPreparationDetailScreenState
     );
   }
 
-  static String _fmt(double value) {
-    final text = value.toStringAsFixed(3);
-    return text
-        .replaceFirst(RegExp(r'0+$'), '')
-        .replaceFirst(RegExp(r'\.$'), '');
-  }
+
 }
 
 class _PrepCard extends StatelessWidget {

@@ -27,9 +27,9 @@ class _IvOnlyShellState extends State<IvOnlyShell> {
           index: _index,
           children: const [
             _IvOnlyCatalog(),
-            IvFluidScreen(),
             IvCalculatorsHubScreen(),
             ContinuousInfusionCalculatorScreen(),
+            IvFluidScreen(),
           ],
         ),
       ),
@@ -43,11 +43,6 @@ class _IvOnlyShellState extends State<IvOnlyShell> {
             label: 'IV drugs',
           ),
           NavigationDestination(
-            icon: Icon(Icons.water_drop_outlined),
-            selectedIcon: Icon(Icons.water_drop),
-            label: 'Fluids',
-          ),
-          NavigationDestination(
             icon: Icon(Icons.calculate_outlined),
             selectedIcon: Icon(Icons.calculate),
             label: 'Dose',
@@ -56,6 +51,11 @@ class _IvOnlyShellState extends State<IvOnlyShell> {
             icon: Icon(Icons.monitor_heart_outlined),
             selectedIcon: Icon(Icons.monitor_heart),
             label: 'Infusion',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.water_drop_outlined),
+            selectedIcon: Icon(Icons.water_drop),
+            label: 'Fluids',
           ),
         ],
       ),
@@ -106,7 +106,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'IV preparation reference · مرجع تحضير الأدوية الوريدية',
+                      'Dose + IV administration · الجرعة ووقت الإعطاء',
                       style: theme.textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w900),
                     ),
@@ -117,10 +117,11 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
                     ),
                     const SizedBox(height: 7),
                     const Text(
-                      'Search exact drug + patient group. Entries give strength, '
-                      'reconstitution, compatible dilution fluids, IV administration, '
-                      'stability, incompatibilities, locks and source. '
-                      'Coverage is growing; absence of an entry is NOT evidence of safety.',
+                      'Search the drug and patient group. Dose-to-stock-volume '
+                      'arithmetic and exact administration instructions appear '
+                      'FIRST. Preparation, fluids and stability remain '
+                      'available under Details. A faster route is not '
+                      'automatically a safe route.',
                     ),
                   ],
                 ),

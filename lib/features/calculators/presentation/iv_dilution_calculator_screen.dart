@@ -180,9 +180,17 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     final effectiveStockConcentration = norepinephrine
         ? norepinephrineStock?.baseConcentrationMgPerMl
         : manualOther ? customConcentration : variant?.concentration;
+    // HUMULIN R IV pathway in this profile supports U-100 only. Changing
+    // the stock to U-500 cannot be cleared by a free-text confirmation.
+    final insulinU100Lock = manualOther &&
+        profile.population == 'General' &&
+        profile.name == 'Regular insulin infusion' &&
+        (customConcentration == null ||
+            (customConcentration - 100).abs() > 0.000001);
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
-    final plan = confirmed && !hardLock && auditedPackageMatches &&
+    final plan = confirmed && !hardLock && !insulinU100Lock &&
+            auditedPackageMatches &&
             effectiveStockConcentration != null &&
             stockAmount != null && stockVolume != null &&
             doseAmount != null && requestedFluid != null
@@ -760,6 +768,14 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             const _Alert(
               'STOP: this ready-to-use presentation or incompatible '
               'fluid cannot be diluted by this calculator.',
+            ),
+          if (insulinU100Lock)
+            const _Alert(
+              'STOP: This IV insulin profile is for U-100 regular '
+              'human insulin ONLY (100 units/mL). U-500 or a '
+              'different insulin formulation cannot be cleared by '
+              'custom mathematical entry. Verify the exact manufacturer '
+              'IV indication separately before use.',
             ),
           if (confirmed && plan == null && !hardLock)
             _Alert(

@@ -167,3 +167,22 @@ double? calculateOrderedMcgPerMinutePump({
   final result = orderedMcgPerMin * 60 / (finalMgPerMl * 1000);
   return result.isFinite && result > 0 ? result : null;
 }
+
+ 
+/// An entered concentration never upgrades a product-specific safety lock.
+/// This guards a reviewed IV insulin pathway against an unsafe U-500 switch;
+/// unknown products elsewhere still require separate clinical verification.
+bool customStockCompatibleWithVerifiedDoseBasis({
+  required String drugName,
+  required String population,
+  required double concentrationPerMl,
+}) {
+  if (!concentrationPerMl.isFinite || concentrationPerMl <= 0) {
+    return false;
+  }
+  if (drugName == 'Regular insulin infusion' &&
+      population == 'General') {
+    return (concentrationPerMl - 100).abs() <= 0.000001;
+  }
+  return true;
+}

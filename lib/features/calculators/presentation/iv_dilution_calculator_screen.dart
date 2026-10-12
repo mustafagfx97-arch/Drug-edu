@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../iv_prep/data/iv_preparation_profiles.dart';
+import '../../iv_prep/data/iv_stock_strength_audit.dart';
 import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
 import '../domain/iv_labetalol_route_engine.dart';
@@ -29,6 +30,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     (p) => p.population == 'General' && p.name == 'Nicardipine',
   );
   int presentation = 0;
+  bool usingOtherStrength = false;
+  bool customStockChecked = false;
+  bool customInfusionProtocolChecked = false;
   IvFluid fluid = IvFluid.normalSaline;
   IvVolumeEntryMode volumeMode = IvVolumeEntryMode.addFluidToDrug;
   bool confirmed = false;
@@ -76,6 +80,9 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     confirmed = false;
     rateConfirmed = false;
     localPreparationVerified = false;
+    usingOtherStrength = false;
+    customStockChecked = false;
+    customInfusionProtocolChecked = false;
     norepinephrineProductLabelVerified = false;
     norepinephrineInfusionVerified = false;
     norepinephrineStockMode = NorepinephrineStockMode.reviewedOneMgBasePerMl;
@@ -88,6 +95,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         confirmed = false;
         rateConfirmed = false;
         localPreparationVerified = false;
+        customStockChecked = false;
+        customInfusionProtocolChecked = false;
         norepinephrineProductLabelVerified = false;
         norepinephrineInfusionVerified = false;
       });
@@ -109,8 +118,30 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         currentDoseRegimen?.method == IvAdministrationMethod.slowInjection;
     final labetalolInfusion = labetalol &&
         currentDoseRegimen?.id == 'labetalol-continuous-infusion';
-    final variants = profile.calculatorVariants;
-    final variant = variants.isEmpty ? null : variants[presentation];
+    final auditedOptions = reviewedAdultIvStockOptions(
+      name: profile.name, population: profile.population,
+    );
+    // An audited vial list replaces, rather than duplicates, the
+    // legacy single-concentration placeholder for that exact drug.
+    final variants = auditedOptions.isEmpty
+        ? profile.calculatorVariants
+        : [
+            for (final p in auditedOptions)
+              IvWithdrawalVariant(
+                id: p.id,
+                label: p.packageLabel,
+                unit: p.unit,
+                concentration: p.concentrationPerMl,
+                note: p.safetyNote,
+              ),
+          ];
+    final safeIndex =
+        variants.isEmpty ? 0 : (presentation < variants.length ? presentation : 0);
+    final variant = variants.isEmpty ? null : variants[safeIndex];
+    final auditedSelected = auditedOptions.isNotEmpty && variant != null
+        ? auditedOptions[safeIndex]
+        : null;
+    final manualOther = usingOtherStrength && !norepinephrine;
     final evidence = reviewedIvFluidEvidence(
       name: profile.name, population: profile.population, fluid: fluid,
     );
@@ -134,12 +165,36 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             productLabelVerified: norepinephrineProductLabelVerified,
           )
         : null;
+    // The custom pathway accepts only the SAME dosing unit as a reviewed
+    // profile. It does NOT invent base/salt, PE, mEq or activity conversions.
+    final auditedPackageMatches = manualOther || auditedSelected == null ||
+        (stockAmount != null && stockVolume != null &&
+            (stockAmount - auditedSelected.vialAmount).abs() < 0.000001 &&
+            (stockVolume - auditedSelected.vialVolumeMl).abs() < 0.000001);
+    final customConcentration = manualOther && customStockChecked &&
+            variant != null && stockAmount != null && stockVolume != null &&
+            stockAmount.isFinite && stockAmount > 0 &&
+            stockVolume.isFinite && stockVolume > 0
+        ? stockAmount / stockVolume
+        : null;
     final effectiveStockConcentration = norepinephrine
         ? norepinephrineStock?.baseConcentrationMgPerMl
-        : variant?.concentration;
+        : manualOther ? customConcentration : variant?.concentration;
+    // HUMULIN R IV pathway in this profile supports U-100 only. Changing
+    // the stock to U-500 cannot be cleared by a free-text confirmation.
+    final insulinU100Lock = manualOther &&
+        profile.population == 'General' &&
+        profile.name == 'Regular insulin infusion' &&
+        (customConcentration == null ||
+            !customStockCompatibleWithVerifiedDoseBasis(
+              drugName: profile.name,
+              population: profile.population,
+              concentrationPerMl: customConcentration,
+            ));
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
-    final plan = confirmed && !hardLock &&
+    final plan = confirmed && !hardLock && !insulinU100Lock &&
+            auditedPackageMatches &&
             effectiveStockConcentration != null &&
             stockAmount != null && stockVolume != null &&
             doseAmount != null && requestedFluid != null
@@ -156,7 +211,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         : null;
     final cardene = profile.population == 'General' &&
         profile.name == 'Nicardipine';
-    final exactCardene = cardene && plan != null &&
+    final exactCardene = cardene && !manualOther && plan != null &&
         stockAmount != null && stockVolume != null &&
         doseAmount != null &&
         matchesCardeneIvLabelRecipe(
@@ -169,7 +224,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent;
     final nitroglycerin = profile.population == 'General' &&
         profile.name == 'Nitroglycerin';
-    final exactNitroglycerin = nitroglycerin && plan != null &&
+    final exactNitroglycerin = nitroglycerin && !manualOther && plan != null &&
         stockAmount != null && stockVolume != null &&
         doseAmount != null &&
         matchesNitroglycerinLabelRecipe(
@@ -201,7 +256,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             finalVolumeMl: plan.finalVolumeMl,
           )
         : LabetalolInfusionRecipeStatus.localProtocolOnly;
-    final labelLabetalol = labetalolInfusion && plan != null &&
+    final labelLabetalol = labetalolInfusion && !manualOther && plan != null &&
         evidence.status == IvFluidEvidenceStatus.verifiedDiluent &&
         labetalolRecipe != LabetalolInfusionRecipeStatus.localProtocolOnly;
     final labetalolNonstandardMathEligible = labetalolInfusion &&
@@ -219,7 +274,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             weightKg: double.tryParse(norepinephrineWeight.text.trim()),
           )
         : null;
-    final pump = !rateConfirmed || plan == null || orderedRate == null
+    final pump = !rateConfirmed || plan == null || orderedRate == null ||
+            (manualOther && !customInfusionProtocolChecked)
         ? null
         : labelLabetalol
             ? labetalolOrderedInfusionMlPerHour(
@@ -291,14 +347,14 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               });
             },
           ),
-          if (variants.length > 1) ...[
+          if (!norepinephrine) ...[
             const SizedBox(height: 10),
             DropdownButtonFormField<int>(
-              key: ValueKey('dilution-vial-$selected-$presentation'),
-              initialValue: presentation,
+              key: ValueKey('iv-strength-choice-$selected-${usingOtherStrength ? "other" : safeIndex}'),
+              initialValue: usingOtherStrength ? -1 : (variant == null ? -1 : safeIndex),
               isExpanded: true,
               decoration: const InputDecoration(
-                labelText: 'Exact vial / formulation',
+                labelText: 'Exact vial strength or Other · تركيز الدواء',
                 border: OutlineInputBorder(),
               ),
               items: [
@@ -306,19 +362,99 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                   DropdownMenuItem(
                     value: i,
                     child: Text(
-                      variants[i].label,
+                      (auditedOptions.isEmpty ? 'Existing reference · ' : 'Manufacturer label · ') +
+                          variants[i].label,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                const DropdownMenuItem(
+                  value: -1,
+                  child: Text('Other strength · تركيز آخر أضيفه بنفسي'),
+                ),
               ],
-              onChanged: (i) {
-                if (i == null) return;
+              onChanged: (value) {
+                if (value == null) return;
                 setState(() {
-                  presentation = i;
-                  reset();
+                  usingOtherStrength = value == -1;
+                  if (value >= 0) presentation = value;
+                  for (final c in [
+                    vialQuantity, vialMl, prescribedQuantity,
+                    fluidMl, prescribedRate,
+                  ]) {
+                    c.clear();
+                  }
+                  customStockChecked = false;
+                  customInfusionProtocolChecked = false;
+                  confirmed = false;
+                  rateConfirmed = false;
+                  localPreparationVerified = false;
                 });
               },
             ),
+            if (auditedSelected != null && !manualOther) ...[
+              _Info(
+                'Manufacturer source · not a claim of local availability',
+                auditedSelected.name + ' · ' +
+                    auditedSelected.packageLabel + '\n' +
+                    auditedSelected.sourceUrl + '\n' +
+                    auditedSelected.safetyNote,
+              ),
+              OutlinedButton.icon(
+                key: const ValueKey('iv-fill-audited-vial'),
+                onPressed: () => setState(() {
+                  vialQuantity.text = _fmt(auditedSelected.vialAmount);
+                  vialMl.text = _fmt(auditedSelected.vialVolumeMl);
+                  confirmed = false;
+                  rateConfirmed = false;
+                  customInfusionProtocolChecked = false;
+                }),
+                icon: const Icon(Icons.edit_note),
+                label: const Text(
+                  'Fill exact source-labelled vial amount + volume',
+                ),
+              ),
+            ],
+            if (manualOther) ...[
+              const _Alert(
+                'CUSTOM PRODUCT: arithmetic ONLY. You must verify '
+                'the manufacturer, exact formulation, actual stock '
+                'mg/units/mEq and volume, dose basis, route, compatible '
+                'fluid, stability, maximum final concentration and '
+                'administration method. This is NOT automatically '
+                'an acceptable replacement for the reviewed product.',
+              ),
+              _Info(
+                'Permitted dose basis (NO automatic conversion)',
+                variant == null
+                    ? 'NO verified dose unit in this profile yet. '
+                      'Other strength is visible, but IV arithmetic '
+                      'is unavailable pending a verified dose-unit reference.'
+                    : 'The app will calculate ONLY in: ' +
+                        variant.unit + '. If your ampoule states a '
+                        'different unit, salt, base, PE, CBA, percent '
+                        'or elemental equivalent, DO NOT use it until '
+                        'the conversion and manufacturer are verified.',
+              ),
+              CheckboxListTile(
+                key: const ValueKey('iv-custom-verify-strength'),
+                value: customStockChecked,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: variant == null
+                    ? null
+                    : (checked) => setState(() {
+                        customStockChecked = checked ?? false;
+                        customInfusionProtocolChecked = false;
+                        confirmed = false;
+                        rateConfirmed = false;
+                      }),
+                title: const Text(
+                  'A pharmacist independently verified this exact '
+                  'ampoule label, concentration, BASE/SALT dose unit, '
+                  'and that the ordered dose uses the SAME unit. '
+                  'This does not authorize any infusion recipe.',
+                ),
+              ),
+            ],
           ],
           if (norepinephrine) ...[
             const SizedBox(height: 12),
@@ -466,9 +602,21 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                           ' mg BASE/mL. Review the exact manufacturer '
                           'before any IV preparation.',
             )
+          else if (manualOther)
+            _Info(
+              'CUSTOM mathematical stock strength (NOT a verified brand)',
+              customConcentration == null
+                  ? 'Enter the actual labelled amount and vial mL, '
+                    'then confirm the unit/strength to enable arithmetic.'
+                  : _fmt(customConcentration) + ' ' + variant.unit +
+                    '/mL. This does NOT validate diluent, '
+                    'final concentration, route or product stability.',
+            )
           else
             _Info(
-              'Verified stock',
+              auditedSelected != null
+                  ? 'Source-audited stock presentation'
+                  : 'Existing reference stock (not yet re-audited)',
               _fmt(variant.concentration) + ' ' +
                   variant.unit + '/mL · ' + variant.note,
             ),
@@ -544,6 +692,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 confirmed = false;
                 rateConfirmed = false;
                 localPreparationVerified = false;
+                customInfusionProtocolChecked = false;
                 norepinephrineInfusionVerified = false;
               });
             },
@@ -581,6 +730,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               confirmed = false;
               rateConfirmed = false;
               localPreparationVerified = false;
+              customInfusionProtocolChecked = false;
               norepinephrineInfusionVerified = false;
             }),
           ),
@@ -599,23 +749,37 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             key: const ValueKey('dilution-check-stock'),
             controlAffinity: ListTileControlAffinity.leading,
             value: confirmed,
-            onChanged: variant == null || hardLock
+            onChanged: variant == null || hardLock ||
+                    (manualOther && !customStockChecked)
                 ? null
                 : (v) => setState(() {
                       confirmed = v ?? false;
                       rateConfirmed = false;
                       localPreparationVerified = false;
+                      customInfusionProtocolChecked = false;
                       norepinephrineInfusionVerified = false;
                     }),
-            title: const Text(
-              'Verified prescribed dose, unit, exact vial identity '
-              'and source-locked stock concentration.',
+            title: Text(
+              manualOther
+                  ? 'I have double checked the entered custom vial '
+                    'amount, volume and the already ordered drug dose '
+                    'in the SAME units. Numbers are arithmetic only.'
+                  : 'I matched the ordered dose and actual vial to '
+                    'the selected source concentration and unit.',
             ),
           ),
           if (hardLock)
             const _Alert(
               'STOP: this ready-to-use presentation or incompatible '
               'fluid cannot be diluted by this calculator.',
+            ),
+          if (insulinU100Lock)
+            const _Alert(
+              'STOP: This IV insulin profile is for U-100 regular '
+              'human insulin ONLY (100 units/mL). U-500 or a '
+              'different insulin formulation cannot be cleared by '
+              'custom mathematical entry. Verify the exact manufacturer '
+              'IV indication separately before use.',
             ),
           if (confirmed && plan == null && !hardLock)
             _Alert(
@@ -625,11 +789,48 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                     'choose OTHER PRODUCT and verify the BASE-equivalent '
                     'mg on the exact ampoule. Do not substitute '
                     'tartrate SALT mg for norepinephrine BASE mg.'
-                  : 'No result: entered vial mg / vial mL must match '
-                    'the source-locked concentration, and quantities '
-                    'and volumes must be valid.',
+                  : manualOther
+                      ? 'No result: select Other, verify exact vial '
+                        'amount/volume/unit, and confirm stock. '
+                        'Input amounts must be positive and final '
+                        'volume must accommodate the withdrawal.'
+                      : auditedSelected != null && !auditedPackageMatches
+                          ? 'Mismatch: selected source vial is ' +
+                            auditedSelected.packageLabel + '. The entered '
+                            'total amount and volume must BOTH match '
+                            'that exact presentation; alternatively '
+                            'choose Other for an independently '
+                            'verified different package.'
+                          : 'No result: entered vial amount / mL must '
+                            'match the selected reference concentration.',
             ),
           if (plan != null && variant != null) ...[
+            if (manualOther)
+              const _Alert(
+                'CUSTOM SOURCE: displayed withdrawal, dilution and '
+                'concentration are MATHEMATICAL ONLY. The app has NOT '
+                'verified this manufacturer strength, local supply, '
+                'admixture stability, fluid compatibility, route or '
+                'maximum infusion concentration. Do not prepare until '
+                'pharmacy review approves the exact product/recipe.',
+              ),
+            if (manualOther) ...[
+              CheckboxListTile(
+                key: const ValueKey('iv-custom-verify-infusion-protocol'),
+                controlAffinity: ListTileControlAffinity.leading,
+                value: customInfusionProtocolChecked,
+                onChanged: (value) => setState(() {
+                  customInfusionProtocolChecked = value ?? false;
+                  rateConfirmed = false;
+                }),
+                title: const Text(
+                  'An independent pharmacist reviewed the EXACT '
+                  'custom-product fluid, final concentration, BUD, '
+                  'ordered administration route/time and infusion '
+                  'method. No approval is inferred from arithmetic.',
+                ),
+              ),
+            ],
             if (labetalolInfusion &&
                 evidence.status == IvFluidEvidenceStatus.verifiedDiluent)
               Card(

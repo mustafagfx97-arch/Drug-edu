@@ -186,7 +186,11 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         profile.population == 'General' &&
         profile.name == 'Regular insulin infusion' &&
         (customConcentration == null ||
-            (customConcentration - 100).abs() > 0.000001);
+            !customStockCompatibleWithVerifiedDoseBasis(
+              drugName: profile.name,
+              population: profile.population,
+              concentrationPerMl: customConcentration,
+            ));
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
     final plan = confirmed && !hardLock && !insulinU100Lock &&

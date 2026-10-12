@@ -45,7 +45,7 @@ class _IvOnlyShellState extends State<IvOnlyShell> {
           NavigationDestination(
             icon: Icon(Icons.calculate_outlined),
             selectedIcon: Icon(Icons.calculate),
-            label: 'Dose/time',
+            label: 'Dose',
           ),
           NavigationDestination(
             icon: Icon(Icons.monitor_heart_outlined),

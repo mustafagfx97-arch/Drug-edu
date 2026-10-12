@@ -327,14 +327,14 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               });
             },
           ),
-          if (variants.length > 1) ...[
+          if (!norepinephrine) ...[
             const SizedBox(height: 10),
             DropdownButtonFormField<int>(
-              key: ValueKey('dilution-vial-$selected-$presentation'),
-              initialValue: presentation,
+              key: ValueKey('iv-strength-choice-$selected-${usingOtherStrength ? "other" : safeIndex}'),
+              initialValue: usingOtherStrength ? -1 : (variant == null ? -1 : safeIndex),
               isExpanded: true,
               decoration: const InputDecoration(
-                labelText: 'Exact vial / formulation',
+                labelText: 'Exact vial strength or Other · تركيز الدواء',
                 border: OutlineInputBorder(),
               ),
               items: [
@@ -342,19 +342,82 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                   DropdownMenuItem(
                     value: i,
                     child: Text(
-                      variants[i].label,
+                      (auditedOptions.isEmpty ? 'Existing reference · ' : 'Manufacturer label · ') +
+                          variants[i].label,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                const DropdownMenuItem(
+                  value: -1,
+                  child: Text('Other strength · تركيز آخر أضيفه بنفسي'),
+                ),
               ],
-              onChanged: (i) {
-                if (i == null) return;
+              onChanged: (value) {
+                if (value == null) return;
                 setState(() {
-                  presentation = i;
-                  reset();
+                  usingOtherStrength = value == -1;
+                  if (value >= 0) presentation = value;
+                  for (final c in [
+                    vialQuantity, vialMl, prescribedQuantity,
+                    fluidMl, prescribedRate,
+                  ]) {
+                    c.clear();
+                  }
+                  customStockChecked = false;
+                  confirmed = false;
+                  rateConfirmed = false;
+                  localPreparationVerified = false;
                 });
               },
             ),
+            if (auditedSelected != null && !manualOther)
+              _Info(
+                'Official source for selected vial (NOT local stock availability)',
+                auditedSelected.name + ' · ' +
+                    auditedSelected.packageLabel + '\n' +
+                    auditedSelected.sourceUrl + '\n' +
+                    auditedSelected.safetyNote,
+              ),
+            if (manualOther) ...[
+              const _Alert(
+                'CUSTOM PRODUCT: arithmetic ONLY. You must verify '
+                'the manufacturer, exact formulation, actual stock '
+                'mg/units/mEq and volume, dose basis, route, compatible '
+                'fluid, stability, maximum final concentration and '
+                'administration method. This is NOT automatically '
+                'an acceptable replacement for the reviewed product.',
+              ),
+              _Info(
+                'Permitted dose basis (NO automatic conversion)',
+                variant == null
+                    ? 'NO verified dose unit in this profile yet. '
+                      'Other strength is visible, but IV arithmetic '
+                      'is LOCKED until its dose basis is reviewed.'
+                    : 'The app will calculate ONLY in: ' +
+                        variant.unit + '. If your ampoule states a '
+                        'different unit, salt, base, PE, CBA, percent '
+                        'or elemental equivalent, DO NOT use it until '
+                        'the conversion and manufacturer are verified.',
+              ),
+              CheckboxListTile(
+                key: const ValueKey('iv-custom-verify-strength'),
+                value: customStockChecked,
+                controlAffinity: ListTileControlAffinity.leading,
+                onChanged: variant == null
+                    ? null
+                    : (checked) => setState(() {
+                        customStockChecked = checked ?? false;
+                        confirmed = false;
+                        rateConfirmed = false;
+                      }),
+                title: const Text(
+                  'A pharmacist independently verified this exact '
+                  'ampoule label, concentration, BASE/SALT dose unit, '
+                  'and that the ordered dose uses the SAME unit. '
+                  'This does not authorize any infusion recipe.',
+                ),
+              ),
+            ],
           ],
           if (norepinephrine) ...[
             const SizedBox(height: 12),

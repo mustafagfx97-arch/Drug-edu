@@ -34,6 +34,13 @@ bool quickIvNeedsSpecializedCalculator(IvPreparationProfile profile) =>
       'Colistimethate / Colistin',
       'Clevidipine',
       'Esmolol',
+      'Potassium chloride',
+      'Potassium phosphate',
+      'Sodium phosphate',
+      'Epinephrine',
+      'Sodium nitroprusside',
+      'Nitroglycerin',
+      'Phenytoin',
     }.contains(profile.name)) ||
     profile.population == 'NICU' ||
     profile.population == 'PICU';

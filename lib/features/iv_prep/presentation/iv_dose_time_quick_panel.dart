@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../data/iv_preparation_profiles.dart';
 import '../data/iv_stock_strength_audit.dart';
+import '../data/iv_adult_dose_regimens.dart';
+import 'iv_adult_dose_guide_panel.dart';
 
 /// Arithmetic from an actual clinician-ordered dose and a manually confirmed
 /// source-listed stock concentration. NO therapeutic dose selection, route,
@@ -54,6 +56,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
   final _orderedDose = TextEditingController();
   int? _selectedStrength;
   bool _vialConfirmed = false;
+  String? _selectedDoseRegimen;
 
   @override
   void dispose() {
@@ -131,6 +134,22 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
                     ?.copyWith(fontWeight: FontWeight.w900)),
             const SizedBox(height: 5),
             Text(profile.administration),
+            if (reviewedAdultIvDoseRegimens(
+              name: profile.name, population: profile.population,
+            ).isNotEmpty) ...[
+              const SizedBox(height: 8),
+              IvAdultDoseGuidePanel(
+                drugName: profile.name,
+                population: profile.population,
+                selectedId: _selectedDoseRegimen,
+                onChanged: (id) => setState(() {
+                  _selectedDoseRegimen = id;
+                  _selectedStrength = null;
+                  _orderedDose.clear();
+                  _vialConfirmed = false;
+                }),
+              ),
+            ],
             const SizedBox(height: 10),
             const Divider(),
             const SizedBox(height: 6),

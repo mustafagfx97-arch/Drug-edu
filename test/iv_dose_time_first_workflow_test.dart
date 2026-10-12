@@ -73,9 +73,14 @@ void main() {
         findsOneWidget);
     expect(find.textContaining('Method & duration'), findsOneWidget);
     expect(find.textContaining('150 mg over 10 minutes'), findsWidgets);
-    expect(find.byKey(const ValueKey('iv-expand-preparation-details')),
-        findsOneWidget);
     expect(find.byKey(const ValueKey('iv-open-full-calculator')),
+        findsOneWidget);
+    // The detail screen uses a lazy scrolling list; low-priority
+    // preparation content is only built after it enters the viewport.
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('iv-expand-preparation-details')), 280,
+    );
+    expect(find.byKey(const ValueKey('iv-expand-preparation-details')),
         findsOneWidget);
   });
 

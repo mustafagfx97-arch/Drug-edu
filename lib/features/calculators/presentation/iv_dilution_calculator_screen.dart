@@ -167,6 +167,10 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         : null;
     // The custom pathway accepts only the SAME dosing unit as a reviewed
     // profile. It does NOT invent base/salt, PE, mEq or activity conversions.
+    final auditedPackageMatches = manualOther || auditedSelected == null ||
+        (stockAmount != null && stockVolume != null &&
+            (stockAmount - auditedSelected.vialAmount).abs() < 0.000001 &&
+            (stockVolume - auditedSelected.vialVolumeMl).abs() < 0.000001);
     final customConcentration = manualOther && customStockChecked &&
             variant != null && stockAmount != null && stockVolume != null &&
             stockAmount.isFinite && stockAmount > 0 &&
@@ -178,7 +182,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         : manualOther ? customConcentration : variant?.concentration;
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
-    final plan = confirmed && !hardLock &&
+    final plan = confirmed && !hardLock && auditedPackageMatches &&
             effectiveStockConcentration != null &&
             stockAmount != null && stockVolume != null &&
             doseAmount != null && requestedFluid != null
@@ -375,14 +379,29 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 });
               },
             ),
-            if (auditedSelected != null && !manualOther)
+            if (auditedSelected != null && !manualOther) ...[
               _Info(
-                'Official source for selected vial (NOT local stock availability)',
+                'Manufacturer source · not a claim of local availability',
                 auditedSelected.name + ' · ' +
                     auditedSelected.packageLabel + '\n' +
                     auditedSelected.sourceUrl + '\n' +
                     auditedSelected.safetyNote,
               ),
+              OutlinedButton.icon(
+                key: const ValueKey('iv-fill-audited-vial'),
+                onPressed: () => setState(() {
+                  vialQuantity.text = _fmt(auditedSelected.vialAmount);
+                  vialMl.text = _fmt(auditedSelected.vialVolumeMl);
+                  confirmed = false;
+                  rateConfirmed = false;
+                  customInfusionProtocolChecked = false;
+                }),
+                icon: const Icon(Icons.edit_note),
+                label: const Text(
+                  'Fill exact source-labelled vial amount + volume',
+                ),
+              ),
+            ],
             if (manualOther) ...[
               const _Alert(
                 'CUSTOM PRODUCT: arithmetic ONLY. You must verify '
@@ -661,6 +680,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 confirmed = false;
                 rateConfirmed = false;
                 localPreparationVerified = false;
+                customInfusionProtocolChecked = false;
                 norepinephrineInfusionVerified = false;
               });
             },
@@ -698,6 +718,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               confirmed = false;
               rateConfirmed = false;
               localPreparationVerified = false;
+              customInfusionProtocolChecked = false;
               norepinephrineInfusionVerified = false;
             }),
           ),
@@ -723,6 +744,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                       confirmed = v ?? false;
                       rateConfirmed = false;
                       localPreparationVerified = false;
+                      customInfusionProtocolChecked = false;
                       norepinephrineInfusionVerified = false;
                     }),
             title: Text(
@@ -752,8 +774,15 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                         'amount/volume/unit, and confirm stock. '
                         'Input amounts must be positive and final '
                         'volume must accommodate the withdrawal.'
-                      : 'No result: entered vial mg / vial mL must match '
-                        'the selected reference concentration and unit.',
+                      : auditedSelected != null && !auditedPackageMatches
+                          ? 'Mismatch: selected source vial is ' +
+                            auditedSelected.packageLabel + '. The entered '
+                            'total amount and volume must BOTH match '
+                            'that exact presentation; alternatively '
+                            'choose Other for an independently '
+                            'verified different package.'
+                          : 'No result: entered vial amount / mL must '
+                            'match the selected reference concentration.',
             ),
           if (plan != null && variant != null) ...[
             if (manualOther)
@@ -765,6 +794,23 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 'maximum infusion concentration. Do not prepare until '
                 'pharmacy review approves the exact product/recipe.',
               ),
+            if (manualOther) ...[
+              CheckboxListTile(
+                key: const ValueKey('iv-custom-verify-infusion-protocol'),
+                controlAffinity: ListTileControlAffinity.leading,
+                value: customInfusionProtocolChecked,
+                onChanged: (value) => setState(() {
+                  customInfusionProtocolChecked = value ?? false;
+                  rateConfirmed = false;
+                }),
+                title: const Text(
+                  'An independent pharmacist reviewed the EXACT '
+                  'custom-product fluid, final concentration, BUD, '
+                  'ordered administration route/time and infusion '
+                  'method. No approval is inferred from arithmetic.',
+                ),
+              ),
+            ],
             if (labetalolInfusion &&
                 evidence.status == IvFluidEvidenceStatus.verifiedDiluent)
               Card(

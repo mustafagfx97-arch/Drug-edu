@@ -45,6 +45,9 @@ void main() {
     for (final med in [
       'Labetalol', 'Norepinephrine', 'Esmolol', 'Clevidipine',
       'Regular insulin infusion', 'Colistimethate / Colistin',
+      'Potassium chloride', 'Potassium phosphate',
+      'Epinephrine', 'Nitroglycerin', 'Sodium nitroprusside',
+      'Phenytoin',
     ]) {
       expect(quickIvNeedsSpecializedCalculator(profile(med, 'General')),
           isTrue);

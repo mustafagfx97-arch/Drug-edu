@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../iv_prep/data/iv_preparation_profiles.dart';
+import '../../iv_prep/data/iv_stock_strength_audit.dart';
 import '../../iv_prep/data/iv_fluid_evidence.dart';
 import '../domain/iv_dilution_calculator_engine.dart';
 import '../domain/iv_labetalol_route_engine.dart';
@@ -29,6 +30,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     (p) => p.population == 'General' && p.name == 'Nicardipine',
   );
   int presentation = 0;
+  bool usingOtherStrength = false;
+  bool customStockChecked = false;
   IvFluid fluid = IvFluid.normalSaline;
   IvVolumeEntryMode volumeMode = IvVolumeEntryMode.addFluidToDrug;
   bool confirmed = false;
@@ -76,6 +79,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     confirmed = false;
     rateConfirmed = false;
     localPreparationVerified = false;
+    usingOtherStrength = false;
+    customStockChecked = false;
     norepinephrineProductLabelVerified = false;
     norepinephrineInfusionVerified = false;
     norepinephrineStockMode = NorepinephrineStockMode.reviewedOneMgBasePerMl;
@@ -88,6 +93,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         confirmed = false;
         rateConfirmed = false;
         localPreparationVerified = false;
+        customStockChecked = false;
         norepinephrineProductLabelVerified = false;
         norepinephrineInfusionVerified = false;
       });
@@ -109,8 +115,30 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
         currentDoseRegimen?.method == IvAdministrationMethod.slowInjection;
     final labetalolInfusion = labetalol &&
         currentDoseRegimen?.id == 'labetalol-continuous-infusion';
-    final variants = profile.calculatorVariants;
-    final variant = variants.isEmpty ? null : variants[presentation];
+    final auditedOptions = reviewedAdultIvStockOptions(
+      name: profile.name, population: profile.population,
+    );
+    // An audited vial list replaces, rather than duplicates, the
+    // legacy single-concentration placeholder for that exact drug.
+    final variants = auditedOptions.isEmpty
+        ? profile.calculatorVariants
+        : [
+            for (final p in auditedOptions)
+              IvWithdrawalVariant(
+                id: p.id,
+                label: p.packageLabel,
+                unit: p.unit,
+                concentration: p.concentrationPerMl,
+                note: p.safetyNote,
+              ),
+          ];
+    final safeIndex =
+        variants.isEmpty ? 0 : (presentation < variants.length ? presentation : 0);
+    final variant = variants.isEmpty ? null : variants[safeIndex];
+    final auditedSelected = auditedOptions.isNotEmpty && variant != null
+        ? auditedOptions[safeIndex]
+        : null;
+    final manualOther = usingOtherStrength && !norepinephrine;
     final evidence = reviewedIvFluidEvidence(
       name: profile.name, population: profile.population, fluid: fluid,
     );
@@ -134,9 +162,17 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             productLabelVerified: norepinephrineProductLabelVerified,
           )
         : null;
+    // The custom pathway accepts only the SAME dosing unit as a reviewed
+    // profile. It does NOT invent base/salt, PE, mEq or activity conversions.
+    final customConcentration = manualOther && customStockChecked &&
+            variant != null && stockAmount != null && stockVolume != null &&
+            stockAmount.isFinite && stockAmount > 0 &&
+            stockVolume.isFinite && stockVolume > 0
+        ? stockAmount / stockVolume
+        : null;
     final effectiveStockConcentration = norepinephrine
         ? norepinephrineStock?.baseConcentrationMgPerMl
-        : variant?.concentration;
+        : manualOther ? customConcentration : variant?.concentration;
     final doseAmount = double.tryParse(prescribedQuantity.text.trim());
     final requestedFluid = double.tryParse(fluidMl.text.trim());
     final plan = confirmed && !hardLock &&

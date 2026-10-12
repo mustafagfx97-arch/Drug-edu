@@ -74,6 +74,22 @@ void main() {
     ).map((x) => x.concentrationPerMl).toSet(), {1000.0, 5000.0, 10000.0});
   });
 
+  test('U-500 cannot be accepted as IV HUMULIN R U-100 custom stock', () {
+    expect(customStockCompatibleWithVerifiedDoseBasis(
+      drugName: 'Regular insulin infusion',
+      population: 'General',
+      concentrationPerMl: 100,
+    ), isTrue);
+    for (final wrong in [500.0, 200.0, 0.0, -100.0,
+      double.nan, double.infinity]) {
+      expect(customStockCompatibleWithVerifiedDoseBasis(
+        drugName: 'Regular insulin infusion',
+        population: 'General',
+        concentrationPerMl: wrong,
+      ), isFalse);
+    }
+  });
+
   test('source vial size mismatches require manual OTHER pathway', () {
     final p = reviewedAdultIvStockOptions(
       name: 'Dopamine', population: 'General',

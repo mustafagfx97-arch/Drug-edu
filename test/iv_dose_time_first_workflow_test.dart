@@ -79,7 +79,7 @@ void main() {
     expect(find.byKey(const ValueKey('iv-dose-time-first-panel')),
         findsNothing);
     final toggle = find.byKey(const ValueKey('iv-simple-calc-toggle'));
-    await tester.ensureVisible(toggle);
+    await tester.scrollUntilVisible(toggle, 200);
     await tester.tap(toggle);
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('iv-dose-time-first-panel')),

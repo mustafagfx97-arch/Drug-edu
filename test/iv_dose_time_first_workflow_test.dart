@@ -60,7 +60,7 @@ void main() {
         isFalse);
   });
 
-  testWidgets('detail emphasizes time and ordered volume before dilution',
+  testWidgets('details start with four IV facts and hidden calculator',
       (tester) async {
     final profile = ivPreparationProfiles.firstWhere(
       (p) => p.name == 'Amiodarone' && p.population == 'General',
@@ -68,17 +68,24 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(home: IvPreparationDetailScreen(profile: profile)),
     );
-    await tester.pump();
+    await tester.pumpAndSettle();
+    for (final key in [
+      'iv-quick-reconstitution', 'iv-quick-fluids',
+      'iv-quick-time', 'iv-quick-further-dilution',
+    ]) {
+      expect(find.byKey(ValueKey(key)), findsOneWidget);
+    }
+    expect(find.textContaining('150 mg over 10 minutes'), findsWidgets);
+    expect(find.byKey(const ValueKey('iv-dose-time-first-panel')),
+        findsNothing);
+    final toggle = find.byKey(const ValueKey('iv-simple-calc-toggle'));
+    await tester.ensureVisible(toggle);
+    await tester.tap(toggle);
+    await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('iv-dose-time-first-panel')),
         findsOneWidget);
-    expect(find.textContaining('Method & duration'), findsOneWidget);
-    expect(find.textContaining('150 mg over 10 minutes'), findsWidgets);
-    expect(find.byKey(const ValueKey('iv-open-full-calculator')),
-        findsOneWidget);
-    // The detail screen uses a lazy scrolling list; low-priority
-    // preparation content is only built after it enters the viewport.
     await tester.scrollUntilVisible(
-      find.byKey(const ValueKey('iv-expand-preparation-details')), 280,
+      find.byKey(const ValueKey('iv-expand-preparation-details')), 220,
     );
     expect(find.byKey(const ValueKey('iv-expand-preparation-details')),
         findsOneWidget);

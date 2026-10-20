@@ -93,6 +93,6 @@ void main() {
     final chosen = tester.widget<DropdownButtonFormField<String>>(
       find.byKey(const ValueKey('iv-methylprednisolone-product')),
     );
-    expect(chosen.initialValue, isNull);
+    expect(chosen.initialValue, 'solu-medrol-1000mg-plain');
   });
 }

@@ -267,7 +267,7 @@ void main() {
       home: IvDilutionCalculatorScreen(),
     ));
     await tester.pump();
-    expect(find.text('IV dilution · حاسبة التخفيف'), findsOneWidget);
+    expect(find.text('IV Dilution Calculator'), findsOneWidget);
     expect(find.byType(DropdownButtonFormField<int>), findsWidgets);
   });
 }

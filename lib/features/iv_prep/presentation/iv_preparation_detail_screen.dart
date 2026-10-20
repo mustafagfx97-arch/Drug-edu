@@ -39,7 +39,7 @@ class _IvPreparationDetailScreenState
         !product.hasVerifiedStockConcentration;
     final clinicalWarnings = unverifiedStock
         ? <String>[
-            product!.safety,
+            product.safety,
             'HIGH DOSE: reference methylprednisolone sodium succinate '
                 'label warns against rapid IV doses >500 mg in <10 min; '
                 'follow a validated 1 g infusion regimen (at least 30 min).',
@@ -222,7 +222,7 @@ class _IvPreparationDetailScreenState
                   _InfoLine('Drug / product interactions',
                       'Mpsone-specific incompatibilities and Y-site '
                       'co-administration are NOT VERIFIED.'),
-                  _InfoLine('Manufacturer catalogue', product!.sourceUrl),
+                  _InfoLine('Manufacturer catalogue', product.sourceUrl),
                 ] else ...[
                   _InfoLine('Presentation', profile.formulation),
                   _InfoLine('Resulting concentration',

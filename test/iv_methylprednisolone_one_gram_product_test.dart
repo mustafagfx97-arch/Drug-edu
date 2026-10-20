@@ -35,17 +35,23 @@ void main() {
       'Methylprednisolone', 'General',
     )!;
     final ids = <String>{};
-    expect(ivMethylprednisolonePresentations.length, 6);
+    expect(ivMethylprednisolonePresentations.length, 7);
     expect(profile.calculatorVariants.length, 6);
     for (final p in ivMethylprednisolonePresentations) {
       expect(ids.add(p.id), isTrue);
       expect(p.amountMgEquivalent > 0, isTrue);
       expect(p.reconstitutedMl > 0, isTrue);
+      if (!p.sourceVerifiedFinalVolume) {
+        expect(p.id, contains('mpsone-scotmed'));
+        expect(p.stockMgPerMl, isNull);
+        expect(profile.calculatorVariants.where((v) => v.id == p.id), isEmpty);
+        continue;
+      }
       final variant = profile.calculatorVariants.singleWhere(
         (v) => v.id == p.id,
       );
       expect(variant.unit, 'mg');
-      expect(variant.concentration, closeTo(p.stockMgPerMl, 0.000001));
+      expect(variant.concentration, closeTo(p.stockMgPerMl!, 0.000001));
     }
     expect(profile.criticalLocks.join(' '), contains('30 minutes'));
     expect(profile.allowedDiluents, contains('D5W'));
@@ -67,6 +73,53 @@ void main() {
       orderedDose: 1000, verifiedStockUnitPerMl: 125,
       vialAndUnitConfirmed: false,
     ), isNull);
+  });
+
+  test('SCOTMED MPSONE local 10 mL diluent is not a validated final volume', () {
+    final mpsone = ivMethylprednisolonePresentations.singleWhere(
+      (p) => p.id ==
+          'mpsone-scotmed-1000mg-10ml-supplied-unverified',
+    );
+    expect(mpsone.amountMgEquivalent, 1000);
+    expect(mpsone.reconstitutedMl, isNull);
+    expect(mpsone.stockMgPerMl, isNull);
+    expect(mpsone.sourceVerifiedFinalVolume, isFalse);
+    expect(mpsone.reconstitution, contains('10 mL'));
+    expect(mpsone.reconstitution, contains('NOT been confirmed'));
+    expect(mpsone.reconstitution, contains('Do not infer'));
+    expect(mpsone.safety, contains('LOCAL PHARMACIST-REPORTED'));
+    expect(mpsone.furtherDilution, contains('locally validated'));
+    expect(mpsone.sourceUrl, contains('scotmedcare.com'));
+    final pfizer = ivMethylprednisolonePresentations
+        .where((p) => p.stockMgPerMl != null).toList();
+    expect(pfizer.length, 6);
+  });
+
+  testWidgets('MPSONE selection never shows unverified dose-to-mL',
+      (tester) async {
+    final profile = findIvPreparationProfile('Methylprednisolone', 'General')!;
+    await tester.pumpWidget(
+      MaterialApp(home: IvPreparationDetailScreen(profile: profile)),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(
+      const ValueKey('iv-methylprednisolone-product'),
+    ));
+    await tester.pumpAndSettle();
+    await tester.tap(find.textContaining(
+      'MPSONE 1 g', findRichText: true,
+    ).last);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('10 mL water ampoule'), findsWidgets);
+    expect(find.textContaining('Final volume/concentration: NOT verified'),
+        findsWidgets);
+    final panel = find.byKey(const ValueKey('iv-simple-calc-toggle'));
+    await tester.scrollUntilVisible(panel, 220);
+    await tester.tap(panel);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('dose-to-mL calculator unavailable'),
+        findsOneWidget);
+    expect(find.byKey(const ValueKey('iv-dose-time-first-panel')), findsNothing);
   });
 
   testWidgets('methylprednisolone requires exact 1g vial selection before facts',

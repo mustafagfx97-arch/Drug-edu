@@ -35,6 +35,8 @@ class _IvPreparationDetailScreenState
       }
     }
     final requiresProduct = selectingMethylprednisolone && product == null;
+    final unverifiedStock = product != null &&
+        !product.hasVerifiedStockConcentration;
     final reconstitution = requiresProduct
         ? 'Select the exact methylprednisolone vial above to see its dilution volume.'
         : product?.reconstitution ?? profile.reconstitution;
@@ -89,7 +91,10 @@ class _IvPreparationDetailScreenState
                   value: reconstitution,
                   extra: product == null
                       ? (requiresProduct ? null : profile.resultingConcentration)
-                      : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
+                      : unverifiedStock
+                          ? 'Final stock concentration: NOT VERIFIED; '
+                            'do not calculate withdrawal mL.'
+                          : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
                   icon: Icons.science_outlined,
                 ),
                 const Divider(height: 1),
@@ -158,10 +163,14 @@ class _IvPreparationDetailScreenState
               subtitle: const Text('Choose vial + prescribed dose → mL'),
               childrenPadding: const EdgeInsets.all(8),
               children: [
-                if (requiresProduct)
-                  const Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Text('Select the exact methylprednisolone vial first.'),
+                if (requiresProduct || unverifiedStock)
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(unverifiedStock
+                        ? 'Calculator unavailable for this Mpsone product: '
+                          'manufacturer-approved reconstitution and FINAL '
+                          'stock volume/mg per mL have not been verified.'
+                        : 'Select the exact methylprednisolone vial first.'),
                   )
                 else
                   IvDoseTimeQuickPanel(

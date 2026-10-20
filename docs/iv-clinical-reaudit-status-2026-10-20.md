@@ -60,3 +60,14 @@ Additional examples flagged by automated screening for manufacturer/formulation 
 **Practical priority:** high-alert drugs / salts / pressors, then antibiotics and antifungals with powder reconstitution variants, then NICU/PICU high-risk product-specific conversions. Each future batch records evidence and closes documented deficits; do not force unsupported calculations.
 
 **UI policy:** Drug IV PWA presented in English only, with four fast facts, exact product selection when relevant, and optional calculator/expanded details. Clinical warnings remain mandatory where route or preparation can cause immediate harm.
+
+
+## Iraqi ward product captured — Mpsone 1000 mg (SCOTMED CARE)
+
+On 2026-10-20, the clinician provided a photo of **Mpsone 1000 mg methylprednisolone sodium succinate for IM/IV**, marketed by SCOTMED CARE, and reported **one 10 mL water ampoule supplied inside the pack**. SCOTMED CARE's publicly available product catalogue independently lists Mpsone 1 g as **vial + WFI + tray** but does **NOT** specify the exact quantity to add, final reconstituted volume, strength (mg/mL), stability or admixture compatibility. The photograph is of the *front of the box only*; no official Mpsone leaflet, instructions, or ampoule text was supplied.
+
+**Implementation:** A distinct Mpsone presentation is included in the methylprednisolone brand selector with `reconstitutedMl = null` and `stockMgPerMl = null`, so **dose → mL calculations are disabled**. The quick page gives reference-only high-dose IV time warning but does not transfer Pfizer plain-vial/Act-O-Vial reconstitution rules or Pfizer stability claims to Mpsone. It must remain labeled **NOT VERIFIED** until the exact current manufacturer leaflet/back carton, diluent ampoule (must identify Sterile Water for Injection, not nonsterile distilled water), volume to add, **final** volume and compatibility are confirmed.
+
+Official confirmation of product existence: [SCOTMED CARE product catalogue](https://www.scotmedcare.com/products/page/5/) and [SCOTMED CARE injection range PDF](https://www.scotmedcare.com/wp-content/uploads/2024/02/Scotmed-Care-Pvt-Ltd-PCD.pdf). Neither source contains a 10 mL mixing instruction for Mpsone 1 g.
+
+**DO NOT** infer 100 mg/mL from an included 10 mL water vial. Actual resulting volume may include powder displacement. A different brand's 8 mL, 15.6 mL or 16 mL mixing guidance is NOT a substitute for the exact Mpsone instructions.

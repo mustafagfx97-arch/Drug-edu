@@ -57,7 +57,7 @@ const _furtherDilution =
 const ivMethylprednisolonePresentations =
     <IvMethylprednisolonePresentation>[
   IvMethylprednisolonePresentation(
-    id: 'pfizer-actovial-40mg-1ml',
+    id: 'solu-medrol-40mg-actovial',
     label: 'SOLU-MEDROL 40 mg ACT-O-VIAL · preservative-free',
     amountMgEquivalent: 40,
     reconstitutedMl: 1,
@@ -79,7 +79,7 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerSoluMedrol,
   ),
   IvMethylprednisolonePresentation(
-    id: 'pfizer-actovial-125mg-2ml',
+    id: 'solu-medrol-125mg-actovial',
     label: 'SOLU-MEDROL 125 mg ACT-O-VIAL · preservative-free',
     amountMgEquivalent: 125,
     reconstitutedMl: 2,
@@ -100,7 +100,7 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerSoluMedrol,
   ),
   IvMethylprednisolonePresentation(
-    id: 'pfizer-actovial-500mg-4ml',
+    id: 'solu-medrol-500mg-actovial',
     label: 'SOLU-MEDROL 500 mg ACT-O-VIAL · preservative-free',
     amountMgEquivalent: 500,
     reconstitutedMl: 4,
@@ -118,7 +118,7 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerLabelLegacy,
   ),
   IvMethylprednisolonePresentation(
-    id: 'pfizer-actovial-1000mg-8ml',
+    id: 'solu-medrol-1000mg-actovial',
     label: 'SOLU-MEDROL 1 g ACT-O-VIAL · preservative-free',
     amountMgEquivalent: 1000,
     reconstitutedMl: 8,
@@ -138,7 +138,7 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerLabelLegacy,
   ),
   IvMethylprednisolonePresentation(
-    id: 'pfizer-plain-500mg-8ml',
+    id: 'solu-medrol-500mg-plain',
     label: 'SOLU-MEDROL 500 mg PLAIN vial · benzyl alcohol diluent',
     amountMgEquivalent: 500,
     reconstitutedMl: 8,
@@ -157,7 +157,7 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerLabelLegacy,
   ),
   IvMethylprednisolonePresentation(
-    id: 'pfizer-plain-1000mg-16ml',
+    id: 'solu-medrol-1000mg-plain',
     label: 'SOLU-MEDROL 1 g PLAIN vial · benzyl alcohol diluent',
     amountMgEquivalent: 1000,
     reconstitutedMl: 16,

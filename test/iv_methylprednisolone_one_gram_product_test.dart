@@ -40,7 +40,11 @@ void main() {
     for (final p in ivMethylprednisolonePresentations) {
       expect(ids.add(p.id), isTrue);
       expect(p.amountMgEquivalent > 0, isTrue);
-      expect(p.reconstitutedMl > 0, isTrue);
+      if (p.sourceVerifiedFinalVolume) {
+        expect(p.reconstitutedMl! > 0, isTrue);
+      } else {
+        expect(p.reconstitutedMl, isNull);
+      }
       if (!p.sourceVerifiedFinalVolume) {
         expect(p.id, contains('mpsone-scotmed'));
         expect(p.stockMgPerMl, isNull);

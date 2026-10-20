@@ -219,8 +219,8 @@ void main() {
       const MaterialApp(home: IvDilutionCalculatorScreen()),
     );
     await tester.pump();
-    expect(find.text('IV dilution · حاسبة التخفيف'), findsOneWidget);
-    expect(find.text('1 · اختر الدواء وتركيز الأمبولة'), findsOneWidget);
+    expect(find.text('IV Dilution Calculator'), findsOneWidget);
+    expect(find.text('1 · Select medication and actual vial strength'), findsOneWidget);
     expect(find.byType(DropdownButtonFormField<int>), findsWidgets);
   });
 }

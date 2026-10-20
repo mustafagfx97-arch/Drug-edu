@@ -77,9 +77,15 @@ void main() {
 
   test('SOLU-MEDROL preservative-free ACT-O-VIAL variants stay distinct', () {
     final profile = iv('Methylprednisolone');
-    expect(profile.calculatorVariants.length, 2);
+    expect(profile.calculatorVariants.length, 6);
     expect(profile.calculatorVariants[0].concentration, 40);
     expect(profile.calculatorVariants[1].concentration, 62.5);
+    expect(profile.calculatorVariants[2].concentration, 125);
+    expect(profile.calculatorVariants[3].concentration, 125);
+    expect(profile.calculatorVariants[4].concentration, 62.5);
+    expect(profile.calculatorVariants[5].concentration, 62.5);
+    expect(profile.calculatorVariants[3].label, contains('1 g/8 mL'));
+    expect(profile.calculatorVariants[5].label, contains('1 g/16 mL'));
     expect(profile.reconstitution, contains('plastic activator'));
     expect(profile.resultingConcentration, contains('40 mg/mL'));
     expect(profile.resultingConcentration, contains('62.5 mg/mL'));

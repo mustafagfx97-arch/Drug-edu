@@ -31,7 +31,7 @@ class IvAdultDoseGuidePanel extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('IV dose guide · جرعات الحقن والتسريب',
+            Text('IV Dose Guide: Injection and Infusion',
                 style: theme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w900)),
             const SizedBox(height: 7),
@@ -55,7 +55,7 @@ class IvAdultDoseGuidePanel extends StatelessWidget {
                 isExpanded: true,
                 initialValue: picked?.id,
                 decoration: const InputDecoration(
-                  labelText: 'Indication + route · اختر نوع الإعطاء',
+                  labelText: 'Indication and administration route',
                   border: OutlineInputBorder(),
                 ),
                 hint: const Text('Choose an adult labeled regimen'),

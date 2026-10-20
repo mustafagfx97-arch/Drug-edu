@@ -306,7 +306,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
     final titleStyle = Theme.of(context).textTheme.titleMedium
         ?.copyWith(fontWeight: FontWeight.w900);
     return Scaffold(
-      appBar: AppBar(title: const Text('IV dilution · حاسبة التخفيف')),
+      appBar: AppBar(title: const Text('IV Dilution Calculator')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 30),
         children: [
@@ -317,7 +317,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
             'fluid, stability and infusion protocol independently.',
           ),
           const SizedBox(height: 10),
-          Text('1 · اختر الدواء وتركيز الأمبولة', style: titleStyle),
+          Text('1 · Select medication and actual vial strength', style: titleStyle),
           const SizedBox(height: 10),
           DropdownButtonFormField<int>(
             key: ValueKey('dilution-product-$selected'),
@@ -354,7 +354,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               initialValue: usingOtherStrength ? -1 : (variant == null ? -1 : safeIndex),
               isExpanded: true,
               decoration: const InputDecoration(
-                labelText: 'Exact vial strength or Other · تركيز الدواء',
+                labelText: 'Exact vial strength or Other',
                 border: OutlineInputBorder(),
               ),
               items: [
@@ -369,7 +369,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                   ),
                 const DropdownMenuItem(
                   value: -1,
-                  child: Text('Other strength · تركيز آخر أضيفه بنفسي'),
+                  child: Text('Other strength (manual entry)'),
                 ),
               ],
               onChanged: (value) {
@@ -463,7 +463,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               initialValue: norepinephrineStockMode,
               isExpanded: true,
               decoration: const InputDecoration(
-                labelText: 'Ampoule concentration · تركيز الأمبولة',
+                labelText: 'Ampoule concentration',
                 border: OutlineInputBorder(),
               ),
               items: const [
@@ -473,7 +473,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 ),
                 DropdownMenuItem(
                   value: NorepinephrineStockMode.otherProduct,
-                  child: Text('Other strength / manufacturer · تركيز آخر'),
+                  child: Text('Other manufacturer / strength'),
                 ),
               ],
               onChanged: (value) {
@@ -621,7 +621,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                   variant.unit + '/mL · ' + variant.note,
             ),
           const SizedBox(height: 12),
-          Text('2 · أدخل كمية الدواء والفلود', style: titleStyle),
+          Text('2 · Enter ordered amount and fluid volume', style: titleStyle),
           _Numeric(
             key: const ValueKey('dilution-vial-quantity'),
             label: norepinephrine
@@ -736,8 +736,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
           ),
           const SizedBox(height: 7),
           Text(volumeMode == IvVolumeEntryMode.addFluidToDrug
-              ? 'الحجم النهائي = الفلود المضاف + حجم الدواء'
-              : 'الفلود المضاف = الحجم النهائي − حجم الدواء'),
+              ? 'Final volume = added fluid + withdrawn drug volume'
+              : 'Added fluid = final volume − withdrawn drug volume'),
           _Numeric(
             key: const ValueKey('dilution-fluid-quantity'),
             label: volumeMode == IvVolumeEntryMode.addFluidToDrug
@@ -841,8 +841,8 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                     children: [
                       Text(
                         labelLabetalol
-                            ? 'LABEL-SUPPORTED EXAMPLE · وصفة مذكورة بالنشرة'
-                            : 'NON-LABEL RECIPE · يحتاج تحقق محلي',
+                            ? 'LABEL-SUPPORTED EXAMPLE'
+                            : 'NON-LABEL PREPARATION · local verification required',
                         style: const TextStyle(fontWeight: FontWeight.w900),
                       ),
                       const SizedBox(height: 7),
@@ -880,15 +880,15 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Calculation results · النتائج', style: titleStyle),
-                    _Result('الدواء المسحوب', _fmt(plan.withdrawalMl) + ' mL'),
+                    Text('Calculation results', style: titleStyle),
+                    _Result('Drug volume withdrawn', _fmt(plan.withdrawalMl) + ' mL'),
                     _Result('Minimum vial equivalents',
                         plan.minimumContainerCount.toString()),
-                    _Result('الفلود المضاف',
+                    _Result('Fluid volume added',
                         _fmt(plan.addedFluidMl) + ' mL'),
-                    _Result('الحجم النهائي',
+                    _Result('Final volume',
                         _fmt(plan.finalVolumeMl) + ' mL'),
-                    _Result('التركيز النهائي',
+                    _Result('Final concentration',
                         _fmt(plan.finalStrengthPerMl) +
                             ' ' + variant.unit + '/mL'),
                     if (norepinephrine)
@@ -921,7 +921,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                '3 · حساب معدل المضخة · mL/hr (رياضيات فقط)',
+                '3 · Infusion pump rate (math only, mL/hr)',
                 style: titleStyle,
               ),
               const SizedBox(height: 7),
@@ -976,7 +976,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'ARITHMETIC ONLY · حساب رياضي وليس موافقة سريرية',
+                          'ARITHMETIC ONLY · not clinical approval',
                           style: TextStyle(fontWeight: FontWeight.w800),
                         ),
                         Text(
@@ -1014,7 +1014,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
               )
             else if (norepinephrine) ...[
               Text(
-                '3 · Norepinephrine · حساب معدل التسريب',
+                '3 · Norepinephrine ordered infusion rate',
                 style: titleStyle,
               ),
               const _Alert(
@@ -1111,7 +1111,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Mathematical PUMP rate only · لا تستخدم بالتنقيط',
+                          'Mathematical PUMP rate only · never gravity drip',
                           style: TextStyle(fontWeight: FontWeight.w900),
                         ),
                         Text(
@@ -1138,7 +1138,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                 'an exact final concentration is available.',
               )
             else ...[
-              Text('3 · ريت إعطاء الجرعة الموصوفة', style: titleStyle),
+              Text('3 · Calculate the already ordered dose rate', style: titleStyle),
               const SizedBox(height: 7),
               _Alert(
                 labelLabetalol
@@ -1197,7 +1197,7 @@ class _IvDilutionState extends State<IvDilutionCalculatorScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Calculated rate · فقط حساب رياضي'),
+                        const Text('Calculated rate · arithmetic only'),
                         Text(
                           _fmt(pump) + ' mL/hr',
                           style: Theme.of(context).textTheme.headlineSmall

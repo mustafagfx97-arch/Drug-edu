@@ -44,7 +44,7 @@ class _IvFluidScreenState extends State<IvFluidScreen> {
       padding: const EdgeInsets.fromLTRB(16, 18, 16, 30),
       children: [
         Text(
-          'IV Fluids & Y-site · توافق المحاليل',
+          'IV Fluids & Y-site Compatibility',
           style: theme.textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w900),
         ),

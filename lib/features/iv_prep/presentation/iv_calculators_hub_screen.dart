@@ -13,7 +13,7 @@ class IvCalculatorsHubScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = <(String, String, IconData, Widget)>[
       (
-        'IV Dilution + Fluid + Rate · حاسبة التخفيف',
+        'IV Dilution + Fluid + Rate',
         'Enter exact vial strength, prescribed drug amount, fluid to add OR final volume; calculate withdrawal, final concentration and rate from an already ordered infusion.',
         Icons.science_outlined,
         const IvDilutionCalculatorScreen(),
@@ -48,7 +48,7 @@ class IvCalculatorsHubScreen extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 30),
       children: [
         Text(
-          'IV Calculators · حاسبات الوريدي',
+          'IV Calculators',
           style: Theme.of(context).textTheme.headlineSmall
               ?.copyWith(fontWeight: FontWeight.w900),
         ),

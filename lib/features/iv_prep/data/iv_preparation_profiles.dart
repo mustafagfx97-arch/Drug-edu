@@ -3302,46 +3302,131 @@ const ivPreparationProfiles = <IvPreparationProfile>[
     name: 'Methylprednisolone',
     population: 'General',
     formulation:
-        'Pfizer SOLU-MEDROL preservative-free ACT-O-VIAL single-dose presentations: 40 mg/1 mL and 125 mg/2 mL after activation.',
+        'Methylprednisolone sodium succinate for IV/IM use (NOT '
+        'methylprednisolone acetate/depot). Pfizer SOLU-MEDROL '
+        'preservative-free ACT-O-VIAL and benzyl-alcohol-containing '
+        'PLAIN-vial presentations require different preparation. '
+        'Select the exact product to obtain its instructions.',
     reconstitution:
-        'ACT-O-VIAL: press down on the plastic activator to force the built-in diluent into the lower compartment, gently agitate until dissolved, remove the plastic tab, disinfect the stopper, then withdraw the dose.',
+        'PRODUCT DEPENDENT: ACT-O-VIAL contains a built-in diluent; '
+        'press the plastic activator and gently agitate. '
+        '1 g ACT-O-VIAL produces 8 mL (125 mg/mL). '
+        'A different Pfizer 1 g PLAIN vial requires 16 mL of its '
+        'specified bacteriostatic diluent (62.5 mg/mL). '
+        'Do not swap the two instructions. Select the actual vial.',
     resultingConcentration:
-        '40 mg ACT-O-VIAL → 40 mg/mL. 125 mg ACT-O-VIAL → 62.5 mg/mL.',
+        'ACT-O-VIAL: 40 mg/1 mL (40 mg/mL), 125 mg/2 mL (62.5 mg/mL), '
+        '500 mg/4 mL (125 mg/mL), 1,000 mg/8 mL (125 mg/mL). '
+        'PLAIN vial: 500 mg/8 mL or 1,000 mg/16 mL '
+        '(62.5 mg/mL), based on specified Pfizer-labelled products.',
     furtherDilution:
-        'For IV/IM injection, use the reconstituted ACT-O-VIAL solution. For IV infusion, first prepare the injection solution, then add the indicated dose to D5W, isotonic saline, or D5W in isotonic saline.',
+        'For IV infusion, first reconstitute the EXACT selected vial '
+        'as directed, then transfer the ordered dose into an '
+        'institutionally/manufacturer-verified volume of a '
+        'compatible infusion fluid. There is no universal '
+        '1-g infusion-bag size in the manufacturer label. '
+        'High-dose treatment is an infusion, not a rapid IV push.',
     allowedDiluents:
-        'Built-in ACT-O-VIAL diluent for reconstitution. For further IV infusion dilution: D5W, isotonic saline, or D5W in isotonic saline.',
+        'RECONSTITUTION: use only the exact supplied/label-specified '
+        'diluent for the vial system; benzyl-alcohol-containing '
+        'bacteriostatic water applies to particular plain vials '
+        'and NOT to every formulation. FURTHER IV INFUSION '
+        'DILUTION: D5W, 0.9% sodium chloride or D5W in 0.9% '
+        'sodium chloride as listed in the Pfizer label. '
+        'Do not assume Y-site compatibility.',
     administration:
-        'IV or IM. IV is preferred for initial emergency use. The desired dose may be administered IV over several minutes; indication-specific high-dose regimens are separate clinical protocols and are not selected by this preparation profile.',
+        'IV/IM according to indication and actual product. '
+        'For HIGH-DOSE IV treatment including a prescribed '
+        '1,000 mg pulse, use an infusion over at least 30 minutes. '
+        'Rapid IV administration of >500 mg in <10 minutes '
+        'has been associated with serious arrhythmia/cardiac arrest. '
+        'This is NOT a universal indication or dosing regimen. '
+        'Monitor BP, HR, glucose and clinical response.',
     stability:
-        'Reconstituted solution that is not further diluted may be stored at 20–25°C and used within 48 hours. Further diluted product has demonstrated chemical/physical stability for 4 hours below 25°C or 24 hours at 2–8°C.',
+        'Pfizer SOLU-MEDROL: store unreconstituted product at 20-25 C '
+        'protected from light. Reconstituted solution (not further '
+        'diluted) may be used within 48 hours when held at '
+        '20-25 C; further-diluted product has demonstrated '
+        'chemical/physical stability for 4 hours below 25 C '
+        'or 24 hours at 2-8 C. Aseptic-compounding BUD '
+        'may be SHORTER; follow local policy and use promptly.',
     incompatibilities:
-        'The 40 mg SOLU-MEDROL presentation contains lactose monohydrate produced from cow’s milk and is contraindicated in patients with known or suspected hypersensitivity to cow’s milk or its components. Keep preservative-free ACT-O-VIAL instructions separate from benzyl-alcohol-containing multidose presentations.',
+        'Do not mix with other drugs or infer Y-site compatibility. '
+        'The 40 mg SOLU-MEDROL ACT-O-VIAL contains lactose from '
+        'cow milk and is contraindicated with known/suspected '
+        'cow-milk hypersensitivity. '
+        'Benzyl-alcohol-containing plain-vial diluent must '
+        'NOT be used in premature infants. '
+        'Methylprednisolone acetate suspension is NOT for IV use.',
     criticalLocks: [
-      'Presentation lock: this profile applies only to preservative-free 40 mg and 125 mg ACT-O-VIAL products.',
-      'Concentration lock: 40 mg/1 mL = 40 mg/mL; 125 mg/2 mL = 62.5 mg/mL.',
-      'Activation lock: press activator, then gently agitate; do not substitute plain-vial reconstitution instructions.',
-      '40 mg allergy lock: the 40 mg presentation contains lactose sourced from cow’s milk.',
-      'Neonate lock: benzyl-alcohol-containing SOLU-MEDROL formulations should not be used in neonates.',
+      'HIGH DOSE: 1 g IV is NOT a rapid IV push; give over at least '
+          '30 minutes according to the ordered protocol. Rapid '
+          '>500 mg IV in <10 minutes has caused arrhythmia/cardiac arrest.',
+      'VERIFY FORMULATION: 1 g ACT-O-VIAL gives 8 mL at 125 mg/mL; '
+          '1 g Pfizer PLAIN vial requires 16 mL of its specified '
+          'diluent and gives 62.5 mg/mL. Never assume one recipe.',
+      'Benzyl alcohol is present in specific conventional/plain '
+          'vial diluents and is contraindicated in premature infants.',
+      'Pfizer 40 mg ACT-O-VIAL contains cow-milk-derived lactose; '
+          'check for cow-milk hypersensitivity.',
+      'Do not substitute methylprednisolone acetate/depot for IV '
+          'methylprednisolone sodium succinate.',
     ],
     sourceLabel:
-        'DailyMed/FDA label · Pfizer SOLU-MEDROL preservative-free 40 mg and 125 mg ACT-O-VIAL · revised Jun 2026',
+        'Pfizer SOLU-MEDROL official label '
+        '(https://labeling.pfizer.com/ShowLabeling.aspx?id=10890); '
+        'Pfizer-labelled preservative-free high-dose ACT-O-VIAL '
+        '(https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cd99be87-c8d9-48d6-a8e5-e081052e3f19). '
+        'Some large ACT-O-VIAL systems may not be currently marketed '
+        'in every country. Match exact product/label.',
     withdrawalVariants: [
       IvWithdrawalVariant(
         id: 'solu-medrol-40mg-actovial',
         label: 'SOLU-MEDROL ACT-O-VIAL 40 mg/1 mL · 40 mg/mL',
         unit: 'mg',
         concentration: 40,
-        note:
-            'Preservative-free 40 mg ACT-O-VIAL; contains lactose from cow’s milk.',
+        note: 'Preservative-free 40 mg ACT-O-VIAL; '
+            'contains lactose from cow milk.',
       ),
       IvWithdrawalVariant(
         id: 'solu-medrol-125mg-actovial',
         label: 'SOLU-MEDROL ACT-O-VIAL 125 mg/2 mL · 62.5 mg/mL',
         unit: 'mg',
         concentration: 62.5,
-        note:
-            'Preservative-free 125 mg ACT-O-VIAL after activation.',
+        note: 'Preservative-free 125 mg ACT-O-VIAL after activation.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-medrol-500mg-actovial',
+        label: 'SOLU-MEDROL ACT-O-VIAL 500 mg/4 mL · 125 mg/mL',
+        unit: 'mg',
+        concentration: 125,
+        note: 'ACT-O-VIAL, preservative-free; not the '
+            'plain 500 mg/8 mL vial.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-medrol-1000mg-actovial',
+        label: 'SOLU-MEDROL ACT-O-VIAL 1 g/8 mL · 125 mg/mL',
+        unit: 'mg',
+        concentration: 125,
+        note: 'ACT-O-VIAL integrated diluent; reconstituted '
+            '1 g/8 mL, not plain 1 g/16 mL.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-medrol-500mg-plain',
+        label: 'SOLU-MEDROL PLAIN 500 mg/8 mL · 62.5 mg/mL',
+        unit: 'mg',
+        concentration: 62.5,
+        note: 'Plain vial: add labelled 8 mL bacteriostatic '
+            'water with benzyl alcohol for this Pfizer product.',
+      ),
+      IvWithdrawalVariant(
+        id: 'solu-medrol-1000mg-plain',
+        label: 'SOLU-MEDROL PLAIN 1 g/16 mL · 62.5 mg/mL',
+        unit: 'mg',
+        concentration: 62.5,
+        note: 'Plain vial: add labelled 16 mL bacteriostatic '
+            'water with benzyl alcohol for this Pfizer product. '
+            'Not interchangeable with 1 g ACT-O-VIAL.',
       ),
     ],
   ),

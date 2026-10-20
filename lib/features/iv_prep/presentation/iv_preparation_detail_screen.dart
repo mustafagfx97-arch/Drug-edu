@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/iv_preparation_profiles.dart';
+import '../data/iv_methylprednisolone_presentations.dart';
 import '../../calculators/presentation/iv_dilution_calculator_screen.dart';
 import 'iv_dose_time_quick_panel.dart';
 
@@ -19,10 +20,33 @@ class IvPreparationDetailScreen extends StatefulWidget {
 
 class _IvPreparationDetailScreenState
     extends State<IvPreparationDetailScreen> {
+  String? _methylprednisoloneProductId;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final profile = widget.profile;
+    final selectingMethylprednisolone =
+        profile.population == 'General' && profile.name == 'Methylprednisolone';
+    IvMethylprednisolonePresentation? product;
+    if (selectingMethylprednisolone) {
+      for (final option in ivMethylprednisolonePresentations) {
+        if (option.id == _methylprednisoloneProductId) product = option;
+      }
+    }
+    final requiresProduct = selectingMethylprednisolone && product == null;
+    final reconstitution = requiresProduct
+        ? 'Select the exact methylprednisolone vial above to see its dilution volume.'
+        : product?.reconstitution ?? profile.reconstitution;
+    final fluids = requiresProduct
+        ? 'Select the exact vial before applying fluid compatibility instructions.'
+        : product?.compatibleInfusionFluids ?? profile.allowedDiluents;
+    final time = requiresProduct
+        ? 'High-dose IV administration needs indication-specific timing. Select the vial.'
+        : product?.administration ?? profile.administration;
+    final further = requiresProduct
+        ? 'Reconstitution and further infusion dilution are different steps. Select the vial.'
+        : product?.furtherDilution ?? profile.furtherDilution;
 
     return Scaffold(
       appBar: AppBar(title: Text(profile.name)),
@@ -32,37 +56,62 @@ class _IvPreparationDetailScreenState
           Text('IV · ${profile.population}',
               style: theme.textTheme.labelLarge),
           const SizedBox(height: 8),
+          if (selectingMethylprednisolone) ...[
+            DropdownButtonFormField<String>(
+              key: const ValueKey('iv-methylprednisolone-product'),
+              initialValue: _methylprednisoloneProductId,
+              isExpanded: true,
+              decoration: const InputDecoration(
+                labelText: 'Exact methylprednisolone vial',
+                helperText: 'Act-O-Vial and plain vials have different reconstitution volumes.',
+                border: OutlineInputBorder(),
+              ),
+              items: [
+                for (final option in ivMethylprednisolonePresentations)
+                  DropdownMenuItem(
+                    value: option.id,
+                    child: Text(option.label, overflow: TextOverflow.ellipsis),
+                  ),
+              ],
+              onChanged: (value) => setState(() {
+                _methylprednisoloneProductId = value;
+              }),
+            ),
+            const SizedBox(height: 10),
+          ],
           Card(
             margin: EdgeInsets.zero,
             child: Column(
               children: [
                 _FastFact(
                   key: const ValueKey('iv-quick-reconstitution'),
-                  title: 'بكم ينحل؟ · Reconstitution',
-                  value: profile.reconstitution,
-                  extra: profile.resultingConcentration,
+                  title: 'Reconstitution',
+                  value: reconstitution,
+                  extra: product == null
+                      ? (requiresProduct ? null : profile.resultingConcentration)
+                      : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
                   icon: Icons.science_outlined,
                 ),
                 const Divider(height: 1),
                 _FastFact(
                   key: const ValueKey('iv-quick-fluids'),
-                  title: 'الفلود المتوافق · Dilution fluids',
-                  value: profile.allowedDiluents,
-                  extra: 'التوافق مع الفلود لا يثبت توافق Y-site مع دواء آخر.',
+                  title: 'Compatible IV fluids',
+                  value: fluids,
+                  extra: 'Compatible infusion fluids do NOT establish Y-site compatibility.',
                   icon: Icons.water_drop_outlined,
                 ),
                 const Divider(height: 1),
                 _FastFact(
                   key: const ValueKey('iv-quick-time'),
-                  title: 'وقت الإعطاء · IV time',
-                  value: profile.administration,
+                  title: 'Administration time',
+                  value: time,
                   icon: Icons.schedule_outlined,
                 ),
                 const Divider(height: 1),
                 _FastFact(
                   key: const ValueKey('iv-quick-further-dilution'),
-                  title: 'تخفيف إضافي؟ · Further dilution',
-                  value: profile.furtherDilution,
+                  title: 'Further dilution',
+                  value: further,
                   icon: Icons.opacity_outlined,
                 ),
               ],
@@ -77,7 +126,7 @@ class _IvPreparationDetailScreenState
                 initiallyExpanded: false,
                 leading: Icon(Icons.warning_amber_rounded,
                     color: theme.colorScheme.error),
-                title: Text('تنبيهات مهمة (${profile.criticalLocks.length})'),
+                title: Text('Critical notes (${profile.criticalLocks.length})'),
                 subtitle: Text(
                   profile.criticalLocks.first,
                   maxLines: 2,
@@ -105,14 +154,21 @@ class _IvPreparationDetailScreenState
               key: const ValueKey('iv-simple-calc-toggle'),
               initiallyExpanded: false,
               leading: const Icon(Icons.calculate_outlined),
-              title: const Text('افتح الحاسبة عند الحاجة'),
-              subtitle: const Text('اختيار الأمبولة + الجرعة = mL'),
+              title: const Text('Dose calculator (optional)'),
+              subtitle: const Text('Choose vial + prescribed dose → mL'),
               childrenPadding: const EdgeInsets.all(8),
               children: [
-                IvDoseTimeQuickPanel(
+                if (requiresProduct)
+                  const Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Text('Select the exact methylprednisolone vial first.'),
+                  )
+                else
+                  IvDoseTimeQuickPanel(
                   key: ValueKey(
-                    'iv-dose-time-${profile.name}-${profile.population}'),
+                    'iv-dose-time-${profile.name}-${profile.population}-${product?.id ?? ''}'),
                   profile: profile,
+                  initialVariantId: product?.id,
                   onOpenFullCalculator: () =>
                       Navigator.of(context).push(MaterialPageRoute<void>(
                     builder: (_) =>
@@ -129,11 +185,16 @@ class _IvPreparationDetailScreenState
               key: const ValueKey('iv-expand-preparation-details'),
               initiallyExpanded: false,
               leading: const Icon(Icons.menu_book_outlined),
-              title: const Text('تفاصيل إضافية والمصادر'),
-              subtitle: const Text('الثبات، التداخلات، وبيانات المستحضر'),
+              title: const Text('Full details and sources'),
+              subtitle: const Text('Stability, incompatibilities, product labeling'),
               childrenPadding:
                   const EdgeInsets.fromLTRB(14, 0, 14, 14),
               children: [
+                if (product != null) ...[
+                  _InfoLine('Selected product', product.label),
+                  _InfoLine('Product-specific safety', product.safety),
+                  _InfoLine('Manufacturer label', product.sourceUrl),
+                ],
                 _InfoLine('Presentation', profile.formulation),
                 _InfoLine('Resulting concentration',
                     profile.resultingConcentration),

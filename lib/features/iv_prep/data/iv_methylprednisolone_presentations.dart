@@ -21,7 +21,9 @@ class IvMethylprednisolonePresentation {
   final String id;
   final String label;
   final double amountMgEquivalent;
-  final double reconstitutedMl;
+  /// The FINAL reconstituted volume (not merely supplied diluent volume).
+  /// Unknown for products without a reviewed manufacturer IFU.
+  final double? reconstitutedMl;
   final String reconstitution;
   final String compatibleInfusionFluids;
   final String administration;
@@ -29,7 +31,13 @@ class IvMethylprednisolonePresentation {
   final String safety;
   final String sourceUrl;
 
-  double get stockMgPerMl => amountMgEquivalent / reconstitutedMl;
+  bool get hasVerifiedStockConcentration =>
+      reconstitutedMl != null && reconstitutedMl!.isFinite &&
+      reconstitutedMl! > 0;
+
+  double? get stockMgPerMl => hasVerifiedStockConcentration
+      ? amountMgEquivalent / reconstitutedMl!
+      : null;
 }
 
 const _pfizerSoluMedrol = 'https://labeling.pfizer.com/ShowLabeling.aspx?id=10890';
@@ -179,4 +187,50 @@ const ivMethylprednisolonePresentations =
         'Pfizer plain vial. Inspect the exact product insert.',
     sourceUrl: _pfizerSoluMedrol,
   ),
-];
+  IvMethylprednisolonePresentation(
+    id: 'scotmed-mpsone-1000mg-with-10ml-wfi-unverified',
+    label: 'Mpsone 1 g SCOTMED CARE · WFI 10 mL supplied (UNVERIFIED)',
+    amountMgEquivalent: 1000,
+    // No manufacturer-approved quantity TO ADD or FINAL volume was found.
+    // The user reports a supplied 10 mL water ampoule. The company
+    // catalogue lists 1 g vial + WFI + tray without dilution instructions.
+    reconstitutedMl: null,
+    reconstitution:
+        'Mpsone 1000 mg (SCOTMED CARE): the available local carton includes '
+        'a 10 mL ampoule reportedly supplied as Water for Injection. '
+        'Confirm the ampoule actually reads STERILE WATER FOR INJECTION. '
+        'The exact volume to ADD and the FINAL reconstituted volume are '
+        'NOT VERIFIED by a manufacturer package insert. Do not assume '
+        'that the supplied 10 mL must all be added, or that the final '
+        'concentration is 100 mg/mL. Obtain and check the Mpsone '
+        'manufacturer insert or contact SCOTMED CARE pharmacy information.',
+    compatibleInfusionFluids:
+        'Mpsone-specific diluent and infusion-fluid compatibility have '
+        'NOT been independently verified from its approved insert. '
+        'Do not transfer Solu-Medrol/Pfizer reconstitution, stability '
+        'or fluid directions to this different brand. Verify the '
+        'current approved Mpsone leaflet or hospital pharmacy protocol.',
+    administration:
+        'For a prescribed 1 g HIGH-DOSE IV methylprednisolone sodium '
+        'succinate regimen, reference labeling warns against rapid '
+        'administration: generally infuse over at least 30 minutes '
+        '(indication/protocol dependent). Cardiac arrhythmias/arrest '
+        'have occurred when doses greater than 500 mg were given '
+        'in under 10 minutes. This is class/reference-label guidance '
+        'NOT a verified Mpsone-specific administration instruction.',
+    furtherDilution:
+        'Verify Mpsone-specific reconstitution FIRST. Then follow '
+        'an independently approved infusion diluent, final volume, '
+        'concentration and stability protocol. Do NOT administer '
+        'a 1 g pulse as rapid IV push. Product-specific compatibility '
+        'and final admixture volume are pending.',
+    safety:
+        'BRAND-SPECIFIC VERIFICATION PENDING. The pictured pack identifies '
+        'Mpsone 1000 mg methylprednisolone sodium succinate for IM/IV '
+        'and the user reports 10 mL supplied water. The manufacturer '
+        'public catalogue confirms a 1 g vial plus WFI but does not '
+        'give the approved added/final volume or final stock mg/mL. '
+        'This entry deliberately disables dose-to-mL mathematics. '
+        'Do not assume Pfizer preservative or concentration rules.',
+    sourceUrl: 'https://www.scotmedcare.com/products/page/5/',
+

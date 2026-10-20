@@ -21,7 +21,9 @@ class IvMethylprednisolonePresentation {
   final String id;
   final String label;
   final double amountMgEquivalent;
-  final double reconstitutedMl;
+  /// Nominal FINAL solution volume, not the amount of supplied diluent.
+  /// Null when the exact manufacturer has no independently verified IFU.
+  final double? reconstitutedMl;
   final String reconstitution;
   final String compatibleInfusionFluids;
   final String administration;
@@ -29,7 +31,12 @@ class IvMethylprednisolonePresentation {
   final String safety;
   final String sourceUrl;
 
-  double get stockMgPerMl => amountMgEquivalent / reconstitutedMl;
+  double? get stockMgPerMl => reconstitutedMl == null ||
+          reconstitutedMl! <= 0 || !reconstitutedMl!.isFinite
+      ? null
+      : amountMgEquivalent / reconstitutedMl!;
+
+  bool get sourceVerifiedFinalVolume => stockMgPerMl != null;
 }
 
 const _pfizerSoluMedrol = 'https://labeling.pfizer.com/ShowLabeling.aspx?id=10890';
@@ -56,6 +63,55 @@ const _furtherDilution =
 
 const ivMethylprednisolonePresentations =
     <IvMethylprednisolonePresentation>[
+  IvMethylprednisolonePresentation(
+    id: 'mpsone-scotmed-1000mg-10ml-supplied-unverified',
+    label: 'MPSONE 1 g · SCOTMED CARE · 10 mL diluent supplied (verify IFU)',
+    amountMgEquivalent: 1000,
+    reconstitutedMl: null,
+    reconstitution:
+        'MPSONE 1 g (SCOTMED CARE, methylprednisolone sodium succinate '
+        'powder): local pharmacist reports a SEPARATE 10 mL water ampoule '
+        'supplied in the box. Confirm the diluent label says STERILE '
+        'WATER FOR INJECTION (WFI), not ordinary distilled water. '
+        'The exact manufacturer-approved volume to ADD, final solution '
+        'volume and concentration have NOT been confirmed from '
+        'this brand\'s official package insert. Do NOT apply Pfizer '
+        '1 g Act-O-Vial 8 mL or plain-vial 16 mL instructions. '
+        'Do not infer that supplied 10 mL = final 10 mL.',
+    compatibleInfusionFluids:
+        'Manufacturer-specific MPSONE infusion compatibility NOT yet '
+        'verified from a current package insert. Reference labeling '
+        'for OTHER methylprednisolone sodium succinate products '
+        '(Pfizer) lists 0.9% NaCl, D5W or D5W/NS after reconstitution, '
+        'but these data alone do not validate the SCOTMED product. '
+        'Confirm with the exact manufacturer insert / pharmacy. '
+        'Fluid compatibility never establishes Y-site compatibility.',
+    administration:
+        '1 g is a HIGH-DOSE methylprednisolone sodium succinate IV '
+        'regimen; administer by CONTROLLED infusion under the '
+        'indication-specific order. Reference labels for the active '
+        'drug recommend at least 30 minutes for high-dose IV '
+        'administration; MPSONE-specific directions remain unverified. '
+        'Avoid rapid IV push: doses >500 mg in <10 minutes have been '
+        'associated with arrhythmia and cardiac arrest.',
+    furtherDilution:
+        'Determine the actual MPSONE reconstitution instructions '
+        'from its insert FIRST. For the later IV infusion, select '
+        'fluid and final bag volume from a locally validated '
+        'manufacturer/protocol. Do not assume a universal '
+        '50/100/250 mL bag size, final concentration, shelf life '
+        'or infusion-line compatibility.',
+    safety:
+        'Confirmed from carton: MPSONE 1,000 mg methylprednisolone '
+        'sodium succinate, SCOTMED CARE, labeled IM/IV. '
+        '10 mL supplied ampoule is LOCAL PHARMACIST-REPORTED, '
+        'not documented by manufacturer IFU. Manufacturer website '
+        'confirms product identity, but does NOT provide a verified '
+        '10 mL reconstitution instruction, final stock concentration, '
+        'preservative content or stability. '
+        'Manual withdrawal-volume calculation DISABLED until verified.',
+    sourceUrl: 'https://www.scotmedcare.com/products/page/5/',
+  ),
   IvMethylprednisolonePresentation(
     id: 'solu-medrol-40mg-actovial',
     label: 'SOLU-MEDROL 40 mg ACT-O-VIAL · preservative-free',

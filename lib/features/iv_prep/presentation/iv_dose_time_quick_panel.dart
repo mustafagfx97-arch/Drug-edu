@@ -50,10 +50,12 @@ class IvDoseTimeQuickPanel extends StatefulWidget {
     super.key,
     required this.profile,
     required this.onOpenFullCalculator,
+    this.initialVariantId,
   });
 
   final IvPreparationProfile profile;
   final VoidCallback onOpenFullCalculator;
+  final String? initialVariantId;
 
   @override
   State<IvDoseTimeQuickPanel> createState() => _IvDoseTimeQuickPanelState();
@@ -64,6 +66,17 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
   int? _selectedStrength;
   bool _vialConfirmed = false;
   String? _selectedDoseRegimen;
+
+  @override
+  void initState() {
+    super.initState();
+    final id = widget.initialVariantId;
+    if (id != null) {
+      final choices = widget.profile.calculatorVariants;
+      final index = choices.indexWhere((item) => item.id == id);
+      if (index >= 0) _selectedStrength = index;
+    }
+  }
 
   @override
   void dispose() {
@@ -123,7 +136,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'الجرعة + طريقة ووقت الإعطاء · Dose & time',
+              'Dose and IV administration',
               style: theme.textTheme.titleMedium
                   ?.copyWith(fontWeight: FontWeight.w900),
             ),
@@ -136,7 +149,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
               'may be given as an IV push.',
             ),
             const SizedBox(height: 9),
-            Text('Method & duration · الطريقة والمدة',
+            Text('Administration method and duration',
                 style: theme.textTheme.titleSmall
                     ?.copyWith(fontWeight: FontWeight.w900)),
             const SizedBox(height: 5),
@@ -160,7 +173,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
             const SizedBox(height: 10),
             const Divider(),
             const SizedBox(height: 6),
-            Text('2. Prescribed dose → stock mL · الجرعة إلى mL',
+            Text('Prescribed dose to withdrawal volume',
                 style: theme.textTheme.titleSmall
                     ?.copyWith(fontWeight: FontWeight.w900)),
             const SizedBox(height: 7),
@@ -185,7 +198,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
                 isExpanded: true,
                 initialValue: _selectedStrength,
                 decoration: const InputDecoration(
-                  labelText: 'Actual vial / stock · الأمبولة الموجودة',
+                  labelText: 'Actual vial / stock',
                   border: OutlineInputBorder(),
                 ),
                 hint: const Text('Select a matching source-listed stock'),
@@ -255,7 +268,7 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
                 if (volume != null) ...[
                   const SizedBox(height: 8),
                   Text(
-                    'Withdrawal arithmetic · حجم السحب',
+                    'Withdrawal volume (arithmetic only)',
                     style: theme.textTheme.titleSmall
                         ?.copyWith(fontWeight: FontWeight.w800),
                   ),

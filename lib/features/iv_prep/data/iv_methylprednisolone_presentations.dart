@@ -180,3 +180,80 @@ const ivMethylprednisolonePresentations =
     sourceUrl: _pfizerSoluMedrol,
   ),
 ];
+
+
+/// A documented local BRAND, but with NO validated manufacturer
+/// reconstitution/finished-volume instructions on file. Do NOT infer a
+/// concentration from the 10 mL supplied diluent. The manufacturer catalogue
+/// confirms the 1 g vial + WFI kit but DOES NOT specify the WFI volume.
+class IvMethylprednisolonePendingPresentation {
+  const IvMethylprednisolonePendingPresentation({
+    required this.id,
+    required this.label,
+    required this.amountMgEquivalent,
+    required this.localReportedSuppliedWfiMl,
+    required this.sourceUrl,
+  });
+
+  final String id;
+  final String label;
+  final double amountMgEquivalent;
+  final double localReportedSuppliedWfiMl;
+  final String sourceUrl;
+
+  bool get stockConcentrationVerified => false;
+
+  String get reconstitution =>
+      'SCOTMED CARE MPSONE 1 g lyophilized vial. '
+      'The local carton reportedly includes a 10 mL ampoule of water. '
+      'This is a SUPPLIED diluent amount, NOT independently verified '
+      'manufacturer instructions to add all 10 mL and NOT the final '
+      'reconstituted volume. Check the exact package insert/ampoule '
+      'label before reconstituting. Do NOT substitute the Pfizer '
+      'SOLU-MEDROL 8 mL or 16 mL methods.';
+
+  String get compatibleInfusionFluids =>
+      'Mpsone-specific dilution-fluid compatibility has NOT been '
+      'confirmed from an approved product insert. 0.9% NaCl / D5W '
+      'are listed for some other methylprednisolone sodium succinate '
+      'products, but are NOT automatically authorized for this brand. '
+      'Verify the exact local/manufacturer protocol.';
+
+  String get administration =>
+      'For a prescribed high-dose 1 g IV pulse, use controlled IV '
+      'infusion over AT LEAST 30 minutes per methylprednisolone sodium '
+      'succinate labeling/approved local protocol, not rapid IV push. '
+      'Serious arrhythmia/cardiac arrest has occurred with rapid '
+      '>500 mg IV doses in less than 10 minutes. Monitor the patient.';
+
+  String get furtherDilution =>
+      'Manufacturer-specific reconstitution and final stock '
+      'concentration are not yet documented. Do not calculate '
+      'withdrawal volume from 1,000 mg / 10 mL. Final IV infusion '
+      'volume, fluid compatibility and stability require the '
+      'exact Mpsone package insert or independent local approval.';
+
+  String get safety =>
+      'MPSone is methylprednisolone sodium succinate (IV/IM); '
+      'SCOTMED also markets methylprednisolone ACETATE suspension '
+      '(not for IV). Verify package identity. The local 10 mL WFI '
+      'ampoule is reported by the clinician, not a manufacturer-'
+      'verified preparation instruction. Unknown preservative '
+      'status, excipients and after-reconstitution BUD.';
+
+  String get sourceStatus =>
+      'Manufacturer product catalogue verifies MPSONE 1 g '
+      '(30 mL capacity vial + WFI kit). It does NOT specify 10 mL '
+      'WFI, exact preparation volume or finished concentration. '
+      'A local front-carton photo establishes 1 g sodium succinate '
+      'IV/IM and clinician reports a 10 mL supplied diluent.';
+}
+
+const ivMpsoneLocalPending = IvMethylprednisolonePendingPresentation(
+  id: 'scotmed-mpsone-1000mg-wfi-pending',
+  label: 'MPSONE 1 g (SCOTMED CARE) · 10 mL WFI kit reported · VERIFY',
+  amountMgEquivalent: 1000,
+  localReportedSuppliedWfiMl: 10,
+  sourceUrl:
+      'https://www.scotmedcare.com/wp-content/uploads/2024/02/Scotmed-Care-Pvt-Ltd-PCD.pdf',
+);

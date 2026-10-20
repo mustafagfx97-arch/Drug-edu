@@ -69,6 +69,48 @@ void main() {
     ), isNull);
   });
 
+  test('MPSONE local vial explicitly has NO verified final concentration', () {
+    final pending = ivMpsoneLocalPending;
+    expect(pending.label, contains('MPSONE 1 g'));
+    expect(pending.amountMgEquivalent, 1000);
+    expect(pending.localReportedSuppliedWfiMl, 10);
+    expect(pending.stockConcentrationVerified, isFalse);
+    expect(pending.reconstitution, contains('NOT the final'));
+    expect(pending.reconstitution, contains('Pfizer'));
+    expect(pending.compatibleInfusionFluids, contains('NOT automatically authorized'));
+    expect(pending.sourceStatus, contains('does NOT specify 10 mL'));
+    expect(pending.administration, contains('AT LEAST 30 minutes'));
+  });
+
+  testWidgets('SCOTMED MPSONE appears but unknown stock math is blocked',
+      (tester) async {
+    final profile = findIvPreparationProfile('Methylprednisolone', 'General')!;
+    await tester.pumpWidget(
+      MaterialApp(home: IvPreparationDetailScreen(profile: profile)),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(
+      find.byKey(const ValueKey('iv-methylprednisolone-product')),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.textContaining(
+      'MPSONE 1 g', findRichText: true,
+    ).last);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('NOT independently verified'), findsWidgets);
+    final toggle = find.byKey(const ValueKey('iv-simple-calc-toggle'));
+    await tester.scrollUntilVisible(toggle, 200);
+    await tester.tap(toggle);
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('iv-mpsone-calculator-locked')),
+        findsOneWidget);
+    expect(find.byKey(const ValueKey('iv-quick-withdrawal-result')),
+        findsNothing);
+    expect(find.byKey(const ValueKey('iv-dose-time-first-panel')),
+        findsNothing);
+    expect(find.textContaining('10 mL WFI ampoule'), findsWidgets);
+  });
+
   testWidgets('methylprednisolone requires exact 1g vial selection before facts',
       (tester) async {
     final profile = findIvPreparationProfile('Methylprednisolone', 'General')!;

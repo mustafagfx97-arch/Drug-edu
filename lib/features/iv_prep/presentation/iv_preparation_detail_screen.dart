@@ -37,6 +37,14 @@ class _IvPreparationDetailScreenState
     final requiresProduct = selectingMethylprednisolone && product == null;
     final unverifiedStock = product != null &&
         !product.hasVerifiedStockConcentration;
+    final clinicalWarnings = unverifiedStock
+        ? <String>[
+            product!.safety,
+            'HIGH DOSE: reference methylprednisolone sodium succinate '
+                'label warns against rapid IV doses >500 mg in <10 min; '
+                'follow a validated 1 g infusion regimen (at least 30 min).',
+          ]
+        : profile.criticalLocks;
     final reconstitution = requiresProduct
         ? 'Select the exact methylprednisolone vial above to see its dilution volume.'
         : product?.reconstitution ?? profile.reconstitution;
@@ -122,7 +130,7 @@ class _IvPreparationDetailScreenState
               ],
             ),
           ),
-          if (profile.criticalLocks.isNotEmpty) ...[
+          if (clinicalWarnings.isNotEmpty) ...[
             const SizedBox(height: 8),
             Card(
               margin: EdgeInsets.zero,
@@ -131,16 +139,16 @@ class _IvPreparationDetailScreenState
                 initiallyExpanded: false,
                 leading: Icon(Icons.warning_amber_rounded,
                     color: theme.colorScheme.error),
-                title: Text('Critical notes (${profile.criticalLocks.length})'),
+                title: Text('Critical notes (${clinicalWarnings.length})'),
                 subtitle: Text(
-                  profile.criticalLocks.first,
+                  clinicalWarnings.first,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 childrenPadding:
                     const EdgeInsets.fromLTRB(16, 0, 16, 10),
                 children: [
-                  for (final warning in profile.criticalLocks)
+                  for (final warning in clinicalWarnings)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Align(
@@ -204,12 +212,25 @@ class _IvPreparationDetailScreenState
                   _InfoLine('Product-specific safety', product.safety),
                   _InfoLine('Manufacturer label', product.sourceUrl),
                 ],
-                _InfoLine('Presentation', profile.formulation),
-                _InfoLine('Resulting concentration',
-                    profile.resultingConcentration),
-                _InfoLine('Stability/BUD', profile.stability),
-                _InfoLine('Incompatibilities', profile.incompatibilities),
-                _InfoLine('Source', profile.sourceLabel),
+                if (unverifiedStock) ...[
+                  _InfoLine('Final concentration',
+                      'UNKNOWN — the supplied diluent volume does not '
+                      'prove the final solution volume.'),
+                  _InfoLine('Stability/BUD',
+                      'Mpsone-specific shelf-life after reconstitution '
+                      'and post-dilution stability NOT VERIFIED.'),
+                  _InfoLine('Drug / product interactions',
+                      'Mpsone-specific incompatibilities and Y-site '
+                      'co-administration are NOT VERIFIED.'),
+                  _InfoLine('Manufacturer catalogue', product!.sourceUrl),
+                ] else ...[
+                  _InfoLine('Presentation', profile.formulation),
+                  _InfoLine('Resulting concentration',
+                      profile.resultingConcentration),
+                  _InfoLine('Stability/BUD', profile.stability),
+                  _InfoLine('Incompatibilities', profile.incompatibilities),
+                  _InfoLine('Source', profile.sourceLabel),
+                ],
               ],
             ),
           ),

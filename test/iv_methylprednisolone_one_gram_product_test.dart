@@ -115,6 +115,8 @@ void main() {
     ).last);
     await tester.pumpAndSettle();
     expect(find.textContaining('10 mL water ampoule'), findsWidgets);
+    await tester.tap(find.byKey(const ValueKey('iv-quick-reconstitution')));
+    await tester.pumpAndSettle();
     expect(find.textContaining('Final volume/concentration: NOT verified'),
         findsWidgets);
     final panel = find.byKey(const ValueKey('iv-simple-calc-toggle'));

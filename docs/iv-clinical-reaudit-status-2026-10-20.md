@@ -60,3 +60,14 @@ Additional examples flagged by automated screening for manufacturer/formulation 
 **Practical priority:** high-alert drugs / salts / pressors, then antibiotics and antifungals with powder reconstitution variants, then NICU/PICU high-risk product-specific conversions. Each future batch records evidence and closes documented deficits; do not force unsupported calculations.
 
 **UI policy:** Drug IV PWA presented in English only, with four fast facts, exact product selection when relevant, and optional calculator/expanded details. Clinical warnings remain mandatory where route or preparation can cause immediate harm.
+
+
+## Local ward product evidence update — MPSONE (SCOTMED CARE)
+
+- A ward-provided carton photo identifies **MPSONE 1000mg Methylprednisolone Sodium Succinate for Injection USP** for IV/IM use, branded **SCOTMED CARE**.
+- The ward pharmacist reports **one 10 mL water ampoule supplied with the vial**. The front carton itself does **not** specify which volume to add, the label of that ampoule, or the total finished solution volume.
+- The manufacturer's [2024 sales catalogue](https://www.scotmedcare.com/wp-content/uploads/2024/02/Scotmed-Care-Pvt-Ltd-PCD.pdf) confirms `Mpsone 1gm / 30ml vial + WFI + tray` but **30 mL is the vial capacity**, not a 30 mL dilution. The catalogue does **not** specify 10 mL WFI or finished concentration.
+- Evidence grade: **product identification verified; supplied 10 mL reported locally; reconstitution amount/final stock concentration/compatibility after mixing/stability not yet product-verified.** Do not calculate `1000/10 = 100mg/mL` as a manufacturer concentration unless the actual insert states **final volume** equals 10 mL, or a validated preparation protocol establishes a measured final concentration.
+- The Drug IV selection identifies this brand separately from Pfizer SOLU-MEDROL, displays the reported kit and missing manufacturer instructions, and **locks automatic withdrawal arithmetic** to avoid transferring Pfizer's 8 mL or 16 mL preparation to MPSone.
+- **Evidence still required**: clear photo of all text on the WFI ampoule, outer carton sides/back and folded MPSone insert, especially instructions regarding volume added, final concentration, use time, compatibility and storage. Verify WFI is actually **Sterile Water for Injection**, not nonsterile distilled water.
+- High-dose IV methylprednisolone administration remains **at least 30 minutes**, per high-dose methylprednisolone labeling; this timing is NOT brand proof of a specific final infusion concentration or diluent. Do not use as rapid IV push.

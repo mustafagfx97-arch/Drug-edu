@@ -34,19 +34,43 @@ class _IvPreparationDetailScreenState
         if (option.id == _methylprednisoloneProductId) product = option;
       }
     }
-    final requiresProduct = selectingMethylprednisolone && product == null;
+    final localMpsone = selectingMethylprednisolone &&
+            _methylprednisoloneProductId == ivMpsoneLocalPending.id
+        ? ivMpsoneLocalPending
+        : null;
+    final requiresProduct =
+        selectingMethylprednisolone && product == null && localMpsone == null;
+    final pendingManufacturerInsert = localMpsone != null;
     final reconstitution = requiresProduct
-        ? 'Select the exact methylprednisolone vial above to see its dilution volume.'
-        : product?.reconstitution ?? profile.reconstitution;
+        ? 'Select the exact methylprednisolone vial above to see its reconstitution method.'
+        : localMpsone?.reconstitution ??
+            product?.reconstitution ?? profile.reconstitution;
     final fluids = requiresProduct
         ? 'Select the exact vial before applying fluid compatibility instructions.'
-        : product?.compatibleInfusionFluids ?? profile.allowedDiluents;
+        : localMpsone?.compatibleInfusionFluids ??
+            product?.compatibleInfusionFluids ?? profile.allowedDiluents;
     final time = requiresProduct
         ? 'High-dose IV administration needs indication-specific timing. Select the vial.'
-        : product?.administration ?? profile.administration;
+        : localMpsone?.administration ??
+            product?.administration ?? profile.administration;
     final further = requiresProduct
         ? 'Reconstitution and further infusion dilution are different steps. Select the vial.'
-        : product?.furtherDilution ?? profile.furtherDilution;
+        : localMpsone?.furtherDilution ??
+            product?.furtherDilution ?? profile.furtherDilution;
+    final safetyNotes = pendingManufacturerInsert
+        ? <String>[
+            'MPSone stock concentration is NOT VERIFIED. The 10 mL supplied water '
+                'does not prove a 10 mL final volume or label-approved reconstitution.',
+            'Do not use Pfizer SOLU-MEDROL 1 g preparation instructions '
+                '(8 mL ACT-O-VIAL / 16 mL PLAIN vial) for MPSone.',
+            'For a prescribed high-dose 1 g IV pulse, follow an independently '
+                'validated infusion protocol lasting at least 30 minutes; '
+                'do not give a rapid IV push.',
+            'The actual MPSone package insert is required for diluent identity, '
+                'volume, finished concentration, after-mixing stability and '
+                'compatibility with fluids.',
+          ]
+        : profile.criticalLocks;
 
     return Scaffold(
       appBar: AppBar(title: Text(profile.name)),
@@ -72,6 +96,13 @@ class _IvPreparationDetailScreenState
                     value: option.id,
                     child: Text(option.label, overflow: TextOverflow.ellipsis),
                   ),
+                const DropdownMenuItem(
+                  value: 'scotmed-mpsone-1000mg-wfi-pending',
+                  child: Text(
+                    'MPSONE 1 g · SCOTMED CARE · 10 mL WFI kit (unverified)',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
               onChanged: (value) => setState(() {
                 _methylprednisoloneProductId = value;
@@ -87,9 +118,12 @@ class _IvPreparationDetailScreenState
                   key: const ValueKey('iv-quick-reconstitution'),
                   title: 'Reconstitution',
                   value: reconstitution,
-                  extra: product == null
-                      ? (requiresProduct ? null : profile.resultingConcentration)
-                      : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
+                  extra: pendingManufacturerInsert
+                      ? 'FINAL STOCK CONCENTRATION UNKNOWN. '
+                          'Do not automatically calculate 100 mg/mL.'
+                      : product == null
+                          ? (requiresProduct ? null : profile.resultingConcentration)
+                          : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
                   icon: Icons.science_outlined,
                 ),
                 const Divider(height: 1),
@@ -117,7 +151,7 @@ class _IvPreparationDetailScreenState
               ],
             ),
           ),
-          if (profile.criticalLocks.isNotEmpty) ...[
+          if (safetyNotes.isNotEmpty) ...[
             const SizedBox(height: 8),
             Card(
               margin: EdgeInsets.zero,
@@ -126,16 +160,16 @@ class _IvPreparationDetailScreenState
                 initiallyExpanded: false,
                 leading: Icon(Icons.warning_amber_rounded,
                     color: theme.colorScheme.error),
-                title: Text('Critical notes (${profile.criticalLocks.length})'),
+                title: Text('Critical notes (${safetyNotes.length})'),
                 subtitle: Text(
-                  profile.criticalLocks.first,
+                  safetyNotes.first,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 childrenPadding:
                     const EdgeInsets.fromLTRB(16, 0, 16, 10),
                 children: [
-                  for (final warning in profile.criticalLocks)
+                  for (final warning in safetyNotes)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Align(
@@ -162,6 +196,18 @@ class _IvPreparationDetailScreenState
                   const Padding(
                     padding: EdgeInsets.all(12),
                     child: Text('Select the exact methylprednisolone vial first.'),
+                  )
+                else if (pendingManufacturerInsert)
+                  const Padding(
+                    key: ValueKey('iv-mpsone-calculator-locked'),
+                    padding: EdgeInsets.all(12),
+                    child: Text(
+                      'MPSONE 1 g: withdrawal-volume calculation is unavailable '
+                      'until the actual manufacturer reconstitution instructions '
+                      'and FINAL stock concentration are verified. '
+                      'The reported 10 mL WFI ampoule is not a verified 10 mL '
+                      'reconstituted final volume.',
+                    ),
                   )
                 else
                   IvDoseTimeQuickPanel(
@@ -195,12 +241,22 @@ class _IvPreparationDetailScreenState
                   _InfoLine('Product-specific safety', product.safety),
                   _InfoLine('Manufacturer label', product.sourceUrl),
                 ],
-                _InfoLine('Presentation', profile.formulation),
-                _InfoLine('Resulting concentration',
-                    profile.resultingConcentration),
-                _InfoLine('Stability/BUD', profile.stability),
-                _InfoLine('Incompatibilities', profile.incompatibilities),
-                _InfoLine('Source', profile.sourceLabel),
+                if (localMpsone != null) ...[
+                  _InfoLine('Selected local product', localMpsone.label),
+                  _InfoLine('Evidence status', localMpsone.sourceStatus),
+                  _InfoLine('Product-specific safety', localMpsone.safety),
+                  _InfoLine('Stock concentration', 'UNVERIFIED — do not calculate.'),
+                  _InfoLine('Stability/BUD',
+                      'NOT VERIFIED for this manufacturer. Follow the actual MPSone insert.'),
+                  _InfoLine('Manufacturer catalogue', localMpsone.sourceUrl),
+                ] else ...[
+                  _InfoLine('Presentation', profile.formulation),
+                  _InfoLine('Resulting concentration',
+                      profile.resultingConcentration),
+                  _InfoLine('Stability/BUD', profile.stability),
+                  _InfoLine('Incompatibilities', profile.incompatibilities),
+                  _InfoLine('Source', profile.sourceLabel),
+                ],
               ],
             ),
           ),

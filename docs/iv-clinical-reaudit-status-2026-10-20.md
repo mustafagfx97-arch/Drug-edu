@@ -25,6 +25,14 @@ Official sources:
 - [Pfizer-labelled 500 mg and 1 g ACT-O-VIAL presentations (DailyMed)](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cd99be87-c8d9-48d6-a8e5-e081052e3f19)
 - [NHS community IV administration chart — DIFFERENT local product/protocol](https://remedy.bnssg.icb.nhs.uk/media/ks2hzlhv/methylprednisolone-admin-chart.pdf)
 
+## Iraq-local product verification: SCOTMED CARE MPSONE 1000 mg (2026-10-20)
+
+**Identification:** Locally provided frontal package photo shows `Mpsone-1000mg`, methylprednisolone sodium succinate for injection USP (IM/IV), SCOTMED CARE. [Official company catalogue](https://www.scotmedcare.com/products/page/5/) independently confirms the name and strength. Local clinical pharmacist separately reports an **included 10 mL water diluent ampoule**. The front carton alone does **NOT** document how much must be added, whether the diluent is specifically Sterile Water for Injection, the displacement volume, the exact resulting final stock concentration, preservative content or storage/BUD.
+
+**Action implemented:** Add `mpsone-scotmed-1000mg-10ml-supplied-unverified` as an independently selectable, English-language product in the methylprednisolone profile. Display reported included 10 mL and a clear request to check the **actual insert/ampoule**. Do **NOT** treat 10 mL supplied as 10 mL final. Do **NOT** add a fake 100 mg/mL verified stock or borrow Pfizer 1 g 8/16 mL reconstitution. Disable the quick dose-to-mL calculator for this manufacturer until exact final concentration is verified. Reference high-dose infusion duration >=30 min applies to methylprednisolone sodium succinate *generally*, but is not a claim of a manufacturer-verified MPSONE-specific stability/infusion concentration or fluid compatibility.
+
+**To close** (requires actual MPSONE company IFU or manufacturer pharmacy response): scan the rear carton, package insert, 10 mL diluent ampoule label, and vial label. Verify (1) WFI composition/preservative, (2) directed amount added, (3) powder displacement / final volume (or labelled concentration), (4) compatible NS/D5W infusion fluids and final concentration, (5) administration duration and post-reconstitution/admixed BUD. Until then, product remains listed with "FINAL stock not verified" status.
+
 ## Comprehensive audit queue based on ALL 136 structured profiles
 
 **These are machine-readable inventory checks only** (concentration fields and manufacturer-scoped directions); numbers are not source-verified clinical certificates.

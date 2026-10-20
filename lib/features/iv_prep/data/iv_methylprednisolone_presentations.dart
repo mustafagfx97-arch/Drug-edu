@@ -233,4 +233,5 @@ const ivMethylprednisolonePresentations =
         'This entry deliberately disables dose-to-mL mathematics. '
         'Do not assume Pfizer preservative or concentration rules.',
     sourceUrl: 'https://www.scotmedcare.com/products/page/5/',
-
+  ),
+];

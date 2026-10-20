@@ -89,7 +89,9 @@ class _IvPreparationDetailScreenState
                   value: reconstitution,
                   extra: product == null
                       ? (requiresProduct ? null : profile.resultingConcentration)
-                      : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
+                      : product.stockMgPerMl == null
+                          ? 'Final volume/concentration: NOT verified for this manufacturer. The included 10 mL diluent is not proof of 100 mg/mL.'
+                          : 'Resulting stock: ${product.stockMgPerMl} mg/mL',
                   icon: Icons.science_outlined,
                 ),
                 const Divider(height: 1),
@@ -158,10 +160,13 @@ class _IvPreparationDetailScreenState
               subtitle: const Text('Choose vial + prescribed dose → mL'),
               childrenPadding: const EdgeInsets.all(8),
               children: [
-                if (requiresProduct)
-                  const Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Text('Select the exact methylprednisolone vial first.'),
+                if (requiresProduct ||
+                    (product != null && !product.sourceVerifiedFinalVolume))
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(requiresProduct
+                        ? 'Select the exact methylprednisolone vial first.'
+                        : 'MPSONE 1 g: dose-to-mL calculator unavailable. The brand-specific FINAL reconstituted volume and stock strength need verification from the product insert. Do not enter a guessed 100 mg/mL or select Pfizer 8/16 mL as a substitute.'),
                   )
                 else
                   IvDoseTimeQuickPanel(

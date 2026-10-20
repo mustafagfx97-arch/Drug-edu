@@ -94,7 +94,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
     return CustomScrollView(
       key: const ValueKey('iv-only-catalog'),
       slivers: [
-        const SliverAppBar.large(title: Text('Drug IV · الأدوية الوريدية')),
+        const SliverAppBar.large(title: Text('Drug IV · Medication Preparation')),
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(16, 2, 16, 12),
           sliver: SliverToBoxAdapter(
@@ -106,7 +106,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dose + IV administration · الجرعة ووقت الإعطاء',
+                      'IV preparation, compatibility and administration',
                       style: theme.textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w900),
                     ),
@@ -137,7 +137,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
               onChanged: (value) => setState(() => _query = value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search),
-                labelText: 'Search IV drug / ابحث عن الدواء الوريدي',
+                labelText: 'Search IV medication',
                 hintText: 'e.g. Nicardipine, Vancomycin, dopamine',
                 border: OutlineInputBorder(),
               ),

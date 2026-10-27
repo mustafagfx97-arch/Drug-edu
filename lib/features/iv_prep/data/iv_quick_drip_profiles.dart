@@ -126,6 +126,16 @@ final ivQuickDripProfiles = <IvQuickDripProfile>[
     sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6363e9b4-29df-4553-904d-a563e5adda6e',
   ),
   IvQuickDripProfile(
+    id: 'baxter-premix-16mg-250ml',
+    drug: 'Norepinephrine', stockLabel: 'READY 16 mg / 250 mL (64 mcg/mL)',
+    totalDrugMg: 16, stockMl: 0, defaultAddedFluidMl: 0,
+    fluid: _ns, doseUnit: _mcgMin, initialReference: 8, step: 2,
+    premix: true, readyFinalMcgPerMl: 64,
+    note: 'Factory premix: do NOT dilute. Confirm the exact '
+        'norepinephrine BASE-equivalent bag and pump library.',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6363e9b4-29df-4553-904d-a563e5adda6e',
+  ),
+  IvQuickDripProfile(
     id: 'nitroglycerin-final-100mcg-ml',
     drug: 'Nitroglycerin', stockLabel: '50 mg / 10 mL (5 mg/mL)',
     totalDrugMg: 50, stockMl: 10, defaultAddedFluidMl: 490,

@@ -55,7 +55,6 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
     _productConfirmed = false;
     _orderConfirmed = false;
     _localProtocolConfirmed = false;
-    _norepiVialConfirmed = false;
   }
 
   void _changeDrug(String newDrug) {
@@ -65,6 +64,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
       _rateUnit = ivApprovedOrderUnits(newDrug).first;
       _localMode = false;
       _norepiVolumeIsAdded = false;
+      _norepiVialConfirmed = false;
       _weight.clear();
       _rate.clear();
       _activeMg.clear();
@@ -205,6 +205,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 selected: !_localMode,
                 onSelected: (_) => setState(() {
                   _localMode = false;
+                  _norepiVialConfirmed = false;
                   _invalidate();
                 }),
               ),
@@ -214,6 +215,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 selected: _localMode,
                 onSelected: (_) => setState(() {
                   _localMode = true;
+                  _norepiVialConfirmed = false;
                   _invalidate();
                 }),
               ),

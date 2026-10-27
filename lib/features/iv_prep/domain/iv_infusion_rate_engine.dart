@@ -1,11 +1,12 @@
 /// Arithmetic for an already prescribed IV infusion; never chooses a dose.
-enum IvOrderedRateUnit { mcgPerKgMin, mgPerKgHour, mcgPerMin, mgPerHour }
+enum IvOrderedRateUnit { mcgPerKgMin, mgPerKgHour, mcgPerMin, mgPerMin, mgPerHour }
 
 extension IvOrderedRateUnitText on IvOrderedRateUnit {
   String get display => switch (this) {
     IvOrderedRateUnit.mcgPerKgMin => 'mcg/kg/min',
     IvOrderedRateUnit.mgPerKgHour => 'mg/kg/hr',
     IvOrderedRateUnit.mcgPerMin => 'mcg/min',
+    IvOrderedRateUnit.mgPerMin => 'mg/min',
     IvOrderedRateUnit.mgPerHour => 'mg/hr',
   };
 
@@ -43,6 +44,7 @@ IvInfusionRateResult? calculateOrderedIvInfusion({
     IvOrderedRateUnit.mcgPerKgMin => prescribedRate * weightKg! * 60,
     IvOrderedRateUnit.mgPerKgHour => prescribedRate * weightKg! * 1000,
     IvOrderedRateUnit.mcgPerMin => prescribedRate * 60,
+    IvOrderedRateUnit.mgPerMin => prescribedRate * 1000 * 60,
     IvOrderedRateUnit.mgPerHour => prescribedRate * 1000,
   };
   final pump = dosePerHour / finalMicrogramsPerMilliliter;

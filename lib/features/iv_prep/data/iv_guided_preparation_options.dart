@@ -45,13 +45,19 @@ class IvGuidedDoseOption {
     if (weightKg != null && (!weightKg.isFinite || weightKg <= 0)) {
       return null;
     }
-    if (minWeightKg != null && weightKg! < minWeightKg!) return null;
+    if (minWeightKg != null && weightKg! < minWeightKg!) {
+      return null;
+    }
     if (maxWeightKgExclusive != null &&
-        weightKg! >= maxWeightKgExclusive!) return null;
+        weightKg! >= maxWeightKgExclusive!) {
+      return null;
+    }
     final calculated = basis == IvGuidedDoseBasis.fixedMg
         ? amount
         : amount * weightKg!;
-    if (!calculated.isFinite || calculated <= 0) return null;
+    if (!calculated.isFinite || calculated <= 0) {
+      return null;
+    }
     return maxSingleDoseMg != null && calculated > maxSingleDoseMg!
         ? maxSingleDoseMg
         : calculated;

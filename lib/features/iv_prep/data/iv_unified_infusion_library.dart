@@ -79,6 +79,21 @@ final ivUnifiedInfusionPreparations = <IvInfusionPreparation>[
         IvOrderedRateUnit.mcgPerMin => _nitroUnits,
         _ => [old.orderedUnit],
       },
+      stockLabel: switch (old.id) {
+        'nitroglycerin-final-100mcg-ml' =>
+          '5 mg/mL · 50 mg / 10 mL concentrate',
+        'norepinephrine-concentrate-final-4mcg-ml' =>
+          '1 mg/mL NOREPINEPHRINE BASE · 4 mg / 4 mL concentrate',
+        'cardene-iv-final-100mcg-ml' =>
+          '2.5 mg/mL · 25 mg / 10 mL concentrate',
+        _ => null,
+      },
+      stockWithdrawalMl: switch (old.id) {
+        'nitroglycerin-final-100mcg-ml' => 10,
+        'norepinephrine-concentrate-final-4mcg-ml' => 4,
+        'cardene-iv-final-100mcg-ml' => 10,
+        _ => null,
+      },
       instructions: old.presentation,
       safety: old.preparationLock + ' ' + old.compatibilityLock,
       sourceUrl: old.sourceUrl,

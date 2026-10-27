@@ -5,6 +5,7 @@ import '../data/iv_stock_strength_audit.dart';
 import '../data/iv_adult_dose_regimens.dart';
 import '../data/iv_guided_preparation_options.dart';
 import 'iv_adult_dose_guide_panel.dart';
+import 'iv_norepinephrine_workflow_panel.dart';
 
 /// Arithmetic from an actual clinician-ordered dose and a manually confirmed
 /// source-listed stock concentration. NO therapeutic dose selection, route,
@@ -99,6 +100,12 @@ class _IvDoseTimeQuickPanelState extends State<IvDoseTimeQuickPanel> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.profile.population == 'General' &&
+        widget.profile.name == 'Norepinephrine') {
+      return IvNorepinephrineWorkflowPanel(
+        onOpenFullCalculator: widget.onOpenFullCalculator,
+      );
+    }
     final profile = widget.profile;
     final theme = Theme.of(context);
     final audited = reviewedAdultIvStockOptions(

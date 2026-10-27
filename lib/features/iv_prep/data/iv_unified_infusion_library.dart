@@ -61,7 +61,8 @@ final ivUnifiedInfusionPreparations = <IvInfusionPreparation>[
       label: old.name,
       nominalMcgPerMl: old.finalMicrogramsPerMilliliter,
       orderUnits: switch (old.orderedUnit) {
-        IvOrderedRateUnit.mcgPerKgMin => _norepiUnits,
+        IvOrderedRateUnit.mcgPerKgMin =>
+            old.id == 'brevibloc-rtu-10mg-ml' ? _esmololUnits : _norepiUnits,
         IvOrderedRateUnit.mgPerHour => _mgHrUnits,
         IvOrderedRateUnit.mcgPerMin => _nitroUnits,
         _ => [old.orderedUnit],

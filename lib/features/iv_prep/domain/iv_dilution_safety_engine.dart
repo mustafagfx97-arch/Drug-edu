@@ -228,7 +228,7 @@ IvDilutionAssessment assessAdultIvDilution({
               (eq(actualFinalMl, 1000) || eq(actualFinalMl, 500) ||
                   eq(actualFinalMl, 250))) ||
           (eq(drugMg, 200) &&
-              (eq(actualFinalMl, 1000) || eq(actualFinalMl, 500));
+              (eq(actualFinalMl, 1000) || eq(actualFinalMl, 500)));
       if (inLabelTable) {
         return green(
           'Final amount and volume match a labeled nitroglycerin dilution '

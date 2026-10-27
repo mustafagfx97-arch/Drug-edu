@@ -10,7 +10,7 @@ void main() {
     final names = ivQuickDripProfiles.map((x) => x.drug).toSet();
     expect(names, hasLength(12));
     expect(quickDripOptionsFor('Dobutamine'), hasLength(1));
-    expect(quickDripOptionsFor('Norepinephrine'), hasLength(3));
+    expect(quickDripOptionsFor('Norepinephrine'), hasLength(4));
     expect(quickDripOptionsFor('Dopamine'), hasLength(2));
     expect(ivQuickDripProfiles.map((p) => p.id).toSet().length,
         ivQuickDripProfiles.length);

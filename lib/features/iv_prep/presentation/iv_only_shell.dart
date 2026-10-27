@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../calculators/presentation/continuous_infusion_calculator_screen.dart';
+import 'iv_unified_infusion_screen.dart';
 import '../data/iv_medication_catalog.dart';
 import '../data/iv_preparation_profiles.dart';
 import 'iv_calculators_hub_screen.dart';
@@ -28,7 +28,7 @@ class _IvOnlyShellState extends State<IvOnlyShell> {
           children: const [
             _IvOnlyCatalog(),
             IvCalculatorsHubScreen(),
-            ContinuousInfusionCalculatorScreen(),
+            IvUnifiedInfusionScreen(),
             IvFluidScreen(),
           ],
         ),

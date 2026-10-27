@@ -117,8 +117,8 @@ void main() {
     expect(pump('Amiodarone', 'amiodarone-vt-maintenance-900mg-in-500ml-d5w',
         IvOrderedRateUnit.mgPerMin, 1, null),
         closeTo(33.333333, 0.00001));
-    expect(recipe('nitroprusside-50mg-in-250ml-d5w').safety,
-        contains('PROTECT FROM LIGHT').isNot(true));
+    expect(recipe('nitroprusside-50mg-in-250ml-d5w').instructions,
+        contains('PROTECT FROM LIGHT'));
     expect(calculateVerifiedIvPump(
       drug: 'Amiodarone',
       reviewedPreparation: recipe('amiodarone-vt-maintenance-900mg-in-500ml-d5w'),

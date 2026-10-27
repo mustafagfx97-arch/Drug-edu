@@ -4,7 +4,7 @@ import '../data/iv_preparation_profiles.dart';
 import '../data/iv_methylprednisolone_presentations.dart';
 import '../../calculators/presentation/iv_dilution_calculator_screen.dart';
 import 'iv_dose_time_quick_panel.dart';
-import 'iv_unified_infusion_screen.dart';
+import 'iv_quick_drip_screen.dart';
 import '../data/iv_unified_infusion_library.dart';
 
 class IvPreparationDetailScreen extends StatefulWidget {
@@ -89,13 +89,13 @@ class _IvPreparationDetailScreenState
               key: const ValueKey('iv-open-unified-infusion'),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (_) => IvUnifiedInfusionScreen(
+                  builder: (_) => IvQuickDripScreen(
                     initialDrug: profile.name,
                   ),
                 ),
               ),
               icon: const Icon(Icons.monitor_heart_outlined),
-              label: const Text('Weight + dose + dilution → mL/hr'),
+              label: const Text('Quick drip · dose ± → mL/hr'),
             ),
           ],
           if (selectingMethylprednisolone) ...[

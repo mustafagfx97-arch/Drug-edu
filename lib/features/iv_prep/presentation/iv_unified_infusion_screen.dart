@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/iv_unified_infusion_library.dart';
 import '../domain/iv_infusion_rate_engine.dart';
+import '../domain/iv_dilution_safety_engine.dart';
 import '../domain/iv_unified_infusion_engine.dart';
 
 /// One workflow for adult continuous infusions. An existing prescription and
@@ -32,6 +33,10 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
   bool _orderConfirmed = false;
   bool _norepiVialConfirmed = false;
   bool _norepiVolumeIsAdded = false;
+  IvDiluent? _localDiluent;
+  IvLineType _localLine = IvLineType.peripheral;
+  bool _lightProtected = false;
+  bool _lowSorptionVerified = false;
 
   @override
   void initState() {
@@ -65,6 +70,10 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
       _localMode = false;
       _norepiVolumeIsAdded = false;
       _norepiVialConfirmed = false;
+      _localDiluent = null;
+      _localLine = IvLineType.peripheral;
+      _lightProtected = false;
+      _lowSorptionVerified = false;
       _weight.clear();
       _rate.clear();
       _activeMg.clear();
@@ -115,6 +124,40 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 _protocolReference.text.trim().isNotEmpty,
           )
         : null;
+    final assessment = _localMode
+        ? assessAdultIvDilution(
+            drug: _drug,
+            drugMg: activeMg,
+            actualFinalMl: localFinalMl,
+            fluid: _localDiluent,
+            line: _localLine,
+            productAndProtocolVerified: _localProtocolConfirmed &&
+                _protocolReference.text.trim().isNotEmpty,
+            lightProtectionVerified: _lightProtected,
+            lowSorptionSetVerified: _lowSorptionVerified,
+          )
+        : chosen == null
+            ? null
+            : IvDilutionAssessment(
+                chosen.isManufacturerNominal || !_productConfirmed
+                    ? IvDilutionLight.yellow
+                    : IvDilutionLight.green,
+                chosen.isManufacturerNominal
+                    ? 'Manufacturer NOMINAL concentration. '
+                      'Adding the vial may change the actual final volume.'
+                    : _productConfirmed
+                        ? 'Selected final concentration matches '
+                          'this exact reviewed preparation.'
+                        : 'Reviewed preparation selected; '
+                          'confirm the exact product and actual final bag.',
+                chosen.isManufacturerNominal
+                    ? 'CAUTION: Confirm actual bag concentration and '
+                      'fluid/container before applying the pump rate.'
+                    : 'This checks the selected preparation only. '
+                      'Confirm route, patient order, IV set and monitoring.',
+                sourceUrl: chosen.sourceUrl,
+              );
+    final isRedDilution = assessment?.blocked ?? false;
     final result = calculateVerifiedIvPump(
       drug: _drug,
       reviewedPreparation: _localMode ? null : chosen,
@@ -125,7 +168,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
       orderedUnit: _rateUnit,
       orderedRate: double.tryParse(_rate.text.trim()) ?? double.nan,
       dosingWeightKg: double.tryParse(_weight.text.trim()),
-      checkedProductAndProtocol: _productConfirmed &&
+      checkedProductAndProtocol: !isRedDilution && _productConfirmed &&
           (_localMode
               ? _protocolReference.text.trim().isNotEmpty &&
                   localConcentration != null
@@ -447,6 +490,91 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                         'volume. No calculation available.',
                         key: ValueKey('norepi-invalid-final-volume'),
                       ),
+                    const SizedBox(height: 10),
+                    DropdownButtonFormField<IvDiluent>(
+                      key: ValueKey('dilution-fluid-$_drug'),
+                      initialValue: _localDiluent,
+                      decoration: const InputDecoration(
+                        labelText: 'Diluent / IV fluid',
+                        border: OutlineInputBorder(),
+                      ),
+                      hint: const Text('Choose exact infusion fluid'),
+                      items: [
+                        for (final fluid in IvDiluent.values)
+                          DropdownMenuItem(
+                            value: fluid,
+                            child: Text(fluid.label),
+                          ),
+                      ],
+                      onChanged: (value) => setState(() {
+                        _localDiluent = value;
+                        _invalidate();
+                      }),
+                    ),
+                    const SizedBox(height: 9),
+                    DropdownButtonFormField<IvLineType>(
+                      key: ValueKey('dilution-line-$_drug'),
+                      initialValue: _localLine,
+                      decoration: const InputDecoration(
+                        labelText: 'Venous access',
+                        border: OutlineInputBorder(),
+                      ),
+                      items: [
+                        for (final access in IvLineType.values)
+                          DropdownMenuItem(
+                            value: access,
+                            child: Text(access.label),
+                          ),
+                      ],
+                      onChanged: (value) => setState(() {
+                        _localLine = value ?? IvLineType.peripheral;
+                        _invalidate();
+                      }),
+                    ),
+                    if (_drug == 'Sodium nitroprusside')
+                      CheckboxListTile(
+                        key: const ValueKey('dilution-light-protection'),
+                        contentPadding: EdgeInsets.zero,
+                        value: _lightProtected,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text(
+                          'Opaque/light-protective infusion bag verified',
+                        ),
+                        onChanged: (v) => setState(() {
+                          _lightProtected = v ?? false;
+                          _invalidate();
+                        }),
+                      ),
+                    if (_drug == 'Nitroglycerin')
+                      CheckboxListTile(
+                        key: const ValueKey('dilution-low-sorption-line'),
+                        contentPadding: EdgeInsets.zero,
+                        value: _lowSorptionVerified,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        title: const Text(
+                          'Correct low-sorption/non-PVC infusion line verified',
+                        ),
+                        onChanged: (v) => setState(() {
+                          _lowSorptionVerified = v ?? false;
+                          _invalidate();
+                        }),
+                      ),
+                    if (activeMg != null &&
+                        localFinalMl != null &&
+                        activeMg.isFinite && activeMg > 0 &&
+                        localFinalMl.isFinite && localFinalMl > 0) ...[
+                      const SizedBox(height: 6),
+                      Text(
+                        'Calculated: ${_fmt(activeMg * 1000 / localFinalMl)} '
+                        'mcg/mL (NOT a preparation approval)',
+                        key: const ValueKey('dilution-candidate-concentration'),
+                      ),
+                    ],
+                    if (assessment != null)
+                      _DilutionSafetyIndicator(
+                        key: const ValueKey('dilution-traffic-light'),
+                        result: assessment,
+                      ),
                     const SizedBox(height: 9),
                     CheckboxListTile(
                       key: const ValueKey('unified-local-protocol-confirm'),
@@ -458,7 +586,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                         'brand, final concentration, diluent and stability '
                         'against a valid institutional preparation protocol.',
                       ),
-                      onChanged: (v) => setState(() {
+                      onChanged: isRedDilution ? null : (v) => setState(() {
                         _localProtocolConfirmed = v ?? false;
                         _productConfirmed = false;
                         _orderConfirmed = false;
@@ -477,6 +605,11 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
               ),
             ),
           ],
+          if (!_localMode && assessment != null)
+            _DilutionSafetyIndicator(
+              key: const ValueKey('dilution-reviewed-traffic-light'),
+              result: assessment,
+            ),
           const SizedBox(height: 12),
           CheckboxListTile(
             key: const ValueKey('unified-confirm-concentration'),
@@ -486,7 +619,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
             title: const Text(
               'Verified prepared bag, concentration and dose units.',
             ),
-            onChanged: (_localMode
+            onChanged: !isRedDilution && (_localMode
                     ? localConcentration != null
                     : chosen != null)
                 ? (v) => setState(() {
@@ -597,6 +730,64 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 'concentration, entering a valid prescribed dose and '
                 'completing both independent checks.',
               ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DilutionSafetyIndicator extends StatelessWidget {
+  const _DilutionSafetyIndicator({super.key, required this.result});
+  final IvDilutionAssessment result;
+
+  @override
+  Widget build(BuildContext context) {
+    final (color, statusIcon, title) = switch (result.light) {
+      IvDilutionLight.green =>
+        (Colors.green.shade700, Icons.check_circle_outline, 'GREEN · Reviewed rule match'),
+      IvDilutionLight.yellow =>
+        (Colors.amber.shade800, Icons.warning_amber_outlined, 'YELLOW · CAUTION / NOT CLEARED'),
+      IvDilutionLight.red =>
+        (Colors.red.shade700, Icons.block_outlined, 'RED · STOP / NOT ACCEPTABLE'),
+    };
+    return Container(
+      margin: const EdgeInsets.only(top: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        border: Border.all(color: color, width: 1.5),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(statusIcon, color: color),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  title,
+                  key: const ValueKey('dilution-status-title'),
+                  style: TextStyle(color: color, fontWeight: FontWeight.w900),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(result.reason,
+              key: const ValueKey('dilution-status-reason')),
+          const SizedBox(height: 5),
+          Text(result.action, style: const TextStyle(fontWeight: FontWeight.w600)),
+          if (result.sourceUrl != null) ...[
+            const SizedBox(height: 6),
+            SelectableText('Label: ${result.sourceUrl}',
+                style: Theme.of(context).textTheme.bodySmall),
+          ],
+          if (result.light == IvDilutionLight.green)
+            const Text(
+              'Checks the reviewed dilution rule ONLY. '
+              'Not a patient dose, Y-site, stability or pump authorization.',
             ),
         ],
       ),

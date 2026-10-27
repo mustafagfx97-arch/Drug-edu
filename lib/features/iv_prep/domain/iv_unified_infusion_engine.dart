@@ -84,3 +84,23 @@ IvUnifiedPumpResult? calculateVerifiedIvPump({
         !usingLocal && reviewedPreparation.isManufacturerNominal,
   );
 }
+
+/// The cited norepinephrine CONCENTRATE is 4 mg norepinephrine BASE in
+/// 4 mL (1 mg BASE/mL). This is STOCK withdrawal math, not an authorized
+/// infusion final concentration or permission to make an arbitrary admixture.
+const reviewedNorepinephrineStockBaseMgPerMl = 1.0;
+const reviewedNorepinephrineVialBaseMg = 4.0;
+
+double? norepinephrineReviewedStockWithdrawalMl({
+  required double totalNorepinephrineBaseMg,
+  required bool matchingVialVerified,
+}) {
+  if (!matchingVialVerified ||
+      !totalNorepinephrineBaseMg.isFinite ||
+      totalNorepinephrineBaseMg <= 0) {
+    return null;
+  }
+  final volume = totalNorepinephrineBaseMg /
+      reviewedNorepinephrineStockBaseMgPerMl;
+  return volume.isFinite && volume > 0 ? volume : null;
+}

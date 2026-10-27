@@ -202,7 +202,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Infusion'));
     await tester.pumpAndSettle();
-    expect(find.byKey(const ValueKey('unified-infusion-screen')),
+    expect(find.byKey(const ValueKey('quick-drip-screen')),
         findsOneWidget);
   });
 }

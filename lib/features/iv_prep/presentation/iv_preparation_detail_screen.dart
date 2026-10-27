@@ -188,8 +188,8 @@ class _IvPreparationDetailScreenState
               key: const ValueKey('iv-simple-calc-toggle'),
               initiallyExpanded: false,
               leading: const Icon(Icons.calculate_outlined),
-              title: const Text('Dose calculator (optional)'),
-              subtitle: const Text('Choose vial + prescribed dose → mL'),
+              title: const Text('Patient dose or dilution (optional)'),
+              subtitle: const Text('Indication + weight → mL, or prepare without a dose'),
               childrenPadding: const EdgeInsets.all(8),
               children: [
                 if (requiresProduct)

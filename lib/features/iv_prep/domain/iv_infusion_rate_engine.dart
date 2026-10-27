@@ -1,9 +1,10 @@
 /// Arithmetic for an already prescribed IV infusion; never chooses a dose.
-enum IvOrderedRateUnit { mcgPerKgMin, mgPerKgHour, mcgPerMin, mgPerMin, mgPerHour }
+enum IvOrderedRateUnit { mcgPerKgMin, mcgPerKgHour, mgPerKgHour, mcgPerMin, mgPerMin, mgPerHour }
 
 extension IvOrderedRateUnitText on IvOrderedRateUnit {
   String get display => switch (this) {
     IvOrderedRateUnit.mcgPerKgMin => 'mcg/kg/min',
+    IvOrderedRateUnit.mcgPerKgHour => 'mcg/kg/hr',
     IvOrderedRateUnit.mgPerKgHour => 'mg/kg/hr',
     IvOrderedRateUnit.mcgPerMin => 'mcg/min',
     IvOrderedRateUnit.mgPerMin => 'mg/min',
@@ -12,6 +13,7 @@ extension IvOrderedRateUnitText on IvOrderedRateUnit {
 
   bool get needsWeight =>
       this == IvOrderedRateUnit.mcgPerKgMin ||
+      this == IvOrderedRateUnit.mcgPerKgHour ||
       this == IvOrderedRateUnit.mgPerKgHour;
 }
 
@@ -42,6 +44,7 @@ IvInfusionRateResult? calculateOrderedIvInfusion({
   }
   final dosePerHour = switch (rateUnit) {
     IvOrderedRateUnit.mcgPerKgMin => prescribedRate * weightKg! * 60,
+    IvOrderedRateUnit.mcgPerKgHour => prescribedRate * weightKg!,
     IvOrderedRateUnit.mgPerKgHour => prescribedRate * weightKg! * 1000,
     IvOrderedRateUnit.mcgPerMin => prescribedRate * 60,
     IvOrderedRateUnit.mgPerMin => prescribedRate * 1000 * 60,

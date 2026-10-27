@@ -15,7 +15,7 @@ void main() {
       'Norepinephrine', 'Nicardipine', 'Clevidipine',
       'Esmolol', 'Nitroglycerin', 'Labetalol',
     ]));
-    expect(ivUnifiedInfusionPreparations.length, 10);
+    expect(ivUnifiedInfusionPreparations.length, 22);
     expect(ivUnifiedInfusionPreparations.map((p) => p.id).toSet().length,
         ivUnifiedInfusionPreparations.length);
     expect(ivUnifiedPreparationsFor('Vancomycin'), isEmpty);

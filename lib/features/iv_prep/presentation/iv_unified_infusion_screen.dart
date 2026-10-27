@@ -30,6 +30,8 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
   bool _localProtocolConfirmed = false;
   bool _productConfirmed = false;
   bool _orderConfirmed = false;
+  bool _norepiVialConfirmed = false;
+  bool _norepiVolumeIsAdded = false;
 
   @override
   void initState() {
@@ -61,6 +63,8 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
       _preparationId = null;
       _rateUnit = ivApprovedOrderUnits(newDrug).first;
       _localMode = false;
+      _norepiVolumeIsAdded = false;
+      _norepiVialConfirmed = false;
       _weight.clear();
       _rate.clear();
       _activeMg.clear();
@@ -85,12 +89,28 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
     for (final p in options) {
       if (p.id == _preparationId) chosen = p;
     }
-    final localConcentration = _localMode
+    final isNorepinephrine = _drug == 'Norepinephrine';
+    final activeMg = double.tryParse(_activeMg.text.trim());
+    final enteredVolumeMl = double.tryParse(_finalMl.text.trim());
+    final norepiWithdrawalMl = isNorepinephrine
+        ? norepinephrineReviewedStockWithdrawalMl(
+            totalNorepinephrineBaseMg: activeMg ?? double.nan,
+            matchingVialVerified: _norepiVialConfirmed,
+          )
+        : null;
+    final localFinalMl = isNorepinephrine && _norepiVolumeIsAdded
+        ? (enteredVolumeMl != null && norepiWithdrawalMl != null &&
+                enteredVolumeMl.isFinite && enteredVolumeMl > 0
+            ? enteredVolumeMl + norepiWithdrawalMl : null)
+        : enteredVolumeMl;
+    final volumeIsPhysicallyValid = !isNorepinephrine ||
+        (norepiWithdrawalMl != null &&
+            localFinalMl != null && localFinalMl.isFinite &&
+            localFinalMl > norepiWithdrawalMl);
+    final localConcentration = _localMode && volumeIsPhysicallyValid
         ? verifiedLocalFinalMcgPerMl(
-            totalActiveMg: double.tryParse(_activeMg.text.trim()) ??
-                double.nan,
-            actualFinalVolumeMl: double.tryParse(_finalMl.text.trim()) ??
-                double.nan,
+            totalActiveMg: activeMg ?? double.nan,
+            actualFinalVolumeMl: localFinalMl ?? double.nan,
             protocolVerified: _localProtocolConfirmed &&
                 _protocolReference.text.trim().isNotEmpty,
           )
@@ -99,7 +119,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
       drug: _drug,
       reviewedPreparation: _localMode ? null : chosen,
       localTotalActiveMg: double.tryParse(_activeMg.text.trim()),
-      localFinalVolumeMl: double.tryParse(_finalMl.text.trim()),
+      localFinalVolumeMl: localFinalMl,
       localProtocolConfirmed: _localProtocolConfirmed &&
           _protocolReference.text.trim().isNotEmpty,
       orderedUnit: _rateUnit,
@@ -119,15 +139,14 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
         key: const ValueKey('unified-infusion-screen'),
         padding: const EdgeInsets.fromLTRB(16, 10, 16, 36),
         children: [
-          Text('Weight + ordered dose + final dilution → mL/hr',
+          Text('Vial → dilution → dose → mL/hr',
               style: theme.textTheme.titleLarge
                   ?.copyWith(fontWeight: FontWeight.w900)),
           const SizedBox(height: 6),
           const Text(
-            'Adult continuous infusions ONLY. This tool converts an '
-            'independently prescribed dose using a VERIFIED final '
-            'concentration. It does not recommend a dose, decide a '
-            'diluent, approve a local preparation, or authorize an IV push.',
+            'Adult IV infusion: choose the ACTUAL preparation, then enter '
+            'the ordered dose. For concentrated vials, stock strength '
+            'is NOT the same as the final pump concentration.',
           ),
           const SizedBox(height: 12),
           DropdownButtonFormField<String>(
@@ -145,6 +164,36 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
               if (v != null) _changeDrug(v);
             },
           ),
+          if (isNorepinephrine &&
+              (_localMode || chosen == null || !chosen.readyToUse)) ...[
+            const SizedBox(height: 10),
+            Card(
+              key: const ValueKey('norepi-stock-one-mg-ml'),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Vial / stock concentration',
+                        style: theme.textTheme.labelLarge),
+                    Text(
+                      '1 mg / 1 mL',
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const Text(
+                      'Norepinephrine BASE · 4 mg / 4 mL concentrate. '
+                      'MATCH THE VIAL LABEL. Dilute before IV infusion.',
+                    ),
+                    const Text(
+                      'Stock 1 mg/mL ≠ final infusion strength.',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
           const SizedBox(height: 10),
           Wrap(
             spacing: 8,
@@ -152,19 +201,21 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
             children: [
               ChoiceChip(
                 key: const ValueKey('unified-source-mode'),
-                label: const Text('Reviewed preparation'),
+                label: const Text('Labeled dilution / premix'),
                 selected: !_localMode,
                 onSelected: (_) => setState(() {
                   _localMode = false;
+                  _norepiVialConfirmed = false;
                   _invalidate();
                 }),
               ),
               ChoiceChip(
                 key: const ValueKey('unified-local-mode'),
-                label: const Text('Verified local dilution'),
+                label: const Text('Hospital dilution'),
                 selected: _localMode,
                 onSelected: (_) => setState(() {
                   _localMode = true;
+                  _norepiVialConfirmed = false;
                   _invalidate();
                 }),
               ),
@@ -178,7 +229,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
               isExpanded: true,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: '2 · Actual prepared bag / strength',
+                labelText: '2 · Dilution or ready-made infusion',
               ),
               hint: const Text('Choose the exact listed preparation'),
               items: [
@@ -202,13 +253,23 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 style: theme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w800),
               ),
-              Text(chosen.instructions),
               if (chosen.readyToUse)
-                const Text('READY TO USE · do NOT dilute further.'),
-              const SizedBox(height: 5),
-              Text('Safety: ${chosen.safety}'),
-              SelectableText('Source: ${chosen.sourceUrl}',
-                  style: theme.textTheme.bodySmall),
+                const Text('READY TO USE · do NOT dilute further.')
+              else if (isNorepinephrine)
+                const Text('4 mg / 4 mL stock at 1 mg/mL MUST be diluted.'),
+              ExpansionTile(
+                key: const ValueKey('unified-preparation-details-toggle'),
+                title: const Text('How to prepare · safety · source'),
+                initiallyExpanded: false,
+                childrenPadding: const EdgeInsets.fromLTRB(8, 4, 8, 12),
+                children: [
+                  Text(chosen.instructions),
+                  const SizedBox(height: 5),
+                  Text('Safety: ${chosen.safety}'),
+                  SelectableText('Source: ${chosen.sourceUrl}',
+                      style: theme.textTheme.bodySmall),
+                ],
+              ),
             ],
           ] else ...[
             Card(
@@ -218,11 +279,9 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'LOCAL-PROTOCOL ARITHMETIC ONLY. This does NOT tell '
-                      'you how to prepare a bag, whether a diluent is '
-                      'compatible, or whether a selected concentration '
-                      'is safe for this medicine/patient. Verify the '
-                      'institution-approved protocol FIRST.',
+                      'Only use a VERIFIED hospital dilution. '
+                      'This calculator does not approve the fluid, '
+                      'strength, stability or administration route.',
                     ),
                     const SizedBox(height: 10),
                     TextField(
@@ -235,6 +294,23 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                       ),
                       onChanged: (_) => setState(_invalidate),
                     ),
+                    if (isNorepinephrine) ...[
+                      const SizedBox(height: 8),
+                      CheckboxListTile(
+                        key: const ValueKey('norepi-confirm-one-mg-stock'),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.zero,
+                        value: _norepiVialConfirmed,
+                        title: const Text(
+                          'My actual concentrate is norepinephrine BASE '
+                          '1 mg/mL (4 mg / 4 mL).',
+                        ),
+                        onChanged: (value) => setState(() {
+                          _invalidate();
+                          _norepiVialConfirmed = value ?? false;
+                        }),
+                      ),
+                    ],
                     const SizedBox(height: 10),
                     TextField(
                       key: const ValueKey('unified-total-active-mg'),
@@ -243,27 +319,108 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                         decimal: true),
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        labelText: 'Active $_drug amount in FINAL bag (mg)',
+                        labelText: isNorepinephrine
+                            ? 'Norepinephrine BASE amount for bag (mg)'
+                            : 'Active $_drug amount in FINAL bag (mg)',
                         helperText: _drug == 'Norepinephrine'
                             ? 'Norepinephrine BASE mg; NEVER salt mg.'
                             : 'Active ingredient mg; not vial strength or mEq.',
                       ),
                       onChanged: (_) => setState(_invalidate),
                     ),
+                    if (isNorepinephrine) ...[
+                      if (norepiWithdrawalMl != null) ...[
+                        const SizedBox(height: 8),
+                        Text(
+                          'Withdraw ${_fmt(norepiWithdrawalMl)} mL '
+                          'from 1 mg/mL vial stock',
+                          key: const ValueKey('norepi-vial-withdrawal-ml'),
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        if (activeMg != null &&
+                            activeMg > reviewedNorepinephrineVialBaseMg)
+                          const Text(
+                            'More than one 4 mg/4 mL single-dose vial '
+                            'is required. Verify the order and discard rules.',
+                          ),
+                        const Text(
+                          'Stock volume calculation only: final dilution '
+                          'must match your validated hospital protocol.',
+                        ),
+                      ],
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 7,
+                        children: [
+                          ChoiceChip(
+                            key: const ValueKey('norepi-final-volume-choice'),
+                            label: const Text('Final bag volume'),
+                            selected: !_norepiVolumeIsAdded,
+                            onSelected: (_) => setState(() {
+                              _norepiVolumeIsAdded = false;
+                              _invalidate();
+                            }),
+                          ),
+                          ChoiceChip(
+                            key: const ValueKey('norepi-added-fluid-choice'),
+                            label: const Text('Fluid added'),
+                            selected: _norepiVolumeIsAdded,
+                            onSelected: (_) => setState(() {
+                              _norepiVolumeIsAdded = true;
+                              _finalMl.clear();
+                              _invalidate();
+                            }),
+                          ),
+                        ],
+                      ),
+                    ],
                     const SizedBox(height: 10),
                     TextField(
                       key: const ValueKey('unified-actual-final-ml'),
                       controller: _finalMl,
                       keyboardType: const TextInputType.numberWithOptions(
                         decimal: true),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'ACTUAL FINAL solution volume (mL)',
-                        helperText:
-                            'Not the amount of diluent added; include drug volume.',
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        labelText: isNorepinephrine && _norepiVolumeIsAdded
+                            ? 'Precisely measured compatible fluid ADDED (mL)'
+                            : 'ACTUAL FINAL solution volume (mL)',
+                        helperText: isNorepinephrine
+                            ? (_norepiVolumeIsAdded
+                                ? 'Final volume = added fluid + withdrawn drug.'
+                                : 'Final volume includes drug + fluid, NOT just bag label.')
+                            : 'Final volume includes drug, not just fluid.',
                       ),
                       onChanged: (_) => setState(_invalidate),
                     ),
+                    if (isNorepinephrine &&
+                        norepiWithdrawalMl != null &&
+                        localFinalMl != null &&
+                        volumeIsPhysicallyValid) ...[
+                      const SizedBox(height: 7),
+                      Text(
+                        'Actual final volume: ${_fmt(localFinalMl)} mL',
+                        key: const ValueKey('norepi-local-final-volume'),
+                      ),
+                      if (!_norepiVolumeIsAdded)
+                        Text(
+                          'Calculated fluid volume: '
+                          '${_fmt(localFinalMl - norepiWithdrawalMl)} mL '
+                          '(arithmetic only; NOT a preparation order).',
+                        ),
+                    ],
+                    if (isNorepinephrine &&
+                        norepiWithdrawalMl != null &&
+                        localFinalMl != null &&
+                        !volumeIsPhysicallyValid)
+                      const Text(
+                        'Final bag volume must exceed stock withdrawal '
+                        'volume. No calculation available.',
+                        key: ValueKey('norepi-invalid-final-volume'),
+                      ),
                     const SizedBox(height: 9),
                     CheckboxListTile(
                       key: const ValueKey('unified-local-protocol-confirm'),
@@ -301,8 +458,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
             controlAffinity: ListTileControlAffinity.leading,
             value: _productConfirmed,
             title: const Text(
-              'I checked the exact prepared container label, correct '
-              'drug/unit and ACTUAL final concentration.',
+              'Verified prepared bag, concentration and dose units.',
             ),
             onChanged: (_localMode
                     ? localConcentration != null
@@ -314,7 +470,7 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 : null,
           ),
           const Divider(height: 22),
-          Text('3 · Enter already ORDERED infusion dose',
+          Text('3 · Enter prescribed infusion dose',
               style: theme.textTheme.titleMedium
                   ?.copyWith(fontWeight: FontWeight.w800)),
           const SizedBox(height: 8),

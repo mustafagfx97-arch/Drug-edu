@@ -174,7 +174,9 @@ IvDilutionAssessment assessAdultIvDilution({
           source: _sourceDobutamine,
         );
       }
-      if (eq(c, 500) || eq(c, 1000) || eq(c, 2000)) {
+      if (eq(drugMg, 250) &&
+          (eq(actualFinalMl, 500) || eq(actualFinalMl, 250) ||
+              eq(actualFinalMl, 125))) {
         return green(
           'Concentration matches a labeled dobutamine infusion example.',
           'Confirm the final bag volume, appropriate diluent and continuous '
@@ -214,9 +216,22 @@ IvDilutionAssessment assessAdultIvDilution({
           source: _sourceNitro,
         );
       }
-      if (eq(c, 50) || eq(c, 100) || eq(c, 200) || eq(c, 400)) {
+      final inLabelTable =
+          (eq(drugMg, 5) && eq(actualFinalMl, 100)) ||
+          (eq(drugMg, 25) &&
+              (eq(actualFinalMl, 500) || eq(actualFinalMl, 250) ||
+                  eq(actualFinalMl, 125))) ||
+          (eq(drugMg, 50) &&
+              (eq(actualFinalMl, 500) || eq(actualFinalMl, 250) ||
+                  eq(actualFinalMl, 125))) ||
+          (eq(drugMg, 100) &&
+              (eq(actualFinalMl, 1000) || eq(actualFinalMl, 500) ||
+                  eq(actualFinalMl, 250))) ||
+          (eq(drugMg, 200) &&
+              (eq(actualFinalMl, 1000) || eq(actualFinalMl, 500));
+      if (inLabelTable) {
         return green(
-          'Final concentration matches a labeled nitroglycerin dilution '
+          'Final amount and volume match a labeled nitroglycerin dilution '
           'with a compatible diluent and verified low-sorption set.',
           'Continue to use an infusion pump, monitor BP, '
           'and verify container/line requirements.',
@@ -360,7 +375,8 @@ IvDilutionAssessment assessAdultIvDilution({
     case 'Epinephrine':
       if (!dextrose) {
         return yellow(
-          'Plain NS alone is not recommended for this labeled '
+          'The chosen fluid is not one of the D5W / D5NS '
+          'diluents recommended for this labeled '
           'adult septic-shock epinephrine concentrate preparation.',
           'Use labeled 5%-dextrose-containing fluid; '
           'do not mistake this for IM anaphylaxis or arrest bolus.',
@@ -432,7 +448,12 @@ IvDilutionAssessment assessAdultIvDilution({
           source: sourceForDrug(),
         );
       }
-      if (eq(c, 400) || eq(c, 800) || eq(c, 1600)) {
+      final labeledAmountAndVolume =
+          (eq(drugMg, 200) &&
+              (eq(actualFinalMl, 250) || eq(actualFinalMl, 500))) ||
+          (eq(drugMg, 400) &&
+              (eq(actualFinalMl, 250) || eq(actualFinalMl, 500)));
+      if (labeledAmountAndVolume && !notApprovedFluid) {
         return green(
           'Matches a listed dopamine 40 mg/mL concentrate '
           'nominal dilution concentration.',
@@ -449,7 +470,8 @@ IvDilutionAssessment assessAdultIvDilution({
       );
     case 'Labetalol':
       if (eq(drugMg, 200) &&
-          (eq(actualFinalMl, 200) || eq(actualFinalMl, 290))) {
+          (eq(actualFinalMl, 200) || eq(actualFinalMl, 290)) &&
+          !notApprovedFluid) {
         return green(
           'Matches a reviewed labetalol infusion final-volume example.',
           'Check exact concentrate, compatible diluent and infusion order.',

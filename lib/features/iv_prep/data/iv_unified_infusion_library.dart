@@ -49,6 +49,8 @@ const _dobutamineUnits = [IvOrderedRateUnit.mcgPerKgMin];
 const _dopamineUnits = [IvOrderedRateUnit.mcgPerKgMin];
 const _epinephrineUnits = [IvOrderedRateUnit.mcgPerKgMin];
 const _dexmedetomidineUnits = [IvOrderedRateUnit.mcgPerKgHour];
+const _amiodaroneUnits = [IvOrderedRateUnit.mgPerMin];
+const _nitroprussideUnits = [IvOrderedRateUnit.mcgPerKgMin];
 const _labetalolUnits = [
   IvOrderedRateUnit.mgPerMin,
   IvOrderedRateUnit.mgPerHour,
@@ -259,6 +261,63 @@ final ivUnifiedInfusionPreparations = <IvInfusionPreparation>[
         'and verify the actual glass container/line.',
     sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=578d8159-5ec6-457f-b4a8-9add624d43a8',
   ),
+  IvInfusionPreparation(
+    id: 'nitroprusside-50mg-in-250ml-d5w',
+    drug: 'Sodium nitroprusside',
+    label: '50 mg/2 mL + 250 mL D5W · LABEL NOMINAL 200 mcg/mL',
+    nominalMcgPerMl: 200,
+    orderUnits: _nitroprussideUnits,
+    stockLabel: '25 mg/mL · 50 mg / 2 mL CONCENTRATE',
+    stockWithdrawalMl: 2,
+    instructions: 'Dilute 2 mL = 50 mg from cited nitroprusside '
+        'concentrate in 250 mL D5W (labeled 200 mcg/mL). '
+        'This is a manufacturer-table nominal strength: verify '
+        'actual final volume and infusion label. PROTECT FROM LIGHT.',
+    safety: 'HIGH ALERT: must NOT inject the concentrate directly. '
+        'ONLY sterile D5W for this product label, light-shield bag. '
+        'Continuous arterial BP monitoring. Cyanide/thiocyanate toxicity '
+        'requires critical-care protocol and exposure limits.',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fbfb86c-da8d-4741-b1e0-7000e2bbad5f',
+    isManufacturerNominal: true,
+  ),
+  IvInfusionPreparation(
+    id: 'nitroprusside-50mg-in-500ml-d5w',
+    drug: 'Sodium nitroprusside',
+    label: '50 mg/2 mL + 500 mL D5W · LABEL NOMINAL 100 mcg/mL',
+    nominalMcgPerMl: 100,
+    orderUnits: _nitroprussideUnits,
+    stockLabel: '25 mg/mL · 50 mg / 2 mL CONCENTRATE',
+    stockWithdrawalMl: 2,
+    instructions: 'Dilute full 50 mg/2 mL vial in 500 mL sterile D5W. '
+        'Manufacturer table quotes 100 mcg/mL nominal. '
+        'Protect diluted container from light.',
+    safety: 'HIGH ALERT cyanide toxicity; monitor BP continuously. '
+        'Never mix additional medicines or use plain NS dilution '
+        'for this concentrate.',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fbfb86c-da8d-4741-b1e0-7000e2bbad5f',
+    isManufacturerNominal: true,
+  ),
+  IvInfusionPreparation(
+    id: 'amiodarone-vt-maintenance-900mg-in-500ml-d5w',
+    drug: 'Amiodarone',
+    label: 'Adult VT/VF · 900 mg/18 mL in 500 mL D5W · LABEL 1.8 mg/mL',
+    nominalMcgPerMl: 1800,
+    orderUnits: _amiodaroneUnits,
+    stockLabel: '50 mg/mL · 900 mg = 18 mL concentrate',
+    stockWithdrawalMl: 18,
+    instructions: 'Adult life-threatening VT/VF labeled slow-load '
+        'and maintenance regimen: add 18 mL = 900 mg to '
+        '500 mL D5W. Manufacturer refers to nominal 1.8 mg/mL. '
+        'Only apply to already prescribed 1 mg/min or 0.5 mg/min '
+        'as appropriate to the ordered phase, not cardiac-arrest IV push.',
+    safety: 'This is NOT the first 150 mg/10-minute loading dose. '
+        'For infusion longer than 2 hours, follow manufacturer '
+        'glass/polyolefin container requirements. '
+        'If concentration exceeds 2 mg/mL, use central venous access; '
+        'ECG and BP monitoring required. Do not substitute NS.',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0a28ae25-7cc4-4ac0-a2ba-7820fb93e25c',
+    isManufacturerNominal: true,
+  ),
   for (final recipe in dilutionRecipesFor('Labetalol', 'General'))
     IvInfusionPreparation(
       id: recipe.id,
@@ -296,6 +355,8 @@ List<IvOrderedRateUnit> ivApprovedOrderUnits(String drug) =>
       'Dopamine' => _dopamineUnits,
       'Epinephrine' => _epinephrineUnits,
       'Dexmedetomidine' => _dexmedetomidineUnits,
+      'Sodium nitroprusside' => _nitroprussideUnits,
+      'Amiodarone' => _amiodaroneUnits,
       'Labetalol' => _labetalolUnits,
       _ => const [],
     };

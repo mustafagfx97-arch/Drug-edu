@@ -25,6 +25,8 @@ void main() {
     expect(check('Dobutamine', 250, 40).light, IvDilutionLight.red);
     expect(check('Dobutamine', 250, 45).blocked, isTrue);
     expect(check('Dobutamine', 250, 400).light, IvDilutionLight.yellow);
+    expect(check('Dobutamine', 25, 25).light, IvDilutionLight.red);
+    expect(check('Dobutamine', 100, 100).light, IvDilutionLight.yellow);
     expect(check('Dobutamine', 250, 250,
         fluid: IvDiluent.bicarbonate).light, IvDilutionLight.red);
   });
@@ -38,6 +40,8 @@ void main() {
         IvDilutionLight.green);
     expect(check('Nitroglycerin', 50, 125, tubing: true).light,
         IvDilutionLight.green);
+    expect(check('Nitroglycerin', 10, 100, tubing: true).light,
+        IvDilutionLight.yellow);
     expect(check('Nitroglycerin', 50, 100, tubing: true).light,
         IvDilutionLight.red);
     expect(check('Nitroglycerin', 50, 500,
@@ -84,6 +88,8 @@ void main() {
     expect(check('Epinephrine', 1, 1000,
         fluid: IvDiluent.normalSaline).light, IvDilutionLight.yellow);
     expect(check('Epinephrine', 1, 1000).light, IvDilutionLight.yellow);
+    expect(check('Epinephrine', 1, 1000,
+        fluid: IvDiluent.lactatedRingers).light, IvDilutionLight.yellow);
   });
 
   test('clevidipine premix is never automatically approved for compounding', () {

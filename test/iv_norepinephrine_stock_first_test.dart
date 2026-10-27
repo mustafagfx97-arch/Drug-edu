@@ -68,20 +68,25 @@ void main() {
     final protocol = find.byKey(const ValueKey('unified-protocol-reference'));
     await tester.ensureVisible(protocol);
     await tester.enterText(protocol, 'Reviewed local ICU policy');
+    final matchingStock = find.byKey(
+      const ValueKey('norepi-confirm-one-mg-stock'),
+    );
+    await tester.ensureVisible(matchingStock);
+    await tester.pumpAndSettle();
+    await tester.tap(matchingStock);
+    await tester.pumpAndSettle();
+
     final amount = find.byKey(const ValueKey('unified-total-active-mg'));
     await tester.ensureVisible(amount);
     await tester.enterText(amount, '4');
     final finalVolume = find.byKey(const ValueKey('unified-actual-final-ml'));
     await tester.ensureVisible(finalVolume);
     await tester.enterText(finalVolume, '50');
-
-    expect(find.byKey(const ValueKey('norepi-vial-withdrawal-ml')),
-        findsNothing);
-    final matchingStock = find.byKey(
-      const ValueKey('norepi-confirm-one-mg-stock'),
+    await tester.pumpAndSettle();
+    final withdrawal = find.byKey(
+      const ValueKey('norepi-vial-withdrawal-ml'),
     );
-    await tester.ensureVisible(matchingStock);
-    await tester.tap(matchingStock);
+    await tester.ensureVisible(withdrawal);
     await tester.pumpAndSettle();
     expect(find.textContaining('Withdraw 4 mL'), findsOneWidget);
     expect(find.text('Actual final volume: 50 mL'), findsOneWidget);

@@ -246,6 +246,24 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
             ),
             if (chosen != null) ...[
               const SizedBox(height: 7),
+              if (chosen.stockLabel != null) ...[
+                Text(
+                  'VIAL / STOCK: ${chosen.stockLabel}',
+                  key: const ValueKey('unified-stock-label'),
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w900),
+                ),
+                if (chosen.stockWithdrawalMl != null)
+                  Text(
+                    'Withdraw ${_fmt(chosen.stockWithdrawalMl!)} mL '
+                    'for this exact manufacturer preparation.',
+                    key: const ValueKey('unified-stock-withdrawal'),
+                  ),
+                const Text(
+                  'Stock concentration is NOT the pump concentration.',
+                ),
+                const SizedBox(height: 6),
+              ],
               Text(
                 'FINAL concentration: ${_fmt(chosen.nominalMcgPerMl)} mcg/mL'
                 '${chosen.isManufacturerNominal ? ' (manufacturer nominal)' : ''}',
@@ -253,6 +271,14 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                 style: theme.textTheme.titleMedium
                     ?.copyWith(fontWeight: FontWeight.w800),
               ),
+              if (chosen.isManufacturerNominal)
+                const Text(
+                  'LABEL NOMINAL concentration: added stock volume may '
+                  'change the ACTUAL final bag volume. If exact '
+                  'concentration is required, verify a final-volume '
+                  'preparation with your hospital protocol.',
+                  key: ValueKey('unified-nominal-warning'),
+                ),
               if (chosen.readyToUse)
                 const Text('READY TO USE · do NOT dilute further.')
               else if (isNorepinephrine)

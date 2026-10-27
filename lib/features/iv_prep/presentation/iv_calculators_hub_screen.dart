@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'iv_unified_infusion_screen.dart';
+import 'iv_quick_drip_screen.dart';
 
 import '../../calculators/presentation/dextrose_mixing_calculator_screen.dart';
 import '../../calculators/presentation/electrolyte_payload_calculator_screen.dart';
@@ -14,10 +14,10 @@ class IvCalculatorsHubScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = <(String, String, IconData, Widget)>[
       (
-        'Unified infusion · weight + dose + final dilution → mL/hr',
-        'Adult continuous infusions with exact reviewed preparations or a separately verified hospital protocol concentration.',
+        'Quick IV Drip · vial + weight + dose ± + added fluid → mL/hr',
+        'Fast adult drip calculation with red/yellow/green dilution feedback; advanced details optional.',
         Icons.monitor_heart_outlined,
-        const IvUnifiedInfusionScreen(),
+        const IvQuickDripScreen(),
       ),
       (
         'IV Dilution + Fluid + Rate',

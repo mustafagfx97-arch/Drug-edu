@@ -381,8 +381,8 @@ class _IvUnifiedInfusionScreenState extends State<IvUnifiedInfusionScreen> {
                       controller: _finalMl,
                       keyboardType: const TextInputType.numberWithOptions(
                         decimal: true),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
                         labelText: isNorepinephrine && _norepiVolumeIsAdded
                             ? 'Precisely measured compatible fluid ADDED (mL)'
                             : 'ACTUAL FINAL solution volume (mL)',

@@ -113,16 +113,16 @@ void main() {
     await tester.ensureVisible(rate);
     expect(find.text('45 mL/hr'), findsOneWidget);
     final mg = find.byKey(const ValueKey('quick-drip-stock-mg'));
-    await tester.ensureVisible(mg);
+    await tester.scrollUntilVisible(mg, -300);
     await tester.enterText(mg, '125');
     await tester.pumpAndSettle();
-    await tester.ensureVisible(rate);
+    await tester.scrollUntilVisible(rate, 300);
     expect(find.text('45 mL/hr'), findsNothing);
     expect(find.textContaining('YELLOW · Check dilution'), findsOneWidget);
-    await tester.ensureVisible(mg);
+    await tester.scrollUntilVisible(mg, -300);
     await tester.enterText(mg, '0');
     await tester.pumpAndSettle();
-    await tester.ensureVisible(rate);
+    await tester.scrollUntilVisible(rate, 300);
     expect(find.text('— mL/hr'), findsOneWidget);
   });
 

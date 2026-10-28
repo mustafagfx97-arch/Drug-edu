@@ -113,16 +113,20 @@ void main() {
     await tester.ensureVisible(rate);
     expect(find.text('45 mL/hr'), findsOneWidget);
     final mg = find.byKey(const ValueKey('quick-drip-stock-mg'));
-    await tester.scrollUntilVisible(mg, -300);
+    final listScroll = find.descendant(
+      of: find.byKey(const ValueKey('quick-drip-screen')),
+      matching: find.byType(Scrollable),
+    ).first;
+    await tester.scrollUntilVisible(mg, -300, scrollable: listScroll);
     await tester.enterText(mg, '125');
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(rate, 300);
+    await tester.scrollUntilVisible(rate, 300, scrollable: listScroll);
     expect(find.text('45 mL/hr'), findsNothing);
     expect(find.textContaining('YELLOW · Check dilution'), findsOneWidget);
-    await tester.scrollUntilVisible(mg, -300);
+    await tester.scrollUntilVisible(mg, -300, scrollable: listScroll);
     await tester.enterText(mg, '0');
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(rate, 300);
+    await tester.scrollUntilVisible(rate, 300, scrollable: listScroll);
     expect(find.text('— mL/hr'), findsOneWidget);
   });
 

@@ -114,7 +114,20 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
             'Factory ready-to-use product; do NOT add fluid.',
             'Verify the exact manufacturer bag strength and infusion set.',
           )
-        : assessAdultIvDilution(
+        : drugAmountMg != null &&
+                (!drugAmountMg.isFinite || drugAmountMg <= 0)
+            ? const IvDilutionAssessment(
+                IvDilutionLight.red,
+                'Drug amount must be a positive, valid number of mg.',
+                'STOP: Correct the drug amount before calculating the pump rate.',
+              )
+            : fluidAdded != null && (!fluidAdded.isFinite || fluidAdded <= 0)
+                ? const IvDilutionAssessment(
+                    IvDilutionLight.red,
+                    'Fluid added must be a positive, valid number of mL.',
+                    'STOP: Check the fluid amount and the final bag volume.',
+                  )
+                : assessAdultIvDilution(
             drug: _drug,
             drugMg: drugAmountMg,
             actualFinalMl: finalMl,

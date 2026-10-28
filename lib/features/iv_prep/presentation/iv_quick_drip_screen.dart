@@ -4,6 +4,7 @@ import '../data/iv_quick_drip_profiles.dart';
 import '../data/iv_unified_infusion_library.dart';
 import '../domain/iv_dilution_safety_engine.dart';
 import '../domain/iv_infusion_rate_engine.dart';
+import '../domain/iv_quick_drip_stock_engine.dart';
 import 'iv_unified_infusion_screen.dart';
 
 /// Default bedside UI: stock → weight → titrated ORDER → added fluid → pump.
@@ -25,6 +26,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
   final _weightCtrl = TextEditingController();
   final _doseCtrl = TextEditingController();
   final _fluidCtrl = TextEditingController();
+  final _amountCtrl = TextEditingController();
   IvLineType _line = IvLineType.peripheral;
   bool _lightShield = false;
   bool _lowSorption = false;
@@ -47,6 +49,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
     _fluid = p.fluid;
     _addedMl = p.defaultAddedFluidMl;
     _fluidCtrl.text = _fmt(_addedMl);
+    _amountCtrl.text = _fmt(p.totalDrugMg);
     _line = IvLineType.peripheral;
     _lightShield = false;
     _lowSorption = false;
@@ -64,6 +67,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
     _weightCtrl.dispose();
     _doseCtrl.dispose();
     _fluidCtrl.dispose();
+    _amountCtrl.dispose();
     super.dispose();
   }
 
@@ -92,20 +96,19 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
     final weight = double.tryParse(_weightCtrl.text);
     final dose = double.tryParse(_doseCtrl.text);
     final fluidAdded = double.tryParse(_fluidCtrl.text);
+    final drugAmountMg = double.tryParse(_amountCtrl.text);
     final ready = p.premix;
-    final finalMl = ready
-        ? p.finalMl(0)
-        : fluidAdded != null && fluidAdded.isFinite &&
-                fluidAdded > 0 && p.stockMl.isFinite
-            ? p.stockMl + fluidAdded
-            : null;
-    final validMixture = ready ||
-        (finalMl != null && finalMl.isFinite && finalMl > p.stockMl);
-    final concentration = validMixture
-        ? p.finalMcgMl(fluidAdded ?? 0)
-        : null;
+    final stock = ready ? null : calculateIvQuickStock(
+      product: p,
+      drugAmountMg: drugAmountMg,
+      fluidAddedMl: fluidAdded,
+    );
+    final finalMl = ready ? p.finalMl(0) : stock?.finalVolumeMl;
+    final validMixture = ready || stock != null;
+    final concentration =
+        ready ? p.finalMcgMl(0) : stock?.finalMcgPerMl;
 
-    final check = ready
+    final baseCheck = ready
         ? const IvDilutionAssessment(
             IvDilutionLight.green,
             'Factory ready-to-use product; do NOT add fluid.',
@@ -113,14 +116,30 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
           )
         : assessAdultIvDilution(
             drug: _drug,
-            drugMg: p.totalDrugMg,
-            actualFinalMl: validMixture ? finalMl : fluidAdded == null ? null : 0,
+            drugMg: drugAmountMg,
+            actualFinalMl: finalMl,
             fluid: _fluid,
             line: _line,
-            productAndProtocolVerified: true, // matched source-listed vial
+            productAndProtocolVerified: true,
             lightProtectionVerified: _lightShield,
             lowSorptionSetVerified: _lowSorption,
           );
+    // Matching the selected vial strength does not authorize a different
+    // total mg in the bag. Never label a custom-amount mixture GREEN
+    // solely because its final concentration equals a known example.
+    final check = !ready &&
+            stock != null &&
+            stock.amountDiffersFromReviewedExample &&
+            baseCheck.light == IvDilutionLight.green
+        ? IvDilutionAssessment(
+            IvDilutionLight.yellow,
+            'Custom drug amount differs from the selected source-verified '
+            'preparation (${_fmt(p.totalDrugMg)} mg).',
+            'CAUTION: Confirm this total mg, final concentration, '
+            'diluent and vial quantity against an approved hospital recipe.',
+            sourceUrl: p.sourceUrl,
+          )
+        : baseCheck;
     final doseValid = dose != null && dose.isFinite && dose > 0 &&
         (p.maxReference == null || dose <= p.maxReference!);
     final weightValid = !p.doseUnit.needsWeight ||
@@ -205,6 +224,41 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
                   quickDripOptionsFor(_drug).firstWhere((v) => v.id == id)));
             },
           ),
+          if (!ready) ...[
+            const SizedBox(height: 12),
+            TextField(
+              key: const ValueKey('quick-drip-stock-mg'),
+              controller: _amountCtrl,
+              keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true),
+              decoration: InputDecoration(
+                isDense: true,
+                labelText: 'Drug to ADD (mg)',
+                border: const OutlineInputBorder(),
+                helperText: _drug == 'Norepinephrine'
+                    ? 'Norepinephrine BASE mg, not bitartrate salt mg.'
+                    : 'Total active drug mg in the infusion bag.',
+              ),
+              onChanged: (_) => setState(() {}),
+            ),
+            if (stock != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                'Stock ${_fmt(stock.stockMgPerMl)} mg/mL'
+                ' → withdraw ${_fmt(stock.withdrawalMl)} mL',
+                key: const ValueKey('quick-drip-withdrawal'),
+                style: theme.textTheme.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              if (stock.needsMoreThanReviewedPresentation)
+                Text(
+                  'More than ${_fmt(p.totalDrugMg)} mg: verify '
+                  'the number of single-use vials required.',
+                  key: const ValueKey('quick-drip-multiple-vials'),
+                  style: theme.textTheme.bodySmall,
+                ),
+            ],
+          ],
           const SizedBox(height: 14),
           if (p.doseUnit.needsWeight)
             TextField(
@@ -322,7 +376,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
             ),
             const SizedBox(height: 5),
             Text(
-              'Drug stock ${_fmt(p.stockMl)} mL + '
+              'Drug stock ${stock == null ? "—" : _fmt(stock.withdrawalMl)} mL + '
               'fluid ${fluidAdded == null ? "—" : _fmt(fluidAdded)} mL '
               '= FINAL ${finalMl == null ? "—" : _fmt(finalMl)} mL',
               key: const ValueKey('quick-drip-final-volume'),

@@ -108,6 +108,7 @@ void main() {
     final dose = find.byKey(const ValueKey('quick-drip-dose'));
     await tester.ensureVisible(dose);
     await tester.enterText(dose, '5');
+    await tester.pumpAndSettle();
     final rate = find.byKey(const ValueKey('quick-drip-rate'));
     await tester.ensureVisible(rate);
     expect(find.text('45 mL/hr'), findsOneWidget);

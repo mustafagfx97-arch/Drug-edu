@@ -113,6 +113,14 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Digoxin immune Fab', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes', structured: true),
+  // New source-verified adult IV antidotes/rescue agents; distinct from
+  // continuous titrated drips and protected from generic mg-only rate logic.
+  IvCatalogEntry(name: 'Deferoxamine', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Fomepizole', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Hydroxocobalamin (Cyanokit)', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Methylene blue (ProvayBlue)', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Leucovorin calcium', population: 'General', category: 'Emergency & antidotes', structured: true),
+  IvCatalogEntry(name: 'Vasopressin', population: 'General', category: 'Cardiovascular', structured: true),
   IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes', structured: true),
 

@@ -127,6 +127,18 @@ void main() {
     expect(quickDripOptionsFor('Vasopressin'), isEmpty);
   });
 
+  testWidgets('Desferal brand search finds Deferoxamine without a duplicate', (tester) async {
+    await tester.pumpWidget(const DrugIvApp());
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const ValueKey('iv-only-search')),
+      'Desferal',
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Deferoxamine'), findsOneWidget);
+    expect(find.text('1 matching verified IV profiles'), findsOneWidget);
+  });
+
   testWidgets('search Deferoxamine and open exact IV prep', (tester) async {
     await tester.pumpWidget(const DrugIvApp());
     await tester.pumpAndSettle();

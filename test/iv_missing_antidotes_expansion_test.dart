@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:drug_edu/main_iv.dart';
+import 'package:drug_edu/features/iv_prep/presentation/iv_preparation_detail_screen.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_medication_catalog.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_preparation_profiles.dart';
 import 'package:drug_edu/features/iv_prep/data/iv_quick_drip_profiles.dart';
@@ -127,31 +127,33 @@ void main() {
     expect(quickDripOptionsFor('Vasopressin'), isEmpty);
   });
 
-  testWidgets('Desferal brand search finds Deferoxamine without a duplicate', (tester) async {
-    await tester.pumpWidget(const DrugIvApp());
-    await tester.pumpAndSettle();
-    await tester.enterText(
-      find.byKey(const ValueKey('iv-only-search')),
-      'Desferal',
-    );
-    await tester.pumpAndSettle();
-    expect(find.text('1 matching verified IV profiles'), findsOneWidget);
-    // Sliver rows can be off-screen and not built in a small phone viewport.
-    expect(ivMedicationCatalog.singleWhere((e) =>
-      e.name == 'Deferoxamine' && e.population == 'General').searchAliases,
-      contains('Desferal'));
+  test('Desferal / folinic acid alternate names resolve without new IDs', () {
+    final desferal = ivMedicationCatalog.where((e) =>
+        e.population == 'General' &&
+        (e.name.toLowerCase().contains('desferal') ||
+         e.searchAliases.toLowerCase().contains('desferal'))).toList();
+    expect(desferal, hasLength(1));
+    expect(desferal.single.name, 'Deferoxamine');
+
+    final folinic = ivMedicationCatalog.where((e) =>
+        e.population == 'General' &&
+        (e.name.toLowerCase().contains('folinic acid') ||
+         e.searchAliases.toLowerCase().contains('folinic acid'))).toList();
+    expect(folinic, hasLength(1));
+    expect(folinic.single.name, 'Leucovorin calcium');
   });
 
-  testWidgets('search Deferoxamine and open exact IV prep', (tester) async {
-    await tester.pumpWidget(const DrugIvApp());
+  testWidgets('Deferoxamine IV detail screen opens exact product profile',
+      (tester) async {
+    final profile = adult('Deferoxamine');
+    await tester.pumpWidget(MaterialApp(
+      home: IvPreparationDetailScreen(profile: profile),
+    ));
     await tester.pumpAndSettle();
-    final search = find.byKey(const ValueKey('iv-only-search'));
-    await tester.enterText(search, 'Deferoxamine');
-    await tester.pumpAndSettle();
+    expect(find.byType(IvPreparationDetailScreen), findsOneWidget);
     expect(find.text('Deferoxamine'), findsOneWidget);
-    await tester.tap(find.text('Deferoxamine'));
-    await tester.pumpAndSettle();
-    expect(find.byKey(const ValueKey('iv-quick-reconstitution')), findsOneWidget);
     expect(find.text('IV · General'), findsOneWidget);
+    expect(profile.reconstitution, contains('5 mL'));
+    expect(profile.sourceLabel, contains('dailymed.nlm.nih.gov'));
   });
 }

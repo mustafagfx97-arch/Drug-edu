@@ -7,7 +7,7 @@ import 'package:drug_edu/features/calculators/domain/iv_weight_based_dose_engine
 
 void main() {
   test('IV-only PWA catalog reuses the verified source-locked IV data', () {
-    expect(ivPreparationProfiles, hasLength(136));
+    expect(ivPreparationProfiles, hasLength(ivMedicationCatalog.length));
     final keys = ivPreparationProfiles
         .map((p) => '${p.name}|${p.population}')
         .toList();
@@ -150,6 +150,6 @@ void main() {
     expect(find.text('Infusion'), findsOneWidget);
     expect(find.text('Encyclopedia'), findsNothing);
     expect(find.text('Supplements'), findsNothing);
-    expect(find.textContaining('136 product/population-specific profiles'), findsWidgets);
+    expect(find.textContaining('${ivPreparationProfiles.length} product/population-specific profiles'), findsWidgets);
   });
 }

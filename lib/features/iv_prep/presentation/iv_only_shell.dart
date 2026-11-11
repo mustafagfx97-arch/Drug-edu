@@ -86,6 +86,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
       if (_population != 'All' && entry.population != _population) return false;
       if (query.isEmpty) return true;
       return entry.name.toLowerCase().contains(query) ||
+          entry.searchAliases.toLowerCase().contains(query) ||
           entry.category.toLowerCase().contains(query) ||
           entry.population.toLowerCase().contains(query);
     }).toList(growable: false);

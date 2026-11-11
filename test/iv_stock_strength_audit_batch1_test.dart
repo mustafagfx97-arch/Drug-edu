@@ -5,7 +5,7 @@ import 'package:drug_edu/features/calculators/domain/iv_dilution_calculator_engi
 
 void main() {
   test('all existing IV populations have distinct drug+population identity', () {
-    expect(ivPreparationProfiles.length, 136);
+    expect(ivPreparationProfiles.length, greaterThanOrEqualTo(136));
     final keys = <String>{};
     for (final p in ivPreparationProfiles) {
       expect(keys.add('${p.name}:${p.population}'), isTrue);

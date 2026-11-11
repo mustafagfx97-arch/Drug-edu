@@ -33,6 +33,7 @@ bool quickIvNeedsSpecializedCalculator(IvPreparationProfile profile) =>
       'Norepinephrine',
       'Labetalol',
       'Regular insulin infusion',
+      'Vasopressin',
       'Colistimethate / Colistin',
       'Clevidipine',
       'Esmolol',

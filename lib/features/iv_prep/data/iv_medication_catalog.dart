@@ -4,12 +4,15 @@ class IvCatalogEntry {
     required this.population,
     required this.category,
     this.structured = false,
+    this.searchAliases = '',
   });
 
   final String name;
   final String population;
   final String category;
   final bool structured;
+  /// Optional alternative spellings/brand names for catalog search only.
+  final String searchAliases;
 }
 
 const ivMedicationCatalog = <IvCatalogEntry>[
@@ -113,6 +116,14 @@ const ivMedicationCatalog = <IvCatalogEntry>[
   IvCatalogEntry(name: 'Digoxin immune Fab', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Protamine', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'N-acetylcysteine IV', population: 'General', category: 'Emergency & antidotes', structured: true),
+  // New source-verified adult IV antidotes/rescue agents; distinct from
+  // continuous titrated drips and protected from generic mg-only rate logic.
+  IvCatalogEntry(name: 'Deferoxamine', population: 'General', category: 'Emergency & antidotes', structured: true, searchAliases: 'Desferal desferrioxamine'),
+  IvCatalogEntry(name: 'Fomepizole', population: 'General', category: 'Emergency & antidotes', structured: true, searchAliases: 'Antizol'),
+  IvCatalogEntry(name: 'Hydroxocobalamin (Cyanokit)', population: 'General', category: 'Emergency & antidotes', structured: true, searchAliases: 'hydroxycobalamin cyanide antidote'),
+  IvCatalogEntry(name: 'Methylene blue (ProvayBlue)', population: 'General', category: 'Emergency & antidotes', structured: true, searchAliases: 'methylthioninium chloride methemoglobinemia'),
+  IvCatalogEntry(name: 'Leucovorin calcium', population: 'General', category: 'Emergency & antidotes', structured: true, searchAliases: 'folinic acid calcium folinate'),
+  IvCatalogEntry(name: 'Vasopressin', population: 'General', category: 'Cardiovascular', structured: true, searchAliases: 'vasostrict antidiuretic hormone ADH'),
   IvCatalogEntry(name: 'Mannitol', population: 'General', category: 'Emergency & antidotes', structured: true),
   IvCatalogEntry(name: 'Furosemide', population: 'General', category: 'Emergency & antidotes', structured: true),
 

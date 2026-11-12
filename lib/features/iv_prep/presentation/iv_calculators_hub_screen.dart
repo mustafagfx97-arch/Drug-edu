@@ -14,38 +14,38 @@ class IvCalculatorsHubScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = <(String, String, IconData, Widget)>[
       (
-        'Quick IV Drip · vial + weight + dose ± + added fluid → mL/hr',
-        'Fast adult drip calculation with red/yellow/green dilution feedback; advanced details optional.',
+        'Quick IV Drip',
+        'Vial, dose ±, dilution and mL/hr',
         Icons.monitor_heart_outlined,
         const IvQuickDripScreen(),
       ),
       (
-        'IV Dilution + Fluid + Rate',
-        'Enter exact vial strength, prescribed drug amount, fluid to add OR final volume; calculate withdrawal, final concentration and rate from an already ordered infusion.',
+        'Dilution calculator',
+        'Stock withdrawal, fluid and final concentration',
         Icons.science_outlined,
         const IvDilutionCalculatorScreen(),
       ),
       (
-        'Weight-based IV dose → withdrawal',
-        'Prescribed amount/kg × dosing weight → ordered amount and volume at a selected VERIFIED product concentration.',
+        'Weight-based dose',
+        'Ordered dose per kg → drug volume',
         Icons.scale_outlined,
         const IvWeightBasedDoseScreen(),
       ),
       (
-        'Ordered IV dose → vial volume',
-        'Convert an existing ordered amount to withdrawal volume using an exact verified vial or presentation.',
+        'Vial volume',
+        'Ordered amount → mL from verified stock',
         Icons.science_outlined,
         const IvPreparationCalculatorScreen(),
       ),
       (
         'Dextrose mixing',
-        'Mix a prescribed target concentration from exact source concentrations.',
+        'Calculate a prescribed dextrose mixture',
         Icons.water_drop_outlined,
         const DextroseMixingCalculatorScreen(),
       ),
       (
         'Electrolyte payload',
-        'Quantify phosphate with its accompanying potassium or sodium.',
+        'Calculate potassium / sodium in phosphate',
         Icons.bolt_outlined,
         const ElectrolytePayloadCalculatorScreen(),
       ),
@@ -64,29 +64,32 @@ class IvCalculatorsHubScreen extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(15),
             child: Text(
-              'HIGH ALERT: These tools only calculate arithmetic on an already '
-              'ordered dose. They cannot authorize a therapeutic dose, a '
-              'diluent, a final concentration, IV push or a pump setting. '
-              'Verify patient factors and product-specific instructions independently.',
+              'Calculation support only. Verify the ordered dose, '
+              'exact product, route and local preparation protocol. '
+              'Results are not authorization to administer.'
+              
             ),
           ),
         ),
         const SizedBox(height: 12),
         for (final item in items)
-          Card(
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Card(
             child: ListTile(
-              contentPadding: const EdgeInsets.all(14),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               leading: Icon(item.$3, size: 30),
               title: Text(
                 item.$1,
                 style: const TextStyle(fontWeight: FontWeight.w800),
               ),
-              subtitle: Text(item.$2),
+              subtitle: Text(item.$2, maxLines: 2, overflow: TextOverflow.ellipsis),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<void>(builder: (_) => item.$4),
               ),
+            ),
             ),
           ),
       ],

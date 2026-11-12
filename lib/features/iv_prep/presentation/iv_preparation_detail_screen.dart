@@ -148,6 +148,7 @@ class _IvPreparationDetailScreenState
                           fontWeight: FontWeight.w800,
                         )),
                   ),
+                ),
                 _FastFact(
                   key: const ValueKey('iv-quick-reconstitution'),
                   title: 'Reconstitution',

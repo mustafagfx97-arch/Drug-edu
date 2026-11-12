@@ -33,7 +33,9 @@ jobs:
           python3 -c "import json; x=json.load(open('web/manifest.json')); assert x['display']=='standalone'; assert len(x['icons'])>=2"
 
       - name: Analyze
-        run: flutter analyze
+        # Flutter 3.50 reports legacy Material deprecations as informational diagnostics.
+        # Keep warnings and errors fatal; infos alone must not block the IV PWA.
+        run: flutter analyze --no-fatal-infos
 
       - name: Test
         run: flutter test

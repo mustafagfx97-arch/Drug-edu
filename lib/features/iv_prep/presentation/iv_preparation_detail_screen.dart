@@ -77,7 +77,8 @@ class _IvPreparationDetailScreenState
     return Scaffold(
       appBar: AppBar(title: Text(profile.name)),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         children: [
           Text('IV · ${profile.population}',
               style: theme.textTheme.labelLarge),
@@ -128,10 +129,26 @@ class _IvPreparationDetailScreenState
             ),
             const SizedBox(height: 10),
           ],
+          Text('Preparation essentials',
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+              )),
+          const SizedBox(height: 8),
           Card(
             margin: EdgeInsets.zero,
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 14, 14, 2),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text('1 · Prepare',
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.w800,
+                        )),
+                  ),
+                ),
                 _FastFact(
                   key: const ValueKey('iv-quick-reconstitution'),
                   title: 'Reconstitution',
@@ -146,6 +163,24 @@ class _IvPreparationDetailScreenState
                 ),
                 const Divider(height: 1),
                 _FastFact(
+                  key: const ValueKey('iv-quick-further-dilution'),
+                  title: 'Further dilution',
+                  value: further,
+                  icon: Icons.opacity_outlined,
+                ),
+                const Divider(height: 1),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 14, 14, 2),
+                  child: Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text('2 · Administer',
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.w800,
+                        )),
+                  ),
+                ),
+                _FastFact(
                   key: const ValueKey('iv-quick-fluids'),
                   title: 'Compatible IV fluids',
                   value: fluids,
@@ -159,18 +194,11 @@ class _IvPreparationDetailScreenState
                   value: time,
                   icon: Icons.schedule_outlined,
                 ),
-                const Divider(height: 1),
-                _FastFact(
-                  key: const ValueKey('iv-quick-further-dilution'),
-                  title: 'Further dilution',
-                  value: further,
-                  icon: Icons.opacity_outlined,
-                ),
               ],
             ),
           ),
           if (safetyNotes.isNotEmpty) ...[
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             Card(
               margin: EdgeInsets.zero,
               child: ExpansionTile(
@@ -199,7 +227,7 @@ class _IvPreparationDetailScreenState
               ),
             ),
           ],
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Card(
             margin: EdgeInsets.zero,
             child: ExpansionTile(
@@ -242,7 +270,7 @@ class _IvPreparationDetailScreenState
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Card(
             margin: EdgeInsets.zero,
             child: ExpansionTile(

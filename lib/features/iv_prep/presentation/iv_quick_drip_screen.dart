@@ -179,7 +179,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quick IV Drip'),
+        title: const Text('IV Drip Calculator'),
         actions: [
           TextButton(
             key: const ValueKey('quick-drip-advanced'),
@@ -192,10 +192,18 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
           ),
         ],
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         key: const ValueKey('quick-drip-screen'),
-        padding: const EdgeInsets.fromLTRB(14, 10, 14, 32),
-        children: [
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 34),
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+          _IvFormSection(
+            title: '1 · Medicine & stock',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
           DropdownButtonFormField<String>(
             key: const ValueKey('quick-drip-drug'),
             isExpanded: true,
@@ -246,7 +254,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
                   decimal: true),
               decoration: InputDecoration(
                 isDense: true,
-                labelText: 'Drug to ADD (mg)',
+                labelText: 'Stock amount to ADD (mg)',
                 border: const OutlineInputBorder(),
                 helperText: _drug == 'Norepinephrine'
                     ? 'Norepinephrine BASE mg, not bitartrate salt mg.'
@@ -272,7 +280,15 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
                 ),
             ],
           ],
-          const SizedBox(height: 14),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          _IvFormSection(
+            title: '2 · Weight & dose',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
           if (p.doseUnit.needsWeight)
             TextField(
               key: const ValueKey('quick-drip-weight'),
@@ -331,61 +347,59 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
           const SizedBox(height: 4),
           Text(
             p.initialReference != null
-                ? 'Lowest reviewed reference: ${_fmt(p.initialReference!)} '
-                  '· +/− ${_fmt(p.step)} per tap · prescriber order required'
+                ? 'Reference start: ${_fmt(p.initialReference!)} · step '
+                  '${_fmt(p.step)} · use prescribed dose'
                 : 'No universal starting dose · enter prescribed dose; '
                   '+/− is arithmetic only.',
             style: theme.textTheme.bodySmall,
           ),
-          const SizedBox(height: 14),
-          if (!ready) ...[
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    key: const ValueKey('quick-drip-fluid-ml'),
-                    controller: _fluidCtrl,
-                    keyboardType: const TextInputType.numberWithOptions(
-                        decimal: true),
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      labelText: 'Fluid to ADD (mL)',
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (v) => setState(() {
-                      _addedMl = double.tryParse(v) ?? double.nan;
-                    }),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: DropdownButtonFormField<IvDiluent>(
-                    key: const ValueKey('quick-drip-fluid-type'),
-                    initialValue: _fluid,
-                    isExpanded: true,
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      labelText: 'Fluid',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: [
-                      for (final fluid in IvDiluent.values)
-                        DropdownMenuItem(
-                          value: fluid,
-                          child: Text(fluid == IvDiluent.normalSaline
-                              ? 'NS 0.9%'
-                              : fluid == IvDiluent.d5w
-                                  ? 'D5W'
-                                  : fluid.label,
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                    ],
-                    onChanged: (v) {
-                      if (v != null) setState(() => _fluid = v);
-                    },
-                  ),
-                ),
               ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          _IvFormSection(
+            title: '3 · Dilution',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+          if (!ready) ...[
+            TextField(
+              key: const ValueKey('quick-drip-fluid-ml'),
+              controller: _fluidCtrl,
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Fluid to ADD (mL)',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (v) => setState(() {
+                _addedMl = double.tryParse(v) ?? double.nan;
+              }),
+            ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<IvDiluent>(
+              key: const ValueKey('quick-drip-fluid-type'),
+              initialValue: _fluid,
+              isExpanded: true,
+              decoration: const InputDecoration(
+                labelText: 'Diluent / IV fluid',
+                border: OutlineInputBorder(),
+              ),
+              items: [
+                for (final fluid in IvDiluent.values)
+                  DropdownMenuItem(
+                    value: fluid,
+                    child: Text(
+                      fluid == IvDiluent.normalSaline
+                          ? 'NS 0.9%'
+                          : fluid == IvDiluent.d5w ? 'D5W' : fluid.label,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+              ],
+              onChanged: (v) {
+                if (v != null) setState(() => _fluid = v);
+              },
             ),
             const SizedBox(height: 5),
             Text(
@@ -429,7 +443,15 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
               value: _lightShield,
               onChanged: (v) => setState(() => _lightShield = v ?? false),
             ),
-          const SizedBox(height: 12),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text('4 · Dilution check & rate',
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+              )),
+          const SizedBox(height: 8),
           Container(
             key: const ValueKey('quick-drip-traffic-light'),
             padding: const EdgeInsets.all(10),
@@ -450,11 +472,9 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
                 ]),
                 const SizedBox(height: 5),
                 Text(check.reason,
-                    key: const ValueKey('quick-drip-reason'),
-                    maxLines: 3, overflow: TextOverflow.ellipsis),
+                    key: const ValueKey('quick-drip-reason')),
                 if (check.light != IvDilutionLight.green)
                   Text(check.action,
-                      maxLines: 3, overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodySmall),
               ],
             ),
@@ -462,7 +482,7 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
           const SizedBox(height: 12),
           Container(
             key: const ValueKey('quick-drip-rate-card'),
-            padding: const EdgeInsets.all(14),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             decoration: BoxDecoration(
               color: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(14),
@@ -495,14 +515,12 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Adult reference only. +/− shows calculated rate changes; '
-            'it does NOT authorize dose titration. Verify actual vial, '
-            'clinical order, patient monitoring and pump.',
-            style: TextStyle(fontSize: 12),
+          Text(
+            'Adult calculation only · Verify the order, vial and pump.',
+            style: theme.textTheme.bodySmall,
           ),
           ExpansionTile(
-            title: const Text('Why this dose / preparation?'),
+            title: const Text('Source & clinical notes'),
             childrenPadding: const EdgeInsets.all(10),
             children: [
               Text(p.note),
@@ -517,8 +535,40 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
               ),
             ],
           ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class _IvFormSection extends StatelessWidget {
+  const _IvFormSection({required this.title, required this.child});
+  final String title;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsetsDirectional.only(start: 2, bottom: 8),
+          child: Text(
+            title,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: child,
+          ),
+        ),
+      ],
     );
   }
 }

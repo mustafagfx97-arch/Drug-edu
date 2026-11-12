@@ -95,43 +95,35 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
     return CustomScrollView(
       key: const ValueKey('iv-only-catalog'),
       slivers: [
-        const SliverAppBar.large(title: Text('Drug IV · Medication Preparation')),
+        const SliverAppBar(
+          title: Text('Drug IV'),
+          pinned: true,
+          floating: false,
+        ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(16, 2, 16, 12),
+          padding: const EdgeInsets.fromLTRB(18, 14, 18, 16),
           sliver: SliverToBoxAdapter(
-            child: Card(
-              color: theme.colorScheme.primaryContainer,
-              child: Padding(
-                padding: const EdgeInsets.all(18),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'IV preparation, compatibility and administration',
-                      style: theme.textTheme.titleMedium
-                          ?.copyWith(fontWeight: FontWeight.w900),
-                    ),
-                    const SizedBox(height: 7),
-                    Text(
-                      '${ivPreparationProfiles.length} product/population-specific profiles · '
-                      'General, NICU & PICU.',
-                    ),
-                    const SizedBox(height: 7),
-                    const Text(
-                      'Search the drug and patient group. Dose-to-stock-volume '
-                      'arithmetic and exact administration instructions appear '
-                      'FIRST. Preparation, fluids and stability remain '
-                      'available under Details. A faster route is not '
-                      'automatically a safe route.',
-                    ),
-                  ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'IV medicine library',
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
-              ),
+                const SizedBox(height: 4),
+                Text(
+                  '${ivPreparationProfiles.length} product/population-specific profiles · '
+                  'General · NICU · PICU',
+                  style: theme.textTheme.bodySmall,
+                ),
+              ],
             ),
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
           sliver: SliverToBoxAdapter(
             child: TextField(
               key: const ValueKey('iv-only-search'),
@@ -139,7 +131,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 labelText: 'Search IV medication',
-                hintText: 'e.g. Nicardipine, Vancomycin, dopamine',
+                hintText: 'Drug or brand name',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -191,7 +183,7 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
           ),
         for (final category in categories) ...[
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 7),
+            padding: const EdgeInsets.fromLTRB(18, 18, 18, 8),
             sliver: SliverToBoxAdapter(
               child: Text(
                 category,
@@ -201,10 +193,10 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 6),
             sliver: SliverList.separated(
               itemCount: entries.where((e) => e.category == category).length,
-              separatorBuilder: (_, __) => const SizedBox(height: 3),
+              separatorBuilder: (_, __) => const SizedBox(height: 8),
               itemBuilder: (context, index) {
                 final entry = entries
                     .where((e) => e.category == category)
@@ -218,9 +210,12 @@ class _IvOnlyCatalogState extends State<_IvOnlyCatalog> {
                       style: const TextStyle(fontWeight: FontWeight.w700),
                     ),
                     subtitle: Text(
-                      '${entry.population} · formulation-specific source',
+                      '${entry.population} · Preparation & infusion',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    leading: const Icon(Icons.vaccines_outlined),
+                    leading: Icon(Icons.medication_liquid_outlined,
+                      color: theme.colorScheme.primary),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => Navigator.push(
                       context,

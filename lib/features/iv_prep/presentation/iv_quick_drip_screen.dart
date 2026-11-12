@@ -192,11 +192,13 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
           ),
         ],
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         key: const ValueKey('quick-drip-screen'),
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 34),
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
           _IvFormSection(
             title: '1 · Medicine & stock',
             child: Column(
@@ -533,7 +535,8 @@ class _IvQuickDripScreenState extends State<IvQuickDripScreen> {
               ),
             ],
           ),
-        ],
+          ],
+        ),
       ),
     );
   }
